@@ -1,3 +1,5 @@
+
+```
 Scripts-collection
 |-- bsd
 |   |-- freenas
@@ -534,5 +536,4 @@ Scripts-collection
     |       `-- 50400a
     |-- txt
     `-- vbscript
-
-535 directories
+```

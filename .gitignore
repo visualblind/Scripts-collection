@@ -1,41 +1,12 @@
-# Compiled Lua sources
-luac.out
 
-# luarocks build files
-*.src.rock
+bsd/freenas-iocage-nextcloud
+
+linux/temp/freenas-iocage-nextcloud
+
 *.zip
-*.tar.gz
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
+wintel/powershell/zip_files/windows-itpro-docs-public.zip
 
-# Precompiled Headers
-*.gch
-*.pch
+wintel/sql/50400a-20171027t025015z-001.zip
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
+wintel/sql/50400a-20171027t025015z-001/50400a/50400a_50400a-enu_studentmanual_part1.pdf

@@ -1,0 +1,14 @@
+OFFLINE USB NIC Driver Bundle Names:
+ESXi650-VMKUSB-NIC-FLING-39176435-offline_bundle-16775917.zip
+ESXi670-VMKUSB-NIC-FLING-39203948-offline_bundle-16780994.zip
+ESXi700-VMKUSB-NIC-FLING-39035884-component-16770668.zip
+ESXi701-VMKUSB-NIC-FLING-40599856-component-17078334.zip
+
+1.) Enable Maintenance Mode:
+	esxcli system maintenanceMode set -e true
+
+2.) (7.0+):
+	esxcli software component apply -d /path/to/the component zip
+
+	(6.5/6.7):
+	esxcli software vib install -d /path/to/the offline bundle zip

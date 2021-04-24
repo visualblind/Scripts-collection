@@ -1,0 +1,1 @@
+sudo nmap -sP 10.10.10.0/24 | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}'

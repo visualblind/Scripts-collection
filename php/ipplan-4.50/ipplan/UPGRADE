@@ -1,0 +1,52 @@
+ipplan v4.50
+
+Nov 11, 2004
+-  ipplan:	if you intend upgrading MySQL to 5, ensure that you upgrade
+		IPplan to the latest version first. If you did not upgrade
+		IPplan first, you will get database errors and you will be
+		required to manually rename the schema table by executing the
+		following SQL:
+
+			RENAME TABLE `schema` TO `version`;
+
+Jan 09, 2004
+-  ipplan:	when upgrading postgress make sure you read the onscreen
+		instructions - postgress is broken and things needs to
+		be done fairly manually
+
+Nov 12, 2004
+-  ipplan:	when upgrading make sure to backup your database. Also
+		make sure you make a backup of the config file for
+		reference and also make backups of your templates
+
+Dec 31, 2003
+-  ipplan:	when upgrading to a new version, be sure to run the
+		admin/install.php script
+
+Dec 17, 2001
+-  ipplan:	when new groups are created the administrator has a new
+		option which can limit which customers the group can see.
+		this may be confusing to some users as their visibility
+		to information may have changed. the default is that all
+		groups see all customers information
+		
+Nov 9, 2001
+-  ipplan:	you will need to create a new group for customer creation
+		and add some users to it. customers are not created via the
+		admin user anymore.
+
+Oct 31, 2001
+-  ipplan:	the name of the project has changed. you can still keep
+		your existing databases with the same name, just remember
+		to make the necessary changes in the config.php file.
+
+Aug 24, 2001
+-  ipplan:	to upgrade I suggest that the existing web tree
+		is deleted, unpack the new version and redo the config.php
+		file
+
+Jul 30, 2001
+-  ipplan:	to upgrade you will temporarily need to grant root access
+		to the database while the upgrade is taking place. modify
+		the user and password in the config.php script to do the
+		upgrade.

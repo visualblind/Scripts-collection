@@ -1,0 +1,1 @@
+SELECT db_name(database_id) AS DatabaseName, * FROM sys.dm_io_virtual_file_stats(NULL, NULL)

@@ -1,0 +1,41 @@
+;SetupMgrTag
+[Unattended]
+    InstallFilesPath=C:\sysprep\i386
+    OemSkipEula=Yes
+    OemPnpDriversPath=c:\drivers\Dimension2400\ethernet;c:\drivers\Dimension2400\video;c:\drivers\Dimension2400\audio;c:\drivers\Dimension4600\ethernet;c:\drivers\Dimension4600\video;c:\drivers\Dimension4600\audio;c:\drivers\GX60\ethernet;c:\drivers\GX60\video;c:\drivers\GX60\audio;c:\drivers\GX260\ethernet;c:\drivers\GX260\video;c:\drivers\GX260\audio;c:\drivers\Optiplex745\ethernet;c:\drivers\Optiplex745\video;c:\drivers\Optiplex745\audio
+    DriverSigningPolicy=Ignore
+    updateInstalledDrivers=Yes
+
+[GuiUnattended]
+    AdminPassword="AdminPass"
+    EncryptedAdminPassword=NO
+    AutoLogon=Yes
+    AutoLogonCount=1
+    OEMSkipRegional=1
+    OEMDuplicatorstring=WinXPSP3_DELL_OEM
+    OemSkipWelcome=1
+
+[UserData]
+    ProductKey=XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+    FullName="Authorized User"
+    OrgName="Organization"
+    ComputerName=
+
+[TapiLocation]
+    CountryCode=1
+
+[SetupMgr]
+    DistFolder=C:\sysprep\i386
+    DistShare=windist
+
+[GuiRunOnce]
+    Command0=C:\windows\scripts\AddDomainUserToLocalAdminGroup.vbs
+
+[Identification]
+    JoinDomain=domain.org
+    DomainAdmin=admin
+    DomainAdminPassword=DomAdminPass
+
+[Networking]
+    InstallDefaultComponents=Yes
+

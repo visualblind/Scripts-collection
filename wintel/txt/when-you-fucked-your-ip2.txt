@@ -1,0 +1,87 @@
+psexec.exe \\ServerName -s powershell Enable-PSRemoting -Force
+
+Invoke-Command -ComputerName ServerName -ScriptBlock {route add -p 0.0.0.0 255.255.255.0 10.0.0.1}
+
+Invoke-Command -ComputerName ServerName -ScriptBlock {route add -p 0.0.0.0 mask 255.255.255.0 10.0.0.1}
+
+
+
+
+
+
+
+c:\>netsh int ipv4 show address "Ethernet"
+
+Configuration for interface "Ethernet"
+    DHCP enabled:                         No
+    IP Address:                           10.0.1.90
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    IP Address:                           10.0.1.92
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    IP Address:                           10.0.1.91
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    Default Gateway:                      10.0.1.1
+    Gateway Metric:                       256
+    InterfaceMetric:                      10
+
+
+c:\>netsh interface ipv4 add address "Ethernet" 10.0.1.93 255.255.255.0
+
+
+c:\>netsh int ipv4 show address "Ethernet"
+
+Configuration for interface "Ethernet"
+    DHCP enabled:                         No
+    IP Address:                           10.0.1.90
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    IP Address:                           10.0.1.92
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    IP Address:                           10.0.1.93
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    IP Address:                           10.0.1.91
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    Default Gateway:                      10.0.1.1
+    Gateway Metric:                       256
+    InterfaceMetric:                      10
+
+
+c:\>netsh int ipv4 show address "Ethernet"
+
+Configuration for interface "Ethernet"
+    DHCP enabled:                         No
+    IP Address:                           10.0.1.90
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    IP Address:                           10.0.1.92
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    IP Address:                           10.0.1.93
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    IP Address:                           10.0.1.91
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    Default Gateway:                      10.0.1.1
+    Gateway Metric:                       256
+    InterfaceMetric:                      10
+
+
+c:\>netsh interface ipv4 add address "Ethernet" 10.0.1.200 255.255.255.0
+
+
+c:\>netsh int ipv4 show address "Ethernet"
+
+Configuration for interface "Ethernet"
+    DHCP enabled:                         No
+    IP Address:                           10.0.1.90
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    IP Address:                           10.0.1.92
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    IP Address:                           10.0.1.93
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    IP Address:                           10.0.1.200
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    IP Address:                           10.0.1.91
+    Subnet Prefix:                        10.0.1.0/24 (mask 255.255.255.0)
+    Default Gateway:                      10.0.1.1
+    Gateway Metric:                       256
+    InterfaceMetric:                      10
+
+
+c:\>netsh interface ipv4 delete address "Ethernet" 10.0.1.93

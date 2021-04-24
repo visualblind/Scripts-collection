@@ -1,0 +1,59 @@
+How to do an upgrade on Windows?
+--------------------------------
+
+Please read all this note before executing something, so you can understand all the process.
+
+Step 1 - Code Update:
+=====================
+
+    1. Rename the c:\jffnms folder to jffnms-old
+    2. Rename the new jffnms version folder (like c:\jffnms-0.7.3) to c:\jffnms
+    3. Copy your c:\jffnms-old\rrd folder to c:\jffnms\rrd 
+    4. Copy the c:\jffnms-old\rrdtool.exe and nmap.exe to c:\jffnms\
+    5. Re-apply the permissions, give the jffnms user FULL CONTROL over c:\jffnms
+	     
+    6. At this point you have the new version in place with your old version data. 
+	The only thing missing is a correct configuration. You have to go to your setup.php 
+	and reconfigure everything like you did when you first install it. (Step 3)
+
+
+Step 2 - Database Update:
+=========================
+
+    You have to send every file in the c:\jffnms\docs\upgrade\mysql to the mysql daemon :
+    
+    1. Backup in case of failure:
+	c:\> c:\mysql\bin\mysqldump.exe --opt -u root jffnms > c:\jffnms.backup.mysql
+    
+    2. Go to the DB upgrade folder
+	c:\> cd \jffnms\docs\upgrade\mysql
+
+    3. Replace OLD with your current JFFNMS version number (like 0.7.2) and NEW with the new version number (like 0.7.3)
+	c:\jffnms\docs\upgrade\mysql> dir jffnms-OLD-to-NEW*	(look at all the file names)
+
+    4. Apply the DB changes
+	c:\jffnms\docs\upgrade\mysql> c:\mysql\bin\mysql.exe -u root jffnms < <Put every Filename here>
+	
+	or, as suggested by Michael Mayers:
+	
+	    If in .cmd file:
+	    for /f "tokens=*" %%i in ('dir jffnms* /b') DO c:\mysql\bin\mysql.exe -u root jffnms < %%i
+	
+	    If not in .cmd file:
+	    for /f "tokens=*" %i in ('dir jffnms* /b') DO c:\mysql\bin\mysql.exe -u root jffnms < %i
+
+
+Step 3 - Check Everything:
+==========================
+    
+    Go to your setup in http://yourserver/admin/setup.php (put the correct path here).
+    
+    Check if everything is ok, and Save the configuration.
+
+
+-----------------------------------------------------
+If you have any other note you will like added here, 
+please send it to the mailing list. 
+
+Thanks.
+Javier Szyszlican

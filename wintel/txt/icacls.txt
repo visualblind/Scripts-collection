@@ -1,0 +1,13 @@
+ICACLS.exe 
+
+event 4656 Audit Failure
+
+icacls H:\Clients\SOCAL /grant Sentric\SI_SWFIISServers:(OI)(CI)(F) /C
+
+icacls H:\Test /remove Sentric\SI_SWFIISServers /grant:r Sentric\SI04SWFIIS1$:(OI)(CI)(M) /grant:r Sentric\SI04SWFIIS2$:(OI)(CI)(M) /grant:r Sentric\SI04SWF2IIS1$:(OI)(CI)(M) /C
+
+
+
+icacls H:\Clients\PGH /remove Sentric\SI_SWFIISServers /grant:r Sentric\SI04SWFIIS1$:(OI)(CI)(M) /grant:r Sentric\SI04SWFIIS2$:(OI)(CI)(M) /grant:r Sentric\SI04SWF2IIS1$:(OI)(CI)(M) /C
+icacls H:\Clients\SOCAL /remove Sentric\SI_SWFIISServers /grant:r Sentric\SI04SWFIIS1$:(OI)(CI)(M) /grant:r Sentric\SI04SWFIIS2$:(OI)(CI)(M) /grant:r Sentric\SI04SWF2IIS1$:(OI)(CI)(M) /C
+icacls H:\Clients\QA /remove Sentric\SI_SWFIISServers /grant:r Sentric\SI04SWFIIS1$:(OI)(CI)(M) /grant:r Sentric\SI04SWFIIS2$:(OI)(CI)(M) /grant:r Sentric\SI04SWF2IIS1$:(OI)(CI)(M) /C

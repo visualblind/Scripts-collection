@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "927209",
+    "ThreadId": "399536",
+    "Html": "\r\n<p>your idea is fantastic, but in my system (Windows 2008 server) not work.</p>\r\n<p>i am trying to copy from a Linux nas to a local RDX ,</p>\r\n<p>the error is:</p>\r\n<p>Exception calling &quot;Create&quot; with &quot;0&quot; argument(s): &quot;Could not create directory&quot;<br>\r\nAt D:\\RoboPowerCopy\\roboPowerCopy.ps1:4352 char:29<br>\r\n&#43;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $result = $diDst.Create &lt;&lt;&lt;&lt; ()<br>\r\n&nbsp;&nbsp;&nbsp; &#43; CategoryInfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : NotSpecified: (:) [], MethodInvocationException<br>\r\n&nbsp;&nbsp;&nbsp; &#43; FullyQualifiedErrorId : DotNetMethodException</p>\r\n<p>but on the destination the permission is everyone full</p>\r\n<p>can you help me ?</p>\r\n<p>thanks</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-10-16T02:15:07.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

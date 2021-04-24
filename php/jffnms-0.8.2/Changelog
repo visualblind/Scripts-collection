@@ -1,0 +1,1717 @@
+When other people are involved is noted if not it was me: Javier Szyszlican.
+
+JFFNMS 0.8.2 Released 2005-05-09
+================================
+
+*New Features:
+
+    - Host MIB hrSensor support, tested under net-snmp with lm_sensors patch. 
+	It can graph Temperature, Voltages and Fan's RPM.
+	Requested by: Michael Fuereder <Michael |d|o|t| Fuereder |a|t| ooe |d|o|t| gv |d|o|t| at>
+
+    - New SNMP Trap handler. It uses plugins (receivers) to parse the traps and send them to backends.
+	It provides a more flexible system for SNMP Trap processing.
+	By: Erno Rigo <mcree |a|t| tricon |d|o|t| hu>
+
+    - SystemMIB Name, Contact and Location added to the Windows, Linux, Solaris, Cisco and Alteon System informantion interface types.
+	This information is also tracked via AD so you will be notified of any change.
+	Sponsored by: John Wagrowski <wagrowski |a|t| morainevalley |d|o|t| edu> of Moraine Valley Community College
+	
+    - UPS MIB support, this should enable support for the Riello UPS or any other that implements the UPSMIB. 
+	Sponsored by: Novikmec Jozef <Jozef |d|o|t| Novikmec |a|t| zentiva |d|o|t| cz> of Zentiva
+
+    - Linux IPTables Chain support. This Interface type will graph the IPTables build-in chains bytes and packets.
+	By: Hans Peter Dittler <hpdittler |a|t| braintec-consult |d|o|t| de>
+	
+    - Cisco BGP Neighbor Routes graphing. This will only work with Cisco IOS version 12.0(26)S or later.
+	Request and info from: Fabiano Rodrigo Boscatto <fabiano |d|o|t| boscatto |a|t| pucpr |d|o|t| br> and Jade JDeane@sungardfutures |d|o|t| com
+	
+    - Cisco PIX support, Number of connections graph included.
+	By: Mario Spendier <mario |d|o|t| spendier |a|t| at |d|o|t| flextronics |d|o|t| com>
+
+    - Windows SNMP Informant Logical Disk Interface Type, offer Windows Disk Usage stats.
+	by: David Lima <DLIMA |a|t| fr |d|o|t| scc |d|o|t| com>
+
+    - Cisco NAT support, Active Binds and Input/Output packets graph by protocol (UDP, TCP, ICMP, Others).
+	By: Karl S |d|o|t|  Hagen <khagen |a|t| greyhelm |d|o|t| com>
+	
+    - Support for PHP snmp2_* functions.
+	By: Karl S |d|o|t|  Hagen <khagen |a|t| greyhelm |d|o|t| com>
+
+    - The host_information discovery script now tries to discovery how many CPUs the host has.
+
+    - Added Alarmed Hosts & Events to the Default View profile option values.
+
+    - Added PIX Event and PIX Port to the PIX filter
+    
+    - Added Cisco ISDN Syslog Events
+	Requested by: Roberto Veiga <roberto |a|t| veiga |d|o|t| biz>
+
+    - Included the "simple" discovery script, takes a Test OID and an interface name as parameter and returns an interface
+	if the OID is available.
+	
+    - Compaq Temperature Graph can be displayed in Fahrenheit now
+	Requested by: Chad Markley <cmarkley |a|t| markleytech |d|o|t| com>
+
+*Fixes:
+
+    - Start Page alarms now exclude the hidden interfaces, so now the number matches what is seen in the interfaces screen.
+	Reported by: Chris Hammond <chris |a|t| tac |d|o|t| esi |d|o|t| net>
+
+    - Rechability interface information is correctly tracked now if the Host IP changes.
+	Reported by: Travis Johnson <tlj |a|t| ida |d|o|t| net>
+
+    - The cpu_util no longer users the number of cpus to scale the graph, since the only ones using this are the Cisco System Info,
+	and the Windows System info, which we do an average of the CPU usage of all the CPUs, so the MAX is still 100%.
+	Reported by: David Lima <DLIMA |a|t| fr |d|o|t| scc |d|o|t| com>
+
+    - The jffnms-snmp system (for tc and iptables) now uses the pass_persist call in snmpd.conf please re check your configuration.
+	Reported by: Hans Peter Dittler <hpdittler |a|t| braintec-consult |d|o|t| de>
+
+    - SNMPv2 GET now handles multi-line strings correctly.
+	Reported by: Manoj Khabe <khabemanoj |a|t| yahoo |d|o|t| com>
+
+    - is_process_running() function now works fine on BSDs, changed "ps -eo args" to "ps axo args".
+	Fixed by: Chris Cappuccio <chris |a|t| nmedia |d|o|t| net>
+
+    - Disabled ordering in edit mode.
+
+    - Triggers Users filter by user when used by a User Admin.
+
+    - Trigger analizer now again honors the default "from" field from the trigger definition, if the trigger action parameter is not set.
+    
+    - PIX Syslog messages should match better now, removed the ^ in the regexps
+	Reported by: GuruLeeNyc <guruleenyc |a|t| charter |d|o|t| net>
+
+    - Its now possible to ack a lot of events with one click.
+	Reported by: GuruLeeNyc <guruleenyc |a|t| charter |d|o|t| net>
+
+    - Alteon Polling and Syslog Fixes
+	By: Craig Small <csmall |a|t| enc |d|o|t| com |d|o|t| au>
+
+    - Poller2 and NAD now work with PostgreSQL.
+
+    - Zone and Map trigger fields work again.
+	Reported by: Karl S |d|o|t|  Hagen <khagen |a|t| greyhelm |d|o|t| com>
+
+    - Windows Security events work better now.
+	Reported By: Brian Hoban <Bhoban |a|t| generalrevenue |d|o|t| com>	Fixed by: LIMA David <DLIMA@fr |d|o|t| scc |d|o|t| com>
+
+JFFNMS 0.8.1 Released 2005-03-07
+================================
+
+*New Features:
+
+    - New View: Alarmed Hosts & Events. It will only show the alarmed hosts screen and the events frame.
+    
+    - Windows Syslog Install Guide
+	by: Ruud Hop <ruud |d|o|t| hop |a|t| syntec |d|o|t| nl>
+
+    - Added 2 - 24 hours Poller Interval options.
+	Requested by: Jade <JDeane |a|t| sungardfutures |d|o|t| com>
+	
+    - Added Link to the Aggregated graph, useful to show only that.
+    
+    - Added Host Name to the State Reports screen.
+	Requested by: Mario Spendier <Mario |d|o|t| Spendier |a|t| at |d|o|t| flextronics |d|o|t| com>
+    
+*Fixes:
+
+    - The events_latest_max config option is back, this was causing slowdowns in the events screen.
+	Reported by: Travis Johnson <tlj |a|t| ida |d|o|t| net>
+    
+    - Syslog matching of messages that contain the work "Unknown" now works again.
+	Reported by: David Lima <DLIMA |a|t| fr |d|o|t| scc |d|o|t| com>
+
+    - New Poller now polls the host in order to avoid gaps in the graphs when using a low number of threads,
+	starts threads in groups of 5 so it can start working earlier and there were some speedups in the 
+	next-host-to-poll finder.
+	Reported by: Travis Johnson <tlj |a|t| ida |d|o|t| net>
+    
+    - User deletion works again.
+	Reported by: Thomas Mangin <thomas |d|o|t| mangin |a|t| exa-networks |d|o|t| co |d|o|t| uk>
+    
+    - Logged in Customers can use the calendar page now.
+	Reported by: ChakraPani <chakra_funny |a|t| yahoo |d|o|t| com>
+	
+    - Physical interfaces now show the correct bandwidth instead of 128k, 
+	it was caused by a parsing error in the snmp response.
+	Reported by: Balu <nbkr |a|t| indiatimes |d|o|t| com>
+
+    - Matching of Client for Events Triggers now works.
+	Fixed by: Hans Peter Dittler <hpdittler |a|t| braintec-consult |d|o|t| de>
+
+    - Logging file name fixed when using logger() from a web page. Now we use $_SERVER["SCRIPT_NAME"].
+	Reported by: Eugene Turovsky <john |a|t| igtel |d|o|t| ru> & Min Qiu <mqiu@pop2pop |d|o|t| com>
+
+    - Removed Totals section from the Aggregated Traffic graph, because its giving real values.
+	Reported by: Eugene Turovsky <john |a|t| igtel |d|o|t| ru>
+	
+    - Remove the SNMPv2c option if we're running on a Windows Host, because there is no support for SNMPv2 on it.
+    
+    - Events and Map refresh intervals from the User Profile work again.
+	Reported by: Renegade <guruleenyc |a|t| charter |d|o|t| net>
+
+    - Titles with \r\n were causing problems in the RRD Graphs.
+	Reported by: Chris Zimmerman <chris |d|o|t| zimmerman |a|t| fnf |d|o|t| com>
+	
+    - Using lots of interfaces in the DHTML maps were generating a long scroll, 
+	now they go to a new row at the end of the visible screen.
+	Reported by: Jason Humes <jhumes |a|t| acs |d|o|t| on |d|o|t| ca>
+
+    - SNMPv2 SETs were not returning a bool value and causing problems with CISCO Ping-MIB. 
+	Reported by: Jose Amengual & Javier Reyes <javier |d|o|t| reyes |a|t| telmex |d|o|t| com>
+	
+    - Cisco SYSMIB config transfer had a very, very long timeout. Now it waits around 4 to 8 seconds.
+	Reported by: Johan <johan30 |a|t| easynet |d|o|t| be>
+
+    - Fixed Cisco SAA Agent poller to work correctly with the new SNMP API.
+	Reported by: Jose Amengual & Javier Reyes <javier |d|o|t| reyes |a|t| telmex |d|o|t| com>
+
+
+JFFNMS 0.8.0 Released 2005-02-15
+================================
+
+*New Features:
+
+    .API:
+    -----
+    
+    - New Launcher thread manager, its a generic way to handle item processing to child process, 
+	while keeping the load down. It will launch a fixed number of threads and send them work.
+	Requested by: Travis Johnson <tlj |a|t| ida |d|o|t| net>
+    
+    - New Poller using the new launcher.  (poller2.php)
+	Its simpler than the old poller (which is kept for some features like DMII and Satellite that are 
+	not implemented here). This is still experimental and only works in Unix.
+	
+    - Network Autodiscovery.
+	Allows you to add 1 or more seed networks and snmp communities to a zone, and when the daemon runs,
+	it will discover the devices in that network and in attached networks. This is very useful to add
+	a lot of hosts easily. Experimental Too.
+
+    - Support for SNMPv2 and SNMPv3, Including 64 bits counters.
+	For SNMPv1 and SNMPv3 we are using the integrated PHP functions and for SNMPv2 we are calling the
+	net-snmp executables (snmpget, snmpwalk and snmpset) that is a little slow, but it works.
+	When using SNMPv2 or v3, the 64 bit OIDs will be used automatically for input and output, 
+	bytes and packet coutners.
+	Requested by: A lot of people
+
+    - New Backend Configuration Format, uses one defaults file (conf/jffnms.conf.defaults) and
+	one user-config file (conf/jffnms.conf) for easier automated upgrades.
+	JFFNMS should automatically upgrade from the old config system (conf/config.ini) to the new format.
+	Requested by: Craig Small <csmall |a|t| enc |d|o|t| com |d|o|t| au>
+
+    - APC UPS Monitoring: Autodiscovery, Status Alerts, Load, Capacity, Voltage (in/out), Time Remaining and Temperature Graphs. 
+	Requested by: Travis Johnson <tlj |a|t| ida |d|o|t| net> and Novikmec Jozef <Jozef |d|o|t| Novikmec@zentiva |d|o|t| cz>
+        
+    - Nth Percentile graphing support. (Like 95th percentile graphing).
+	This is configured per-interfaces and allows you to specify the Nth percentil you want.
+	A New line will be shown in the traffic graph.
+	Requested by: Richard Sears <rsears |a|t| adnc |d|o|t| com> and Paul Matuszewski <paul@inofficenetworks |d|o|t| com>
+
+    - Alteon AD3 monitoring
+	Monitors system, real and virtual servers and real services, Graphs for bytes, session rate and current value,
+	Alarms when servers or services go down, Fixes problem with physical ports all having the same name.
+	By: Craig Small <csmall |a|t| enc |d|o|t| com |d|o|t| au>
+		  
+    - Brocade Fibre Switch monitoring
+	Monitors temperature and fan sensors, Graphs temperature or fan speed, Monitors FC ports,
+	Graphs traffic by bits or frames.
+	By: Craig Small <csmall |a|t| enc |d|o|t| com |d|o|t| au>
+
+    - Cisco AS 5300
+	Count the number of Async or DSX1 lines used by an access switch removing the D channel.
+	Should work with all Cisco Routers with an E1/T1 connection to a Telco.
+	By: Thomas Mangin <thomas |d|o|t| mangin |a|t| exa-networks |d|o|t| co |d|o|t| uk>
+	
+    - New SQL Query Interface Type. 
+	It uses ODBC to query any database and graph the number of rows returned by the specified query.
+	Also includes Min/Max limit alerting.
+	Requested by: Daniel Afonso <dafonso |a|t| afonsoconsulting |d|o|t| com>
+
+    - New Interfaces Autodiscovery using the new launcher, replaced the old autodiscovery under the same name, all features re-implemented.
+
+    - Managed RRDtool: one RRDtool process is called by each poller and we use the open connection to multiple operations,
+	reducing the fork load. Only works on Unix.
+
+    - New Host fields: Creation, Modification, Last Poll Date and Last Poll duration Time, useful for debugging.
+
+    - Cisco PIX syslog events matching and filtering.
+	By: David Lima <DLIMA |a|t| fr |d|o|t| scc |d|o|t| com>
+	
+    .GUI: 
+    -----
+
+    - Complete GUI redesign using HTML 4.01 and CSS, known as DHTML. 
+
+	If you want to modify how JFFNMS looks you can use your own CSS file, check the 'Custom CSS' Setup option.
+	
+	Too many changes to describe them all, you have to see them for yourself. 
+
+    - New Logo
+	
+    - Interface Selector: we now use a popup system to show the selected group interfaces, making it possible
+	to select some interfaces from more than one group at the same time. Its also hiddable.
+	And when in Customer or Map Filtered mode, you can still select by host.
+	
+	Requested by: Craig Small <csmall |a|t| enc |d|o|t| com |d|o|t| au>, Jason Humes <jhumes@acs |d|o|t| on |d|o|t| ca>, and others |d|o|t| 
+
+    - Faster Tools system, now will need to ask for a specific or specifics values, no more load-all-on-start. 
+	Requested by: TIBA Staff <ip |a|t| tiba |d|o|t| com>
+		
+    - New Standard Administration Features:
+	- Add without insert
+	- Discard Save
+	- Export to ASCII Table
+	- Filter by Field 
+	- Sort by Field
+
+	- New Administration Menu
+	    Now its vertical on the right side of the screen, and its hiddable.
+		
+    - View Type (DHTML, text, etc)  saved in a Session Cookie.
+	So it will keep your selection until you change it or you logout, and it will get back to your default.
+	Requested By: falz <darkfalz |a|t| gmail |d|o|t| com>
+
+    - Option to hide a complete Zone from the interfaces view.
+	Requested by: Chris Hammond <chris |a|t| tac |d|o|t| esi |d|o|t| net>
+
+    - Events ACK, now its easier, just click on the blinking red dot.
+    
+    - View Performance: 
+	- CSV Export of the Input/Output value on Physical interfaces, including Nth percentile calculation.
+	- Allows hidding of the options box so you will get more space.
+	
+    - Better Events RSS output, now its RSS 2.0, tests with Mozilla Live Bookmarks
+	Used as: http://yourserver/jffnms/events.php?view_type=rss&user=admin&pass=admin
+    
+    .DOC:
+    -----
+	
+    - New UNIX Install Instructions using a 'jffnms' user, that way we don't need the system crontab anymore.
+
+*Fixed Bugs:
+
+    - Interface Map sort order fixed, using SORT_NUMERIC for the interface field now.
+	Reported by: Kelly Hamlin <k |d|o|t| hamlin |a|t| t3com |d|o|t| com>
+
+    - Events Interface Filter, now matches *INTERFACE instead of *INTERFACE*
+	Reported by: Durga Prasad <datasoftindia |a|t| gmail |d|o|t| com>
+
+    - Reachablity interface now works when using a host with : in the IP (useful for snmp agents on different ports).
+	Reported By: Manoj Khabe <khabemanoj |a|t| yahoo |d|o|t| com>
+
+    - IF-MIB discovery now works when the host IP is a DNS name.
+	Reported by: David Lima <DLIMA |a|t| fr |d|o|t| scc |d|o|t| com>
+
+    - Setup screen works correctly under SSL now.
+
+    - Windows Event Log Syslog events fixes.
+	By: David Lima <DLIMA |a|t| fr |d|o|t| scc |d|o|t| com>
+
+    - Fixed NTP poller bug when you have a Stratum 0 device connected locally.
+	Reported By: Karl S |d|o|t|  Hagen <khagen |a|t| greyhelm |d|o|t| com>
+
+    - Cisco SEC-6-IPACCESSLOGDP syslog rule fixed.
+	By: Craig Small <csmall |a|t| enc |d|o|t| com |d|o|t| au>
+
+    - Maps order fixed. Now its by Map Name, not ID.
+	Reported by: Kelly Hamlin <k |d|o|t| hamlin |a|t| t3com |d|o|t| com>	
+
+    - Better Linux Syslog matching.
+	With help from: Craig Small <csmall |a|t| enc |d|o|t| com |d|o|t| au>
+	
+    - Removed Consolidate Events->Alarms item limit.
+    
+    - Syslog message matching fixes: now its case-insensitive and has better handling of old/simple match strings, and
+	has better handling of not-matching hosts.
+
+    - NTP discovery and poller do not output errors now.
+
+    - Removed support for old UCD-SNMP 4.x
+    
+    - Old experimental poller removed.
+
+    - Apache Poller now works with Apache 1.3.x
+
+    - Fixed CatOS interface naming
+	Reported by: falz <darkfalz |a|t| gmail |d|o|t| com>
+	
+    - IOS Configuration now skips the ntp clock-period line.
+	By: Craig Small <csmall |a|t| enc |d|o|t| com |d|o|t| au>
+
+    - RRDtool Number of DS 
+
+
+JFFNMS 0.7.9 Released 2004-09-21
+================================
+
+*New Features:
+
+    - Support for PHP5
+	I've been testing on PHP 5.0.1 and everything I tried works. 
+	*** Please report any warnings or errors you may get ***
+
+    - Support for CatOS, Cisco Catalyst Switch.
+	Now you will see the correct interface names and descriptions.
+	Idea/Sample Code by: Perry Lewis <perry |d|o|t| lewis |a|t| htg |d|o|t| net>
+
+    - Apache /server-status? Monitoring.
+	You need to enable mod_status.so with permission to access from the JFFNMS server.
+	Will autodiscover the server on port 80, and allow for manual add for other ports.
+	Graphs for: Hits (with aggregation), Bytes transfered (with aggregation), 
+	    Bytes per Request, CPU Load and Uptime, Busy/Idle Workers.
+	By: Robert St Denis <service |a|t| iahu |d|o|t| ca>
+
+    - IIS (Internet Information Server) Monitoring.
+	Graphs for: Bytes Received, CGI Requests, Files Sents, number of GETs and POSTs.
+	By: Robert St Denis <service |a|t| iahu |d|o|t| ca>
+
+    - Compaq Insight Manager Monitoring.
+	Will allow you to monitor fan, temperature and disks on Compaq/HP servers.
+	By: Craig Small <csmall |a|t| enc |d|o|t| com |d|o|t| au>
+
+    - Livingston Portmaster Serial Port Monitoring.
+	Allows you to see the general status of the ports in a graph.
+	By: Thomas Mangin <thomas |d|o|t| mangin |a|t| exa-networks |d|o|t| co |d|o|t| uk>
+    
+    - Windows EventLog Messages parsing and filter. You have to use NTSyslog.
+	By: David Lima <DLIMA |a|t| fr |d|o|t| scc |d|o|t| com>
+
+    - Windows CPU and Running Processes SLA 
+	New 'Process Threshold' field for SLA 
+	By: David Lima <DLIMA |a|t| fr |d|o|t| scc |d|o|t| com>
+
+    - Support for changing the envelope-sender in Triggers/Action emails.
+	New 'From' option in the trigger configuration.
+	Requeted/Idea by: ML <mathieu_lubrano |a|t| yahoo |d|o|t| fr>
+    
+    - New Aggregation (Average) Graphs for: Cisco CPU Utilization, Linux CPU Usage and Load Avearge.
+	By: Robert St Denis <service |a|t| iahu |d|o|t| ca>
+    
+    - New Packets and Errors Graphs, still in development.
+    
+    - New Temperature Aggregation Graph.
+	By: Craig Small <csmall |a|t| enc |d|o|t| com |d|o|t| au>
+
+    - New Manual Discovery Without PorScan (without using nmap).
+	Requested by: Robert St Denis <service |a|t| iahu |d|o|t| ca>
+
+    - Interface Selector now allows to select all interfaces in the group with one click.
+	And also, when using the Performance Screen, to show only the Date/Graph options 
+	before showing any graph.
+	Requested by: Robert St Denis <service |a|t| iahu |d|o|t| ca>
+
+    - Added HELP link from the setup.php screen to the JFFNMS Documentation.
+	Documentation By: Craig Small <csmall |a|t| enc |d|o|t| com |d|o|t| au>
+	
+    - Added 'active alarm' and its start date to the alarmed interfaces infobox.
+	Requested by: Chris Landegent <chrisl |a|t| adnc |d|o|t| com>
+
+    - Customer Selector in the Interfaces Viewer (Map Selector).
+	Requested by: Travis Johnson <tlj |a|t| ida |d|o|t| net>
+	
+    - Performance Viewer now allows to show only the Aggregate Graphs, 
+	and to select all the graph types with one click.
+	Requested by: Robert St Denis <service |a|t| iahu |d|o|t| ca>
+
+    - New Trigger Filter to Match by Interface name using 'Contains'.
+	Requested by: Chris Landegent <chrisl |a|t| adnc |d|o|t| com>
+
+*Fixed Bugs:
+
+    - Fixed Host Screen, now it does not have filters, and when you execute an action, 
+	it will show only the affected host. It also has a new Select Box for selecting the actions.
+	Reported by: Jason Humes <jhumes |a|t| acs |d|o|t| on |d|o|t| ca>
+
+    - Speed in Physical Interfaces will now be correctly set for interfaces without IPs.
+
+    - Peer IP will now be correctly shown in the RTT Graph.
+	Reported by: Jason Humes <jhumes |a|t| acs |d|o|t| on |d|o|t| ca>
+	
+    - Bandwidth information in traffic graph is now shown even if the BW is not in range
+
+    - Temperature Graph will now work, the RRDTool DS name was bad.
+	Reported by: Chris Epler <cepler |a|t| gmail |d|o|t| com>
+
+    - Graph Titles are now better centered in Debian PHP/GD systems.
+	Reported by: Karel P Kerezman <greyduck |a|t| greyduck |d|o|t| net>
+
+    - RRDTool Fetch Fixes that show up on sparc are now fixed.
+	By: Craig Small <csmall |a|t| enc |d|o|t| com |d|o|t| au>
+	
+    - RRDTool Fetch Fixes when using RRDTool > 1.0.47 fixed (timestamp parsing problem)
+	Reported by: Jeff Vaneek <vaneek |a|t| cs |d|o|t| utk |d|o|t| edu>
+
+    - Windows Upgrade documentation now includes .exe files copying.
+	Reported by: BJ
+    
+    - Allow values of '0' in multi_buffer (!empty("0") is not equal to ("0"!==""))
+    
+    - BGP Peers now use the Remote Neighbor IP as the Index field.
+    
+    - HostMIB Applications now use the process name as the Index field, no need for hashes now.
+    
+    - Traffic Aggregation Graph now includes Totals.
+	By: Robert St Denis <service |a|t| iahu |d|o|t| ca>
+
+    - Linux/Unix Net-SNMP CPU Usage graph now does averaging on devices with more than 1 CPU.
+	By: Robert St Denis <service |a|t| iahu |d|o|t| ca>
+
+    - When evaluating if we are going to store a new TFTP dowloaded config, don't escape the '
+    
+    - Better SNMP Trap RegExp
+	By: Nistor Lubomir <lubon_ |a|t| web |d|o|t| de>
+        
+    - Interface values are now trimmed, to avoid problems.
+
+    - Performance Viewer was not filtering by Customer when the User had a Fixed Customer.
+	Reported by: Johan <johan30 |a|t| easynet |d|o|t| be>
+
+    - Performance Viewer nows has a JavaScript refresh stopper (like the events screen).
+    
+    - Show Hour Control now adds the current hour:minute if not in the list.
+
+    - Users List is now sorted by Username.    
+	Reported by: Johan <johan30 |a|t| easynet |d|o|t| be>
+
+    - Allow for interfaces with '0' as the value. (!empty("0") is not equal to ("0"!==""))
+	Reported By: Craig Small <csmall |a|t| enc |d|o|t| com |d|o|t| au>
+
+    - RootMap is now shown in the Maps screen for easy background changing.
+	Reported by: Kelly Hamlin <fizz |a|t| users |d|o|t| sourceforge |d|o|t| net>
+
+
+JFFNMS 0.7.8 Released 2004-06-21
+================================
+
+*New Features:
+
+    - Host Information discovery (Windows, Unix, etc) now gathers the SysDescr,
+	usually it contains the Kernel and Host name, as this field is tracked, you will now when 
+	host changes kernels, or host name.
+	Requested by: Gregory Leggett
+	
+    - New general interface option to disable Status Polling completly. 
+	This way all graph information will be polled, but status will not, not even syslog messages 
+	for that interface. The interface upper-right corner will be gray.
+	Requested by: Tony Nelson & Others.
+
+    - Application interfaces now include the Memory used by the Application, with graph.
+	Requested by: Doug Toombs
+
+    - New Calendar for Reports. We're now using 'The Coolest DHTML Calendar' 
+	from http://dynarch.com/mishoo/calendar.epl , Behavior is better now.
+
+    - Profile Option to disable DHTML informational boxes.
+	Requested by: Travis Johnson
+	
+    - Profile option to restric interface viewing by customer, much like the Base Map option.
+	Requested by: Travis Johnson
+
+    - New Trigger field to match by Map.
+	Requested by: Alexandru Thomae
+
+    - New Trigger Field to match by Customer.
+	Requested by: Travis Johnson
+	
+    - UDP Port Monitoring, much like the TCP, but we use NMAP for testing, because it gives better results.
+	Based on design by: Yery Tannus
+	
+    - New Option to show the temperature in Farenheit
+	Requested by: Travis Johnson
+
+    - Added Mask to the Physical Interfaces options.
+	
+    - New AD Policy option to don't alert if an interface is not in host (deletion).
+    
+    - New Poller for easier handling Status MIB variables.
+	by: Craig Small
+    
+    - Add 'nolog' to the autodiscovery_interfaces to avoid creation of events, useful for debugging.
+
+*Fixed Bugs:
+
+    - Marked Disabled interfaces now don't count in the Status of a host in the Hosts Screen.
+	Requested by: Chris Tuska
+
+    - Easier event ACK'd now works as it should have been in 0.7.7
+	Reported by: Thomas Mangin
+
+    - Syslog Consolidator works again with the * and D variables.
+	Reported by: Mario Spendier
+	
+    - Session locking bug, now JFFNMS GUI should feel a lot faster.
+	
+    - Event Filter fixes.
+	Reported by: Chris Landegent
+
+    - TCP Connections tool fixes.
+	Reported by: Thomas Mangin
+
+    - NTP fixes.
+	Reported by: Thomas Mangin
+
+    - Popups & MiniSLA deprecated. No one used them.
+    
+    - Interfaces are now sorted using Natural Sort, this will make finding an interface by name easier.
+
+    - Better Filter behavior on the Hosts Screen.
+
+    - AD Output now includes the Interface Name.
+    
+    - SNMP Counter function now removes the ( and ) characters from output.
+
+    - DOC: Windows Install, added creation of c:\tmp folder
+    
+
+JFFNMS 0.7.7 Released 2004-04-05
+================================
+
+*New Features:
+
+    - New Login Screen, a new DHTML login screen, is selectable from the setup.
+	You can also add a logo to the page. This new method uses sessions/cookies to store a session id,
+	and internall is faster because we don't have to auth in every page request, which made some IDS ring.
+	An event is created when a user tries to login successfully or not.
+
+	Old method (HTTP AUTH) is still there, and will continue to be supported.
+
+    - New Tools Framework.
+	This system allows changes to be made to interfaces on the host.
+	Examples provided for Changing the Interface description and Admin Status on Routers and
+	to list or finish TCP connections on agents that support that feature (Cisco's TCP MIB).
+
+	A new event (Tool Action) is generated everytime something is changed using this tools.
+
+    - New Profile option to select which "View" Page do you want to see when you login.
+
+    - New ToolBox Interface Alarms widget. This allows access to more pages related to the selected interface.
+	Like Tools, Edit, Events and Performance. This is shown when you pass over an interface in the HTML or DHTML view types.
+
+    - New Event Type "internal" for JFFNMS related events. Also added a new option to hide the Host Name in the events viewer.
+	This event is used by the new Login Screen.
+
+    - 'Or' Type matching for Triggers.
+	Requested by: Alexandru Thomae
+	
+    - Poller, Autodiscovery, and Satellite Distribution now verifies that no other process with the same name are running.
+	To avoid duplicate processes. This works only on Linux.
+
+    - New Poller Helper, checks DMII and Alarmed interfaces, this allow faster UPs and faster poll of imporant interfaces.
+	Requested by: David Lima.
+	
+    - Alarm Backend now supports to set the time-span between down and up events, 
+	and the value to assume (or not) when no result is given by the poller.
+	Also, better (human readable) return values are given.
+
+    - RRD Backend again supports update on one DS by call. 
+	This is to make simplier poller groups when only one value is graphed.
+	And also to check if performance is better than doing all the DS at the end.
+	
+    - New poller option to poll just the DMII interaces on a host.
+	Requested by: David Lima.
+
+    - snmp_interfaces_status_all now checks if the host has more than 30 interfaces before doing the walk, 
+	if it does not, then uses normal snmp_get's
+	
+    - When ACK'ing summarized events ('Message Repeated N times'), all events are now ACKd rather than just one.
+	Requested by: Thomas Mangin
+
+    - Interfaces Alarm Screen now autodetects the screen width at start, so no more 'Big Screen' View types.
+    
+    - New folder ('engine/shared') to store shared code (ie. that may be required for pollers and for tools), 
+	and a new function to call them jffnms_shared().
+
+    - Satellite now works with HTTPS, new https_post_message function, that uses the CURL extension.
+	by: Chris Landegent
+
+    - Allow interfaces to be checked only every X minutes (N > 5), useful when used with the TCP Content Checking.
+	Requested by: Chris Landegent
+
+    - Anonymous customer logins. Just define a customer with no password.
+	Example URL: http://youserver/jffnms/?user=customer_username&pass=&logout=1
+	Requested by: Chris Tuska
+
+    - Direct Graph download. Useful for embedding them on a site, examples:
+	- Get the traffic graph from one interface:
+	    http://youserver/jffnms/view_performance.php?interace_id=332&want_graph=traffic
+
+	- Get the Aggregation Traffic graph of a whole host:
+	    http://youserver/jffnms/view_performance.php?host=6&want_graph=aggr&graph_type=traffic
+	
+	- Use with the Anonymous logins
+	    http://youserver/jffnms/view_performance.php?user=customer1&pass=&logout=1&interace_id=332&want_graph=traffic
+
+    - Syslog Consolidator has a Position parameter now, to handle the order on which the syslog RegExps are tried.
+    
+    - New Syslog Event Type to match normal linux syslog messages.
+
+    - DOC: Added Another Example on using Syslog-NG
+    
+    - GUI: ACK'd events show differently on the Event Viewer 
+	Requested by: Thomas Mangin
+
+    - Storage Threshold can be configured per interface now.
+	Requested by: Thomas Mangin
+
+    - Cleanup Raw tables now supports deletion of N days old Router Configs, N is controlled via setup.
+	Requested by: Chris Tuska
+
+*Fixed Bugs:
+    
+    - DOC: Fixed the documentation about the PHP trap_receiver.
+
+    - Alarm table now allows bigger alarm_state ids.
+
+    - Syslog Consolidator now checks for Literals.
+    
+    - Events Screen now does escaping of HTML meta-chars.
+    
+    - Removal of un-matched < > variables in events.
+    
+    - Tacacs Consolidator now checks the Normal IP too, rather than only the Tacacs IP of the host when matching.
+	Requested by: Thomas Mangin
+    
+    - Severity Level Filter now works again.
+	Reported by: David Lima
+
+    - NTP Discovery now verifies if the Host has and IP address.
+    
+    - NTP Poller Now checks for timeouts.
+    
+    - Exp_poller now works correctly with this version.
+
+    - Removed old snmp_interfaces_status
+    
+    - Old 'Event Tools' depreacated. It was an old code that nobody used.
+
+    - Old perl trap_receiver depreacated.
+    
+    - GUI: Event Screen code cleanup, uses more CSS and the resulting file is smaller.
+    
+    - GUI: Better Interface Selector in the Triggers screen. 
+
+    - GUI: Better Recursive URL cleaner.
+    
+    - Manual Add is now show event if the host does not have any interface of that type.
+    
+    - We now only distribute the SQL Diffs of the past to the current version, not older files.
+    
+    - Coding Style changes and Call By Reference bugs fixed.
+
+
+JFFNMS 0.7.6 Released 2004-02-22
+================================
+
+*New Features:
+
+    - TCP Port Content (port response or URL content) can be checked against a Regular Expression to validate it.
+	Requested by: Richard Sears
+
+    - Manual Add of TCP Ports, now its possible to add any port number you want manually, 
+	or to set up the same port a more than one time with different testing Regular Expressions.
+
+    - CPU Usage and Load Average SLA for Linux Hosts.	
+
+    - CPU and Memory Usage SLA for Cisco Routers.	
+
+    - Graphing of the number of Application Instances.
+
+    - NTP syncronization testing, it reports when a NTP server is syncronized or not to another peer. (it requires the ntpq program)
+
+    - GUI: Added New "only when filtering" option to Event Types, to better manage its showing.
+	Requested by: David Lima
+
+    - GUI: New DHTML View Type for Interfaces and Hosts, it doesn't use png's anymore for the boxes, its all CSS and JavaScript, 
+	Tested with Mozilla/Firebird/Firefox on Linux and Windows, and with Internet Explorer 5.0 and 6.0
+
+    - GUI: New option to disable refresh on the Interfaces/Hosts Screens.
+	Requested by: Lucas Iglesias
+	
+    - GUI: New option to diable the refresh of the Events Screen more easily.
+	Click on the 'round arrows' icon to stop the refreshing, and click on the 'page refresh' to enable it again.
+
+    - GUI: Faster event Acknowlodge, without selecting a Journal. 
+	Requested by: Aaron Aubman
+
+    - New Physical Interface option to avoid the automatic Admin Status modifications.
+	When you mark "Fixed Admin Status" the show type of the interface (Show, Mark Disable, Don't show) will no be modified by the poller.
+	The Default is not checked, so the poller will automatically modify the Admin Status/View Type of the interface.
+
+    - New trap_receiver coded in PHP, now you can use the trap functions with postgresql, because it uses the JFFNMS DB abstraction.
+	by: Aaron Aubman
+	
+    - New Way to use Satellites "Local Master", this means the Satellite will poll the values, store them locally AND send it to the master too.
+	Requested by: Juan Rojas
+
+    - Added Interface Type to the list of Trigger Rules Fields, to match by the interface type.
+	Requested by: Ray Hatch
+
+    - API: Its now possible to poll more than one interface on the same host via the command line (ie for testing)            
+
+    - API: Added option to use HTTP/1.0 or HTTP/1.1 in HTTP queries
+
+    - API: The jffnms-snmp system (plugin's for net-snmp) now caches its response for one minute to ease the load on the server.
+
+    - API: Its now possible to setup Default SLAs per interface type
+    
+    - GUI: Double Clicking on a Graph Type on the Performance Screen, will show it without needing to click on the 'View' Button.
+
+    - GUI: Its now possible to select a Default View type in the User profile (ie Normal, Text, etc).
+
+    - GUI: New button in the top frame to reload the current selected view
+	Requested by: Thomas Mangin
+        
+    - DOC: msyslog & SLA configuration example documentation 
+	by: Chirstian Zimmerman
+
+*Fixed Bugs:
+
+    - Dates in graphs are checked to be sure they are valid.
+
+    - BGP Verify Number poller removed, its no longer needed.
+
+    - When adding a new interface from Manual Discovery, the interfaces screen now its correctly positioned.
+	Reported by: Ray Hatch
+
+    - Autodiscovery and RRD Analyzer now check the "poll" option in the interface and the host they are working on.
+
+    - Last Poll Date is now handled as an added poller/backend because it shares the same structure. (its now injected from poller_plan)
+
+    - Cosmetic Changes to Config Transfer Types, and Autodiscovery Policy
+	Requested by: Thomas Mangin
+
+    - Performance Graph Title was badly calculated.
+	Reported by: Pierre-Damien Gatouillat
+
+    - Autodiscovery now checks if the host is localy managed or satellite, this way AD only runs over the hosts this Satellite manages.
+
+    - Changed some Satellite Calling functions to make correct use of the 'params' field.
+
+    - Interface Type RRA Structure now included in the default field values.
+    
+    - Fixed handling of & and | in the Satellite Query content.
+    
+    - Customer Username can now be 60 characters long
+	Requested by: Thomas Mangin
+    
+
+JFFNMS 0.7.5 Released 2003-12-16
+================================
+
+*New Features:
+
+    - Per Interface-Type Fields:
+	
+	Until now every interface had the same fields, for some interface types this was ok, but others required more or different fields,
+	so this new feature allows different fields per interface type. 
+	    ie: Linux TC now has Rate and Ceil fields, and its not using the BW in/out fields, TCP Ports don't have IP address or BW, etc.
+	
+	This was one of the big "barriers" in the internal design of JFFNMS, so I'm glad I finally made it configurable/modular.
+    
+	- DB: 3 new tables: interface_types_fields, interface_types_field_types, and interface_values
+	- GUI: Manual Discovery has a new layout and includes all the specific interface fields.
+	- GUI: View Interfaces shows all the 'description' fields and has a better text layout
+	- API: interfaces_update updates every interface value not just the interfaces table.
+	- API: Events Text now can include any interface type specific fields
+	- API: Poller Parameters can include any interface type specific fields
+
+	- AD Tracked Fields are set from the Interface Type Fields.
+	- SLA: now you can use SLA expressions with the name of each interface type specific field
+
+	- Changed all discovery, poller and backend scripts to use the new and specific fields, ie:
+	    
+	    - ALL: changed 'descr' fields to 'description' 
+	    - Physical: Pings to Send configurable per interface
+	    - BGP: Separated field for Local IP , Remote IP and ASN values.
+	    - Applications: Number of Instanses stored in DB.
+	    - Linux TC: Specific Ceil and Rate fields. 
+    	    - Storage: Specific Size Field (it was bandwidth before)
+	    - TCP: Check content option now allows for a specific URL to be included
+	    - Reachability: Now you can configure the fping parameters per interface
+	    - Verify Interface Number Backend now uses specific Index Field.
+	    - RRD Backend gets the RRD Structure from the Interface Type Fields.
+
+	Important Notes:
+	----------------
+
+	* If you have "custom" interface types, please read the UPGRADE file carefully
+	
+	* By default we not 'track' the network interface's description via autodiscovery, so if you don't want to loose 
+	    your custom interface descriptions, please disable the field tracking via the Polling & Discovery=>Interface Types Screen. 
+
+    - All AD changes to an interface are summarized on one event.
+    
+    - Cleanup old Events and Alarms integrated to cleanup_raw_tables.
+	- the number of days is configurable via setup.php (Defaults to 7 Days of Raw Events, and 60 Days of Normal Events/Alarms)
+	- We try to repair the tables using a REPAIR/OPTIMIZE or VACUUM command at the end. This is to avoid index problems.
+
+    - Per Host 'Polling Enabled' Option to disallow polling of all host interfaces more easily.
+	Requested by: Richard Sears
+    
+    - Host View option now acts over the View option of its interfaces, so if the Host is in Don't show or Mark Disabled, it will look as 
+	all its interfaces where in the same state.
+	Reqiested by: Richard Sears
+
+    - Experimental Poller (for networks with a lot of hosts)
+	A new polling system that keeps a number of pollers running, and distributed the polling load by interface to them.
+	This allow us to poll a lot of hosts without the problems of lauching one poller for each host. This is still experimental, don't use 
+	it yet for production enviorments. It Requires the SHMOP and PCNTL PHP Modules to work. 
+	By: Anders Karlsson
+	
+    - RRD_Analyzer: SLA is now a seprated analyzer, this mimics all other plugin scripts, SLA still the only one implemented.
+
+    - When a Network Interface (IFMIB) has AdminStatus 'down', it will be set to 'Mark Disabled' automatically, 
+	also when the interface is back in AdminStatus 'up', it will be set to 'Show'.
+	Requested by: Richard Sears
+	
+    - GUI: Interface Viewer (Status Map) now includes a link to the interface editor
+    
+    - GUI: Graph legends now include the Site Name.
+    
+    - GUI: Alarmed Interfaces view now includes the Host Name of the interfaces in a new line
+	Requested by: Chris Landegent
+	
+    - GUI: When inside a Host in the Interface Viewer, clicking on the "card" (gray) box will show all the graph for that interface type
+
+    - GUI: Added the Current and Last Polled Date to the Performance Viewer
+	Requested by: Smith Chen
+	
+    - API: Added fetch_ds() method to the interfaces class, to allow an RRDTool Fetch remotely.	
+
+    - API: Temporal Buffer Backend supports calling the same variable more than once, until it has a value.
+
+    - API: Poller Plan now allows to filter by type
+    
+    - API: Interfaces_Add can use an array as parameter to define more than the host_id of the new record, but only interface table fields
+
+    - UTILS: Added Debug option to jffnms-snmp, to check the output tree.
+
+*Fixes:
+
+    - Linux TC regexp fix to allow leaf and prio options
+	By: Craig Small
+
+    - Better Autodiscovery Output with specific interface type fields.
+    
+    - Better Handling of subinterfaces (VLAN, FrameRelay, etc)
+    
+    - Removed some 'extract()' calls in graph's that were not needed.
+    
+    - Added more colors to the TC Aggregation Graph.
+    
+    - Added more descriptive names to 'View' options in Administration
+    
+    - Windows CPU Polling now doing a walk of the CPUs tree to get the avarage usage of all processors
+	Report and Fix Concept by: Chen from Taiwan
+    
+    - Zone filter now works again.
+
+    - Don't Discover the Reachability Interface if the fping executable is not set-uid.
+
+    - Fix fping response when the IP is in the local subnet and its unreachable (read the last line)
+	Reported by: Ben Lentz
+
+    - Cisco MAC Accounting Interfaces now include a unique indentifier.
+
+    - BGP4 MIB implementation fixes, the index is now better calculated to be unique, so no AD problems occur.
+
+    - Alarm Editor is back (under Internal Configuration=>Reports)
+	Requested by: Rob Laidlaw
+
+    - Fixes SMS Client action message creation to include the interface data, and to trim the message to 140 chars.
+	Reported/Fixed by: Ben Lentz & Yuri Krichevsky
+
+    - Maps List is now in a Select box, because if you have a lot of maps, or long names, you loose the View Types section.
+    
+    - API:DB some internal modifications, query doesn't die on failure, it tries 5 times, then it returns, but it doesn't die. 
+
+    - API:Satellite
+	- WDDX Fixes
+	- Import/Export (distribution) now also updates records on changes, not just deletes and inserts a new one
+
+    - Setup: don't allow " ' & | # = / characters in the fields (SF BUG 841139)
+	Requested by: Mark Burdick
+
+    - Cisco CPU Poller now uses the 5 Minutes CPU utilization, rather than the 1 min OID (SF BUG 841140)
+	Requested by: Mark Burdick
+
+
+JFFNMS 0.7.4 Released 2003-10-13
+================================
+
+*New Features:
+
+    - Reachability Interface Type
+	Using fping (http://www.fping.com) we can now monitor hosts via ICMP (ping) and graph the RTT and PL from
+	the JFFNMS server. It also issues events when the PL is over a treshold. This plugin will not work on Windows.
+	Requested by: a lot of people.
+
+    - Linux Traffic Control (tc) Support
+	Using our own net-snmp extension (pass-type) installed on the Shaper Box you can see each Class Bandwith Usage,
+	including aggregation to view all usages on the same graph. Tested only with HBT. 
+	Scripts and example configuration in docs/utils/jffnms-snmp/ .
+    
+    - Configurable Interface Field Tracking.
+	Now is possible to track other interface fields rather than the name, for example the description.
+	Added BGP Description Tracking.
+	Requested by: Richard Sears
+
+    - TCP Content Checking.
+	The TCP Poller now also check for a valid response in HTTP/HTTPS/FTP/FTPS ports using fopen().
+	Until we get Per Interface Type Fields, configuration is done via the description field.
+	    ie: http|/jffnms/admin/adm/test.php
+	    ie: ftp://testuser:testpass@|/test.txt
+	    ie: https|/jffnms/admin/adm/test.php
+
+	    'http' tells the poller to use the HTTP protocol and whats after the | specifies a page rather than the default (/).
+
+	Requested by: Richard Sears
+	
+    - Added the SNMP Auth Failed Trap.
+
+    - Added Acknowlodge Field to Express Filter.
+	Requested by: Craig Small
+
+    - Added Creation, Modification and Last Poll Time Stamps to the Interfaces table.
+	All this information is useful when looking for something wrong.
+
+    - Trigger rule to match the ongoing duration of active alarms (includes new consolidator process).
+	By: Anders Karlsson
+
+    - News Section included in the Start Page.
+
+    - Support Client Only in Satellites (just incoming queries).    
+
+    - Added Example on how to use Satellites, in docs/utils/satellite-client.php
+    
+    - Better support for Juniper Routers (Based on M20): Consolidate Interface List and LowerLayerDown Support.
+	Requested by: Richard Sears
+
+*Fixes:
+
+    - Added BASE64 Encoding to API:rrd_grapher() and BASE64 Decoding to GUI:performance_graph()
+
+    - When No Zone Image is configured the Events screen doesn't try to show it.
+
+    - When no interfaces were alarmed the 'Alarmed Interfaces' View showed all interfaces, now its fixed.
+	Reported by: Kevin R. Armstrong
+
+    - RRDTool Graph now returns the real result of the command.
+	Reported by: Anders Karlsson
+
+    - Fixes to poller_plan_next to replace all poller parameters
+    
+    - Problem with changing Fullname or Router Access to User, now its not needed to re-enter the password
+
+    - Support WDDX over TCP in Satellites.
+    
+    - RRD Files are now (back again) deleted when the interface is deleted.
+
+    - Now we check if allow_url_fopen is set to On in setup.
+    
+    - Changed JFFNMS URL to http://www.jffnms.org
+
+    - Fixed Input Error Rate Graph and SLA calculations (Total Input Packets = Input Packets + Input Errors)
+
+    - API:DB added db_free function
+	By: Anders Karlsson
+
+    - Make sure most public API functions return some value (breaks satellize otherwise).
+    
+    - More separation between API and GUI code.
+
+    - Discovery_none script now doesn't return an error, just an empty list, to use when a new interface type does not have a discovery system.
+	Requested by: Craig Small
+
+    - New Database entries on system tables start with id 10000 from now on, so we can add more things without interfering with 
+	user-created internal configurations, like new Interface Types
+
+
+JFFNMS 0.7.3 Released 2003-08-02
+================================
+
+*New Features:
+    
+    - Host Config Downloader Rewrite: 
+	Modular, More Secure and Better Error Reporting (via log, event and alarm)
+	by: Javier Szyszlican	Ideas from: Michael Samuel
+
+    - GUI: Performance Viewer: Added 'Last 2 Days' to Time Span Options, Multiple Graph Selector, Graph Scale Legend included in IMG ALT
+	Requested by: Juan Rojas (TIBA)	by: Javier Szyszlican
+
+    - SMS via Mail Action: Modified Email Action for shorter messages.
+	Requested by: Michael Orth	by: Javier Szyszlican
+    
+    - SMS via Modem Action: send SMS via modem with SMSClient (http://www.smsclient.org/)
+	by: Craig Small
+
+    - GUI: Interface Viewer Reworked and Modularized:
+	- View Interfaces, View Hosts and View Maps use the the same engine (but different sources), 
+	    this also means that you can now view Hosts and Maps in Text Mode also.
+	- 'Performance View' is nicer now, and it can also use dynmap.
+	- 'Text View' now shows all the links and it has a better layout
+
+    - Temp Files Cleanup Script for Unix
+	by: Kovacs Andrei
+
+    - Get Interfaces (Manual Discovery): Show Interfaces not found in Host but found in the DB.
+
+    - Support for Cisco Catalyst Config Download
+	Thanks to and Requested by: Paul Stewart	by: Javier Szyszlican	 
+
+    - Logging is disbled by default, and the files now don't have the date in their name.
+
+    - New Engine Temp Folder, to store Engine (poller, autodiscovery, etc.) Temporary Files.
+    
+    - TCP Port Discovery now uses the New Engine Temp Folder. 
+
+    - API: Graph handling was put in the engine, and a wrapper function (performance_graph in GUI) was created.
+	Now graphs are stored in the Engine Temp folder, read, deleted, and returned as a variable to the GUI, which
+	stores it in Temp Graph Folder and allows the browser to see it.
+
+    - GUI: Some Graphs now show the 'In / Out Flipped' Legend, to let the user know the graph Input and Output are inverted.
+	Requested by: Juan Rojas (TIBA)	by: Javier Szyszlican
+
+    - SNMPTraps: the traps consolidator now supports placing literal data in the SNMP Trap Rules screen (like 'down' in the State field)
+	Also some rewrite of the code, and handling of Up's and Down's in numeric mode
+	
+    - GUI: Behavior Change, if the Events Frame does not exists (ie. Hosts, Maps, Interfaces WITHOUT Events) don't display a new window.
+	Requested by: Rob Laidlaw
+	
+*Fixed Bugs:
+
+    - Fixed TCP Port Discovery to only return Open TCP Ports, because Validate in AD is unchecked for feature reasons.
+	Reported by: Daryl G. Jurbala	by: Javier Szyszlican    
+
+    - Changed Cisco EnvMIB Discovery (Voltage, PowerSupply, Temperature) to check for status, and 
+	to give a more generic Interface Name
+	Reported by: Daryl G. Jurbala	by: Javier Szyszlican    
+
+    - Fixed Customer Login when JFFNMS is installed in the Document Root (relative path /) 
+	Reported by: Brian Watters
+
+    - Fixed Storage Interface Type to return the Device Type String from hard-coded values if the MIB doesn't include them (return OIDs is set).
+
+    - Fixed Host Information Interface Type to convert 'enterprises' to its OID when comparing (return OIDs is set).
+    
+    - Smokeping Internal Number Tracking Fixes
+	by: Craig Small
+
+    - Don't send the Alarm's 'Date Stop' Field on a Down Alarm in Email Action 
+
+    - PgSQL 7.3 fix in UnAck Filter (changed '' for 0)
+
+    - PgSQL 7.3 fix in insert_alarm, don't include zero-lenght string for referer_stop
+
+    - PgSQL fixes (changed " for ') in interface_filter and cleanup_raw_tables
+    
+    - Fixed TCP Number of Connections Poller for use with NET-SNMP (not absolute OIDs in the returned array key)
+    
+    - Physical Interfaces Discovery now puts the correct Name for Cisco VLAN Interfaces (IOS 12.2.16b)
+	Reported by: Lucas Iglesias (TIBA)	by: Javier Szyszlican
+    
+    - Autodiscovery now informs the New Interface Name when the AD Policy dont allow the name to be changed
+
+    - Fixed Physical Interfaces Status Pollers and Discovery to not depend on the MIBs values
+
+    - Packets Graph does not use the Flip Graph option anymore.
+    
+    - Fixed interface_shortname_and_card() to manage a new case when the interface[pos] is not numeric for Cisco ENVMIB
+
+    - snmp_get now tries 2 times to get the requested data.
+
+    - GUI: Administration Menu Internal Code and Organization reworked. 
+    
+    - GUI: First,Prev,Next,3Next Options Menu now is fixed size, the options don't change places.
+	Requested by: Alejandro Alvarez (TIBA)
+    
+    - Fixed crypt() usage in Authentication
+	Reported by: Michael Samuel
+
+    - Internal Messages Framework Deprecated.
+    
+    - Disabled the TIBA TT plugin. You have to write your own TT plugins.
+    
+    - Fixed more NET-SNMP returned values handling
+
+    - Fixed most of the functions that use the DB from the GUI, only 2 left. Added more API Classes, and fixed others.
+    
+    - Cleanup of unused GUI functions (due to the migration to API Classes)
+        
+    - Check if the DB module is loaded before testing the connection for setup in db_test.
+
+    - DOCS: Fixes and additions to the Windows Install Procedure, also start of the Windows Upgrade Procedure.
+	By: James Swart
+
+    - Zone Image (flag) is not longer Required, now is optional.
+    
+
+JFFNMS 0.7.2 Released 2003-05-27
+================================
+
+*New Features:
+    - Cisco Temperature (with graph), Voltage and Power Supply Monitoring.
+	By: Anders Karlsson
+
+    - Internal: Support for more alarm_states, now pollers and events can return any state value
+	Already Implemented for tcp poller (up,down) and Applications (running, not running)
+	Requested: Anders Karlsson
+
+    - Internal: the Alarm Backend can get extra info from the poller with | as the separator 
+	to include it as the info of a new event.
+
+    - Cisco SA Agent (Service Assurance) (Round Trip Latency, Jitter and Packet Loss)
+	By: Anders Karlsson	
+    
+    - The TCP Poller now tries to read 1 second of data from the open socket to report it in the events.
+
+    - New Autodiscovery Policy to allow adding of interfaces without checking if they have an IP Address (for Switches)
+
+    - NetSNMP Agents added to UCD-SNMP System Interface Type
+
+    - Physical Interface Status is now gathered with a new poller which stores all the table and then processes it.
+	By: Anders Karlsson
+
+    - Added in-development tools, an mib parser and an sql update generator (internal)
+
+    - Added InfoBox explaining the alarms in the Hosts View.
+    
+    - Hosts now can be hidden or marked disabled like interfaces (to hide old routers)
+
+    - Added Refresh link to the menu interfaces list.
+    
+    - New Mailing List Archives at: http://marc.theaimsgroup.com/?l=jffnms-users
+
+    - Added Storage Aggregation (All Selected Storage Interfaces in the same graph)
+
+    - Storage SLA alerts when the Used Space is more than 80%, its autoselected on every new Storage Interface.
+	By: Dan Ratzlaff
+
+    - Satellites understands SOAP, you can talk SOAP with the satellite.php to call any method of any class.
+    
+    
+*Fixed Bugs:
+
+    - State Report didn't show correctly the duration of alarms which lasted more than 24hs.
+	Reported: Kevin R. Armstrong
+
+    - Missing Check in hosmib_apps poller caused error when the host had no snmp daemon.
+	Reported: Larry Burton
+    
+    - Dont show RTT/PL in state report on interfaces which don't have them.
+
+    - Some bugfixes to allow use of net-snmp v5.
+    
+    - Modified autodiscovery_interfaces for better output and now it uses alarm_lookup to see if somethins is up or down
+    
+    - Modified the tcp_ports discovery to answer open or closed, because discovery now understands them via alarm_lookup
+    
+    - Poller Position is now included in the command line parameters when forking poller.php
+	Reported: Nigel A. Taylor 
+
+    - Changed Interface Types Order, for manual Discovery
+    
+    - Performance Graphs now works in paths with dots. 
+	Reported: Peter Burgstaller
+	
+    - Autodiscovery now let you set any interface field from the discovery script's (like slas, clients, etc)
+
+    - Autodiscovery can now be called with a second command line parameter to only discover one interface type (for debugging)
+    
+    - New Autodiscovery Policy options to check if the state is UP, and if the IP Address is valid. (both checked for all except the new policy for switches)
+
+    - The Cisco Ping Pollers where using the old buffer, changed to the new one.
+	Reported: Oliver Kuhn
+
+    - Coding Style Fixes to get SOAP working, mostly undeclared variables and constant array keys
+	By: Anders Karlsson
+
+    - State Report now shows only the customer, map, type, host or interfaces selected.
+	Reported: Kevin R. Armstrong
+
+    - Added Zone Image (flag) to the Hosts View.
+    
+    - Added Images of More Coutries Flags in the Full Install.
+    
+    - Modified view_interfaces card detecting code to handle ie. Tunnel0, Tunnel1 and eth0, eth1 as the same card
+
+    - Modified 'Mark On Map' tool to show only the host of the interface in selected.
+
+    - The syslog consolidator now checks for the host name and ip (for syslog-ng)
+	by: Craig Small
+    
+    - More Flexible and Clean auth.php
+	by: Michael Samuel
+
+    - Customers are now allowed to see their State Report.
+    
+    - Fix possible overwriting of unavailability array.
+
+    - Physical Interfaces Discovery and the Tacacs Consolidator didnt handle the ' character in a good way.
+	Reported by: Brian Watters 
+
+    - Off-by-one RRD DS Position error fixed and now we use interface_name as the file name.
+	By: Craig Small
+
+    - snmp_walk now makes 2 tries to get the requested data.
+
+    - Changed INSTALL to allow PHP CLI work correctly from crontab (Current Working Directory Problems)
+
+    - rrd_analizer took the 0's as a value to calculate the averge causing bad readings.
+	Reported by: Dan Ratzlaff
+
+    - Some Fixes to clean some alerts when viewing JFFNMS using SSL	
+	Requested by: TIBA Staff
+	
+    - Quick/Bad Fix for the init - exim hash collition. 
+	Reported by: Craig Small
+
+	
+JFFNMS 0.7.1 Released 2003-04-02
+================================
+
+*New Features:
+
+    - HostMIB Running Software Polling and Discovery
+	By: Anders Karlsson
+
+    - Events RDF Feed availble from http://<yourhost>/jffnms/events.php?view_type=rdf
+	By: Craig Small
+	
+    - Raw tables cleanup script
+	By: Andrei Kovacs
+
+    - Added Latitude/Longitude fields to Host table (for future GIS Maps)
+	Requested: Anders Karlsson
+
+    - Added Filter to show only UnAck'd Events
+	Requested: Walter Brock
+
+    - Added 'Default Event Filter' Profile Option
+
+    - Added 'Events & Maps Refresh Intervals' Profile Options
+	Requested: Daniel Farinella
+
+    - Documentation on how to use syslog-ng with JFFNMS.
+	By: Craig Small
+ 
+*Fixed Bugs:
+    
+    - strpos() haystack, needle inversion in syslog parser.
+	Fixed: Craig Small
+	
+    - Bad Loop in Somekping Poller
+	Fixed: Craig Small
+    
+    - Satellite Field is now a text label when listing in the Hosts Screen
+
+    - Changed order of Hosts from Zone, Name to Name, Zone
+	Requested: Lucas Iglesias
+
+    - Reworked interface_status its lot faster now.
+	Requested: Anders Karlsson
+	
+    - Added interface_count and hosts_count for speed ups.
+    
+    - Graphviz doesn't show the unknown host anymore.
+
+    - Removed Link to old Message System from the control.php, also disabled refresh becasue it was not needed.
+    
+    - trap_reciever.pl does not mix the order of the OIDs now. Also changed the DB to reflect the real OID order.
+    
+    - Fixed trap_reciever.pl RegExp to match multi-word values in OIDs
+
+    - Setup.php on Windows Escaped \ as \\, causing problems with RRDTool, now it replaces \\ with /
+	Reported: BEV
+	
+    - Added ScrollBar and Set the height of the color_select.php row to be sure of their size.
+	Reported: Jack Snir 
+
+    - Fixed Repeated 'control name' in select_color(), it was causing problems in IE.
+	Reported. Jack Snir
+    
+    - Period Can't be 0 in get_availability, changed to 1 if zero, to avoid division by zero warnings.
+	Reported: Andrei Kovacs
+	
+    - State Report now sets the default TO time to the actual time rather than at 00:00 today.
+	Reported: Andrei Kovacs
+	
+    - Customers are now allowed to see the Graph Type Chooser, until we get more flexible on what can a logged in customer do.
+	Requested: Alexandra Alvarado
+
+
+JFFNMS 0.7.0 - Released 2003-03-10
+==================================
+
+*New Features:
+    
+    - New Syslog Message Processing System (support for RegExps and compatible with older definition)
+	by: Craig Small and Javier Szyszlican
+
+    - New SNMP Traps Processing System 
+	by: Craig Small
+
+    - Tacacs+ Consolidator now Supports REJECT messages (minor changes also).
+
+    - Reworked State Report 
+	- Internal changes to use new rrdtool functions
+	- Time filter
+	- CSV Export
+    
+    - New API for some rrdtool functions to get dynamic structure changes,
+	this includes cleanups in all graphs and every function that uses rrdtool.
+	Now every DS goes on a different file like interface-999-0.rrd this is handled by the rrd_mode field 
+    
+    - The Interface Map Views has been broken in pieces for the cleaness of the code.
+	This also helps to add a new Map View type. (htdocs/views/*) 
+    
+    - New Interface Map View on SubMaps (dynmap) allows you to change the position of 
+	the interfaces in the map and to establish connections between them.
+    
+    - Bulk Interface Add Feature in Manual "Get Interfaces" Option, it allows you to add a lot of interfaces with only a few clicks,
+	without using autodiscovery.
+    
+    - Designated Main Interface(s) (DMII) : You can select an interface or map of interfaces which will be the Main ones for that host, this means:
+	    if the DMII are all down, the polling of that host other interfaces will stop, 
+	    except for the DMII (to detect the UP again), this solves a domino or 'stacking' problem when some hosts are unreachable. 
+	    Also, a new event is generated when the Polling Fails because of DMII being down.
+	Requested: Larry Burton
+
+    - Added Packets Aggregation (useful to see how much packets per second your router is handling)
+    
+    - New Interface Type for Windows Hosts (Servers), Number of Users, Number of Processes, Processor Utlization, and TCP Connections Graphs
+	Requested: Rob Laidlaw	Information: Musfa Baig 	Coding: Javier Szyszlican 	URL: http://snmpboy.msft.net/
+
+    - New Interface Type: Cisco MAC Accounting, Polling and Graphing (ip accounting mac input, ip accounting mac output)
+	This allows one graph per MAC Address giving you accounting per machine in an Ethernet Segment. Experimental, Autodiscovery Disabled.
+
+    - Modified Linux Host Type: New Graphs and Pollers for Number of Users, Number of Processes, and TCP Connections Graph
+	Also Changed its name to UCD-SNMP Host, because we support FreeBSD (Need Testing) or other ucd-snmp implementations 
+	    with this Interface Type
+
+    - Modified Cisco Host: New Graphs and Pollers for TCP Connections Graph, and Accounting
+
+    - TCP Port Delay and Number of connections graph (aggregation too) (modified interface type) 
+	Requested: Karlheinz Hagen
+
+    - Smokeping Integration (RTT & PL), Discovery, SLAs, Graphs
+	by: Craig Small
+    
+    - Cisco IP Accouting Polling and Graphing (ip accounting output-packets)
+        
+    - If no interfaces found in Manual Discovery Show the "No Interfaces Found" Message
+
+    - Cisco CPU SLA, SLA set to match at > 80%
+	Requested: Brian Watters		
+
+    - Cisco Syslog Message: ACL Match
+	Requested: Alexandra Alvarado		
+
+    - Cisco Syslog Message: CDP Duplex Mismatch
+	Requested: Alexandra Alvarado	
+
+    - Cisco Syslog BGP Notification Message
+
+    - Added Profile option to not show the stats on the start page.
+    
+    - Added Shortcuts to go bettween View Performance, Interface Administration and State Reports    
+
+    - New FrameWork for Distributed Processing (Satellites)
+	Each Satellite is an jffnms in a different machine, this allows Distributed Polling for now
+	in the future this will allow to do syslog,trap,discovery an other in a distributed fashion. 
+	Experimental, Needs Testing, Allows Load Balancing.
+    
+    - Added Label at the Setup to know which config file are you using 
+
+    - Added Option to Event Filter so now you can filter by Extra Info too (LIKE), useful for seaching in tacacs logs.
+	Requested: TIBA Staff
+
+    - Added Options to Event Filter to NOT get a field when it matches.
+
+    - Added the RRDTool Step value to the Interface Type options. 
+	This is used when creating a new rrd file.
+    
+    - Added a Favicon icon and some HTML meta tags.
+
+    - Setup.php now checks for Register_Globals to be set to On    
+	
+    - Added RRDTool Dump & Restore functions to API
+    
+*Fixed bugs:
+    
+    - Wrong Query date compare in interfaces_status (typo from postgres changes) 
+	Reported: Stanislav Gaydukov	Fixed: Javier Szyszlican
+
+    - RRDTool Fetch Speedups (it was using too much memory)
+	Reported: Juan Rojas		Fixed: Javier Szyszlican
+    
+    - Verify length of info field in insert_event
+	Reported: Alejandro Alvarez	Fixed: Javier Szyszlican
+
+    - Better handling of LIMIT on a pgsql query
+	Reported: Alejandro Alvarez	Fixed: Javier Szyszlican
+
+    - Field type of interfaces.host was tinyint, now changed to int. (it was a typo)
+	Reported: Kevin R. Armstrong	Fixed: Kevin R. Armstrong
+    
+    - The Maps Interfaces GUI type changer didn't work right on Mozilla
+	Reported: Javier Szyszlican	Fixed: Javier Szyszlican
+
+    - The Path of the TFTP windows .bat file was wrong.
+	Reported: Gregory A. Leggett Jr.Fixed: Gregory A. Leggett Jr.
+
+    - If no tcp ports were found on a host, the Manual discovery showed garbage
+	Reported: Javier Szyszlican	Fixed: Javier Szyszlican
+
+    - Sounds where not working on the view_interfaces.php (Main Map).
+	Reported: Javier Szyszlican	Fixed: Javier Szyszlican
+
+    - Off by 1 error didn't show events if only one is found.
+	Reported: Javier Szyszlican	Fixed: Javier Szyszlican
+
+    - Events View All Option didnt show all the events.
+	Reported: Juan Rojas		Fixed: Javier Szyszlican
+
+    - SQL LIMIT and OFFSET doesnt accept numbers with decimals, now rounded.
+	Reported: Javier Szyszlican	Fixed: Javier Szyszlican
+
+    - State Report showed dates in Seconds, now in Hours:Minutes:Seconds
+	Reported: Javier Szyszlican	Fixed: Javier Szyszlican
+
+    - State Report did wrong math in Total Values
+	Reported: Javier Szyszlican	Fixed: Javier Szyszlican
+
+    - Java Map was deprecated.
+
+    - Availability Report was deprecated in favor of the State Report.
+
+    - Fixed SLA Processor (rrd_analizer) to take care of one line SLA's
+	Reported: Brian Watters		Fixed: Javier Szyszlican
+
+    - Fixed Event Filter to Allow Search of Unknown Events
+
+    - Disable refresh when you go back in the Events Screen
+
+    - Behavior Change: when an interface/host is not reachable (non response) is taken like a down response.
+	This affects the report generation also... please test this and give me feedback so we could know which is best.
+
+    - Added Verification of SNMP community to a few pollers
+    
+    - Fixed Typo in menu_interfaces
+
+    - Fixed Typo in db_copy_table()
+    
+    - Changed Most Event Filter Fields to the LIKE expression rather than equal (=)
+
+    - Added Default Customer to the Get Interfaces Option
+            
+    - New Include File Loader, fixed for multiple installtions
+    
+
+JFFNMS 0.6.9-2 - Released 2002-09-21
+====================================
+
+*Fixed bugs:
+
+    - Modified some SQL querys to make them compatible PostgreSQL
+	Postgres support now works.
+	
+    - Fixed a typo in trap_receiver.php (the name)
+    
+    - Make RRDTool functions check for the .rrd file.
+    
+    - Converted some GUI selects to the new API.
+    
+    - Fixed a function name change in filters.    
+
+
+JFFNMS 0.6.9 - Released 2002-09-07
+==================================
+
+*New Features:
+    
+    -Triggers Framework:
+	Parse New Events or Alarms with a condition,
+	and triggers an Action.
+
+    -Actions Framework (email for now)
+    
+    -Host Default Customer 
+	Assigns a default customer to an autodiscovered interface.
+
+    -Host TFTP Config Get Type included in DB.
+    
+    -TFTP Get Hosts Changed its name. (please update crontabs)
+    
+    -TFTP Config Upload Tool (external utility)
+    
+    -Use Interface Bandwidth parameter for number of CPU's on CPU Information.
+    
+    -SLAs: more verbose debug.
+    
+    -SLAs: Updated Rules.
+
+    -Maps: Mark Disabled now affects Maps also.
+    
+    -GUI: Events: Summary of Identical Events.
+        
+    -GUI: New Interfaces Views (supports bigger graphs)
+
+    -New To Do List.
+
+*Fixed bugs:
+
+    -Documentation fixes.
+
+    -Changed field 'tipo' (spanish) from events table to 'type'.
+    
+    -Reorganization of some API Classes.
+
+    -FreeBSD (PHP 4.2.2) $_SERVER variable Changes. 
+	Reported: Nicolas Huret		Fixed: Javier Szyszlican
+
+    -Autodiscovery: Verify more before Modification.
+    
+    -Consolidate sub-programs name change.
+
+    -API Alarms: Fixed Filters.
+    
+    -API Events: Variable resolution now is internal, not in GUI.
+
+    -API RRDTool: verify if .rrd exists before tune.
+
+    -Ticket: Some changes.
+    
+    -GUI: Interfaces '1 record only' fixes.
+    
+    -GUI: Standard Admin Fixes.    
+
+    -GUI: Updated some selects to objects.
+    
+    -GUI: changed RRDTool Graph grid color.
+
+    -Alarm Viewer is gone, it didnt work.    
+
+
+
+JFFNMS 0.6.8 - Released 2002-07-27
+==================================
+
+*New Features:
+
+    -Windows 2000/XP Support. 
+	JFFNMS works correctly on Windows, all functions work 
+	    except TCP Port Autodiscovery (I need a windows nmap).
+	Install Guide Included.
+    
+    -New Graph Types Framework
+	Converted all graphs to the new format.
+    
+    -New Interface Types (by Robert Bogdon):
+	Cisco CSS VIPs 
+	Linux Processor Usage 
+	Linux Load Average
+	Solaris Memory Utilization
+	Solaris Processor Usage
+	Solaris Load Average
+	
+	Includes Autodiscovery, Graphs and Poller Groups.
+	
+    -Better Host Information Identification
+	Based on Robert Bogdon code.
+    
+    -Added Drops (<drops>) variable to SLA's 
+
+    -Better SLA presentation, more flexible and useful output.
+	Requested by: TIBA Staff
+		
+    -New MiniSLA's, SLA verifications every 5 minutes (optional)
+	Requested by: TIBA Staff
+    
+    -New Journaling Framework, better handling of comments and 
+	Reporting/Editing.
+    
+    -New Trouble Ticket Integration Framework, send Journals to your TT System.
+	Example included.
+	
+    -Interface Selector, you can now select by Interface Type and 
+	the View all button is back is Wizard Mode.
+    
+    
+*Fixed bugs:
+    -Documentation fixes.
+
+    -PHP Time Limit Handling implemented. 
+	Reported: Micheal Orth		Fixed: Javier Szyszlican
+
+    -Quotes Handling in Tacacs and TFTP
+	Reported: Alberto Passariello 	Fixed: Javier Szyszlican
+
+    -Changed snmp_interfaces to numerical OIDs.
+    
+    -Take care of HexStrings and Quotes on Windows Agents
+    
+    -Changed Default Speed of Snmp Interfaces to 128k because 0 makes no graphs.
+    
+    -Changed $argv[] to _$SERVER[argv][] in engines.
+	Requested by: Someone running FreeBSD with PHP 4.2.1
+
+    -Fixed a typo in poller.php str_replace.
+	Fixed by: Robert Bogdon
+
+    -When creating a new Host, now the filter is to the seleced zone, not Uknown.
+    
+    -Fixed some Setup Autoconfiguration options
+    
+    -Move MiniSLA's and Messages to popups.php and popups/ directory
+    
+    -New Graph Type Selection (performance) Algorithm
+    
+    -Moved all RRD Related functions to api.rrdtool.inc.php
+     
+    -Changed Host_Interfaces (aka Get Interfaces in Host Configuration) to only 
+	show the interfaces types with records.
+
+    -Don't Show MultiEdit in Interfaces Administration when only one record is shown.
+    
+
+JFFNMS 0.6.7 - Released 2002-06-29
+==================================
+
+*Fixed bugs:
+    -When changing password the Router Access was disabled. 
+        Reported: Mariano Schuler	Fixed: Javier Szyszlican
+	
+    -Handling of shutdown events, leaves interface down. 
+	Reported: Lucas Iglesias	Fixed: Javier Szyszlican
+    
+    -Storage discovery broken in UCD-SNMP 2.4.4
+    
+    -TCP Port Poller timeout, too short, increased to 8 seconds.
+    
+    -Some Orders are inverted.
+    
+    -API: better filter management in interfaces object. (status & list)
+    -API: Auth now on jffnms object.
+    -API: new delete_from_all method on map_interfaces object.
+
+    -Change Clock color to white in Events.
+        
+*New Features:
+    -New Interface in Rootmap status, you can mark the interface as disabled (grey).
+    -Add to Map option in Interfaces Editor.
+    -New Interface Selector (Wizard and Classic mode) (faster)
+    -Autoconfigurable Setup.php (Robert Bogdon)
+    -Use the OLD-CISCO-SYS-MIB for configuration retrival (optional) (requested by: Mike Hide)
+    -Wait 3 seconds before spawning new a process in autodiscovery_interfaces.php and poller.php (requested by: Robert Bogdon)
+    -New Poller: BGP Peer Interface Number (track when new bgp peer are added).
+    -New Views: Host All Interfaces (not only the ones with show in rootmap), Alarmed interfaces & events.    
+    
+OLDER RELEASES
+==============
+
+Please check http://sourceforge.net/tracker/?atid=444844&group_id=46041&func=browse
+     

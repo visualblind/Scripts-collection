@@ -1,0 +1,9 @@
+The ovftool export syntax
+ovftool vi://username:password@vCenter1/Datacenter1/vm/SourceVM OVF.ovf
+The ovftool deploy syntax
+ovftool -ds=DestinationDatastore -n=DestinationVMName OVF.ovf vi://username:password@vCenter2/Datacenter2/host/Cluster2
+The ovftool 1-step export and deploy syntax
+ESXi 4.x:
+ovftool -ds=DestinationDatastore -n=DestinationVMName vi://username:password@vCenter1/Datacenter1/vm/SourceVM vi://username:password@vCenter2/Datacenter2/host/Cluster2
+ESXi 5.x:
+ovftool --net: "source_network_name"="destination_network_name" -ds="destination_datastore" -n="destination_virtual_machine_name" "vi://domain\username@source_vcenter_fqdn/source_datacenter_name/virtual_machine_name/virtual_machine_folder/virtual_machine" "vi://domain\username@destination_vcenter_fqdn/host/cluster_name"

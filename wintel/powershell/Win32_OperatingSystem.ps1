@@ -1,0 +1,1 @@
+Get-WmiObject -Class Win32_OperatingSystem -ComputerName TSTGPVRWEB01 | Select-Object -Property NumberOfLicensedUsers,NumberOfUsers,RegisteredUser

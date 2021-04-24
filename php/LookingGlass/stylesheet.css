@@ -1,0 +1,12 @@
+BODY    { font-family:  arial, helvetica, sans-serif;
+          font-size: 10pt; background: white }
+TABLE   { font-size: 10pt }
+H1, H2, H3, H4  { color: #333333 }
+A       { text-decoration : none ; color: black }
+A:HOVER { text-decoration : underline ; color: black }
+.info   { color: blue }
+CODE	{ color: blue }
+.error  { color: red }
+.page   { background: white; border: 2px solid black;
+          padding: 10 }
+

@@ -1,0 +1,1058 @@
+ipplan v4.50
+
+Nov 17, 2005
+-  ipplan:      added: automatically create a DNS A record on modification of
+			IP record with hostname field matching a domain name
+			of a zone - requested by joelg
+			this option is controlled by the config.php option
+			DNSAUTOCREATE - default is to not automatically create
+			A records
+		fixed: creating a subnet did not update the hostname field when
+			using the "Add active hosts using NMAP" and "Add host 
+			names from DNS" options - bug reported by ravinald
+		fixed: latest nmap 3.93 adds MAC addresses to XML which broke
+			detection of IP addresses correctly
+		added: nmap 3.93 MAC addresses are added to macaddress field if
+			available during subnet creation and import of addresses
+			NOTE: this only works if nmap is run as root, so 
+			createsubnet will not normally see this field unless
+			nmap is chmod +s - not a good idea!
+
+Nov 11, 2005
+-  ipplan:      fixed: mysql 5 upgrade issue - take 2 for a fix
+		changed: dns zone exports now have an .xsl file extension
+			requested by Larry Smith
+		changed: dns zone export filenames now contain the zone name.
+			filename still needs to be unique as somebody could
+			hit export button while a background process is updating 
+			the DNS with the current export file - requested by Larry Smith
+		fixed: changing ip record hostname will update DNS A record with FQDN
+			or strip domain name if A record is in the same zone as IP
+			addresses hostname - reported by joelg
+		fixed: when updating DNS A record and hostname is FQDN with trailing .
+			strip . before updating IP record hostname field.
+		fixed: correctly format MAC addresses on modifyipform and requestip
+			pages - accept 12:34:56:78:90:12, 12-34-56-78-90-12,
+			12 34 56 78 90 12, and 123456789012 - sf feature 
+			request #1356432 - Kenneth Oncinian (keanne)
+
+Oct 18, 2005
+-  ipplan:      fixed: windows compat issue with pathnames of include files
+		fixed: import of addresses using nmap xml did not add hostnames
+		fixed: removed some warnings
+
+Sep 31, 2005
+-  ipplan:      fixed: delete of ip record did not log old contents in auditlog
+		fixed: delete of ip record did not contain old contents of record
+			in trigger action
+		added: findfree option to display only subnets of a certain size
+			patch by Nitzan Tzelniker
+		added: findfree can now search for and display used space, free 
+			space and statistics over the "all" customer
+		added: groups can now reserve a certain number of addresses at the
+			start of a subnet that users are now allowed to modify
+
+Sep 23, 2005
+-  ipplan:      added: patch to query RiverStone routers via SNMP - contributed
+			by Max Vernimmen - sf patch #1284903
+		changed: overlapping ranges can now be created - request by Laura Donovan
+			this feature is controlled by a new config.php setting RANGETEST
+			upgraded versions of IPplan before 4.47 will require a database ALTER
+			TABLE to remove UNIQUE index on the range field:
+			DROP INDEX rangeaddr ON range;
+			ALTER TABLE range ADD  INDEX range_rangeaddr  (rangeaddr, customer);
+
+Sep 21, 2005
+-  ipplan:      fixed: mysql upgrade issue introduced in previous version 
+			sf bug #1296448 - reported by Daniel Flick
+
+Sep 11, 2005
+-  ipplan:      fixed: php warnings associated with file uploads/deletes
+		fixed: workaround for reserved word (schema) in mysql 5
+			sf bug #1263307 - submitted by Henrique de Moraes Holschuh
+			required patch to adodb datadict code to exclude table names
+			containing a .
+		fixed: settings page displayed old value after change
+		fixed: various places where internal errors would occur if another
+			user deleted records before updates were completed
+		fixed: could not modify the description of a range - reported
+			by Jason J. W. Williams
+		fixed: could not move ranges between areas
+		fixed: nmap command for subnet scans and creation of subnets was not
+			correctly quoted for windows - reported by Jason J. W. Williams
+		fixed: whois query did not deal with error correctly
+		fixed: areas with no ranges are no longer displayed
+		fixed: nmap scan on subnet that has no active addresses would not
+			display correct output - reported by Jason J. W. Williams
+		fixed: added timeout checks to abort doing DNS lookups if they are
+			taking too long - most likely cause is not having a local
+			DNS server on the host
+		added: readonly groups
+
+Sep 03, 2005
+-  ipplan:      fixed: usermanager had incorrect, non portable SQL that affected Oracle
+			sf bug #1279945 - remove ;'s from SQL and quote strings correctly
+		fixed: issues with requestip and template file changes overwriting
+			hidden vars when actioning a request
+		added: -q option to command line poller to suppress checks
+
+Aug 16, 2005
+-  ipplan:      added: all customer now works on findfree function - displays a summary
+			page of statistics
+
+Aug 12, 2005
+-  ipplan:      added: option to display customer index numbers on admin maintenance
+			page
+
+Aug 05, 2005
+-  ipplan:      added: contribution of new integrated tree menu based user
+			manager - Stephen Blackstone
+		added: anonymous ip address request page - requested by Chris Yates
+			allows users to request addresses which can later get 
+			allocated by an administrator.
+
+Jul 31, 2005
+-  ipplan:      fixed: authenticate ping and traceroute scripts as they could be
+			used to discover network topology - Stephen Blackstone
+		added: DEFAULT template definition - sf request
+		added: SELECT drop down list as template field
+
+Jul 07, 2005
+-  ipplan:      added: theme chooser patch - contributed by Stephen Blackstone
+		added: Bulgarian language files - contributed by Nickola Kolev
+
+Jul 02, 2005
+-  ipplan:      fixed: changed table definition for ipaddradd, custadd and baseadd
+			tables to address info column issues with postgress and regular
+			expression searches - type changed to TEXT
+		fixed: "Show DNS changes" function did not pay attention to removed DNS
+			records - sf bug 1222482
+
+Jun 18, 2005
+-  ipplan:      fixed: you now have to belong to the customers admin group before
+			being able to send registrar updates - bug reported by
+			Andy Wilson of Irish Broadband
+		added: various additional variables for RIPE support added to registrar
+			templates - Andy Wilson of Irish Broadband
+		changed: new installation script - contributed by Stephen Blackstone
+		added: cosmetic changes to importbase script - Lance Vermilion
+		added: subnet template variables are available in registrar templates
+			the same way customer template variables are
+		added: two additional fields to schema - mac address on ip records,
+			and dhcp flag on subnets
+		added: when creating a linked address, create destination record
+			if it does not exist with comment signifying link so that
+			find next free address does not allocate address
+			requested by Andy Wilson of Irish Broadband
+		fixed: join of subnet could leave stranded subnet template record, now 
+			deleted
+
+Jun 18, 2005
+-  ipplan:      added: additional snmp OID's for Juniper routers when obtaining info
+			from routing tables - bug reported by Andy Wilson of Irish
+			Broadband
+		added: patch to allow modify of range sizes and address - patch
+			contributed by Paul Fitzpatrick
+		added: patch to allow export of subnet template fields - patch
+			contributed by Frank Elsner
+		added: DHCP management support - export function, additional
+			buttons on subnet ip record pages, additional config.php
+			variables - patch contributed by Frank Elsner
+		fixed: if another user deleted a subnet while you were editing,
+			blank screen appears after you submit
+		added: option to not jump to ip record if searching by ip address
+			on displaysubnet page
+		fixed: finally removed network and broadcast addresses from findfree
+			statistics - stats should now be correct
+		added: bargraph display on findfree page - contributed by Frank
+			Elsner
+
+Jun 11, 2005
+-  ipplan:      fixed: subnet usage stats were incorrect on displaysubnet page
+		added: additional search capabilities on displaybase page
+		added: search to display only subnets larger than a certain size
+		added: templates can be added to subnets - future plan is to use
+			this for defining DHCP scopes and other useful things
+			code contributed by Frank Elsner
+		added: admin import subnet function can also import into template
+			field - code contributed by Frank Elsner 
+		fixed: internationalization did not work - issue with the way cookie
+			was handled
+		added: templates can be added to customers 
+		added: customer template fields are available in registrar templates
+			allowing custom fields for registrars to be defined - useful
+			as registrars change their templates from time to time. ARIN's
+			missing fields can now be added (like Organization ID, Org contact 
+			type, Org contact info)
+
+
+Jun 4, 2005
+-  ipplan:      added: patch for new config variable called SNMP_COMMUNITY - no longer
+			hardcoded to "public" - sf bug 1213078 mnagel, community is also
+			no longer displayed on screen
+		fixed: show used addresses NMAP poll problem - sf bug 1198655
+		added: new config variable FIELDS_TERMINATED_BY - field separator for
+			import functions - Frank Elsner
+		added: search drop down to customer display screen - requested by yonksman
+		added: zone filename split into path and filename components in XML 
+			for easier parsing
+		added: "This domain" button on add dns record page, @ in DNS record is
+			converted to "This domain"
+		fixed: group descriptions must now be unique
+		fixed: use of Location: header was incorrect - required a complete URI,
+			not relative - could break with some browsers
+		added: update DNS A record if ip record hostname field changes - will
+			only occur is there is one A record for all domains for the
+			customer
+
+May 11, 2005
+-  ipplan:      reversed: areas with no ranges assigned are no longer displayed in drop
+			down lists - they would anyway have produced no search result
+				this created issues and has been removed
+
+May 01, 2005
+-  ipplan:      added: fancy searches (STARTS WITH, ENDS WITH, LIKE, NOT LIKE, EXACT, 
+			RLIKE, NOT RLIKE) to various displays
+		fixed:	triggers for reverse zones had too little information to
+			be useful. Added zone and zoneip. sf forum post
+		fixed: join of subnets had no upper boundary - could join forever
+			buf reported by isl8707
+		fixed: split and join created orphan IP records
+
+Apr 16, 2005
+-  ipplan:      fixed: areas with no ranges assigned are no longer displayed in drop
+			down lists - they would anyway have produced no search result
+		fixed: better layout and display of some pages using FIELDSET and LEGEND
+		fixed: changed the record DELETE button to a better place at top of page
+		added: allow export of template fields in exportip.php - 
+			request by Chris Yates
+		fixed: remove NOT NULL definition on schema for char fields - Oracle
+			handles empty strings eg '' as NULL's - sf bug 1188738
+
+Apr 09, 2005
+-  ipplan:      fixed: empty "Swip sent" column was displaying todays date - bug with
+			adodb. bug reported by yonksman
+		fixed: when installed in server root directory, base_url now returns "" 
+			instead of "/" - fixes issues when ipplan is installed in virtual
+			server root directory
+		fixed: possible issue with users being deleted without correct 
+			authentication taking place - Steve Blackstone
+		fixed: issues with menu displays and magic_quotes_runtime on
+			bug reported by Frank Seesink
+		fixed: bug with import of data - required a minimum of 7 columns instead
+			of six? reported by skatter
+		fixed: issue with php short tags - reported by ibrunello
+		fixed: reduced scnning timeout interval for "Show used addresses" from 2s
+			to 1s if nmap is not available. should really be using nmap anyway
+			as non-nmap method is not reliable and slow.
+		
+Mar 28, 2005
+-  ipplan:      added: auditlog now logs old ip record before update
+		fixed: long auditlog entries will now wrap over multiple lines
+			instead of getting truncated
+		added: triggers now added to all events that modify the database
+			except user admin functions - not needed here
+		added: external poller (in contrib directory called ipplan-poller.php)
+			when run via cron scans addresses using nmap and marks them
+			as up in the ipplan database - extra column on subnet display 
+			page - D polled today, W polled within last week, M last month
+			and Y last year - see POLLER file for more info
+		fixed: file uploads would appear in list even if move of file failed
+		fixed: removed some php safe mode checks on system calls to ping etc
+			safe mode restrictions can be overcome using safe_mode_exec_dir
+			php config option
+		fixed: postgress NOT NULL transaction issue when modifying customer
+
+Mar 25, 2005
+-  ipplan:      added: pager to auditlog
+		fixed: NET:DNS php5 error "Fatal error: Cannot re-assign $this"
+		fixed: lots of other php5 warnings
+		fixed: longstanding NET:DNS zone transfer 30sec timeout issue
+			reading in zone packets did not check data TrunCate (TC)
+			bit, thus had to wait for timeout
+		added: can now import reverse zones via DNS zone transfer
+		added: TXT DNS records are now imported
+		added: can renumber sortorder of DNS zone records - required to
+			enable insert in correct place in zone file
+		added: reverse zone now links back to search pages
+		added: check for duplicate A dns records
+		fixed: XSL stylesheet (bind9_zone.xsl) used to transform XML zonefile
+			to a BIND 8/9 zonefile had a missing .
+		added: reverse zone stylesheet for BIND 8/9 (bind9_revzone.xsl)
+		added: import ip records can now import into user defined
+			template fields
+
+Mar 21, 2005
+-  ipplan:      fixed: bug with display of 0.0.0.0 ip address in areas
+			bug reported by yonksman
+
+Mar 18, 2005
+-  ipplan:      fixed: bug if database is empty and trying to import subnets
+			from routing table - ak_hepcat
+		fixed: bug where fields containing just a 0 (zero) would not display
+		fixed: bug with findfree statistics - subnets marked free were
+			incorrectly included in totals - bug reported by yonksman
+		fixed: bug with findfree statistics - if very last portion of
+			statistics range was unallocated space, this was not displayed
+		added: added statistics for unallocated subnets marked as free
+			to findfree page - requested by yonksman
+
+Mar 13, 2005
+-  ipplan:      added: if entering a complete ip address in displaybaseform, you
+			will automatically jump to edit of address if unique
+			address is found - sf Feature Requests item #1160161
+		added: automatically focus on first input field when editing pages
+		fixed: dns query on modifyip page did not work
+		fixed: ping and traceroute output now in correct DIV class and 
+			readable on screen - fixed using output buffering tricks
+			bug reported by yonksman on SF
+		fixed: added check to test NMAP path during install and do a test
+			scan on loopback address (127.0.0.1)
+		fixed: auditlog was not working after fresh install with new schema
+			bug reported by yonksman on SF
+		fixed: bug with logic when updating fields using snmp
+			bug reported by applesx on SF
+		added: way to handle NAT addresses by allowing one address to be 
+			linked to another - SF request 1067644 requested by ibrunello
+
+Feb 27, 2005
+-  ipplan:      added: optional config variable called BASE_URL to assist with
+			ipplan running under apache virtual hosts
+		added: findfree now gives percentage of subnet space allocated
+			sf request - yonksman
+		added: patch by Denes Magyar (fat at poison.hu) for modify of
+			ranges and areas. rolled into current create scripts
+			to reduce on number of scripts
+
+Feb 12, 2005
+-  ipplan:      fixed: latest version now requires at least php 4.1.0 - sorry!
+		added: probe of address before adding next available
+			sourceforge request 1120161
+		fixed: issues with php 5.0.3 and strict error reporting - warnings
+			are now suppressed
+
+Feb 5, 2005
+-  ipplan:      added: patch to scan for used addresses using nmap
+			Malte Schröder
+		fixed: issues with Postgres schema - again! Postgres cannot alter
+			a database column
+
+Jan 14, 2005
+-  ipplan:      added: patch to add bulk DNS zone imports
+			Dustin at cnw.com
+
+Jan 14, 2005
+-  ipplan:      added: patch to add TXT and KEY records to DNS
+			Dustin at cnw.com
+		added: patch to add slave forward and reverse zones to DNS
+			Dustin at cnw.com
+
+Jan 11, 2005
+-  ipplan:      fixed: patch for class.layout HTML 4.0 correctness - Patrick Laux
+
+Jan 09, 2005
+-  ipplan:      fixed: row offset/display issue when reading networks from routing
+			table - Mark D. Nagel
+		added: grave warnings during install when using postgress - read
+			instructions very carefully!
+
+Jan 08, 2005
+-  ipplan:      added: menu extension config option - you can now add your own custom
+			menus for site specific links to the IPplan menus - Patrick Laux
+		added: adodb_assoc_case define to config.php for better oracle compatibility
+			Patrick Laux
+		added: user defined trigger function - called everytime database action
+			is completed. Can be used to initiate proprietary scripts to
+			do DNS zone updates, build router configs etc.
+				function is in ipplanlib.php, called user_trigger()
+			see TRIGGERS file for more, and ipplanlib.php user_trigger() function
+
+Jan 03, 2005
+-  ipplan:      added: search bar on display pages - no need to press browser
+			back button to change search
+		added: search bar to DNS pages
+
+Dec 24, 2004
+-  ipplan:      added: user id that modified DNS information to displays
+
+Dec 23, 2004
+-  ipplan:      fixed: patch from Dustin at cnw.com to fix DNS zone transfer
+			issues for large zones
+		added: delete multiple subnets at a time
+		fixed: deleting a subnet could leave behind attached files
+		added: display last modified date and time on DNS functions
+
+Dec 22, 2004
+-  ipplan:      fixed: pager function broken for long zone files thus
+			could not see all records
+		added: split subnet function under subnet modify functions
+		added: join subnet function under subnet modify functions
+
+Dec 20, 2004
+-  ipplan:      added: stylesheets and drop down menus for a new look
+			Steve Blackstone
+		added: DNS forward zones can be populated using zone
+			transfers
+
+Dec 18, 2004
+-  ipplan:      fixed: ensure all output was displayed via htmlspecialchars
+
+Dec 11, 2004
+-  ipplan:      fixed: magic quotes problems - quotes get added for each
+			submit, ie steve's becomes steves\'s, steve\\'s etc
+			needed mod to layout class too
+
+Dec 07, 2004
+-  ipplan:      fixed: wording for columns was incorrect on export and 
+			import pages - refered to five columns instead
+			of six
+Dec 04, 2004
+-  ipplan:      added: additional installation checks
+		updated: windows install instructions
+		added: information about windows WampServer
+		fixed: passed size from findfree when creating new
+			subnet
+		added: link back to find free space screen once new
+			subnet is created - search is maintained
+		fixed: used full pathname when accessing templates
+		fixed: additional XML parsing sanity checks
+
+Nov 20, 2004
+-  ipplan:      fixed: column named mod has issues under Windows mysql
+			changed to lastmod to be consistant
+		updated: version of adodb to 4.54 for better postgres
+			schema support
+		added: now possible to create a different template for
+			network address - called iptemplate-network.xml
+			if template file does not exist, iptemplate.xml
+			will be used for network addresses too.
+		updated: you can now modify host networks ip records
+			allows adding of template information to host nets
+		added: subnet information to screen display when modifying
+			ip records
+		fixed: admin functions return to input screen once submit
+			pressed - not need to use back button
+		added: navigation arrows to displaysubnet.php
+		added: logout button on main index page - enabled via
+			config.php option as this is not a secure
+			method to logout
+
+Nov 12, 2004
+-  ipplan:      added: patch for alternating row colours in tables
+			contributed by Stephen Blackstone
+		fixed: clearing out all fields in user defined template
+			caused data to remain - entire record had to be
+			deleted to remove info
+		added: pager (<< and >>) to multi screen tables
+
+Nov 05, 2004
+-  ipplan:      added: search of hostname field to searchall
+
+Oct 24, 2004
+-  ipplan:      added: additional hostname field for ip records
+			do not have to use description field
+			for hostnames dns anymore
+
+Sep 24, 2004
+-  ipplan:      fixed: add DNS or NMAP on createsubnet had too few 
+			parameters which generates errors
+		fixed: lots of security fixes and variable checks
+			to prevent SQL injection
+
+Sep 18, 2004
+-  ipplan:      added: search can now search in template information
+
+Sep 18, 2004
+-  ipplan:      updated: createuser.php with new version contributed
+			by James MacDonald - allows searching, display
+			of current users on screen and quick additiona
+			of additional users
+
+Sep 10, 2004
+-  ipplan:      updated: updated the version of the AdoDB database layer
+			to version 4.52
+
+Sep 05, 2004
+-  ipplan:      added: any number files can be uploaded and attached 
+			to ip records. useful to store device 
+			configuration information
+
+Sep 03, 2004
+-  ipplan:      added: additional field types to template system
+
+Aug 19, 2004
+-  ipplan:      fixed: database indexes had problems with databases other
+                    than mysql
+
+Aug 15, 2004
+-  ipplan:      added: admin defined template to add any number of custom
+                    site specific fields to ip records. these fields can
+                    contain any type of data and are verified by regular
+                    expressions
+
+
+Jul 18, 2004
+-  ipplan:      fixed: exportip.php had non portable sql
+
+Jul 04, 2004
+-  ipplan:      added: DNS adminstration - thanks to Tony Koehn for much of 
+                    the code
+
+Jul 01, 2004
+-  ipplan:      fixed: bug with pager in displaysubnet.php not showing next page
+			if last record of previous page exists in database
+			reported by itou on sourceforge
+		fixed: "all" user was unable to have areas and ranges assigned
+
+Jun 26, 2004
+-  ipplan:      fixed: removed use of GetRowAssoc from swiplib - caused compat
+			issues with MSSQL
+
+May 21, 2004
+-  ipplan:      added: download button for schema on initial install - no longer
+			need to cut and paste schema
+
+May 19, 2004
+-  ipplan:      fixed: multiple pages of output had missing missing last
+			record - for example of 128 records only 127 displayed
+			sf bug
+		fixed: problem with install scripts schema - customer missing
+			autoincrement
+
+Apr 30, 2004
+-  ipplan:      fixed: could not deselect swip radio buttons - changed to checkbox
+		added: code to select/de-select all swip checkboxes
+		fixed: sf bug 906921 - area information not passed to next script
+			when working with areas/ranges that generate lots of output
+		added: config option MAXUPLOADSIZE to limit size of uploaded files
+			and memo fields
+
+Apr 27, 2004
+-  ipplan:      added: compress html output if browser supports it - most do
+			big speedup on loading large pages
+			only php >= 4.0.4
+
+Apr 24, 2004
+-  ipplan:      fixed: snmp queries - broken due to way MIB is represented
+
+Apr 21, 2004
+-  ipplan:      added: ping and traceroute when entering new ip records
+			will not work when using php in safe_mode
+
+Apr 20, 2004
+-  ipplan:      added: template on ip records. can be used for simple
+			circuit tracking - see manual for details
+
+Apr 19, 2004
+-  ipplan:      fixed: gettext (i18n, multi-lingual support) no longer 
+			requires environment variable to be set - should 
+			work in safe mode - config.php file modified and
+			must be updated
+		added: information from php manual about using gettext
+			under windows
+
+Apr 17, 2004
+-  ipplan:      fixed: added check to see if "file uploads" disabled in
+			php.ini - gave "File could not be opened" error
+			if disabled
+		fixed: added check for 0 length uploaded file - exceeded
+			upload limit of php.ini or webserver - normally 2meg
+		fixed: importip had error - missing parameter on ModifyIp
+		added: if scanning dns or hosts, increase time limit of script
+			to prevent error message - will not work if safe_mode
+			is on. Error is 
+		Fatal error: Maximum execution time of 30 seconds exceeded in
+
+Apr 16, 2004
+-  ipplan:      fixed: added snmp router query check for windows - should
+			now work under windows
+
+Apr 2, 2004
+-  ipplan:      added: checks for odbc_mssql driver during database creation
+		added: Windows and IIS setup information
+		fixed: database creation now inserts schema version when
+			creating new tables - update does not work on empty
+			table
+
+Jan 16, 2004
+-  ipplan:      added: free form field to ip address record to add additional
+			customer specific information
+
+Jan 2, 2004
+-  ipplan:      removed: whois query - public server no longer answers
+
+Dec 30, 2003
+-  ipplan:      added: installation scripts in admin directory
+		upgraded: adodb to v3.50 (http://php.weblogs.com)
+		removed: ipplandbf.sql files - schema is now created
+			dynamically using adodb for increased portability
+			ipplan should work with most databases supported
+			by adodb
+
+Dec 29, 2003
+-  ipplan:      added: option to query device information via SNMP if
+			SNMP if available in php when adding ip address
+			record. Also checks the devices subnet mask if
+			probe was possible
+
+Dec 24, 2003
+-  ipplan:      fixed: allow modifying of network and broadcast address
+			records
+		fixed: subnet size passed correctly when creating a new
+			subnet from routing table
+
+Dec 23, 2003
+-  ipplan:      fixed: subnet mask containing 000 does not work when 
+			importing - gives error
+		added: debug config option
+		added: check if XML is compiled into PHP when XML is
+			required
+		fixed: no longer require two snmpwalks to get routing
+			table - should work better with large tables
+			SF bug 864673 
+		added: contrib to read routing table via SNMP for easy
+			import via admin functions
+
+Oct 3, 2003
+-  ipplan:      added: allow bigger subnets and ranges (up to 14 bits)
+
+Jun 13, 2003
+-  ipplan:      added: code to check for encoded passwords returned from
+			Windows ISAPI module - contributed by Brian Epley
+			IPplan should now work using PHP under Windows
+			on the IIS webserver
+
+May 22, 2003
+-  ipplan:      added: config option to suppress language choice on main
+			index page
+
+Apr 29, 2003
+-  ipplan:      added: searchall can search across multiple customers
+		fixed: searchall had a problem with displaying more than
+			"MAXTABLESIZE" entries
+
+Apr 28, 2003
+-  ipplan:      added: custom error handler
+
+Apr 22, 2003
+-  ipplan:      fixed: workaround for broken IE browser which does not
+			understand border=0 html
+
+Apr 20, 2003
+-  ipplan:      updated: adodb to 3.40 for datadict capability
+		added: schemacreate.php which displays tables to create
+			native to database driver chosen
+		fixed: problems with some servers not understanding
+			HTTP/1.0 Unauthorized header - Nusphere?
+		added: quick menu to easy navigation
+
+Mar 11, 2003
+-  ipplan:      fixed: problem with error checking of bogus database name
+
+Feb 18, 2003
+-  ipplan:      fixed: suppress warning error when using fsockopen
+
+Jan 20, 2003
+-  ipplan:      added: ability to view changed DNS entries in description
+			field - Paulo Gomes
+		added: delimiters between options in tables
+		added: ability to update description from DNS when
+			modifying individual IP record
+
+Jan 08, 2003
+-  ipplan:      added: programmers API capability as addon module
+
+Jan 07, 2003
+-  ipplan:      updated: changed all ipplan database access to a class
+			for simpler creation of API
+		updated: changed displaybase to an extention of database
+			class for addition to API
+
+Dec 17, 2002
+-  ipplan:      updated: adodb to 2.90 - should fix mssql compatibility
+		fixed: schema check supports additional databases
+		added: first pass at limiting visibility of customers to
+			certain users only - currently only one group for
+			entire customer, thus all users in group can do
+			anything to customer - this is not ideal, but I
+			still need to think of a better way of dealing
+			with this
+		added: display last modified time when searching user
+			records
+		added: ability to search on last modified time when searching
+			user records
+
+Dec 16, 2002
+-  ipplan:      fixed: modifybase had wrong directory for displaying groups
+		fixed: displaycustomerform had wrong directory for displaying
+			groups
+
+Dec 13, 2002
+-  ipplan:      fixed: sort the customer drop down list
+
+Dec 4, 2002
+-  ipplan:      fixed: language support broken on all pages except index
+			page
+
+Nov 23, 2002
+-  ipplan:      fixed: relative directory offsets incorrect for templates
+			Jeff Lynch
+
+Oct 30, 2002
+-  ipplan:      fixed: scan for available IP addresses broken on Solaris
+
+Oct 18, 2002
+-  ipplan:      added: missing postgress64 driver
+		added: some of the swip v3 templates
+
+Oct 07, 2002
+-  ipplan:      fixed: bug in auth class - no <?php line which broke on
+			later php builds
+		fixed: problem with end of range display of findfree.php
+			Lynden <chugg at shaw.ca>
+
+Sep 19, 2002
+-  ipplan:      fixed: bug in adodb odbc driver
+
+Jul 25, 2002
+-  ipplan:      fixed: problem when creating subnets with NMAP input -
+			Ahmed Tazyeen
+		fixed: broken block pager for display overlapping subnets
+
+Jul 24, 2002
+-  ipplan:      added: ability to show all networks which contain specific
+			ip address - useful for ISP's to track based on IP
+		added: ability to search for duplicates subnets across 
+			multiple customers - code contributed 
+			by Mark Lawrence
+
+Jul 15, 2002
+-  ipplan:      fixed: problem with adodb upgrade and magic_quotes
+		fixed: problem with admin user and external auth
+
+Jul 4, 2002
+-  ipplan:      changed: moved files into sub directories to prevent
+			being prompted for password when changing
+			between normal and admin user
+Jul 3, 2002
+-  ipplan:      changed: authentication more modular - can use
+			external authentication schemes
+		updated: database abstraction to AdoDB 2.12
+Jun 27, 2002
+-  ipplan:      changed: findfree more user friendly for ISP's
+			display only unassigned address space
+
+Jun 21, 2002
+-  ipplan:      fixed: SWIP descrip was not sent correctly via e-mail
+
+May 17, 2002
+-  ipplan:      added: MSSQL7 and MSSQL2000 schemas - Fank Kicenko
+
+May 08, 2002
+-  ipplan:      added: special customer 'All' allows searching across
+                        all customers using the 'Display subnet' option.
+                        you must manually create this customer
+
+Apr 30, 2002
+-  ipplan:	fixed: wrapped all output around htmlspecialchars to prevent
+			bad user input
+
+Apr 29, 2002
+-  ipplan:	fixed: maxsql was not recognized as being mysql
+
+Apr 26, 2002
+-  ipplan:	changed: removed paranoid setting from config file to
+			new user settings page - added poll setting
+		added: can now use nmap to scan for addresses on subnet
+			creation
+
+Apr 25, 2002
+-  ipplan:	fixed: not selecting any swips to send generated error
+		fixed: no swips to display still generated submit button
+		added: swips now template driven - ready for ARIN
+			template change and able to generate entries
+			for any registrar or whois
+
+Apr 24, 2002
+-  ipplan:	fixed: delete from area and range gave error
+
+Apr 22, 2002
+-  ipplan:	added: poll address before assigning
+		fixed: fix error messages in displaysubnet
+
+Apr 19, 2002
+-  ipplan:	added: recognize NMAP's osname XML parameter during imports
+		added: support for oracle 9i
+
+Apr 17, 2002
+-  ipplan:	changed: refer to customers as autonomous systems too
+
+Apr 15, 2002
+-  ipplan:	added: import ip details can accept data in NMAP's XML
+			format - can be used to scan networks and obtain 
+			info where no records exist
+
+Apr 11, 2002
+-  ipplan:	changed: made code RecordCount and Insert_ID safe for
+			compatibility with more db's ie Oracle
+		fixed: findfree sql to make it compatible woth other db's
+
+Apr 10, 2002
+-  ipplan:	changed: completed integration of AdoDB database abstraction
+		fixed: deleting customer now deletes areas and ranges too
+
+Apr 09, 2002
+-  ipplan:	changed: changed table name user->users, column name
+			user->userinf for compatibility with other DB's
+
+Apr 06, 2002
+-  ipplan:	added: AdoDB generic database driver class 
+			http://php.weblogs.com
+		added: ability to use persistent database connections
+
+Apr 02, 2002
+-  ipplan:	added: warn if address was modified by another user
+		while current user is updating
+		fixed: calc stats correctly
+		fixed: remove pass by reference
+
+Mar 28, 2002
+-  ipplan:	fixed: stronger error checking on dbf calls
+		added: copy subnets without contents
+
+Mar 26, 2002
+-  ipplan:	changed: wording to make it clear where to copy/move
+		subnets
+		added: optional paranoid setting - confirms all deletes
+		fixed: better error check on dbf connect
+		added: transaction support for transaction aware table
+		types like innodb
+
+Mar 25, 2002
+-  ipplan:	fixed: bounds now checked when modifying and deleting
+		subnets as bounds could be modified at a later stage
+		fixed: dont allow display of overlapping customers if
+		both customers are the same
+
+Mar 22, 2002
+-  ipplan:	added: bounds per group - prevents users creating
+		networks outside their area of authority - Joe Freeman
+
+Mar 14, 2002
+-  ipplan:	fixed: constants defined without quotes
+		changed: updated message for DNS query
+		fixed: made ipplan register_globals=off safe thus ipplan
+			is much more secure
+		fixed: lots of undeclared variables
+		updated: docs about php safe_mode
+		note: php 4.1.1 safe_mode appears broken - upgrade to 4.1.2
+
+Mar 13, 2002
+-  ipplan:	changed: made language cookie more secure
+		updated: updated README about php safe_mode and
+		register_globals
+
+Mar 12, 2002
+-  ipplan:	added: multilingual support
+			see INSTALL and TRANSLATIONS for details
+
+Feb 13, 2002
+-  ipplan:	added: statistics on find free page
+
+Feb 7, 2002
+-  ipplan:	changed: customer info is always visible
+
+Jan 31, 2002
+-  ipplan:	added: show search filters on results pages
+
+Jan 30, 2002
+-  ipplan:	added: check for javascript
+		added: display last modified time and user on subnets and ip
+		records
+		changed: SWIPENABLED in config.php changed to BOOLEAN
+		added: keep track which SWIPs have been sent
+
+Jan 29, 2002
+-  ipplan:	added: update of schema displays SQL statements allowing for 
+		manual update
+		fixed: display/modify/delete customers required admin authentication
+		fixed: sort problem with display of range and area info
+		added: log all modifications to audit log
+
+Jan 16, 2002
+-  ipplan:	added: utilization of subnet usage on display of subnet
+
+Jan 10, 2002
+-  ipplan:	changed: better error messages for whois query
+		added: updated manual about broken SNMP on Redhat 7.2
+
+Jan 09, 2002
+-  ipplan:	changed: error messages when importing routing tables
+
+Jan 08, 2002
+-  ipplan:	fixed: prevent overwriting duplicate groups
+		fixed: warn when creating a duplicate user
+
+Nov 16, 2001
+-  ipplan:	fixed: ipplandbf.sql was broken - new installations did
+		not work
+
+Nov 9, 2001
+-  ipplan:	changed: customers are now created via a normal user and not
+		via the admin user
+
+Nov 7, 2001
+-  ipplan:	added: start of SWIP
+		added: combined create and modify customer scripts
+		modified: createsubnet automagically names networks
+		as NET-xxx.xxx.xxx.xxx if no description is supplied
+		added: ntname generated based on subnet description or
+		automatically
+		added: ability to email swip entries
+
+Nov 1, 2001
+-  ipplan:	added: create allows bulk creation of contiguous subnets
+		useful for the "find free" function
+
+Oct 31, 2001
+-  ipplan:	changed: name changed to ipplan
+
+Oct 24, 2001
+-  ipplan:	fixed: addusertogroup allowed anonymous access
+		fixed: delimeter between delete subnet, modify subnet
+
+Sep 17, 2001
+-  ipplan:	fixed: users and groups with spaces was broken
+
+Sep 10, 2001
+-  ipplan:	changed: usability changes - deleting subnets calls back
+		same script
+
+Sep 10, 2001
+-  ipplan:	changed: selecting no area automagically covers all ranges 
+		in that area - Frank Wancho
+		changed: modify ip details has too many pages - display 
+		output on same page - Christian Janssen
+		changed: import of subnet details can now overwrite
+		existing info provided it matches EXACTLY
+		added: export capability
+
+Aug 30, 2001
+-  ipplan:	fixed: bug with 32k subnets - defined with wrong size
+		Frank Wancho
+		changed: way connections are done to database - reduce
+		queries by half
+		changed: when copying subnets, details copied too
+		Christian Janssen
+
+Aug 29, 2001
+-  ipplan:	added: display of areas and ranges
+		changed: subnets called free and spare can have other
+		characters behind them
+
+Aug 28, 2001
+-  ipplan:	added: jpeg drawing to show relationship between
+		customer, area, ranges and subnets
+		changed: cosmetics
+
+Aug 27, 2001
+-  ipplan:	added: import of subnet base information
+		added: import of subnet details
+
+Aug 24, 2001
+-  ipplan:	fixed: errors in input for create range and area should 
+		remember drop down position
+		changed: createsubnet should be able to change customer 
+		in case subnet comes from a pool when called by findfree
+		changed: modify subnet details must be able to change 
+		customer too
+		changed: range drop downs now more verbose
+		added: subnet summary info on displaysubnet page
+		fixed: create subnet with host info would run past end
+		of subnet
+
+
+Aug 23, 2001
+-  ipplan:	fixed: add info from DNS did not work - failed with
+		undefined function - Christian Janssen
+		added: support for /31 subnets as per rfc 3021
+		Frank Wancho
+		changed: wording on many forms to be more descriptive
+		changed: findfree now displays free space at start and
+		end of subnets
+		fixed: create range could not create a range not in an
+		area
+		added: findfree can show only free space
+		added: subnets that have a description of "free" or "spare"
+		will also show up on find free
+
+Aug 22, 2001
+-  ipplan:	changed: authentication to be more compatible with
+		broken IE browsers
+		changed: drop downs with subnet masks to also reflect
+		cisco style
+		fixed: bug in config file with ADMINREALM
+		changed: authentication not to require register_globals
+
+Aug 21, 2001
+-  ipplan:	added: config option to have anonymous access for reads,
+		or authenticated access for everything
+		fixed: suppress error message when database is down
+		fixed: error in schema.php - undefined function
+		added: php and mysql version checks
+
+Aug 20, 2001
+-  ipplan:	fixed: require() to require_once() to fix duplicate
+		function declarations - thanks to Frank Wancho
+		fixed: php safe_mode problem where select() for layout 
+		class could not be re-declared due to its internal use 
+		within php
+		fixed: always showed duplicate subnet when creating
+		even if none
+		fixed: removed TestBase.pl - will now work if php
+		is in safe mode
+
+Aug 24, 2001
+-  ipplan:	added: "delete address" button on modify page
+		added: ip addresses which will be modified to 
+		modifyipformmul page
+		added: show mask on displaysubnet.php
+		changed: bumped version up to 0.95
+
+Aug 15, 2001
+-  ipplan:	added: "use next available address" button
+		fixed: blank info should delete ip records so that
+		find next free works
+
+Aug 14, 2001
+-  ipplan:	fixed: rename group does not work
+		fixed: urlencode issues
+		added: html version of README
+
+Aug 13, 2001
+-  ipplan:	fixed: range,area drop down empty when no ranges to 
+		delete - rather display error
+		changed: use HTTP_POST_VARS and HTTP_GET_VARS for
+		error checking
+		added: screenshots
+
+Aug 10, 2001
+-  ipplan:	fixed: cannot create entries with blank space only
+		(users, groups, descriptions etc.)
+		fixed: check for <br> on all $formerror vars
+		fixed: order area/range drop downs by ip, not integer
+		fixed: deleting user from group deleted user from all groups
+
+Aug 8, 2001
+-  ipplan:	combine plenty scripts to reduce the number of scripts
+		called
+		fixed undefined function with many of the admin scripts
+		if there was an input error
+
+Jul 30, 2001
+-  ipplan:	warn and display overlapping customers when creating new
+		subnets
+		added schema info to make upgrades and extensions easier
+
+Jul 27, 2001
+-  ipplan:	initial release

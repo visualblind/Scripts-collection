@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Connect-Vmc</command:name>
+      <command:verb>Connect</command:verb>
+      <command:noun>Vmc</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet establishes a connection to a VMware Cloud on AWS server.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet establishes a connection to a VMware Cloud on AWS server. Only Open Authorization (OAuth) is supported and a refresh token retrieves an access token, which later makes calls to the server. </maml:para>
+      <maml:para>When running, the cmdlet performs the following steps: 1. If the Menu parameter is specified, a list of the latest connected VMware Cloud on AWS servers appears.  2. If neither the Menu nor server is specified, the default "vmc.vmware.com" value is used (the only available VMware Cloud on AWS server). 3. If the RefreshToken parameter is not specified, the local credential store is searched for a previously saved one. If a refresh token is not found, an error report is displayed.  4. When using the Server and RefreshToken parameters, a new access token is requested and is later used for communication with the server. The access token is regularly renewed by using the refresh token while the PowerShell process is running or the server connection is closed with the Disconnect-Vmc cmdlet.</maml:para>
+      <maml:para>Note: If PowerShell runs in non-interactive mode, you are not prompted for credentials. If the server certificate needs approval and it is not permanently accepted, it is automatically rejected and the cmdlet stops running.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Connect-Vmc</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Menu</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that you want to select a connection server from a list of recently connected servers. If Menu is set to $true, the cmdlet retrieves a list of the last visited servers and enters a nested command prompt, so that you can select a server from the list.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Connect-Vmc</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>NotDefault</maml:name>
+          <maml:Description>
+            <maml:para>Specifies that you do not want to save the specified servers as default servers (the $global:defaultVmcServers PowerShell variable).</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>RefreshToken</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the OAuth refresh token you want to use for authentication with the VMware Cloud on AWS server. The token is obtained from the VMware Cloud on AWS server's Web UI portal.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+          <dev:type>
+            <maml:name>SecureString</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>SaveRefreshToken</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that the refresh token that you use for establishing the server session is saved to a local credential store and can be used automatically when connecting again to the same server.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Menu</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that you want to select a connection server from a list of recently connected servers. If Menu is set to $true, the cmdlet retrieves a list of the last visited servers and enters a nested command prompt, so that you can select a server from the list.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>NotDefault</maml:name>
+        <maml:Description>
+          <maml:para>Specifies that you do not want to save the specified servers as default servers (the $global:defaultVmcServers PowerShell variable).</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>RefreshToken</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the OAuth refresh token you want to use for authentication with the VMware Cloud on AWS server. The token is obtained from the VMware Cloud on AWS server's Web UI portal.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+        <dev:type>
+          <maml:name>SecureString</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>SaveRefreshToken</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that the refresh token that you use for establishing the server session is saved to a local credential store and can be used automatically when connecting again to the same server.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>VMware.VimAutomation.Vmc.Types.V1.VmcServer</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Connect-Vmc -RefreshToken $myRefreshToken</dev:code>
+        <dev:remarks>
+          <maml:para>Connects to a VMware Cloud on AWS server.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>Connect-Vmc -RefreshToken $script:refreshToken -SaveRefreshToken</dev:code>
+        <dev:remarks>
+          <maml:para>Connects to a VMware Cloud on AWS server by specifying the related secure connection token and saving it for later usage.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Connect-Vmc.html</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Disconnect-Vmc</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Disconnect-Vmc</command:name>
+      <command:verb>Disconnect</command:verb>
+      <command:noun>Vmc</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet closes the connection to the servers specified by the Server parameter.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet closes the connection to the servers specified by the Server parameter.</maml:para>
+      <maml:para>When no servers are specified and if there is only one connected server in the $defaultVmcServers variable, this server is disconnected. If there is no connected server, the cmdlet throws a non-terminating error.</maml:para>
+      <maml:para>This functionality is using the reference counting mechanism. For more information about the mechanism, see Connect-Vmc.</maml:para>
+      <maml:para>When there are no more active connections to the server, it gets disconnected and then it is removed from the $defaultVmcServers variable (if it is present). For more information about this variable, see Connect-Vmc.</maml:para>
+      <maml:para>If the Force parameter is specified, the server is disconnected even if there is more than one connection to it. The RefCount property of the object is incremented by one.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Disconnect-Vmc</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="True (ByValue)" position="1" aliases="none">
+          <maml:name>Server</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the VMware Cloud on AWS servers you want to disconnect from.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">CisServer[]</command:parameterValue>
+          <dev:type>
+            <maml:name>CisServer[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:Description>
+            <maml:para>Specifies that you want to remove all existing connections to the specified VMware Cloud on AWS servers.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:Description>
+            <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:Description>
+          <maml:para>Specifies that you want to remove all existing connections to the specified VMware Cloud on AWS servers.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="True (ByValue)" position="1" aliases="none">
+        <maml:name>Server</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the VMware Cloud on AWS servers you want to disconnect from.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">CisServer[]</command:parameterValue>
+        <dev:type>
+          <maml:name>CisServer[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:Description>
+          <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>$connection = ConnectVmc -RefreshToken $myRefreshToken
+Disconnect-Vmc -Server $connection -Confirm:$false</dev:code>
+        <dev:remarks>
+          <maml:para>Disconnects the specified VMware Cloud on AWS server without asking for confirmation.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>$connection = ConnectVmc -RefreshToken $myRefreshToken
+Disconnect-Vmc -Server '*' -Force -Confirm:$false</dev:code>
+        <dev:remarks>
+          <maml:para>Forces the disconnect operation for all connected VMware Cloud on AWS servers without asking for confirmation.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Disconnect-Vmc.html</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Connect-Vmc</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-VmcSddcNetworkService</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>VmcSddcNetworkService</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet retrieves PSObjects that represent services for network configuration managment of an SDDC in VMware Cloud.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet retrieves PSObjects that represent services for network configuration managment of an SDDC in VMware Cloud. The operations of an SDDC network service can be invoked naturally by invoking the respective PSObject methods.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-VmcSddcNetworkService</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the service type ID.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>OrgId</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the id of the organization that the SDDC belongs to.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>SddcId</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the id of the SDDC whose network services are to be retrieved.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Server</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the VMC servers on which you want to run the cmdlet. If no value is given to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-Vmc.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">CisServer[]</command:parameterValue>
+          <dev:type>
+            <maml:name>CisServer[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the service type ID.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>OrgId</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the id of the organization that the SDDC belongs to.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>SddcId</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the id of the SDDC whose network services are to be retrieved.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Server</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the VMC servers on which you want to run the cmdlet. If no value is given to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-Vmc.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">CisServer[]</command:parameterValue>
+        <dev:type>
+          <maml:name>CisServer[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>One or more PSObject objects</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>$sddcNetworkServices = Get-VmcSddcNetworkService -OrgId $script:orgId -SddcId $script:sddcId</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>$sddcNetworkService = Get-VmcSddcNetworkService -OrgId $script:orgId -SddcId $script:sddcId -Name 'com.vmware.nsx.policy.api.v1.cluster.nodes'</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Get-VmcSddcNetworkService.html</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-VmcService</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>VmcService</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet retrieves PSObject objects that represent a proxy to a VMware Cloud on AWS API service.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet retrieves PSObject objects that represent a proxy to a VMware Cloud on AWS API service and can be used to invoke the operations of the VMware Cloud on AWS API service.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-VmcService</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="1" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the service type ID.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Server</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the VMC servers on which you want to run the cmdlet. If no value is given to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-Vmc.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">CisServer[]</command:parameterValue>
+          <dev:type>
+            <maml:name>CisServer[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="1" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the service type ID.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Server</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the VMC servers on which you want to run the cmdlet. If no value is given to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-Vmc.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">CisServer[]</command:parameterValue>
+        <dev:type>
+          <maml:name>CisServer[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>One or more PSObject objects</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Get-VmcService</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves all available VMware Cloud on AWS services on the connected VMware Cloud on AWS server.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>Get-VmcService -Name 'com.vmware.vmc.orgs'</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves a specific VMware Cloud on AWS service by a specific name.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Get-VmcService.html</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+</helpItems>

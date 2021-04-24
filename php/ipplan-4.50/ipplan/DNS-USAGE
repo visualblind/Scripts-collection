@@ -1,0 +1,79 @@
+DNS Usage:
+---------
+
+The zone files are created in the directory specified by the DNSEXPORTPATH
+variable in the config.php file. The files are in XML format and are created 
+when a user hits the Export option either on the DNS page or Reverse zone page.
+The files have a format of zone_ or revzone_ followed by the zone name followed
+by a trailing unique identifier, which is operating system dependent. The file
+has a .xml extension
+
+These files must be processed using a XML stylesheet processor into a format 
+suitable for your DNS server, and then placed into the correct location and 
+activated by your DNS server. This is beyond the scope of IPplan and will
+require custom scripts for your installation. Contributions are welcome.
+
+Sample procedure:
+
+You will require a script for your environment that periodically runs to
+check for new zone files that have been added to the output directory. You
+will probably use cron to do this. Once your script finds a file, you can
+extract the file paths saved in IPplan using a simple grep:
+
+grep -A 1 '<primary>' /tmp/revzone_FS9mEU|grep -v '<primary>'
+
+This gives me the primary file path. Once you have the destination path, 
+process the file and copy the output by whatever means your environment uses 
+to the target DNS server. I would suggest using scp with a public key on the
+remote server to prevent having to type in user id's and passwords during the
+copy process.
+
+Processing the file:
+
+A sample XSLT stylesheet can be found in the contrib directory to transform
+the forward zone XML (files starting with zone_) into a bind8 or higher
+compatible zone file. I use xsltproc from the libxslt package 
+(http://xmlsoft.org/XSLT/) which should be installed on most modern linux 
+systems. A different stylesheet (.xsl file) will be required for each DNS
+server system that you use - I have no intention of writing style sheets
+for all the various DNS servers out there, but you are more than welcome
+to send me style sheets for different DNS servers to be included with 
+IPplan.
+
+A sample command is:
+
+xsltproc bind9_zone.xsl zone_
+
+For sample XML input of:
+
+<?xml version="1.0" ?>
+<zone domain="test.com">
+<soa serialdate="20040626" serialnum="04" ttl="21600" retry="3600" refresh="86400" expire="604800" minimumttl="21600" email="" />
+<record><NS><iphostname>ns1.example.com</iphostname></NS></record>
+<record><NS><iphostname>ns2.example.com</iphostname></NS></record>
+<record><NS><iphostname>ns3.example.com</iphostname></NS></record>
+<record><NS><iphostname>ns4.example.com</iphostname></NS></record>
+<record><A><host>myhost</host><iphostname>10.10.10.1</iphostname></A></record>
+<record><CNAME><host>myhost-alias</host><iphostname>myhost</iphostname></CNAME></record>
+<record><MX><host></host><iphostname>mailhost</iphostname></MX></record>
+</zone>
+
+Generating output as follows:
+
+$ORIGIN test.com.
+$TTL 86400
+@       IN      SOA     test.com.       dnsadmin.test.com. (
+                        2004062604 ; serial
+                        21600      ; refresh
+                        3600       ; retry
+                        604800     ; expire
+                        21600 )    ; minimum TTL
+ 
+        IN      NS      ns1.example.com.
+        IN      NS      ns2.example.com.
+        IN      NS      ns3.example.com.
+        IN      NS      ns4.example.com.
+myhost  IN      A       10.10.10.1
+myhost-alias    IN      CNAME   myhost
+        IN      MX      10      mailhost
+

@@ -1,0 +1,11 @@
+<QueryList>
+  <Query Id="0" Path="Security">
+    <Select Path="Security">
+      *[
+        EventData[Data[@Name='LogonType']='10']
+        and
+        System[(EventID='4624')]
+      ] 
+    </Select>
+  </Query>
+</QueryList>

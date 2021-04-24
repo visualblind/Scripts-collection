@@ -1,0 +1,38 @@
+dsquery * "ou=City,ou=OrgUnit1,dc=a,dc=org" -filter "(&(objectCategory=person)(objectClass=user)(mail=*))" -attr mail displayname -limit 0 > email_addresses.csv
+
+dsquery * "ou=City,ou=OrgUnit1,dc=domain2,dc=org" -filter "(&(objectCategory=person)(objectClass=user)(mail=*))" -attr mail displayname -limit 0 > email_addresses.txt
+
+#Append to file
+dsquery * "ou=California,ou=OrgUnit1,dc=domain2,dc=org" -filter "(&(objectCategory=person)(objectClass=user)(mail=*))" -attr mail displayname -limit 0 >> email_addresses.txt
+
+
+dsquery * "ou=MEU,ou=Domain-Name,dc=b,dc=org" -filter "(&(objectCategory=person)(objectClass=user)(mail=*))" | dsmod user -mustchpwd no
+
+dsquery * "ou=clientmigrate,dc=CompanyName,dc=org" -filter "(&(objectCategory=person)(objectClass=user))" -limit 0 | dsmod user -mustchpwd no
+
+dsquery * "ou=Users,ou=Clients,ou=OrgUnit1,dc=domain2,dc=org" -filter "(&(objectCategory=person)(objectClass=user))" -limit 0 -memberof -username
+
+
+dsquery user "ou=Users,ou=Clients,ou=OrgUnit1,dc=domain2,dc=org" -limit 0 | dsget user -samid -memberof
+
+ldifde -f c:\oakland.ldf -s dc01.domain.com -t 389 -d"CN=Oakland,OU=Oakland,OU=Offices,DC=Domain,DC=Com" -l "cn,groupType,member" 
+
+ldifde -f c:\oakland.ldf -s Server1.domain2.org -t 389 -d "ou=Users,ou=Clients,ou=OrgUnit1,dc=domain2,dc=org" -l "cn,groupType,member" 
+
+
+dsquery * "ou=Users,ou=Clients,ou=OrgUnit1,dc=domain2,dc=org" -filter "(&(objectCategory=person)(objectClass=user))" -limit 0 | dsmod user -pwdneverexpires yes
+
+
+
+
+ldifde -f c:\Citrix.ldf -s DC1 -d "cn=Citrix,ou=Security,ou=Groups,ou=Clients,ou=OrgUnit1,dc=domain2,dc=org" -c dc=domain2,dc=org dc=CompanyName,dc=org
+
+
+
+dsquery * "ou=Domain-Name,dc=Domain-Name,dc=org" -filter "(&(objectCategory=person)(objectClass=user)(msExchHomeServerName=/o=Domain-Name/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Configuration/cn=Servers/cn=ExchangeServer) (!sn=*Room*)(!logonCount=0))" -limit 0 | dsmod group "" -addmbr
+
+dsquery * "ou=Domain-Name,dc=Domain-Name,dc=org" -filter "(&(objectCategory=person)(objectClass=user)(msExchHomeServerName=/o=Domain-Name/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Configuration/cn=Servers/cn=ExchangeServer) (!sn=*Room*)(mail=address@Domain-Name.net))" -limit 0
+
+dsquery * "ou=Domain-Name,dc=Domain-Name,dc=org" -filter "(&(objectCategory=person)(objectClass=user)(msExchHomeServerName=/o=Domain-Name/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Configuration/cn=Servers/cn=ExchangeServer) (!sn=*Room*)(!logonCount=0)(!userAccountControl=514))" -limit 0 | dsmod group "CN=Domain-Name_Users,OU=Distribution,OU=Groups,OU=City,OU=Domain-Name,DC=Domain-Name,DC=org" -addmbr
+
+dsquery * "OU=Clients,OU=CompanyName,DC=CompanyName,DC=org" -filter "(&(objectCategory=person)(sAMAccountName=vna*))" -limit 0 | dsmod user -disabled yes

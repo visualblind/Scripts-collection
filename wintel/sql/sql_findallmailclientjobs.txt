@@ -1,0 +1,5 @@
+DECLARE @SQL NVARCHAR(MAX)
+SELECT @SQL=COALESCE(@SQL+';','')+'SELECT * FROM '+QUOTENAME(Name)+'.dbo.SJob WHERE jobClass = ''MailClient'' AND startTime >= ''2013-02-05'''
+FROM sys.databases
+WHERE Name LIKE 'PS_%' OR Name LIKE 'SI_%'
+EXEC sp_executesql @SQL

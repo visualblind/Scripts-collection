@@ -1,0 +1,2 @@
+wmic qfe list brief /format:texttablewsys > "%USERPROFILE%\hotfix.txt"
+wmic qfe list brief /format:htable > "%USERPROFILE%\hotfix.html"

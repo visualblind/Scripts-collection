@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<helpItems xmlns="http://msh" schema="maml">
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>Get-LicenseDataManager</command:name>
+		<maml:description>
+			<maml:para>Returns the vSphere LicenseDataManager objects for the specified vSphere servers.</maml:para>
+		</maml:description>
+		<maml:copyright>
+           <maml:para />
+		<!--Add copy right info here.-->
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>LicenseDataManager</command:noun>
+		<!--Add Dev version info here.-->
+		<dev:version />
+	</command:details>
+	<maml:description>
+	<!--This is the Description section-->
+		<maml:para>Returns the vSphere LicenseDataManager objects for the specified vSphere servers.
+
+The LicenseDataManager object allows programmatic access to the vSphere licensing functionality and can be used to associate license data with vCenter Server inventory nodes. The license data consists of VMware licensing material and takes the form of a list of {license type id, license key} pairs. The inventory nodes which can be associated with license data are individual hosts or host containers, such as clusters, datacenters and datacenter folders. Presence of such license data makes it possible to support automatic licensing when hosts are added to a particular host container entity.
+
+LicenseDataManager provides methods for retrieving, creating, modifying and removing associations between license data and inventory nodes.
+
+For more information about LicenseDataManager type: Get-Help about_licensedatamanager</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-LicenseDataManager</maml:name>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "true (ByValue)" position = "1" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vCenter Server systems on which you want to run the cmdlet. If no value is passed to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-VIServer.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >VIServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="true" globbing="true" pipelineInput="true (ByValue)" position="1">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Specifies the vCenter Server systems on which you want to run the cmdlet. If no value is passed to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-VIServer.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">VIServer[]</command:parameterValue>
+			<dev:type>
+				<maml:name>VIServer[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>LicenseDataManager</maml:name>
+				<maml:uri />
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors>
+	</command:terminatingErrors>
+	<command:nonTerminatingErrors>
+	</command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Get-LicenseDataManager is supported only on servers that are vCenter Server 5.0 or later.</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>
+--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Connect-VIServer -Server 10.23.112.235
+
+$licenseDataManager = Get-LicenseDataManager
+
+$licenseDataManager.QueryEntityLicenseData()</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves all entity&lt;-&gt;license data associations.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$viServer = Connect-VIServer -Server 10.23.112.235
+
+$licenseDataManager = Get-LicenseDataManager -Server $viServer
+
+$hostContainer = Get-Datacenter -Name Datacenter1
+
+$licenseDataManager.QueryAssociatedLicenseData($hostContainer.Uid)</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves the license data associated with Datacenter1.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 3 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$viServer = Connect-VIServer -Server 10.23.112.235
+
+$licenseDataManager = Get-LicenseDataManager -Server $viServer
+
+$licenseData = New-Object Vmware.VimAutomation.License.Types.LicenseData
+
+$licenseKeyEntry = New-Object Vmware.VimAutomation.License.Types.LicenseKeyEntry
+
+$licenseKeyEntry.TypeId = &quot;vmware-vsphere&quot;
+
+$licenseKeyEntry.LicenseKey = &quot;00000-11111-11111-11111-11111&quot;
+
+$licenseData.LicenseKeys += $licenseKeyEntry
+
+$hostContainer = Get-Datacenter -Name Datacenter1
+
+$licenseDataManager.UpdateAssociatedLicenseData($hostContainer.Uid, $licenseData)</dev:code>
+  			<dev:remarks>
+				<maml:para>Associates new license data with Datacenter1. The license data holds single license key entry suitable for licensing vSphere hosts.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 4 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$viServer = Connect-VIServer -Server 10.23.112.235
+
+$licenseDataManager = Get-LicenseDataManager -Server $viServer
+
+$hostContainer = Get-Datacenter -Name Datacenter1
+
+$licenseDataManager.UpdateAssociatedLicenseData($hostContainer.Uid, $null)</dev:code>
+  			<dev:remarks>
+				<maml:para>Removes the license data (if any) associated with Datacenter1.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 5 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$viServer = Connect-VIServer -Server 10.23.112.235
+
+$licenseDataManager = Get-LicenseDataManager -Server $viServer
+
+$hostContainer = Get-Datacenter -Name Datacenter1
+
+$licenseDataManager.QueryEffectiveLicenseData($hostContainer.Uid)</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves the merged license data associated with Datacaneter1 and its host container predecessors (in the context of the inventory) (if such predecessors exist and if they are associated some license data). The data is merged in bottom-up fashion such that there is only one license key entry per type id (e.g. child license key entry for a license type id is with higher priority). The resulting merged license data is the effective data used for automatic licensing when vSphere host is added to Datacenter1.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 6 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$viServer = Connect-VIServer -Server 10.23.112.235
+
+$licenseDataManager = Get-LicenseDataManager -Server $viServer
+
+$host = Get-VMHost -Name Host1
+
+$licenseDataManager.ApplyAssociatedLicenseData($host.Uid)</dev:code>
+  			<dev:remarks>
+				<maml:para>Applies the merged license data associated with Host1 and its host container predecessors (using the same rules as in QueryEffectiveLicenseData($host.Uid)) to Host1.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Get-LicenseDataManager.html</maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+</helpItems>
+
+

@@ -1,0 +1,55 @@
+
+
+-----------------------------------------------------------------------
+Pg-4
+
+#Find all files which are modified 10 days back
+sudo find / -mtime 10
+
+## Find all files which are accessed in the last 10 days
+sudo find / -atime 10
+
+Find all files modified between 10 and 100 days
+sudo  find / -mtime +10 -mtime -100
+
+## File status was changed 10 min back
+sudo find / -cmin -10
+
+## File was modified 20 min back
+sudo find / -mmin -20
+
+
+## Find files accessed in last 30 min
+sudo find / -amin -60
+
+
+## Find all files of size 50M
+sudo find / -size 50M
+
+
+#find all files which are greater than 50M ans less than 100 M
+sudo find / -size +50M -size -100M
+
+
+## Find all files which are empty or zero size
+sudo find / -type f -empty
+sudo find / -type f -size 0
+
+
+##Find all empty directories
+sudo find / -type d -empty
+
+
+cd /home/shakil/bssg
+
+find . -exec ls -ld {} \;
+
+#### WARNING WARNING WARNING.....Below command if used with rm will delete files
+### Ensure that you know what you are doing
+## Find all files of type *.cpp and list it
+## Substitute with commmands to appropriately delete or do any operations.
+find . -iname "*.cpp" | xargs ls -l {} \;
+
+
+
+

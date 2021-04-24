@@ -1,0 +1,19 @@
+<html><head><title>Remove-EsxSoftwareDepot - vSphere Imagebuilder Reference</title><meta name="description" content=" Remove-EsxSoftwareDepot" /><meta name="keywords" content="vSphere Imagebuilder Reference, Remove-EsxSoftwareDepot, Remove, EsxSoftwareDepot" /><link href="doc-style.css" type="text/css" rel="StyleSheet"></head><body><h2 class="title"><a class="title" href='index.html' target="_top">PowerCLI Reference</a></h2><h2 class="title"><a class="title" href='index.html' target="_top">vSphere Imagebuilder Reference</a></h2><h1>Remove-EsxSoftwareDepot</h1><h2>Synopsis</h2><p class="table-title">Syntax</p>Remove-EsxSoftwareDepot [-SoftwareDepot] &lt;SoftwareDepot[]&gt; [-WarningAction &lt;ActionPreference&gt;] [-WarningVariable &lt;String&gt;] [&lt;CommonParameters&gt;]<p class="table-title">Related Commands</p><p class="table-title">Detailed Description</p>Disconnects the current PowerCLI session from the specified software depots.  Updates the $DefaultSoftwareDepots session variable. The depots and their VIBs and image profiles will no longer be available.
+<br/>
+<br/>
+<br/>If you do not specify the -SoftwareDepot parameter, PowerCLI prompts for an answer. You can type in the URL of the depot you wish to disconnect from.<p class="table-title">Parameters</p><table cellspacing="0"><tr><th>Name</th><th>Type</th><th>Description</th><th>Required?</td><th>Pipeline Input</th><th>Default Value</th></tr><tr class="r1"><td><a id="SoftwareDepot" name="SoftwareDepot"></a><strong>SoftwareDepot</strong></td><td><a href="SoftwareDepot.html">SoftwareDepot</a>[]</td><td>(Pipeline input, prompt)  Takes one of the following forms:
+<br/>
+<br/>*  URL string of the depot to remove
+<br/>
+<br/>*  Single instance of a SoftwareDepot object, as returned by Add-EsxSoftwareDepot
+<br/>
+<br/>*  List of SoftwareDepot objects or URL strings
+<br/>
+<br/>The depot must be connected to the session. If you specify a depot that is not connected to the session, an error message results.</td><td>true</td><td>true (ByValue, ByPropertyName)</td><td></td></tr><tr class="r0"><td><a id="WarningAction" name="WarningAction"></a><strong>WarningAction</strong></td><td>ActionPreference</td><td></td><td>false</td><td>false</td><td></td></tr><tr class="r1"><td><a id="WarningVariable" name="WarningVariable"></a><strong>WarningVariable</strong></td><td>String</td><td></td><td>false</td><td>false</td><td></td></tr></table><p class="table-title">Return Type</p>
+
+<p class="table-title">Notes</p><p class="table-title">Examples</p><div class="example"><p class="example-title">---------- Example 1 ----------</p><pre class="programlisting">Add-EsxSoftwareDepot http://www.vmware.com/go/ESXi/patches/
+[... do something ...]
+Remove-EsxSoftwareDepot http://www.vmware.com/go/ESXi/patches/</pre><p>Connect to a depot, then disconnect from it by URL.</p><p class="example-title">---------- Example 2 ----------</p><pre class="programlisting">$depot = Add-EsxSoftwareDepot http://www.vmware.com/go/ESXi/patches/
+[... do something ...]
+$depot | Remove-EsxSoftwareDepot</pre><p>Connect to a depot, saving it to a variable, then disconnect from it later.  Also an example of pipeline input.</p><p class="example-title">---------- Example 3 ----------</p><pre class="programlisting">Remove-EsxSoftwareDepot $DefaultSoftwareDepots</pre><p>Disconnect from all software depots</p></div><hr>Copyright &copy; 1998 - 2011 VMware, Inc.&nbsp;All rights reserved.</body></html>
+

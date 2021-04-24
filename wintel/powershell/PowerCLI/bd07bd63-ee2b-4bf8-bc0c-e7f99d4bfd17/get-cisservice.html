@@ -1,0 +1,23 @@
+<html><head><title>Get-CisService - PowerCLI System.Collections.Hashtable.ModuleName Help Reference</title><meta name="description" content=" Get-CisService" /><meta name="keywords" content="PowerCLI System.Collections.Hashtable.ModuleName Help Reference, Get-CisService, Get, CisService" /><link href="doc-style.css" type="text/css" rel="StyleSheet"></head><body><h2 class="title"><a class="title" href='index.html' target="_top">PowerCLI Reference</a></h2><h1>Get-CisService</h1><h2>Synopsis</h2>This cmdlet retrieves PSObject objects that represent a proxy to a vSphere Automation SDK API service and can be used to invoke the operations of that vSphere Automation SDK API service.<p class="table-title">Syntax</p>Get-CisService [[-Name] &lt;String[]&gt;] [-Server &lt;CisServer[]&gt;] [&lt;CommonParameters&gt;]<p class="table-title">Related Commands</p><a href='http://www.vmware.com/support/developer/PowerCLI/PowerCLI651/html/Get-CisService.html'>Online version</a><br><p class="table-title">Detailed Description</p>This cmdlet retrieves PSObject objects that represent a proxy to a vSphere Automation SDK API service and can be used to invoke the operations of that vSphere Automation SDK API service. The cmdlet  returns one PSObject object for every service available on the vSphere Automation SDK server.
+<br/>
+<br/>Every service proxy has a top-level Help property that contains documentation about the service&#39;s methods, parameters, constants, and so on. The Help object is hierarchical and mirrors the rest of the service&#39;s methods, parameters, constants, and so on. The Help object can also be used for easy creation of parameters that the service methods accept (see Example 2).<p class="table-title">Parameters</p><table cellspacing="0"><tr><th>Name</th><th>Type</th><th>Description</th><th>Required?</td><th>Pipeline Input</th><th>Default Value</th></tr><tr class="r1"><td><a id="Name" name="Name"></a><strong>Name</strong></td><td>String[]</td><td>Specifies the service type ID.</td><td>false</td><td>false</td><tr class="r0"><td><a id="Server" name="Server"></a><strong>Server</strong></td><td><a href="CisServer.html">CisServer</a>[]</td><td>Specifies the vSphere Automation SDK servers on which you want to run the cmdlet. If no value is given to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-CisServer.</td><td>false</td><td>false</td></table><p class="table-title">Return Type</p>One or more PSObject objects
+<p class="table-title">Notes</p><p class="table-title">Examples</p><div class="example"><p class="example-title">--------------  Example 1 --------------</p><pre class="programlisting">Get-CisService -Name &#39;com.vmware.cis.tagging.tag&#39;</pre><p>Retrieves the binding for the specified service.</p><p class="example-title">--------------  Example 2 --------------</p><pre class="programlisting"># Connect to the vSphere Automation SDK API
+Connect-CisServer -Server $serverAddress -User $user -Password $pass
+ 
+# Get the service for VM management
+$vmService = Get-CisService com.vmware.vcenter.VM
+ 
+# Create a VM creation specification
+$createSpec = $vmService.Help.create.spec.CreateExample()
+ 
+# Fill in the creation details
+$createSpec.name = &quot;ExampleVM&quot;
+$createSpec.guest_OS = &quot;WINDOWS_7_64&quot;
+$createSpec.placement.folder = (Get-Folder vm).ExtensionData.MoRef.Value
+$createSpec.placement.host = (Get-VMHost)[0].ExtensionData.MoRef.Value
+$createSpec.placement.datastore = (Get-Datastore)[0].ExtensionData.MoRef.Value
+$createSpec.placement.cluster = $null
+$createSpec.placement.resource_pool = $null
+ 
+# Call the create method passing the specification
+$vmService.create( $createSpec )</pre><p>Connects to a vSphere Automation SDK server, retrieves the service for virtual machine management, and  creates a virtual machine, based on the provided creation details, by passing the specification to the create method.</p></div><hr>Copyright &copy; VMware, Inc.&nbsp;All rights reserved.</body></html>

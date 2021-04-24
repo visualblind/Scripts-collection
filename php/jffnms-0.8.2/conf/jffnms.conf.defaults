@@ -1,0 +1,234 @@
+
+jffnms_version:description = Version
+jffnms_version:default = 0.8.2
+jffnms_version:type = label
+
+jffnms_site:description	= Site Name
+jffnms_site:default 	= Your Site Name
+jffnms_site:size	= 20
+
+db_section:description = Database Configuration
+db_section:type = menu
+
+db_type:description = Database Type
+db_type:type = enum
+db_type:default = mysql
+db_type:values  = MySQL:mysql;PostgreSQL:pg
+
+dbhost:description = Database Server
+dbhost:size = 15
+dbhost:default = localhost 
+
+db:description = Database Name
+db:default = jffnms
+db:size = 15 
+
+dbuser:description = Database Username
+dbuser:default = jffnms
+dbuser:size = 15 
+
+dbpass:description = Database Password
+dbpass:default = jffnms
+dbpass:size = 15 
+
+db_working:description = Is The Database Working?
+db_working:type = db
+
+system:description = System Configuration
+system:type = menu
+
+os_type:description = Operating System
+os_type:type = enum
+os_type:default = unix
+os_type:values = Unix-like:unix;Windows:windows
+
+jffnms_access_method:description = GUI Access Method 
+jffnms_access_method:default = local
+jffnms_access_method:type = enum
+jffnms_access_method:values = Local:local;Via Satellite:satellite
+
+jffnms_satellite_server_uri:description = Satellite Server - optional
+jffnms_satellite_server_uri:type = satellite
+jffnms_satellite_server_uri:default = none
+
+jffnms_satellite_uri:description = Satellite URI or 'none'
+jffnms_satellite_uri:default = none
+jffnms_satellite_uri:type = uri
+
+paths:description = Paths Configuration
+paths:type = menu
+
+jffnms_real_path:description = Absolute Path
+jffnms_real_path:type = directory
+jffnms_real_path:default = /opt/jffnms
+
+jffnms_rel_path:description = WebServer Relative Path
+jffnms_rel_path:type = relative_directory
+jffnms_rel_path:default = /jffnms
+
+tftp_real_path:description = TFTP Server Files Path
+tftp_real_path:type = directory
+tftp_real_path:default = /opt/jffnms/tftpd
+
+rrd_real_path:description = RRD Files Path
+rrd_real_path:type = directory
+rrd_real_path:default = /opt/jffnms/rrd
+
+engine_temp_path:description = Engine Temp Files Path
+engine_temp_path:type = directory
+engine_temp_path:default = /opt/jffnms/engine/temp
+
+log_path:description = Log Files Path
+log_path:type = directory
+log_path:default = /opt/jffnms/logs
+
+images_real_path:description = Temp Images Absolute Path
+images_real_path:type = directory
+images_real_path:default = /opt/jffnms/htdocs/images/temp
+
+images_rel_path:description = WebServer Temp Images Relative Path
+images_rel_path:type = relative_directory
+images_rel_path:default = /jffnms/images/temp
+
+php_executable:description = PHP Executable Path
+php_executable:type = file
+php_executable:default = /usr/bin/php
+
+neato_executable:description = GraphViz Neato Executable Path
+neato_executable:type = file
+neato_executable:default = /usr/bin/neato
+
+rrdtool_executable:description = RRDTool Executable Path
+rrdtool_executable:type = file
+rrdtool_executable:default = /usr/bin/rrdtool
+
+diff_executable:description = GNU Diff Executable Path
+diff_executable:type = file
+diff_executable:default = /usr/bin/diff
+
+nmap_executable:description = NMAP PortScanner Executable Path
+nmap_executable:type = file
+nmap_executable:default = /usr/bin/nmap
+
+fping_executable:description = FPing Executable Path
+fping_executable:type = file
+fping_executable:default = /usr/sbin/fping
+
+smsclient_executable:description = SMSClient for SMS via Modem
+smsclient_executable:type = file
+smsclient_executable:default = /usr/bin/smsclient
+
+ntpq_executable:description = NTPQ Executable
+ntpq_executable:type = file
+ntpq_executable:default = /usr/bin/ntpq
+
+php_configs:description = PHP Status
+php_configs:type = menu
+
+register_globals:description = Register Globals set to On
+register_globals:type = phpconf
+register_globals:value = register_globals
+
+allow_url_fopen:description = Allow URL fopen set to On
+allow_url_fopen:type = phpconf
+allow_url_fopen:value = allow_url_fopen
+
+snmp:description = SNMP Module Loaded?
+snmp:type = phpmodule
+snmp:value = snmp
+
+sockets:description = Sockets Module Loaded?
+sockets:type = phpmodule
+sockets:value = sockets
+
+gd:description = GD Module Loaded?
+gd:type = phpmodule
+gd:value = gd
+
+mysql:description = MySQL Module Loaded?
+mysql:type = phpmodule
+mysql:value = mysql
+
+pgsql:description = PostgreSQL Module Loaded?
+pgsql:type = phpmodule
+pgsql:value = pgsql
+
+pcre:description = PCRE Module Loaded?
+pcre:type = phpmodule
+pcre:value = pcre
+
+wddx:description = WDDX Module Loaded?
+wddx:type = phpmodule
+wddx:value = wddx
+
+gui:description = GUI Options
+gui:type = menu
+
+jffnms_auth_method:description = GUI Auth/Login Method
+jffnms_auth_method:type = enum
+jffnms_auth_method:default = login 
+jffnms_auth_method:values = HTTP:http;Login Screen:login
+
+logo_image:description = Login Screen Image URL
+logo_image:type = uri
+logo_image:default = /jffnms/images/jffnms.png
+
+logo_image_url:description = Login Screen Image Link URL
+logo_image_url:type = uri
+logo_image_url:default = http://www.jffnms.org
+
+jffnms_custom_css:description = Custom CSS Stylesheet URL
+jffnms_custom_css:type = uri
+
+internal:description = Internal Options
+internal:type = menu
+
+jffnms_administrative_type:description = Administrative Event Type
+jffnms_administrative_type:type = hidden
+jffnms_administrative_type:default = 25
+
+jffnms_internal_type:description = Internal Event Type
+jffnms_internal_type:type = hidden
+jffnms_internal_type:default = 43
+
+jffnms_debug:description = Debugging/Logging Enabled
+jffnms_debug:type = bool
+jffnms_debug:default = 0 
+
+events_store:description = Number of days to store Events/Alarms
+events_store:default = 60
+
+raw_events_store:description = Number of days to store Raw Syslog/Tacacs/Trap records
+raw_events_store:default = 7 
+
+host_configs_store:description = Number of days to store Host Configs
+host_configs_store:default = 30
+
+events_latest_max:description = Events Latest (in Minutes)
+events_latest_max:default = 1440
+
+map_refresh:description = Default Map Refresh in secs
+map_refresh:default = 20
+
+events_refresh:description = Default Events Refresh in secs 
+events_refresh:default = 20
+
+events_sound:description = Events Sound Alert
+events_sound:type = text
+events_sound:default = tling.wav
+
+map_sound_renew_time:description = Replay Active Alarms Every in minutes
+map_sound_renew_time:default = 60
+
+jffnms_initial_config_finished:description = Request Authentication to acess Setup
+jffnms_initial_config_finished:type = bool
+jffnms_initial_config_finished:default = 0 
+
+jffnms_site_help:description = URL containing the JFFNMS Setup Help Page
+jffnms_site_help:type = hidden
+jffnms_site_help:default = http://www.jffnms.org/docs/installing.html#sec:setup
+
+jffnms_configured:description = Are we configured yet?
+jffnms_configured:type = hidden
+jffnms_configured:default = 0
+

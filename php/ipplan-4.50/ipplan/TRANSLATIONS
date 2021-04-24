@@ -1,0 +1,67 @@
+Guide to translators:
+--------------------
+
+If you are using KDE as your desktop environment, you can use kbabel
+to update a translation. kbabel is a graphic utility making the process
+very simple: see http://i18n.kde.org/tools/kbabel. Kbabel should be
+installed on most Linux distributions by default if the development
+environment is installed.
+
+The following translations are available: en, bg
+
+New translation:
+---------------
+
+To create a new translation of IPplan, follow these simple steps. Note that
+you do not need programming experience to do a translation, just some
+available time. Doing a translations does not even require you to edit
+any source code!
+
+1) Make sure that gettext support is enabled in php (see INSTALL)
+2) Change to the locale directory in the directory where you have installed
+   ipplan.
+3) Create a new directory for the language as per 
+
+	http://lcweb.loc.gov/standards/iso639-2/englangn.html
+
+   Note that the code must be two letters as per the 639-1 column
+4) Inside this directory, create a new directory called LC_MESSAGES
+5) Change back to the ipplan home directory
+6) Complete the blank messages.po file in the ipplan directory.
+   Each msgstr="" field must be filled in with the translated msgid 
+   string above it.
+7) Execute
+	msgfmt messages.po -o messages.mo
+
+   This creates the binary file that will be used by the actual
+   translation process during runtime.
+8) Now move the messages.po and messages.mo files to the LC_MESSAGES
+   directory created earlier in step 4
+9) Mail the newly created messages.po file created in step 6 to 
+   ipplan@gmail.com so that it can be added to the official 
+   IPplan distribution.
+10)Modify the config.php script to define the new language code you
+   have created in step 3. To do this, find the $iso_codes array and
+   modify that.
+
+Update translation:
+------------------
+
+To update an existing translation of IPplan (IPplan has new functionality
+and this needs to be translated), follow these steps:
+
+1) You will require a blank messages.po file from the most recent ipplan 
+   sources.
+2) Create a temporary working directory and change to it.
+3) Copy the blank messages.po file from step 1 to blank.po in your 
+   temporary directory.
+4) Copy the messages.po file from your language in the locale directory of
+   the ipplan sources to mylang.po in your temporary directory.
+5) Execute
+
+	msgmerge mylang.po blank.po> messages.po
+
+   This merges the existing translations with any newly added strings from
+   the ipplan sources.
+6) Find any uncompleted msgstr="" lines and provide the translations for them.
+7) Follow on from step 7 under "New translations"

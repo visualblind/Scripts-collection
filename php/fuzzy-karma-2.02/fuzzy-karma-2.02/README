@@ -1,0 +1,43 @@
+# (C) Copyright 2004 Jeremiah K. Jones, et. al.
+#    All rights reserved.
+#
+#-----------
+# FuZZY - version Karma (2.0)
+#
+-------------------------------------------------------------------
+			FUZZY Version Karma (2.0)- README FILE
+-------------------------------------------------------------------
+
+Introduction
+	FuZZY is a network analyzer that is designed to act as an Acceptable Use Policy 
+Infraction Detector (AUPID). It is a tool that will allow Network or System 
+Administrators to monitor and manage their user's activies over the network.  
+Fuzzy is an OPEN-SOURCE project and is free to download and use.
+It is protected under the GNU Public License.  This license is included with
+the download.  Please read the license.
+
+Disclaimer
+	This program is under ABSOLUTELY NO WARRANTY!  It is distributed AS-IS
+so use it at your own risk.  Also, the author or contributors of this program
+are under no responsibility for the manner in which you decide to use this program.
+We DO NOT in any way encourage you to use this program for any illegal or otherwise
+mischievious actions.
+
+About This Version
+	Version 'Karma' (2.0) is a dramatic revision of version 1.0.  Version two has
+been changed to provide real-time analysis of network traffic.  This is done through
+a dependency on Snort being installed with MySQL support.
+	In order to run this version, you MUST fulfill the following requirements:
+		Run a Linux based system
+		Have Snort installed 
+		Have MySQL installed
+		Have Snort configured to use MySQL
+		Have PHP installed with MySQL support
+		Have a Web server with PHP support
+		Have administrative access to the machine on which it will be installed
+
+
+
+INSTALLATION
+	For installation instructions, please read the INSTALL file located in the intsall
+directory of fuzzy.

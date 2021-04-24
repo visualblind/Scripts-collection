@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<TEMPLATE>
+    <FIELD>
+     <DEFINITION NAME="field1" TYPE="C" DESCRIP="This is field 1" MAXLENGTH="50" SIZE="20" ROWS="1" DEFAULT="" REGEX="" ERRMSG="Invalid field 1" />
+    </FIELD>
+    <FIELD>
+     <DEFINITION NAME="info" TYPE="T" DESCRIP="Additional information" MAXLENGTH="20000" SIZE="80" ROWS="10" REGEX="" ERRMSG="Invalid field 1" />
+    </FIELD>
+    <FIELD>
+     <DEFINITION NAME="field2" TYPE="C" DESCRIP="This is field 2" MAXLENGTH="40" SIZE="10" ROWS="1" REGEX="xx" ERRMSG="This field must contain an xx" />
+    </FIELD>
+    <FIELD>
+     <DEFINITION NAME="select" TYPE="S" DESCRIP="This is select 2" DEFAULT="2">
+       <SELECT OPTION="Option 1" VAL="1" />
+       <SELECT OPTION="Option 2" VAL="2" />
+     </DEFINITION>
+    </FIELD>
+</TEMPLATE>
+

@@ -1,0 +1,1 @@
+while true; do curl https://blockchain.info/ticker;sleep 5;done

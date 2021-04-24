@@ -1,0 +1,1 @@
+wget -O - http://192.168.239.128/repo/debs/amd64/Release.gpg | sudo apt-key add -

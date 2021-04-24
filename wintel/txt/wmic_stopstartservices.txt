@@ -1,0 +1,2 @@
+wmic service where "displayname like 'SvcDspNm%'" call StopService
+wmic service where "displayname like 'SvcDspNm%'" call StartService

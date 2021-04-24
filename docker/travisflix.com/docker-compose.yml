@@ -1,0 +1,39 @@
+---
+version: "3"
+services:
+  nginx:
+    image: ghcr.io/linuxserver/nginx
+    container_name: nginx-proxy
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=US/Pacific
+    volumes:
+      - /usr/local/nginx-proxy/config:/config
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+
+  jellyfin:
+    image: jellyfin/jellyfin:10.5.4
+    user: 0:0
+    container_name: jellyfin
+    network_mode: "host"
+    environment:
+      #- PUID=0
+      #- PGID=0
+      - TZ=American/Los_Angeles
+      - UMASK_SET=022 #optional
+      - JELLYFIN_PublishedServerUrl=https://travisflix.com
+    volumes:
+      - /usr/local/jellyfin/config:/config
+      - /usr/local/jellyfin/media:/media:ro
+      - /usr/local/jellyfin/cache:/cache
+      - /usr/local/jellyfin/jellyfin-web:/jellyfin/jellyfin-web/src
+    ports:
+      - 8096:8096
+      - 8920:8920
+    devices:
+      - /dev/dri:/dev/dri #optional
+    restart: always

@@ -1,0 +1,1341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-SecurityInfo</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>SecurityInfo</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet retrieves the security information of objects (VirtualMachine, HardDisk or VMHost).</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet retrieves the security information of objects. Returns the SecurityInfo instance that corresponds to the specified object.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-SecurityInfo</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+          <maml:name>Entity</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the object to retrieve its security information. Supported objects are VirtualMachine, VMHost and HardDisk.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VIObjectCore[]</command:parameterValue>
+          <dev:type>
+            <maml:name>VIObjectCore[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Server</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the connected viserver on which you want to run the cmdlet. If no value is passed to this parameter, the command runs on the default viservers. For more information about default viservers, see the description of the Connect-VIServer cmdlet.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VIServer[]</command:parameterValue>
+          <dev:type>
+            <maml:name>VIServer[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+        <maml:name>Entity</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the object to retrieve its security information. Supported objects are VirtualMachine, VMHost and HardDisk.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">VIObjectCore[]</command:parameterValue>
+        <dev:type>
+          <maml:name>VIObjectCore[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Server</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the connected viserver on which you want to run the cmdlet. If no value is passed to this parameter, the command runs on the default viservers. For more information about default viservers, see the description of the Connect-VIServer cmdlet.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">VIServer[]</command:parameterValue>
+        <dev:type>
+          <maml:name>VIServer[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>VMware.VimAutomation.Sdk.Types.V1.VIObjectCore[]</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>VMware.VimAutomation.Security.Types.V1.SecurityInfo.SecurityInfo</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>The supported entities are only VirtualMachine, HardDisk and VMHost.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Get-SecurityInfo -Entity MyObj*</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves the security information of all the virtual machines and all the VMHosts whose names starting with "MyObj".</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>Get-VM MyVM | Get-HardDisk | Get-SecurityInfo</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves security information of all disks of 'MyVM' virtual machine.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>$vmHosts = Get-VMHost
+Get-SecurityInfo -Entity $vmHosts</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves security information of all the VMHosts available on the connected servers.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
+        <dev:code>$myVm1 = Get-VM -Name MyVM1
+$myVm2 = Get-VM -Name MyVM2
+Get-SecurityInfo -Entity $myVM1, $myVM2</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves security information of the given two virtual machines.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Unblock-VM</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-VTpm</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>VTpm</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet retrieves the virtual tpm devices available on given virtual machines.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet retrieves the virtual tpm devices available on given virtual machines. The cmdlet returns virtual tpm devices that correspond to the filter citeria specified by the provided paramters.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-VTpm</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Id</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the IDs of the VTpm device that you want to retrieve.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Server</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the connected viserver on which you want to run the cmdlet. If no value is passed to this parameter, the command runs on the default viservers. For more information about default viservers, see the description of the Connect-VIServer cmdlet.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VIServer[]</command:parameterValue>
+          <dev:type>
+            <maml:name>VIServer[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-VTpm</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Server</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the connected viserver on which you want to run the cmdlet. If no value is passed to this parameter, the command runs on the default viservers. For more information about default viservers, see the description of the Connect-VIServer cmdlet.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VIServer[]</command:parameterValue>
+          <dev:type>
+            <maml:name>VIServer[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByValue)" position="named" aliases="none">
+          <maml:name>VM</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the virtual machines from which you want to retrieve the virtual tpm device.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VirtualMachine[]</command:parameterValue>
+          <dev:type>
+            <maml:name>VirtualMachine[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Id</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the IDs of the VTpm device that you want to retrieve.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Server</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the connected viserver on which you want to run the cmdlet. If no value is passed to this parameter, the command runs on the default viservers. For more information about default viservers, see the description of the Connect-VIServer cmdlet.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">VIServer[]</command:parameterValue>
+        <dev:type>
+          <maml:name>VIServer[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByValue)" position="named" aliases="none">
+        <maml:name>VM</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the virtual machines from which you want to retrieve the virtual tpm device.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">VirtualMachine[]</command:parameterValue>
+        <dev:type>
+          <maml:name>VirtualMachine[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Zero or more VTpm objects</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>$vm = Get-VM "MyVM"
+Get-VTpm -VM $vm</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves the VTpm device of the virtual machine named "MyVM".</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>New-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpmCertificate</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpmCSR</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-VTpmCertificate</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>VTpmCertificate</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet retrieves the certificate information from the given VTpm devices.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet retrieves the certificate information from the given VTpm devices. You can retrive the certificate information from the given VTpm devices by specifying the VTpm device and the certificate signing request type (CSRType): RSA, ECC or All. By default, the certificate signing request type (CSRType) is All.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-VTpmCertificate</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+          <maml:name>VTpm</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the VTpm device from which the certificate information will be retrieved.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VTpm[]</command:parameterValue>
+          <dev:type>
+            <maml:name>VTpm[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>CSRType</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the signing request type of the certificate. The valid values are: All, ECC, RSA.</maml:para>
+          </maml:Description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">All</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">ECC</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">RSA</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">CSRType</command:parameterValue>
+          <dev:type>
+            <maml:name>CSRType</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>CSRType</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the signing request type of the certificate. The valid values are: All, ECC, RSA.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">CSRType</command:parameterValue>
+        <dev:type>
+          <maml:name>CSRType</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+        <maml:name>VTpm</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the VTpm device from which the certificate information will be retrieved.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">VTpm[]</command:parameterValue>
+        <dev:type>
+          <maml:name>VTpm[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>VMware.VimAutomation.Security.Types.V1.Entity.VTpm[]</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Security.Cryptography.X509Certificates.X509Certificate2Collection</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-VTpm -VM MyVM | Get-VTpmCertificate</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves all the certificate information from the VTpm device of the virtual machine named "MyVM".</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-VTpm -VM MyVM | Get-VTpmCertificate -CSRType ECC</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves the certificate information, whose encryption algorithm is ECC, from the VTpm device of the virtual machine named "MyVM".</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpmCSR</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-VTpmCSR</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>VTpmCSR</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet retrieves the certficate signing requests(CSR) from the given VTpm devices.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet retrieves the certficate signing requests(CSR) from the given VTpm devices. You can retrive the certificate signing request from the given VTpm devices by specifying the VTpm device and the certificate signing request type (CSRType): RSA, ECC or All. By default, the certificate signing request type (CSRType) is All.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-VTpmCSR</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+          <maml:name>VTpm</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the VTpm device from which the certificate signing request information will be retrieved.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VTpm[]</command:parameterValue>
+          <dev:type>
+            <maml:name>VTpm[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>CSRType</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the signing request type. The valid values are: All, ECC, RSA.</maml:para>
+          </maml:Description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">All</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">ECC</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">RSA</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">CSRType</command:parameterValue>
+          <dev:type>
+            <maml:name>CSRType</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>CSRType</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the signing request type. The valid values are: All, ECC, RSA.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">CSRType</command:parameterValue>
+        <dev:type>
+          <maml:name>CSRType</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+        <maml:name>VTpm</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the VTpm device from which the certificate signing request information will be retrieved.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">VTpm[]</command:parameterValue>
+        <dev:type>
+          <maml:name>VTpm[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>VMware.VimAutomation.Security.Types.V1.Entity.VTpm[]</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.String[]</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-VTpm -VM MyVM | Get-VTpmCSR</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves all the certificate signing request information from the VTpm device of the virtual machine named "MyVM".</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-VTpm -VM MyVM | Get-VTpmCSR -CSRType ECC</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves the certificate signing request information, whose encryption algorithm is ECC, from the VTpm device of the virtual machine named "MyVM".</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpmCertificate</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>New-VTpm</command:name>
+      <command:verb>New</command:verb>
+      <command:noun>VTpm</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet creates a new VTpm device on the specified virtual machine.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet creates a new VTpm device on the specified virtual machine.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-VTpm</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByValue)" position="0" aliases="none">
+          <maml:name>VM</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the virtual machine that you want to add the VTpm device.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VirtualMachine</command:parameterValue>
+          <dev:type>
+            <maml:name>VirtualMachine</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:Description>
+            <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>RunAsync</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that the command returns immediately without waiting for the task to complete. In this mode, the output of the cmdlet is a Task object. For more information about the RunAsync parameter, run "help About_RunAsync" in the VMware PowerCLI console.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Server</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the connected viserver on which you want to run the cmdlet. If no value is passed to this parameter, the command runs on the default viservers. For more information about default viservers, see the description of the Connect-VIServer cmdlet.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VIServer[]</command:parameterValue>
+          <dev:type>
+            <maml:name>VIServer[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:Description>
+          <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>RunAsync</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that the command returns immediately without waiting for the task to complete. In this mode, the output of the cmdlet is a Task object. For more information about the RunAsync parameter, run "help About_RunAsync" in the VMware PowerCLI console.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Server</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the connected viserver on which you want to run the cmdlet. If no value is passed to this parameter, the command runs on the default viservers. For more information about default viservers, see the description of the Connect-VIServer cmdlet.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">VIServer[]</command:parameterValue>
+        <dev:type>
+          <maml:name>VIServer[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByValue)" position="0" aliases="none">
+        <maml:name>VM</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the virtual machine that you want to add the VTpm device.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">VirtualMachine</command:parameterValue>
+        <dev:type>
+          <maml:name>VirtualMachine</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>VMware.VimAutomation.ViCore.Types.V1.Inventory.VirtualMachine</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>VMware.VimAutomation.Security.Types.V1.Entity.VTpm</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Works only on vCenter Server system versions 6.7 or later and ESX versions 6.7 or later. If the given virtual machine wasn't encrypted with its VM Home, then the default kmscluster is required to be place in vCenter Server; As a result of the cmdlet, the VM Home of the given virtual machine will be encrypted.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Get-VM MyVM | New-VTpm</dev:code>
+        <dev:remarks>
+          <maml:para>Adds a new VTpm device to the virtual machine named "MyVM".</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpmCertificate</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpmCSR</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Remove-VTpm</command:name>
+      <command:verb>Remove</command:verb>
+      <command:noun>VTpm</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet removes the specified VTpm devices.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet removes the specified VTpm devices.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-VTpm</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+          <maml:name>VTpm</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the VTpm devices that you want to remove.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VTpm[]</command:parameterValue>
+          <dev:type>
+            <maml:name>VTpm[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are removed.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:Description>
+            <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running; if the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>RunAsync</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that the command returns immediately without waiting for the task to complete. In this mode, the output of the cmdlet is a Task object. For more information about the RunAsync parameter, run "help About_RunAsync" in the VMware PowerCLI console.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are removed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:Description>
+          <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running; if the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>RunAsync</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that the command returns immediately without waiting for the task to complete. In this mode, the output of the cmdlet is a Task object. For more information about the RunAsync parameter, run "help About_RunAsync" in the VMware PowerCLI console.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+        <maml:name>VTpm</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the VTpm devices that you want to remove.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">VTpm[]</command:parameterValue>
+        <dev:type>
+          <maml:name>VTpm[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>VMware.VimAutomation.Security.Types.V1.Entity.VTpm[]</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Void</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>$myVm = Get-VM MyVM
+Get-VTpm -VM $myVm | Remove-VTpm</dev:code>
+        <dev:remarks>
+          <maml:para>Removes the virtual tpm device from virtual machine named 'MyVM'.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>$vtpm = Get-VTpm -VM "MyVM"
+Remove-VTpm -VTpm $vtpm</dev:code>
+        <dev:remarks>
+          <maml:para>Removes the VTpm device from VM named "MyVM"</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpmCertificate</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpmCSR</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Set-VTpm</command:name>
+      <command:verb>Set</command:verb>
+      <command:noun>VTpm</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet modifies the properties of the specified VTpm device.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet modifies the properties of the specified VTpm device. You can change the certificate of the specified VTpm device by specifying the new certificate in a X509Certificate2 object or in a file.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Set-VTpm</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+          <maml:name>VTpm</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the VTpm device that you want to configure.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VTpm</command:parameterValue>
+          <dev:type>
+            <maml:name>VTpm</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>CertFilePath</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the certificate file in which stores the certificate string that you want to set to the specified VTpm device.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:Description>
+            <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Set-VTpm</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+          <maml:name>VTpm</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the VTpm device that you want to configure.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VTpm</command:parameterValue>
+          <dev:type>
+            <maml:name>VTpm</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>Certificate</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the certificate object that you want to set to the specified VTpm device.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
+          <dev:type>
+            <maml:name>X509Certificate2</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:Description>
+            <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>CertFilePath</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the certificate file in which stores the certificate string that you want to set to the specified VTpm device.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>Certificate</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the certificate object that you want to set to the specified VTpm device.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
+        <dev:type>
+          <maml:name>X509Certificate2</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:Description>
+          <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+        <maml:name>VTpm</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the VTpm device that you want to configure.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">VTpm</command:parameterValue>
+        <dev:type>
+          <maml:name>VTpm</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>VMware.VimAutomation.Security.Types.V1.Entity.VTpm</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>VMware.VimAutomation.Security.Types.V1.Entity.VTpm</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>The public key of the certificate should match the one in the certificate signing requests of the given VTpm device.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Get-VTpm -VM 'MyVM' | Set-VTpm -CertFilePath 'C:\MyCertFile.cert'</dev:code>
+        <dev:remarks>
+          <maml:para>Changes the certificate of the VTpm device in virtual machine named 'MyVM' with the new certificate in file 'C:\MyCertFile.cert'.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-VTpm</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpmCertificate</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-VTpmCSR</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Unlock-VM</command:name>
+      <command:verb>Unlock</command:verb>
+      <command:noun>VM</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet unlocks the specified virtual machine.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet unlocks the specified virtual machine. The virtual machine should be encrypted, otherwise, this cmdlet would fail. If the virtual machine is in CryptoLocked state, this cmdlet will make the virtual machine become connected state.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Unlock-VM</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByValue)" position="0" aliases="none">
+          <maml:name>VM</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the virtual machine that you want to unlock.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VirtualMachine[]</command:parameterValue>
+          <dev:type>
+            <maml:name>VirtualMachine[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:Description>
+            <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>RunAsync</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that the command returns immediately without waiting for the task to complete. In this mode, the output of the cmdlet is a Task object. For more information about the RunAsync parameter, run "help About_RunAsync" in the VMware PowerCLI console.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Server</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the connected viserver on which you want to run the cmdlet. If no value is passed to this parameter, the command runs on the default viservers. For more information about default viservers, see the description of the Connect-VIServer cmdlet.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VIServer[]</command:parameterValue>
+          <dev:type>
+            <maml:name>VIServer[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:Description>
+          <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>RunAsync</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that the command returns immediately without waiting for the task to complete. In this mode, the output of the cmdlet is a Task object. For more information about the RunAsync parameter, run "help About_RunAsync" in the VMware PowerCLI console.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Server</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the connected viserver on which you want to run the cmdlet. If no value is passed to this parameter, the command runs on the default viservers. For more information about default viservers, see the description of the Connect-VIServer cmdlet.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">VIServer[]</command:parameterValue>
+        <dev:type>
+          <maml:name>VIServer[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByValue)" position="0" aliases="none">
+        <maml:name>VM</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the virtual machine that you want to unlock.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">VirtualMachine[]</command:parameterValue>
+        <dev:type>
+          <maml:name>VirtualMachine[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>VMware.VimAutomation.ViCore.Types.V1.Inventory.VirtualMachine[]</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>VMware.VimAutomation.ViCore.Types.V1.Inventory.VirtualMachine</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>This cmdlet only works with a encrypted virtual machine. If the virtual machine is encrypted and in connected state, it will make vCenter Server system sync keys to ESX; If the virtual machine is encrypted and locked, it will bring the virtual machine back to connected state. This cmdlet only works with vCenter Server and ESX of versions 6.7 or later.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Get-VM 'MyVM' | Unlock-VM</dev:code>
+        <dev:remarks>
+          <maml:para>Unlocks the virtual machine named 'MyVM'.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-SecurityInfo</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+</helpItems>

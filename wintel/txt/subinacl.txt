@@ -1,0 +1,1 @@
+C:\Program Files (x86)\Windows Resource Kits\Tools>subinacl.exe /printer \\server\* /grant="domain\group"=P /grant="domain\admins"=F /replace

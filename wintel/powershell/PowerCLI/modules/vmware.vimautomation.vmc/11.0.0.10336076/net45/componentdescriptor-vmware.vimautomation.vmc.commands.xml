@@ -1,0 +1,26 @@
+<ComponentDescriptor>
+  <Name>VMware.VimAutomation.Vmc.Commands</Name>
+  <Assembly>VMware.VimAutomation.Vmc.Commands</Assembly>
+  <ImplementingType>VMware.VimAutomation.Vmc.Commands.VmcCommandsComponentImpl</ImplementingType>
+  <IsSnapin>true</IsSnapin>
+  <ProvidedServiceList>
+  </ProvidedServiceList>
+  <RequiredServiceList>
+    <ServiceDescriptor>
+      <Name>VmcCoreService</Name>
+      <Version>1.0</Version>
+    </ServiceDescriptor>
+  </RequiredServiceList>
+  <ExtendedServiceList>
+  </ExtendedServiceList>
+  <Version>
+    <Major>11</Major>
+    <Minor>0</Minor>
+    <Revision>0</Revision>
+    <Build>10336076</Build>
+    <Company>VMware Inc.</Company>
+    <Copyright>Copyright 2017</Copyright>
+    <UserFriendlyVersion>VMware Vmc PowerCLI Component PowerCLI Component 11.0 build 10336076</UserFriendlyVersion>
+    <Description>Provides cmdlets for managing VMware VMC Server.</Description>
+  </Version>
+</ComponentDescriptor>

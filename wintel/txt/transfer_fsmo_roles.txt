@@ -1,0 +1,38 @@
+Transfer FSMO Roles 2008 R2 Domain Controller
+I have an Active Directory domain that's used exclusively for monitoring.  The domain was running a single 2008 SP2 32bit domain controller.  Tonight I introduced the first 2008 R2 domain controller and wanted to transfer all the FSMO roles to this server.  In previous versions if you wanted to transfer the Schema Master role you could use the AD Schema snap-in.  Prior to launching the ADS snap-in you would first have to register the schmmgmt.dll.  This is a 32bit command and cannot be used on R2 domain controllers so I decided to use NTDSUTIL instead.
+
+First log into the domain controller you want to hold the roles and launch a command prompt and run the following:
+
+C:\system32\admin>ntdsutil
+ntdsutil:  roles
+fsmo maintenance: connections
+server connections:  connect to server "domain controllers hostname"
+
+you will now have confirmation of connection to the server
+
+server connections:  quit
+
+Now you are ready to transfer the FSMO roles.
+
+fsmo maintenance:  transfer schema master
+fsmo maintenance:  transfer rid master
+fsmo maintenance:  transfer infrastructure master
+fsmo maintenance:  transfer pdc
+fsmo maintenance:  transfer naming master ("domain" not included when running from a 2008 DC)
+
+You have now transfered all the FSMO roles to your 2008 R2 domain controller and can logout of ntdsutil
+
+fsmo maintenance:  quit
+ntdsutil: quit
+
+
+In order to confirm all FSMO roles have transferred to your desired destination run the following:
+
+C:\users\admin>netdom query fsmo
+
+Schema master               server.domain.com
+Domain naming master    server.domain.com
+PDC                               server.domain.com
+RID pool manager           server.domain.com
+Infrastructure master        server.domain.com
+The command completed successfully.

@@ -1,0 +1,188 @@
+BODY {
+font-family: Arial;
+color: black;
+background-color: #FFFFFF;
+/* These work in IE only, changes the look of the scrollbar + textareas */
+scrollbar-base-color: #A00000;
+scrollbar-highlight-color: #FFFFFF;
+scrollbar-track-color: #EFEFEF;
+scrollbar-darkshadow-color: #EFEFEF;
+scrollbar-3dlight-color: #AD8802;
+scrollbar-shadow-color: #AD8802;
+scrollbar-arrow-color: #AD8802;
+}
+
+P {
+font-family: Arial;
+font-size: 12px;
+}
+
+A:active, A:link, A:visited {
+font-family: Arial;
+font-size: 12px;
+color: #A00000;
+}
+
+TD {
+font-family: Arial;
+font-size: 12px;
+}
+
+P.break {
+page-break-after: always
+}
+
+
+TABLE.usefulstats,TD.usefulstats {
+background-color: #efefef;
+border-style: solid;
+border-color: #A00000 #A00000;
+border-width: 1px;
+}
+
+TABLE.projectnews,TD.projectnews {
+background-color: #efefef;
+border-style: solid;
+border-color: #4F9E00 #4F9E00;
+border-width: 1px;
+}
+
+TABLE.recentfailures,TD.recentfailures {
+background-color: #efefef;
+border-style: solid;
+border-color: #00009E #00009E;
+border-width: 1px;
+}
+
+DIV.loginnotice {
+background-color: #efefef;
+border-style: solid;
+border-color: #A00000;
+border-width: 1px;
+}
+
+TABLE.addedit-nodes {
+font-family: Arial;
+font-size: 12px;
+color: #A00000;
+}
+
+TABLE.addedit-nodes-whichdays {
+font-family: Arial;
+font-size: 12px;
+color: #A00000;
+background-color: #efefef;
+border-style: solid;
+border-color: #A00000;
+border-width: 1px;
+}
+
+TABLE.addedit-nodes-timeframe {
+font-family: Arial;
+font-size: 12px;
+color: #00009E;
+background-color: #c0c0c0;
+border-style: solid;
+border-color: #00009E;
+border-width: 1px;
+}
+
+TABLE.addedit-nodes-select-for-edit {
+font-family: Arial;
+font-size: 12px;
+color: #00009E;
+background-color: #c0c0c0;
+border-style: solid;
+border-color: #00009E;
+border-width: 1px;
+}
+
+DIV.errmsg {
+background-color: #efefef;
+border-style: solid;
+border-color: #A00000;
+border-width: 1px;
+}
+
+TABLE.addedit-users {
+font-family: Arial;
+font-size: 12px;
+color: #A00000;
+background-color: #efefef;
+border-style: solid;
+border-color: #A00000;
+border-width: 1px;
+}
+
+TABLE.addedit-mail {
+font-family: Arial;
+font-size: 12px;
+color: #A00000;
+background-color: #efefef;
+border-style: solid;
+border-color: #A00000;
+border-width: 1px;
+}
+
+TD.dashboard {
+margin: 5px;
+background-color: #c0c0c0;
+border-style: solid;
+border-color: #c0c0c0;
+border-width: 2px;
+}
+
+TABLE.nodereports,TD.nodereports {
+font-family: Arial;
+font-size: 12px;
+border-style: solid;
+border-color: #A00000 #A00000;
+border-width: 1px;
+}
+
+TABLE.helpcontents,TD.helpcontents {
+background-color: #efefef;
+border-style: solid;
+border-color: #A00000 #A00000;
+border-width: 1px;
+}
+
+#dropmenudiv {
+position: absolute;
+line-height: 22px;
+z-index: 100;
+margin-left: -2px;
+margin-top: 5px;
+}
+
+#dropmenudivIE {
+position: absolute;
+line-height: 22px;
+z-index: 100;
+margin-left: -1px;
+margin-top: 6px;
+}
+
+A.dropmenu:active, A.dropmenu:link, A.dropmenu:visited {
+color: #FFFFFF;
+text-decoration: none;
+}
+
+A.dropmenu:hover {
+background-color: #dbdbdb;
+text-decoration: none;
+color: #A6091C;
+display: block;
+}
+
+A.topdropmenu:active, A.topdropmenu:link, A.topdropmenu:visited {
+font-size: 12px;
+color: #FFFFFF;
+text-decoration: none;
+display: block;
+}
+
+A.topdropmenu:hover {
+display: block;
+color: #A6091C
+}

@@ -1,0 +1,26 @@
+<ComponentDescriptor>
+  <Name>VMware.VimAutomation.License.Commands</Name>
+  <Assembly>VMware.VimAutomation.License.Commands</Assembly>
+  <ImplementingType>VMware.VimAutomation.License.Commands.LicenseCmdletsComponent</ImplementingType>
+  <IsSnapin>true</IsSnapin>
+  <ProvidedServiceList>
+  </ProvidedServiceList>
+  <RequiredServiceList>
+    <ServiceDescriptor>
+      <Name>LicenseService</Name>
+      <Version>1.0</Version>
+    </ServiceDescriptor>
+  </RequiredServiceList>
+  <ExtendedServiceList>
+  </ExtendedServiceList>
+  <Version>
+    <Major>10</Major>
+    <Minor>0</Minor>
+    <Revision>0</Revision>
+    <Build>7893904</Build>
+    <Company>VMware Inc.</Company>
+    <Copyright>Copyright 2015</Copyright>
+    <UserFriendlyVersion>VMware VimAutomation License PowerCLI Component PowerCLI Component 10.0 build 7893904</UserFriendlyVersion>
+    <Description>Provides test cmdlets.</Description>
+  </Version>
+</ComponentDescriptor>

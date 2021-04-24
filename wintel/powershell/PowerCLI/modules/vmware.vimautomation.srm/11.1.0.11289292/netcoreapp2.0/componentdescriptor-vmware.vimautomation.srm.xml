@@ -1,0 +1,19 @@
+<ComponentDescriptor>
+	<Name>VMware.VimAutomation.Srm</Name>
+	<Assembly>VMware.VimAutomation.Srm.Impl</Assembly>
+	<ImplementingType>VMware.VimAutomation.Srm.Impl.SrmComponentImpl</ImplementingType>
+	<IsSnapin>false</IsSnapin>
+	<ProvidedServiceList>
+    <ServiceDescriptor>
+      <Name>SrmService</Name>
+      <Version>1.0</Version>
+    </ServiceDescriptor>
+  </ProvidedServiceList>
+	<RequiredServiceList>
+      <ServiceDescriptor>
+         <Name>ViCoreService</Name>
+         <Version>1.0</Version>
+      </ServiceDescriptor>
+   </RequiredServiceList>
+	<ExtendedServiceList></ExtendedServiceList>
+</ComponentDescriptor>

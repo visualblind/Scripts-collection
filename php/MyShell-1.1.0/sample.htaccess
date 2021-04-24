@@ -1,0 +1,8 @@
+# Authentication file for <your domain>
+# By Martin Geisler <gimpster@gimpster.com>
+
+AuthName "MyShell"
+AuthType Basic
+AuthUserFile <path to auth-file>
+
+require valid-user

@@ -1,0 +1,36 @@
+[
+  {
+    "Id": "0",
+    "Name": "RoboPowerCopy-v0.1.0.0 (ALPHA)",
+    "DevelopmentStatus": "Alpha",
+    "Description": "*This is the first version of RoboPowerCopy. It's ALPHA!*\n\nCorresponding blog post:\n* http://ikarstein.wordpress.com/2011/06/16/robopowercopy-a-powershell-based-robocopy-clone-v0-1-0",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2011-09-08T13:56:45.647-07:00",
+    "Files": [
+      {
+        "Id": "59e1b9a5-1afe-4aa8-b949-e3b0fc4a4593",
+        "FileName": "RoboPowerCopy-v0.1.0.0.zip",
+        "Url": "./0/59e1b9a5-1afe-4aa8-b949-e3b0fc4a4593",
+        "Type": "Source Code",
+        "UploadDate": "2011-06-16T12:38:43.417-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "1",
+    "Name": "RoboPowerCopy-v0.1.0.1 (ALPHA)",
+    "DevelopmentStatus": "Alpha",
+    "Description": "*This is the first version of RoboPowerCopy. It's ALPHA!*\n\nCorresponding blog post:\n* http://ikarstein.wordpress.com/2011/06/16/robopowercopy-a-powershell-based-robocopy-clone-v0-1-0\n\n(Minor bug fix)",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2011-08-03T12:13:13.063-07:00",
+    "Files": [
+      {
+        "Id": "e5535672-a889-411e-83e1-7f558d2dec8b",
+        "FileName": "RoboPowerCopy-v0.1.0.1.zip",
+        "Url": "./1/e5535672-a889-411e-83e1-7f558d2dec8b",
+        "Type": "Application",
+        "UploadDate": "2011-08-03T12:12:20.56-07:00"
+      }
+    ]
+  }
+]

@@ -1,0 +1,36 @@
+ldifde -f users.ldf -s dc1.company.int -d "cn=Users,cn=Clients,cn=company,dc=company,dc=int"
+
+
+
+#TEST
+ldifde -f users.ldf -m -s dc1.company.int -d "ou=test,dc=company,dc=int" -r "(&(objectCategory=person)(objectClass=user))"
+
+#CLIENTS
+ldifde -f clients.ldf -m -s dc1.company.int -d "ou=Users,ou=Clients,ou=company,dc=company,dc=int" -r "(&(objectCategory=person)(objectClass=user))"
+
+
+ldifde -i -f users.ldf
+
+ldifde -f users.ldf -m -s dc1.company.int -d "dc=company,dc=int"
+
+#Testing export of mail or proxyAddress attribute on user objects
+
+ldifde -f mailusers.ldf -m -s dc-a.a.int -d "ou=city,ou=company,dc=a,dc=int" -r "(&(objectCategory=person)(objectClass=user))" -l "mail" -v
+
+#List user creation date
+ldifde -d OU=SBSUsers,OU=Users,OU=MyBusiness,DC=xxx,DC=yyy -l whencreated -r "(ObjectCategory=user)" -f usercreationdate.txt
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#Export User Mail Attribute
+ldifde -d "OU=Clients,OU=OrgUnit,DC=OrgUnit,DC=int" -r (objectClass=User) -l mail -f "server1-client-email.ldf"
+
+##Need to Massage the .ldf file (remember to add a hyphen at the end of every object search/replace Notepad++)
+##IE:
+dn: CN=Danielle Corrigan,OU=M3,OU=Users,OU=Clients,OU=Company2,DC=AWS,DC=Company2,DC=int
+changetype: modify
+replace: mail
+mail: dcorrigan@colonialcourtyard.com
+-
+
+#Import User Mail Attribute
+ldifde -i -k -f server1-client-email-modify.ldf
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

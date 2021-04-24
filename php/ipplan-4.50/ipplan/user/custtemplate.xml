@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<TEMPLATE>
+    <FIELD>
+     <DEFINITION NAME="orgid" DESCRIP="Organization ID" TYPE="C" MAXLENGTH="20" SIZE="20" ROWS="1" REGEX="" ERRMSG="Invalid field: Additional information" />
+    </FIELD>
+    <FIELD>
+     <DEFINITION NAME="orgcontacttype" DESCRIP="Organization contact type" TYPE="C" MAXLENGTH="80" SIZE="80" ROWS="1" REGEX="" ERRMSG="Invalid field: Additional information" />
+    </FIELD>
+    <FIELD>
+     <DEFINITION NAME="orgcontactinfo" DESCRIP="Organization contact info" TYPE="C" MAXLENGTH="80" SIZE="80" ROWS="1" REGEX="" ERRMSG="Invalid field: Additional information" />
+    </FIELD>
+</TEMPLATE>
+

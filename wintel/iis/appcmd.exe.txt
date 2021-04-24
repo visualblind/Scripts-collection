@@ -1,0 +1,14 @@
+C:\Windows\System32\inetsrv\appcmd set site /site.name: your-domain.com /+bindings.[protocol='http',bindingInformation='*:80:your-subdomain.your-domain.com']
+
+C:\Windows\System32\inetsrv\appcmd set site /site.name: your-domain.com /-bindings.[protocol='http',bindingInformation='*:80:your-subdomain.your-domain.com']
+
+C:\Windows\System32\inetsrv>appcmd set site "site1" /-bindings.[protocol='https',bindingInformation=':443:site1.com']
+
+C:\Windows\System32\inetsrv>appcmd set site "site2" /+bindings.[protocol='https',bindingInformation='*:443:site2.com']
+
+
+%windir%\system32\inetsrv\appcmd list apppool /config /xml > c:\apppools.xml
+%windir%\system32\inetsrv\appcmd add apppool /in < c:\apppools.xml
+
+%windir%\system32\inetsrv\appcmd list site /config /xml > c:\sites.xml
+%windir%\system32\inetsrv\appcmd add site /in < c:\sites.xml

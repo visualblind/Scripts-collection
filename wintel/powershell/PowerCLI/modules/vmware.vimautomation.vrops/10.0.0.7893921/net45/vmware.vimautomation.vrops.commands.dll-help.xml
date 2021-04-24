@@ -1,0 +1,3421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<helpItems xmlns="http://msh" schema="maml">
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>Connect-OMServer</command:name>
+		<maml:description>
+			<maml:para>This cmdlet establishes a connection to the specified vRealize Operations Manager server.</maml:para>
+		</maml:description>
+		<maml:copyright>
+           <maml:para />
+		<!--Add copy right info here.-->
+		</maml:copyright>
+		<command:verb>Connect</command:verb>
+		<command:noun>OMServer</command:noun>
+		<!--Add Dev version info here.-->
+		<dev:version />
+	</command:details>
+	<maml:description>
+	<!--This is the Description section-->
+		<maml:para>This cmdlet establishes a connection to the vRealize Operations Manager server specified by the -Server parameter.
+
+The connect and disconnect operations for a server are using a reference counting mechanism. Every server is identified by its connection string which contains server, user name, and authentication source. If there is already an existing connection to the server, a new connection is not established. Instead, the cmdlet returns the object which represents the existing connection. The RefCount property of the object is incremented by one. Note that a new object is not created. Therefore, the RefCount of the previously returned object will be updated as well. When a server is disconnected, then its RefCount property is decreased by one. If this number becomes equal to zero, then the server is disconnected.
+
+PowerCLI supports a list of default vRealize Operations Manager servers. When an operation is performed, if the target servers cannot be determined from the specified parameters, the cmdlet runs against the servers in the default server list. They are kept in a global variable called $DefaultOMServers. It is of an array type and its initial value is an empty array. When you connect to a server, the server is added at the beginning of the array, unless -NotDefault parameter is specified. When you disconnect from a server, the server is removed from the $DefaultOMServers variable. When all servers are removed from the variable, its value is an empty array. You can modify the value of the $DefaultOMServers variable manually.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Connect-OMServer</maml:name>
+			<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "1" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the IP or DNS addresses of the vRealize Operations Manager servers you want to connect to.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>User</maml:name>
+				<maml:description>
+					<maml:para>Specifies the user name you want to use for authenticating with the server. For more information about the server authentication logic of PowerCLI, run &quot;help about_server_authentication&quot;.
+Note: If the user name contains special characters, enclose the entire string in single quotes (&#39;).</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Password</maml:name>
+				<maml:description>
+					<maml:para>Specifies the password you want to use for authenticating with the server. For more information about the server authentication logic of PowerCLI, run &quot;help about_server_authentication&quot;.
+Note: If the password contains special characters, enclose the entire string in single quotes (&#39;).</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >SecureString</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>AuthSource</maml:name>
+				<maml:description>
+					<maml:para>Specifies the authentication source type. The default authentication source type value is LocalUser. You can specify ActiveDirectory, OpenLDAP, or VC as authentication source type values.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Port</maml:name>
+				<maml:description>
+					<maml:para>Specifies the port on the server you want to use for the connection. If not specified, the default port value is 443.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>NotDefault</maml:name>
+				<maml:description>
+					<maml:para>Specifies that you do not want to save the specified servers as default servers.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Suppresses all user interface prompts during the cmdlet execution.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>SaveCredentials</maml:name>
+				<maml:description>
+					<maml:para>Indicates that you want to save the specified credentials in the local credential store.</maml:para>
+				</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Connect-OMServer</maml:name>
+			<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "1" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the IP or DNS addresses of the vRealize Operations Manager servers you want to connect to.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Port</maml:name>
+				<maml:description>
+					<maml:para>Specifies the port on the server you want to use for the connection. If not specified, the default port value is 443.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>NotDefault</maml:name>
+				<maml:description>
+					<maml:para>Specifies that you do not want to save the specified servers as default servers.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Suppresses all user interface prompts during the cmdlet execution.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>SessionSecret</maml:name>
+				<maml:description>
+					<maml:para>Specifies the ID of an existing vRealize Operations Manager session you want to reestablish.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Connect-OMServer</maml:name>
+			<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "1" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the IP or DNS addresses of the vRealize Operations Manager servers you want to connect to.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>AuthSource</maml:name>
+				<maml:description>
+					<maml:para>Specifies the authentication source type. The default authentication source type value is LocalUser. You can specify ActiveDirectory, OpenLDAP, or VC as authentication source type values.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Port</maml:name>
+				<maml:description>
+					<maml:para>Specifies the port on the server you want to use for the connection. If not specified, the default port value is 443.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "true (ByValue)" position = "named" >
+				<maml:name>Credential</maml:name>
+				<maml:description>
+					<maml:para>Specifies a PSCredential object that contains credentials for authenticating with the server. For more information about the server authentication logic of PowerCLI, run &quot;help about_server_authentication&quot;.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>NotDefault</maml:name>
+				<maml:description>
+					<maml:para>Specifies that you do not want to save the specified servers as default servers.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Suppresses all user interface prompts during the cmdlet execution.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>SaveCredentials</maml:name>
+				<maml:description>
+					<maml:para>Indicates that you want to save the specified credentials in the local credential store.</maml:para>
+				</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Connect-OMServer</maml:name>
+			<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Menu</maml:name>
+				<maml:description>
+					<maml:para>Indicates that you want to select a connection server from a list of recently connected servers. If Menu is provided, the cmdlet retrieves a list of the last visited servers and enters a nested command prompt, so that you can select a server from the list.</maml:para>
+				</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="1">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Specifies the IP or DNS addresses of the vRealize Operations Manager servers you want to connect to.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>User</maml:name>
+			<maml:description>
+				<maml:para>Specifies the user name you want to use for authenticating with the server. For more information about the server authentication logic of PowerCLI, run &quot;help about_server_authentication&quot;.
+Note: If the user name contains special characters, enclose the entire string in single quotes (&#39;).</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Password</maml:name>
+			<maml:description>
+				<maml:para>Specifies the password you want to use for authenticating with the server. For more information about the server authentication logic of PowerCLI, run &quot;help about_server_authentication&quot;.
+Note: If the password contains special characters, enclose the entire string in single quotes (&#39;).</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+			<dev:type>
+				<maml:name>SecureString</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>AuthSource</maml:name>
+			<maml:description>
+				<maml:para>Specifies the authentication source type. The default authentication source type value is LocalUser. You can specify ActiveDirectory, OpenLDAP, or VC as authentication source type values.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Port</maml:name>
+			<maml:description>
+				<maml:para>Specifies the port on the server you want to use for the connection. If not specified, the default port value is 443.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>NotDefault</maml:name>
+			<maml:description>
+				<maml:para>Specifies that you do not want to save the specified servers as default servers.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>Suppresses all user interface prompts during the cmdlet execution.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SaveCredentials</maml:name>
+			<maml:description>
+				<maml:para>Indicates that you want to save the specified credentials in the local credential store.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SessionSecret</maml:name>
+			<maml:description>
+				<maml:para>Specifies the ID of an existing vRealize Operations Manager session you want to reestablish.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Credential</maml:name>
+			<maml:description>
+				<maml:para>Specifies a PSCredential object that contains credentials for authenticating with the server. For more information about the server authentication logic of PowerCLI, run &quot;help about_server_authentication&quot;.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Menu</maml:name>
+			<maml:description>
+				<maml:para>Indicates that you want to select a connection server from a list of recently connected servers. If Menu is provided, the cmdlet retrieves a list of the last visited servers and enters a nested command prompt, so that you can select a server from the list.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>OMServer</maml:name>
+				<maml:uri />
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors>
+	</command:terminatingErrors>
+	<command:nonTerminatingErrors>
+	</command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>
+--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Connect-OMServer -Server &#39;server_name&#39; -User &#39;user_name&#39; -Password &#39;user_password&#39;</dev:code>
+  			<dev:remarks>
+				<maml:para>Connects to a vRealize Operations Manager server by using the User and Password parameters.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Connect-OMServer -Server &#39;server_name&#39; -AuthSource &#39;vCenterServer_name_in_vROps&#39; -User &#39;vCenterServer_admin&#39; -Password &#39;user_password&#39;</dev:code>
+  			<dev:remarks>
+				<maml:para>Connects to a vRealize Operations Manager server as a vCenter Server user, imported from the monitored vCenter Server system.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 3 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$srv = Connect-OMServer &#39;server_name&#39; -User &#39;admin&#39; -Password &#39;user_password&#39;
+ 
+Connect-OMServer &#39;server_name&#39; -Session $srv.SessionId</dev:code>
+  			<dev:remarks>
+				<maml:para>Connects to a vRealize Operations Manager server with an existing session.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 4 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$secpasswd = ConvertTo-SecureString &#39;PlainTextPassword&#39; -AsPlainText -Force
+$mycreds = New-Object System.Management.Automation.PSCredential (&#39;user_name&#39;, $secpasswd)
+
+Connect-OMServer &#39;server_name&#39; -Credential $mycreds</dev:code>
+  			<dev:remarks>
+				<maml:para>Connects to a vRealize Operations server by using a credentials object.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Connect-OMServer.html</maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Disconnect-OMServer</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>Disconnect-OMServer</command:name>
+		<maml:description>
+			<maml:para>This cmdlet closes the connection to one or more vRealize Operations Manager servers.</maml:para>
+		</maml:description>
+		<maml:copyright>
+           <maml:para />
+		<!--Add copy right info here.-->
+		</maml:copyright>
+		<command:verb>Disconnect</command:verb>
+		<command:noun>OMServer</command:noun>
+		<!--Add Dev version info here.-->
+		<dev:version />
+	</command:details>
+	<maml:description>
+	<!--This is the Description section-->
+		<maml:para>This cmdlet closes the connection to one or more vRealize Operations Manager servers.
+
+When no servers and no user name are specified, and if there is only one connected server in $DefaultOMServers variable, this server is disconnected. If there is no connected server, the cmdlet throws a terminating error.
+
+This functionality is using the reference counting mechanism. For more information about the mechanism, see Connect-OMServer.
+
+When there are no more active connections to the server it gets disconnected and then it is removed from the $DefaultOMServers variable. For more information about this variable, see Connect-OMServer.
+
+If -Force is specified, the server is disconnected even if there is more than one connection to it.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Disconnect-OMServer</maml:name>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "true (ByValue)" position = "1" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager servers you want to disconnect from.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Specifies that you want to remove all existing connections to the specified servers.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+				</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="true" globbing="true" pipelineInput="true (ByValue)" position="1">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Specifies the vRealize Operations Manager servers you want to disconnect from.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMServer[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMServer[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>Specifies that you want to remove all existing connections to the specified servers.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>None</maml:name>
+				<maml:uri />
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors>
+	</command:terminatingErrors>
+	<command:nonTerminatingErrors>
+	</command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>
+--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$server = Connect-OMServer -Server &#39;server_name&#39; -User &#39;user@domain&#39; -Password &#39;user_password&#39;
+Disconnect-OMServer -Server serverIP -Force</dev:code>
+  			<dev:remarks>
+				<maml:para>Disconnects the specified vRealize Operations Manager server and closes all existing connections to it.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Connect-OMServer -Server &#39;server_name&#39; -User &#39;user@domain&#39; -Password &#39;user_password&#39;
+Connect-OMServer -Server &#39;server2_name&#39; -User &#39;user@domain&#39; -Password &#39;user_password&#39;
+Disconnect-OMServer * -Confirm:$false</dev:code>
+  			<dev:remarks>
+				<maml:para>Disconnects all connected vRealize Operations Manager servers without asking for confirmation.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Disconnect-OMServer.html</maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Connect-OMServer</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>Get-OMAlert</command:name>
+		<maml:description>
+			<maml:para>This cmdlet retrieves alerts from the specified vRealize Operations Manager server.</maml:para>
+		</maml:description>
+		<maml:copyright>
+           <maml:para />
+		<!--Add copy right info here.-->
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>OMAlert</command:noun>
+		<!--Add Dev version info here.-->
+		<dev:version />
+	</command:details>
+	<maml:description>
+	<!--This is the Description section-->
+		<maml:para>This cmdlet retrieves alerts from the specified vRealize Operations Manager server.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-OMAlert</maml:name>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Status</maml:name>
+				<maml:description>
+					<maml:para>Filters the alerts by current state. The possible values are Active, Inactive, and Unknown.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMAlertStatus[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Impact</maml:name>
+				<maml:description>
+					<maml:para>Filters the alerts by level of urgency. The possible values are Health, Risk, Efficiency, and Unknown.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMImpact[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Criticality</maml:name>
+				<maml:description>
+					<maml:para>Filters the alerts by level of importance. The possible values are None, Information, Warning, Immediate, Critical, SymptomBased, and Unknown.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMCriticality[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "named" >
+				<maml:name>Resource</maml:name>
+				<maml:description>
+					<maml:para>Filters the alerts by the resource for which the alert was raised.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMResource[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Subtype</maml:name>
+				<maml:description>
+					<maml:para>Filters the alerts by the subtype of the alert.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMAlertSubtype[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "named" >
+				<maml:name>AssignedUser</maml:name>
+				<maml:description>
+					<maml:para>Filters the alerts by the user who owns the alert.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMUser[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Type</maml:name>
+				<maml:description>
+					<maml:para>Filters the alerts by the type of the alert.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMAlertType[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>ControlState</maml:name>
+				<maml:description>
+					<maml:para>Filters the alerts by the state of user interaction with the alert. For example, the state can be Open, Assigned, or Suspended.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMAlertControlState[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "named" >
+				<maml:name>AlertDefinition</maml:name>
+				<maml:description>
+					<maml:para>Filters the alerts by definition.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMAlertDefinition[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "false" position = "1" >
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Filters the alerts by name.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-OMAlert</maml:name>
+			<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Id</maml:name>
+				<maml:description>
+					<maml:para>Filters the alerts by ID.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Status</maml:name>
+			<maml:description>
+				<maml:para>Filters the alerts by current state. The possible values are Active, Inactive, and Unknown.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMAlertStatus[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMAlertStatus[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Impact</maml:name>
+			<maml:description>
+				<maml:para>Filters the alerts by level of urgency. The possible values are Health, Risk, Efficiency, and Unknown.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMImpact[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMImpact[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Criticality</maml:name>
+			<maml:description>
+				<maml:para>Filters the alerts by level of importance. The possible values are None, Information, Warning, Immediate, Critical, SymptomBased, and Unknown.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMCriticality[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMCriticality[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Resource</maml:name>
+			<maml:description>
+				<maml:para>Filters the alerts by the resource for which the alert was raised.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMResource[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMResource[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Subtype</maml:name>
+			<maml:description>
+				<maml:para>Filters the alerts by the subtype of the alert.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMAlertSubtype[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMAlertSubtype[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>AssignedUser</maml:name>
+			<maml:description>
+				<maml:para>Filters the alerts by the user who owns the alert.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMUser[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMUser[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Type</maml:name>
+			<maml:description>
+				<maml:para>Filters the alerts by the type of the alert.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMAlertType[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMAlertType[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ControlState</maml:name>
+			<maml:description>
+				<maml:para>Filters the alerts by the state of user interaction with the alert. For example, the state can be Open, Assigned, or Suspended.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMAlertControlState[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMAlertControlState[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>AlertDefinition</maml:name>
+			<maml:description>
+				<maml:para>Filters the alerts by definition.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMAlertDefinition[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMAlertDefinition[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="1">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Filters the alerts by name.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMServer[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMServer[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Id</maml:name>
+			<maml:description>
+				<maml:para>Filters the alerts by ID.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Zero or more OMAlert objects</maml:name>
+				<maml:uri />
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors>
+	</command:terminatingErrors>
+	<command:nonTerminatingErrors>
+	</command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>
+--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$resource = Get-OMResource -Name &#39;MyResource&#39;
+Get-OMAlert -Resource $resource -Status Active</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves all active alerts for a given resource.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMAlert -Criticality Critical -Status Active</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves all active alerts of a specified criticality.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 3 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$user = Get-OMUser -Name &#39;MyUser&#39;
+Get-OMAlert -AssignedUser $user</dev:code>
+  			<dev:remarks>
+				<maml:para>Lists all alerts assigned to a specified user.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Get-OMAlert.html</maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-OMAlert</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>Get-OMAlertDefinition</command:name>
+		<maml:description>
+			<maml:para>This cmdlet retrieves alert definitions from the specified vRealize Operations Manager server.</maml:para>
+		</maml:description>
+		<maml:copyright>
+           <maml:para />
+		<!--Add copy right info here.-->
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>OMAlertDefinition</command:noun>
+		<!--Add Dev version info here.-->
+		<dev:version />
+	</command:details>
+	<maml:description>
+	<!--This is the Description section-->
+		<maml:para>This cmdlet retrieves alert definitions from the specified vRealize Operations Manager server. The alert definition is a template that contains a set of symptoms, recommendations, and actions. When at least one symptom is breached, an alert with the same name as the alert definition is generated.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-OMAlertDefinition</maml:name>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Impact</maml:name>
+				<maml:description>
+					<maml:para>Filters the alert definitions by level of urgency. The possible values are Health, Risk, Efficiency, and Unknown.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMImpact[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Criticality</maml:name>
+				<maml:description>
+					<maml:para>Filters the alert definitions by level of importance. The possible values are None, Information, Warning, Immediate, Critical, SymptomBased, and Unknown.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMCriticality[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>ResourceKind</maml:name>
+				<maml:description>
+					<maml:para>Filters the alert definitions by the type of the resource for which the alert was raised.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>AdapterKind</maml:name>
+				<maml:description>
+					<maml:para>Filters the alert definitions by the type of adapter that manages the selected base object type.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Type</maml:name>
+				<maml:description>
+					<maml:para>Filters the alert definitions by the type of the alert.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMAlertType[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>SubType</maml:name>
+				<maml:description>
+					<maml:para>Filters the alert definitions by the subtype of the alert.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMAlertSubtype[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "false" position = "1" >
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Filters the alert definitions by the name of the alert.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Operations Management server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-OMAlertDefinition</maml:name>
+			<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Id</maml:name>
+				<maml:description>
+					<maml:para>Filters the alert definitions by ID.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Operations Management server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Impact</maml:name>
+			<maml:description>
+				<maml:para>Filters the alert definitions by level of urgency. The possible values are Health, Risk, Efficiency, and Unknown.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMImpact[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMImpact[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Criticality</maml:name>
+			<maml:description>
+				<maml:para>Filters the alert definitions by level of importance. The possible values are None, Information, Warning, Immediate, Critical, SymptomBased, and Unknown.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMCriticality[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMCriticality[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ResourceKind</maml:name>
+			<maml:description>
+				<maml:para>Filters the alert definitions by the type of the resource for which the alert was raised.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>AdapterKind</maml:name>
+			<maml:description>
+				<maml:para>Filters the alert definitions by the type of adapter that manages the selected base object type.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Type</maml:name>
+			<maml:description>
+				<maml:para>Filters the alert definitions by the type of the alert.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMAlertType[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMAlertType[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SubType</maml:name>
+			<maml:description>
+				<maml:para>Filters the alert definitions by the subtype of the alert.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMAlertSubtype[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMAlertSubtype[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="1">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Filters the alert definitions by the name of the alert.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Specifies the Operations Management server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMServer[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMServer[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Id</maml:name>
+			<maml:description>
+				<maml:para>Filters the alert definitions by ID.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Zero or more OMAlertDefinition objects</maml:name>
+				<maml:uri />
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors>
+	</command:terminatingErrors>
+	<command:nonTerminatingErrors>
+	</command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>
+--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMAlertDefinition -Criticality Critical</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves all alert definitions of a specified criticality.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMAlertDefinition -Name *storage*</dev:code>
+  			<dev:remarks>
+				<maml:para>Lists all alert definitions that contain the string storage in the name.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 3 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$alertType = Get-OMAlertType -Name &#39;Network Alerts&#39;
+$alertSubType = Get-OMAlertSubType -Id &#39;ID&#39;
+Get-OMAlertDefinition -Type $alertType -SubType $alertSubType</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves all alert definitions by defined type and subtype.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 4 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMAlertDefinition -AdapterKind VMWARE -ResourceKind VirtualMachine</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves all alert definitions for vCenter Server VirtualMachine objects.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Get-OMAlertDefinition.html</maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>Get-OMAlertSubType</command:name>
+		<maml:description>
+			<maml:para>This cmdlet retrieves alert subtypes from the specified vRealize Operations Manager server.</maml:para>
+		</maml:description>
+		<maml:copyright>
+           <maml:para />
+		<!--Add copy right info here.-->
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>OMAlertSubType</command:noun>
+		<!--Add Dev version info here.-->
+		<dev:version />
+	</command:details>
+	<maml:description>
+	<!--This is the Description section-->
+		<maml:para>This cmdlet retrieves alert subtypes from the specified vRealize Operations Manager server. The alert subtype helps you categorize the alerts by areas specific to vRealize Operations Manager, so that you can assign certain types of alerts to specific system administrators.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-OMAlertSubType</maml:name>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "false" position = "1" >
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Filters the alert subtypes by name.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>AlertType</maml:name>
+				<maml:description>
+					<maml:para>Filters the alert subtypes by the type of the alert.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMAlertType[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-OMAlertSubType</maml:name>
+			<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Id</maml:name>
+				<maml:description>
+					<maml:para>Filters the alert subtypes by ID.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="1">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Filters the alert subtypes by name.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>AlertType</maml:name>
+			<maml:description>
+				<maml:para>Filters the alert subtypes by the type of the alert.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMAlertType[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMAlertType[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMServer[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMServer[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Id</maml:name>
+			<maml:description>
+				<maml:para>Filters the alert subtypes by ID.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Zero or more OMAlertSubType objects</maml:name>
+				<maml:uri />
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors>
+	</command:terminatingErrors>
+	<command:nonTerminatingErrors>
+	</command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>
+--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMAlertSubType</dev:code>
+  			<dev:remarks>
+				<maml:para>Lists all available alert subtypes.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMAlertSubType -Name &#39;Performance&#39;</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves all alert subtypes named &#39;Performance&#39;.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 3 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$alertType = Get-OMAlertType -Name &#39;Network Alerts&#39;
+Get-OMAlertSubType -AlertType $alertType</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves all applicable alert subtypes for an alert type.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Get-OMAlertSubType.html</maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>Get-OMAlertType</command:name>
+		<maml:description>
+			<maml:para>This cmdlet retrieves alert types from the specified vRealize Operations Manager server.</maml:para>
+		</maml:description>
+		<maml:copyright>
+           <maml:para />
+		<!--Add copy right info here.-->
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>OMAlertType</command:noun>
+		<!--Add Dev version info here.-->
+		<dev:version />
+	</command:details>
+	<maml:description>
+	<!--This is the Description section-->
+		<maml:para>This cmdlet retrieves alert types from the specified vRealize Operations Manager server. The alert type helps you categorize the alerts by general areas, such as network or storage, so that you can assign certain types of alerts to specific system administrators.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-OMAlertType</maml:name>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "false" position = "1" >
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Filters the alert types by name.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-OMAlertType</maml:name>
+			<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Id</maml:name>
+				<maml:description>
+					<maml:para>Filters the alert types by ID.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="1">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Filters the alert types by name.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMServer[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMServer[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Id</maml:name>
+			<maml:description>
+				<maml:para>Filters the alert types by ID.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Zero or more OMAlertSubType objects</maml:name>
+				<maml:uri />
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors>
+	</command:terminatingErrors>
+	<command:nonTerminatingErrors>
+	</command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>
+--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMAlertType</dev:code>
+  			<dev:remarks>
+				<maml:para>Lists all available alert types.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMAlertType -Name &#39;Network Alerts&#39;</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves all alert types named &#39;Network Alerts&#39;.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Get-OMAlertType.html</maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>Get-OMRecommendation</command:name>
+		<maml:description>
+			<maml:para>This cmdlet retrieves recommendations from the specified vRealize Operations Manager server.</maml:para>
+		</maml:description>
+		<maml:copyright>
+           <maml:para />
+		<!--Add copy right info here.-->
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>OMRecommendation</command:noun>
+		<!--Add Dev version info here.-->
+		<dev:version />
+	</command:details>
+	<maml:description>
+	<!--This is the Description section-->
+		<maml:para>This cmdlet retrieves recommendations from the specified vRealize Operations Manager server.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-OMRecommendation</maml:name>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Id</maml:name>
+				<maml:description>
+					<maml:para>Filters the recommendations by ID.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-OMRecommendation</maml:name>
+			<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "named" >
+				<maml:name>Alert</maml:name>
+				<maml:description>
+					<maml:para>Filters the recommendations by alert.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMAlert[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-OMRecommendation</maml:name>
+			<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "named" >
+				<maml:name>AlertDefinition</maml:name>
+				<maml:description>
+					<maml:para>Filters the recommendations by alert definition.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMAlertDefinition[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Id</maml:name>
+			<maml:description>
+				<maml:para>Filters the recommendations by ID.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMServer[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMServer[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Alert</maml:name>
+			<maml:description>
+				<maml:para>Filters the recommendations by alert.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMAlert[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMAlert[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>AlertDefinition</maml:name>
+			<maml:description>
+				<maml:para>Filters the recommendations by alert definition.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMAlertDefinition[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMAlertDefinition[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Zero or more OMRecommendation objects</maml:name>
+				<maml:uri />
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors>
+	</command:terminatingErrors>
+	<command:nonTerminatingErrors>
+	</command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>
+--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMRecommendation</dev:code>
+  			<dev:remarks>
+				<maml:para>Lists all available recommendations.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$alert = Get-OMAlert -Id &lt;ID&gt;
+Get-OMRecommendation -Alert $alert</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves all recommendations for a given alert.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Get-OMRecommendation.html</maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>Get-OMResource</command:name>
+		<maml:description>
+			<maml:para>This cmdlet retrieves vRealize Operations Manager resource objects.</maml:para>
+		</maml:description>
+		<maml:copyright>
+           <maml:para />
+		<!--Add copy right info here.-->
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>OMResource</command:noun>
+		<!--Add Dev version info here.-->
+		<dev:version />
+	</command:details>
+	<maml:description>
+	<!--This is the Description section-->
+		<maml:para>This cmdlet retrieves vRealize Operations Manager resource objects.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-OMResource</maml:name>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "false" position = "1" >
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Filters the resource objects by name.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "false" position = "named" >
+				<maml:name>ResourceKind</maml:name>
+				<maml:description>
+					<maml:para>Filters the resource objects by the type of the resource. If ResourceKind is not specified, resource objects of all types are retrieved.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "false" position = "named" >
+				<maml:name>AdapterKind</maml:name>
+				<maml:description>
+					<maml:para>Filters the resource objects by the type of adapter that manages them. If AdapterKind is not specified, resource objects from all adapter types are retrieved.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Orphaned</maml:name>
+				<maml:description>
+					<maml:para>If specified, retrieves only resources whose State property is empty.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-OMResource</maml:name>
+			<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Id</maml:name>
+				<maml:description>
+					<maml:para>Filters the resource objects by ID.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-OMResource</maml:name>
+			<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "1" >
+				<maml:name>Entity</maml:name>
+				<maml:description>
+					<maml:para>Specifies the solution object whose respective vRealize Operations Manager resource counterpart to retrieve. The supported object types from the vCenter Server solution are Cluster Compute Resource, Datacenter, Datastore, Datastore Cluster, Folder, Host System, Resource Pool, vCenter Server, Virtual Machine, vSphere Distributed Port Group, and vSphere Distributed Switch.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >VIObjectCore[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="1">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Filters the resource objects by name.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="named">
+			<maml:name>ResourceKind</maml:name>
+			<maml:description>
+				<maml:para>Filters the resource objects by the type of the resource. If ResourceKind is not specified, resource objects of all types are retrieved.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="named">
+			<maml:name>AdapterKind</maml:name>
+			<maml:description>
+				<maml:para>Filters the resource objects by the type of adapter that manages them. If AdapterKind is not specified, resource objects from all adapter types are retrieved.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Orphaned</maml:name>
+			<maml:description>
+				<maml:para>If specified, retrieves only resources whose State property is empty.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMServer[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMServer[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Id</maml:name>
+			<maml:description>
+				<maml:para>Filters the resource objects by ID.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<maml:name>Entity</maml:name>
+			<maml:description>
+				<maml:para>Specifies the solution object whose respective vRealize Operations Manager resource counterpart to retrieve. The supported object types from the vCenter Server solution are Cluster Compute Resource, Datacenter, Datastore, Datastore Cluster, Folder, Host System, Resource Pool, vCenter Server, Virtual Machine, vSphere Distributed Port Group, and vSphere Distributed Switch.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">VIObjectCore[]</command:parameterValue>
+			<dev:type>
+				<maml:name>VIObjectCore[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Zero or more OMResource objects</maml:name>
+				<maml:uri />
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors>
+	</command:terminatingErrors>
+	<command:nonTerminatingErrors>
+	</command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>
+--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$vCenterCluster = Get-Cluster &#39;MyCluster&#39;
+$clusterResource = Get-OMResource -Entity $vCenterCluster</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves the vRealize Operations Manager resource object that is counterpart of the  vCenter Server cluster object.
+
+Note: The vCenter Server instance that manages the &quot;MyCluster&quot; cluster must be added as a solution instance to the connected vRealize Operations Manager server.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMResource -Name &#39;MyResource&#39;</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves resource objects by name.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 3 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMResource -AdapterKind VMWARE -ResourceKind HostSystem</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieve all vRealize Operations Manager resource objects that represent vCenter Server instances.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Get-OMResource.html</maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>Get-OMStat</command:name>
+		<maml:description>
+			<maml:para>This cmdlet retrieves statistical data from the specified vRealize Operations Manager server.</maml:para>
+		</maml:description>
+		<maml:copyright>
+           <maml:para />
+		<!--Add copy right info here.-->
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>OMStat</command:noun>
+		<!--Add Dev version info here.-->
+		<dev:version />
+	</command:details>
+	<maml:description>
+	<!--This is the Description section-->
+		<maml:para>This cmdlet retrieves statistical data from the specified vRealize Operations Manager server.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-OMStat</maml:name>
+			<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "1" >
+				<maml:name>Resource</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager resource you want to retrieve statistical data for.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMResource[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "false" position = "named" >
+				<maml:name>Key</maml:name>
+				<maml:description>
+					<maml:para>Specifies the keys of the statistic counters you want data for. If a specified key is not applicable to the specified vRealize Operations Manager resource, that key is skipped.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMStatKey[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>From</maml:name>
+				<maml:description>
+					<maml:para>Specifies the start of the time interval to retrieve statistical data for.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >DateTime</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>To</maml:name>
+				<maml:description>
+					<maml:para>Specifies the end of the time interval to retrieve statistical data for.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >DateTime</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>IntervalType</maml:name>
+				<maml:description>
+					<maml:para>Specifies the aggregation interval length.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >OMStatIntervalType</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>IntervalCount</maml:name>
+				<maml:description>
+					<maml:para>Specifies the multiplier for the aggregation interval length. For example, if IntervalType is WEEKS and IntervalCount is 2, the aggregation interval length is two weeks.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>RollupType</maml:name>
+				<maml:description>
+					<maml:para>Specifies the type of aggregation when specifying aggregation interval.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >OMStatRollupType</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<maml:name>Resource</maml:name>
+			<maml:description>
+				<maml:para>Specifies the vRealize Operations Manager resource you want to retrieve statistical data for.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMResource[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMResource[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="named">
+			<maml:name>Key</maml:name>
+			<maml:description>
+				<maml:para>Specifies the keys of the statistic counters you want data for. If a specified key is not applicable to the specified vRealize Operations Manager resource, that key is skipped.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMStatKey[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMStatKey[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>From</maml:name>
+			<maml:description>
+				<maml:para>Specifies the start of the time interval to retrieve statistical data for.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			<dev:type>
+				<maml:name>DateTime</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>To</maml:name>
+			<maml:description>
+				<maml:para>Specifies the end of the time interval to retrieve statistical data for.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			<dev:type>
+				<maml:name>DateTime</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>IntervalType</maml:name>
+			<maml:description>
+				<maml:para>Specifies the aggregation interval length.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">OMStatIntervalType</command:parameterValue>
+			<dev:type>
+				<maml:name>OMStatIntervalType</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>IntervalCount</maml:name>
+			<maml:description>
+				<maml:para>Specifies the multiplier for the aggregation interval length. For example, if IntervalType is WEEKS and IntervalCount is 2, the aggregation interval length is two weeks.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>RollupType</maml:name>
+			<maml:description>
+				<maml:para>Specifies the type of aggregation when specifying aggregation interval.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">OMStatRollupType</command:parameterValue>
+			<dev:type>
+				<maml:name>OMStatRollupType</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMServer[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMServer[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Zero or more OMStatSample  objects</maml:name>
+				<maml:uri />
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors>
+	</command:terminatingErrors>
+	<command:nonTerminatingErrors>
+	</command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>
+--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMStat -Resource &#39;HostIPorDNS&#39; -Key &#39;cpu|usage_average&#39;</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves all available raw CPU usage data for a specified host.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$startDate = Get-Date &quot;MM/DD/YYYY&quot;
+$endDate = Get-Date &quot;MM/DD/YYYY&quot;
+Get-OMStat -Resource &#39;MyResource&#39; -Key &#39;badge|health&#39; -IntervalType &#39;Months&#39;  -IntervalCount &#39;2&#39;  -RollupType &#39;Avg&#39; -From $startDate -To $endDate</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves a collection of statistical samples for a given resource, metric, aggregation, and interval.
+
+Note: Make sure the specified IntervalType and IntervalCount fit in the chosen time interval between $startDate and $endDate.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 3 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMStat -Resource &#39;MyVmResource&#39; -Key &#39;mem|usage_average&#39; -From ([DateTime]::Now).AddMonths(-3)</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves all available memory usage data for the last three months.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Get-OMStat.html</maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>Get-OMStatKey</command:name>
+		<maml:description>
+			<maml:para>This cmdlet retrieves vRealize Operations Manager statistic keys.</maml:para>
+		</maml:description>
+		<maml:copyright>
+           <maml:para />
+		<!--Add copy right info here.-->
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>OMStatKey</command:noun>
+		<!--Add Dev version info here.-->
+		<dev:version />
+	</command:details>
+	<maml:description>
+	<!--This is the Description section-->
+		<maml:para>This cmdlet retrieves vRealize Operations Manager statistic keys for a specified adapter and a specified resource. A statistic key, or a metric key, is an identifier of a vRealize Operations Manager metric which can be used to refer to this metric when necessary. For example, you can refer to a metric when retrieving data for it.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-OMStatKey</maml:name>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "false" position = "1" >
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Filters the statistic keys by name.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "false" position = "named" >
+				<maml:name>ResourceKind</maml:name>
+				<maml:description>
+					<maml:para>Specifies the adapter kind for which to retrieve the valid statistic counter keys.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "false" position = "named" >
+				<maml:name>AdapterKind</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations resource kind for which to retrieve the valid statistic counter keys.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-OMStatKey</maml:name>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "false" position = "1" >
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Filters the statistic keys by name.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "true" variableLength = "true" globbing = "true" pipelineInput = "true (ByValue)" position = "named" >
+				<maml:name>Resource</maml:name>
+				<maml:description>
+					<maml:para>Specifies the resource object for which to return the valid instance metric keys.
+
+Note: The returned keys that identify metric data for a specific instance object, like a CPU or network adapter, do not contain a description or ExtensionData info.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMResource[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="1">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Filters the statistic keys by name.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="named">
+			<maml:name>ResourceKind</maml:name>
+			<maml:description>
+				<maml:para>Specifies the adapter kind for which to retrieve the valid statistic counter keys.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="named">
+			<maml:name>AdapterKind</maml:name>
+			<maml:description>
+				<maml:para>Specifies the vRealize Operations resource kind for which to retrieve the valid statistic counter keys.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMServer[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMServer[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="true" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Resource</maml:name>
+			<maml:description>
+				<maml:para>Specifies the resource object for which to return the valid instance metric keys.
+
+Note: The returned keys that identify metric data for a specific instance object, like a CPU or network adapter, do not contain a description or ExtensionData info.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMResource[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMResource[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Zero or more OMStatKey objects</maml:name>
+				<maml:uri />
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors>
+	</command:terminatingErrors>
+	<command:nonTerminatingErrors>
+	</command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>
+--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMStatKey -Name &#39;diskspace|total|*&#39;</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves statistic keys whose name begins with &#39;diskspace|total|&#39;.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMStatKey -AdapterKind &#39;VMware&#39;</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves statistic keys for the &#39;VMware&#39; adapter kind.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 3 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMStatKey -ResourceKind &#39;Folder&#39;</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves statistic keys for the &#39;Folder&#39; resource kind.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 4 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMResource &#39;MyDatastore&#39; | Get-OMStatKey</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves statistic keys for the &#39;MyDatastore&#39; resource.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Get-OMStatKey.html</maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>Get-OMUser</command:name>
+		<maml:description>
+			<maml:para>This cmdlet retrieves local user accounts from the specified vRealize Operations Manager server.</maml:para>
+		</maml:description>
+		<maml:copyright>
+           <maml:para />
+		<!--Add copy right info here.-->
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>OMUser</command:noun>
+		<!--Add Dev version info here.-->
+		<dev:version />
+	</command:details>
+	<maml:description>
+	<!--This is the Description section-->
+		<maml:para>This cmdlet retrieves local user accounts from the specified vRealize Operations Manager server.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-OMUser</maml:name>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Enabled</maml:name>
+				<maml:description>
+					<maml:para>Filters the local user accounts that are enabled to use vRealize Operations Manager features.</maml:para>
+				</maml:description>
+			<command:parameterValue required="false" variableLength = "false" >Boolean</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "true" pipelineInput = "false" position = "1" >
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Filters the local user accounts by name.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Email</maml:name>
+				<maml:description>
+					<maml:para>Filters the local user accounts by email address.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-OMUser</maml:name>
+			<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Id</maml:name>
+				<maml:description>
+					<maml:para>Filters the local user accounts by ID.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Enabled</maml:name>
+			<maml:description>
+				<maml:para>Filters the local user accounts that are enabled to use vRealize Operations Manager features.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+			<dev:type>
+				<maml:name>Boolean</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="1">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Filters the local user accounts by name.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Email</maml:name>
+			<maml:description>
+				<maml:para>Filters the local user accounts by email address.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMServer[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMServer[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Id</maml:name>
+			<maml:description>
+				<maml:para>Filters the local user accounts by ID.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Zero or more OMUser objects</maml:name>
+				<maml:uri />
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors>
+	</command:terminatingErrors>
+	<command:nonTerminatingErrors>
+	</command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>
+--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMUser -Email &#39;user_email&#39;</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves a specific user by the user`s email address.
+
+Note: The &quot;admin&quot; user is not returned.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Get-OMUser -Name &#39;administrator*&#39;</dev:code>
+  			<dev:remarks>
+				<maml:para>Retrieves all users with names starting with the administrator string.
+
+Note: The &quot;admin&quot; user is not returned.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Get-OMUser.html</maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>Set-OMAlert</command:name>
+		<maml:description>
+			<maml:para>This cmdlet configures vRealize Operations Manager alerts.</maml:para>
+		</maml:description>
+		<maml:copyright>
+           <maml:para />
+		<!--Add copy right info here.-->
+		</maml:copyright>
+		<command:verb>Set</command:verb>
+		<command:noun>OMAlert</command:noun>
+		<!--Add Dev version info here.-->
+		<dev:version />
+	</command:details>
+	<maml:description>
+	<!--This is the Description section-->
+		<maml:para>This cmdlet configures vRealize Operations Manager alerts.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Set-OMAlert</maml:name>
+			<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>TakeOwnership</maml:name>
+				<maml:description>
+					<maml:para>Assigns the alert ownership to the currently connected user.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "true" variableLength = "true" globbing = "true" pipelineInput = "true (ByValue)" position = "1" >
+				<maml:name>Alert</maml:name>
+				<maml:description>
+					<maml:para>Specifies the alert you want to configure.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMAlert[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+				</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Set-OMAlert</maml:name>
+			<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>ReleaseOwnership</maml:name>
+				<maml:description>
+					<maml:para>Removes alert ownership from the assigned user.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "true" variableLength = "true" globbing = "true" pipelineInput = "true (ByValue)" position = "1" >
+				<maml:name>Alert</maml:name>
+				<maml:description>
+					<maml:para>Specifies the alert you want to configure.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMAlert[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+				</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Set-OMAlert</maml:name>
+			<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>SuspendMinutes</maml:name>
+				<maml:description>
+					<maml:para>Specifies the number of minutes for which the alert is suspended.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "true" variableLength = "true" globbing = "true" pipelineInput = "true (ByValue)" position = "1" >
+				<maml:name>Alert</maml:name>
+				<maml:description>
+					<maml:para>Specifies the alert you want to configure.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMAlert[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+				</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Set-OMAlert</maml:name>
+			<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Cancel</maml:name>
+				<maml:description>
+					<maml:para>Cancels the alert and changes the alert status from active to inactive.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "true" variableLength = "true" globbing = "true" pipelineInput = "true (ByValue)" position = "1" >
+				<maml:name>Alert</maml:name>
+				<maml:description>
+					<maml:para>Specifies the alert you want to configure.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMAlert[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "true" >OMServer[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+				</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>TakeOwnership</maml:name>
+			<maml:description>
+				<maml:para>Assigns the alert ownership to the currently connected user.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="true" pipelineInput="true (ByValue)" position="1">
+			<maml:name>Alert</maml:name>
+			<maml:description>
+				<maml:para>Specifies the alert you want to configure.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMAlert[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMAlert[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Specifies the vRealize Operations Manager server from which you want to retrieve alerts. The value can be the connection object returned by the Connect-OMServer cmdlet or the object&#39;s name, which can be the IP or DNS address of the server machine.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">OMServer[]</command:parameterValue>
+			<dev:type>
+				<maml:name>OMServer[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ReleaseOwnership</maml:name>
+			<maml:description>
+				<maml:para>Removes alert ownership from the assigned user.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SuspendMinutes</maml:name>
+			<maml:description>
+				<maml:para>Specifies the number of minutes for which the alert is suspended.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Cancel</maml:name>
+			<maml:description>
+				<maml:para>Cancels the alert and changes the alert status from active to inactive.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>The modified OMAlert objects</maml:name>
+				<maml:uri />
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors>
+	</command:terminatingErrors>
+	<command:nonTerminatingErrors>
+	</command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>
+--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$alert = Get-OMAlert -Id &#39;ID&#39;
+Set-OMAlert -Alert $alert -Cancel</dev:code>
+  			<dev:remarks>
+				<maml:para>Cancels the $alert alert.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Set-OMAlert -Alert &#39;alert_name&#39; -Server &#39;server_name&#39; -TakeOwnership</dev:code>
+  			<dev:remarks>
+				<maml:para>Takes ownership for all alerts, filtered by alert name and server.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 3 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>$alert = Get-OMAlert -Id &#39;ID&#39;
+Set-OMAlert -Alert $alert -SuspendMinutes 1</dev:code>
+  			<dev:remarks>
+				<maml:para>Suspends the $alert alert for one minute.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Set-OMAlert.html</maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Get-OMAlert</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+</helpItems>
+
+

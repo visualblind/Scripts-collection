@@ -1,0 +1,10 @@
+$RemoteCredentials = Get-Credential
+$LocalCredentials = Get-Credential
+
+Prepare-MoveRequest.ps1 -Identity exc1@a.int -RemoteForestDomainController dc-a.a.int -RemoteForestCredential $RemoteCredentials -LocalForestDomainController dc-b.b.int -LocalForestCredential $LocalCredentials -TargetMailUserOU "OU=ExchangeUsers,OU=Users,OU=California,OU=Org1,DC=B,DC=int" -Verbose -UseLocalObject -OverWriteLocalObject
+
+#Batch create mail-enabled users in target forest:
+
+Import-Csv email_addresses.csv | .\Prepare-MoveRequest.ps1 -RemoteForestDomainController dc-a.a.int -RemoteForestCredential $RemoteCredentials -LocalForestDomainController dc-b.b.int -LocalForestCredential $LocalCredentials -TargetMailUserOU "OU=MEU,OU=Org1,DC=B,DC=int" -Verbose -UseLocalObject -OverWriteLocalObject
+
+Import-Csv email_addresses.csv | .\Prepare-MoveRequest.ps1 -RemoteForestDomainController av01dc1.payrollsolutions.int -RemoteForestCredential $RemoteCredentials -LocalForestDomainController server1.domain.int -LocalForestCredential $LocalCredentials -TargetMailUserOU "OU=MEU,OU=Org1,DC=Org1,DC=int" -Verbose -UseLocalObject -OverWriteLocalObject

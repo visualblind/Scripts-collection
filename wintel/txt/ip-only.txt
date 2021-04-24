@@ -1,0 +1,5 @@
+REM Output only network adapter name and IP addresses
+ipconfig /all | findstr /IR "ipv4 ethernet adapter" | findstr /IRV "description tunnel vpn dial bluetooth [2-9]:$" | findstr /LV "*"
+
+REM Using grep from gnuwin32 output only network adapter name and IP addresses
+ipconfig /all | grep -iE "ipv4|ethernet|adapter" | grep -iEv "description|tunnel|vpn|dial|bluetooth|[2-9]:$" | grep -iFv "connection*"

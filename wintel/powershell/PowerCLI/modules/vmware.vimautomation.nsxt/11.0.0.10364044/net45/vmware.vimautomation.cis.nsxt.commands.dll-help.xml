@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Connect-NsxtServer</command:name>
+      <command:verb>Connect</command:verb>
+      <command:noun>NsxtServer</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet establishes a connection to an NSX-T server.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet establishes a connection to an NSX-T server. </maml:para>
+      <maml:para>The connect and disconnect operations for a server are using a reference counting mechanism. </maml:para>
+      <maml:para>Every server is identified by its connection string which contains server and user name. If there is already an existing connection to the server for a specific user name, a new connection is not established. Instead, the cmdlet returns the object which represents the existing connection. The RefCount property of the object is incremented by one. Note that the returned object is the same as the one previously returned. Therefore, the RefCount of the previously returned object will be updated as well. When a server is disconnected, then its RefCount property is decreased by one. If this number becomes equal to zero, then the server is disconnected.</maml:para>
+      <maml:para>PowerCLI supports a list of default servers. When an operation is performed, if the target servers cannot be determined from the specified parameters, the cmdlet runs against the servers in the default server list. They are kept in the $defaultNsxtServers variable. The default servers list is managed in the same manner as the other default server lists for the vCenter Server and vCloud servers.</maml:para>
+      <maml:para>If a password or user name is not specified, the local credential store is searched for relevant records. If saved credentials are found, they are used. If saved credentials are not found, you might be prompted to enter them.</maml:para>
+      <maml:para>If the Menu parameter is specified, a list of the latest connected NSX-T servers appears. </maml:para>
+      <maml:para>Note: If PowerShell runs in non-interactive mode, you are not prompted for credential. If the server certificate needs approval and it is not permanently accepted, it is automatically rejected and the cmdlet stops running.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Connect-NsxtServer</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>Server</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the DNS name or the IP address of the NSX-T servers you want to connect to.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Credential</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the PSCredential object that contains credentials for authenticating with the NSX-T server. For more information about the server authentication logic of PowerCLI, run "help about_server_authentication".</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+          <dev:type>
+            <maml:name>PSCredential</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>NotDefault</maml:name>
+          <maml:Description>
+            <maml:para>Specifies that you do not want to save the specified servers as default servers.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Password</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the password you want to use for authenticating with the NSX-T server. If the Credential parameter is also specified, this parameter is ignored. For more information about the server authentication logic of PowerCLI, run "help about_server_authentication". </maml:para>
+            <maml:para>Note: If the password contains special characters, enclose the entire string in single quotes (').</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+          <dev:type>
+            <maml:name>SecureString</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Port</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the port you want to use when connecting to the NSX-T server API URL.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>SaveCredentials</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that you want to save the specified credentials in the local credential store. When you save credentials for a specific server, you do not need to specify them each time you reconnect.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Username">
+          <maml:name>User</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the user name you want to use for authenticating with the NSX-T server. If the Credential parameter is also specified, this parameter is ignored. For more information about the server authentication logic of PowerCLI, run "help about_server_authentication". </maml:para>
+            <maml:para>Note: If the user name contains special characters, enclose the entire string in single quotes(').</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Connect-NsxtServer</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Menu</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that you want to select a connection server from a list of recently connected servers. If Menu is set to $true, the cmdlet retrieves a list of the last visited servers and enters a nested command prompt, so that you can select a server from the list.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Credential</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the PSCredential object that contains credentials for authenticating with the NSX-T server. For more information about the server authentication logic of PowerCLI, run "help about_server_authentication".</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        <dev:type>
+          <maml:name>PSCredential</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Menu</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that you want to select a connection server from a list of recently connected servers. If Menu is set to $true, the cmdlet retrieves a list of the last visited servers and enters a nested command prompt, so that you can select a server from the list.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>NotDefault</maml:name>
+        <maml:Description>
+          <maml:para>Specifies that you do not want to save the specified servers as default servers.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Password</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the password you want to use for authenticating with the NSX-T server. If the Credential parameter is also specified, this parameter is ignored. For more information about the server authentication logic of PowerCLI, run "help about_server_authentication". </maml:para>
+          <maml:para>Note: If the password contains special characters, enclose the entire string in single quotes (').</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+        <dev:type>
+          <maml:name>SecureString</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Port</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the port you want to use when connecting to the NSX-T server API URL.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>SaveCredentials</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that you want to save the specified credentials in the local credential store. When you save credentials for a specific server, you do not need to specify them each time you reconnect.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>Server</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the DNS name or the IP address of the NSX-T servers you want to connect to.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Username">
+        <maml:name>User</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the user name you want to use for authenticating with the NSX-T server. If the Credential parameter is also specified, this parameter is ignored. For more information about the server authentication logic of PowerCLI, run "help about_server_authentication". </maml:para>
+          <maml:para>Note: If the user name contains special characters, enclose the entire string in single quotes(').</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>VMware.VimAutomation.Cis.Nsxt.Types.V1.NsxtServer</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Connect-NsxtServer -Server $serverAddress -User $user -Password $pass</dev:code>
+        <dev:remarks>
+          <maml:para>Connects to an NSX-T server by using the User and Password parameters.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>$credential = Get-Credential
+Connect-NsxtServer -Server $serverAddress -Credential $credential</dev:code>
+        <dev:remarks>
+          <maml:para>Connects to an NSX-T server by using the Credential parameter.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>Connect-NsxtServer -Server $serverAddress -Credential -User $user -Password $pass -SaveCredentials</dev:code>
+        <dev:remarks>
+          <maml:para>Connects to an NSX-T server and stores the credentials in the credential store.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
+        <dev:code>Connect-NsxtServer -Server $serverAddress -User $user</dev:code>
+        <dev:remarks>
+          <maml:para>Connects to an NSX-T server when a record for the specified server and user is available in the credential store.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Connect-NsxtServer.html</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Disconnect-NsxtServer</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Disconnect-NsxtServer</command:name>
+      <command:verb>Disconnect</command:verb>
+      <command:noun>NsxtServer</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet closes the connection to one or more NSX-T servers.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet closes the connection to one or more NSX-T servers.</maml:para>
+      <maml:para>When no servers are specified, and if there is only one connected server in the $defaultNsxtServers variable, this server is disconnected. If there is no connected server, the cmdlet throws a non-terminating error.</maml:para>
+      <maml:para>This functionality is using the reference counting mechanism. For more information about the mechanism, see Connect-NsxtServer.</maml:para>
+      <maml:para>When there are no more active connections to the server, it gets disconnected and then it is removed from the $defaultNsxtServers variable (if it is present). For more information about this variable, see Connect-NsxtServer.</maml:para>
+      <maml:para>If the Force parameter is specified, the server is disconnected even if there is more than one connection to it. The RefCount property of the object is incremented by one.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Disconnect-NsxtServer</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="True (ByValue)" position="1" aliases="none">
+          <maml:name>Server</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the NSX-T servers you want to disconnect from.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">CisServer[]</command:parameterValue>
+          <dev:type>
+            <maml:name>CisServer[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:Description>
+            <maml:para>Specifies that you want to remove all existing connections to the specified NSX-T servers.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:Description>
+            <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:Description>
+          <maml:para>Specifies that you want to remove all existing connections to the specified NSX-T servers.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="True (ByValue)" position="1" aliases="none">
+        <maml:name>Server</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the NSX-T servers you want to disconnect from.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">CisServer[]</command:parameterValue>
+        <dev:type>
+          <maml:name>CisServer[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:Description>
+          <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>$server = Connect-NsxtServer -Server 'server_name' -User 'user@domain' -Password 'user_password'
+Disconnect-NsxtServer $server -Confirm:$false</dev:code>
+        <dev:remarks>
+          <maml:para>Disconnects the specified NSX-T server without asking for confirmation.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>Connect-NsxtServer -Server 'server_name' -User 'user@domain' -Password 'user_password'
+Connect-NsxtServer -Server 'server2_name' -User 'user@domain' -Password 'user_password'
+Disconnect-NsxtServer * -Confirm:$false</dev:code>
+        <dev:remarks>
+          <maml:para>Disconnects all connected NSX-T servers without asking for confirmation.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Disconnect-NsxtServer.html</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Connect-NsxtServer</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-NsxtService</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>NsxtService</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet retrieves PSObject objects that represent a proxy to an NSX-T API service.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet retrieves PSObject objects that represent a proxy to a NSX-T API service and can be used to invoke the operations of the NSX-T API service. The cmdlet returns one PSObject object for every service available on NSX-T server.</maml:para>
+      <maml:para>Every service proxy has a top-level Help property that contains documentation about the service's methods, parameters, constants, and so on. The Help object is hierarchical and mirrors the service's methods, parameters, constants, and so on. The Help object can also be used for creation of parameters that the service methods accept through a method named "Create". </maml:para>
+      <maml:para>The "Create" method is available for the following objects: </maml:para>
+      <maml:para>- A parameter.</maml:para>
+      <maml:para>- Inheritors of a parameter that accepts instances of types that derive the declared parameter type. </maml:para>
+      <maml:para>- Elements of a parameter that is of type List, Set or Optional.</maml:para>
+      <maml:para></maml:para>
+      <maml:para>- Key and Value of a parameter of type Map.</maml:para>
+      <maml:para>- Fields of a parameter of type Structure. </maml:para>
+      <maml:para>For more information, see Example 2.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-NsxtService</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="1" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the service type ID.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Server</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the NSX-T servers on which you want to run the cmdlet. If no value is given to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-NsxtServer.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">CisServer[]</command:parameterValue>
+          <dev:type>
+            <maml:name>CisServer[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="1" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the service type ID.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Server</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the NSX-T servers on which you want to run the cmdlet. If no value is given to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-NsxtServer.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">CisServer[]</command:parameterValue>
+        <dev:type>
+          <maml:name>CisServer[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>One or more PSObject objects</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>$userService = Get-NsxtService -Name "com.vmware.nsx.aaa.user_info"
+$userService.get()</dev:code>
+        <dev:remarks>
+          <maml:para>Retrieves the binding for the specified service and invokes a service operation.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code># Retrieve Logical Routers Service 
+$logicalRoutersService = Get-NsxtService -Name 'com.vmware.nsx.logical_routers' 
+
+# Create input argument for creation of a logical router 
+$logicalRouterCreateSpec = $logicalRoutersService.Help.create.logical_router.Create() 
+
+# Fill in the create spec properties 
+$logicalRouterCreateSpec.display_name = "MyLogicalRouter" 
+$logicalRouterCreateSpec.router_type = "TIER1" 
+
+# Create Logical Router Entity 
+$logicalRouter = $logicalRoutersService.create($logicalRouterCreateSpec) 
+
+# Retrieve logical router ports service 
+$logicalRouterPortsService = Get-NsxtService -Name 'com.vmware.nsx.logical_router_ports' 
+
+# Create Input argument for logical router downlink port creation 
+$logicalRouterPortCreateSpec = $logicalRouterPortsService.Help.create.logical_router_port.logical_router_down_link_port.Create() 
+
+# Fill in the properties of the logical router port create spec 
+$logicalRouterPortCreateSpec.logical_router_id = $logicalRouter.id 
+$logicalRouterPortCreateSpec.display_name = "MyLogicalRouterDownlinkPort" 
+$logicalRouterPortCreateSpec.subnets = $logicalRouterPortsService.Help.create.logical_router_port.logical_router_down_link_port.subnets.Create() 
+
+# Create subnet element 
+$subnet = $logicalRouterPortsService.Help.create.logical_router_port.logical_router_down_link_port.subnets.Element.Create() 
+
+# Fill in subnet properties 
+$subnet.ip_addresses = @('11.11.11.11') 
+$subnet.prefix_length = 22 
+
+# Add subnet into the subnets collection of the logical router port create spec 
+$logicalRouterPortCreateSpec.subnets.Add($subnet) 
+
+# Create Logical Router Downlink Port Entity 
+$logicalRouterPortsService.create($logicalRouterPortCreateSpec)</dev:code>
+        <dev:remarks>
+          <maml:para>Creates logical router and logical router downlink port entities.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Get-NsxtService.html</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+</helpItems>

@@ -1,0 +1,1 @@
+wget -r -np -nH -w 1 --cut-dirs=1 --reject "index.html*" http://mediarepos.net/Repos/smashrepo/

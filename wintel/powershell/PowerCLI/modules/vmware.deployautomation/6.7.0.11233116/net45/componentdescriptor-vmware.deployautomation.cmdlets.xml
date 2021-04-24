@@ -1,0 +1,26 @@
+<ComponentDescriptor>
+  <Name>VMware.DeployAutomation</Name>
+  <Assembly>VMware.DeployAutomation</Assembly>
+  <ImplementingType>VMware.DeployAutomation.Commands.DeployCmdletsComponentImpl</ImplementingType>
+  <IsSnapin>true</IsSnapin>
+  <ProvidedServiceList>
+  </ProvidedServiceList>
+  <RequiredServiceList>
+    <ServiceDescriptor>
+      <Name>ViCoreService</Name>
+      <Version>1.0</Version>
+    </ServiceDescriptor>
+  </RequiredServiceList>
+  <ExtendedServiceList>
+  </ExtendedServiceList>
+  <Version>
+    <Major>6</Major>
+    <Minor>7</Minor>
+    <Revision>0</Revision>
+    <Build>11233116</Build>
+    <Company>VMware Inc.</Company>
+    <Copyright>Copyright 2010</Copyright>
+    <UserFriendlyVersion>VMWare AutoDeploy PowerCLI Component 6.7 build 11233116</UserFriendlyVersion>
+    <Description>Provides cmdlets for managing VMware AutoDeploy.</Description>
+  </Version>
+</ComponentDescriptor>

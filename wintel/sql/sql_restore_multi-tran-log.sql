@@ -1,0 +1,1 @@
+RESTORE LOG Millennium FROM DISK = 'E:\logship\Millennium_log_November262012230.trn' WITH NORECOVERY, FILE = 2

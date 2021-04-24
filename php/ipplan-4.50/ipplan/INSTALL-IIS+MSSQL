@@ -1,0 +1,72 @@
+Quick install:
+-------------
+
+This file will give hints on getting IPplan working on a system running
+Microsoft IIS and MSSQL databases. This is reported to work just fine,
+but is untested by myself as I do not have access to such platforms. See
+the forums on SourceForge for further information. This message contains
+information on setting up PHP as a CGI application under IIS:
+https://sourceforge.net/forum/message.php?msg_id=2482268
+
+NOTE: You must be running PHP 4.3.3 or later for this to work.
+
+The following changes must be made to your PHP installation as per the PHP
+manual:
+
++1. In your php.ini file, set "cgi.rfc2616_headers = 0"
+
++2. In Web Site Properties -> File/Directory Security -> Anonymous Access dialog box, 
+check the "Anonymous access" checkbox and uncheck any other checkboxes 
+(i.e. uncheck "Basic authentication," "Integrated Windows authentication," 
+and "Digest" if it's enabled.) Click OK.
+
++3. In "Custom Errors", select the range of "401;1" through "401;5" and 
+click the "Set to Default" button.
+
+If you want to view or edit any of the files under Windows, use WordPad,
+not NotePad as NotePad does not understand Unix files.
+
+NOTE: if upgrading, read the UPGRADE file.
+NOTE2: if you get a fatal error about an undefined database function, read
+       the FAQ section in the README
+
+I assume a working installation of IIS and an MSSQL database. The database
+must be configured already and PHP must be installed into IIS and working.
+To get this working is beyond the scope of this installation file.
+
+In your web tree: 
+
+1) create a directory called ipplan
+2) unzip the IPplan distribution into this directory
+3) create the ipplan database using the MSSQL administration tools.
+   this includes the creation of the necessary system DSN to connect 
+   to the database. make a note of the DSN as it will be required later.
+
+4) modify the user and password info in the config.php script.
+   put the DSN in the user field and leave the database field blank.
+   the database driver to use is odbc_mssql.
+   additional settings can be changed in the config.php script at this
+   stage too. See the README for more information.
+
+5) open a web browser and point it to the installation script in the
+   admin directory (http://mywebserver.com/ipplan/admin/install.php)
+
+   you will be prompted to create the database schema. This may fail
+   if the DSN does not have enough rights to create tables so you will need
+   to either copy the statements into the database, or temporarily change
+   the database password in the config.php file to a database user that has
+   enough rights to do this.
+
+   you can manually load the statements by copying the display output
+   from the install.php script into a file (example ipplandbf.sql)
+   and then executing the file as the database administrator.
+
+6)  now point your web browser to the main IPplan web page
+   (http://mywebserver.com/ipplan), select the admin drop down menu and add 
+   customers, groups and users using the admin user defined in the config.php
+   file - you MUST create at least one regular user, one group and one customer
+
+7) send me an e-mail about how you use IPplan!
+
+Hope it works!
+ipplan@gmail.com

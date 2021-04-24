@@ -1,0 +1,119 @@
+DELETE FROM alarm_states where id = 26; 
+INSERT INTO alarm_states (id,  description,  activate_alarm,  sound_in,  sound_out,  state) VALUES (26, 'battery depleted', 3, '', '', 1);
+
+DELETE FROM graph_types where id = 83; 
+INSERT INTO graph_types (id,  description,  type,  graph1,  graph2,  sizex1,  sizey1,  sizex2,  sizey2,  allow_aggregation) VALUES (83, 'Battery Temperature', 40, 'temperature', '', 500, 150, 0, 0, 0);
+
+DELETE FROM graph_types where id = 84; 
+INSERT INTO graph_types (id,  description,  type,  graph1,  graph2,  sizex1,  sizey1,  sizex2,  sizey2,  allow_aggregation) VALUES (84, 'Time Remaining', 40, 'ups_time_remaining', '', 500, 150, 0, 0, 0);
+
+DELETE FROM graph_types where id = 85; 
+INSERT INTO graph_types (id,  description,  type,  graph1,  graph2,  sizex1,  sizey1,  sizex2,  sizey2,  allow_aggregation) VALUES (85, 'UPS Voltage', 41, 'ups_voltage', '', 500, 150, 0, 0, 1);
+
+DELETE FROM graph_types where id = 86; 
+INSERT INTO graph_types (id,  description,  type,  graph1,  graph2,  sizex1,  sizey1,  sizex2,  sizey2,  allow_aggregation) VALUES (86, 'UPS Current', 41, 'ups_current', '', 500, 150, 0, 0, 1);
+
+DELETE FROM graph_types where id = 87; 
+INSERT INTO graph_types (id,  description,  type,  graph1,  graph2,  sizex1,  sizey1,  sizex2,  sizey2,  allow_aggregation) VALUES (87, 'UPS Load', 41, 'ups_load', '', 500, 150, 0, 0, 1);
+
+DELETE FROM graph_types where id = 88; 
+INSERT INTO graph_types (id,  description,  type,  graph1,  graph2,  sizex1,  sizey1,  sizex2,  sizey2,  allow_aggregation) VALUES (88, 'Charge Remaining', 40, 'ups_charge_remaining', '', 500, 150, 0, 0, 0);
+
+DELETE FROM interface_types where id = 40; 
+INSERT INTO interface_types (id,  description,  autodiscovery_validate,  autodiscovery_enabled,  autodiscovery_function,  autodiscovery_parameters,  autodiscovery_default_poller,  have_graph,  rrd_structure_rra,  rrd_structure_res,  rrd_structure_step,  graph_default,  break_by_card,  update_handler,  allow_manual_add,  sla_default,  have_tools) VALUES (40, 'UPS', 1, 1, 'ups', '', 41, 1, 'RRA:AVERAGE:0.5:1:<resolution>', '103680', 300, 84, 0, 'none', 0, 1, 0);
+
+DELETE FROM interface_types where id = 41; 
+INSERT INTO interface_types (id,  description,  autodiscovery_validate,  autodiscovery_enabled,  autodiscovery_function,  autodiscovery_parameters,  autodiscovery_default_poller,  have_graph,  rrd_structure_rra,  rrd_structure_res,  rrd_structure_step,  graph_default,  break_by_card,  update_handler,  allow_manual_add,  sla_default,  have_tools) VALUES (41, 'UPS Lines', 0, 1, 'ups_lines', '', 42, 1, 'RRA:AVERAGE:0.5:1:<resolution>', '103680', 300, 85, 0, 'none', 0, 1, 0);
+
+DELETE FROM interface_types_fields where id = 300; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (300, 'Index', 'index', 10, 40, 3, 0, 0, 0, '1');
+
+DELETE FROM interface_types_fields where id = 301; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (301, 'Identification', 'ident', 20, 40, 7, 1, 0, 1, '');
+
+DELETE FROM interface_types_fields where id = 302; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (302, 'Description', 'description', 30, 40, 7, 2, 1, 0, '');
+
+DELETE FROM interface_types_fields where id = 303; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (303, 'Battery Temperature', 'temperature', 10, 40, 20, 0, 0, 0, 'DS:temperature:GAUGE:600:0:200');
+
+DELETE FROM interface_types_fields where id = 304; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (304, 'Show in Celcius', 'show_celcius', 40, 40, 5, 2, 1, 0, '1');
+
+DELETE FROM interface_types_fields where id = 305; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (305, 'Minutes Remaining', 'minutes_remaining', 20, 40, 20, 0, 0, 0, 'DS:minutes_remaining:GAUGE:600:0:10000');
+
+DELETE FROM interface_types_fields where id = 306; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (306, 'Index', 'index', 10, 41, 3, 0, 0, 0, '');
+
+DELETE FROM interface_types_fields where id = 307; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (307, 'Line Type', 'line_type', 20, 41, 8, 0, 0, 0, '');
+
+DELETE FROM interface_types_fields where id = 308; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (308, 'Line Index', 'line_index', 30, 41, 8, 0, 0, 0, '');
+
+DELETE FROM interface_types_fields where id = 309; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (309, 'Description', 'description', 40, 41, 7, 2, 1, 0, '');
+
+DELETE FROM interface_types_fields where id = 310; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (310, 'Voltage', 'voltage', 10, 41, 20, 0, 0, 0, 'DS:voltage:GAUGE:600:0:500');
+
+DELETE FROM interface_types_fields where id = 311; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (311, 'Current', 'current', 20, 41, 20, 0, 0, 0, 'DS:current:GAUGE:600:0:100');
+
+DELETE FROM interface_types_fields where id = 312; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (312, 'Load', 'load', 30, 41, 20, 0, 0, 0, 'DS:load:GAUGE:600:0:100');
+
+DELETE FROM interface_types_fields where id = 313; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (313, 'Charge Remaining', 'charge_remaining', 30, 40, 20, 0, 0, 0, 'DS:charge_remaining:GAUGE:600:0:100');
+
+DELETE FROM pollers where id = 170; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (170, 'status', 'UPS Battery Status', 'snmp_status', '.1.3.6.1.2.1.33.1.2.1.0,2=battery normal|1=battery unknown|3=battery low|3=battery depleted');
+
+DELETE FROM pollers where id = 171; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (171, 'temperature', 'UPS Battery Temperature', 'snmp_counter', '.1.3.6.1.2.1.33.1.2.7.0');
+
+DELETE FROM pollers where id = 172; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (172, 'minutes_remaining', 'UPS Battery Minutes Remaining', 'snmp_counter', '.1.3.6.1.2.1.33.1.2.3.0');
+
+DELETE FROM pollers where id = 173; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (173, 'charge_remaining', 'UPS Battery Charge Remaining', 'snmp_counter', '.1.3.6.1.2.1.33.1.2.4.0');
+
+DELETE FROM pollers where id = 174; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (174, 'voltage', 'UPS Lines Voltage', 'ups_line', '');
+
+DELETE FROM pollers where id = 175; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (175, 'current', 'UPS Lines Current', 'ups_line', '');
+
+DELETE FROM pollers where id = 176; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (176, 'load', 'UPS Lines Load', 'ups_line', '');
+
+DELETE FROM pollers_groups where id = 41; 
+INSERT INTO pollers_groups (id,  description,  interface_type) VALUES (41, 'UPS', 40);
+
+DELETE FROM pollers_groups where id = 42; 
+INSERT INTO pollers_groups (id,  description,  interface_type) VALUES (42, 'UPS Lines', 41);
+
+
+DELETE FROM pollers_poller_groups where id = 211; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (211, 41, 10, 170, 20);
+
+DELETE FROM pollers_poller_groups where id = 212; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (212, 41, 20, 173, 32);
+
+DELETE FROM pollers_poller_groups where id = 213; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (213, 41, 30, 172, 32);
+
+DELETE FROM pollers_poller_groups where id = 214; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (214, 41, 40, 171, 32);
+
+DELETE FROM pollers_poller_groups where id = 215; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (215, 42, 10, 174, 32);
+
+DELETE FROM pollers_poller_groups where id = 216; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (216, 42, 20, 175, 32);
+
+DELETE FROM pollers_poller_groups where id = 217; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (217, 42, 30, 176, 32);
+
+

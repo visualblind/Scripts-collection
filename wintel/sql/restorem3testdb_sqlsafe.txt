@@ -1,0 +1,1 @@
+"C:\Program Files\Idera\SQLsafe\SQLsafeCmd.exe" RestoreLast -DisconnectUsers -Replace -BackupLocation \\192.168.1.106\m3\backups\SVR07PS_Millennium_Full_{timestamp}.safe -Move {DataFiles} e:\ -Move {LogFiles} f:\ -DatabaseName Millennium -WindowsUsername sentric\taskhandler -EncryptedWindowsPassword "dQa+7WNoXooDz8smNPIWQA=="

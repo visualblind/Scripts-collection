@@ -1,0 +1,72 @@
+A:link, A:visited, A:active{
+	color: #5EB2F0;
+	text-decoration: underline;
+}
+A:hover{
+	color: #000099;
+	text-decoration: underline;
+}
+body{
+	background-color: #F0F0F0;
+}
+body, div, td{
+	font-size: 12px;
+	font-family: Arial, Verdana, Times;
+}
+.box{
+	background-color: #F0F0F0;
+	border: #999999 1px solid;
+}
+.box td{
+	background-color: #F0F0F0;
+}
+.col1{
+	background-color: #FFFFFF;
+}
+.col2{
+	background-color: #F0F0F0;
+}
+.crumbs, .crumbs A, .crumbs A:visited, .crumbs A:active{
+	font-weight: bold;
+	color: #666666;
+	text-decoration: none;
+}
+.crumbs A:hover{
+	color: #CC0000;
+	text-decoration: none;
+}
+.invisible A:link, .invisible A:visited, .invisible A:active, .invisible A:hover{
+	color: #000000;
+	text-decoration: none;
+}
+.mainbody{
+	background-color: #990000;
+}
+.row1 td{
+	background-color: #DDDDDD;
+	font-weight: bold;
+}
+.row2 td{
+	background-color: #FAC174;
+	font-weight: bold;
+	color: #666666;
+}
+.row2 A, .row2 A:visited, .row2 A:active{
+	color: #666666;
+	text-decoration: none;
+}
+.row2 A:hover{
+	color: #CC0000;
+	text-decoration: none;
+}
+.row3{
+	background-color: #FFFFFF;
+}
+.small{
+	font-size: 10px;
+}
+.sub1{
+	font-size: 16px;
+	font-weight: bold;
+	color: #000099;
+}

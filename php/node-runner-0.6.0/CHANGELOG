@@ -1,0 +1,624 @@
+----------------------------------------------------
+ Node Runner (0.6.0) CHANGELOG - Changes since 0.5.2
+----------------------------------------------------
+
+1. Removed first line of node.start script (the one
+   that points to the php executable).  I will recommend
+   that the node.start script now be run by feeding it
+   to the php executable (eg. /bin/php node.start).
+   Why?  Well, I'm sick of explaining how to create
+   symlinks.
+   
+2. Changed default port of LOCALHOST node to 80
+   (originally port 7), since more people will probably
+   run this on their web servers rather than standalone
+   boxes.
+   
+3. Added IP address to detailed email information.
+
+4. Socket query types are now modular, meaning people
+   can write their own custom queries, provided they
+   follow a few simple guidelines from the README file.
+   For examle, there was a large demand for ICMP queries,
+   so ICMP is now an optional connection method when
+   polling the network.  Consquently, status messages
+   can now be customized from one query type to the next,
+   meaning you can return something other than "UP" or
+   "DOWN" if you have a firm understanding of how to
+   modify the query functions.  In future versions, I
+   will include user-submitted custom queries in the
+   'contribs' folder within the package.
+   
+5. The node.start script has been modified to accomodate
+   the new modular query format.  Many optimizations
+   have been made to it as well.
+   
+6. The 'dont_poll' db table has been removed.  Its
+   functionality within node.start has been replaced
+   by a simple array.
+   
+7. The entire web interface has been redesigned with
+   new functionality and features.
+   
+8. Created installer.php script for installation of NR.
+   Installer should be compatible with both Unix and
+   Windows.
+
+9. SQL setup files have been moved into a sql directory
+   and converted to .php files.  These files can be
+   executed manually with the php interpreter, but it
+   is recommended that they be used through the installer.
+
+
+Modified Files: ALL
+
+----------------------------------------------------
+ Node Runner (0.5.2) CHANGELOG - Changes since 0.5.1
+----------------------------------------------------
+
+1. Fixed variable scoping problem resulting from
+   having PHP's 'register_globals' turned off.  The
+   'register_globals' directive is defaulting to
+   'Off' in all new versions of PHP, so Node Runner
+   has been fixed to accomodate this trend.
+   According to the PHP developers, this should also
+   make forging urls and sessions more difficult.
+   Thanks to Joe Swanson for all the input and testing.
+
+2. Minor cosmetic changes were made to the web
+   interface, as well as various insignificant bug
+   fixes and a bit of code cleanup.
+
+3. Added global configuration option to prevent non-
+   administrative users from starting the status
+   monitor.
+
+4. Added global configuration option to prevent non-
+   administrative users from using the manual polling
+   feature on the status monitor.
+
+5. Added optional "Recent Failures" list to status
+   monitor.  Feature can be enabled using global
+   configuration variables.
+
+6. Fixed bug from v0.5.1 that prevented non-admin
+   users from viewing node information.
+   
+
+Modified files:
+- html/(entire directory)
+- etc/nr.inc
+- INSTALL
+
+----------------------------------------------------
+ Node Runner (0.5.1) CHANGELOG - Changes since 0.5.0
+----------------------------------------------------
+
+1. Fixed syntax error in nr-mysql-setup.sql file.
+
+2. Added functionality for checking status of secure
+   (HTTP authentication) web pages.  Thanks to Matthew
+   Soffen and Rudy Pawul for the idea and code.
+
+3. Fixed bug in nr.inc: '$detailed_mail' was changed
+   to '$detailed_email'.
+
+4. Changed formatting of server-list.php and
+   node-list.php for easier navigation.
+
+5. Modified node-monitor-report.php to add default
+   start and end date in form.  Currently defaults to
+   current date for 'end' date, and 1 month prior for
+   'start' date.
+
+6. Modified 'BACKUP' option for database backups.
+   Link now produces downloadable text file in .sql
+   format.
+
+7. Fixed bug that reports unresponsive Apache web
+   servers as "UP" if $allow_refused variable is set
+   within 'nr.inc' file.
+
+8. Added code to measure page load times when querying
+   urls rather than just checking for html status codes.
+   This will fulfill the original need to monitor
+   unreliable web application servers that happen to be
+   separate from the web server itself (ex. Cold Fusion).
+
+9. Fixed issue with META redirect in 'index.php' as some
+   versions of Konqueror would not redirect properly.
+
+
+Modified files:
+- INSTALL
+- node.start
+- nr-mysql-setup.sql
+- update-nr-to-v0.5.1.sql
+- etc/nr.inc
+- html/index.php
+- html/input-page.php
+- html/description.php
+- html/view-change-node-settings.php
+- html/server-list.php
+- html/node-list.php
+- html/node-monitor-report.php
+- html/db-backup.php
+- html/header.php
+
+----------------------------------------------------
+ Node Runner (0.5.0) CHANGELOG - Changes since 0.4.9
+----------------------------------------------------
+
+1. Modified the INSTALL document to clear up some confusion about
+   the default selection of port 7 for the "Node Runner" node
+   that is inserted as part of the base install.  A port should be
+   selected that is accessible to be queried by the local machine.
+   (i.e. If the machine cannot query itself, the php script will
+   loop until it crashes.)
+    
+2. Fixed bug in status-monitor.php where condition color 
+   remains green while percentage is equal to 0.
+
+3. Copied phpCrontab.php file to local package from
+   Sourceforge site in case local machine is denied
+   Internet access.
+   
+4. Added comments field for each node and server entry, to
+   be used for brief instructions or miscellaneous details
+   about the node.  Thanks to Rudy Pawul for this idea.
+    
+5. Added database backup feature for dumping structure and
+   data from all Node Runner tables to plain text within a
+   browser window.  Ideally, this should allow for reconstruction
+   of the NR database during disaster recovery.  Currently, 
+   feature only works for MySQL, and absolute path to dump
+   command may need to be modified (db-backup.php).
+
+6. Added user login system to web interface.  In past
+   versions, it was suggested that the NR web interface
+   be secured with an .htaccess (or equivalent) file
+   to prevent unauthorized access to server/node information.
+   With the user login system, it should no longer be
+   necessary to secure the NR directory on the web server.
+   Ideally, non-admin users could view server/node
+   information, print reports, etc., without modifying
+   anything.  Thanks to Mark Stewart for this idea long ago.
+
+7. Optimized node.start script.  The script now recognizes
+   that if a node is found to be down, it should not bother
+   polling any more servers that may depend on the down node
+   during the iteration of the script.  Admins with large
+   networks will notice the improvements in speed, as the
+   script is less likely to run over itself if a major node
+   goes offline.  As always, enabling the $debug option in
+   the nr.inc file will produce output that might explain
+   things a little better.
+
+8. Changed naming convention of .sql files for upgrading
+   Node Runner due to confusion during installations.
+   The files have been appropriately named for their
+   versions, such as update-nr-to-v0.5.0.sql.
+
+
+Modified files:
+- INSTALL
+- nr-mysql-setup.sql
+- update-nr-to-v0.5.0.sql
+- All .sql files renamed (see #8 above)
+- html/ (entire directory)
+- etc/nr.inc
+- node.start
+
+----------------------------------------------------
+ Node Runner (0.4.9) CHANGELOG - Changes since 0.4.8
+----------------------------------------------------
+
+1. Fixed bug in 'node.start' and 'status-monitor.php'
+   that sends "UP" alerts when related "DOWN" alert
+   was never sent.  (Only pertains to users of
+   $firstmail option.)
+
+2. Fixed bug in "html/connect.php" to point to proper
+   location for 'mysql.inc' file.
+
+3. Updated documentation to reflect requirement of
+   PHP 4.x rather than supporting older 3.x versions
+   of PHP.  Most people are using 4.x now anyway, and
+   there are couple of array functions that have been
+   used that are only available in 4.x.
+
+4. created INSTALL file to separate installation
+   instructions from general README information.
+
+5. Expanded on installation instructions.
+
+Modified files:
+- node.start
+- etc/nr.inc (just version number)
+- html/connect.php
+- html/status-monitor.php
+- README
+- INSTALL
+
+----------------------------------------------------
+ Node Runner (0.4.8) CHANGELOG - Changes since 0.4.7
+----------------------------------------------------
+
+1. Fixed corrupted 'nr.png' file.
+
+2. Fixed bug in reporting mechanism that prevented
+   use of any date old prior to Sept. 8, 2001
+   (Unix time: 1000000000)
+
+3. Added ability to run multiple node reports at one
+   time, inserting CSS2-compatible page breaks in
+   between each node table.
+
+4. Added more functionality to reporting mechanism:
+   a. Ability to simply report on all 'servers'
+   b. Ability to simply report on all 'non-servers'
+   c. Ability to generat summary report that just
+      displays uptime percentage for each selected
+      node.
+
+4. Tweaked another setting related to $firstmail
+   option in node.start to reflect a more accurate
+   'lastnotif' [alert_log] value upon server
+   resurrection.  Also fixed bug related to
+   $firstmail that generates extra "DOWN" alerts.
+   (Hopefully, this will be the last time the
+   code is changed for the $firstmail option.)
+
+Modified files:
+- node.start
+- html/node-monitor-report.php
+- html/list.php
+- html/style.css
+- html/images/nr.png
+
+
+----------------------------------------------------
+ Node Runner (0.4.7) CHANGELOG - Changes since 0.4.6
+----------------------------------------------------
+
+1. Fixed bug in $firstmail option that allows the 
+   option to actually work.  Go figure.
+
+2. Fixed bug in status-monitor.php to allow manual
+   polling of HTTP servers.
+
+Only affected files:
+- node.start
+- etc/nr.inc
+- html/status-monitor.php
+
+
+----------------------------------------------------
+ Node Runner (0.4.6) CHANGELOG - Changes since 0.4.5
+----------------------------------------------------
+
+1. The 'column count' bug in the nr-mysql-setup.sql
+   has been fixed.
+
+2. Removed superfluous time checks from node.start
+   script.  These checks were deprecated with the
+   implementation of 'resolved' in alert_log table.
+   Scripts should now run more solid without creating
+   phantom 'orphans'.
+
+3. Added functionality of choosing how many minutes
+   to wait after detecting a server as "DOWN" before
+   NR sends its first email notice.  This may help
+   to alleviate extra emails if you have an
+   high-latency or flaky connection.
+
+4. Changed 'node.start' script so re-queries (which
+   are attempted at the start of the script) only
+   make their attempt once instead of $max_attempts.
+
+
+----------------------------------------------------
+ Node Runner (0.4.5) CHANGELOG - Changes since 0.4.4
+----------------------------------------------------
+
+1. Added $nr_ver variable to etc/nr.inc file.  Thus
+   far, it does nothing more than save me from
+   physically coding it into the web interface.
+
+2. Modified node-monitor-report.php to add a few new
+   features.  Reports can now be narrowed down to
+   specified days per week and timeframe during any
+   of those days.  This came as a special request
+   for people whose bonuses are based (via contract)
+   on uptime from 7am to 5:30pm, Monday through
+   Friday.
+
+3. Added feature to limit the number of alerts sent
+   during a node's downtime.  Configurable as
+   $max_alerts variable in etc/nr.inc.
+
+4. Removed unused 'function.php' file from html
+   directory.  This was a development file that was
+   unintentionally included in the 0.4.4 release.
+
+5. All html code from web interface has been cleaned
+   up and standardized.
+
+6. Fixed bug in status monitor where downtime field
+   in alert_log table was not being updated when
+   node is successfully polled via clicking its name.
+   (Refers to 'CLICK TO POLL MANUALLY' link.)
+
+7. Added utility (clean-logs.php) for cleaning up
+   old entries in the alert_log db table.  This is
+   mostly for people with limited disk space, or for
+   those who don't wish to keep records after long
+   periods of time.
+
+
+
+----------------------------------------------------
+ Node Runner (0.4.4) CHANGELOG - Changes since 0.4.3
+----------------------------------------------------
+
+1. Added status-monitor.php to be used as a viewable
+   status screen on a public computer.  (At least
+   that's what I'm using it for.)  Ideally, this
+   should allow users who don't receive email alerts
+   to passively monitor network status and possibly
+   report errors if they are missed.
+   Ideal requirements are 4.x+ browser with resolution
+   of 1024 x 768 or higher.  Functionality will not
+   be lost with lesser resolution, but I cannot
+   guarantee how good it will look.
+
+2. Fixed bug in node-list.php and server-list.php
+   where url was not being encoded properly when
+   disabling nodes/servers.
+
+3. Added link in node-list.php and server-list.php
+   that allows you to view the hierarchy of
+   dependencies from the selected node down.  This
+   comes in handy when trying to troubleshoot a
+   mistyped address.
+
+4. Fixed bug in mail-settings.php that where url
+   was not being properly encoded when changing
+   group settings.
+
+5. Added debug level to node.start script.  Set
+   $debug to 1 in nr.inc file, and the node.start
+   script will output status for each server and
+   execution time to screen or text file.  (See
+   README for full details.)
+
+6. Fixed bug in node-monitor-report.php where
+   minimum, maximum, and average uptime duration
+   were not being displayed properly.  I don't know
+   why I didn't catch this before...
+
+7. Added $allow_refused variable to nr.inc.  This
+   will allow 'Connection Refused (111)' errors
+   returned by fsockopen to be considered respondant.
+   This is an experimental measure for the meantime.
+   We'll see if anyone complains about it...
+
+
+
+----------------------------------------------------
+ Node Runner (0.4.3) CHANGELOG - Changes since 0.4.2
+----------------------------------------------------
+
+1. Modified view-change-node-settings.php to update
+   changed nodes (with "DOWN" status) to orphaned
+   log entries.  This was accomplished by changing
+   the 'resolved' field to 'O' instead of 'N'.
+   Respondant nodes will simply be updated normally.
+
+2. Modified node-list.php and server-list.php to
+   "orphan" alert_log entries if server/node is
+   disabled or deleted.
+
+3. Updated node.start to reflect above change.  Made
+   certain that "orphaned" alert_log entries are
+   ignored when re-polling "DOWN" servers and nodes.
+
+4. Fixed bug in node-list.php that prevents deletion
+   of nodes.
+
+5. Fixed obscure bug in node.start that would
+   incorrectly increment downtime for server even
+   if it's dependency went down during the server's
+   downtime.
+
+6. Created style.css to be used for web interface
+   pages (uniformity always looks professional).
+
+
+
+----------------------------------------------------
+ Node Runner (0.4.2) CHANGELOG - Changes since 0.4.1
+----------------------------------------------------
+
+1. Added ability to schedule which days of the week
+   the node will be queried. This feature is
+   configurable through the web interface, and
+   should allow you to set your cron to run every
+   day.
+
+2. Created update-nr-v0.4.1.sql to update db tables
+   for "days" functionality.
+
+3. Modified format of node-list.php and
+   server-list.php to accomodate "days" feature.
+
+4. Modified alert_log db table: added new field
+   'resolved' for re-polling dead nodes.  In previous
+   versions, anomalies have been reported where
+   dead nodes were not getting re-polled after first
+   increment of $delay is counted in the db table (due
+   to my fuzzy logic).
+
+5. Modified node.start and related .php files
+   to accomodate new alert_log table format.
+
+6. Fixed $dbtype variable syntax in nr.inc - the
+   trailing ";" was left off by mistake.
+
+
+
+--------------------------------------------------
+ Node Runner (0.4.1) CHANGELOG - Changes since 0.4
+--------------------------------------------------
+
+1. Added ability to determine how many query
+   attempts to make before Node Runner decides
+   a node is down (default is 3). This should
+   alleviate false alerts on nodes that may just
+   be slow to respond.
+
+
+
+--------------------------------------------------
+ Node Runner (0.4) CHANGELOG - Changes since 0.3
+--------------------------------------------------
+
+1. Modified format of generated reports after
+   receiving legal threat from commercial vendor.
+   Apparently, mine looked a little too much like
+   theirs, even though I've never heard of them.
+
+2. Modified node-list.php and server-list.php
+   to allow change/deletion of nodes/servers, but
+   only *after* the node is disabled.  Also added
+   extra check if disabling a node to make sure no
+   other nodes are dependent on it.  (Provides a
+   list of dependencies to resolve before disabling
+   is allowed.)
+
+3. Added [very limited] ability to query urls.
+   This ability is limited to checking for a valid
+   HTTP header [GET] response of "HTTP/1.1 200 OK"
+   from the node.  Anyone who knows what they're
+   doing should have no problem hacking this to work
+   for their custom queries.
+   I added this functionality simply to track
+   responsiveness of our Cold Fusion server, since
+   it cannot be polled as a socket.  Often times,
+   the web server appears to be running, while the
+   Cold Fusion server hangs up (NT box, typical).
+
+4. Modified web interface in appropriate places
+   to accomodate new url querying feature.
+
+5. Created update-nr-v03.sql to update db for url
+   querying.
+
+6. Consolidated add-mail-group.php and
+   view-change-mail-settings.php into single file
+   "mail-settings.php".
+
+7. Code has been revised to use database abstraction
+   layers.  The only layer currently kid-tested and
+   mother-approved is MySQL.  It shouldn't be too
+   difficult for someone who knows what they're doing
+   to whip up some layers for other databases also.
+   My biggest hangup on this was testing.  PHP 4.0.6
+   seems to have a few bugs to work out for support
+   of PostgreSQL, and commercial dbs (Oracle, M$SQL)
+   are not easy to come by.
+   I've started a few layers for different dbs, but
+   I won't distribute them with the release package
+   until they've been tested.  I'll post them in the
+   files area of SourceForge in case anyone wants to
+   take a crack at testing/fixing them.
+
+
+
+
+--------------------------------------------------
+ Node Runner (0.3) CHANGELOG - Changes since 0.2
+--------------------------------------------------
+
+NOTICE: 
+Version 0.3 uses a new method of checking for recently
+"up" servers.  I would recommend flushing your alert_log
+table if you install this new version.  If you don't,
+you're likely to get a whole bunch of strange alert
+messages until the system gets back on track.
+
+
+1. Removed lines (from input-page.php) to input new node
+   records in alert_log table. (can't remember why I did
+   this...)
+
+2. Cleaned up node.start section that queries for
+   recently "up" servers.  Should be a little more
+   dependable now.
+
+3. Added reporting mechanism accessible through browser
+   interface. This was designed purely for managerial
+   eyes, with neatly formatted numbers and descriptions.
+
+4. Consolidated a view-change-server-settings.php
+   to use only view-change-node-settings.php.
+
+5. Conducted brief clean up of html files. I realize
+   this needs to be done on a larger scale (their
+   pretty messy), but my ambitions focus elsewhere.
+
+6. Added support for custom query timeouts per node.
+   Recognized this need with some slow network lines.
+
+7. Added support for custom monitor times per node
+   rather than old method based on cron schedule.
+   Days of the week will still need to be determined
+   by cron.
+
+8. Changed name of initial database setup and version
+   update sql files. These were rewritten by hand,
+   so if you have trouble with them, take a closer
+   look.
+
+9. Updated README to reflect changed files / configs.
+
+
+
+
+--------------------------------------------------
+ Node Runner (0.2) CHANGELOG - Changes since 0.1
+--------------------------------------------------
+1. Sender email referenced in 'node.start' file has
+   been converted to a variable referenced by nr.inc
+
+2. Added link in main index to phpCrontab Tutorial
+   Tool to answer newbie questions about scheduling
+   Node Runner in the cron.
+
+3. Changed all references from "Object" to "Node"
+   on web interface.  SQL tables will remain as they
+   are currently named.
+
+4. Alterations made to table ALERT_LOG for the express
+   purpose of tracking the downtime of various servers.
+
+5. Fixed bug so updated information is also passed to
+   the alert_log table.
+
+6. Removed references to status_screen table.  This
+   was originally planned as a realtime monitor via
+   browser, but I'm holding off until I can re-work
+   the concept in Java.
+
+7. Removed ability to disable "nodes" from web
+   interface.  This feature will be used in later
+   versions, but accomplishes nothing at the moment.
+
+8. "Recent Failures" link in web interface now lists
+    downtime for each node failure.  "alert_log" table
+    was modified to accomodate this new feature.
+
+9. Notifications are now sent when "down" node
+   begins responding once again.  Emails are similar,
+   just a message stating status ("UP" or "DOWN").
+

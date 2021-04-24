@@ -1,0 +1,5 @@
+robocopy D:\ F:\ /MIR /COPYALL /XD "System Volume Information" /XD "$RECYCLE.BIN" /XD "D:\Program Files" /XD "*DfsrPrivate*" /XD "Staging*" /R:2 /W:15 /MOT:30 /V
+
+robocopy D:\FileHistory\visualblind F:\FileHistory\visualblind /MIR /COPYALL /R:2 /W:15 /MOT:30 /V
+
+robocopy "F:\Program Files" "D:\Program Files" /MIR /COPYALL /R:2 /W:15 /V

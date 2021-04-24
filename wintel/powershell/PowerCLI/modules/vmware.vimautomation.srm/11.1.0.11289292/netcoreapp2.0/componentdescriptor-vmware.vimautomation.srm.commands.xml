@@ -1,0 +1,30 @@
+<ComponentDescriptor>
+  <Name>VMware.VimAutomation.Srm.Commands</Name>
+  <Assembly>VMware.VimAutomation.Srm.Commands</Assembly>
+  <ImplementingType>VMware.VimAutomation.Srm.Commands.SrmCommandsComponentImpl</ImplementingType>
+  <IsSnapin>true</IsSnapin>
+  <ProvidedServiceList>
+  </ProvidedServiceList>
+  <RequiredServiceList>
+    <ServiceDescriptor>
+      <Name>ViCoreService</Name>
+      <Version>1.0</Version>
+    </ServiceDescriptor>
+    <ServiceDescriptor>
+      <Name>SrmService</Name>
+      <Version>1.0</Version>
+    </ServiceDescriptor>
+  </RequiredServiceList>
+  <ExtendedServiceList>
+  </ExtendedServiceList>
+  <Version>
+    <Major>11</Major>
+    <Minor>1</Minor>
+    <Revision>0</Revision>
+    <Build>11289292</Build>
+    <Company>VMware Inc.</Company>
+    <Copyright>Copyright 2017</Copyright>
+    <UserFriendlyVersion>VMware VimAutomation Srm PowerCLI Component PowerCLI Component 11.1 build 11289292</UserFriendlyVersion>
+    <Description>Provides cmdlets for managing Site Recovery Manager.</Description>
+  </Version>
+</ComponentDescriptor>

@@ -1,0 +1,1 @@
+for /f "Tokens=*" %f in ('dir /l/b/a') do (rename "%f" "%f")

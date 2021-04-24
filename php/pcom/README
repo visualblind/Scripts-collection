@@ -1,0 +1,44 @@
+Pcom - php commander
+
+	(C) 2000 Giancarlo -rofus- Erra
+	rofus@mindless.com
+	http://alfalinux.sourceforge.net
+
+
+This software is under the GNU Public License (GPL) 
+
+
+
+DESCRIPTION:
+Pcom is a PHP-driven webtelnet, that is a web interface to execute shell
+commands/external programs on a server. Obviously there are limitations,
+derived mainly by security limitations on the webserver (ie safe_mode
+in php). There is also a limitation on the program function itself,
+because you can only use non-interactive commands: you can launch
+a command or a program that doesn't need user interaction, but you
+cannot use something like lynx or irc (you can onlylaunch an interactive
+application in background, driving it automatically by arguments and/or
+scripts -where possible-). 
+Remember that you can only launch a command, you don't drive a real
+shell. So, if you launch a ping it will go forever because you cannot
+take back the control on the stdin, while launching a traceroute you should
+get back control and output of the command because it terminates itself
+without user interaction.
+
+
+INSTALLATION:
+Unpack the archive, copy pcom.jpg and pcom.php3 files in your
+webserver and enjoy. Tested only on Apache and PHP (as module),
+without any limitation (bad idea :P) in configuration, such as
+safe_mode and all the other security stuff.
+
+
+DISCLAIMER:
+I know this software is potentially dangerous, but YOU (have to) 
+know that PHP can limit things like this easily. Use it at
+your own risk. 
+
+
+That's all!
+
+			<rofus@mindless.com>

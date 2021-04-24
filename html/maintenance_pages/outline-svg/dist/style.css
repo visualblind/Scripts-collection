@@ -1,0 +1,43 @@
+#main {
+  font-family: sans-serif;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#main .content {
+  margin-right: 100px;
+  width: 400px;
+}
+#main .illustration_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#main .illustration_container .illustration {
+  position: relative;
+  width: 250px;
+  height: 250px;
+}
+
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+svg path, svg line {
+  stroke: #007DA0;
+}
+svg:nth-child(2) path, svg:nth-child(2) line {
+  stroke-dasharray: 100;
+  animation: dotted 60s linear infinite;
+  stroke: #3BC4B6;
+}
+
+@keyframes dotted {
+  to {
+    stroke-dashoffset: 1000;
+  }
+}

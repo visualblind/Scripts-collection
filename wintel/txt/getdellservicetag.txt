@@ -1,0 +1,5 @@
+wmic bios get serialnumber
+
+wmic /user:sentric\admintr /node:"lt-casls139" bios get serialnumber
+
+wmic /user:sentric\admintr /node:"lt-casls139" csproduct get vendor,name,identifyingnumber

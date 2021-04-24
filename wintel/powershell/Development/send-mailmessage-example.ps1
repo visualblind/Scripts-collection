@@ -1,0 +1,1 @@
+﻿send-mailmessage -to "Travis Runyard <travisrunyard@gmail.com>" -from "Test <admin@sysinfo.io>" -subject "Webserver Hits Report" -smtpserver 10.10.10.10

@@ -1,0 +1,1 @@
+get-vm VirtualMachineName | get-view | % { $_.config } | ft -a *uuid

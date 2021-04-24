@@ -1,0 +1,8 @@
+SELECT 
+T1.Name as DatabaseName, 
+COALESCE(Convert(varchar(12), MAX(T2.backup_finish_date), 101),'Not Yet Taken') as LastBackUpTaken,
+COALESCE(Convert(varchar(12), MAX(T2.user_name), 101),'NA') as UserName
+FROM sys.sysdatabases T1 LEFT OUTER JOIN msdb.dbo.backupset T2
+ON T2.database_name = T1.name
+GROUP BY T1.Name
+ORDER BY T1.Name

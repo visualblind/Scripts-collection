@@ -1,0 +1,656 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+
+<head>
+
+<title>SQL Server Index and Statistics Maintenance</title>
+
+<link rel="StyleSheet" href="/styles/style.css" type="text/css">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<meta name="Description" content="Award-Winning SQL Server Maintenance Solution for running index and statistics maintenance in SQL Server 2005, 2008, 2008 R2, and 2012">
+
+<meta name="Keywords" content="Sql Server Index Maintenance, Sql Server Statistics Maintenance, Sql Server Maintenance Scripts">
+
+<meta name="Robots" content="Index, Follow, NOODP">
+
+</head>
+
+<body>
+
+<div class="header">
+<a href="/">SQL Server Maintenance Solution</a>
+</div> <!-- header -->
+
+<div id="content">
+
+<div class="menu">
+
+<h2 class="menu_title">Menu</h2>
+<ul class="leftnav">
+<li><a href="/">Home</a></li>
+<li><a href="/sql-server-backup.html">SQL Server Backup</a></li>
+<li><a href="/sql-server-integrity-check.html">SQL Server Integrity Check</a></li>
+<li><a href="/sql-server-index-and-statistics-maintenance.html">SQL Server Index and Statistics Maintenance</a></li>
+<li><a href="/downloads.html">Downloads</a></li>
+<li><a href="/frequently-asked-questions.html">Frequently Asked Questions</a></li>
+<li><a href="/versions.html">Version History</a></li>
+<li><a href="/organizations.html">Organizations that Use the Solution</a></li>
+<li><a href="/newsletter.html">Sign Up for the Newsletter</a></li>
+<li><a href="/license.html">License</a></li>
+<li><a href="/contact.html">Contact</a></li>
+</ul>
+
+<div class="awards">
+<h2 class="menu_title">Awards</h2>
+<a href="http://sqlmag.com/sql-server/2011-sql-server-magazine-editors-best-and-community-choice-awards"><img src="/images/community-choice-2011-gold.jpg" alt="2011 SQL Server Magazine Community Choice"></a>
+<a href="http://sqlmag.com/sql-server/2011-sql-server-magazine-editors-best-and-community-choice-awards"><img src="/images/editors-best-2011-silver.jpg" alt="2011 SQL Server Magazine Editors' Best"></a>
+</div> <!-- awards -->
+
+<div class="sponsors">
+<h2 class="menu_title">Sponsors</h2>
+<a href="http://www.sqlskills.com/services/?utm_source=ola&amp;utm_medium=blog&amp;utm_campaign=maintscripts" rel="nofollow"><img src="/images/sql-skills.jpg" alt="SQLskills"></a>
+<a href="http://www.fusionio.com/solutions/microsoft-sql-server" rel="nofollow"><img src="/images/fusion-io.jpg" alt="Fusion-io"></a>
+<a href="http://www.red-gate.com/products/dba/sql-backup/?utm_source=ola&amp;utm_medium=displayad&amp;utm_content=verification&amp;utm_campaign=sqlbackup&amp;utm_term=buttonad-21243" rel="nofollow"><img src="/images/redgate-sql-backup.gif" alt="Red Gate SQL Backup"></a>
+<a href="http://www.sqlsentry.net/download-trial/landing/fragmentation-manager.asp?ad=201207-Banner-SiteSponsor-Ola" rel="nofollow"><img src="/images/sqlsentry-fragmentation-manager.jpg" alt="SQL Sentry Fragmentation Manager"></a>
+</div> <!-- sponsors -->
+
+</div> <!-- menu -->
+
+<div class="main">
+
+<h1>SQL Server Index and Statistics Maintenance</h1>
+
+<p>IndexOptimize is the SQL Server Maintenance Solution’s stored procedure for rebuilding and reorganizing indexes and updating statistics. IndexOptimize is supported on SQL Server 2005, SQL Server 2008, SQL Server 2008 R2, and SQL Server 2012.</p>
+
+<a name="Download"></a>
+<h2>Download</h2>
+
+<p>Download <a href="/scripts/MaintenanceSolution.sql" rel="nofollow">MaintenanceSolution.sql</a>. This script creates all the objects and jobs that you need. You can also <a href="/downloads.html">download</a> the objects as separate scripts.</p>
+
+<a name="License"></a>
+<h2>License</h2>
+
+<p>The SQL Server Maintenance Solution is <a href="/license.html">free</a>.</p>
+
+<a name="Parameters"></a>
+<h2>Parameters</h2>
+
+<a name="Databases"></a>
+<h3>Databases</h3>
+<p>Select databases. The keywords SYSTEM_DATABASES, USER_DATABASES, and ALL_DATABASES are supported. The hyphen character (-) is used to exclude databases, and the percent character (%) is used for wildcard selection. All of these operations can be combined by using the comma (,).</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>SYSTEM_DATABASES</td>
+<td>All system databases (master, msdb, and model)</td>
+</tr>
+<tr>
+<td>USER_DATABASES</td>
+<td>All user databases</td>
+</tr>
+<tr>
+<td>ALL_DATABASES</td>
+<td>All databases</td>
+</tr>
+<tr>
+<td>Db1</td>
+<td>The database Db1</td>
+</tr>
+<tr>
+<td>Db1, Db2</td>
+<td>The databases Db1 and Db2</td>
+</tr>
+<tr>
+<td>USER_DATABASES, -Db1</td>
+<td>All user databases, except Db1</td>
+</tr>
+<tr>
+<td>%Db%</td>
+<td>All databases that have “Db” in the name</td>
+</tr>
+<tr>
+<td>%Db%, -Db1</td>
+<td>All databases that have “Db” in the name, except Db1</td>
+</tr>
+<tr>
+<td>ALL_DATABASES, -%Db%</td>
+<td>All databases that do not have “Db” in the name</td>
+</tr>
+</table>
+
+<a name="FragmentationLow"></a>
+<h3>FragmentationLow</h3>
+<p>Specify index maintenance operations to be performed on a low-fragmented index.</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>INDEX_REBUILD_ONLINE</td>
+<td>Rebuild index online.</td>
+</tr>
+<tr>
+<td>INDEX_REBUILD_OFFLINE</td>
+<td>Rebuild index offline.</td>
+</tr>
+<tr>
+<td>INDEX_REORGANIZE</td>
+<td>Reorganize index.</td>
+</tr>
+<tr>
+<td>INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE</td>
+<td>Rebuild index online. Rebuild index offline if online rebuilding is not supported on an index.</td>
+</tr>
+<tr>
+<td>INDEX_REBUILD_ONLINE,INDEX_REORGANIZE</td>
+<td>Rebuild index online. Reorganize index if online rebuilding is not supported on an index.</td>
+</tr>
+<tr>
+<td>INDEX_REORGANIZE,INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE</td>
+<td>Reorganize index. Rebuild index online if reorganizing is not supported on an index. Rebuild index offline if reorganizing and online rebuilding are not supported on an index.</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>Do not perform index maintenance. This is the default for a low-fragmented index.</td>
+</tr>
+</table>
+<p>An online index rebuild or an index reorganization is not always possible. Because of this, you can specify multiple index-maintenance operations for each fragmentation group. These operations are prioritized from left to right: If the first operation is supported for the index, then that operation is used; if the first operation is not supported, then the second operation is used (if supported), and so on. If none of the specified operations are supported for an index, then that index is not maintained.</p>
+<p>IndexOptimize uses the SQL Server <a href="http://msdn.microsoft.com/en-us/library/ms188388.aspx" rel="">ALTER INDEX</a> command: REBUILD WITH (ONLINE = ON) to rebuild indexes online, REBUILD WITH (ONLINE = OFF) to rebuild indexes offline, and REORGANIZE to reorganize indexes.</p>
+
+<a name="FragmentationMedium"></a>
+<h3>FragmentationMedium</h3>
+<p>Specify index maintenance operations to be performed on a medium-fragmented index.</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>INDEX_REBUILD_ONLINE</td>
+<td>Rebuild index online.</td>
+</tr>
+<tr>
+<td>INDEX_REBUILD_OFFLINE</td>
+<td>Rebuild index offline.</td>
+</tr>
+<tr>
+<td>INDEX_REORGANIZE</td>
+<td>Reorganize index.</td>
+</tr>
+<tr>
+<td>INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE</td>
+<td>Rebuild index online. Rebuild index offline if online rebuilding is not supported on an index.</td>
+</tr>
+<tr>
+<td>INDEX_REBUILD_ONLINE,INDEX_REORGANIZE</td>
+<td>Rebuild index online. Reorganize index if online rebuilding is not supported on an index.</td>
+</tr>
+<tr>
+<td>INDEX_REORGANIZE,INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE</td>
+<td>Reorganize index. Rebuild index online if reorganizing is not supported on an index. Rebuild index offline if reorganizing and online rebuilding are not supported on an index. This is the default for a medium-fragmented index.</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>Do not perform index maintenance.</td>
+</tr>
+</table>
+<p>An online index rebuild or an index reorganization is not always possible. Because of this, you can specify multiple index-maintenance operations for each fragmentation group. These operations are prioritized from left to right: If the first operation is supported for the index, then that operation is used; if the first operation is not supported, then the second operation is used (if supported), and so on. If none of the specified operations are supported for an index, then that index is not maintained.</p>
+<p>IndexOptimize uses the SQL Server <a href="http://msdn.microsoft.com/en-us/library/ms188388.aspx" rel="">ALTER INDEX</a> command: REBUILD WITH (ONLINE = ON) to rebuild indexes online, REBUILD WITH (ONLINE = OFF) to rebuild indexes offline, and REORGANIZE to reorganize indexes.</p>
+
+<a name="FragmentationHigh"></a>
+<h3>FragmentationHigh</h3>
+<p>Specify index maintenance operations to be performed on a high-fragmented index.</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>INDEX_REBUILD_ONLINE</td>
+<td>Rebuild index online.</td>
+</tr>
+<tr>
+<td>INDEX_REBUILD_OFFLINE</td>
+<td>Rebuild index offline.</td>
+</tr>
+<tr>
+<td>INDEX_REORGANIZE</td>
+<td>Reorganize index.</td>
+</tr>
+<tr>
+<td>INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE</td>
+<td>Rebuild index online. Rebuild index offline if online rebuilding is not supported on an index.<br>This is the default for a high-fragmented index.</td>
+</tr>
+<tr>
+<td>INDEX_REBUILD_ONLINE,INDEX_REORGANIZE</td>
+<td>Rebuild index online. Reorganize index if online rebuilding is not supported on an index.</td>
+</tr>
+<tr>
+<td>INDEX_REORGANIZE,INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE</td>
+<td>Reorganize index. Rebuild index online if reorganizing is not supported on an index. Rebuild index offline if reorganizing and online rebuilding are not supported on an index.
+</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>Do not perform index maintenance.</td>
+</tr>
+</table>
+<p>An online index rebuild or an index reorganization is not always possible. Because of this, you can specify multiple index-maintenance operations for each fragmentation group. These operations are prioritized from left to right: If the first operation is supported for the index, then that operation is used; if the first operation is not supported, then the second operation is used (if supported), and so on. If none of the specified operations are supported for an index, then that index is not maintained.</p>
+<p>IndexOptimize uses the SQL Server <a href="http://msdn.microsoft.com/en-us/library/ms188388.aspx" rel="">ALTER INDEX</a> command: REBUILD WITH (ONLINE = ON) to rebuild indexes online, REBUILD WITH (ONLINE = OFF) to rebuild indexes offline, and REORGANIZE to reorganize indexes.</p>
+
+<a name="FragmentationLevel1"></a>
+<h3>FragmentationLevel1</h3>
+<p>Set the lower limit, as a percentage, for medium fragmentation. The default is 5 percent. This is based on Microsoft’s recommendation in <a href="http://msdn.microsoft.com/en-us/library/ms189858.aspx" rel="">Books Online</a>.</p>
+<p>IndexOptimize checks avg_fragmentation_in_percent in <a href="http://msdn.microsoft.com/en-us/library/ms188917.aspx" rel="">sys.dm_db_index_physical_stats</a> to determine the fragmentation.</p>
+
+<a name="FragmentationLevel2"></a>
+<h3>FragmentationLevel2</h3>
+<p>Set the lower limit, as a percentage, for high fragmentation. The default is 30 percent. This is based on Microsoft’s recommendation in <a href="http://msdn.microsoft.com/en-us/library/ms189858.aspx" rel="">Books Online</a>.</p>
+<p>IndexOptimize checks avg_fragmentation_in_percent in <a href="http://msdn.microsoft.com/en-us/library/ms188917.aspx" rel="">sys.dm_db_index_physical_stats</a> to determine the fragmentation.</p>
+
+<a name="PageCountLevel"></a>
+<h3>PageCountLevel</h3>
+<p>Set a size, in pages; indexes with fewer pages are skipped for index maintenance. The default is 1000 pages. This is based on Microsoft’s recommendation in this <a href="http://msdn.microsoft.com/sv-se/library/cc966523(en-us).aspx" rel="">white paper</a>.</p>
+<p>IndexOptimize checks page_count in <a href="http://msdn.microsoft.com/en-us/library/ms188917.aspx" rel="">sys.dm_db_index_physical_stats</a> to determine the size of the index.</p>
+
+<a name="SortInTempdb"></a>
+<h3>SortInTempdb</h3>
+<p>Use tempdb for sort operations when rebuilding indexes.</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Y</td>
+<td>Use tempdb for sort operations when rebuilding indexes.</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Do not use tempdb for sort operations when rebuilding indexes. This is the default.</td>
+</tr>
+</table>
+<p>The SortInTempdb option in IndexOptimize uses the SORT_IN_TEMPDB option in the SQL Server <a href="http://msdn.microsoft.com/en-us/library/ms188388.aspx" rel="">ALTER INDEX</a> command.</p>
+
+<a name="MaxDOP"></a>
+<h3>MaxDOP</h3>
+<p>Specify the number of CPUs to use when rebuilding indexes. If this number is not specified, the global maximum degree of parallelism is used.</p>
+<p>The MaxDOP option in IndexOptimize uses the MAXDOP option in the SQL Server <a href="http://msdn.microsoft.com/en-us/library/ms188388.aspx" rel="">ALTER INDEX</a> command.</p>
+
+<a name="FillFactor"></a>
+<h3>FillFactor</h3>
+<p>Indicate, as a percentage, how full the pages should be made when rebuilding indexes. If a percentage is not specified, the fill factor in <a href="http://msdn.microsoft.com/en-us/library/ms173760.aspx" rel="">sys.indexes</a> is used.</p>
+<p>The FillFactor option in IndexOptimize uses the FILLFACTOR option in the SQL Server <a href="http://msdn.microsoft.com/en-us/library/ms188388.aspx" rel="">ALTER INDEX</a> command.</p>
+
+<a name="PadIndex"></a>
+<h3>PadIndex</h3>
+<p>Apply the percentage of free space that the fill factor specifies to the intermediate-level pages of the index.</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Y</td>
+<td>Apply the percentage of free space that the fill factor specifies to the intermediate-level pages of the index.</td>
+</tr>
+<tr>
+<td>N</td>
+<td>The intermediate-level pages of the index are filled to near capacity. This is the default.</td>
+</tr>
+</table>
+<p>The PadIndex option in IndexOptimize uses the PADINDEX option in the SQL Server <a href="http://msdn.microsoft.com/en-us/library/ms188388.aspx" rel="">ALTER INDEX</a> command.</p>
+
+<a name="LOBCompaction"></a>
+<h3>LOBCompaction</h3>
+<p>Compact pages that contain large object (LOB) columns, when reorganizing indexes.</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Y</td>
+<td>Compact pages that contain LOB columns, when reorganizing indexes. This is the default.</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Do not compact pages that contain LOB columns, when reorganizing indexes.</td>
+</tr>
+</table>
+<p>The LOBCompaction option in IndexOptimize uses the LOB_COMPACTION option in the SQL Server <a href="http://msdn.microsoft.com/en-us/library/ms188388.aspx" rel="">ALTER INDEX</a> command.</p>
+
+<a name="UpdateStatistics"></a>
+<h3>UpdateStatistics</h3>
+<p>Update statistics.</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>ALL</td>
+<td>Update index and column statistics.</td>
+</tr>
+<tr>
+<td>INDEX</td>
+<td>Update index statistics.</td>
+</tr>
+<tr>
+<td>COLUMNS</td>
+<td>Update column statistics.</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>Do not perform statistics maintenance. This is the default.</td>
+</tr>
+</table>
+<p>IndexOptimize uses the SQL Server <a href="http://msdn.microsoft.com/en-us/library/ms187348.aspx" rel="">UPDATE STATISTICS</a> command to update statistics.</p>
+
+<a name="OnlyModifiedStatistics"></a>
+<h3>OnlyModifiedStatistics</h3>
+<p>Update statistics only if any rows have been modified since the most recent statistics update.</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Y</td>
+<td>Update statistics only if any rows have been modified since the most recent statistics update.</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Update statistics regardless of whether any rows have been modified.</td>
+</tr>
+</table>
+<p>IndexOptimize checks modification_counter in <a href="http://msdn.microsoft.com/en-us/library/jj553546.aspx" rel="">sys.dm_db_stats_properties</a>, in SQL Server 2008 R2 starting with Service Pack 2 and in SQL Server 2012 starting with Service Pack 1, to determine whether any rows have been modified since the most recent statistics update. In earlier versions it checks rowmodctr in <a href="http://msdn.microsoft.com/en-us/library/ms190283.aspx" rel="">sys.sysindexes</a>.</p>
+
+<a name="StatisticsSample"></a>
+<h3>StatisticsSample</h3>
+<p>Indicate, as a percentage, how much of a table is gathered when updating statistics. A value of 100 is equivalent to a full scan. If no value is specified, then SQL Server automatically computes the required sample.</p>
+<p>The StatisticsSample option in IndexOptimize uses the SAMPLE and FULLSCAN options in the SQL Server <a href="http://msdn.microsoft.com/en-us/library/ms187348.aspx" rel="">UPDATE STATISTICS</a> command.</p>
+
+<a name="StatisticsResample"></a>
+<h3>StatisticsResample</h3>
+<p>Update statistics with the most recent sample.</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Y</td>
+<td>Update statistics with the most recent sample.</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Let SQL Server automatically compute the required sample. This is the default.</td>
+</tr>
+</table>
+<p>The StatisticsResample option in IndexOptimize uses the RESAMPLE option in the SQL Server <a href="http://msdn.microsoft.com/en-us/library/ms187348.aspx" rel="">UPDATE STATISTICS</a> command.</p>
+<p>You cannot combine the options StatisticsSample and StatisticsResample.</p>
+
+<a name="PartitionLevel"></a>
+<h3>PartitionLevel</h3>
+<p>Maintain partitioned indexes on the partition level. If this parameter is set to Y, the fragmentation level and page count is checked for each partition. The appropriate index maintenance (reorganize or rebuild) is then performed for each partition.</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Y</td>
+<td>Maintain partitioned indexes on the partition level.</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Maintain partitioned indexes on the index level. This is the default.</td>
+</tr>
+</table>
+
+<a name="MSShippedObjects"></a>
+<h3>MSShippedObjects</h3>
+<p>Maintain indexes and statistics on objects that are created by internal SQL Server components.</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Y</td>
+<td>Maintain indexes and statistics on objects that are created by internal SQL Server components.</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Do not maintain indexes and statistics on objects that are created by internal SQL Server components. This is the default.</td>
+</tr>
+</table>
+
+<p>IndexOptimize checks is_ms_shipped in <a href="http://msdn.microsoft.com/sv-se/library/ms190324" rel="">sys.objects</a> to determine whether an object was created by an internal SQL Server component.</p>
+
+<a name="Indexes"></a>
+<h3>Indexes</h3>
+<p>Select indexes. If this parameter is not specified, all indexes are selected. The ALL_INDEXES keyword is supported. The hyphen character (-) is used to exclude indexes, and the percent character (%) is used for wildcard selection. All these operations can be combined by using the comma (,).</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>ALL_INDEXES</td>
+<td>All indexes</td>
+</tr>
+<tr>
+<td>Db1.Schema1.Tbl1.Idx1</td>
+<td>The index Idx1 on the object Schema1.Tbl1 in the database Db1</td>
+</tr>
+<tr>
+<td>Db1.Schema1.Tbl1.Idx1, Db2.Schema2.Tbl2.Idx2</td>
+<td>The index Idx1 on the object Schema1.Tbl1 in the database Db1 and the index Idx2 on the object Schema2.Tbl2 in the database Db2</td>
+</tr>
+<tr>
+<td>Db1.Schema1.Tbl1</td>
+<td>All indexes on the object Schema1.Tbl1 in the database Db1</td>
+</tr>
+<tr>
+<td>Db1.Schema1.Tbl1, Db2.Schema2.Tbl2</td>
+<td>All indexes on the object Schema1.Tbl1 in the database Db1 and all indexes on the object Schema2.Tbl2 in the database Db2</td>
+</tr>
+<tr>
+<td>Db1.Schema1.%</td>
+<td>All indexes in the schema Schema1 in the database Db1</td>
+</tr>
+<tr>
+<td>%.Schema1.%</td>
+<td>All indexes in the schema Schema1 in all databases</td>
+</tr>
+<tr>
+<td>ALL_INDEXES, -Db1.Schema1.Tbl1.Idx1</td>
+<td>All indexes except the index Idx1 on the object Schema1.Tbl1 in the database Db1</td>
+</tr>
+<tr>
+<td>ALL_INDEXES, -Db1.Schema1.Tbl1</td>
+<td>All indexes except indexes on the object Schema1.Tbl1 in the database Db1</td>
+</tr>
+</table>
+
+<a name="TimeLimit"></a>
+<h3>TimeLimit</h3>
+<p>Set the time, in seconds, after which no commands are executed. By default, the time is not limited.</p>
+
+<a name="Delay"></a>
+<h3>Delay</h3>
+<p>Set the delay, in seconds, between index commands. By default, there is no delay.</p>
+
+<a name="LockTimeout"></a>
+<h3>LockTimeout</h3>
+<p>Set the time, in seconds, that a command waits for a lock to be released. By default, the time is not limited.</p>
+<p>The LockTimeout option in IndexOptimize uses the <a href="http://msdn.microsoft.com/en-us/library/ms189470.aspx" rel="">SET LOCK_TIMEOUT</a> set statement in SQL Server.</p>
+
+<a name="LogToTable"></a>
+<h3>LogToTable</h3>
+<p>Log commands to the table dbo.CommandLog.</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Y</td>
+<td>Log commands to the table.</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Do not log commands to the table. This is the default.</td>
+</tr>
+</table>
+
+<a name="Execute"></a>
+<h3>Execute</h3>
+<p>Execute commands. By default, the commands are executed normally. If this parameter is set to N, then the commands are printed only.</p>
+<table>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Y</td>
+<td>Execute commands. This is the default.</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Only print commands.</td>
+</tr>
+</table>
+
+<a name="Examples"></a>
+<h2>Examples</h2>
+
+<h3>A. Rebuild or reorganize all indexes with fragmentation on all user databases</h3>
+<p>EXECUTE dbo.IndexOptimize<br>
+@Databases = 'USER_DATABASES',<br>
+@FragmentationLow = NULL,<br>
+@FragmentationMedium = 'INDEX_REORGANIZE,INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationHigh = 'INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationLevel1 = 5,<br>
+@FragmentationLevel2 = 30</p>
+
+<h3>B. Rebuild or reorganize all indexes with fragmentation and update modified statistics on all user databases</h3>
+<p>EXECUTE dbo.IndexOptimize<br>
+@Databases = 'USER_DATABASES',<br>
+@FragmentationLow = NULL,<br>
+@FragmentationMedium = 'INDEX_REORGANIZE,INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationHigh = 'INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationLevel1 = 5,<br>
+@FragmentationLevel2 = 30,<br>
+@UpdateStatistics = 'ALL',<br>
+@OnlyModifiedStatistics = 'Y'</p>
+
+<h3>C. Update statistics on all user databases</h3>
+<p>EXECUTE dbo.IndexOptimize<br>
+@Databases = 'USER_DATABASES',<br>
+@FragmentationLow = NULL,<br>
+@FragmentationMedium = NULL,<br>
+@FragmentationHigh = NULL,<br>
+@UpdateStatistics = 'ALL'</p>
+
+<h3>D. Update modified statistics on all user databases</h3>
+<p>EXECUTE dbo.IndexOptimize<br>
+@Databases = 'USER_DATABASES',<br>
+@FragmentationLow = NULL,<br>
+@FragmentationMedium = NULL,<br>
+@FragmentationHigh = NULL,<br>
+@UpdateStatistics = 'ALL',<br>
+@OnlyModifiedStatistics = 'Y'</p>
+
+<h3>E. Rebuild or reorganize all indexes with fragmentation on all user databases, performing sort operations in tempdb and using all available CPUs</h3>
+<p>EXECUTE dbo.IndexOptimize
+@Databases = 'USER_DATABASES',<br>
+@FragmentationLow = NULL,<br>
+@FragmentationMedium = 'INDEX_REORGANIZE,INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationHigh = 'INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationLevel1 = 5,<br>
+@FragmentationLevel2 = 30,<br>
+@SortInTempdb = 'Y',<br>
+@MaxDOP = 0</p>
+
+<h3>F. Rebuild or reorganize all indexes with fragmentation on all user databases, using the option to maintain partitioned indexes on the partition level</h3>
+<p>EXECUTE dbo.IndexOptimize<br>
+@Databases = 'USER_DATABASES',<br>
+@FragmentationLow = NULL,<br>
+@FragmentationMedium = 'INDEX_REORGANIZE,INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationHigh = 'INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationLevel1 = 5,<br>
+@FragmentationLevel2 = 30,<br>
+@PartitionLevel = 'Y'</p>
+
+<h3>G. Rebuild or reorganize all indexes with fragmentation on all user databases, with a time limit so that no commands are executed after 3600 seconds</h3>
+<p>EXECUTE dbo.IndexOptimize<br>
+@Databases = 'USER_DATABASES',<br>
+@FragmentationLow = NULL,<br>
+@FragmentationMedium = 'INDEX_REORGANIZE,INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationHigh = 'INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationLevel1 = 5,<br>
+@FragmentationLevel2 = 30,<br>
+@TimeLimit = 3600</p>
+
+<h3>H. Rebuild or reorganize all indexes with fragmentation on the table Production.Product in the database AdventureWorks</h3>
+<p>EXECUTE dbo.IndexOptimize<br>
+@Databases = 'AdventureWorks',<br>
+@FragmentationLow = NULL,<br>
+@FragmentationMedium = 'INDEX_REORGANIZE,INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationHigh = 'INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationLevel1 = 5,<br>
+@FragmentationLevel2 = 30,<br>
+@Indexes = 'AdventureWorks.Production.Product'</p>
+
+<h3>I. Rebuild or reorganize all indexes with fragmentation except indexes on the table Production.Product in the database AdventureWorks</h3>
+<p>EXECUTE dbo.IndexOptimize<br>
+@Databases = 'USER_DATABASES',<br>
+@FragmentationLow = NULL,<br>
+@FragmentationMedium = 'INDEX_REORGANIZE,INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationHigh = 'INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationLevel1 = 5,<br>
+@FragmentationLevel2 = 30,<br>
+@Indexes = 'ALL_INDEXES, -AdventureWorks.Production.Product'</p>
+
+<h3>J. Rebuild or reorganize all indexes with fragmentation on all user databases and log the results to a table</h3>
+<p>EXECUTE dbo.IndexOptimize<br>
+@Databases = 'USER_DATABASES',<br>
+@FragmentationLow = NULL,<br>
+@FragmentationMedium = 'INDEX_REORGANIZE,INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationHigh = 'INDEX_REBUILD_ONLINE,INDEX_REBUILD_OFFLINE',<br>
+@FragmentationLevel1 = 5,<br>
+@FragmentationLevel2 = 30,<br>
+@LogToTable = 'Y'</p>
+
+<a name="Execution"></a>
+<h2>Execution</h2>
+
+<p>Execute the stored procedures from SQL Server Agent CmdExec jobs, using sqlcmd and the -b option. Pass the parameters to the stored procedures by name:</p>
+
+<p>sqlcmd -E -S $(ESCAPE_SQUOTE(SRVR)) -d master -Q "EXECUTE dbo.IndexOptimize @Databases = 'USER_DATABASES'" -b</p>
+
+<p>Use SQL Server Agent output files to ensure that you always have a full set of information, in case of an error.</p>
+
+<p>You can use the <a href="/scripts/MaintenanceSolution.sql" rel="nofollow">MaintenanceSolution.sql</a> script to install the SQL Server Maintenance Solution. Then the sqlcmd commands and the output files will be configured for you.</p>
+
+</div> <!-- main -->
+
+</div> <!-- content -->
+
+<div class="footer">
+© 2013 Ola Hallengren | E-mail: <a href="mailto:ola@hallengren.com">ola@hallengren.com</a> | Sweden
+</div> <!-- footer -->
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<html><head><title>Get-LicenseDataManager - PowerCLI System.Collections.Hashtable.ModuleName Help Reference</title><meta name="description" content=" Get-LicenseDataManager" /><meta name="keywords" content="PowerCLI System.Collections.Hashtable.ModuleName Help Reference, Get-LicenseDataManager, Get, LicenseDataManager" /><link href="doc-style.css" type="text/css" rel="StyleSheet"></head><body><h2 class="title"><a class="title" href='index.html' target="_top">PowerCLI Reference</a></h2><h1>Get-LicenseDataManager</h1><h2>Synopsis</h2>Returns the vSphere LicenseDataManager objects for the specified vSphere servers.<p class="table-title">Syntax</p>Get-LicenseDataManager [[-Server] &lt;VIServer[]&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-PipelineVariable &lt;String&gt;] [&lt;CommonParameters&gt;]<p class="table-title">Related Commands</p><a href='http://www.vmware.com/support/developer/PowerCLI/PowerCLI651/html/Get-LicenseDataManager.html'>Online version</a><br><p class="table-title">Detailed Description</p>Returns the vSphere LicenseDataManager objects for the specified vSphere servers.
+<br/>
+<br/>The LicenseDataManager object allows programmatic access to the vSphere licensing functionality and can be used to associate license data with vCenter Server inventory nodes. The license data consists of VMware licensing material and takes the form of a list of {license type id, license key} pairs. The inventory nodes which can be associated with license data are individual hosts or host containers, such as clusters, datacenters and datacenter folders. Presence of such license data makes it possible to support automatic licensing when hosts are added to a particular host container entity.
+<br/>
+<br/>LicenseDataManager provides methods for retrieving, creating, modifying and removing associations between license data and inventory nodes.
+<br/>
+<br/>For more information about LicenseDataManager type: Get-Help about_licensedatamanager<p class="table-title">Parameters</p><table cellspacing="0"><tr><th>Name</th><th>Type</th><th>Description</th><th>Required?</td><th>Pipeline Input</th><th>Default Value</th></tr><tr class="r1"><td><a id="Server" name="Server"></a><strong>Server</strong></td><td>VIServer[]</td><td>Specifies the vCenter Server systems on which you want to run the cmdlet. If no value is passed to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-VIServer.</td><td>false</td><td>true (ByValue)</td><tr class="r0"><td><a id="InformationAction" name="InformationAction"></a><strong>InformationAction</strong></td><td>ActionPreference</td><td></td><td>false</td><td>false</td><tr class="r1"><td><a id="InformationVariable" name="InformationVariable"></a><strong>InformationVariable</strong></td><td>String</td><td></td><td>false</td><td>false</td><tr class="r0"><td><a id="PipelineVariable" name="PipelineVariable"></a><strong>PipelineVariable</strong></td><td>String</td><td></td><td>false</td><td>false</td></table><p class="table-title">Return Type</p><a href="LicenseDataManager.html">LicenseDataManager</a>
+<p class="table-title">Notes</p>Get-LicenseDataManager is supported only on servers that are vCenter Server 5.0 or later.<p class="table-title">Examples</p><div class="example"><p class="example-title">--------------  Example 1 --------------</p><pre class="programlisting">Connect-VIServer -Server 10.23.112.235
+
+$licenseDataManager = Get-LicenseDataManager
+
+$licenseDataManager.QueryEntityLicenseData()</pre><p>Retrieves all entity&lt;-&gt;license data associations.</p><p class="example-title">--------------  Example 2 --------------</p><pre class="programlisting">$viServer = Connect-VIServer -Server 10.23.112.235
+
+$licenseDataManager = Get-LicenseDataManager -Server $viServer
+
+$hostContainer = Get-Datacenter -Name Datacenter1
+
+$licenseDataManager.QueryAssociatedLicenseData($hostContainer.Uid)</pre><p>Retrieves the license data associated with Datacenter1.</p><p class="example-title">--------------  Example 3 --------------</p><pre class="programlisting">$viServer = Connect-VIServer -Server 10.23.112.235
+
+$licenseDataManager = Get-LicenseDataManager -Server $viServer
+
+$licenseData = New-Object Vmware.VimAutomation.License.Types.LicenseData
+
+$licenseKeyEntry = New-Object Vmware.VimAutomation.License.Types.LicenseKeyEntry
+
+$licenseKeyEntry.TypeId = &quot;vmware-vsphere&quot;
+
+$licenseKeyEntry.LicenseKey = &quot;00000-11111-11111-11111-11111&quot;
+
+$licenseData.LicenseKeys += $licenseKeyEntry
+
+$hostContainer = Get-Datacenter -Name Datacenter1
+
+$licenseDataManager.UpdateAssociatedLicenseData($hostContainer.Uid, $licenseData)</pre><p>Associates new license data with Datacenter1. The license data holds single license key entry suitable for licensing vSphere hosts.</p><p class="example-title">--------------  Example 4 --------------</p><pre class="programlisting">$viServer = Connect-VIServer -Server 10.23.112.235
+
+$licenseDataManager = Get-LicenseDataManager -Server $viServer
+
+$hostContainer = Get-Datacenter -Name Datacenter1
+
+$licenseDataManager.UpdateAssociatedLicenseData($hostContainer.Uid, $null)</pre><p>Removes the license data (if any) associated with Datacenter1.</p><p class="example-title">--------------  Example 5 --------------</p><pre class="programlisting">$viServer = Connect-VIServer -Server 10.23.112.235
+
+$licenseDataManager = Get-LicenseDataManager -Server $viServer
+
+$hostContainer = Get-Datacenter -Name Datacenter1
+
+$licenseDataManager.QueryEffectiveLicenseData($hostContainer.Uid)</pre><p>Retrieves the merged license data associated with Datacaneter1 and its host container predecessors (in the context of the inventory) (if such predecessors exist and if they are associated some license data). The data is merged in bottom-up fashion such that there is only one license key entry per type id (e.g. child license key entry for a license type id is with higher priority). The resulting merged license data is the effective data used for automatic licensing when vSphere host is added to Datacenter1.</p><p class="example-title">--------------  Example 6 --------------</p><pre class="programlisting">$viServer = Connect-VIServer -Server 10.23.112.235
+
+$licenseDataManager = Get-LicenseDataManager -Server $viServer
+
+$host = Get-VMHost -Name Host1
+
+$licenseDataManager.ApplyAssociatedLicenseData($host.Uid)</pre><p>Applies the merged license data associated with Host1 and its host container predecessors (using the same rules as in QueryEffectiveLicenseData($host.Uid)) to Host1.</p></div><hr>Copyright &copy; VMware, Inc.&nbsp;All rights reserved.</body></html>

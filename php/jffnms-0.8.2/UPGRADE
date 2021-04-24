@@ -1,0 +1,58 @@
+This file explains the upgrade procedure between versions:
+
+0.8.1 to 0.8.2
+==============
+
+    0. You are adviced to upgrade your PHP and PostgreSQL (if you use that) versions before the upgrade,
+	because some new features may need that. 
+	
+	The new poller is still experimental, and its not enabled by default.
+
+    Replace the <patch tar.gz path> with the actual path to the patch files,
+    '../jffnms-upgrade-0.8.1-to-0.8.2' if you are using jffnms-upgrade-0.8.1-to-0.8.2.tar.gz or 
+    '/opt/jffnms-0.8.2/docs/upgrade' if you are using jffnms-0.8.2.tar.gz
+    
+    1. Apply the code patch: 
+	# cd /opt/jffnms 
+	# patch -p1 < <patch tar.gz path>/jffnms-0.8.1-to-0.8.2.patch 
+
+	If you have not changed the code, there should not be any errors.
+	Replace apache.apache with your HTTPd username and group (nobody, httpd, etc)
+
+    2. Upgrade the DB: 
+	MySQL:
+	    Backup in case of failure:
+		# mysqldump --opt -ujffnms -pjffnms jffnms > /tmp/jffnms.backup.mysql
+	
+	    Upgrade the MySQL Tables:
+		# cat docs/upgrade/mysql/jffnms-0.8.1-to-0.8.2.mysql.diff* | mysql -u jffnms -pjffnms jffnms
+
+	PgSQL:
+	    Backup in case of failure:
+		# pg_dump -U jffnms jffnms -dROc > /tmp/jffnms.backup.pgsql
+
+	    Upgrade the PgSQL Tables:
+		# cat docs/upgrade/pgsql/jffnms-0.8.1-to-0.8.2.pgsql.diff* | psql jffnms jffnms
+
+    3. Copy the new binary files: 
+
+	# cp -Rv <patch tar.gz path>/files/* /opt/jffnms/
+
+    4. Change Ownership
+    
+    	# chown -R apache:apache *
+
+	    OR if you used the new Instalation method: 
+	# chown -R jffnms:jffnms *  
+
+    
+	And then re apply the permissions to the /opt/jffnms folder:
+	
+	# chmod -R ug+rw *
+
+	
+    5. Verify Everything is ok:
+	Go to the Setup page at
+	    http://youserver/jffnms/admin/setup.php (or the path you set)
+	    
+	    Check everything, make the corrections and SAVE the Configuration anyway. 

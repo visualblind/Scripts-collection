@@ -1,0 +1,29 @@
+<!ELEMENT A ( host, iphostname ) >
+
+<!ELEMENT CNAME ( host, iphostname ) >
+
+<!ELEMENT MX ( host, preference, iphostname ) >
+
+<!ELEMENT NS ( iphostname ) >
+
+<!ELEMENT host ( #PCDATA ) >
+
+<!ELEMENT iphostname ( #PCDATA ) >
+
+<!ELEMENT preference ( #PCDATA ) >
+
+<!ELEMENT record ( A | CNAME | MX | NS )* >
+
+<!ELEMENT soa EMPTY >
+<!ATTLIST soa email CDATA #REQUIRED >
+<!ATTLIST soa expire NMTOKEN #REQUIRED >
+<!ATTLIST soa minimumttl NMTOKEN #REQUIRED >
+<!ATTLIST soa refresh NMTOKEN #REQUIRED >
+<!ATTLIST soa retry NMTOKEN #REQUIRED >
+<!ATTLIST soa serialdate NMTOKEN #REQUIRED >
+<!ATTLIST soa serialnum NMTOKEN #REQUIRED >
+<!ATTLIST soa ttl NMTOKEN #REQUIRED >
+
+<!ELEMENT zone ( soa, record+ ) >
+<!ATTLIST zone domain NMTOKEN #REQUIRED >
+

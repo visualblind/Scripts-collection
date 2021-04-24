@@ -1,0 +1,4 @@
+With Secure Boot:
+bcdedit /set {bootmgr} path \EFI\ubuntu\shimx64.efi
+Without Secure Boot:
+bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi

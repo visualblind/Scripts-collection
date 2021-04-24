@@ -1,0 +1,152 @@
+Here's the easy way...
+
+Automatic Installation Instructions
+===================================
+
+1. Unzip the compressed node-runner-0.6.x.tar.gz.
+
+   # tar -xzf node-runner-0.6.x.tar.gz -C /where/ever
+
+2. For NEW installs, create the database for Node Runner
+   if you haven't done so already.
+
+   /location/of/mysql/bin/mysql -uroot -p
+
+   mysql> create database <nameofyourdatabase>;
+
+   mysql> GRANT CREATE,INSERT,UPDATE,DELETE,SELECT,ALTER,DROP \
+       -> ON <nameofyourdatabase>.* TO <username>@localhost \
+       -> IDENTIFIED BY '<password>';
+
+   mysql> quit;
+
+3. Run the install script using your PHP (CLI) interpreter,
+   and follow the instructions.
+
+   # cd /where/ever/you/extracted/the/tar/file
+   # /path/to/php -q installer.php
+
+That's it.  Done.
+
+
+
+
+And for those who wish to do things the hard way...
+
+Manual Installation Instructions
+================================
+
+1. Unzip the compressed node-runner-0.6.x.tar.gz.
+
+   # tar -xzf node-runner-0.6.x.tar.gz -C /where/ever
+
+2. Create a directory under your default web documents directory
+   to hold the Node Runner web interface files.  If you are upgrading
+   from a previous version, a similar directory should already exist.
+   Note that this does not need to be on the same machine that the
+   Node Runner query script (node.start) will run.
+   (Ex. Apache - /usr/local/httpd/htdocs/node-runner/)
+
+3. Copy the contents of the html directory to this newly created
+   directory in your web documents directory.
+
+4. Open the 'connect.php' file with a text editor, and modify the
+   location of the $etcdir variable.  This should reflect the final
+   location of the "etc" directory on the machine.
+
+5. Copy the rest of the files/directories from the installation to
+   the directory of your choice. (Ex. /usr/local/node-runner/)
+
+6. In the "etc" directory, modify the appropriate information in the
+   'nr.inc' file.  All fields should are explained with comments.
+   (You may choose to leave the database username and password blank
+   until the database is setup in Step 7.)
+
+7. You now need to set up the database for use with Node Runner.
+   If you are upgrading your version of Node Runner, skip to step 8.
+   (These instructions assume you are using MySQL.)
+
+   /location/of/mysql/bin/mysql -uroot -p
+
+   mysql> create database <nameofyourdatabase>;
+
+   mysql> GRANT CREATE,INSERT,UPDATE,DELETE,SELECT,ALTER,DROP \
+       -> ON <nameofyourdatabase>.* TO <username>@localhost \
+       -> IDENTIFIED BY '<password>';
+
+   mysql> quit;
+   
+8. The sql file for version 0.6.0 attempts to DROP one of the database
+   tables because it is no longer needed by the program.  The INSTALL docs
+   for previous versions did not specify that the database user for Node
+   Runner needed the DROP permission, so you will either need to change
+   the database user permissions (see step 7 above), or log into the
+   database as root and DROP the database manually.  For the latter, open
+   the appropriate .sql file for this version and execute any DROP statements.
+   Or, you could just leave it, since the table should be empty anyway.
+
+9. Next, the tables need to be imported for use with the database
+   that was just created.  You will need to modify the database variables
+   in the 'sql/nr-mysql-setup.php' sql file, then execute it like this:
+
+   # /path/to/php -q sql/nr-mysql-setup.php
+
+   Or, if you are upgrading from a previous version of Node Runner,
+   you should use this step with the appropriate upgrade file.  Remember
+   that you will need to modify the database variables in each .php file
+   before executing the scripts.
+
+   # /path/to/php -q sql/update-nr-to-v0.6.x.php
+
+   PLEASE READ THE FOLLOWING NOTE!!!
+   NOTE: The default port listed for the "Node Runner" (localhost) node in
+         nr-mysql-setup.php (bottom) is 80.  This should be set for a port that
+         is open on the local machine.  For example, if you use firewall
+         software to block tcp port 80, or you are running this on a standalone
+         machine without a web server, Node Runner will likely fail, because
+         the last dependency (parent) it checks is itself.  If it cannot query
+         itself on the selected port (80, for instance), the php script will
+         loop endlessly until it crashes.  I REPEAT, IF THE node.start SCRIPT
+         CANNOT QUERY THE MACHINE IT'S RUNNING ON, IT WILL FAIL!  I can't begin
+         to describe the number of emails I've gotten over the years from people
+         who fail to read and understand this documentation before reporting
+         trouble with the program.  Anyway, a port scan of the localhost
+         should provide you with a list of open ports to choose from when
+         making this decision.  If your port scanner shows a port open, then
+         the node.start script shouldn't have a problem querying that same port.
+
+10. The 'node.start' script is intended to be executed as a cron job,
+    allowing for the customization of schedules.  Unfortunately,
+    there is no way to run a PHP script as a daemon, so this is the
+    best method I've found to get the job done.
+
+    # crontab -e
+
+    Insert a line similar to:
+    0,2...58 * * * * /path/to/php -q /path/to/nr/node.start >> /tmp/nr-debug.txt
+
+    And save the changes.  This will create a cron job that executes
+    every 2 minutes to query servers.  If you are not familiar with
+    the format of cron jobs, do your homework, then  see the README
+    file for more information on cron scheduling and intervals for
+    querying nodes.
+
+    The trailing ">> /tmp/nr-debug.txt" is only necessary if you need
+    to debug the output of the node.start script.  It does not harm
+    anything to add it, and output is only generated to the file if
+    the $debug option (nr.inc) is set to 1.
+    
+11. Depending on how you have arranged your Node Runner files to this point,
+    you may need to change the $path_to_etc variable in the first few lines
+    of the node.start script.  It defaults to "etc/", so if you haven't moved
+    your etc directory from it's original tarball location (relative to the
+    node.start script), you should be okay.
+
+12. You will need to log in to the web interface after copying the
+    contents of the 'html' directory to the appropriate location.
+    To login, use 'admin' as a user, and 'node-runner' as the password,
+    and remember to change it upon successful login.  Once logged in,
+    you can also add users without administrative privileges.  These
+    users will be able to view some settings and print reports, but will
+    not have the privileges to change anything besides their own password.
+

@@ -1,0 +1,2 @@
+sudo letsencrypt certonly -a webroot --webroot-path=/var/www/sysinfo.io -d sysinfo.io -d www.sysinfo.io -d vpn.sysinfo.io
+openssl pkcs12 -export -out "certificate.pfx" -inkey "privkey.pem" -in "cert.pem" -certfile chain.pem

@@ -1,0 +1,26 @@
+<ComponentDescriptor>
+  <Name>VMware.VimAutomation.vROps.Commands</Name>
+  <Assembly>VMware.VimAutomation.vROps.Commands</Assembly>
+  <ImplementingType>VMware.VimAutomation.vROps.Commands.OMCommandsComponentImpl</ImplementingType>
+  <IsSnapin>true</IsSnapin>
+  <ProvidedServiceList>
+  </ProvidedServiceList>
+  <RequiredServiceList>
+    <ServiceDescriptor>
+      <Name>OMCoreComponentService</Name>
+      <Version>1.0</Version>
+    </ServiceDescriptor>
+  </RequiredServiceList>
+  <ExtendedServiceList>
+  </ExtendedServiceList>
+  <Version>
+    <Major>10</Major>
+    <Minor>0</Minor>
+    <Revision>0</Revision>
+    <Build>7893921</Build>
+    <Company>VMware Inc.</Company>
+    <Copyright>Copyright 2015</Copyright>
+    <UserFriendlyVersion>VMware VimAutomation vROps PowerCLI Component PowerCLI Component 10.0 build 7893921</UserFriendlyVersion>
+    <Description>Provides core cmdlets for managing VMware vROps Suite.</Description>
+  </Version>
+</ComponentDescriptor>

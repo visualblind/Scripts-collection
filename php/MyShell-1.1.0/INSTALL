@@ -1,0 +1,103 @@
+Installation instructions for MyShell
+(c)2001 Alejandro Vasquez <admin@digitart.net>
+http://www.digitart.net
+Licensed under the GNU GPL. See the file LICENSE for details.
+
+based on phpShell by Martin Geisler <gimpster@gimpster.com>
+
+GETTING THE PROGRAM
+-------------------
+You can always get the latest version of MyShell from
+http://www.digitart.net/php/myshell 
+
+
+INSTALLATION
+------------
+Installation is easy but may differ slightly if you have
+shell access or not in your server:
+
+With shell access:
+1. Create the directory where MyShell will live
+   and upload the MyShell-1.x.x.tar.gz
+   i.e.: mkdir myshell
+2. untar it using tar -zxvf MyShell-1.x.x.tar.gz
+3. with your favorite editor edit shell.php
+4. Point your browser to the URL of shell.php
+   i.e.: http://your.server.com/myshell/shell.php
+
+Without shell access:
+1. Untar MyShell-1.x.x.tar.gz in your computer
+2. Edit shell.php to suit your needs
+3. Upload shell.php and companion files to your server using FTP
+4. Point your browser to the URL of shell.php
+   i.e.: http://your.server.com/myshell/shell.php
+   
+shell.php is the only file needed to run MyShell, but
+hey!, please don't keep the docummentation aside. 
+
+
+Password-protecting MyShell
+-----------------------------
+MyShell is a higly risky script in the wrong hands.
+It is important that you password-protect MyShell, otherwise everybody
+can have access to your webserver over the Internet. They will be
+able to erase your files, and perhaps even shutdown the webserver!
+So be careful with this and remember that you can always find the
+usual disclaimer in the file LICENSE. (This software is licensed under
+GPL, I'm not responsible if you blow things up, etc... :-)
+
+BUILT IN PASSWORD-PROTECTION
+----------------------------
+MyShell includes a built in password protection configurable
+from the shell.php file itself.
+Althought basic, it's quite efective, do not requiere
+to have cookies enabeled on your browser nor any external file,
+and emails you a warning message when someone tries to login with 
+an invalid username or password.
+
+USING APACHE .htaccess PROTECTION
+---------------------------------
+You can also use .htaccess to password-protect MyShell but you
+have to disable the built in password protection, otherwise you
+certanly won't be able to access MyShell.
+
+For any help on the subject, you can install MyShell and type:
+
+man htpasswd
+
+You can also use the included sample.htaccess as the template for your
+own .htaccess file.
+To do so, first rename it to .htaccess, and then if you already have a
+file with usernames and passwords for Apache, just change the bit
+saying <path to auth-file> to the path of you file.
+
+If you don't have such .htpasswd file, then creating one is easy. 
+Type the following as root from a real shell or telnet session:
+
+$ htpasswd -c /home/httpd/auth_users <username>
+
+This will create the file /home/httpd/auth_users and promt for a
+password for the username supplied. If your Apache is installed
+somewhere else, then just adjust the path in both the command above
+and in the .htaccess-file.
+If you need to add extra usernames and passwords, then leave out the
+-c in the command above.
+
+BUILT-IN FILE EDITOR
+--------------------
+You can edit any file on your webspace provided you have
+the permissions required.
+To invoke the editor type 'edit filename'.
+Bear in mind that you can change the command to invoke the
+editor. If you are used to pico or vi, you can change the command
+editing shell.php to use 'pico filename' or 'vi filename' or whatever
+you prefer. Please refer to the comments in the code.
+
+
+BUGS AND IDEAS
+--------------
+If you find a bug or have ideas to improve MyShell, please
+email Alejandro Vasquez <admin@digitart.net>.
+
+Enjoy! 
+Alejandro Vasquez <admin@digitart.net>

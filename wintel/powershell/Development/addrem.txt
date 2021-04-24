@@ -1,0 +1,193 @@
+7-Zip 16.04 (x64)
+Black Squad
+Call of Duty: Black Ops II - Multiplayer
+CPUID CPU-Z 1.81.1
+Definition Update for Microsoft Office 2016 (KB3115407) 64-Bit Edition
+Epic Games Launcher Prerequisites (x64)
+Eraser 6.2.0.2970
+Google Chrome
+Herramientas de correcci?n de Microsoft Office 2016: espa?ol
+ImDisk Toolkit
+Intel(R) Chipset Device Software
+Intel(R) Management Engine Components
+Intel(R) Management Engine Components
+Intel(R) Management Engine Components
+Intel(R) Serial IO
+Intel(R) Serial IO
+Intel? Trusted Connect Service Client
+ISC BIND
+Java 8 Update 151 (64-bit)
+Microsoft Access MUI (English) 2016
+Microsoft Access Setup Metadata MUI (English) 2016
+Microsoft DCF MUI (English) 2016
+Microsoft Excel MUI (English) 2016
+Microsoft Groove MUI (English) 2016
+Microsoft HEVC Media Extension Installation for Microsoft.HEVCVideoExtension_1.0.2512.0_x64__8wekyb3d8bbwe (x64)
+Microsoft InfoPath MUI (English) 2016
+Microsoft Office 32-bit Components 2016
+Microsoft Office OSM MUI (English) 2016
+Microsoft Office OSM UX MUI (English) 2016
+Microsoft Office Professional Plus 2016
+Microsoft Office Professional Plus 2016
+Microsoft Office Proofing (English) 2016
+Microsoft Office Proofing Tools 2016 - English
+Microsoft Office Shared 32-bit MUI (English) 2016
+Microsoft Office Shared MUI (English) 2016
+Microsoft Office Shared Setup Metadata MUI (English) 2016
+Microsoft OneNote MUI (English) 2016
+Microsoft Outlook MUI (English) 2016
+Microsoft PowerPoint MUI (English) 2016
+Microsoft Publisher MUI (English) 2016
+Microsoft Skype for Business MUI (English) 2016
+Microsoft VC++ redistributables repacked.
+Microsoft Visual C++ 2008 Redistributable - x64 9.0.21022
+Microsoft Visual C++ 2008 Redistributable - x64 9.0.30729.6161
+Microsoft Visual C++ 2010  x64 Redistributable - 10.0.30319
+Microsoft Visual C++ 2012 x64 Additional Runtime - 11.0.61030
+Microsoft Visual C++ 2012 x64 Minimum Runtime - 11.0.61030
+Microsoft Visual C++ 2013 x64 Additional Runtime - 12.0.21005
+Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005
+Microsoft Visual C++ 2015 x64 Additional Runtime - 14.0.24215
+Microsoft Visual C++ 2015 x64 Minimum Runtime - 14.0.24215
+Microsoft Visual J# 2.0 Redistributable Package - SE (x64)
+Microsoft Visual J# 2.0 Redistributable Package - SE (x64)
+Microsoft Word MUI (English) 2016
+MySQL Workbench 6.3 CE
+NetSpeedMonitor 2.5.4.0 x64
+NVIDIA 3D Vision Driver 388.71
+NVIDIA Ansel
+NVIDIA Backend
+NVIDIA Container
+NVIDIA Control Panel 388.71
+NVIDIA Display Container
+NVIDIA Display Container LS
+NVIDIA Display Session Container
+NVIDIA Display Watchdog Plugin
+NVIDIA GeForce Experience 3.11.0.73
+NVIDIA Graphics Driver 388.71
+NVIDIA HD Audio Driver 1.3.35.1
+NVIDIA Install Application
+NVIDIA LocalSystem Container
+NVIDIA Message Bus for NvContainer
+NVIDIA NetworkService Container
+NVIDIA NodeJS
+NVIDIA PhysX System Software 9.17.0524
+NVIDIA Session Container
+NVIDIA ShadowPlay 3.11.0.73
+Nvidia Share
+NVIDIA SHIELD Streaming
+NVIDIA SHIELD Wireless Controller Driver
+NVIDIA Telemetry Client
+NVIDIA Telemetry Container
+NVIDIA TelemetryApi helper for NvContainer
+NVIDIA Update 31.0.1.0
+NVIDIA Update Core
+NVIDIA User Container
+NVIDIA Virtual Audio 4.02.2
+NVIDIA Virtual Host Controller
+NVIDIA Watchdog Plugin for NvContainer
+Outils de v?rification linguistique 2016 de Microsoft Office?- Fran?ais
+paint.net
+PLAYERUNKNOWN'S BATTLEGROUNDS
+Security Update for Microsoft Office 2016 (KB2920723) 64-Bit Edition
+Security Update for Microsoft Office 2016 (KB3085538) 64-Bit Edition
+Security Update for Microsoft Office 2016 (KB3085538) 64-Bit Edition
+Security Update for Microsoft Office 2016 (KB3115135) 64-Bit Edition
+Security Update for Microsoft Office 2016 (KB3213551) 64-Bit Edition
+Security Update for Microsoft Office 2016 (KB3213551) 64-Bit Edition
+Security Update for Microsoft Office 2016 (KB4011095) 64-Bit Edition
+Security Update for Microsoft Office 2016 (KB4011185) 64-Bit Edition
+Security Update for Microsoft Office 2016 (KB4011185) 64-Bit Edition
+Security Update for Microsoft Office 2016 (KB4011262) 64-Bit Edition
+Security Update for Microsoft Office 2016 (KB4011262) 64-Bit Edition
+Security Update for Microsoft Word 2016 (KB4011575) 64-Bit Edition
+Security Update for Microsoft Word 2016 (KB4011575) 64-Bit Edition
+Security Update for Microsoft Word 2016 (KB4011575) 64-Bit Edition
+Security Update for Microsoft Word 2016 (KB4011575) 64-Bit Edition
+Security Update for Microsoft Word 2016 (KB4011575) 64-Bit Edition
+Security Update for Skype for Business 2016 (KB3115408) 64-Bit Edition
+Sublime Text Build 3126
+thinkorswim
+Update for Microsoft Access 2016 (KB4011142) 64-Bit Edition
+Update for Microsoft Access 2016 (KB4011142) 64-Bit Edition
+Update for Microsoft Excel 2016 (KB4011577) 64-Bit Edition
+Update for Microsoft Excel 2016 (KB4011577) 64-Bit Edition
+Update for Microsoft Excel 2016 (KB4011577) 64-Bit Edition
+Update for Microsoft Excel 2016 (KB4011577) 64-Bit Edition
+Update for Microsoft Excel 2016 (KB4011577) 64-Bit Edition
+Update for Microsoft Office 2016 (KB2910954) 64-Bit Edition
+Update for Microsoft Office 2016 (KB2920678) 64-Bit Edition
+Update for Microsoft Office 2016 (KB2920678) 64-Bit Edition
+Update for Microsoft Office 2016 (KB2920684) 64-Bit Edition
+Update for Microsoft Office 2016 (KB2920712) 64-Bit Edition
+Update for Microsoft Office 2016 (KB2920720) 64-Bit Edition
+Update for Microsoft Office 2016 (KB2920724) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3114903) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3115081) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3115276) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3115281) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3118262) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3118263) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3118264) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3141457) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3141457) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3141506) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3141509) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3141509) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3141509) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3141509) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3178666) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3191923) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3191923) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3191923) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3191924) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3191929) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3213542) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3213542) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3213650) 64-Bit Edition
+Update for Microsoft Office 2016 (KB3213650) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011031) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011031) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011036) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011163) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011163) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011211) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011218) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011218) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011225) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011259) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011562) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011567) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011567) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011567) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011567) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011568) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011568) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011568) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011568) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011572) 64-Bit Edition
+Update for Microsoft Office 2016 (KB4011572) 64-Bit Edition
+Update for Microsoft OneDrive for Business (KB3178707) 64-Bit Edition
+Update for Microsoft OneDrive for Business (KB3178707) 64-Bit Edition
+Update for Microsoft OneDrive for Business (KB3178707) 64-Bit Edition
+Update for Microsoft OneDrive for Business (KB3178707) 64-Bit Edition
+Update for Microsoft OneNote 2016 (KB4011137) 64-Bit Edition
+Update for Microsoft OneNote 2016 (KB4011137) 64-Bit Edition
+Update for Microsoft OneNote 2016 (KB4011137) 64-Bit Edition
+Update for Microsoft Outlook 2016 (KB4011570) 64-Bit Edition
+Update for Microsoft Outlook 2016 (KB4011570) 64-Bit Edition
+Update for Microsoft PowerPoint 2016 (KB4011219) 64-Bit Edition
+Update for Microsoft PowerPoint 2016 (KB4011219) 64-Bit Edition
+Update for Microsoft PowerPoint 2016 (KB4011219) 64-Bit Edition
+Update for Microsoft Project 2016 (KB4011573) 64-Bit Edition
+Update for Microsoft Project 2016 (KB4011573) 64-Bit Edition
+Update for Microsoft Publisher 2016 (KB3178696) 64-Bit Edition
+Update for Microsoft Publisher 2016 (KB3178696) 64-Bit Edition
+Update for Microsoft Publisher 2016 (KB3178696) 64-Bit Edition
+Update for Microsoft Visio 2016 (KB4011136) 64-Bit Edition
+Update for Microsoft Visio 2016 (KB4011136) 64-Bit Edition
+Update for Skype for Business 2016 (KB4011563) 64-Bit Edition
+Update for Skype for Business 2016 (KB4011563) 64-Bit Edition
+VLC media player
+VMware Workstation
+Vulkan Run Time Libraries 1.0.61.0

@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<TEMPLATE>
+    <FIELD>
+     <DEFINITION NAME="dhcptrigger" TYPE="C" DESCRIP="DHCP_TRIGGER (Activate with value: DHCP" MAXLENGTH="50" SIZE="20" ROWS="1" REGEX="" ERRMSG="Invalid field" />
+    </FIELD>
+    <FIELD>
+     <DEFINITION NAME="subnet" TYPE="C" DESCRIP="Subnet" MAXLENGTH="50" SIZE="20" ROWS="1" REGEX="" ERRMSG="Invalid field" />
+    </FIELD>
+    <FIELD>
+     <DEFINITION NAME="netmask" TYPE="C" DESCRIP="Net Mask" MAXLENGTH="200" SIZE="80" ROWS="1" REGEX="" ERRMSG="Invalid field" />
+    </FIELD>
+    <FIELD>
+     <DEFINITION NAME="subnetmask" TYPE="C" DESCRIP="Subnet Mask" MAXLENGTH="255" SIZE="80" ROWS="1" REGEX="" ERRMSG="Invalid field" />
+    </FIELD>
+    <FIELD>
+     <DEFINITION NAME="broadcast" TYPE="C" DESCRIP="Broadcast address" MAXLENGTH="255" SIZE="80" ROWS="1" REGEX="" ERRMSG="Invalid field" />
+    </FIELD>
+    <FIELD>
+     <DEFINITION NAME="router" TYPE="C" DESCRIP="Router addresses, comma-separated" MAXLENGTH="255" SIZE="80" ROWS="1" REGEX="" ERRMSG="Invalid field" />
+    </FIELD>
+    <FIELD>
+     <DEFINITION NAME="dns" TYPE="C" DESCRIP="Domain name server addresses, comma-separated" MAXLENGTH="255" SIZE="80" ROWS="1" REGEX="" ERRMSG="Invalid field" />
+    </FIELD>
+    <FIELD>
+     <DEFINITION NAME="domain" TYPE="C" DESCRIP="Domain name, without leading dot" MAXLENGTH="255" SIZE="80" ROWS="1" REGEX="" ERRMSG="Invalid field" />
+    </FIELD>
+    <FIELD>
+     <DEFINITION NAME="defaultlease" TYPE="C" DESCRIP="Default lease time" MAXLENGTH="255" SIZE="80" ROWS="1" REGEX="" ERRMSG="Invalid field" />
+    </FIELD>
+    <FIELD>
+     <DEFINITION NAME="maxlease" TYPE="C" DESCRIP="Maximum lease time" MAXLENGTH="255" SIZE="80" ROWS="1" REGEX="" ERRMSG="Invalid field" />
+    </FIELD>
+	<FIELD>
+     <DEFINITION NAME="poolrange" TYPE="C" DESCRIP="Pool range (<first address> <last address>), whitespace-separated " MAXLENGTH="255" SIZE="80" ROWS="1" REGEX="" ERRMSG="Invalid field" />
+    </FIELD>
+</TEMPLATE>
+
+

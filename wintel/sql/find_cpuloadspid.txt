@@ -1,0 +1,19 @@
+SELECT  *
+FROM sys.dm_exec_requests  
+    	CROSS APPLY sys.dm_exec_sql_text(sql_handle) where status = 'running'
+
+		SELECT  *
+FROM sys.dm_exec_requests  
+    	CROSS APPLY sys.dm_exec_sql_text(sql_handle) where cpu_time > 100
+
+		sp_who 449
+
+
+SELECT sqltext.TEXT,
+req.session_id,
+req.status,
+req.command,
+req.cpu_time,
+req.total_elapsed_time
+FROM sys.dm_exec_requests req
+CROSS APPLY sys.dm_exec_sql_text(sql_handle) AS sqltext

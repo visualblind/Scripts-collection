@@ -1,0 +1,2 @@
+rclone lsl --drive-trashed-only gcrypt-usmba:/p0ds0smb/video-shows/Mad\ Men
+rclone copy --dry-run --progress --drive-trashed-only --drive-server-side-across-configs gcrypt-usmba:/p0ds0smb/video-shows/Mad\ Men gcrypt-usmba:/p0ds0smb/video-shows/Mad\ Men-Trash

@@ -1,0 +1,23 @@
+C:\Users\admintr>setspn -a HOST/FileServer FileServer
+Registering ServicePrincipalNames for CN=FileServer,OU=Servers,DC=Domain,DC=com
+        HOST/FileServer
+Updated object
+
+C:\Users\admintr>setspn -a HOST/FileServer.Domain.int FileServer
+Registering ServicePrincipalNames for CN=FileServer,OU=Servers,DC=Domain,DC=com
+        HOST/FileServer.Domain.int
+Updated object
+
+C:\Users\admintr>setspn -L FileServer
+Registered ServicePrincipalNames for CN=FileServer,OU=Servers,DC=Domain,DC=com:
+        HOST/FileServer.Domain.int
+        HOST/FileServer
+        TERMSRV/FileServer
+        TERMSRV/FileServer.Domain.int
+        Dfsr-12F9A27C-BF97-4787-9364-D31B6C55EB04/FileServer.Domain.int
+        WSMAN/FileServer
+        WSMAN/FileServer.Domain.int
+        RestrictedKrbHost/FileServer
+        HOST/FileServer
+        RestrictedKrbHost/FileServer.Domain.int
+        HOST/FileServer.Domain.int

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>Particle Whois Readme</title>
+<link rel="stylesheet" type="text/css" href="../shared/admin.css" />
+</head>
+<body>
+<a name="top"></a>
+<table width="75%" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" align="center" style="border: #666666 1px solid;"><tr><td>
+<table width="100%" cellpadding="5" cellspacing="0" border="5">
+<tr>
+	<td>
+		<p class="sub1">Welcome<p>
+		<p>Welcome to the Particle Whois readme.htm file, the hub of all documentation for Particle Whois. There is a seperate readme with <strong><a href="upgrade.htm">upgrade</a></strong> instructions. Also if you have any problems, feature requests, bug reports and so forth, drop by the <a href="http://forums.particlesoft.net/">forums</a>.</p>
+		
+		<p><span class="sub2">Contents</span></p>
+		<ul>
+			<li><a href="#licence">Licence</a></li>
+			<li><a href="#requirements">Requirements</a></li>
+			<ul>
+				<li><a href="#isrequired">What is Required</a></li>
+				<li><a href="#isntrequired">What isn't Required</a></li>
+			</ul>
+			<li><a href="#installation">Installation</a></li>
+			<ul>
+				<li><a href="#dbconfig">Database Configuration</a></li>
+				<li><a href="#installer">The Installer</a></li>
+				<li><a href="#installfolder">Delete Folder</a></li>
+			</ul>
+			<li><a href="#userguide">User Guide</a></li>
+			<ul>
+				<li><a href="#adminpanel">Admin Panel</a></li>
+				<li><a href="#historylog">History Log</a></li>
+				<li><a href="#settings">Changing Settings</a></li>
+			</ul>
+			<li><a href="#credits">Credits</a></li>
+		</ul>
+		
+		<p><span class="sub2"><a name="licence"></a>Licence</span><br />
+		By using Particle Whois you show you have read and agree to the licence and terms of use. You can find them <strong><a href="licence.htm">here</a></strong>. It is worth noting that although Particle Whois may be free it is not open source.</p>
+		
+		<p><span class="sub2"><a name="licence"></a>Requirements</span><br />
+		Here contains information on what you will need to run Particle Whois.</p>
+		<p><a href="#top">Back to Top</a></p>
+		<p><strong><a name="isrequired"></a>What is required</strong><br />
+		You will need the following things:<br />
+		&#8226; PHP - Particle Whois is written in the <a href="http://www.php.net/">PHP</a> language<br />
+		&#8226; MySQL - currently only <a href="http://www.mysql.com/">MySQL</a> databases are supported
+		<p><a href="#top">Back to Top</a></p>
+		<p><strong><a name="isntrequired"></a>What isn't required</strong><br />
+		Things that you will not need:<br />
+		&#8226; Linux - Particle Whois has been tested on Windows and should run on all servers<br />
+		&#8226; Apache - Particle Whois works fine on IIS and should on other servers</p>
+		<p><a href="#top">Back to Top</a></p>
+		
+		<p><span class="sub2"><a name="Installation"></a>Installation</span><br />
+		Installing Particle Whois is pretty simple. This section will guide you through the steps to have your script up and running in minutes.
+		<p><a href="#top">Back to Top</a></p>
+		<p><strong><a name="dbconfig"></a>Database configuration</strong><br />
+		In order to install Particle Whois you will need to create a MySQL database and a user which has permissions to access this database.</p>
+		<p>Once you have these, open up includes/config.php. Here you will need to enter your information. Usually you should be able to leave $dbhost and $dbprefix as default. You don't need to change these unless you know what your doing.</p>
+		<p>You will however need to change:</p>
+		<p>$dbuser = "";<br />
+		$dbpass = "";<br />
+		$dbname = "";</p>
+		<p>Enter the name of your database into $dbname such as $dbname = "mydatabase";. You also need to enter the username for the user who can access this database into $dbuser and the password for that user into $dbpass.</p>
+		<p>Once you have entered these values, save config.php and upload it to your web server. You may want to remove write permissions to it so that you do not overwrite it in future (although make sure it still has read permissions so the script can read it!).</p>
+		<p><a href="#top">Back to Top</a></p>
+		<p><strong><a name="installer"></a>Running the installer</strong><br />
+		Once you have uploaded the file you can access the installer and run the script:</p>
+		<p><a href="../install/install.php">install/install.php</a></p>
+		<p>If you are reading this on the website you will be able to click the above link but if not simply type the address into your web browser. The installer will then take you through each step.</p>
+		<p><a href="#top">Back to Top</a></p>
+		<p><strong><a name="installfolder"></a>Delete /install/</strong><br />
+		For security reasons, once you have run the installer you will need to delete the install folder from the web server. The rest of the script will not be accessable until you have done this.</p>
+		<p><a href="#top">Back to Top</a></p>
+		
+		<p><span class="sub2"><a name="userguide"></a>User Guide</span><br />
+		Here is a quick guide on how to use and admin your whois site.
+		<p><a href="#top">Back to Top</a></p>
+		<p><strong><a name="adminpanel"></a>Admin Panel</strong><br />
+		You can reach the admin panel by goign to admin.php from your homepage. You will then be asked to log in using the username and password you choosen when installing the script.</p>
+		<p><a href="#top">Back to Top</a></p>
+		<p><strong><a name="historylog"></a>History Log</strong><br />
+		This allows you to view the history of whois searches, each domain is listed along with it's availability at the time of the search and the date and time at which the search was run. You can remove old searches using the prune log feature. Enter an amount of days (the default is 30) and click prune to have all searches run before the specified amount of days removed.</p>
+		<p><a href="#top">Back to Top</a></p>
+		<p><strong><a name="settings"></a>Changing Settings</strong><br />
+		Particle Whois has several options for customisation. To make changes to these settigns, log in to the admin panel and click change settings. You will then have access to the change settings menu, each one with an explanation of what it does.</p>
+		<p><a href="#top">Back to Top</a></p>
+		
+		<p><span class="sub2"><a name="credits"></a>Credits</span><br />
+		Particle Whois was created and developed by <a href="http://www.particlesoft.net/">Particle Soft</a></p>
+		<p><a href="#top">Back to Top</a></p>
+	</td>
+</tr>
+</table>
+</td></tr></table>
+<center>&nbsp;<br />&copy; 2004-2005 <a href="http://www.particlesoft.net/">Particle Soft</a></center>
+</body>
+</html>

@@ -1,0 +1,1 @@
+BACKUP LOG database_name WITH TRUNCATE_ONLY;

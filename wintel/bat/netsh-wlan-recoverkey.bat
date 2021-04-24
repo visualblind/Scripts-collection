@@ -1,0 +1,1 @@
+netsh wlan show profile "Profile" key=clear | findstr /R "name Content"

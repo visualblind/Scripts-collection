@@ -1,0 +1,22 @@
+<ComponentDescriptor>
+   <Name>VMware.VimAutomation.Security</Name>
+   <Assembly>VMware.VimAutomation.Security.Impl</Assembly>
+   <ImplementingType>VMware.VimAutomation.Security.Impl.SecurityComponentImpl</ImplementingType>
+   <IsSnapin>false</IsSnapin>
+
+   <ProvidedServiceList>
+      <ServiceDescriptor>
+         <Name>SecurityCoreService</Name>
+         <Version>1.0</Version>
+      </ServiceDescriptor>
+   </ProvidedServiceList>
+
+   <RequiredServiceList>
+      <ServiceDescriptor>
+         <Name>StorageCoreService</Name>
+         <Version>1.0</Version>
+      </ServiceDescriptor>
+   </RequiredServiceList>
+
+   <ExtendedServiceList></ExtendedServiceList>
+</ComponentDescriptor>

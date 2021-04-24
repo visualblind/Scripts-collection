@@ -1,0 +1,2387 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<helpItems xmlns="http://msh" schema="maml">
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Add-DeployRule</command:name>
+        <maml:description>
+            <maml:para>Adds one or more rules to the rule set.</maml:para>
+        </maml:description>
+        <command:verb>Add</command:verb>
+        <command:noun>DeployRule</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Adds one or more rules to the working rule set and then activates the working rule set.  The rule can be added at a specific index with the "-At" option, otherwise it is added to the end.  If you plan on making several changes to the rule set, you can pass the "-NoActivate" option to avoid activing the rule set after every change.
+
+A rule set is an ordered list of rules that determines what items, such as a host profile, should be associated with a host.  For each type of item, AutoDeploy will find a matching rule and select the item specified in that rule.  If more than one rule matches a host and the rules contain the same type of item, the item from the rule that comes first in the rule set will be used.  This behaviour makes it possible to write a single generic rule that matches many hosts and then write more specific rules to override settings for specialized hosts.
+
+The working rule set can be used to test out changes to the rule set against hosts in vCenter Server.  Once you are satisfied with the rules, you can activate the working rule set to control how any new hosts that are unknown to vCenter Server will be deployed.
+
+You must have the "AutoDeploy.RuleSet.Edit" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Add-DeployRule</maml:name>
+            <command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "1" >
+                <maml:name>DeployRule</maml:name>
+                <maml:description>
+                    <maml:para>Rule(s) to add to the rule set.  You can pass a DeployRule object here or the name of the rule.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >DeployRule[]</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "2" >
+                <maml:name>At</maml:name>
+                <maml:description>
+                    <maml:para>Index in the rule set where you want to add the rule.  The placement of the rule in the set determines its priority.  Lower indexes have a higher priority.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >UInt32</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>NoActivate</maml:name>
+                <maml:description>
+                    <maml:para>Specify this parameter to add the rule to the working rule set but not to the active rule set. By default, the working rule set is activated after the change.</maml:para>
+                </maml:description>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+            <maml:name>DeployRule</maml:name>
+            <maml:description>
+                <maml:para>Rule(s) to add to the rule set.  You can pass a DeployRule object here or the name of the rule.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">DeployRule[]</command:parameterValue>
+            <dev:type>
+                <maml:name>DeployRule[]</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+            <maml:name>At</maml:name>
+            <maml:description>
+                <maml:para>Index in the rule set where you want to add the rule.  The placement of the rule in the set determines its priority.  Lower indexes have a higher priority.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
+            <dev:type>
+                <maml:name>UInt32</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>NoActivate</maml:name>
+            <maml:description>
+                <maml:para>Specify this parameter to add the rule to the working rule set but not to the active rule set. By default, the working rule set is activated after the change.</maml:para>
+            </maml:description>
+            <dev:type>
+                <maml:name>SwitchParameter</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+        <command:inputType>
+            <dev:type>
+                <maml:name>VMware.DeployAutomation.Types.DeployRule[]</maml:name>
+            </dev:type>
+        </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name>VMware.DeployAutomation.Types.DeployRuleSet</maml:name>
+            </dev:type>
+        </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Get-DeployRule &quot;testrule&quot; | Add-DeployRule</dev:code>
+            <dev:remarks>
+                <maml:para>Get a rule named "testrule" and add it to the end of the rule set.</maml:para>
+            </dev:remarks>
+        </command:example>
+        <command:example>
+            <maml:title>
+--------------  Example 2 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Add-DeployRule testrule -At 0</dev:code>
+            <dev:remarks>
+                <maml:para>Add a rule named "testrule" to the beginning of the rule set.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Get-DeployRule</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>New-DeployRule</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Remove-DeployRule</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Add-ProxyServer</command:name>
+        <maml:description>
+            <maml:para>Adds a proxy server to the proxy server list.</maml:para>
+        </maml:description>
+        <command:verb>Add</command:verb>
+        <command:noun>ProxyServer</command:noun>
+    </command:details>
+    <maml:description>
+  <maml:para>Adds a proxy server to the proxy server list. The address of the proxy server should only include a scheme, hostname and port. The only suported scehemes are HTTP and HTTPS.
+
+You must have the "AutoDeploy.Profile.Create" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Add-ProxyServer</maml:name>
+            <command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>Address</maml:name>
+                <maml:description>
+                    <maml:para>Address of the proxy server to add.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false">String</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+            <maml:name>Address</maml:name>
+            <maml:description>
+                <maml:para>Address of the proxy server to add.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+            <dev:type>
+                <maml:name>String</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Add-ProxyServer -Address https://www.example.com:80</dev:code>
+            <dev:remarks>
+                <maml:para>Adds the proxy server with address https://www.example.com:80 to the list.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Get-ProxyServer</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Remove-ProxyServer</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Add-ScriptBundle</command:name>
+        <maml:description>
+            <maml:para>The cmdlet will take in the file URI to the script bundle and upload it to Auto Deploy. The name of the script bundle will be used as the identifier for the object minus the tgz extension.</maml:para>
+        </maml:description>
+        <command:verb>Add</command:verb>
+        <command:noun>ScriptBundle</command:noun>
+    </command:details>
+    <maml:description>
+    <maml:para>Uploads the script bundle to the Auto Deploy server.The name of the script bundle will be used as the identifier for the object minus the tgz extension.The script bundles will be treated just like ImageProfiles. A script bundle object can be associated with the rule.
+
+Once uploaded Get-ScriptBundle cmdlet can be used to retrieve script bundles and used for rule creation.
+
+
+You must have the "AutoDeploy.Profile.Edit" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>        <command:syntaxItem>
+            <maml:name>Add-ScriptBundle</maml:name>
+            <command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "1" >
+                <maml:name>ScriptBundle</maml:name>
+                <maml:description>
+                    <maml:para>Bundle to be uploaded to the Auto Deploy server. The path should be valid file URI and a valid tar archive</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >String</command:parameterValue>
+                <dev:type>
+                    <maml:name>String</maml:name>
+                </dev:type>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>Update</maml:name>
+                <maml:description>
+                    <maml:para>Updates the cache of the Auto Deploy server if this parameter is passed and bundle already exists.</maml:para>
+                </maml:description>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+            <maml:name>ScriptBundle</maml:name>
+            <maml:description>
+                <maml:para>Bundle to be uploaded to the Auto Deploy server. The path should be valid file URI and valid tar archive</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">String</command:parameterValue>
+            <dev:type>
+                <maml:name>String</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>Update</maml:name>
+            <maml:description>
+                <maml:para>Updates the cache of the Auto Deploy server if this parameter is passed and the bundle already exists .</maml:para>
+            </maml:description>
+            <dev:type>
+                <maml:name>SwitchParameter</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+        <command:inputType>
+            <dev:type>
+                <maml:name>String</maml:name>
+            </dev:type>
+        </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name>VMware.DeployAutomation.Types.ScriptBundle</maml:name>
+            </dev:type>
+        </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Add-ScriptBundle &quot;file:///c:/temp/script-bundle-0.tgz&quot; </dev:code>
+            <dev:remarks>
+                <maml:para>Uploads the script bundle located at the path to the Auto Deploy Server.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Get-ScriptBundle</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Copy-DeployRule</command:name>
+        <maml:description>
+            <maml:para>Clones an existing rule.</maml:para>
+        </maml:description>
+        <command:verb>Copy</command:verb>
+        <command:noun>DeployRule</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Clones an existing rule. If you specify -Name, the new rule is assigned the specified name. Otherwise, the cmdlet assigns a new name to the original and gives the clone the name of the original rule. 
+
+Use the -ReplaceItem and -ReplacePattern options to replace individual items or patterns from the old rule. 
+
+If the old rule was in the working rule set, the cmdlet replaces it with the new rule unless you specify the -NoUpdateRuleSet option.
+
+You must have the "AutoDeploy.Rule.Create" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>        <command:syntaxItem>
+            <maml:name>Copy-DeployRule</maml:name>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "true (ByValue)" position = "1" >
+                <maml:name>DeployRule</maml:name>
+                <maml:description>
+                    <maml:para>Rule to copy.  This parameter supports object-by-name, so you can pass the name of the rule.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >DeployRule</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>Name</maml:name>
+                <maml:description>
+                    <maml:para>If -Name is specified, the cmdlet assigns the name to the new rule. Otherwise, the new rule keeps the old name and the old rule is renamed so that it is hidden.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >String</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>AllHosts</maml:name>
+                <maml:description>
+                    <maml:para>If you specify AllHosts, the rule is applied to all hosts.</maml:para>
+                </maml:description>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>ReplaceItem</maml:name>
+                <maml:description>
+                    <maml:para>Allows you to make a copy and change individual items, for example, the image profile.  This parameter supports object-by-name, so you can pass the name of the item.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >VIObjectCore[]</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>AddOrReplacePattern</maml:name>
+                <maml:description>
+                    <maml:para>Allows you to change individual patterns or add new ones, for example, the set of hosts the rule applies to.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>ReplacePattern</maml:name>
+                <maml:description>
+                    <maml:para>ReplacePattern is depricated. The same functionality can be achieved with AddOrReplacePattern</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>ClearPatterns</maml:name>
+                <maml:description>
+                    <maml:para>Remove all patterns in the original rule. This will be applied before AddOrReplacePattern so it will not clear any pattern updates.</maml:para>
+                </maml:description>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>NoUpdateRuleSet</maml:name>
+                <maml:description>
+                    <maml:para>If specified, the cmdlet changes the rule but does not add the changed rule to the working or active rule set.</maml:para>
+                </maml:description>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>NoActivate</maml:name>
+                <maml:description>
+                    <maml:para>If specified, the cmdlet changes the rule and adds it to the working rule set, but does not activate the working rule set.</maml:para>
+                </maml:description>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+            <maml:name>DeployRule</maml:name>
+            <maml:description>
+                <maml:para>Rule to copy.  This parameter supports object-by-name, so you can pass the name of the rule.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">DeployRule</command:parameterValue>
+            <dev:type>
+                <maml:name>DeployRule</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>Name</maml:name>
+            <maml:description>
+                <maml:para>If -Name is specified, the cmdlet assigns the name to the new rule. Otherwise, the new rule keeps the old name and the old name is renamed.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+            <dev:type>
+                <maml:name>String</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>AllHosts</maml:name>
+            <maml:description>
+                <maml:para>If you specify AllHosts, the rule is applied to all hosts.</maml:para>
+            </maml:description>
+            <dev:type>
+                <maml:name>SwitchParameter</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+            <maml:name>ReplaceItem</maml:name>
+            <maml:description>
+                <maml:para>Allows you to make a copy and change individual items, for example the image profile the rule assigns. This parameter supports object-by-name, so you can pass the name of the item.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">VIObjectCore[]</command:parameterValue>
+            <dev:type>
+                <maml:name>VIObjectCore[]</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+            <maml:name>AddOrReplacePattern</maml:name>
+            <maml:description>
+                <maml:para>Allows you to change individual patterns or add new ones, for example, the set of hosts the rule applies to.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+            <dev:type>
+                <maml:name>String[]</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+            <maml:name>ReplacePattern</maml:name>
+            <maml:description>
+                <maml:para>ReplacePattern is depricated. The same functionality can be achieved with AddOrReplacePattern.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+            <dev:type>
+                <maml:name>String[]</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>ClearPatterns</maml:name>
+            <maml:description>
+                <maml:para>Remove all patterns in the original rule. This will be applied before AddOrReplacePattern so it will not clear any pattern updates.</maml:para>
+            </maml:description>
+            <dev:type>
+                <maml:name>SwitchParameter</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>NoUpdateRuleSet</maml:name>
+            <maml:description>
+                <maml:para>If specified, the cmdlet changes the rule but does not add the changed rule to the working and active rule set.</maml:para>
+            </maml:description>
+            <dev:type>
+                <maml:name>SwitchParameter</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>NoActivate</maml:name>
+            <maml:description>
+                <maml:para>If specified, the cmdlet changes the rule and adds it to the working rule set, but does not activate the working rule set.</maml:para>
+            </maml:description>
+            <dev:type>
+                <maml:name>SwitchParameter</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name>VMware.DeployAutomation.Types.DeployRule</maml:name>
+                <maml:description>
+                    <maml:para>The DeployRule object has the following properties: 
+
+Name      System.String
+Pattern    DeployRule.Pattern[]
+Items      System.VIObject[]</maml:para>
+                </maml:description>
+            </dev:type>
+        </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Copy-DeployRule defimg -ReplaceItem "My New ESXi 5.0"
+</dev:code>
+            <dev:remarks>
+                <maml:para>Copies a rule previously retrieved with Get-DeployRule and replaces the image in that rule with the specified image.</maml:para>
+            </dev:remarks>
+        </command:example>
+        <command:example>
+            <maml:title>
+--------------  Example 2 --------------            </maml:title>
+            <dev:code>C:\PS&gt; $img = Get-ESXImageProfile -Name &quot;My New ESXi 5.0&quot;
+C:\PS&gt; Copy-DeployRule defimg -ReplaceItem $img
+</dev:code>
+            <dev:remarks>
+                <maml:para>Copies a rule previously retrieved with Get-DeployRule and replaces the image in that rule with the specified image.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>New-DeployRule</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Get-ESXImageProfile</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Get-Cluster</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Get-Datacenter</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Get-Folder</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Get-VMHostProfile</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Export-AutoDeployState</command:name>
+        <maml:description>
+            <maml:para>The cmdlet will fetch the current state of Auto Deploy and will write out a zip file named rbd-backup.zip in the specified directory path.</maml:para>
+        </maml:description>
+        <command:verb>Export</command:verb>
+        <command:noun>AutoDeployState</command:noun>
+    </command:details>
+    <maml:description>
+    <maml:para>Backs up the state of the Auto Deploy service.
+The backup data is a zip file containing the entire state of the Auto deploy when the command is invoked. It includes all the files required for a successfull restore.
+
+You must have the "AutoDeploy.Profile.Edit" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Export-AutoDeployState</maml:name>
+            <command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "1" >
+                <maml:name>ExportDir</maml:name>
+                <maml:description>
+                    <maml:para>Export directory where the file needs to be written out</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >String</command:parameterValue>
+                <dev:type>
+                    <maml:name>String</maml:name>
+                </dev:type>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+            <maml:name>ExportDir</maml:name>
+            <maml:description>
+                <maml:para>Export directory where the file needs to be written out</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">String</command:parameterValue>
+            <dev:type>
+                <maml:name>String</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+        <command:inputType>
+            <dev:type>
+                <maml:name>String</maml:name>
+            </dev:type>
+        </command:inputType>
+    </command:inputTypes>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Export-AutoDeployState &quot;c:/temp/&quot; </dev:code>
+            <dev:remarks>
+                <maml:para>Fetches the backup data and writes out a zip file at the mentioned path.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Import-AutoDeployState</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Get-DeployOption</command:name>
+        <maml:description>
+            <maml:para>Get the Auto Deploy global configuration options.</maml:para>
+        </maml:description>
+        <command:verb>Get</command:verb>
+        <command:noun>DeployOption</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Get one or more Auto Deploy global configuration options.
+
+Available options:
+
+ * vlan-id: The default VLAN ID for the ESXi Management Network of a host booted through Auto Deploy.  Note that this value will only be used if the host boots without a host profile.
+
+        </maml:para>
+    </maml:description>
+    <command:syntax>        <command:syntaxItem>
+            <maml:name>Get-DeployOption</maml:name>
+            <command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>Key</maml:name>
+                <maml:description>
+                    <maml:para>The option identifier to retrieve.  If this parameter is not specified, all available options will be returned.</maml:para>
+                </maml:description>
+            <command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="1">
+            <maml:name>Key</maml:name>
+            <maml:description>
+                <maml:para>The option identifier to retrieve.  If this parameter is not specified, all available options will be returned.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+            <dev:type>
+                <maml:name>String[]</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name>Dictionary</maml:name>
+                <maml:description>
+                    <maml:para>A dictionary containing the configuration options as key/value pairs.</maml:para>
+                </maml:description>
+            </dev:type>
+        </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Get-DeployOption &quot;vlan-id&quot;</dev:code>
+            <dev:remarks>
+                <maml:para>Get the value for the default VLAN ID for the ESXi Management Network.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+        <maml:navigationLink>
+            <maml:linkText>Set-DeployOption</maml:linkText>
+        </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Get-DeployRule</command:name>
+        <maml:description>
+            <maml:para>Gets a DeployRule object.</maml:para>
+        </maml:description>
+        <command:verb>Get</command:verb>
+        <command:noun>DeployRule</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Gets the DeployRule object with the specified name from the VMware Auto Deploy server.  If no rule names are given, all visible rules are returned.  Hidden rules start with a dot and can be retrieved by using a wildcard pattern that starts with a dot (e.g. '.example*').</maml:para>
+    </maml:description>
+    <command:syntax>        <command:syntaxItem>
+            <maml:name>Get-DeployRule</maml:name>
+            <command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>Name</maml:name>
+                <maml:description>
+                    <maml:para>Name of the deploy rule to retrieve.  Wildcard patterns can be used here to retrieve multiple rules at a time.</maml:para>
+                </maml:description>
+            <command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="1">
+            <maml:name>Name</maml:name>
+            <maml:description>
+                <maml:para>Name of the deploy rule to retrieve.  Wildcard patterns can be used here to retrieve multiple rules at a time.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+            <dev:type>
+                <maml:name>String[]</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name>VMware.DeployAutomation.Types.DeployRule</maml:name>
+                <maml:description>
+                    <maml:para>The DeployRule object has the following properties: 
+
+Name      System.String
+Pattern    DeployRule.Pattern[]
+Items      System.VIObject[]</maml:para>
+                </maml:description>
+            </dev:type>
+        </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; $rule = Get-DeployRule &quot;testrule&quot;</dev:code>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>New-DeployRule</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Get-DeployRuleSet</command:name>
+        <maml:description>
+            <maml:para>Gets the current working rule set or the current active rule set.</maml:para>
+        </maml:description>
+        <command:verb>Get</command:verb>
+        <command:noun>DeployRuleSet</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Gets the current working rule set or the current active rule set.  The active rule set governs how new hosts are to be deployed.  The working set can be used to test out changes before making them active.  By default, any cmdlets that change the rule set will immediately activate the change.  However, you can pass the NoActivate parameter to the cmdlet to delay activation until Switch-ActiveDeployRuleSet is called on the working rule set.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Get-DeployRuleSet</maml:name>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>Active</maml:name>
+                <maml:description>
+                    <maml:para>Retrieve the active rule set.</maml:para>
+                </maml:description>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>Working</maml:name>
+                <maml:description>
+                    <maml:para>Retrieve the working rule set.</maml:para>
+                </maml:description>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>Active</maml:name>
+            <maml:description>
+                <maml:para>Retrieve the active rule set.</maml:para>
+            </maml:description>
+            <dev:type>
+                <maml:name>SwitchParameter</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>Working</maml:name>
+            <maml:description>
+                <maml:para>Retrieve the working rule set.</maml:para>
+            </maml:description>
+            <dev:type>
+                <maml:name>SwitchParameter</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name>VMware.DeployAutomation.Types.DeployRuleSet</maml:name>
+                <maml:uri />
+                <maml:description>
+                    <maml:para></maml:para>
+                </maml:description>
+            </dev:type>
+            <maml:description></maml:description>
+        </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Get-DeployRuleSet</dev:code>
+            <dev:remarks>
+                <maml:para>Get the active deploy rule set.</maml:para>
+            </dev:remarks>
+        </command:example>
+        <command:example>
+            <maml:title>
+--------------  Example 2 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Get-DeployRuleSet -working</dev:code>
+            <dev:remarks>
+                <maml:para>Get the working deploy rule set.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Add-DeployRule</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Remove-DeployRule</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Get-ProxyServer</command:name>
+        <maml:description>
+            <maml:para>Get the proxy server list.</maml:para>
+        </maml:description>
+        <command:verb>Get</command:verb>
+        <command:noun>ProxyServer</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Gets the proxy server list from the server.
+
+You must have the "AutoDeploy.Profile.Edit" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Get-ProxyServer</maml:name>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Get-ProxyServer</dev:code>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Add-ProxyServer</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Remove-ProxyServer</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Get-ScriptBundle</command:name>
+        <maml:description>
+            <maml:para>Gets a ScriptBundle object.</maml:para>
+        </maml:description>
+        <command:verb>Get</command:verb>
+        <command:noun>ScriptBundle</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Gets the ScriptBundle object with the specified name from the VMware Auto Deploy server.  If no bundle names are given, all visible script bundles are returned.</maml:para>
+    </maml:description>
+    <command:syntax>        <command:syntaxItem>
+            <maml:name>Get-ScriptBundle</maml:name>
+            <command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>Name</maml:name>
+                <maml:description>
+                    <maml:para>Name of the scriptbundle to retrieve.  Wildcard patterns can be used here to retrieve multiple scriptbundles at a time.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="1">
+            <maml:name>Name</maml:name>
+            <maml:description>
+                <maml:para>Name of the scriptbundle to retrieve.  Wildcard patterns can be used here to retrieve multiple scriptbundles at a time.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+            <dev:type>
+                <maml:name>String[]</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name>VMware.DeployAutomation.Types.ScriptBundle</maml:name>
+                <maml:uri />
+                <maml:description>
+                    <maml:para>The ScriptBundle object has the following properties:
+
+Name      System.String
+Scripts    System.String[]</maml:para>
+                </maml:description>
+            </dev:type>
+            <maml:description></maml:description>
+        </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; $bundle = Get-ScriptBundle &quot;testbundle&quot;</dev:code>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Add-ScriptBundle</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Get-VMHostAttributes</command:name>
+        <maml:description>
+            <maml:para>Gets the identifying attributes of a host.</maml:para>
+        </maml:description>
+        <command:verb>Get</command:verb>
+        <command:noun>VMHostAttributes</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Gets the identifying attributes of a host.  These are the attributes that the rules will match against.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Get-VMHostAttributes</maml:name>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "true (ByValue)" position = "1" >
+                <maml:name>VMHost</maml:name>
+                <maml:description>
+                    <maml:para>Host to get the attributes for. Use Get-VMHost to retrieve the host object associated with a host name.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >VMHost</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+            <maml:name>VMHost</maml:name>
+            <maml:description>
+                <maml:para>Host to get the attributes for. Use Get-VMHost to retrieve the host object associated with a host name.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">VMHost</command:parameterValue>
+            <dev:type>
+                <maml:name>VMHost</maml:name>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+    </command:parameters>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Get-VMHostAttributes myhost
+&quot;ipv4&quot; &quot;192.168.1.1&quot;
+&quot;vendor&quot; &quot;VMware&quot;
+            </dev:code>
+            <dev:remarks>
+                <maml:para>Retrieves the identifying attributes for the host named myhost.</maml:para>
+            </dev:remarks>
+        </command:example>
+        <command:example>
+            <maml:title>
+--------------  Example 2 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Get-VMhost &quot;myhost&quot; | Get-VMHostAttributes
+&quot;ipv4&quot; &quot;192.168.1.1&quot;
+&quot;vendor&quot; &quot;VMware&quot;
+            </dev:code>
+            <dev:remarks>
+                <maml:para>Retrieves the identifying attributes for the host named myhost.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Get-VMHost</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Get-VMHostImageProfile</command:name>
+        <maml:description>
+            <maml:para>Gets the image profile associated with the specified ESXi host.</maml:para>
+        </maml:description>
+        <command:verb>Get</command:verb>
+        <command:noun>VMHostImageProfile</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Gets the image profile currently associated with the specified ESXi host. Use the Get-VMHost cmdlet to retrieve the host.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Get-VMHostImageProfile</maml:name>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "true (ByValue)" position = "named" >
+                <maml:name>Entity</maml:name>
+                <maml:description>
+                    <maml:para>Host to retrieve the image profile information from.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >VIObjectCore</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+            <maml:name>Entity</maml:name>
+            <maml:description>
+                <maml:para>Host to retrieve the image profile information for.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">VIObjectCore</command:parameterValue>
+            <dev:type>
+                <maml:name>VIObjectCore</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name>VMware.ImageBuilder.Types.ImageProfile</maml:name>
+            </dev:type>
+        </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Get-VMHostImageProfile -Entity h1</dev:code>
+            <dev:remarks>
+                <maml:para>Get the image profile associated with host "h1".</maml:para>
+            </dev:remarks>
+        </command:example>
+        <command:example>
+            <maml:title>
+--------------  Example 2 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Get-VMHostImageProfile -Entity (Get-VMHost &quot;h1&quot;)</dev:code>
+            <dev:remarks>
+                <maml:para>Get the image profile associated with host "h1".</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Set-ESXImageProfileAssociation</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Get-VMHost</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Get-VMHostMatchingRules</command:name>
+        <maml:description>
+            <maml:para>Retrieves the list of rules in the rule set that match a specified host.</maml:para>
+        </maml:description>
+        <command:verb>Get</command:verb>
+        <command:noun>VMHostMatchingRules</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Retrieves the list of rules in the rule set that match a specified host.  You can use this cmdlet to debug your working rule set before activating it.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Get-VMHostMatchingRules</maml:name>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "true (ByValue)" position = "1" >
+                <maml:name>VMHost</maml:name>
+                <maml:description>
+                    <maml:para>The VMHost object to match against.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >VMHost</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>DeployRuleSet</maml:name>
+                <maml:description>
+                    <maml:para>The set of rules to match against a host.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >DeployRuleSet</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+            <maml:name>VMHost</maml:name>
+            <maml:description>
+                <maml:para>The VMHost object to match against.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">VMHost</command:parameterValue>
+            <dev:type>
+                <maml:name>VMHost</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>DeployRuleSet</maml:name>
+            <maml:description>
+                <maml:para>The set of rules to match against a host.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">DeployRuleSet</command:parameterValue>
+            <dev:type>
+                <maml:name>DeployRuleSet</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name>VMware.DeployAutomation.Types.DeployRule[]</maml:name>
+                <maml:description>
+                    <maml:para>List of DeployRule objects.</maml:para>
+                </maml:description>
+            </dev:type>
+        </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+        <maml:title></maml:title>
+        <maml:alert>
+            <maml:para>The DeployRule object has the following properties: 
+
+Name      System.String
+Pattern    DeployRule.Pattern[]
+Items      System.VIObject[]</maml:para>
+        </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Get-VMHostMatchingRules h1</dev:code>
+            <dev:remarks>
+                <maml:para>Get the list of rules that match host "h1".</maml:para>
+            </dev:remarks>
+        </command:example>
+        <command:example>
+            <maml:title>
+--------------  Example 2 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Get-VMHostMatchingRules (Get-VMHost &quot;h1&quot;)</dev:code>
+            <dev:remarks>
+                <maml:para>Get the list of rules that match host "h1".</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Get-DeployRuleSet</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>New-DeployRule</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Import-AutoDeployState</command:name>
+        <maml:description>
+            <maml:para>The cmdlet uploads the file contents to restore the Auto Deploy state.</maml:para>
+        </maml:description>
+        <command:verb>Import</command:verb>
+        <command:noun>AutoDeployState</command:noun>
+    </command:details>
+    <maml:description>
+    <maml:para>Restores the state of the Auto Deploy service.
+The restore data is a zip file containing the entire state of the Auto deploy when the back up command was invoked
+
+You must have the "AutoDeploy.Profile.Edit" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Import-AutoDeployState</maml:name>
+            <command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "1" >
+                <maml:name>ImportFilePath</maml:name>
+                <maml:description>
+                    <maml:para>Import file path where the restore file is kept</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >String</command:parameterValue>
+                <dev:type>
+                    <maml:name>String</maml:name>
+                </dev:type>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+            <maml:name>ImportFilePath</maml:name>
+            <maml:description>
+                <maml:para>Import file path of restore file</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">String</command:parameterValue>
+            <dev:type>
+                <maml:name>String</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+        <command:inputType>
+            <dev:type>
+                <maml:name>String</maml:name>
+            </dev:type>
+        </command:inputType>
+    </command:inputTypes>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Import-AutoDeployState &quot;C:/rbd-backup.zip&quot; </dev:code>
+            <dev:remarks>
+                <maml:para>Fetches the backup data from the file at the mentioned path and uses it to do a restore.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Export-AutoDeployState</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>New-DeployRule</command:name>
+        <maml:description>
+            <maml:para>Creates a new rule.</maml:para>
+        </maml:description>
+        <command:verb>New</command:verb>
+        <command:noun>DeployRule</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Creates a new rule with the specified items and patterns.  The items specify what should be associated with an ESXi host and the patterns specify which ESXi hosts the rule applies to.  A rule on its own does not affect anything.  The rule must first be added to the working rule set in order to place it in context with the other rules in the system.  Since multiple rules can match a single host, the rule set is used to rank the rules.  Items in higher ranking rules are preferred over items in lower ranking rules.  Only one item of a particular type will be associated with the host.  For example, if two rules in a rule set have host profiles, only the profile in the higher ranking rule will be used.  Alternatively, if one rule has a host profile and the other rule has an image profile, both rules will have an affect.
+
+You must have the "AutoDeploy.Rule.Create" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>New-DeployRule</maml:name>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>Name</maml:name>
+                <maml:description>
+                    <maml:para>Name of the new rule.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >String</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>Pattern</maml:name>
+                <maml:description>
+                    <maml:para>Set of hosts the new rule should apply to. 
+
+Pattern strings use the following syntax:
+
+  &lt;attr&gt;==&lt;value&gt;  Adds a pattern that exactly matches the specified value against the specified attribute.  Use this syntax if you need to match a string that contains a comma.
+
+  &lt;attr&gt;=&lt;Val1 &gt;[,val2,... ,valN]  Adds a pattern that matches against the comma-separated list of values. 
+
+Supported value types are: 
+
+  string      Exact string match
+  &lt;ip1&gt;-&lt;ip2&gt; Range of IPv4 addresses.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "named" >
+                <maml:name>Item</maml:name>
+                <maml:description>
+                    <maml:para>Item the rule should apply to the hosts. Can be an image profile, a script bundle, a host profile, or a folder or cluster on the vCenter Server system to add the host to.  This parameter supports object-by-name, so you can pass the name of the item.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >VIObjectCore[]</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+        <command:syntaxItem>
+            <maml:name>New-DeployRule</maml:name>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>Name</maml:name>
+                <maml:description>
+                    <maml:para>Name of the new rule.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >String</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>AllHosts</maml:name>
+                <maml:description>
+                    <maml:para>Specify AllHosts to apply the new rule to all hosts managed by VMware Auto Deploy. Hosts are managed by VMware Auto Deploy if the DHCP server directs them to the Auto Deploy TFTP configuration file.</maml:para>
+                </maml:description>
+            </command:parameter>
+            <command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "named" >
+                <maml:name>Item</maml:name>
+                <maml:description>
+                    <maml:para>Item the rule should apply to the hosts. Can be an image profile, a script bundle, a host profile, or a folder or cluster on the vCenter Server system to add the host to.  This parameter supports object-by-name, so you can pass the name of the item.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >VIObjectCore[]</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+            <maml:name>Name</maml:name>
+            <maml:description>
+                <maml:para>Name of the new rule.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+            <dev:type>
+                <maml:name>String</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="named">
+            <maml:name>Pattern</maml:name>
+            <maml:description>
+                <maml:para>Set of hosts the new rule should apply to. 
+
+Pattern strings use the following syntax: 
+
+  &lt;attr&gt;==&lt;value&gt;  Adds a pattern that exactly matches the specified value against the specified attribute.  Use this syntax if you need to match a string that contains a comma.
+
+  &lt;attr&gt;=&lt;Val1 &gt;[,val2,... ,valN]  Adds a pattern that matches against the comma-separated list of values. 
+
+Supported value types are: 
+
+  string      Exact string match
+  &lt;ip1&gt;-&lt;ip2&gt; Range of IPv4 addresses.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+            <dev:type>
+                <maml:name>String[]</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="named">
+            <maml:name>Item</maml:name>
+            <maml:description>
+                <maml:para>Item the rule should apply to the hosts. Can be an image profile, a script bundle, a host profile, or a folder or cluster on the vCenter Server system to add the host to.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">VIObjectCore[]</command:parameterValue>
+            <dev:type>
+                <maml:name>VIObjectCore[]</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>AllHosts</maml:name>
+            <maml:description>
+                <maml:para>Specify AllHosts to apply the new rule to all hosts managed by VMware Auto Deploy. Hosts are managed by VMware Auto Deploy if the DHCP server directs them to the Auto Deploy TFTP configuration file.</maml:para>
+            </maml:description>
+            <dev:type>
+                <maml:name>SwitchParameter</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name>VMware.DeployAutomation.Types.DeployRule</maml:name>
+                <maml:uri />
+                <maml:description>
+                    <maml:para>The DeployRule object has the following properties: 
+
+Name      System.String
+Pattern    DeployRule.Pattern[]
+Items      System.VIObject[]</maml:para>
+                </maml:description>
+            </dev:type>
+            <maml:description></maml:description>
+        </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; $rule = New-DeployRule -Name &quot;defaultFolder&quot; -Item "NewHosts" -AllHosts</dev:code>
+            <dev:remarks>
+                <maml:para>Create a rule that places all hosts in the folder named "NewHosts".</maml:para>
+            </dev:remarks>
+        </command:example>
+        <command:example>
+            <maml:title>
+--------------  Example 2 --------------            </maml:title>
+            <dev:code>C:\PS&gt; $img = Get-ESXImageProfile -Name &quot;My ESXi 5.0&quot;
+C:\PS&gt; $rule = New-DeployRule -Name &quot;testrule&quot; -Item $img -Pattern  &quot;vendor=Acme&quot;,&quot;vendor==VMware, Inc.&quot;,&quot;ipv4=192.168.1.10-192.168.1.20&quot;</dev:code>
+            <dev:remarks>
+                <maml:para>Create a rule that assigns the image profile named "My ESXi 5.0" to hosts that match a set of vendors and are in a particular IPv4 range.</maml:para>
+            </dev:remarks>
+        </command:example>
+        <command:example>
+            <maml:title>
+-------------- Example 3 ------------------- </maml:title>
+            <dev:code>C:\PS&gt; $bundle = Get-ScriptBundle -Name &quot;testbundle&quot;
+C:\PS&gt; $rule = New-DeployRule -Name &quot;testrule&quot; -Item $bundle -Pattern  &quot;vendor=Acme&quot;,&quot;vendor==VMware, Inc.&quot;,&quot;ipv4=192.168.1.10-192.168.1.20&quot;</dev:code>
+            <dev:remarks>
+                <maml:para>Create a rule that assigns the script budnle named "testbundle" to hosts that match a set of vendors and are in a particular IPv4 range.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Add-DeployRule</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Copy-DeployRule</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Set-DeployRule</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Remove-DeployRule</command:name>
+        <maml:description>
+            <maml:para>Removes a rule from the working rule set.</maml:para>
+        </maml:description>
+        <command:verb>Remove</command:verb>
+        <command:noun>DeployRule</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Removes a rule from the working rule set.  By default, the working rule set is then activated.  Use the "-Delete" parameter to permanently delete the rule from the Auto Deploy server.
+
+You must have the "AutoDeploy.RuleSet.Edit" privilege on the root folder of vCenter Server to remove a rule from the rule set and the "AutoDeploy.Rule.Delete" privilege to delete the rule.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Remove-DeployRule</maml:name>
+            <command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "1" >
+                <maml:name>DeployRule</maml:name>
+                <maml:description>
+                    <maml:para>Rule to remove from the working rule set.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >DeployRule[]</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>Delete</maml:name>
+                <maml:description>
+                    <maml:para>Delete the rule object.  This flag will permanently delete the rule from the AutoDeploy server and remove it from any RuleSets that it was in.</maml:para>
+                </maml:description>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>NoActivate</maml:name>
+                <maml:description>
+                    <maml:para>Specify this parameter to only remove the rule to the working rule set. By default, the working rule set is activated after the change.</maml:para>
+                </maml:description>
+            </command:parameter>
+        </command:syntaxItem>
+        <command:syntaxItem>
+            <maml:name>Remove-DeployRule</maml:name>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>At</maml:name>
+                <maml:description>
+                    <maml:para>Index in the rule set that you want to remove.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >UInt32</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>Delete</maml:name>
+                <maml:description>
+                    <maml:para>Delete the rule object.  This flag will permanently delete the rule from the AutoDeploy server and remove it from any RuleSets that it was in.</maml:para>
+                </maml:description>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>NoActivate</maml:name>
+                <maml:description>
+                    <maml:para></maml:para>
+                </maml:description>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+            <maml:name>DeployRule</maml:name>
+            <maml:description>
+                <maml:para>Rule to remove from the working rule set.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">DeployRule[]</command:parameterValue>
+            <dev:type>
+                <maml:name>DeployRule[]</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>NoActivate</maml:name>
+            <maml:description>
+                <maml:para>Specify this parameter to only remove the rule to the working rule set. By default, the working rule set is activated after the change.</maml:para>
+            </maml:description>
+            <dev:type>
+                <maml:name>SwitchParameter</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+          <maml:name>Delete</maml:name>
+          <maml:description>
+            <maml:para>Delete the rule object.  This flag will permanently delete the rule from the AutoDeploy server and remove it from any RuleSets that it was in.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+            <maml:name>At</maml:name>
+            <maml:description>
+                <maml:para>Index in the rule set that you want to remove.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
+            <dev:type>
+                <maml:name>UInt32</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Get-DeployRule &quot;testrule&quot; | Remove-DeployRule</dev:code>
+            <dev:remarks>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Add-DeployRule</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Remove-ProxyServer</command:name>
+        <maml:description>
+            <maml:para>Removes a proxy server from the proxy server list.</maml:para>
+        </maml:description>
+        <command:verb>Remove</command:verb>
+        <command:noun>ProxyServer</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Removes a proxy server from the proxy server list. By default, the ID switch is active.
+
+You must have the "AutoDeploy.Profile.Delete" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Remove-ProxyServer</maml:name>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>ID</maml:name>
+                <maml:description>
+                    <maml:para>Index in the proxy server list.</maml:para>
+                </maml:description>
+            <command:parameterValue required="true" variableLength = "false">UInt32</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>Address</maml:name>
+                <maml:description>
+                    <maml:para>Address of the proxy server to remove.</maml:para>
+                </maml:description>
+            <command:parameterValue required="true" variableLength = "false">String</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+            <maml:name>ID</maml:name>
+            <maml:description>
+                <maml:para>Index in the proxy server list.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
+            <dev:type>
+                <maml:name>UInt32</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+            <maml:name>Address</maml:name>
+            <maml:description>
+                <maml:para>Address of the proxy server to remove.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+            <dev:type>
+                <maml:name>String</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+                <dev:code>C:\PS&gt; Remove-ProxyServer -ID 2</dev:code>
+                <dev:remarks>
+                <maml:para>Remove the proxy server with index "2" in the list.</maml:para>
+                </dev:remarks>
+        </command:example>
+        <command:example>
+            <maml:title>
+--------------  Example 2 --------------            </maml:title>
+      <dev:code>C:\PS&gt; Remove-ProxyServer -Address https://www.example.com:80</dev:code>
+                <dev:remarks>
+          <maml:para>Remove the proxy server with address https://www.example.com:80 from the list.</maml:para>
+                </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Add-ProxyServer</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Get-ProxyServer</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Remove-ScriptBundle</command:name>
+        <maml:description>
+            <maml:para>The cmdlet takes in a script bundle and removes it from Auto Deploy.</maml:para>
+        </maml:description>
+        <command:verb>Remove</command:verb>
+        <command:noun>ScriptBundle</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Removes a script bundle from the Auto Deploy server.
+
+Get-ScriptBundle cmdlet can be used to retrieve script bundles.
+
+
+You must have the "AutoDeploy.Rule.Delete" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Remove-ScriptBundle</maml:name>
+            <command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "1" >
+                <maml:name>Bundle</maml:name>
+                <maml:description>
+                    <maml:para>The script bundle to be removed from the Auto Deploy server.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >ScriptBundle</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+            <maml:name>Bundle</maml:name>
+            <maml:description>
+                <maml:para>The script bundle to be removed from the Auto Deploy server.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">ScriptBundle</command:parameterValue>
+            <dev:type>
+                <maml:name>ScriptBundle</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+        <command:inputType>
+            <dev:type>
+                <maml:name>ScriptBundle</maml:name>
+            </dev:type>
+        </command:inputType>
+    </command:inputTypes>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Remove-ScriptBundle MyBundle </dev:code>
+            <dev:remarks>
+                <maml:para>Removes the script bundle "MyBundle" from the Auto Deploy Server.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Get-ScriptBundle</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Repair-DeployImageCache</command:name>
+        <maml:description>
+            <maml:para>Repairs the image cache. Use this cmdlet only when working with VMware Technical Support.</maml:para>
+        </maml:description>
+        <command:verb>Repair</command:verb>
+        <command:noun>DeployImageCache</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Use this cmdlet in the unlikely scenario that the AutoDeploy cache is damaged and the software packages that make up an image profile are lost.  Make sure that the original software depots have been added to the current PowerCLI session with the "Add-ESXSoftwareDepot" cmdlet before executing this cmdlet.  The cmdlet will try to download the software packages from the available depots and reupload them to the AutoDeploy server.
+
+You must have the "AutoDeploy.Profile.Create" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Repair-DeployImageCache</maml:name>
+        </command:syntaxItem>
+    </command:syntax>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Repair-DeployRuleSetCompliance</command:name>
+        <maml:description>
+            <maml:para>Remediate any non-compliant associations discovered by Test-DeployRuleSetCompliance</maml:para>
+        </maml:description>
+        <command:verb>Repair</command:verb>
+        <command:noun>DeployRuleSetCompliance</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Remediates any differences discovered by between the rules and the actual associations between hosts and their items.  Use this cmdlet if you added or changed a rule and want to apply the change to all affected hosts.
+
+Run Test-DeployRuleSetCompliance to retrieve the required TestResult object.
+
+You must have the privileges necessary to perform the association operations.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Repair-DeployRuleSetCompliance</maml:name>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "true (ByValue)" position = "1" >
+                <maml:name>TestResult</maml:name>
+                <maml:description>
+                    <maml:para>Output from a call to Test-DeployRuleSetCompliance.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >TestResult</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+            <maml:name>TestResult</maml:name>
+            <maml:description>
+                <maml:para>Output from a call to Test-DeployRuleSetCompliance.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">TestResult</command:parameterValue>
+            <dev:type>
+                <maml:name>TestResult</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+        <command:inputType>
+            <dev:type>
+                <maml:name>TestResult[]</maml:name>
+            </dev:type>
+        </command:inputType>
+    </command:inputTypes>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Get-VMHost h1 | Test-DeployRuleSetCompliance | Repair-DeployRuleSetCompliance</dev:code>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Test-DeployRuleSetCompliance</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Set-DeployOption</command:name>
+        <maml:description>
+            <maml:para>Set an Auto Deploy global configuration option.</maml:para>
+        </maml:description>
+        <command:verb>Get</command:verb>
+        <command:noun>DeployOption</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Set the value of an Auto Deploy global configuration option.
+
+Available options:
+
+ * vlan-id: The default VLAN ID for the ESXi Management Network of a host booted through Auto Deploy.  Note that this value will only be used if the host boots without a host profile.
+
+        </maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Set-DeployOption</maml:name>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>Key</maml:name>
+                <maml:description>
+                    <maml:para>The option identifier to set.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >String</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>Value</maml:name>
+                <maml:description>
+                    <maml:para>The new value for the option.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >String</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+            <maml:name>Key</maml:name>
+            <maml:description>
+                <maml:para>The option identifier to set.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+            <dev:type>
+                <maml:name>String</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+            <maml:name>Value</maml:name>
+            <maml:description>
+                <maml:para>The new value for the option.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+            <dev:type>
+                <maml:name>String</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Set-DeployOption &quot;vlan-id&quot; 42</dev:code>
+            <dev:remarks>
+                <maml:para>Set the default VLAN ID for the ESXi Management Network to 42.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Get-DeployOption</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Set-DeployRule</command:name>
+        <maml:description>
+            <maml:para>Updates an existing rule.</maml:para>
+        </maml:description>
+        <command:verb>Set</command:verb>
+        <command:noun>DeployRule</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Updates an existing rule with the specified items, patterns, or both.  Rules cannot be changed once they have been used in the active rule set.  Use Copy-DeployRule to make a copy of a rule with any desired changes.
+
+You must have the "AutoDeploy.Rule.Edit" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Set-DeployRule</maml:name>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>DeployRule</maml:name>
+                <maml:description>
+                    <maml:para>The rule to be changed. Use the DeployRule or the Name parameter to specify the rule. </maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >DeployRule</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>Name</maml:name>
+                <maml:description>
+                    <maml:para>Name of the rule to apply changes to. Use the DeployRule or the Name parameter to specify the rule. </maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >String</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>Pattern</maml:name>
+                <maml:description>
+                    <maml:para>Pattern that identifies the hosts to apply the rule to. Specify either AllHosts or Pattern. 
+
+Pattern strings use the following syntax: 
+
+  &lt;attr&gt;==&lt;value&gt;  Adds a pattern that exactly matches the specified value against the specified attribute.  Use this syntax if you need to match a string that contains a comma.
+
+  &lt;attr&gt;=&lt;Val1 &gt;[,val2,... ,valN]  Adds a pattern that matches against the comma-separated list of values. 
+
+Supported value types are: 
+
+  string      Exact string match
+  &lt;ip1&gt;-&lt;ip2&gt; Range of IPv4 addresses.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >String[]</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>AllHosts</maml:name>
+                <maml:description>
+                    <maml:para>Specify AllHosts to apply the changed rule to all hosts. Specify either AllHosts or Pattern. </maml:para>
+                </maml:description>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "named" >
+                <maml:name>Item</maml:name>
+                <maml:description>
+                    <maml:para>Item to apply to the specified hosts. The item can be an image profile, a host profile, or a cluster or folder in a vCenter Server system.  This parameter supports object-by-name, so you can pass the name of the item.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >VIObjectCore[]</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+            <maml:name>DeployRule</maml:name>
+            <maml:description>
+                <maml:para>The rule to be changed. Use the DeployRule or the Name parameter to specify the rule.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">DeployRule</command:parameterValue>
+            <dev:type>
+                <maml:name>DeployRule</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>Name</maml:name>
+            <maml:description>
+                <maml:para>Name of the rule to apply changes to. Use the DeployRule or the Name parameter to specify the rule. </maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+            <dev:type>
+                <maml:name>String</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+            <maml:name>Pattern</maml:name>
+            <maml:description>
+                <maml:para>Pattern that identifies the hosts to apply the rule to. Specify either AllHosts or Pattern. 
+
+Pattern strings use the following syntax: 
+
+  &lt;attr&gt;==&lt;value&gt;  Adds a pattern that exactly matches the specified value against the specified attribute.  Use this syntax if you need to match a string that contains a comma.
+
+  &lt;attr&gt;=&lt;Val1 &gt;[,val2,... ,valN]  Adds a pattern that matches against the comma-separated list of values. 
+
+Supported value types are: 
+
+  string      Exact string match
+  &lt;ip1&gt;-&lt;ip2&gt; Range of IPv4 addresses.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+            <dev:type>
+                <maml:name>String[]</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>AllHosts</maml:name>
+            <maml:description>
+                <maml:para>Specify AllHosts to apply the changed rule to all hosts. Specify either AllHosts or Pattern. </maml:para>
+            </maml:description>
+            <dev:type>
+                <maml:name>SwitchParameter</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="named">
+            <maml:name>Item</maml:name>
+            <maml:description>
+                <maml:para>Item to apply to the specified hosts. The item can be an image profile, a host profile, or a cluster or folder in a vCenter Server system.  This parameter supports object-by-name, so you can pass the name of the item.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">VIObjectCore[]</command:parameterValue>
+            <dev:type>
+                <maml:name>VIObjectCore[]</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name>VMware.DeployAutomation.Types.DeployRule</maml:name>
+                <maml:description>
+                    <maml:para>The DeployRule object has the following properties: 
+
+Name          System.String
+PatternList   DeployRule.Pattern[]
+ItemList      System.VIObject[]</maml:para>
+                </maml:description>
+            </dev:type>
+        </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Set-DeployRule $rule -Pattern &quot;ipv4=192.168.1.10-192.168.1.20&quot;</dev:code>
+            <dev:remarks>
+                <maml:para>Updates the rule to apply to the hosts with IPv4 addresses in the specified range.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Copy-DeployRule</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>New-DeployRule</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Set-DeployRuleSet</command:name>
+        <maml:description>
+            <maml:para>Sets the list of rules in the working rule set.</maml:para>
+        </maml:description>
+        <command:verb>Set</command:verb>
+        <command:noun>DeployRuleSet</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Explicitly sets the list of rules in the working rule set.  By default, the change to the working set is immediately activated.
+
+Use the -Clear option to remove all rules from the working rule set.
+
+You must have the "AutoDeploy.RuleSet.Edit" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Set-DeployRuleSet</maml:name>
+            <command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>DeployRule</maml:name>
+                <maml:description>
+                    <maml:para>The array of rules that will make up the rule set.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "true" >DeployRule[]</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>NoActivate</maml:name>
+                <maml:description>
+                    <maml:para>Specify the NoActivate parameter to apply the change to the working rule set but not to the active rule set. </maml:para>
+                </maml:description>
+            </command:parameter>
+        </command:syntaxItem>
+        <command:syntaxItem>
+            <maml:name>Set-DeployRuleSet</maml:name>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>Clear</maml:name>
+                <maml:description>
+                    <maml:para>Removes all rules from the working rule set.</maml:para>
+                </maml:description>
+            </command:parameter>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>NoActivate</maml:name>
+                <maml:description>
+                    <maml:para>Specify the NoActivate parameter to apply the change to the working rule set but not to the active rule set. </maml:para>
+                </maml:description>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="1">
+            <maml:name>DeployRule</maml:name>
+            <maml:description>
+                <maml:para>The array of rules that will make up the rule set.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">DeployRule[]</command:parameterValue>
+            <dev:type>
+                <maml:name>DeployRule[]</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>NoActivate</maml:name>
+            <maml:description>
+                <maml:para>Specify the NoActivate parameter to apply the change to the working rule set but not to the active rule set. </maml:para>
+            </maml:description>
+            <dev:type>
+                <maml:name>SwitchParameter</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>Clear</maml:name>
+            <maml:description>
+                <maml:para>Removes all rules from the working rule set.</maml:para>
+            </maml:description>
+            <dev:type>
+                <maml:name>SwitchParameter</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name>VMware.DeployAutomation.Types.DeployRuleSet</maml:name>
+            </dev:type>
+        </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Set-DeployRuleSet &quot;testrule&quot; </dev:code>
+            <dev:remarks>
+                <maml:para>Removes all rules from the working rule set and adds the rule named testrule.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Add-DeployRule</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Remove-DeployRule</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Set-ESXImageProfileAssociation</command:name>
+        <maml:description>
+            <maml:para>Associates the specified image profile with the specified ESXi system.</maml:para>
+        </maml:description>
+        <command:verb>Apply</command:verb>
+        <command:noun>ESXImageProfile</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Associates the specified image profile with the specified ESXi system. Currently, the Entities parameter can point only to ESXi hosts.
+
+You must have the "AutoDeploy.Profile.Edit" privilege on the root folder of vCenter Server to use this cmdlet.
+
+Apply-ESXImageProfile is an alias for Set-ESXImageProfileAssociation.</maml:para>
+    </maml:description>
+    <command:syntax>        <command:syntaxItem>
+            <maml:name>Set-ESXImageProfileAssociation</maml:name>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>ImageProfile</maml:name>
+                <maml:description>
+                    <maml:para>Image profile to associate with the specified ESXi host.</maml:para>
+                </maml:description>
+            <command:parameterValue required="true" variableLength = "false" >ImageProfile</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "2" >
+                <maml:name>Entities</maml:name>
+                <maml:description>
+                    <maml:para>Must be an ESXi host. Use the Get-VMHost PowerCLI cmdlet to find a host.</maml:para>
+                </maml:description>
+            <command:parameterValue required="true" variableLength = "true" >VIObjectCore[]</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+            <maml:name>ImageProfile</maml:name>
+            <maml:description>
+                <maml:para>Image profile to associate with the specified ESXi host.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">ImageProfile</command:parameterValue>
+            <dev:type>
+                <maml:name>ImageProfile</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="2">
+            <maml:name>Entities</maml:name>
+            <maml:description>
+                <maml:para>Must be an ESXi host. Use the Get-VMHost PowerCLI cmdlet to find a host.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">VIObjectCore[]</command:parameterValue>
+            <dev:type>
+                <maml:name>VIObjectCore[]</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Set-ESXImageProfileAssociation "MyImage" "h1","h2"</dev:code>
+            <dev:remarks>
+                <maml:para>Associate the "MyImage" image profile with the hosts named "h1" and "h2".</maml:para>
+            </dev:remarks>
+        </command:example>
+        <command:example>
+            <maml:title>
+--------------  Example 2 --------------            </maml:title>
+            <dev:code>C:\PS&gt; $img = Get-ESXImageProfile -Name "MyImage"
+C:\PS&gt; Set-ESXImageProfileAssociation $img (Get-VMHost &quot;h1&quot;)</dev:code>
+            <dev:remarks>
+                <maml:para>Associate an image profile with the host named "h1" using PowerCLI objects.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Get-ESXImageProfile</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Get-VMHost</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Set-ScriptBundleAssociation</command:name>
+        <maml:description>
+            <maml:para>Associates the specified script bundle with the specified ESXi system.</maml:para>
+        </maml:description>
+        <command:verb>Set</command:verb>
+        <command:noun>ScriptBundleAssociation</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Associates the specified script bundle with the specified ESXi system. Currently, the Entities parameter can point only to ESXi hosts.
+
+You must have the "AutoDeploy.Profile.Edit" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>        <command:syntaxItem>
+            <maml:name>Set-ScriptBundleAssociation</maml:name>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "1" >
+                <maml:name>ScriptBundle</maml:name>
+                <maml:description>
+                    <maml:para>Script Bundle to associate with the specified ESXi host.</maml:para>
+                </maml:description>
+            <command:parameterValue required="true" variableLength = "false" >ScriptBundle</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "2" >
+                <maml:name>Entities</maml:name>
+                <maml:description>
+                    <maml:para>Must be an ESXi host. Use the Get-VMHost PowerCLI cmdlet to find a host.</maml:para>
+                </maml:description>
+            <command:parameterValue required="true" variableLength = "true" >VIObjectCore[]</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+            <maml:name>ScriptBundle</maml:name>
+            <maml:description>
+                <maml:para>Script Bundle to associate with the specified ESXi host.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">ScriptBundle</command:parameterValue>
+            <dev:type>
+                <maml:name>ScriptBundle</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="2">
+            <maml:name>Entities</maml:name>
+            <maml:description>
+                <maml:para>Must be an ESXi host. Use the Get-VMHost PowerCLI cmdlet to find a host.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">VIObjectCore[]</command:parameterValue>
+            <dev:type>
+                <maml:name>VIObjectCore[]</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Set-ScriptBundleAssociation "MyBundle" "h1","h2"</dev:code>
+            <dev:remarks>
+                <maml:para>Associate the "MyBundle" script bundle with the hosts named "h1" and "h2".</maml:para>
+            </dev:remarks>
+        </command:example>
+        <command:example>
+            <maml:title>
+--------------  Example 2 --------------            </maml:title>
+            <dev:code>C:\PS&gt; $bndl = Get-ScriptBundle -Name "MyBundle"
+C:\PS&gt; Set-ScriptBundleAssociation $bndl (Get-VMHost &quot;h1&quot;)</dev:code>
+            <dev:remarks>
+                <maml:para>Associate a script bundle with the host named "h1" using PowerCLI objects.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Get-ScriptBundle</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Get-VMHost</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Switch-ActiveDeployRuleSet</command:name>
+        <maml:description>
+            <maml:para>Activates a rule set.</maml:para>
+        </maml:description>
+        <command:verb>Switch</command:verb>
+        <command:noun>ActiveDeployRuleSet</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Activates a rule set so that new PXE requests are evaluated through the rule set. By default, the cmdlet activates the working rule set.
+
+You must have the "AutoDeploy.RuleSet.Activate" privilege on the root folder of vCenter Server to use this cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Switch-ActiveDeployRuleSet</maml:name>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "true (ByValue)" position = "1" >
+                <maml:name>DeployRuleSet</maml:name>
+                <maml:description>
+                    <maml:para>The rule set to activate.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >DeployRuleSet</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+            <maml:name>DeployRuleSet</maml:name>
+            <maml:description>
+                <maml:para>The rule set to activate.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">DeployRuleSet</command:parameterValue>
+            <dev:type>
+                <maml:name>DeployRuleSet</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name>VMware.DeployAutomation.Types.DeployRuleSet</maml:name>
+            </dev:type>
+        </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Switch-ActiveDeployRuleSet</dev:code>
+            <dev:remarks>
+                <maml:para>Switch the active deploy rule set to the working deploy rule set.</maml:para>
+            </dev:remarks>
+        </command:example>
+        <command:example>
+            <maml:title>
+--------------  Example 2 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Switch-ActiveDeployRuleSet $ruleSet</dev:code>
+            <dev:remarks>
+                <maml:para>Switch the active deploy rule set to the rule set stored in the $ruleSet variable.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Get-DeployRuleSet</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>Test-DeployRuleSetCompliance</command:name>
+        <maml:description>
+            <maml:para>Checks whether hosts are compliant with rules.</maml:para>
+        </maml:description>
+        <command:verb>Test</command:verb>
+        <command:noun>DeployRuleSetCompliance</command:noun>
+    </command:details>
+    <maml:description>
+        <maml:para>Checks whether the specified hosts are compliant with a specified rule set.  If not rule set is specified, the currently active rule set is used.
+
+For example, if a rule specifies a particular host profile should be attached to a host, and a different host profile is actually attached to that host, the host is out of compliance.
+
+The output of this cmdlet is a TestResult object that contains the VMHost object and a list containing the current item associated with the host and the expected item, according to the rules.  If the list of items is empty, the host is in compliance with the rule set.</maml:para>
+    </maml:description>
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Test-DeployRuleSetCompliance</maml:name>
+            <command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+                <maml:name>DeployRuleSet</maml:name>
+                <maml:description>
+                    <maml:para>Rule set to use for checking compliance.  The active rule set is used by default.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >DeployRuleSet</command:parameterValue>
+            </command:parameter>
+            <command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "true (ByValue)" position = "1" >
+                <maml:name>VMHost</maml:name>
+                <maml:description>
+                    <maml:para>Host to check for compliance.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength = "false" >VMHost[]</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>DeployRuleSet</maml:name>
+            <maml:description>
+                <maml:para>Rule set to use for checking compliance.  The active rule set is used by default.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">DeployRuleSet</command:parameterValue>
+            <dev:type>
+                <maml:name>DeployRuleSet</maml:name>
+            </dev:type>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+            <maml:name>VMHost</maml:name>
+            <maml:description>
+                <maml:para>Host to check for compliance.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">VMHost[]</command:parameterValue>
+            <dev:type>
+                <maml:name>VMHost</maml:name>
+            </dev:type>
+        </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name>VMware.DeployAutomation.Types.TestResult[]</maml:name>
+            </dev:type>
+        </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+        <command:example>
+            <maml:title>
+--------------  Example 1 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Test-DeployRuleSetCompliance h1</dev:code>
+            <dev:remarks>
+                <maml:para>Check the compliance of ESXi host "h1" against the active rule set.</maml:para>
+            </dev:remarks>
+        </command:example>
+        <command:example>
+            <maml:title>
+--------------  Example 2 --------------            </maml:title>
+            <dev:code>C:\PS&gt; Get-VMHost h1 | Test-DeployRuleSetCompliance</dev:code>
+            <dev:remarks>
+                <maml:para>Check the compliance of ESXi host "h1" against the active rule set.</maml:para>
+            </dev:remarks>
+        </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+            <maml:linkText>Get-DeployRuleSet</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+            <maml:linkText>Repair-DeployRuleSetCompliance</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+</helpItems>

@@ -1,0 +1,1 @@
+ffmpeg -i "file1.mkv" -movflags faststart -b:a 192k -ac 2 -c:a aac -c:v libx264 -r 24 "file2.mkv"

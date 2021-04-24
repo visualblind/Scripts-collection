@@ -1,0 +1,5 @@
+# Add this to your /etc/snmpd.conf
+# Replace the paths as needed
+
+pass_persist .1.3.6.1.4.1.2021.5001 /usr/bin/php -q /opt/jffnms/docs/utils/jffnms-snmp/jffnms-snmp.php tc .1.3.6.1.4.1.2021.5001
+pass_persist .1.3.6.1.4.1.2021.5002 /usr/bin/php -q /opt/jffnms/docs/utils/jffnms-snmp.php iptables .1.3.6.1.4.1.2021.5002

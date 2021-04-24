@@ -1,0 +1,2 @@
+route change 0.0.0.0 MASK 0.0.0.0 10.10.10.1 METRIC 100 IF 8
+route change 0.0.0.0 MASK 0.0.0.0 10.10.10.1 METRIC 10 IF 13

@@ -1,0 +1,1 @@
+rclone copy --bwlimit 6M --progress --checksum --transfers 4 --checkers 4 --tpslimit 4 --tpslimit-burst 6 --update --drive-acknowledge-abuse '/mnt/pool0/p0ds0smb/media/video-movies/Movie (date)' gcrypt-usmba:'/p0ds0smb/video-movies/Movie (date)'

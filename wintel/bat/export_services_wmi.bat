@@ -1,0 +1,1 @@
+﻿wmic /OUTPUT:%userprofile%\Desktop\%computername%_svc.html SERVICE list full /format:htable

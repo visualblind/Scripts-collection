@@ -1,0 +1,28 @@
+$Signature = @"
+<div style="font-size:10pt; font-family: 'Calibri',sans-serif;">
+&nbsp;&nbsp;</br>
+<b>%%FirstName%% %%LastName%%</b></br>
+%%Title%%</br>
+%%Company%% - %%Department%%</br>
+Office phone: %%Phone%% - Cell phone: %%MobilePhone%% - Fax: %%Fax%%</br>
+<a href="mailto:%%WindowsEmailAddress%%">%%WindowsEmailAddress%%</a></br>
+</div>
+"@
+
+ 
+
+$SignatureRule = @{
+
+ Name = 'Test Signature'
+ Enabled = $true
+ Comments = 'Standard Signature Transport Rule'
+ Priority = 0
+ ApplyHtmlDisclaimerLocation = 'Append'
+ ApplyHtmlDisclaimerFallbackAction = 'Wrap'
+ ApplyHtmlDisclaimerText = $Signature
+ ExceptIfSubjectMatchesPattern = '^RE: ','^FW: '
+ 
+ }
+
+
+New-TransportRule @SignatureRule

@@ -1,0 +1,919 @@
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px 0px 0px 0px;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+    font-family: tahoma, arial, sans-serif;
+    color: black;
+}
+
+body {
+    background-color: #fbfbfb;
+    color: black;
+}
+
+html>body, html>body #contents {
+    height: auto;
+}
+
+pre { text-align: left; }
+
+input, textarea, select { 
+    font-size: 11px; 
+    font-family: tahoma, arial, sans-serif;
+    background-color: inherit;
+    color: black;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+input[type="button"],
+textarea,
+select {
+    border: 2px solid black;
+    background-color: #f5f5f5;
+    color: black;
+}
+
+input[type="submit"] { background-color: #aaa; color: black; }
+
+input:hover { background-color: #ddd; border-color: #55a; color: black; }
+
+select { border-color: white; }
+
+input[type="text"] { padding-left: 1px; }
+
+img { border: 0px solid black; }
+
+a { text-decoration: none; }
+a:hover { text-decoration: none; }
+
+table { border-collapse: collapse; }
+
+td { font-size: 10px; white-space: nowrap;}
+
+/* Buttons */
+.controlbutton {
+  color: #444;
+  text-decoration: none;
+  text-align: center;
+  font-size: 12px;
+  padding: 2px 15px 2px 15px;
+}
+
+.controlbutton:hover { background-color: #ddd; }
+.controlbutton img { vertical-align: middle; }
+
+
+/* Login Screen */
+
+#login {
+    background-color: #ddd;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0; 
+    color: black; 
+}
+
+#login #box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border: 2px solid #bbb;
+    padding: 10px;
+    background-color: #fbfbfb;
+    color: black; 
+}
+
+#login #box .title a { 
+    padding-left: 10px;
+    font-weight: bold; 
+    font-size: 25px;
+    color: #55a; 
+}
+
+#login #box #controls { padding-top: 10px; width: 210px; }
+
+#login #box label {
+    margin-top: 5px;
+    display: block;
+    font-weight: bold; 
+    font-size: 11px; 
+    text-transform: uppercase; 
+    color: #999;
+    text-align: left;
+}
+
+#login #box input { font-size: 16px; width: 100%; }
+    
+#login #box #error { margin: 0px 10px 0px 10px; text-align: center; color: #f00; }
+
+#login .author {
+    position: absolute;
+    top: 85%;
+    left: 10px;
+    color: #bfbfbf;
+}
+
+/* Top Control (Main Menu & Map List) */
+
+#mainmenu,
+#map_list,
+#startpage,
+#startpage #news,
+#startpage #stats {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    vertical-align: top;
+    color: black; 
+}
+
+#mainmenu td { text-align: center; }
+#mainmenu .logo { font: italic small-caps bold 15px arial, sans-serif; padding-left: 10px; color: #555; letter-spacing: 3px; }
+#mainmenu .logout { text-align: right; }
+#mainmenu .logout { text-align: right; }
+
+#startpage td { text-align: center; font-size: 12px; }
+
+#startpage .title    { font-size: 20px; background-color: #55a; color: #fff; height: 20px;}
+#startpage .subtitle { font-size: 15px; background-color: #aaa; height: 15px; }
+#startpage .sectitle { font-size: 13px; text-decoration: underline; font-weight: bold; height: 20px; padding: 20px; }
+
+#startpage #data td { width: 50%; }
+
+#startpage #stats td { border-bottom: 1px dashed #888; }
+#startpage #stats .spacer { border-bottom: 0px; padding-left: 30px; width:1%; }
+#startpage #stats .cat { text-align: left; padding-left: 20px; }
+#startpage #stats .data { text-align: right; padding-right: 20px; }
+
+#startpage .author { text-align: right; background-color: #55a;  color: #fff; height: 12px; }
+
+/* Events */
+/* ------ */
+
+#events { width: 100%; }
+
+#events td a { text-decoration: none; }
+
+#events .header {
+    background-color: #aaa;
+    height: 20px;
+    font-weight: bold;
+    text-align: center;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    color: black; 
+}
+
+#events .header td {
+    font-size: 12px;
+}
+
+#events .header .date {
+    text-align: left;
+    width: 5%;
+}
+
+#events .header .hour {
+    padding-left: 2px;
+    font-size: 11px;
+    color: white;
+}
+
+#events .header .ack  { width:  2%; }
+#events .header .type { width:  8%; }
+#events .header .host { width: 10%; }
+
+#events .header .buttons { 
+    width: 100%;  
+    vertical-align: top;
+}
+
+#events .header .buttons td { 
+    width: 10px;
+    text-align: center;
+}
+
+#events .header .buttons .detail { 
+    width: 100px;
+    font-weight: bold; 
+    text-align: right;
+}
+
+/* Filters */
+#events .header .buttons .filters  { 
+    text-align: right;
+}
+
+/* IE Fixes */
+#events .header .buttons .filters * { 
+    white-space: nowrap;
+    border: 1px solid #aaa;
+}
+
+/* Filters Images*/
+#events .header .buttons .filters img { 
+    vertical-align: middle;
+    border: 0px;
+}
+
+/* Normal Event Rows */
+#events #body .event,
+#events #body .event td {
+    border-bottom: 1px dashed #aaa;
+    color: inherit;
+    font-size: 11px;
+}
+
+/* Ack'd Rows */
+#events #body .ack,
+#events #body .ack td {
+    border-bottom: 1px dashed #aaa;
+    font-style: italic;
+    font-size: 9px; 
+}
+
+/* Date & Ack Checkbox*/
+#events #body .date,
+#events #body .date a,
+#events #body .ack_check {
+    color: black;
+    background-color: #ccc; 
+    font-style: normal;
+    font-size: 11px;
+}
+
+#events #body .ack_check { padding-left: 5px; }
+
+#events #body .date a { padding-left: 3px; } 
+
+/* ACK Image */
+#events #body .ack_check img {
+    padding-top: 5px;
+}
+
+ /* Zone */
+#events #body .zone,
+#events #body .zone a,
+#events #body .type,
+#events #body .type a {
+    color: inherit;
+    text-align: center;
+}
+
+#events #body .host,
+#events #body .host a {
+    color: inherit;
+}
+
+#events #body .detail {
+    padding-left: 5px;
+}
+
+#events #body .no_events_found {
+    text-align: center;
+    font-size: 120%;
+    font-weight: bold; 
+}
+
+#events #journal {
+    width: 200px;
+    vertical-align: top;
+}
+
+#events #journal .title {
+    font-weight: bold; 
+    text-align: center;
+}
+
+
+/* Events Filter */
+/* ------------- */
+
+#events_filter {
+    width: 100%;
+    height: 100%;
+}
+
+#events_filter #filters td { border-bottom: 1px dashed #999;} 
+
+#events_filter .title { font-size: 16px;  color: #fff; text-align: center; background-color: #55a;}
+#events_filter #headers { font-weight: bold; text-align: center; background-color: #aaa; }
+#events_filter #headers td { font-size: 14px; }
+
+#events_filter .radio { text-align: center; }
+#events_filter .field { text-align: left; font-size: 13px; font-weight: bold; padding-left: 20px; }
+#events_filter .value { padding-left: 20px; }
+
+#events_filter .view_type,
+#events_filter .submit { 
+    text-align: center; 
+    font-size: 15px;
+}
+
+/* View Interfaces */
+/* --------------- */
+
+#view_interfaces {
+    width: 100%;
+}
+
+#view_interfaces #no_interfaces_found { 
+    font: bold 15px arial, sans-serif; 
+    text-align: center; 
+    width: 100%;
+}
+
+
+/* Interface Selector */
+/* ------------------ */
+
+#interface_selector {
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+    border-right: 1px solid black;
+    text-align: left;
+}
+
+#interface_selector #header td { background-color: #55a; }
+#interface_selector .title { font-size: 16px;  color: #fff; text-align: center; }
+#interface_selector .select { height: 25px; padding-left: 0px; } 
+#interface_selector .action { text-align: center; width: 1%; } 
+#interface_selector .back { text-align: left; width: 1px; } 
+
+#interface_selector .spacer { height: 100%; }
+#interface_selector .selected_header { font: bold 12px arial, sans-serif; text-align: center; }
+
+#interface_selector .buttons,
+#interface_selector .view_selected,
+#interface_selector .show_only_top,
+#interface_selector .view_all { text-align: center; }
+
+#interface_selector .controlbutton { padding: 0px 2px 0px 2px; }
+
+#interface_selector select { width: 100%; }
+#interface_selector select option { overflow: hidden; width: 150px; }
+#interface_selector .selector option { overflow: hidden; width: 165px; }
+
+table#popup_selector {
+    width: 100%;
+    text-align: center; 
+}
+
+#popup_selector .title { 
+    font: small-caps bold 15px arial, sans-serif; 
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #fff;
+    background-color: #55a;
+    float:left;
+}
+
+#popup_selector select { width: 100%; }
+
+#popup_selector #no_interfaces_found { 
+    font: bold 13px arial, sans-serif; 
+    text-align: center; 
+    width: 100%; 
+    float: left; 
+}
+
+#popup_selector .select_mark { background-color: #aaa; }
+#popup_selector .controlbutton { padding: 3px 5px 3px 5px; }
+
+
+/* Performance */
+/* ----------- */
+
+#performance {
+    width: 100%;
+    height: 100%;
+}
+
+#performance td { font-size: 13px; }
+
+#performance #header,
+#performance #header #time_span,
+#performance #graphs {
+    width: 100%;
+    text-align: center;
+}
+
+#performance #header {
+    border-bottom: 1px solid black;
+    height: 16px;
+}
+
+#performance #header #top { background-color: #55a; }
+#performance #header #options_header { background-color: #aaa; }
+#performance #header #options { background-color: #ddd; }
+
+#performance #header .title a {
+    font: 16px arial, sans-serif;
+    color: #fff;
+}
+
+#performance #header #shortcuts { 
+    width: 120px;
+    border: 1px dashed #bbb;
+    background-color: #eee;
+    padding-right: 5px;
+}
+
+#performance #header #shortcuts img { vertical-align: middle; }
+
+#performance #options .graph_types { padding-left: 30px; }
+#performance #options .graph_types select { float: left; }
+
+#performance #options .graph_types div#aggr_only { 
+    padding-left: 5px; 
+    overflow: hidden;
+    text-align: left; 
+    font-size: 10px;
+}
+
+#performance #current_date { font-size: 10px; }
+
+#performance #time_span .labels { text-align: right; }
+
+#performance #time_span .labels { text-align: right; }
+
+#performance #graphs .graph { padding-top: 3px; padding-bottom: 2px;}
+
+#performance #error,
+#performance .error {
+    font-weight: bold;
+    color: red;
+}
+/* Setup Page */
+/* ---------- */
+
+#setup {
+    width: 100%;
+    text-align: center;
+}
+
+#setup .setup_options {
+    width: 300px;
+    padding-left: 15%;
+}
+
+#setup .title    	{ font-size: 16px; background-color: #55a; color: #fff; }
+#setup .help 		{ font-size: 13px; background-color: #aaa; text-align: right; padding-right: 20px;}
+#setup .config_file 	{ font-size: 12px; background-color: #ddd; text-align: right; padding-right: 20px;}
+
+#setup #options td {
+    border-bottom: 1px dashed #bbb;
+    font-size: 12px;
+}
+
+#setup #options input {
+    font-size: 12px;
+}
+
+#setup #options .field_menu {
+    text-align: center;
+    font-size: 15px;
+    text-decoration: underline;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+#setup #options .result_yes,
+#setup #options .result_ok {
+    color: green;
+    text-transform: uppercase; 
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+}
+
+#setup #options .result_no,
+#setup #options .result_error {
+    color: red;
+    text-transform: uppercase; 
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Menu */
+/* ---- */
+
+#menu {
+    height: 100%;
+    border-left: 1px solid black;
+}
+
+#menu table {
+    width: 100%;
+    border-bottom: 1px dashed #aaa;
+    text-align: left;
+}
+
+#menu table table {
+    border-top: 1px dashed #aaa;
+}
+
+#menu .title { 
+    text-align: center; 
+    font-size: 16px; 
+    background-color: #55a; 
+    color: #fff; 
+}
+
+#menu td.image  { width: 16px; }
+#menu td a { color: black; font-size: 12px; }
+
+#menu .submenu { display: none; }
+#menu .selected_submenu { background-color: #eee; }
+#menu .selected_option { background-color: #ccc; }
+
+#menu #administration {
+    display: block;
+    background-color: transparent;
+}
+
+/* Color Selector For Maps */
+
+#color_select {
+    width: 100%;
+    height: 100%; 
+    text-align: center;
+}
+
+#color_select a { color: white; }
+
+/* Tools */
+/* ----- */
+
+#tools { width: 100%; text-align: center; }
+
+#tools td { font-size: 13px; }
+
+#tools table { width: 100%; height: 100%; }
+
+#tools .title { 
+    font: small-caps bold 16px arial, sans-serif; 
+    width: 100%;
+    color: white;
+    background-color: #55a;
+    text-align: left;
+    padding-left: 30px;
+}
+
+#tools tr.top { background-color: #aaa; }
+
+#tools tr.header { background-color: #ddd; font-weight: bold; }
+
+#tools .interface { font-weight: bold; padding-top: 10px; border-bottom: 2px dotted #aaa; text-align: left; }
+#tools tr { background-color: #eee; }
+
+#tools .no_records_found { font-size: 120%; font-weight: bold; }
+
+#tools iframe { visibility: hidden; position: absolute; }
+
+/* State Report */
+/* ------------ */
+
+#state_report {
+    width: 100%;
+    height: 100%;
+}
+
+#state_report table { width: 100%; }
+
+#state_report table td { font-size: 12px; }
+
+#state_report .title { 
+    font: small-caps bold 16px arial, sans-serif; 
+    width: 100%;
+    color: white;
+    background-color: #55a;
+    text-align: left;
+    padding-left: 30px;
+}
+
+#state_report #options { background-color: #aaa; text-align:center; }
+#state_report #report #header { background-color: #ddd; font-weight: bold; text-align: center; border-top: 1px solid black; }
+#state_report #report #header td { font-size: 15px }
+
+#state_report #report .interface { border-top: 1px dashed #ddd; }
+#state_report #report .interface .info { text-align: center; }
+
+#state_report #report #details td { text-align: center; }
+
+
+#state_report #report #totals { background-color: #ddd; font-weight: bold; }
+
+//#state_report * { border: 1px solid red; }
+
+#state_report #summary { background-color: #aaa; }
+#state_report #summary td { font-size: 15px; font-weight: bold; }
+
+#state_report .no_records_found { font-size: 120%; font-weight: bold; }
+
+/* NAD */
+/* ------------ */
+
+#nad {
+    width: 100%;
+}
+
+#nad td { font-size: 12px; }
+
+#nad .title { 
+    font: small-caps bold 16px arial, sans-serif; 
+    width: 100%;
+    color: white;
+    background-color: #55a;
+    text-align: left;
+    padding-left: 30px;
+}
+
+#nad .controlbutton { padding-top: 0px; padding-bottom: 0px; color: black; }
+
+#nad .options { background-color: #aaa; height: 23px; vertical-align: top; padding-left: 10px; }
+#nad .options select { font-size: 10px; height: 15px; }
+
+#nad .host .header, 
+#nad #nets .header, 
+#nad #net .header { 	
+    background-color: #ddd; 
+    font-weight: bold; 
+    text-align: center; 
+    border-bottom: 0px; border-top: 0px; 
+    font-size: 13px; 
+}
+
+#nad #nets { width: 100%; } 
+#nad #nets td { text-align: right; padding-right: 50px;}
+
+#nad #net { width: 100%; } 
+#nad #net tr.host { border-bottom: 1px dashed #aaa; }
+#nad #net td.ip { text-align: right; padding-right: 50px; }
+
+#nad .hosts { border-bottom: 5px solid black ; } 
+
+#nad .host { width: 100%; } 
+#nad .host td { border-bottom: 1px dashed #aaa; }
+#nad .host td.field { width: 200px; font-weight: bold; }
+#nad .host td.data { white-space: normal; } 
+
+#nad .host #ips { width: 100%; text-align: right; }
+#nad .host #ips td.header { text-align: right; }
+
+#nad .error { font-size: 120%; font-weight: bold; text-align: center; }
+
+
+
+/* Administration */
+/* -------------- */
+
+.admintable {
+    background-color: #eee;
+    width: 100%;
+    border-top: 1px solid black;
+}
+
+.admintable td {
+    text-align: center;
+    white-space: nowrap;
+    border-bottom: 1px dashed #888;
+    font-size: 11px; 
+}
+
+/* Navigation Bar */
+.admintable #navigation { background-color: #55a; border-bottom: 1px solid black; height: 16px; }
+
+/* Navigation Buttons Under the Admin Table */
+.admintable #navigation .controlbutton { 
+    padding: 0px 0px 0px 0px; 
+    width: 70px; 
+    float:left; 
+    height: 16px; 
+    color: white;
+}  
+.admintable #navigation .controlbutton:hover { background-color: #777; } 
+
+.admintable #navigation .controlbutton img { vertical-align: middle; }
+
+/* Administration Title */
+.admintable #navigation #title { 
+    float: left; 
+    font: small-caps bold 16px arial, sans-serif; 
+    width: 200px;
+    height: 16px;
+    vertical-align: top;
+    color: white;
+}
+
+
+/* Field Names Bar (Header) */
+.admintable .header { background-color: #9e9e9e; color: #fff; }
+
+/* All Header Fields */
+.admintable .header td {
+    font-weight: bold; 
+    font-size: 12px; 
+    padding: 0px 10px 0px 10px;
+    text-decoration: none;
+    height: 20px;
+}
+
+/* Remove padding of the A inside the TD */
+.admintable .header td .field { padding: 0px 0px 0px 0px; }
+
+/* Action Field Header */
+.admintable .header #action { background-color: #cecece; color: black; }
+
+/* ID Field Header + Sort Link */
+.admintable .header #field_id,
+.admintable .header #field_id a { 
+    background-color: #888; 
+    text-align: right;
+}
+
+/* Filter + Img*/
+.admintable .header td .filter {
+    position: absolute;
+    visibility: hidden;
+}
+.admintable .header td img {
+    vertical-align: middle;
+}
+
+/* Other Fields Header */
+.admintable .header .field { color: inherit; }
+
+/* Action Field Data */
+.admintable tbody .action {
+    background-color: #cecece; 
+    border-bottom: 1px dotted #888; 
+    width: 10%; 
+}
+.admintable tbody .controlbutton { padding: 0px 0px 0px 0px; }
+.admintable tbody .action_button img { padding: 0px 10px 0px 5px; vertical-align: middle; }
+
+/* ID Field Data */
+.admintable tbody #field_id {
+    border-left: 1px dashed #888;
+    font-weight: bold; 
+    padding-right: 5px; 
+    text-align: right; 
+}
+
+.admintable tbody .field_id { 
+    color: black;
+    font-weight: bold; 
+    padding-right: 5px; 
+}
+
+/* Other Fields Data */
+.admintable .field { }
+
+/* Data Rows Odd/Even/Editing */
+.admintable tbody tr { background-color: #eee; }
+.admintable tbody tr.odd { background-color: #ddd; }
+.admintable tbody tr.editing { background-color: #aad; border-top: 2px dotted #fff; border-bottom: 2px dotted #fff; }
+
+/* No Records Found Banner */
+.admintable tbody .no_records_found {
+    font-size: 120%;
+    font-weight: bold; 
+    text-align: left;
+    padding-left: 100px;
+}
+
+
+
+/* Administration Field Exceptions */
+
+.admintable#admin_interfaces #field_interface,
+.admintable#admin_interfaces #field_host,
+.admintable#admin_hosts #field_zone,
+.admintable#admin_hosts #field_name,
+
+.admintable#admin_zones #field_zone, 
+
+.admintable#admin_event_types #field_text,
+.admintable#admin_interface_types_fields #field_default_value,
+.admintable#admin_interface_types #field_autodiscovery_function,
+.admintable#admin_interface_types #field_autodiscovery_parameters
+{ padding-left: 3px; text-align: left; }
+
+.admintable#admin_interfaces #itype_4 #field_interface,
+.admintable#admin_interfaces #field_address,
+.admintable#admin_interfaces #field_peer,
+.admintable#admin_interfaces #field_mask,
+.admintable#admin_interfaces #field_bandwidthin,
+.admintable#admin_interfaces #field_bandwidthout,
+
+.admintable#admin_hosts #field_ip,
+.admintable#admin_hosts #field_ip_tacacs,
+.admintable#admin_hosts #field_tftp
+{ text-align: right; font-family: monospace; }
+
+
+.admintable #field_description { text-align: left; padding-left: 5px; } 
+
+.admintable#admin_interfaces #itype_4 #field_interface,
+.admintable#admin_pollers #field_parameters,
+.admintable#admin_pollers_backend #field_parameters,
+.admintable#admin_trap_receivers #field_parameters,
+.admintable#admin_trap_receivers #field_match_oid,
+.admintable#admin_receiver_backends #field_parameters,
+.admintable#admin_event_types #field_text,
+.admintable#admin_syslog_types #field_match_text
+{ font-family: monospace; text-align:left; }
+
+
+/* Administration Interfaces */
+.admintable#admin_interfaces .header .type_filter,
+.admintable#admin_interfaces .header .type_filter a
+{ background-color: #cecece; color: black; font-size: 11px; }
+
+
+
+/* Administration Host Discovery */
+
+.admintable tbody .manual_discovery {
+    border: 0px solid black;
+    padding: 0px 0px 0px 0px;
+    width: 100%;
+}
+
+.admintable tbody .manual_discovery .discovery_title {
+    font-size: 13px;
+    font-weight: bold; 
+    background-color: #77c;
+    color: #eee;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.admintable tbody .manual_discovery .manual_add {
+    font-size: 11px; 
+    color: inherit;
+    text-align: right;
+    padding-left: 100px;
+}
+
+.admintable tbody .manual_discovery .discovery_header {
+    font-size: 105%;
+    background-color: #aaa;
+}
+
+.admintable tbody .manual_discovery .discovery_header td {
+    border-right: 1px solid #888;
+    padding-left: 5px;
+}
+
+.admintable tbody .manual_discovery td {
+    border: 0px;
+    font-size: 11px; 
+    height: 18px;
+}
+
+.admintable tbody .manual_discovery .discovery_interface_new,
+.admintable tbody .manual_discovery .discovery_interface_old {
+    font-family: monospace;
+}
+
+.admintable tbody .manual_discovery .discovery_interface_new {
+    font-weight: bold;
+}
+
+.admintable tbody .manual_discovery .field_index
+{ text-align: right; padding-right: 5px;}
+
+.admintable tbody .manual_discovery .field_status,
+.admintable tbody .manual_discovery .field_interface
+{ text-align: left; }
+
+
+/* Manual Discovery Field Exceptions */
+
+.admintable tbody .manual_discovery .field_rate,
+.admintable tbody .manual_discovery .field_ceil,
+.admintable tbody .manual_discovery .field_size,
+.admintable tbody .manual_discovery .field_bandwidthin,
+.admintable tbody .manual_discovery .field_address,
+.admintable tbody .manual_discovery .field_peer 
+{ text-align: right; }
+
+.admintable tbody .manual_discovery .field_description 
+{ text-align: left; }
+
+/* Hosts Diff */
+.admintable#hosts_config #field_config textarea {
+    font-family: monospace;
+}

@@ -1,0 +1,370 @@
+-- MySQL dump 9.10
+--
+-- Host: localhost    Database: snort
+-- ------------------------------------------------------
+-- Server version	4.0.17-log
+
+--
+-- Table structure for table `fuzzy_GIFS`
+--
+
+CREATE TABLE fuzzy_GIFS (
+  id int(11) NOT NULL auto_increment,
+  filename varchar(255) default NULL,
+  timestamp datetime default NULL,
+  alert tinyint(1) NOT NULL default '0',
+  usr_ip varchar(15) default NULL,
+  ip_address varchar(15) default NULL,
+  state char(1) default NULL,
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_GIFS`
+--
+
+
+--
+-- Table structure for table `fuzzy_JPGS`
+--
+
+CREATE TABLE fuzzy_JPGS (
+  id int(11) NOT NULL auto_increment,
+  filename varchar(255) default NULL,
+  timestamp datetime default NULL,
+  alert tinyint(1) NOT NULL default '0',
+  ip_address varchar(15) default NULL,
+  usr_ip varchar(15) default NULL,
+  state char(1) default NULL,
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_JPGS`
+--
+
+
+--
+-- Table structure for table `fuzzy_NetBIOS`
+--
+
+CREATE TABLE fuzzy_NetBIOS (
+  id int(11) NOT NULL auto_increment,
+  timestamp datetime default NULL,
+  ip_address varchar(15) default '0.0.0.0',
+  network_name varchar(30) default NULL,
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_NetBIOS`
+--
+
+
+--
+-- Table structure for table `fuzzy_aim`
+--
+
+CREATE TABLE fuzzy_aim (
+  id int(11) NOT NULL auto_increment,
+  sender varchar(50) default NULL,
+  recipient varchar(50) default NULL,
+  message mediumtext,
+  timestamp datetime default NULL,
+  src_ip varchar(15) default '0.0.0.0',
+  dest_ip varchar(15) default '0.0.0.0',
+  alert tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_aim`
+--
+
+
+--
+-- Table structure for table `fuzzy_aim_users`
+--
+
+CREATE TABLE fuzzy_aim_users (
+  id int(11) NOT NULL auto_increment,
+  username varchar(50) default NULL,
+  email_address varchar(50) default NULL,
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_aim_users`
+--
+
+
+--
+-- Table structure for table `fuzzy_dns`
+--
+
+CREATE TABLE fuzzy_dns (
+  id int(11) NOT NULL auto_increment,
+  ip_address varchar(15) NOT NULL default '0.0.0.0',
+  domain_name varchar(15) NOT NULL default '',
+  alert tinyint(1) default '0',
+  PRIMARY KEY  (id),
+  KEY ip_address (ip_address)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_dns`
+--
+
+
+--
+-- Table structure for table `fuzzy_html`
+--
+
+CREATE TABLE fuzzy_html (
+  id int(11) NOT NULL auto_increment,
+  ip_address varchar(15) NOT NULL default '0.0.0.0',
+  alert tinyint(1) NOT NULL default '0',
+  vDate datetime default NULL,
+  html mediumtext NOT NULL,
+  filename varchar(100) default NULL,
+  usr_ip varchar(15) default '0.0.0.0',
+  PRIMARY KEY  (id),
+  KEY ip_address (ip_address,alert)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_html`
+--
+
+
+--
+-- Table structure for table `fuzzy_imap`
+--
+
+CREATE TABLE fuzzy_imap (
+  id int(11) NOT NULL auto_increment,
+  username varchar(20) default NULL,
+  password varchar(20) default NULL,
+  sender varchar(50) default NULL,
+  recipient varchar(50) default NULL,
+  message mediumtext,
+  timestamp datetime default NULL,
+  alert tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_imap`
+--
+
+
+--
+-- Table structure for table `fuzzy_msn`
+--
+
+CREATE TABLE fuzzy_msn (
+  id int(11) NOT NULL auto_increment,
+  sender varchar(50) default NULL,
+  recipient varchar(50) default NULL,
+  message mediumtext,
+  timestamp datetime default NULL,
+  src_ip varchar(15) default '0.0.0.0',
+  dest_ip varchar(15) default '0.0.0.0',
+  alert tinyint(1) NOT NULL default '0',
+  username varchar(50) default NULL,
+  email varchar(50) default NULL,
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_msn`
+--
+
+
+--
+-- Table structure for table `fuzzy_msn_users`
+--
+
+CREATE TABLE fuzzy_msn_users (
+  id int(11) NOT NULL auto_increment,
+  username varchar(50) default NULL,
+  email_address varchar(50) default NULL,
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_msn_users`
+--
+
+
+--
+-- Table structure for table `fuzzy_p2p`
+--
+
+CREATE TABLE fuzzy_p2p (
+  id int(11) NOT NULL auto_increment,
+  username varchar(50) default NULL,
+  search_query varchar(50) default NULL,
+  timestamp datetime default NULL,
+  file_count int(9) default NULL,
+  total_file_size int(30) default NULL,
+  src_ip varchar(15) default '0.0.0.0',
+  dest_ip varchar(15) default '0.0.0.0',
+  alert tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_p2p`
+--
+
+
+--
+-- Table structure for table `fuzzy_packets`
+--
+
+CREATE TABLE fuzzy_packets (
+  protocol_name varchar(20) default NULL,
+  protocol_table varchar(40) default NULL,
+  id int(11) NOT NULL auto_increment,
+  protocol_filter varchar(40) default NULL,
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_packets`
+--
+
+INSERT INTO fuzzy_packets VALUES ('POP3 Mail','fuzzy_pop3',12,'pop.php');
+INSERT INTO fuzzy_packets VALUES ('MSN','fuzzy_msn',15,'msn.php');
+INSERT INTO fuzzy_packets VALUES ('HTTP','fuzzy_html',29,'http.php');
+INSERT INTO fuzzy_packets VALUES ('POP3 Users','fuzzy_pop3_users',28,'pop.php');
+INSERT INTO fuzzy_packets VALUES ('JPG Images','fuzzy_JPGS',25,'jpg.php');
+INSERT INTO fuzzy_packets VALUES ('GIF Images','fuzzy_GIFS',26,'gif.php');
+
+--
+-- Table structure for table `fuzzy_pop3`
+--
+
+CREATE TABLE fuzzy_pop3 (
+  id int(11) NOT NULL auto_increment,
+  sender varchar(50) default NULL,
+  recipient varchar(50) default NULL,
+  seq varchar(100) default NULL,
+  message mediumtext,
+  timestamp datetime default NULL,
+  alert tinyint(1) NOT NULL default '0',
+  sip varchar(15) default NULL,
+  dip varchar(15) default NULL,
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_pop3`
+--
+
+
+--
+-- Table structure for table `fuzzy_pop3_users`
+--
+
+CREATE TABLE fuzzy_pop3_users (
+  dip varchar(15) default NULL,
+  sip varchar(15) default NULL,
+  username varchar(50) default NULL,
+  passwd varchar(50) default NULL,
+  seq varchar(20) default NULL
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_pop3_users`
+--
+
+
+--
+-- Table structure for table `fuzzy_preferences`
+--
+
+CREATE TABLE fuzzy_preferences (
+  id int(11) NOT NULL auto_increment,
+  protocol varchar(15) NOT NULL default '',
+  threshold int(9) default NULL,
+  units varchar(30) default NULL,
+  threshold_on tinyint(1) NOT NULL default '0',
+  active tinyint(4) default NULL,
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_preferences`
+--
+
+--
+-- Table structure for table `fuzzy_smtp`
+--
+
+CREATE TABLE fuzzy_smtp (
+  id int(11) NOT NULL auto_increment,
+  sender varchar(50) default NULL,
+  recipient varchar(50) default NULL,
+  message mediumtext,
+  timestamp datetime default NULL,
+  alert tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_smtp`
+--
+
+
+--
+-- Table structure for table `fuzzy_temp`
+--
+
+CREATE TABLE fuzzy_temp (
+  id int(10) NOT NULL auto_increment,
+  timestamp datetime default NULL,
+  packet_type varchar(20) default NULL,
+  version tinyint(3) default NULL,
+  hlen tinyint(3) default NULL,
+  len smallint(5) default NULL,
+  ident smallint(5) default NULL,
+  flags tinyint(3) default NULL,
+  off smallint(5) default NULL,
+  ttl tinyint(3) default NULL,
+  protocol tinyint(3) default NULL,
+  sip varchar(15) default NULL,
+  dip varchar(15) default NULL,
+  sport smallint(5) default NULL,
+  dport smallint(5) default NULL,
+  seq int(10) unsigned default NULL,
+  ack int(10) unsigned default NULL,
+  data_payload text,
+  cid int(10) unsigned default NULL,
+  PRIMARY KEY  (id),
+  KEY packet_index (packet_type)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_temp`
+--
+
+
+--
+-- Table structure for table `fuzzy_users`
+--
+
+CREATE TABLE fuzzy_users (
+  id int(10) NOT NULL auto_increment,
+  username varchar(20) default NULL,
+  password varchar(20) default NULL,
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `fuzzy_users`
+--
+
+INSERT INTO fuzzy_users VALUES (2,'admin','43e9a4ab75570f5b');
+

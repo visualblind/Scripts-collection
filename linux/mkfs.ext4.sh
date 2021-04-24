@@ -1,0 +1,1 @@
+mkfs.ext[2-4] –b 4096 /dev/sdb1

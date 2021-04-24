@@ -1,0 +1,110 @@
+Version 2.7.0 (10/20/2005)
+--------------------------
+- Added: The output of each command is now parsed to create some shortcuts:
+         - All IP addresses found are converted into links.  Clicking on an IP link
+           will enter it into the "Host" field.
+         - All email addresses found are converted into "mailto:" links.  Clicking
+           on an email link will create a new email in your default mail program.
+
+
+Version 2.6.3 (10/11/2005)
+--------------------------
+- Fixed: When querying a specific DNS server using the Dig command, the server field
+         was being cleared on a page refresh (ie. pressing the "Get Info" button)
+- Fixed: When using the Dig command with a type other than "ANY", this option
+         was being reset on a page refresh (ie. pressing the "Get Info" button)
+- Updated: Changed the color of links on the page to make them stand out a bit more
+- Updated: This changelog.txt file has been cleaned up and is now a bit easier to read
+
+
+Version 2.6.2 (09/29/2005)
+--------------------------
+- Added: Date and Time to log info (relative to the servers local time)
+
+
+Version 2.6.1 (09/22/2005)
+--------------------------
+- Updated: Change the behavior of the Get Country option.  Previously, it had to be used
+           in conjunction with the Resolve Host/Reverse Lookup command.  It can now be used
+           independently.
+
+
+Version 2.6.0 (09/21/2005)
+--------------------------
+- Fixed: A bug prevented the Dig command from working without specifying a DNS server
+         (should have been optional)
+- Updated: Made Help popups resizable
+- Updated: Clarified the wording on a few Help popups to be a bit clearer
+- Added: Option to log information about the person/computer using the script
+         (off by default - see nettools.php - line 47)
+- Added: Version display to top of page
+
+
+Version 2.5.2 (06/21/2005)
+--------------------------
+- Fixed: A security flaw could allow arbitrary command execution on the server
+         (credit goes to Johan for pointing this out)
+
+
+Version 2.5.1 (05/13/2005)
+--------------------------
+- Updated: Help popup boxes now appear in the middle of the screen
+- Updated: Clarified the wording on a few help popups to be a bit clearer
+
+
+Version 2.5.0 (05/05/2005)
+--------------------------
+- Update: Changed default whois server to whois-servers.net (thanks for the idea Rob)
+- Added: Option to specify a DNS server to use for the Dig command (thanks for the idea Rob)
+- Added: Help option for the Dig command
+
+
+Version 2.4.1 (05/03/2005)
+--------------------------
+- Added: Extra check to Whois (Domain) for Japanese whois servers
+         (for more info, see code comments in nettools.php - line 264)
+- Got script ready to be distributed;
+  added GPL info to the top and included gpl.txt in the package
+
+
+Version 2.4.0 (04/29/2005)
+--------------------------
+- Fixed: Security hole
+- Fixed: Various aesthetic issues
+- Added: Help info for several options
+
+
+Version 2.3.0 (04/26/2005)
+--------------------------
+- Fixed: Several general bugs
+- Updated: Changed default portscan timeout from 3 seconds to 1 second (was previously too slow)
+- Added: Nmap command
+
+
+Version 2.2.1 (04/20/2005)
+--------------------------
+- Updated: Get Country option now finds the full name instead of just the abbreviation.
+- Added: Country list is cached on the server (previously took too long to download it each time)
+
+
+Version 2.2.0 (04/15/2005)
+--------------------------
+- Updated: Significantly expanded the functionality of the portscan command.
+           It was previously only able to scan one port at a time.
+           Added the ability to scan any range and number of ports at once.
+- Added: Tracepath command
+
+
+Version 2.1.0 (04/11/2005)
+--------------------------
+- Added: Get Country option to Resolve Host/Reverse Lookup command
+
+
+Version 2.0.0 (04/07/2005)
+--------------------------
+- Complete rewrite of the code
+- Added: Comments to make code more readable
+
+
+
+I had started this project a couple years ago, but never finished it due to a lack of time.  My PHP knowledge has increased significantly since then so I decided to clean up all the code and basically start over.  Due to the fact that I started the script so long ago, I cannot remember changes and dates for those versions.  So, when I started playing with it again, I consider the code rewrite to be version 2.0; we will pick up from there.

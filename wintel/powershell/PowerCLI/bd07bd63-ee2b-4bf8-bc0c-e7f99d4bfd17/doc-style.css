@@ -1,0 +1,437 @@
+
+body {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #000;
+  background-color: #fff;
+}
+
+body.toc {
+  margin: 0;
+  padding: 0;
+}
+
+a         { color: #036; text-decoration: underline; }
+a:visited { color: #036;  text-decoration: underline; }
+a:hover   { color: #3366AA; text-decoration: none; }
+
+a.title         { color: #3366AA; text-decoration: none; }
+a.title:visited { color: #036;  text-decoration: none; }
+a.title:hover   { color: #3366AA; text-decoration: none; }
+
+h1 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #3366AA;
+  margin-bottom: 25px;
+  padding-bottom: 5px;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  border-bottom-color: #95a8a6;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #3366AA;
+  margin-top: 25px;
+  padding-bottom: 10px;
+}
+
+h2.title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #3366AA;
+  margin-top: 20px;
+  padding-bottom: 5px;
+}
+
+h2.index {
+	padding-bottom: 0px;	
+}
+
+h3 {
+  font-size: 12px;
+  font-weight: bold;
+  color: #3366AA;
+  margin-top: 25px;
+}
+
+h4 {
+  font-size: 12px;
+  font-weight: normal;
+  color: #3366AA;
+  margin-top: 25px;
+}
+
+div.example {
+  border: 1px solid #999;
+  padding: 10px;
+  margin: 10px 0 10px 0;
+}
+
+.example-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #3366AA;
+  margin: 0 0 10px 0;
+}
+
+pre.programlisting {
+  font-family: "Courier New", Courier, mono;
+  font-size: 12px;
+  margin: 0 0 20px 0;
+}
+
+div.example pre.programlisting {
+  color: #000066;
+  background-color: #eff7ff;
+  padding: 10px;
+  border: 1px dashed #333;
+  margin-bottom: 0;
+}
+
+ul {
+    font-size: 12px;
+    list-style-position: outside;
+    list-style-type: circle;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+ul.nobullet {
+  list-style-type: none;
+}
+
+ul.nobullet * p {
+  margin: 0;
+}
+
+ul.noindent li {
+  margin-left: -25px;
+}
+
+ul.noindent * p{
+  margin: 0;
+}
+
+ol * ol {
+  list-style-type: lower-alpha;
+}
+
+#header {
+  font-size: 10px;
+  color: #999;
+  border-bottom: 1px dotted #999;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#footer {
+  font-size: 10px;
+  color: #999;
+  border-top: 1px dotted #999;
+  text-align: center;
+  margin-top: 20px;
+}
+
+dt {
+  font-weight: bold;
+  font-style: italic;
+}
+
+table {
+  border-collapse:collapse;
+  border-top: 1px solid #999;
+  border-left: 1px solid #999;
+  width:95%;
+}
+
+textarea {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  color: #000;
+  background-color: #f4f4f4;
+  border: 1px solid #999;
+  width:95%;
+}
+
+p.table-title {
+  font-weight: bold;
+  margin: 10px 0 5px 5px;
+}
+
+td, th {
+  font-size: 12px;
+  padding: 5px 10px 5px 10px;
+  border-bottom: 1px solid #999;
+  border-right: 1px solid #999;
+  vertical-align: top;
+}
+
+dd {
+    margin-bottom:10px;
+}
+
+th {
+  background-color: #555555;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+tr td {
+  background-color: #fff;
+}
+
+tr.r1 td {
+  background-color: #fff;
+}
+
+tr.r0 td {
+  background-color: #f4f4f4;
+}
+
+td p:first-child {
+  margin-top: 0;
+}
+
+td pre.programlisting {
+  margin-bottom: 0;
+}
+
+kbd {
+  font-family: "Courier New", Courier, mono;
+  font-size: 12px;
+  font-weight: bold;
+  color: #040;
+}
+
+.replaceable {
+  font-weight: bold;
+  color: #f00;
+}
+
+code.markup {
+  font-family: "Courier New", Courier, mono;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+code.sgmltag {
+  font-family: "Courier New", Courier, mono;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+code.filename {
+  font-family: "Courier New", Courier, mono;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+code.errorname {
+  font-family: "Courier New", Courier, mono;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+div.note,
+div.tip,
+div.caution {
+  margin: 10px;
+  padding: 10px;
+  background-color: #eee;
+}
+
+div.note p,
+div.tip p,
+div.caution p {
+  margin-bottom: 0;
+}
+
+p.admonition-title {
+  margin: 0;
+}
+
+div.note pre.programlisting,
+div.tip pre.programlisting,
+div.caution pre.programlisting {
+  margin: 10px 0 0 0;
+}
+
+strong.caution {
+  color: #f00;
+}
+
+strong.required,
+strong.optional,
+strong.sometimes {
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+strong.required {
+  color: #3366AA;
+}
+
+strong.optional {
+  color: #999;
+}
+
+strong.sometimes {
+  color: #036;
+}
+
+p.blockquote {
+  margin: 0 20px 0 20px;
+}
+
+div.requestparams,
+div.samplerequest {
+  border: 1px solid #999;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+div.requestparams h2,
+div.samplerequest h2 {
+  margin: 0;
+  padding: 10px;
+}
+
+div.samplerequest div.example {
+  margin: 0 -1px -1px -1px;
+}
+
+div.requestparams h2 {
+  border-bottom: 1px solid #999;
+}
+
+div.requestparams p,
+div.requestparams ul {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+div.requestparams table {
+  margin: 0 -1px -1px -1px;
+}
+
+div.tableheader {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: bold;
+  color: #999;
+  text-align: center;
+  margin: 15px 0 15px 0;
+}
+
+div.breadcrumb {
+  font-size: 10px;
+  color: #999;
+  padding-bottom: 10px;
+  text-align: right;
+}
+
+.navcontainer { width: 100%; }
+
+.navcontainer a {
+  display: block;
+  padding: 5px;
+  background-color: #fff;
+}
+
+.navcontainer a:link {
+  color: #036;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navcontainer  a:visited {
+  color: #036;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navcontainer a:hover {
+  background-color: #fff;
+  color: #3366AA;
+  padding: 5px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.navdiv {
+  font-size: 10px;
+  line-height: 12px;
+  color: #036;
+  list-style-position: outside;
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+a.breadcrumb {
+  font-size: 10px;
+}
+
+.navdiv a:link { text-decoration: none; }
+
+.navdiv a:hover {
+  color: #000;
+}
+
+table.navcontainer,
+table.topnavcontainer {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+table.navcontainer * td,
+table.topnavcontainer * td,
+table.navcontainer * table {
+  padding: 0;
+  border: 0;
+}
+
+p.figure-caption {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+img.figure {
+  border: 1px solid #999;
+}
+
+img.inline {
+  border: 0;
+}
+.collapse {font-size: 9px}
+
+table.header-footer {
+    border: 1px solid #999
+    }
+table.header-footer td {
+    border: none; 
+    background-color: #F0F8FF;  
+}
+span.footnote {
+	font-size: 10px;
+}
+span.footnote-ref {
+	vertical-align: super;
+	font-size: 8px;
+	color: Red;
+	cursor: pointer;
+}
+
+span.privilege-ref {
+	vertical-align: super;
+	font-size: 8px;
+	color: #0000CD;
+	cursor: pointer;
+}

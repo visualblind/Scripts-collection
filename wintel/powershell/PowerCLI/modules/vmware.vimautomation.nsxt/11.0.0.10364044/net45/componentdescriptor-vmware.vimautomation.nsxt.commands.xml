@@ -1,0 +1,26 @@
+<ComponentDescriptor>
+  <Name>VMware.VimAutomation.Cis.Nsxt.Commands</Name>
+  <Assembly>VMware.VimAutomation.Cis.Nsxt.Commands</Assembly>
+  <ImplementingType>VMware.VimAutomation.Cis.Nsxt.Commands.NsxtCommandsComponentImpl</ImplementingType>
+  <IsSnapin>true</IsSnapin>
+  <ProvidedServiceList>
+  </ProvidedServiceList>
+  <RequiredServiceList>
+    <ServiceDescriptor>
+      <Name>NsxtCoreService</Name>
+      <Version>1.0</Version>
+    </ServiceDescriptor>
+  </RequiredServiceList>
+  <ExtendedServiceList>
+  </ExtendedServiceList>
+  <Version>
+    <Major>11</Major>
+    <Minor>0</Minor>
+    <Revision>0</Revision>
+    <Build>10364044</Build>
+    <Company>VMware Inc.</Company>
+    <Copyright>Copyright 2017</Copyright>
+    <UserFriendlyVersion>VMware Nsxt PowerCLI Component PowerCLI Component 11.0 build 10364044</UserFriendlyVersion>
+    <Description>Provides cmdlets for managing VMware NSXT Server.</Description>
+  </Version>
+</ComponentDescriptor>

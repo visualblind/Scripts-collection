@@ -1,0 +1,22 @@
+<ComponentDescriptor>
+	<Name>VMware.VimAutomation.License</Name>
+	<Assembly>VMware.VimAutomation.License.Impl</Assembly>
+	<ImplementingType>VMware.VimAutomation.License.Impl.LicenseComponent</ImplementingType>
+	<IsSnapin>false</IsSnapin>
+
+	<ProvidedServiceList>
+		<ServiceDescriptor>
+			<Name>LicenseService</Name>
+			<Version>1.0</Version>
+		</ServiceDescriptor>
+	</ProvidedServiceList>
+
+	<RequiredServiceList>
+		<ServiceDescriptor>
+			<Name>ViCoreService</Name>
+			<Version>1.0</Version>
+		</ServiceDescriptor>
+   </RequiredServiceList>
+
+	<ExtendedServiceList></ExtendedServiceList>
+</ComponentDescriptor>

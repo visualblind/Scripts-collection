@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Connect-SrmServer</command:name>
+      <command:verb>Connect</command:verb>
+      <command:noun>SrmServer</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet establishes a connection to a vCenter Site Recovery Manager (SRM) server.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet establishes a connection to an SRM server. To access the SRM API, use the ExtensionData property of the output of this command.</maml:para>
+      <maml:para>The resulting connections are added to the list of default connections in a global variable named "$global:DefaultSrmServers" (if the NotDefault switch was not specified).</maml:para>
+      <maml:para>If you are already connected to a vCenter Server system, you can connect to its corresponding SRM server by passing that connection to the Server parameter (see Example 1). If you call Connect-SrmServer and do not specify which server to connect to, the cmdlet uses the default vSphere connections.</maml:para>
+      <maml:para>To connect to an SRM server without connecting its corresponding vCenter Server first, use the SrmServerAddress parameter.</maml:para>
+      <maml:para>An SRM deployment typically consists of two sites - a protected site and protecting site. Certain operations require that the session is logged to both sites. To create such a session, specify the RemoteCredential parameter. Some operations are valid for execution only at a protected or protecting site. For those cases, establish the session to that site by specifying the SRM server address at that site to the SrmServerAddress parameter or passing a connection to the vSphere server at that site to the Server parameter.</maml:para>
+      <maml:para>For more information about SRM API operations, see the SRM API reference guide installed with PowerCLI.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Connect-SrmServer</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>SrmServerAddress</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the IP address or fully qualified domain name (FQDN) of the SRM server.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Credential</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the credentials to be used to log in to the SRM server. This parameter is an alternative to the user/password pair of parameters.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+          <dev:type>
+            <maml:name>PSCredential</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>IgnoreCertificateErrors</maml:name>
+          <maml:Description>
+            <maml:para>If specified, any errors related to a bad server certificate of the SRM server are ignored.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Locale</maml:name>
+          <maml:Description>
+            <maml:para>If specified, defines the locale of the strings produced by the server for this connection.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>NotDefault</maml:name>
+          <maml:Description>
+            <maml:para>If specified, the resulting connection is not listed in the list of default connections to SRM servers and must be manually specified when used with a cmdlet.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Password</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the password for the connection to the SRM server.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+          <dev:type>
+            <maml:name>SecureString</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Port</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the port on the server you want to use for the connection. If not specified, a protocol-specific default value is used.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Protocol</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the Internet protocol you want to use for the connection. It can be either HTTP or HTTPS. If not specified, HTTPS is used.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>RemoteCredential</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the credentials for a remote SRM server.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+          <dev:type>
+            <maml:name>PSCredential</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>RemotePassword</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the password for the connection to the remote SRM server.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+          <dev:type>
+            <maml:name>SecureString</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="RemoteUsername">
+          <maml:name>RemoteUser</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the user name that is used to log on in to the remote SRM server.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Username">
+          <maml:name>User</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the user name that is used to log in to the SRM server.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Connect-SrmServer</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Credential</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the credentials to be used to log in to the SRM server. This parameter is an alternative to the user/password pair of parameters.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+          <dev:type>
+            <maml:name>PSCredential</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>IgnoreCertificateErrors</maml:name>
+          <maml:Description>
+            <maml:para>If specified, any errors related to a bad server certificate of the SRM server are ignored.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>NotDefault</maml:name>
+          <maml:Description>
+            <maml:para>If specified, the resulting connection is not listed in the list of default connections to SRM servers and must be manually specified when used with a cmdlet.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Password</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the password for the connection to the SRM server.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+          <dev:type>
+            <maml:name>SecureString</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Port</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the port on the server you want to use for the connection. If not specified, a protocol-specific default value is used.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Protocol</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the Internet protocol you want to use for the connection. It can be either HTTP or HTTPS. If not specified, HTTPS is used.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>RemoteCredential</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the credentials for a remote SRM server.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+          <dev:type>
+            <maml:name>PSCredential</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>RemotePassword</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the password for the connection to the remote SRM server.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+          <dev:type>
+            <maml:name>SecureString</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="RemoteUsername">
+          <maml:name>RemoteUser</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the user name that is used to log on in to the remote SRM server.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="True (ByValue)" position="named" aliases="none">
+          <maml:name>Server</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the vCenter Server system that the SRM server is associated to. If no value is given to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-VIServer.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">VIServer[]</command:parameterValue>
+          <dev:type>
+            <maml:name>VIServer[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Username">
+          <maml:name>User</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the user name that is used to log in to the SRM server.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Credential</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the credentials to be used to log in to the SRM server. This parameter is an alternative to the user/password pair of parameters.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        <dev:type>
+          <maml:name>PSCredential</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>IgnoreCertificateErrors</maml:name>
+        <maml:Description>
+          <maml:para>If specified, any errors related to a bad server certificate of the SRM server are ignored.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Locale</maml:name>
+        <maml:Description>
+          <maml:para>If specified, defines the locale of the strings produced by the server for this connection.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>NotDefault</maml:name>
+        <maml:Description>
+          <maml:para>If specified, the resulting connection is not listed in the list of default connections to SRM servers and must be manually specified when used with a cmdlet.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Password</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the password for the connection to the SRM server.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+        <dev:type>
+          <maml:name>SecureString</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Port</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the port on the server you want to use for the connection. If not specified, a protocol-specific default value is used.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Protocol</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the Internet protocol you want to use for the connection. It can be either HTTP or HTTPS. If not specified, HTTPS is used.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>RemoteCredential</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the credentials for a remote SRM server.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        <dev:type>
+          <maml:name>PSCredential</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>RemotePassword</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the password for the connection to the remote SRM server.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+        <dev:type>
+          <maml:name>SecureString</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="RemoteUsername">
+        <maml:name>RemoteUser</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the user name that is used to log on in to the remote SRM server.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="True (ByValue)" position="named" aliases="none">
+        <maml:name>Server</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the vCenter Server system that the SRM server is associated to. If no value is given to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-VIServer.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">VIServer[]</command:parameterValue>
+        <dev:type>
+          <maml:name>VIServer[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>SrmServerAddress</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the IP address or fully qualified domain name (FQDN) of the SRM server.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Username">
+        <maml:name>User</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the user name that is used to log in to the SRM server.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>SrmServer</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Connect-VIServer "myVCServerIp" -User "myUser" -Password "myPassword"
+Connect-SrmServer</dev:code>
+        <dev:remarks>
+          <maml:para>Connects to a vCenter Server system, that has an SRM server associated with it. Then, invokes the cmdlet without specifying any parameters to establish a connection to the SRM server registered with the connected vCenter Server system. If you have previously connected to other vCenter Server systems configured with SRM server support, this cmdlet invocation will establish a connection to their corresponding SRM servers as well.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>Connect-SrmServer -SrmServerAddress 192.0.2.1 -User "myUser" -Password "myPassword"</dev:code>
+        <dev:remarks>
+          <maml:para>Connects to an SRM server with an IP address of 192.0.2.1 by passing a valid user name and password.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>Connect-VIServer "myVCServerIp" -User "myUser" -Password "myPassword"
+Connect-SrmServer -RemoteCredential $myRemoteCredential</dev:code>
+        <dev:remarks>
+          <maml:para>Connects to a vCenter Server system associated with an SRM server. Then, establishes a connection to that SRM server by passing valid credentials for connection to the remote SRM server.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
+        <dev:code>Connect-VIServer "myVCServerIp" -User "myUser" -Password "myPassword"
+Connect-SrmServer -NotDefault -IgnoreCertificateErrors</dev:code>
+        <dev:remarks>
+          <maml:para>Connects to a vCenter Server system, that has an associated SRM server. Then, establishes an SRM server connection by ignoring any errors related to bad server certificates. The newly created SRM server connection is not added to the default list of SRM server connections.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Connect-SrmServer.html</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Disconnect-SrmServer</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Disconnect-SrmServer</command:name>
+      <command:verb>Disconnect</command:verb>
+      <command:noun>SrmServer</command:noun>
+      <maml:description>
+        <maml:para>This cmdlet closes the connection to one or more vCenter Site Recovery Manager (SRM) servers.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet logs out and closes the connection to one or more SRM servers. In PowerCLI, you can have multiple connections to a server. In order to disconnect from a server, you must close all active connections to it. By default, Disconnect-SrmServer closes only the last connection to the specified server. To close all active connections to a server, use the Force parameter or run the cmdlet for each connection.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Disconnect-SrmServer</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="True (ByValue)" position="1" aliases="none">
+          <maml:name>Server</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the SRM servers you want to disconnect from.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">SrmServer[]</command:parameterValue>
+          <dev:type>
+            <maml:name>SrmServer[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that you want to close all active connections to the specified SRM server and disconnect from it. If the value is $false, the cmdlet closes only the last connection to the specified server and you must run Disconnect-SrmServer for each active connection to this server in order to disconnect from it.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:Description>
+            <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>$true</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:Description>
+            <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that you want to close all active connections to the specified SRM server and disconnect from it. If the value is $false, the cmdlet closes only the last connection to the specified server and you must run Disconnect-SrmServer for each active connection to this server in order to disconnect from it.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="True (ByValue)" position="1" aliases="none">
+        <maml:name>Server</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the SRM servers you want to disconnect from.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">SrmServer[]</command:parameterValue>
+        <dev:type>
+          <maml:name>SrmServer[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:Description>
+          <maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>$true</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:Description>
+          <maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Disconnect-SrmServer -Server '*' -Force</dev:code>
+        <dev:remarks>
+          <maml:para>Disconnects all SRM server connections.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>$srmServer = Connect-SrmServer -SrmServerAddress "mySrmServerIp" -User "mySrmUSer" -Password "mySrmPassword"
+Disconnect-SrmServer -Server $srmServer</dev:code>
+        <dev:remarks>
+          <maml:para>Connects to a specified SRM server by passing the local site credentials for login and then invokes the cmdlet to disconnect from the that server.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>Disconnect-SrmServer -Server $global:DefaultSrmServers -Force</dev:code>
+        <dev:remarks>
+          <maml:para>Logs out and closes all connections to the SRM servers included in the default list of connections established to SRM servers.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://code.vmware.com/doc/preview?id=6330#/doc/Disconnect-SrmServer.html</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Connect-SrmServer</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+</helpItems>

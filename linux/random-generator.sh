@@ -1,0 +1,1 @@
+rngd -f -r /dev/urandom

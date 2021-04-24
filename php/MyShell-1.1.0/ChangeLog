@@ -1,0 +1,46 @@
+2001-09-24  Alejandro Vasquez  <admin@digitart.net>
+
+   * shell.php 1.1.0:
+    -Almost full rewritten. Now code works also with PHP3>= 3.0.11 
+     (functions defined before being called. Thanks to Marc Harth 
+     for the bug report).
+    -Now 95% of the code is diferent from phpShell
+    -New built-in editor.
+      >Now you can edit files directly from MyShell
+      >Save the file with the same name or rename it on the fly
+      >Create a new file directly from the editor
+      >Use your prefered command name to invoke editor (pico, vi etc. This is
+       only an alias, real pico or vi programs can't be run from MyShell)
+      >Report file's owner and permissions in the editor screen
+      >Fast exit from the editor just typing a command
+      >Select Wrap or Wrap OFF for editor, useful in code files with long lines
+    -Command filter to prevent execution of commands that can't be run from
+     a web interface, like pico, vi, xterm, top etc.
+     Besides, now you can define your own list of commands that you don't want
+     you or your users to excecute from MyShell, i.e.: kill, dig, rm etc. 
+       
+   * shell.php 1.0.7:
+    -Fixed the slashes problem in parameters using " and '
+     Now you can use commands like  dig www.yourserver.com  -v "^;;"
+     (thanks to Tom@xsurf.net for the bug report)
+    -Fixed some spelling errors in code, comments and reports.
+     Sorry, english is not my native language, as you can tell ;-)
+
+   * shell.php 1.0.6:
+    -Fixed a bug when using "" in the arguments of a command.
+     Now you can use "" and '' as well.
+    -Added permanent report of the user name of your server
+     using whoami
+
+   * shell.php 1.0.5:
+    -First Public Release
+    -New Look. Now it's more like a terminal.
+    -cd command added. Now you can use cd command to change directory.
+    -dir protection. User can't sniff above defined dir.
+    -self protection included. You can use myShell without .htaccess files
+    -Cols and rows can be changed on the fly
+    -New autotrap stderr mode.    
+
+   * shell.php 1.0.0:
+    -Private release
+    -Added AutoSecure code for built-in password protection

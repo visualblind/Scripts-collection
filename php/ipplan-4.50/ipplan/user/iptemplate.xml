@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<TEMPLATE>
+    <FIELD>
+     <DEFINITION NAME="info" DESCRIP="Additional information" TYPE="T" MAXLENGTH="10000" SIZE="80" ROWS="10" DEFAULT="" REGEX="" ERRMSG="Invalid field: Additional information" />
+    </FIELD>
+</TEMPLATE>
+

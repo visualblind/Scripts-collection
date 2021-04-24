@@ -1,0 +1,71 @@
+# (C) Copyright 2004 Jeremiah K. Jones, et. al.
+#    All rights reserved.
+#
+#-----------
+# FuZZY - version Karma (2.0)
+#-----------
+
+
+INSTALLATION Instructions
+
+***********
+IMPORTANT NOTE
+***********
+	FUZZY REQUIRES THAT SNORT BE INSTALLED WITH MYSQL SUPPORT!!!
+	FUZZY WILL NOT RUN WITHOUT SNORT!
+	IF YOU DO NOT ALREADY HAVE SNORT WITH MYSQL RUNNING ON YOUR SYSTEM, THEN PLEASE
+	VISIT HTTP://WWW.SNORT.ORG FOR INFORMATION ON DOWLOADING AND INSTALLING IT.
+
+
+	These instructions are for the Karma version of FUZZY (2.0).  These instructions
+will not work for previous versions of FUZZY, nor are they guaranteed to work for later
+versions.
+	Unzip the .tar.gz file into a location of your choice (somewhere
+that your web server will have access to).  Once the files are unzipped, fuzzy is already
+almost ready to go!  Before you start using it, you need to do the following things:
+
+Install the SNORT rules:
+	To be able to use fuzzy with snort, there are some custom rules that you must include
+with snort.  These rules are in  file called 'fuzzy.rules' in the install directory.  Copy these
+rules into your existing snort rules directory (often /etc/snort/).  Now add to the snort.conf file
+the option to include fuzzy.rules in the filtering.  This is done by adding the following line to
+the file (it is custom to put this at the end of the file): include $RULE_PATH/fuzzy.rules
+	In order to begin filtering with these rules, you must restart SNORT.  WE HIGHLY RECOMMEND
+THAT YOU DO NOT RESTART SNORT UNTIL THE REST OF FUZZY IS READY TO RUN!
+	If you plan to run FUZZY as a stand-alone system without using SNORT to as an IDS or anything else,
+then we recommend COMMENTING OUT ALL OF THE OTHER INCLUDES.  This will prevent SNORT from filling up
+with extraneous alerts.
+
+Create fuzzy database:
+	There is a database schema file located in the install directory.  You must run this file in
+MySQL to set up the database correctly.  FUZZY uses the snort database, so if your snort database is
+called 'snort' then you would run this command (or something similar, depending on your system):
+	mysql -p snort < fuzzy_db.install (it will then prompt for your password).
+	You must have write access to snort in order to do this.  Also, you must either be located
+in the install directory, or insert the absolute path of the file into the command.
+
+Edit the config file:
+	In the future we will have an install script that does this for you, but for now you 
+have to edit the configuration file manually.  The configuration file is found in the 'etc'
+directory of the Fuzzy Root directory.  The file is called "conf.php".  Edit the file according
+to the instructions provided in the file.
+
+Start-up the background processes:
+	You are almost done!  Now you just need to get the two background processes that FUZZY requires
+to start up.  You MUST run these processes as a user with WRITE access to the [path_to_fuzzy]/var
+directory!  So either give your user write access, recursively set the owner of the var directory to your
+user, or run the background processes as root--your decision.
+	The two processes that need to be run are found in the 'cron' directory of fuzzy.  They are,
+'analyze.php' and 'collect.php'.  You must run these using PHP, but not as a module.  To do this, issue
+the following commands: 
+[path_to_php]/php [path_to_fuzzy]/cron/collect.php &
+[path_to_php]/php [path_to_fuzzy]/cron/analyze.php &
+	For example, if your php binary is found in /usr/local/bin/php and fuzzy is in /usr/local/apache2/htdocs/fuzzy
+then you would type:
+/usr/local/bin/php /usr/local/apache2/htdocs/fuzzy/cron/collect.php &
+/usr/local/bin/php /usr/local/apache2/htdocs/fuzzy/cron/analyze.php &
+
+Log-in and change password:
+	Now that you have the background processes running, you may restart SNORT and you are ready to go!
+To login, use a web browser to open the 'index.php' file and login with the user name 'admin' and password
+'admin'.  You can change the password after logging in.

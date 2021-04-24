@@ -1,0 +1,1 @@
+Get-ChildItem -path "HKLM:\SOFTWARE\Wow6432Node\ODBC\ODBC.INI" | ForEach-Object {Get-ItemProperty $_.pspath} | Select-Object PSChildName,Driver,Server,LastUser

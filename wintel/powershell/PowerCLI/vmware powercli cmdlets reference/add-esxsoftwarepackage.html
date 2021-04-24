@@ -1,0 +1,34 @@
+<html><head><title>Add-EsxSoftwarePackage - vSphere Imagebuilder Reference</title><meta name="description" content=" Add-EsxSoftwarePackage" /><meta name="keywords" content="vSphere Imagebuilder Reference, Add-EsxSoftwarePackage, Add, EsxSoftwarePackage" /><link href="doc-style.css" type="text/css" rel="StyleSheet"></head><body><h2 class="title"><a class="title" href='index.html' target="_top">PowerCLI Reference</a></h2><h2 class="title"><a class="title" href='index.html' target="_top">vSphere Imagebuilder Reference</a></h2><h1>Add-EsxSoftwarePackage</h1><h2>Synopsis</h2><p class="table-title">Syntax</p>Add-EsxSoftwarePackage [-ImageProfile] &lt;ImageProfile&gt; [-SoftwarePackage] &lt;SoftwarePackage[]&gt; [-Force] [-WarningAction &lt;ActionPreference&gt;] [-WarningVariable &lt;String&gt;] [-WhatIf] [-Confirm] [&lt;CommonParameters&gt;]<p class="table-title">Related Commands</p><p class="table-title">Detailed Description</p>Adds new VIBs to an image profile or updates existing VIBs in an image profile. For each package, if it is newer or older than an existing package in the profile, the existing package will be replaced. Image Builder performs all image profile validation tests on the modified image profile.
+<br/>
+<br/>
+<br/>The output of this cmdlet may be piped into any other cmdlet taking image profiles as input.
+<br/>
+<br/>
+<br/>Note that the image profile object that is passed in will have its VibList modified. Please see the New-EsxImageProfile cmdlet for details about persistence of image profiles.
+<br/>
+<br/>
+<br/>Modification is not possible if the ReadOnly property of an ImageProfile is true.<p class="table-title">Parameters</p><table cellspacing="0"><tr><th>Name</th><th>Type</th><th>Description</th><th>Required?</td><th>Pipeline Input</th><th>Default Value</th></tr><tr class="r1"><td><a id="ImageProfile" name="ImageProfile"></a><strong>ImageProfile</strong></td><td><a href="ImageProfile.html">ImageProfile</a></td><td>(pipeline input, prompt) Image profile to edit.
+<br/>
+<br/>Takes one of the following forms:
+<br/>
+<br/>*Name of an image profile, as displayed in the Name column of Get-EsxImageProfile, or the Name property of any ImageProfile object
+<br/>
+<br/>*ImageProfile object</td><td>true</td><td>true (ByValue, ByPropertyName)</td><td></td></tr><tr class="r0"><td><a id="SoftwarePackage" name="SoftwarePackage"></a><strong>SoftwarePackage</strong></td><td><a href="SoftwarePackage.html">SoftwarePackage</a>[]</td><td>(pipeline input, prompt) List of software packages to add to the profile.
+<br/>
+<br/>Takes one of the following forms:
+<br/>
+<br/>*Name of a VIB, as displayed in the Name column of Get-EsxSoftwarePackage, or the Name property of any SoftwarePackage object. Image Builder selects the highest available version of the named package.
+<br/>
+<br/>*&quot;&lt;Name&gt; &lt;Version&gt;&quot;, for specifying a specific version of a VIB.
+<br/>
+<br/>*SoftwarePackage object
+<br/>
+<br/>*GUID of the VIB  (from the Guid property of a SoftwarePackage object)
+<br/>
+<br/>*A list containing a mix of any of the above
+<br/>
+<br/>If more than one vendor provides a package with the same name, then a non-terminating error results and the cmdlet skips that  package.</td><td>true</td><td>true (ByValue, ByPropertyName)</td><td></td></tr><tr class="r1"><td><a id="Confirm" name="Confirm"></a><strong>Confirm</strong></td><td>SwitchParameter</td><td></td><td>false</td><td>false</td><td></td></tr><tr class="r0"><td><a id="Force" name="Force"></a><strong>Force</strong></td><td>SwitchParameter</td><td>Installs packages that break extensibility rules such as standard file path. Also bypasses dependency checks on packages. Use this option with care. Because it bypasses standard validation checks, an invalid image profile might result.</td><td>false</td><td>false</td><td></td></tr><tr class="r1"><td><a id="WarningAction" name="WarningAction"></a><strong>WarningAction</strong></td><td>ActionPreference</td><td></td><td>false</td><td>false</td><td></td></tr><tr class="r0"><td><a id="WarningVariable" name="WarningVariable"></a><strong>WarningVariable</strong></td><td>String</td><td></td><td>false</td><td>false</td><td></td></tr><tr class="r1"><td><a id="WhatIf" name="WhatIf"></a><strong>WhatIf</strong></td><td>SwitchParameter</td><td></td><td>false</td><td>false</td><td></td></tr></table><p class="table-title">Return Type</p>
+
+<p class="table-title">Notes</p><p class="table-title">Examples</p><div class="example"><p class="example-title">---------- Example 1 ----------</p><pre class="programlisting">Add-EsxSoftwarePackage -ImageProfile &quot;My custom profile&quot; -SoftwarePackage net-bnx2</pre><p>Add a package by name to an image profile:</p><p class="example-title">---------- Example 2 ----------</p><pre class="programlisting">Add-EsxSoftwarePackage -ImageProfile &quot;My custom profile&quot; -SoftwarePackage &quot;net-bnx2 1.6.7-0.1OEM1&quot;</pre><p>Add a package of a specific name and version:</p><p class="example-title">---------- Example 3 ----------</p><pre class="programlisting">New-EsxImageProfile -CloneProfile &quot;ESX-5.0-234567-standard&quot; -Name &quot;My custom profile&quot; | \
+Add-EsxSoftwarePackage net-bnx2</pre><p>Clone an image profile, then add a package by name, in one line using pipelining:</p></div><hr>Copyright &copy; 1998 - 2011 VMware, Inc.&nbsp;All rights reserved.</body></html>
+

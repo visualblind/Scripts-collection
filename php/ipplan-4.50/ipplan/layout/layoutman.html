@@ -1,0 +1,598 @@
+    <HTML> 
+	<HEAD> 
+	    <TITLE>Class - A PHP3 class for writing complex web pages.
+
+</TITLE> 
+	</HEAD>
+
+	<BODY BGCOLOR="#FFFFFF">
+
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#NAME">NAME</A>
+	<LI><A HREF="#DESCRIPTION">DESCRIPTION</A>
+	<LI><A HREF="#COPYRIGHT">COPYRIGHT</A>
+	<LI><A HREF="#USAGE">USAGE</A>
+	<LI><A HREF="#FUNCTIONS">FUNCTIONS</A>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="NAME">NAME
+
+</A></H1>
+PHP Layout Class - A PHP3 class for writing complex web pages.
+
+
+<P>
+
+<P>
+<HR>
+<H1><A NAME="DESCRIPTION">DESCRIPTION
+
+</A></H1>
+This document contain some examples that show typical usage of the
+class.layout. You should read the source code for individual functions for
+more detail. There is a column on phpbuilder.com about this package ( <A
+HREF="http://www.phpbuilder.com/columns/zhang19990610.php3">http://www.phpbuilder.com/columns/zhang19990610.php3</A>
+)
+
+
+<P>
+
+<STRONG>NOTE:</STRONG> In this manpage, <EM>OBJECT</EM> sometimes is not the exact meaning of object. it refers to the name of the
+object.
+
+
+<P>
+
+<P>
+<HR>
+<H1><A NAME="COPYRIGHT">COPYRIGHT
+
+</A></H1>
+Copyright 1999 ValueHunt Inc. All rights reserved. &lt;P&gt;Permission is
+granted to anyone to use this software for any purpose on any computer
+system, and to alter it and redistribute it, subject to the following
+restrictions:
+
+
+<P>
+
+1. ValueHunt Inc. is not responsible for the consequences of use of this
+software, no matter how awful, even if they arise from flaws in it.
+
+
+<P>
+
+2. The origin of this software must not be misrepresented, either by
+explicit claim or by omission. Since few users ever read sources, credits
+must appear in the documentation. and also the URL <A
+HREF="http://www.vhconsultants.com/">http://www.vhconsultants.com/</A>
+
+
+<P>
+
+3. Altered versions must be plainly marked as such, and must not be
+misrepresented as being the original software. Since few users ever read
+sources, credits must appear in the documentation.
+
+
+<P>
+
+4. This notice may not be removed or altered.
+
+
+<P>
+
+<P>
+<HR>
+<H1><A NAME="USAGE">USAGE
+
+</A></H1>
+You must include the class in your script to use the layout functions.
+
+
+<P>
+
+<PRE>    include(&quot;class.layout&quot;);
+</PRE>
+
+<P>
+
+Or, if you may configure a PHP3 module in Apache's httpd.conf
+
+
+<P>
+
+<PRE>    php3_include_path /path/to/the/class
+    php3_auto_prepend_file class.layout
+    php3_magic_quotes_gpc on
+    php3_track_vars on
+</PRE>
+
+<P>
+
+A simple example
+
+
+<P>
+
+<PRE>   &lt;?php
+</PRE>
+
+<P>
+
+<PRE>    setdefault(&quot;window&quot;,array(&quot;bgcolor&quot;=&gt;&quot;white&quot;));
+    setdefault(&quot;table&quot;,array(&quot;cellpadding&quot;=&gt;&quot;0&quot;));
+    setdefault(&quot;text&quot;,array(&quot;size&quot;=&gt;&quot;2&quot;));
+    newhtml(&amp;$w);
+</PRE>
+
+<P>
+
+<PRE>    insert($w, wheader(&quot;A Test Page&quot;))
+    insert($w,$t = table(array(&quot;cols&quot;=&gt;&quot;2&quot;,&quot;width&quot;=&gt;&quot;650&quot;)));
+    insert($t,$c = cell(array(&quot;colspan&quot;=&gt;&quot;2&quot;)));
+    insert($c,text(&quot;TEST ONLY&quot;));
+</PRE>
+
+<P>
+
+<PRE>    printhtml($w); 
+</PRE>
+
+<P>
+
+<PRE>   ?&gt;
+</PRE>
+
+<P>
+
+<P>
+<HR>
+<H1><A NAME="FUNCTIONS">FUNCTIONS
+
+</A></H1>
+All the helper functions in class.layout.
+
+
+<P>
+
+<DL>
+<DT><STRONG><A NAME="item_setdefault">setdefault($o,$a)
+
+</A></STRONG><DD>
+Set default attributes ($a, array) for an object ($o, objectname). This
+function saves you lot of typing.
+
+
+<P>
+
+<PRE>    setdefault(&quot;window&quot;,array(&quot;bgcolor&quot;=&gt;&quot;white&quot;));
+    setdefault(&quot;table&quot;,array(&quot;cellpadding&quot;=&gt;&quot;0&quot;));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_newhtml">newhtml(&amp;$w [,$a])
+
+</A></STRONG><DD>
+Start the HTML page <CODE>$w</CODE> with optional attributes ($a, array).
+This function is &lt;B&gt;required&lt;/B&gt;.
+
+
+<P>
+
+<PRE>    newhtml(&amp;$w,array(&quot;bgcolor&quot;=&gt;&quot;#FFFFFF&quot;,
+                      &quot;onload&quot;=&gt;&quot;some javascript here&quot;));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_insert">insert($p,$c)
+
+</A></STRONG><DD>
+Insert a child object into a parent container. <CODE>$p</CODE> is the
+parent object. <CODE>$c</CODE> is the child object. This function is the
+&lt;B&gt;main construction function&lt;/B&gt; in this library.
+
+
+<P>
+
+<PRE>    insert($w, $t = table(array(&quot;width&quot;=&gt;&quot;400&quot;,&quot;cols&quot;=&gt;&quot;2&quot;)));
+    insert($t, $c = cell(array(&quot;colspan&quot;=&gt;&quot;2&quot;,&quot;bgcolor&quot;=&gt;&quot;#FFFFFF&quot;)));
+    insert($c, text(&quot;A TEXT CELL&quot;,array(&quot;color&quot;=&gt;&quot;blue&quot;)));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_printhtml">printhtml($w)
+
+</A></STRONG><DD>
+Print out the web page $w. This function is required.
+
+
+<P>
+
+<PRE>    printhtml($w); 
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_table">table([$a])
+
+</A></STRONG><DD>
+A table object. <CODE>$a</CODE> is an optional array of attributes for the
+table and will overwrite any default value declared by
+<CODE>setdefault()</CODE> function.
+
+
+<P>
+
+<PRE>    setdefault(&quot;table&quot;,array(&quot;cellpadding&quot;=&gt;&quot;0&quot;));
+    insert($w, $t = table(array(&quot;cellpadding&quot;=&gt;&quot;3&quot;,&quot;cols&quot;=&gt;&quot;3&quot;)));
+</PRE>
+
+<P>
+
+This function returns the reference to the object. Table can be nested in
+any legal containers like cell etc. There is no &lt;TR&gt; constructor
+function in this library. the ``cols''=&gt;``3'' attribute for table will
+set columns to 3 for the table.
+
+
+<P>
+
+<PRE>    insert($t, $c  = cell());
+    insert($c, $t2 = table(array(&quot;width&quot;=&gt;&quot;100%&quot;)));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_cell">cell([$a])
+
+</A></STRONG><DD>
+A cell object. <CODE>$a</CODE> is an array of attributes. This function
+returns the reference to the cell object.
+
+
+<P>
+
+<PRE>    insert($t, $c = cell(array(&quot;colspan&quot;=&gt;&quot;2&quot;,&quot;bgcolor&quot;=&gt;&quot;#FFFFFF&quot;)));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_image">image($s,$a)
+
+</A></STRONG><DD>
+An image object. <CODE>$s</CODE> is the source (location) of the image
+file. <CODE>$a</CODE> is an array of attributes.
+
+
+<P>
+
+<PRE>    insert($c, image(&quot;/title.gif&quot;,array(&quot;width&quot;=&gt;&quot;10&quot;)));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_anchor">anchor($h,$s [,$a])
+
+</A></STRONG><DD>
+An anchor object. <CODE>$h</CODE> is the href, <CODE>$s</CODE> is the text
+or image object. <CODE>$a</CODE> is the optional array of attributes.
+
+
+<P>
+
+<PRE>    insert($c,anchor(&quot;<A HREF="http://some.com&quot">http://some.com&quot</A>;,&quot;Click Here&quot;));
+    insert($c,anchor(&quot;<A HREF="http://some.com&quot">http://some.com&quot</A>;,image(&quot;/some.gif&quot;,
+                        array(&quot;width&quot;=&gt;&quot;10&quot;))));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_text">text($t [,$a])
+
+</A></STRONG><DD>
+The text object takes <CODE>$t</CODE> as the text and an optional array of
+attributes.
+
+
+<P>
+
+<PRE>    insert($c,text(&quot;TEST&quot;,array(&quot;color&quot;=&gt;&quot;red&quot;)));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_generic">generic($t [,$a])
+
+</A></STRONG><DD>
+This function is for constructing generic html tags if it is not available
+in this class.layout. <CODE>$t</CODE> is the tag name, <CODE>$a</CODE> is
+an optional array of attributes.
+
+
+<P>
+
+to insert a horizontal ruler.
+
+
+<P>
+
+<PRE>    insert($c, generic(&quot;hr&quot;,array(&quot;noshade&quot;=&gt;&quot;undef&quot;,&quot;size&quot;=&gt;&quot;1&quot;)));
+</PRE>
+
+<P>
+
+insert a break
+
+
+<P>
+
+<PRE>    insert($c, generic(&quot;br&quot;));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_container">container($t [,$a])
+
+</A></STRONG><DD>
+This function is for generating a generic html container if it is not
+available in this library. <CODE>$t</CODE> is the tag name, <CODE>$a</CODE>
+is an optional array of attributes.
+
+
+<P>
+
+<PRE>    insert($w, $con = container(&quot;div&quot;,array(&quot;align&quot;=&gt;&quot;center&quot;)));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_block">block($t)
+
+</A></STRONG><DD>
+Insert raw HTML or text into the page.
+
+
+<P>
+
+<PRE>    insert($c, block('&lt;B&gt;Text here&lt;/B&gt;'));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_span">span($t [,$a])
+
+</A></STRONG><DD>
+Used mostly for style sheet. <CODE>$a</CODE> is an optional array.
+
+
+<P>
+
+<PRE>    insert($c, span(&quot;text goes here&quot;,array(&quot;class&quot;=&gt;&quot;BIGBLUE&quot;)));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_form">form($a)
+
+</A></STRONG><DD>
+Form with attributes array $a.
+
+
+<P>
+
+<PRE>     insert($c, $f = form(array(&quot;method&quot;=&gt;&quot;post&quot;,&quot;action&quot;=&gt;&quot;/cgi/c.pl&quot;)));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_alist">alist($t,$c [,$a])
+
+</A></STRONG><DD>
+Create a LIST. <CODE>$t</CODE> is a tag name, like ``UL'',``OL'' etc.
+<CODE>$c</CODE> is an array of texts or objects. <CODE>$a</CODE> is the
+attribute array for the list.
+
+
+<P>
+
+<PRE>     insert($c, $l = alist(&quot;ul&quot;,array(&quot;item1&quot;,&quot;item2&quot;)));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_comment">comment($m)
+
+</A></STRONG><DD>
+Insert a comment into HTML page.
+
+
+<P>
+
+<PRE>     insert($w, comment(&quot;start the page&quot;));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_script">script($c [,$a])
+
+</A></STRONG><DD>
+the script object.
+
+
+<P>
+
+<PRE>     insert($h, script(&quot;
+               javascription goes here
+               define lots of function
+               but do NOT use double quotes
+               in here
+               &quot;,array(&quot;language&quot;=&gt;&quot;JavaScript&quot;)));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_wheader">wheader($t)
+
+</A></STRONG><DD>
+Define the title $t. Also it is the container for script,meta etc.
+
+
+<P>
+
+<PRE>     insert($w, $h = wheader(&quot;This is the title&quot;));
+     insert($h, script(&quot;scription goes here&quot;,
+                array(&quot;language&quot;=&gt;&quot;JavaScript&quot;)));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_heading">heading($l,$c [,$a])
+
+</A></STRONG><DD>
+Create &lt;Hn&gt; tags. <CODE>$l</CODE> is int from 1 to 5. <CODE>$c</CODE>
+is the text.
+
+
+<P>
+
+<PRE>     insert($w, heading(1,&quot;HEAD 1&quot;));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_button">button($a)
+
+</A></STRONG><DD>
+Button. Used with form.
+
+
+<P>
+
+<PRE>     insert($c, button(array(&quot;name&quot;=&gt;&quot;Aname&quot;,&quot;value&quot;=&gt;&quot;a button&quot;)));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_checkbox">checkbox($a,$t [,$c])
+
+</A></STRONG><DD>
+A Checkbox. Used with form
+
+
+<P>
+
+<PRE>     insert($c, checkbox(array(&quot;name&quot;=&gt;&quot;somevalue&quot;),&quot;A check box&quot;,
+                &quot;checkecd&quot;));
+</PRE>
+
+<P>
+
+<DT><STRONG><A NAME="item_inputfile">inputfile($a)
+
+</A></STRONG><DD>
+Upload file.
+
+
+<P>
+
+<DT><STRONG><A NAME="item_hidden">hidden($a)
+
+</A></STRONG><DD>
+Hidden for form.
+
+
+<P>
+
+<DT><STRONG><A NAME="item_imagebutton">imagebutton($s,$a)
+
+</A></STRONG><DD>
+<CODE>$s</CODE> is the source for the image.
+
+
+<P>
+
+<DT><STRONG><A NAME="item_password">password($a)
+
+</A></STRONG><DD>
+Password entry.
+
+
+<P>
+
+<DT><STRONG><A NAME="item_radio">radio($a,$t [,$c])
+
+</A></STRONG><DD>
+Radio button. same as checkbox.
+
+
+<P>
+
+<DT><STRONG><A NAME="item_submit">submit($a)
+
+</A></STRONG><DD>
+Submit button.
+
+
+<P>
+
+<DT><STRONG><A NAME="item_input_text">input_text($a)
+
+</A></STRONG><DD>
+Input text.
+
+
+<P>
+
+<DT><STRONG><A NAME="item_Other">Other functions
+
+</A></STRONG><DD>
+<UL>
+<LI><STRONG><A NAME="item_freset">freset($a)  Reset button
+
+</A></STRONG>
+<LI><STRONG><A NAME="item_select">selectbox($o,$a [,$s])  Select
+
+</A></STRONG>
+<LI><STRONG><A NAME="item_textarea">textarea($a [,$m])  Text area
+
+</A></STRONG>
+<LI><STRONG><A NAME="item_imagemap">imagemap($a)   Image map
+
+</A></STRONG>
+<LI><STRONG><A NAME="item_area">area($a)  Area, use with imagemap
+
+</A></STRONG>
+<LI><STRONG><A NAME="item_layer">layer($a)  Layer
+
+</A></STRONG>
+<LI><STRONG><A NAME="item_nolayer">nolayer($m)  No layer
+
+</A></STRONG>
+<LI><STRONG><A NAME="item_frameset">frameset($a)  Frame set
+
+</A></STRONG>
+<LI><STRONG><A NAME="item_frame">frame($a)  Frame
+
+</A></STRONG>
+<LI><STRONG><A NAME="item_noframe">noframe($m)  No frame
+
+</A></STRONG>
+<LI><STRONG><A NAME="item_style">style($m,$a)  Style sheet
+
+</A></STRONG>
+</UL>
+</DL>
+</DL>
+    </BODY>
+
+    </HTML>

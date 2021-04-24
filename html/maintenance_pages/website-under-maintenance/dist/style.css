@@ -1,0 +1,45 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.maintenance__container {
+  height: 100px;
+  width: 100px;
+}
+
+.maintenance__circle {
+  animation: pulse 2s ease-in-out infinite;
+  background: #a1a1a1;
+  border-radius: 50%;
+  height: 100px;
+  position: absolute;
+  transform: scale(0);
+  width: 100px;
+  z-index: -1;
+}
+
+.maintenance__icon {
+  height: 100px;
+  margin-top: -2px;
+  width: 100px;
+  z-index: 10;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}

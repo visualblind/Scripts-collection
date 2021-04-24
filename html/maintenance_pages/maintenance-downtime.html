@@ -1,0 +1,78 @@
+<html>
+<head>
+  <title>TravisFlix</title>
+  <style>
+.maintenance__container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 5% 0 0 0;
+    padding: 0;
+    background-color: rgb(248,248,248);
+    font-family: Arial, Helvetica, sans-serif;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.maintenance__image {
+    background-image: 
+  url(https://dl.dropboxusercontent.com/s/s9h0z595gibf0kb/construction-simple.svg?dl=0);
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;  
+    width: 600px;
+    min-height: 300px;
+}
+
+.maintenance__title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0;
+    text-align: center;
+    width: calc(100% - 10px);
+}
+
+.maintenance__message {
+    font-size: 15px;
+    color: rgb(98,98,98);
+    text-align: center;
+    width: calc(100% - 50px);
+}
+
+.maintenance__footer {
+    font-size: 13px;
+    margin: 50px 0;
+    color: rgb(98,98,98);
+}
+
+@media only screen and (min-width: 768px) {
+.maintenance__title {
+    font-size: 24px;
+}
+
+.maintenance__message {
+    font-size: 18px;
+    width: calc(100% - 200px);
+}
+}
+</style>
+</head>
+<body class="maintenance__container">
+  <div class="maintenance__image"></div>
+  <div class="maintenance__title">Temporary Downtime for Scheduled Maintenance</div>
+  <div class="maintenance__message"><p>We are performing scheduled maintenance at the moment. We expect to be back online in a couple of hours. Thank you for your patience and we apologize for any inconveniences caused.</p></div>
+  <div class="maintenance__footer"></div>
+</body>
+</html>

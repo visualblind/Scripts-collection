@@ -1,0 +1,18 @@
+Begin Tran
+Update MOD08.dbo.dltable SET col1 = 1
+
+BEGIN TRAN
+UPDATE MOD08.dbo.DLLock SET col1 = 1
+UPDATE MOD08.dbo.DLTable SET col1 = 1
+
+UPDATE MOD08.dbo.DLLock SET col1 = 1
+
+
+BEGIN TRAN
+UPDATE tempdb.dbo.DLTable SET col1 = 1
+
+BEGIN TRAN
+UPDATE tempdb.dbo.DLLock SET col1 = 1
+UPDATE tempdb.dbo.DLTable SET col1 = 1
+
+UPDATE tempdb.dbo.DLLock SET col1 = 1

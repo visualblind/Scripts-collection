@@ -1,0 +1,57 @@
+// blue/teal
+$primary: #007DA0;
+$secondary: #3BC4B6;
+
+// // gold/salmon
+// $primary: #F49064;
+// $secondary: #FFAC30;
+
+
+#main {
+  font-family: sans-serif;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  .content {
+    // flex: 1
+    margin-right: 100px;
+    width: 400px;
+  }
+  .illustration_container {
+    // flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .illustration {
+      position: relative;
+      width: 250px;
+      height: 250px;
+    }
+  }
+}
+
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  path, line {
+    stroke: $primary;
+  }
+
+  &:nth-child(2) {
+    path, line {
+      stroke-dasharray: 100;
+      animation: dotted 60s linear infinite;  
+      stroke: $secondary;
+    }
+  }
+}
+
+@keyframes dotted {
+  to {
+   stroke-dashoffset: 1000; 
+  }
+}

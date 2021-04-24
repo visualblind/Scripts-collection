@@ -1,0 +1,20 @@
+Instalacion:
+
+Desempaqueta el archivo pcm.zip este te creara un directorio llamado pcr-ver1.1
+
+Copia este directorio a tu Document Root
+
+crea la base de datos 
+
+crea las tablas que estan en el archivo monitor.sql
+
+configura el archivo config.inc.php
+
+abre tu navegador en la direccion http://localhost/pcr-ver1.1/
+
+y listo 
+
+
+
+Manlio Fabio Tapia Trigos mtapia@acquamexico.com
+http://www.acquamexico.com/pcm/

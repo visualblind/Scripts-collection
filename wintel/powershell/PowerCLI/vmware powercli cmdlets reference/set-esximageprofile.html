@@ -1,0 +1,44 @@
+<html><head><title>Set-EsxImageProfile - vSphere Imagebuilder Reference</title><meta name="description" content=" Set-EsxImageProfile" /><meta name="keywords" content="vSphere Imagebuilder Reference, Set-EsxImageProfile, Set, EsxImageProfile" /><link href="doc-style.css" type="text/css" rel="StyleSheet"></head><body><h2 class="title"><a class="title" href='index.html' target="_top">PowerCLI Reference</a></h2><h2 class="title"><a class="title" href='index.html' target="_top">vSphere Imagebuilder Reference</a></h2><h1>Set-EsxImageProfile</h1><h2>Synopsis</h2><p class="table-title">Syntax</p>Set-EsxImageProfile [-ImageProfile] &lt;ImageProfile&gt; [-Name &lt;String&gt;] [-Vendor &lt;String&gt;] [-SoftwarePackage &lt;SoftwarePackage[]&gt;] [-AcceptanceLevel &lt;AcceptanceLevels&gt;] [-Description &lt;String&gt;] [-ReadOnly] [-Force] [-WarningAction &lt;ActionPreference&gt;] [-WarningVariable &lt;String&gt;] [-WhatIf] [-Confirm] [&lt;CommonParameters&gt;]<p class="table-title">Related Commands</p><p class="table-title">Detailed Description</p>Set-EsxImageProfile is used to modify a user-created image profile. The cmdlet returns the modified ImageProfile object, which can be piped into any other cmdlet taking image profiles as input. For details on persistence, see New-EsxImageProfile.
+<br/>
+<br/>
+<br/>If the ReadOnly property of the image profile is true, you cannot modify the image profile.  
+<br/>
+<br/>
+<br/>Image Builder performs all image profile validation tests on the modified image profile.
+<br/>
+<br/>
+<br/>The Name and Vendor of the modified image profile must be unique. If you attempt to change the Name and Vendor, and the new Name and Vendor are the same as an existing Name and Vendor, an error result.<p class="table-title">Parameters</p><table cellspacing="0"><tr><th>Name</th><th>Type</th><th>Description</th><th>Required?</td><th>Pipeline Input</th><th>Default Value</th></tr><tr class="r1"><td><a id="ImageProfile" name="ImageProfile"></a><strong>ImageProfile</strong></td><td><a href="ImageProfile.html">ImageProfile</a></td><td>(pipeline input, prompt) Specifies the image profile to edit.
+<br/>
+<br/>Takes one of the following forms:
+<br/>
+<br/>*Name of an image profile, as displayed in the Name column of Get-EsxImageProfile, or the Name property of any ImageProfile object
+<br/>
+<br/>*ImageProfile object</td><td>true</td><td>true (ByValue, ByPropertyName)</td><td></td></tr><tr class="r0"><td><a id="AcceptanceLevel" name="AcceptanceLevel"></a><strong>AcceptanceLevel</strong></td><td><a href="AcceptanceLevels.html">AcceptanceLevels</a></td><td>Optional. Specifies the minimum acceptance level allowed for VIBs in the image profile, one of the following:
+<br/>
+<br/>*VMwareCertified
+<br/>
+<br/>*VMwareAccepted
+<br/>
+<br/>*PartnerSupported
+<br/>
+<br/>*CommunitySupported
+<br/>
+<br/>If the acceptance level is raised above the lowest acceptance level of any VIB in the profile, an error results.</td><td>false</td><td>false</td><td></td></tr><tr class="r1"><td><a id="Confirm" name="Confirm"></a><strong>Confirm</strong></td><td>SwitchParameter</td><td></td><td>false</td><td>false</td><td></td></tr><tr class="r0"><td><a id="Description" name="Description"></a><strong>Description</strong></td><td>String</td><td>Optional. Long string describing the contents or purpose of the image profile.</td><td>false</td><td>false</td><td></td></tr><tr class="r1"><td><a id="Force" name="Force"></a><strong>Force</strong></td><td>SwitchParameter</td><td>Installs packages that break extensibility rules such as standard file path. Also bypasses dependency checks on packages. Use this option with care. Because it bypasses standard validation checks, an invalid image profile might result.</td><td>false</td><td>false</td><td></td></tr><tr class="r0"><td><a id="Name" name="Name"></a><strong>Name</strong></td><td>String</td><td>String value to replace the current Name field with.</td><td>false</td><td>false</td><td></td></tr><tr class="r1"><td><a id="ReadOnly" name="ReadOnly"></a><strong>ReadOnly</strong></td><td>SwitchParameter</td><td>Optional. Makes the image profile read only. (not modifiable).</td><td>false</td><td>false</td><td></td></tr><tr class="r0"><td><a id="SoftwarePackage" name="SoftwarePackage"></a><strong>SoftwarePackage</strong></td><td><a href="SoftwarePackage.html">SoftwarePackage</a>[]</td><td>(pipeline input) One or more VIB software packages that the image profile should contain. Replaces the list of VIBs in the image profile.
+<br/>
+<br/>The value takes one of the following forms:
+<br/>
+<br/>*Name of a VIB, as displayed in the Name column of Get-EsxSoftwarePackage, or the Name property of any SoftwarePackage object. The cmdlet selects the highest available version of the named package.
+<br/>
+<br/>*&quot;&lt;Name&gt; &lt;Version&gt;&quot;, for specifying a specific version of a VIB named Name.
+<br/>
+<br/>*SoftwarePackage object
+<br/>
+<br/>*GUID of the VIB software package (from the Guid property of a SoftwarePackage)
+<br/>
+<br/>*List containing a mix of any of the above
+<br/>
+<br/>One of the &quot;esx-base&quot; packages is required for a valid image profile.</td><td>false</td><td>false</td><td></td></tr><tr class="r1"><td><a id="Vendor" name="Vendor"></a><strong>Vendor</strong></td><td>String</td><td>String value to replace the current Vendor field with.</td><td>false</td><td>false</td><td></td></tr><tr class="r0"><td><a id="WarningAction" name="WarningAction"></a><strong>WarningAction</strong></td><td>ActionPreference</td><td></td><td>false</td><td>false</td><td></td></tr><tr class="r1"><td><a id="WarningVariable" name="WarningVariable"></a><strong>WarningVariable</strong></td><td>String</td><td></td><td>false</td><td>false</td><td></td></tr><tr class="r0"><td><a id="WhatIf" name="WhatIf"></a><strong>WhatIf</strong></td><td>SwitchParameter</td><td></td><td>false</td><td>false</td><td></td></tr></table><p class="table-title">Return Type</p>
+
+<p class="table-title">Notes</p><p class="table-title">Examples</p><div class="example"><p class="example-title">---------- Example 1 ----------</p><pre class="programlisting">Set-EsxImageProfile -ImageProfile &quot;Profile of a Fool&quot; -SoftwarePackage esx-base,scsi-ips,esx-tboot</pre><p>Modify the VIB list of an existing image profile</p><p class="example-title">---------- Example 2 ----------</p><pre class="programlisting">$myprofiles = Get-EsxImageProfile
+Set-EsxImageProfile -ImageProfile $myprofiles[2] -AcceptanceLevel PartnerSupported</pre><p>Change the acceptance level (maybe so that some VIB with a lower acceptance level can be added) of the third image profile from a list (index starts at 0):</p><p class="example-title">---------- Example 3 ----------</p><pre class="programlisting">Get-EsxImageProfile | Set-EsxImageProfile -ReadOnly</pre><p>Using pipelining to mark all profiles as read-only</p></div><hr>Copyright &copy; 1998 - 2011 VMware, Inc.&nbsp;All rights reserved.</body></html>
+

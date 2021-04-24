@@ -1,0 +1,3 @@
+robocopy F:\ G:\ /E /ZB /MIR /DCOPY:DAT /XJ /XJD /XJF /XO /XD "F:\System Volume Information" "F:\$RECYCLE.BIN" /R:5 /W:2 /REG /V /FP /ETA /LOG+:%userprofile%\F2G.log
+
+robocopy H:\ F:\H /E /ZB /MOVE /DCOPY:DAT /XJ /XJD /XJF /XO /XD "H:\System Volume Information" "H:\$RECYCLE.BIN" /R:5 /W:2 /V /FP /NFL /LOG+:%userprofile%\H2F.log

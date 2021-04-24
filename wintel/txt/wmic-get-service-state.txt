@@ -1,0 +1,17 @@
+####### WMIC #######
+
+#Determine whether a specific service is Started
+WMIC Service WHERE "Name = 'W32Time'" GET Started
+
+#Determine the State of a specific service
+WMIC Service WHERE "Name = 'W32Time'" GET State
+
+#Get all service names and state
+WMIC Service GET SystemName,Started
+
+
+###### sc.exe #######
+
+sc query "W32Time" | findstr STATE
+sc query state= all 
+

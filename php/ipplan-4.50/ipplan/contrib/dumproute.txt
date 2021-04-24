@@ -1,0 +1,16 @@
+dumproute.sh
+
+A script using net-snmp tools to read a routers routing table and format
+the output into something that can be loaded into IPplan via the import
+functions. You will need:
+
+GNU awk
+GNU cut
+net-snmp (tested with version 5.0.6)
+
+Most linux distributions will have these tools loaded. Note that different 
+versions of net-snmp use different options and you may need to adjust them.
+
+Usage:
+
+dumproute.sh <ip address of router>

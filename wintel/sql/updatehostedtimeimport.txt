@@ -1,0 +1,6 @@
+use master
+DECLARE @SQL NVARCHAR(MAX)
+SELECT @SQL=COALESCE(@SQL+';','')+'UPDATE '+QUOTENAME(Name)+'.dbo.CService SET options = CAST(REPLACE(CAST(options as NVarchar(MAX)),''\\ServerName0'',''\\Directory.int\dfs\Clients\FTP\Directory'') AS NText) WHERE options LIKE ''%\\ServerName0%'''
+FROM sys.databases
+WHERE Name LIKE 'Prefix1_%' OR Name LIKE 'Prefix2_%'
+exec sp_executesql @SQL

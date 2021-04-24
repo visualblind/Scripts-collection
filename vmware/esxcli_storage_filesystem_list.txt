@@ -1,0 +1,19 @@
+[root@esxi6:~] esxcli storage filesystem list
+Mount Point                                        Volume Name                                UUID                                 Mounted  Type             Size           Free
+-------------------------------------------------  -----------------------------------------  -----------------------------------  -------  ------  -------------  -------------
+/vmfs/volumes/58093c16-85813352-22c3-50465da1f8a3  datastore-5gb-vmfs5                        58093c16-85813352-22c3-50465da1f8a3     true  VMFS-5  5000952545280  2375776468992
+/vmfs/volumes/58093c80-9b76ca40-fbf4-50465da1f8a3  datastore-5gb-vmfs5-2                      58093c80-9b76ca40-fbf4-50465da1f8a3     true  VMFS-5  5000952545280  1764886577152
+/vmfs/volumes/5825a31d-df5ff56c-be42-50465da1f8a3  Local-datastore                            5825a31d-df5ff56c-be42-50465da1f8a3     true  VMFS-5  4992899481600  4853144223744
+/vmfs/volumes/5ae86f12-1421a779-f946-50465da1f8a3  datastore1                                 5ae86f12-1421a779-f946-50465da1f8a3     true  VMFS-5   471909531648   121560367104
+/vmfs/volumes/5aefd95d-38480dcc-68a2-50465da1f8a3  vffs-52d12925-9149-80d1-e2fc-d91788aba476  5aefd95d-38480dcc-68a2-50465da1f8a3     true  VFFS     119990648832    86759178240
+/vmfs/volumes/5ae86ef5-75754253-e6d5-50465da1f8a3                                             5ae86ef5-75754253-e6d5-50465da1f8a3     true  vfat        299712512       83927040
+/vmfs/volumes/5825a320-b8386a64-5483-50465da1f8a3                                             5825a320-b8386a64-5483-50465da1f8a3     true  vfat       4293591040     4256169984
+/vmfs/volumes/a39eb472-a7f1fabd-1d63-6bbbdb108ab9                                             a39eb472-a7f1fabd-1d63-6bbbdb108ab9     true  vfat        261853184       84160512
+/vmfs/volumes/7e176673-ff8d115e-0397-861d442997b6                                             7e176673-ff8d115e-0397-861d442997b6     true  vfat        261853184      108089344
+/vmfs/volumes/37736a77-23c460c6-587a-a5ad764f53aa                                             37736a77-23c460c6-587a-a5ad764f53aa     true  vfat        261853184      261844992
+/vmfs/volumes/5825a314-57b8cf0c-4bb6-50465da1f8a3                                             5825a314-57b8cf0c-4bb6-50465da1f8a3     true  vfat        299712512       86228992
+/vmfs/volumes/5ae86f13-366f7cd0-f085-50465da1f8a3                                             5ae86f13-366f7cd0-f085-50465da1f8a3     true  vfat       4293591040     4276551680
+/vmfs/volumes/c87b7172-181676c5-0d10-1728b91c4c25                                             c87b7172-181676c5-0d10-1728b91c4c25     true  vfat        261853184      261844992
+/vmfs/volumes/5ae8a456-1607e37d-c66b-50465da1f8a3                                             5ae8a456-1607e37d-c66b-50465da1f8a3     true  vfat        299712512       80502784
+/vmfs/volumes/1f90f0ea-0a3fa7c8-0ea0-c8bc7baab0ee                                             1f90f0ea-0a3fa7c8-0ea0-c8bc7baab0ee     true  vfat        261853184      112394240
+/vmfs/volumes/2140d4ea-7258d0d5-dfb7-36ba1a3c6184                                             2140d4ea-7258d0d5-dfb7-36ba1a3c6184     true  vfat        261853184      106594304

@@ -1,0 +1,19 @@
+<ComponentDescriptor>
+	<Name>VMware.VimAutomation.Cloud</Name>
+	<Assembly>VMware.VimAutomation.Cloud.Impl</Assembly>
+	<ImplementingType>VMware.VimAutomation.Cloud.Impl.V1.CIComponentImpl</ImplementingType>
+
+	<IsSnapin>false</IsSnapin>
+
+	<ProvidedServiceList>
+    <ServiceDescriptor>
+      <Name>CICoreService</Name>
+      <Version>1.0</Version>
+    </ServiceDescriptor>
+  </ProvidedServiceList>
+
+	<RequiredServiceList>
+	</RequiredServiceList>
+
+	<ExtendedServiceList></ExtendedServiceList>
+</ComponentDescriptor>

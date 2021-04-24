@@ -1,0 +1,87 @@
+<style type="text/css">
+<!--
+body, p, span, li  {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+a.topbar {
+    color: yellow;
+    text-align: left;
+    font-weight: bold;
+    font-size: 11px;
+    text-decoration: none;
+}
+table.leftbar {
+	width: 150px;
+        background-color: #003366;
+}
+td.leftbar {
+    background-color: #003366;
+}
+.topbar {
+	
+	width: 100%;
+}
+tr.leftmenu {
+	vertical-align: middle;
+        
+}
+td.leftmenu_over {
+        /*border-width: 2px;
+        border-style: outset;*/
+        background-color: #000099;
+        text-align: center;
+        color: #3366cc;
+        cursor: pointer;
+}
+td.leftmenu_out {
+        /*border-width: 2px;
+        border-style: outset;*/
+        background-color: #3366cc;
+        text-align: center;
+        cursor: pointer;
+}
+td.leftmenutitle {
+}
+td.spacer {
+	width: 6px;
+	border-top: 1px solid #00ffff;
+	border-right: 1px solid #00ffff;
+	background-color: #66cccc;
+}
+span.leftmenu {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+        text-align: center;
+        color: yellow;
+}
+span.leftmenutitle {
+	color: #ffffff;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	font-style: italic;
+}
+.label {
+        color: #ffffff;
+        font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: bold:;
+}
+.heading {
+        color: #3366cc;
+        font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: underline;
+        font-style: italic;
+}
+table.display_protocol {
+        border-color: red;
+        border: 1px;
+        border-style: solid;
+}
+
+-->
+</style>

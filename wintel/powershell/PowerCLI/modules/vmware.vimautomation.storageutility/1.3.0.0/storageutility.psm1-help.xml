@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems xmlns="http://msh" schema="maml">
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>Update-VmfsDatastore</command:name>
+		<maml:description>
+			<maml:para>This cmdlet updates a VMFS5 datastore to VMFS6.</maml:para>
+		</maml:description>
+		<maml:copyright>
+           <maml:para />
+		<!--Add copy right info here.-->
+		</maml:copyright>
+		<command:verb>Update</command:verb>
+		<command:noun>VmfsDatastore</command:noun>
+		<!--Add Dev version info here.-->
+		<dev:version />
+	</command:details>
+	<maml:description>
+	<!--This is the Description section-->
+		<maml:para>This cmdlet updates a VMFS5 datastore to a supported specified target VMFS version. The supported new VMFS version in vSphere 6.5 is version 6.
+
+Things to consider before running this cmdlet:
+- This operation deletes the existing VMFS5 datastore to create a VMFS6 datastore. You should back up any files from the VMFS5 datastore to prevent any data loss.
+- As the existing VMFS5 datastore is formatted to VMFS6 datastore, the UUID of the datastore will change.
+- If the UUID of the datastore is different from the previous UUID of the VMFS5 datastore, all applications that depend on the UUID of VMFS5 datastores should be updated with the new UUID.
+- Example: Any backup solution which uses datastore UUID to back up datastore contents  must be updated with the new UUID before running this cmdlet.
+- HBR (Host Based Replciation)/VR (vSphere Replication) and SRM (Site Recovery Manager) enabled vSphere environments are not supported with this cmdlet. You should not run the VMFS update with HBR or SRM configured as the cmdlet is not aware of any files or configurations related to HBR or SRM.
+- If VADP is enabled on a VM, migration is disabled on such a VM. The cmdlet will fail to move such VM.
+- After migrating all active or registered VMs from the source datastore, if swap files or delta.vmdk (snapshots of vitual disk) files are found, the datastore will not be upgraded.
+- VMFS extend: In case the VMFS datastore (which you try to upgrade from VMFS version 5 to 6) is extended across multiple devices (or extents), this cmdlet extends the VMFS on the primary datastore over the tail devices. All data on the tail devices (extents), including the partitions, will be deleted. Hence, the tail devices with multiple active partitions are not supported.
+- This cmdlet supports DRS on a cluster, SDRS, SIOC, SPBM (VMFS tagging), CBRC (Content Based Read Cache), and vFRC (vSphere Flash Read Cache) only.
+- This cmdlet does not support VADP (VMware vSphere Storage APIs - Data Protection), SRM (Site Recovery Manager), HBR (Host Based Replication)/VR (vSphere Replication), SMP-FT (Symmetric Multi-Processing Fault Tolerance) and FT (Fault Tolerance), First Class Disks (FCD), Windows Server Failover Clustering (WSFC), and Oracle Real Application Clusters (RAC).
+
+This cmdlet performs the following tasks:
+
+1. Backs up the VMFS5 (source) datastore, if the datastore contains any VMs or any other directories or files, to another VMFS5 datastore (temporary).
+2. Deletes the source datastore, re-creates it with VMFS6 file system, and moves back all the files from temporary to source.
+3. Rollback option: If there are infrastructure issues causing the ongoing task on step 1 to abort, use the Rollback option in the cmdlet to roll back all VMs and copied files from temporary to source.
+4. If the Rollback option is not possible (due to being past step 1), you can resume the task which is initiated in step 1 by rectifying any infrastructure issues.
+5. There is no post-update rollback option as the goal is to move all files from the VMFS5 datastore (temporary) to the newly formatted VMFS6 (source) datastore.
+6. HA (High Availability) is supported in the 6.5.4 release.
+7. VAAI (VMware vSphere Storage APIs - Array Integration) enabled VMFS5 datastores are supported in the 6.5.4 release.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Update-VmfsDatastore</maml:name>
+			<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "1" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the vCenter Server systems on which you want to run the cmdlet. If no value is given to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-VIServer.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >VIServer</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "true (ByValue)" position = "2" >
+				<maml:name>Datastore</maml:name>
+				<maml:description>
+					<maml:para>Specifies datastore to update to VMFS6. It must be of version VMFS5.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >Datastore</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "3" >
+				<maml:name>TemporaryDatastore</maml:name>
+				<maml:description>
+					<maml:para>Specifies the temporary datastore to help the upgrade to VMFS6. It should be of VMFS5 version. This datastore should be empty and its size should be more than that of the datastore you want to upgrade. The temporary datastore must have enough backing to support the migration.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >Datastore</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "4" >
+				<maml:name>TargetVmfsVersion</maml:name>
+				<maml:description>
+					<maml:para>Specifies the target version to which you want to update the datastore. By default, the target VMFS version is 6.</maml:para>
+				</maml:description>
+			<command:parameterValue required="true" variableLength = "false" >Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Rollback</maml:name>
+				<maml:description>
+					<maml:para>Specifies whether to roll back Storage vMotion after a failure happens. This is possible only before the original datastore has been deleted. After the original datastore is removed, only resume is possible.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Resume</maml:name>
+				<maml:description>
+					<maml:para>Indicates that you want to resume the previous upgrade attempt.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Suppresses the confirmation prompt if vSphere Replication/HBR or SRM is enabled on the specified datastore.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+				</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Specifies the vCenter Server systems on which you want to run the cmdlet. If no value is given to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-VIServer.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">VIServer</command:parameterValue>
+			<dev:type>
+				<maml:name>VIServer</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="2">
+			<maml:name>Datastore</maml:name>
+			<maml:description>
+				<maml:para>Specifies datastore to update to VMFS6. It must be of version VMFS5.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Datastore</command:parameterValue>
+			<dev:type>
+				<maml:name>Datastore</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+			<maml:name>TemporaryDatastore</maml:name>
+			<maml:description>
+				<maml:para>Specifies the temporary datastore to help the upgrade to VMFS6. It should be of VMFS5 version. This datastore should be empty and its size should be more than that of the datastore you want to upgrade. The temporary datastore must have enough backing to support the migration.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Datastore</command:parameterValue>
+			<dev:type>
+				<maml:name>Datastore</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
+			<maml:name>TargetVmfsVersion</maml:name>
+			<maml:description>
+				<maml:para>Specifies the target version to which you want to update the datastore. By default, the target VMFS version is 6.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Rollback</maml:name>
+			<maml:description>
+				<maml:para>Specifies whether to roll back Storage vMotion after a failure happens. This is possible only before the original datastore has been deleted. After the original datastore is removed, only resume is possible.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Resume</maml:name>
+			<maml:description>
+				<maml:para>Indicates that you want to resume the previous upgrade attempt.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>Suppresses the confirmation prompt if vSphere Replication/HBR or SRM is enabled on the specified datastore.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Null</maml:name>
+				<maml:uri />
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+			</dev:type>
+			<maml:description></maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors>
+	</command:terminatingErrors>
+	<command:nonTerminatingErrors>
+	</command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>
+--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Update-VmfsDatastore -Datastore $source -TemporaryDatastore $temp</dev:code>
+  			<dev:remarks>
+				<maml:para>Starts an update of the $source VMFS5 datastore to VMFS version 6 by using $temp as a temporary datastore.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+  			<dev:code>Update-VmfsDatastore -Datastore $source -TemporaryDatastore $temp -Resume</dev:code>
+  			<dev:remarks>
+				<maml:para>Resumes a previous failed attempt of updating the $source datastore to the specified VMFS version.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>https://code.vmware.com/doc/preview?id=5975#/doc/Update-VmfsDatastore.html</maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+</helpItems>

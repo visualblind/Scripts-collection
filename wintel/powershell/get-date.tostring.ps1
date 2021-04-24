@@ -1,0 +1,1 @@
+﻿$((get-date).tostring("MM-dd-yyyyTHHmmssffff"))

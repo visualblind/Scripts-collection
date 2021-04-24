@@ -1,0 +1,12 @@
+%userprofile%\Documents, \\ad.sysinfo.io\Public\DFS\visualblind\Documents, /MIR, /ZB, /XO, /XD "C:\Users\visualblind\Documents\Sites", /NP, /NFL, /LOG+:%userprofile%\Documents\Temp\robocopy_%mm%_%dd%_%yy%.txt
+%userprofile%\Desktop, \\ad.sysinfo.io\Public\DFS\visualblind\Desktop, /MIR, /ZB, /R:2, /XO, /NP, /NFL, /LOG+:%userprofile%\Documents\Temp\robocopy_%mm%_%dd%_%yy%.txt
+%userprofile%\Downloads, \\ad.sysinfo.io\Public\DFS\visualblind\Downloads, /MIR, /ZB, /R:2, /XO, /NP, /NFL, /LOG+:%userprofile%\Documents\Temp\robocopy_%mm%_%dd%_%yy%.txt
+%userprofile%\Pictures, \\ad.sysinfo.io\Public\DFS\visualblind\Pictures, /MIR, /ZB, /R:2, /XO, /NP, /NFL, /LOG+:%userprofile%\Documents\Temp\robocopy_%mm%_%dd%_%yy%.txt
+%userprofile%\AppData\Local\TslGame\Saved\Demos, \\ad.sysinfo.io\Public\DFS\visualblind\AppData\Local\TslGame\Saved\Demos, /MIR, /ZB, /R:2, /XO, /NP, /NFL, /LOG+:%userprofile%\Documents\Temp\robocopy_%mm%_%dd%_%yy%.txt
+;echo Robocopy Done%nl%"%username%\Desktop, %username%\Documents, %username%\Downloads, %username%\Pictures, %username%\AppData\Local\TslGame\Saved\Demos > \\ad.sysinfo.io\Public\DFS\%username%" >> %userprofile%\Documents\Temp\robocopy_%mm%_%dd%_%yy%.txt
+%userprofile%\Documents, F:\%username%\Documents, /MIR, /ZB, /XO, /XD "C:\Users\visualblind\Documents\Sites", /NP, /NFL, /LOG+:%userprofile%\Documents\Temp\robocopy_%mm%_%dd%_%yy%.txt
+%userprofile%\Desktop, F:\%username%\Desktop, /MIR, /ZB, /R:2, /W:55, /XO, /NP, /NFL, /LOG+:%userprofile%\Documents\Temp\robocopy_%mm%_%dd%_%yy%.txt
+%userprofile%\Downloads, F:\%username%\Downloads, /MIR, /ZB, /R:2, /W:55, /XO, /NP, /NFL, /LOG+:%userprofile%\Documents\Temp\robocopy_%mm%_%dd%_%yy%.txt
+%userprofile%\Pictures, F:\%username%\Pictures, /MIR, /ZB, /R:2, /W:55, /XO, /NP, /NFL, /LOG+:%userprofile%\Documents\Temp\robocopy_%mm%_%dd%_%yy%.txt
+%userprofile%\AppData\Local\TslGame\Saved\Demos, F:\%username%\AppData\Local\TslGame\Saved\Demos, /MIR, /ZB, /R:2, /XO, /NP, /NFL, /LOG+:%userprofile%\Documents\Temp\robocopy_%mm%_%dd%_%yy%.txt
+;echo Robocopy Done%nl%"%username%\Desktop, %username%\Documents, %username%\Downloads, %username%\Pictures, %username%\AppData\Local\TslGame\Saved\Demos> F:\%username%" >> %userprofile%\Documents\Temp\robocopy_%mm%_%dd%_%yy%.txt

@@ -1,0 +1,360 @@
+<div class="wikidoc">
+<p>Today I want to announce my latest development project.</p>
+<p><span style="color:#0000ff; font-size:large"><span style="color:#0000ff"><strong><em>RoboPowerCopy</em></strong></span> (v0.1.0)</span></p>
+<p><span style="color:#0000ff; font-size:medium">It&rsquo;s a PowerShell 2.0 based clone of Microsoft&rsquo;s famous
+<span style="color:#9bbb59"><strong><em>RoboCopy</em></strong></span> tool.</span></p>
+<p>&nbsp;</p>
+<p><span style="color:#0000ff; font-size:medium">&nbsp;</span></p>
+<p><span style="color:#0000ff; font-size:medium"><span style="color:#000000">Please see the corresponding post on my blog:</span></span></p>
+<p><a title="http://ikarstein.wordpress.com/2011/06/16/robopowercopy-a-powershell-based-robocopy-clone-v0.1.0.0" href="http://ikarstein.wordpress.com/2011/06/16/robopowercopy-a-powershell-based-robocopy-clone-v0-1-0">http://ikarstein.wordpress.com/2011/06/16/robopowercopy-a-powershell-based-robocopy-clone-v0-1-0</a></p>
+<p>&nbsp;</p>
+<p><span style="font-size:medium">&nbsp;</span></p>
+<p><em><strong><span style="color:#9bbb59"><span style="color:#9bbb59"><strong><em>RoboCopy</em></strong></span></span></strong></em> tool is part of my daily work. At work and at home. &ndash; You all now it! I hope so
+<img src="http://download.codeplex.com/download?ProjectName=robopowercopy&DownloadId=250256" alt="Zwinkerndes Smiley" style="border-style:none"></p>
+<p>&nbsp;</p>
+<p>I spend the spare time of some weeks for this project and now it&rsquo;s ready to be published as
+<strong>ALPHA version </strong>(v0.1.0.0). The development is still in progress!! &ndash; Hopefully there is somebody out there that will use it &ndash; beside me.</p>
+<p>I&rsquo;ve done this using the (also) famous <a href="http://www.powergui.org">
+PowerGUI</a> (Community Edition) by Quest.</p>
+<p>&ldquo;But way&rdquo; you may ask.</p>
+<p><span style="color:#9bbb59"><strong><em><span style="color:#9bbb59"><strong><em>RoboCopy</em></strong></span></em></strong></span> is an EXE file and it has closed source. We (the customers) are not able to change it&rsquo;s behavior. E.g. I&rsquo;m missing
+ a &ldquo;verify&rdquo; feature for years. Some people say: &ldquo;It&rsquo;s a copy tool not a backup tool&rdquo;. Okay. That&rsquo;s right. But I want to be sure that the copied data is valid and identical to the source data.</p>
+<p>Because of that I thought about the possibility to realize a <strong><em><span style="color:#9bbb59"><span style="color:#9bbb59"><strong><em>RoboCopy</em></strong></span></span></em></strong> clone with PowerShell. &ndash; So I did it now.</p>
+<p><span style="color:#0000ff"><strong><em><span style="color:#0000ff"><strong><em>RoboPowerCopy</em></strong></span></em></strong></span> is plain PowerShell. No assemblies or PowerShell extensions are needed. &ndash; It uses some inline C# code.</p>
+<p><strong><em><span style="color:#0000ff"><span style="color:#0000ff"><strong><em>RoboPowerCopy</em></strong></span></span></em></strong> should &ldquo;understand&rdquo; at least the commands (options) of
+<strong><em><span style="color:#9bbb59"><span style="color:#9bbb59"><strong><em>RoboCopy</em></strong></span></span></em></strong>. &ndash; Currently I&rsquo;ve implemented a lot of
+<strong><em><span style="color:#9bbb59"><span style="color:#9bbb59"><strong><em>RoboCopy</em></strong></span></span></em></strong>&rsquo;s abilities. Not all. But some new features on top, e.g. verify and &ldquo;read-and-check-before-copy&rdquo;. &ldquo;Verify&rdquo;
+ uses .NET hashing algorithms to compare the written data to the source data. If the destination file already exists the &ldquo;Read-and-check-before-copy&rdquo; feature reads every portion of data from the destination file before it replaces the data portion
+ on the destination file with the source file&rsquo;s data. This should reduce the time that is needed to copy large files that have only a few binary changes.</p>
+<p>As you may now .NET has no build in capabilities to handle with very long paths with more than 256 characters. I have developed a set of helper classes in C# that enable
+<span style="color:#0000ff"><strong><em>RoboPowerCopy</em></strong></span> to deal with very long paths. - This C# is included in the script an will be compiled at runtime into an assembly in memory.</p>
+<p>Here are the abilities:</p>
+<ul>
+<li>Long path support (!!) </li><li>Restartable mode using a temporary &ldquo;copy header&rdquo; at the end of the copied file.
+</li><li>Copy security: SACL, DACL, Owner </li><li>Copy file attributes and timestamps </li><li>Same option set as <span style="color:#9bbb59"><strong><em>RoboCopy</em></strong></span> (not completely implemented)
+</li><li>Can be extended because it&rsquo;s open source </li><li>Customizable </li><li>Pure PowerShell with some inline C# code </li><li>Compare file times as UTC </li><li>Modify it on any Windows Operation System &gt;= Win XP / Windows 2003 Server with Microsofts PowerShell development tol
+<em>Windows PowerShell Integrated Scripting Environment </em>that is part of PowerShell<em>.</em>
+</li></ul>
+<p>These are the limitations:</p>
+<ul>
+<li>No multithreading support </li><li>No &ldquo;Job&rdquo; files at the moment </li><li>Slower than <span style="color:#9bbb59"><strong><em>RoboCopy</em></strong></span> (Because
+<span style="color:#0000ff"><strong><em>RoboPowerCopy</em></strong></span> is Powershell
+<span style="text-decoration:underline">and/based on</span> Managed Code but <span style="color:#9bbb59">
+<strong><em>RoboCopy</em></strong></span> is native optimized code&hellip;) </li></ul>
+<p>The following options I have implemented (v0.0.1.0). There are some options that are not available in
+<span style="color:#9bbb59"><strong><em>RoboCopy</em></strong></span>. These I&rsquo;ve marked
+<span style="color:#ff0000">red</span>.</p>
+<table border="0" cellspacing="0" cellpadding="opx" width="70%" style="margin-left:auto; margin-right:auto">
+<tbody>
+<tr>
+<td width="131"><strong><span style="font-size:small">Option</span></strong></td>
+<td><strong><span style="font-size:small">Description</span></strong></td>
+<td width="135">
+<p style="margin:0px"><strong><span style="font-size:small">since Version</span></strong></p>
+</td>
+</tr>
+<tr>
+<td width="131">/A</td>
+<td>Copy only files that have the Archive attribute set</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/M</td>
+<td>Removes Archive attribute of source file.</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/A&#43;:[HRAS]</td>
+<td>Add this file attributes to destination file</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/A-:[HRAS]</td>
+<td>Remove this file attributes from destination file</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/E</td>
+<td>Copy subfolder, including empty</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/S</td>
+<td>Copy subfolders that are not empty. &ndash; &ldquo;Not empty&rdquo; means: at least one file is exists and is not excluded by any exclude option</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/PURGE</td>
+<td>Remove files on destination that does not exist on source</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/MIR</td>
+<td>Mirror the directory tree, like &ldquo;/PURGE&rdquo; combined with &ldquo;/E&rdquo;</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/COPYALL</td>
+<td>Copy all file info: Timestamps, Attributes, Data, Owner, DACL, SACL</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/COPY:[DATSOU]</td>
+<td>Copy selected file info: D=Data, A=Attributes, T=Timestamps, S=DACL, U=SACL, O=Owner</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/DCOPY:[T]</td>
+<td>Copy selected directory info: T=Timestamps</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/CREATE</td>
+<td>Does only create the directory structure. Files will have zero size.</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/SEC</td>
+<td>Copy files with security. Like &ldquo;/COPY:DATS&rdquo;</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/LEV:n</td>
+<td>Copy only n directory levels. 1=Copy only the given root directory.</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/IS</td>
+<td>Copy even destination file seems to be the same as the source file.</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131"><span style="color:#ff0000">/RCBW</span></td>
+<td>During overwrite this methos reads a file portion of data of the destination file and compares them with the source files portion of data before writing it. This my be useful while copying large files that have only few changes.</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131"><span style="color:#ff0000">/VERIFY</span></td>
+<td>Reread written data and compare them to the source data.</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/SECFIX</td>
+<td>Replaces the security info of all destination files even if they are equal to the source.</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/TIMFIX</td>
+<td>Replaces the timestamps of all destination files even if they are equal to the source.</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/MAX:n</td>
+<td>Max file size to copy (in bytes)</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/MIN:n</td>
+<td>Min file size to copy (in bytes)</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/MAXAGE</td>
+<td>
+<p>Used to specify maximum file age based upon &ldquo;LastWriteTime&rdquo;. That will exclude files older than n days/date.
+<br>
+(If n &lt; 1900 then n = no of days, else n = YYYYMMDD date).</p>
+</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/MINAGE</td>
+<td>
+<p>Used to specify minimum file age based upon &ldquo;LastWriteTime&rdquo;. That will exclude files newer than n days/date.
+<br>
+(If n &lt; 1900 then n = no of days, else n = YYYYMMDD date).</p>
+</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/MAXLAD</td>
+<td>
+<p>Used to specify maximum file age based upon &ldquo;LastAccessTime&rdquo;. That will exclude files unused since n days/date.
+<br>
+(If n &lt; 1900 then n = no of days, else n = YYYYMMDD date).</p>
+</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/MINLAD</td>
+<td>
+<p>Used to specify minimum file age based upon &ldquo;LastAccessTime&rdquo;. That will exclude files used since n days/date.
+<br>
+(If n &lt; 1900 then n = no of days, else n = YYYYMMDD date).</p>
+</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/XD:&lt;directory&gt; [&lt;directory&gt; [&hellip;]]</td>
+<td>Exclude this directories. Wildcards can be used for name matching.</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/XF:&lt;file&gt; [&lt;file&gt; [&hellip;]]</td>
+<td>Exclude this files. Wildcards can be used.</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/XJ</td>
+<td>Exclude Junction Points, Symbolic Links (directories), Hard Links (files)</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/XJD</td>
+<td>Exclude Junction Points, Symbolic Links (directories)</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/XJF</td>
+<td>Exclude Hard Links (files)</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/V</td>
+<td>Detailed output.</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131"><span style="color:#ff0000">/VV[&#43;][:&lt;file&gt;&lt;filename&gt;]</span></td>
+<td>Verbose output. If no file name is specified the messages will be written to the Powershell host using &ldquo;write-verbose&rdquo;</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/CHUNK:n</td>
+<td>Size of the size of a portion of data during copy. In bytes. Default: 10mb.</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/Z</td>
+<td>Restartable mode. A &ldquo;copy header&rdquo; will be used at the end of each file during the copy process. The header will be removed after copy is finished.</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/BYTES</td>
+<td>Shows file sizes in bytes</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/R:n</td>
+<td>Maximum retry count if copy fails</td>
+<td width="135">
+<p style="margin:0px">0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/W:n</td>
+<td>Wait duration before next retry. (In seconds)</td>
+<td width="135">
+<p>0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/256</td>
+<td>Disable Long Path Support. This will use standard .NET classes (FileInfo, DirectoryInfo) instead of the special classes for file and directory names longer than 256 characters.</td>
+<td width="135">
+<p>0.1.0.0</p>
+</td>
+</tr>
+<tr>
+<td width="131">/NP</td>
+<td>No progress &ndash; does not display &ldquo;%&rdquo;&hellip;</td>
+<td width="135">
+<p>0.1.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Using this option (except the red once) with <span style="color:#0000ff"><strong><em><span style="color:#0000ff"><strong><em>RoboPowerCopy
+</em></strong></span></em></strong></span>and <strong><em><span style="color:#9bbb59"><span style="color:#9bbb59"><strong><em>RoboCopy
+</em></strong></span></span></em></strong>should have the same result in both tools.</p>
+<p>This features of <strong><em><span style="color:#9bbb59"><span style="color:#9bbb59"><strong><em>RoboCopy
+</em></strong></span></span></em></strong>does not work in <span style="color:#0000ff">
+<strong><em><span style="color:#0000ff"><strong><em>RoboPowerCopy </em></strong></span></em></strong></span>in v0.1.0.0:</p>
+<ul>
+<li>Copy directory attributes </li><li>Set &ldquo;Encrypted&rdquo; attribute on destination files </li><li>Set &ldquo;Compressed&rdquo; attribute on destination files </li><li>&hellip;some more </li></ul>
+<p><strong>Once more: It&rsquo;s &ldquo;ALPHA&rdquo; in v0.1.0.0! &ndash;</strong>
+<strong>Therefore I want to ask for your help! &ndash; Please help to improve <span style="color:#0000ff">
+<em><span style="color:#0000ff"><em>RoboPowerCopy</em></span></em></span>. The project needs people how test and develop the script.</strong></p>
+<p><strong>Please contact me at the projects Codeplex page if you would to spend your spare time for
+<span style="color:#0000ff"><strong><em><span style="color:#0000ff"><strong><em>RoboPowerCopy</em></strong></span></em></strong></span>.</strong></p>
+</div><div class="ClearBoth"></div>

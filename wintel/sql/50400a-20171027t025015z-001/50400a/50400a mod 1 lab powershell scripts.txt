@@ -1,0 +1,116 @@
+
+
+Task 1: Create a test database by using SQL PowerShell.
+
+1. On NYC-SQL1, on the Start menu, click Run, type cmd, and
+   then click OK. The Administrator: C:\Windows\system
+   32\cmd.exe window appears.
+2. At the command prompt, type sqlps, and then press Enter.
+3. At the SQL Server PowerShell prompt, run cd
+   SQL\localhost\default\databases.
+4. At the database prompt, run Get-ChildItem.
+5. At the database prompt, type each of the following commands,
+   and then press Enter.
+
+$NewDB=New-Object
+Microsoft.SqlServer.Management.Smo.Database
+$NewDB.Parent=(Get-Item ..)
+$NewDB.Name="PS_Test"
+$NewDB.Create()
+
+********************************************************************
+
+Task 2: Configure the database compatibility level.
+
+1. At the database prompt, run the cd ps_test command.
+2. At the ps_test prompt, run the following commands.
+
+$MyDB=Get-Item .
+$MyDB.CompatibilityLevel
+$MyDB.CompatibilityLevel="Version80"
+$MyDB.Alter()
+
+********************************************************************
+
+Task 3: Verify the database configuration.
+
+1. At the ps_test prompt, run the following command.
+
+$MyDB.CompatibilityLevel
+
+********************************************************************
+
+Task 4: Drop the test database.
+1. At the ps_test prompt, run the following commands.
+
+$MyDB.Drop()
+cd ..
+Get-ChildItem
+
+2. Close the Administrator: C:\Windows\system 32\cmd.exe – sqlps
+window.
+
+********************************************************************
+Exercise 4: Creating SQL Server PowerShell Scripts
+
+Task 1: Add a SQL Server PowerShell script to create a SQL
+Server Agent job.
+
+1. On the Start menu, point to All Programs, click Accessories,
+and then click Notepad. The Notepad window appears.
+2. In the Notepad window, type the following SQL Server PowerShell
+script.
+
+$server=Get-Item \SQL\localhost\default
+$job=New-Object
+Microsoft.SqlServer.Management.Smo.Agent.Job
+$Job.parent=$server.JobServer
+$job.Name="Backup System Database job"
+$job.Create()
+
+********************************************************************
+
+Task 2: Add the SQL Server PowerShell script to create a SQL
+Server Agent job step.
+
+1. In the Notepad window, type the following SQL Server PowerShell
+script at the end of the existing script.
+
+$masterstep=New-Object
+Microsoft.SqlServer.Management.Smo.Agent.JobStep
+$masterstep.parent=$job
+$masterstep.Name="backup master"
+$masterstep.SubSystem="TransactSQL"
+$masterstep.Command="BACKUP DATABASE master TO
+DISK='D:\Labfiles\Mod01\master.bak'"
+$masterstep.OnSuccessAction = "GoToNextStep"
+$masterstep.Create()
+$modelstep=New-Object
+Microsoft.SqlServer.Management.Smo.Agent.JobStep
+
+$modelstep.parent=$job
+$modelstep.Name="backup model"
+$modelstep.SubSystem="TransactSQL"
+$modelstep.Command="BACKUP DATABASE model TO
+DISK='D:\Labfiles\Mod01\model.bak'"
+$modelstep.OnSuccessAction = "GoToNextStep"
+$modelstep.Create()
+
+********************************************************************
+
+Task 3: Save the SQL PowerShell script.
+1. In the Notepad window, click File, and then click Save.
+2. In the File name box, type
+
+D:\Labfiles\Mod01\create_job.ps1, and then click Save.
+3. Close create_job.ps1-Notepad.
+
+********************************************************************
+
+Task 4: Start SQL PowerShell and run the script.
+1. On the Start menu, click Run, type cmd, and then click OK. The
+Administrator: C:\Windows\system 32\cmd.exe window appears.
+2. At the Administrator: C:\Windows\system 32\cmd.exe, type
+sqlps, and then press Enter.
+3. At the SQL Powershell prompt, run the
+D:\Labfiles\Mod01\create_job.ps1.

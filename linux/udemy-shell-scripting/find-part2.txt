@@ -1,0 +1,32 @@
+
+-----------------------------------------------------------------------
+Pg-2
+
+cd /home/shakil/bssg
+
+
+find . -iname "*.cpp" -o -iname "*.h"
+
+find . -maxdepth 2 -iname "*.cpp" -o -iname "*.h"
+
+find . -iname *.cpp -a -iname "*thread*"
+
+## Find all files with the name abc and its not having php extension
+find . -name "abc*" ! -name "*.php"
+
+## Find all files which are of type regular file..It will not show directory
+## Demonstrate by removing -type f and check what it shows
+find . -type f -name "abc*"
+
+
+## Find directory whose name contains abc
+find . -type d -name "abc*"
+
+## Serach in path "/" and "/home/shakil/bssg" for files which
+## has name abc
+sudo find / /home//shakil/bssg/ -type f -name "abc*"
+
+## Find all the hiden files in certain path
+find . -type f  -name ".*"
+
+

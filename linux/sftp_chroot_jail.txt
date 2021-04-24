@@ -1,0 +1,244 @@
+find /var/www/vhosts/beta.domain2.com/httpdocs/wp-content/ -type d -exec chmod 775 {} \; && find /var/www/vhosts/beta.domain2.com/httpdocs/wp-content/ -type f -exec chmod 664 {} \; && find /var/www/vhosts/beta.domain2.com/httpdocs/wp-content/ -type d -exec chmod g+s {} \;
+
+find /var/www/vhosts/beta.domain2.com/httpdocs/wp-content/ -type f -exec chmod 664 {} \;
+find /var/www/vhosts/beta.domain2.com/httpdocs/wp-content/ -type d -exec chmod g+s {} \;
+find /var/www/ -type d -exec chmod g+s {} \;
+chown -Rf root:www-data /var/www/wp-senseon
+chown -Rf www-data:www-data /var/www/wp-senseon
+chown -Rf www-data:ftp-users /var/www/wp-senseon
+/var/www/wp-senseon/
+
+find /var/www/wp-senseon/ -type d -exec chmod 775 {} \;
+
+
+find /home/ec2-user -type f -user  -exec chown username {} \;
+
+sudo setfacl -Rdm u:ec2-user:rwx /home/ec2-user/
+sudo setfacl -Rm g:groupnamehere:rwx /base/path/members/
+
+sudo setfacl -Rfm u:ec2-user:rwx /home/ec2-user/
+
+setfacl —dm u:www-data:rwx /var/www/wp-senseon
+
+setfacl -Rdm u:www-data:rwx /var/www/wp-senseon
+getfacl /var/www/wp-senseon/wp-content
+
+
+
+drwxrwsr-x+  7 www-data ftp-users    4096 May 31 22:56 wp-content/
+
+_amazonses.domain.com
+TXT
+VlEEwBcjgplrUX+i6K1lDS7Me2DcoCF0EvaRmXUCYSU=
+sudo nmap -sS -p 22 10.10.10.0/24
+
+50:2E:5C:B9:E1:D9
+
+
+WEB1-m3.large
+SDA1-vol-04496bee
+XVDBvol-eb4e6c01
+
+DB1-m3.xlarge
+SDA1-vol-d8f88632
+XVDF-vol-27f01ef8
+
+DC1-m3.medium
+SDA1-vol-689f3727
+snapshot-snap-dbc254b8
+XVDF-vol-f2366a18
+10.0.2
+
+
+primary search
+i-7456fadf
+
+failover search
+i-48b782e4
+
+
+184.190.28.83
+
+email-zoskinhealth-com.msgfocus.com
+; <<>> DiG 9.10.4 <<>> email.zoskinhealth.com CNAME @8.8.8.8 +noquestion
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 36619
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; ANSWER SECTION:
+email.zoskinhealth.com.	299	IN	CNAME	email-zoskinhealth-com.msgfocus.com.
+
+
+; <<>> DiG 9.10.4 <<>> www.domain1.com @8.8.8.8
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id
+
+: 15813
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;www.domain1.com.		IN	A
+
+;; ANSWER SECTION:
+www.domain1.com.	3590	IN	CNAME	domain1.com.
+domain1.com.		3590	IN	A	67.21.112.124
+52.203.147.206
+
+client entered:
+www.domain1.com CNAME domain1.com.cdn.cloudflare.net.domain1.com
+should be:
+www.domain1.com CNAME www.domain1.com.cdn.cloudflare.net
+
+
+
+keys_zone=STATIC:10m inactive=24h  max_size=1g;
+
+
+
+/var/www/vhosts/domain1.com/httpdocs/wp-content/themes/jbaths
+
+mount --bind /some/directory /somewhere/else
+
+mount --bind /var/www/vhosts/domain1.com/httpdocs /home/ninthlink/jacuzzi
+
+mount --bind /var/www/vhosts/domain1.com/httpdocs/wp-content/themes/jbaths /home/ninthlink/jbaths
+
+mount --bind /var/www/vhosts/domain1.com/httpdocs/wp-content/themes/jbaths /home/ninthlink/domain1.com
+/var/www/vhosts/domain1.com/httpdocs/wp-content/themes/jbaths /home/ninthlink/domain1.com none bind
+
+find /var/www/vhosts/domain1.com/httpdocs/wp-content/themes/jbaths -type d -exec chmod 575 {} \;
+
+
+Subsystem sftp /bin/sh -c 'umask 0002; exec /usr/libexec/openssh/sftp-server'
+Subsystem sftp /bin/sh -c 'umask 0002; exec /usr/libexec/openssh/sftp-server'
+
+
+
+chown www-data:sftpusers -R /var/www/vhosts/domain1.com/httpdocs/wp-content/themes/jbaths
+find /var/www/vhosts/domain1.com/httpdocs/wp-content/themes/jbaths -type d -exec chmod 575 {} \;
+find /var/www/vhosts/domain1.com/httpdocs/wp-content/themes/jbaths -type f -exec chmod 464 {} \;
+
+
+
+vol-3f2ff59a
+
+i-d2ce6f48
+
+xvdg
+
+b8:27:eb:6f:f2:2a
+$ aws ec2 describe-instances --query 'Instances[*].[Placement.AvailabilityZone, State.Name, InstanceId], instance.group-id[sg-671cbf03]’ --output text | grep us-east | awk '{print $3}'
+
+
+aws ec2 describe-security-groups --output table --filters "Name=ip-permission.to-port,Values=22" --query 'SecurityGroups[].[Tags[?Key==`Name`] | [0].Value, GroupName]'
+
+
+/mnt/storage/jacuzzi/domain1.com/httpdocs/wp-content/themes/jbaths	/home/ninthlink/jbaths	none	bind	0	0
+
+
+
+
+
+—————————————————————————————
+PasswordAuthentication no
+
+
+#Subsystem sftp /usr/lib/openssh/sftp-server
+Subsystem       sftp    internal-sftp
+
+
+
+
+Match User ninthlink
+	PasswordAuthentication yes
+	ChrootDirectory /home/ninthlink
+	ForceCommand internal-sftp
+
+
+
+ninthlink:x:1001:1002::/home/ninthlink:/bin/false
+
+
+
+
+
+Symlinks are purely symbolic: they contain nothing but a path, so when you open a symlink, the OS reads the path and uses that instead. In a chroot environment, links (especially ones with absolute paths) typically don't point to the same place they pointed to in the normal environment.
+
+If the server OS is Linux, your best bet is to bind-mount the entire directory somewhere inside the chroot directory. When using this, its important to remember that this is not a copy of the directory, anything deleted here will be removed from the other directory (important if the user can mv files or rm -rf). To do this:
+
+mount --bind /some/directory /somewhere/else
+The files in the directory ought to be real files. Symlinks here will probably have the same problems you have trying to link to the files in the first place.
+
+
+
+Configuration
+
+First, we need to create the sftponly group
+# groupadd sftponly 
+Following changes to the SSH daemon configure permissions for the sftponly group
+/etc/ssh/sshd_config
+Match Group sftponly
+  ChrootDirectory %h
+  ForceCommand internal-sftp
+  AllowTcpForwarding no
+  PermitTunnel no
+  X11Forwarding no
+Or for a single user:
+/etc/ssh/sshd_config
+Match User username
+  ChrootDirectory %h
+  ForceCommand internal-sftp
+  AllowTcpForwarding no
+  PermitTunnel no
+  X11Forwarding no
+Change chroot directory rights
+The chroot directory must be owned by root.
+ # chown root:root /home/username
+Add the 'sftponly group to each user with remote access rights
+ # gpasswd -a USER sftponly
+Fixing path for authorized_keys
+With the standard path of AuthorizedKeysFile, the public key authentication will fail for chrooted-users. To fix this, we set the AuthorizedKeysFile to a root-owned, non-worldwritable directory and move existing users' keys.
+Note: This has the side effect of improving overall security with the tradeoff of root intervention for revocation in case a user changes their key or their key gets lost or stolen.
+  AuthorizedKeysFile      /etc/ssh/authorized_keys/%u
+Create authorized_keys directory and move existing users' authorized_keys:
+ sudo mkdir /etc/ssh/authorized_keys
+ sudo bash -c 'for user in /home/*; do mv ${user}/.ssh/authorized_keys /etc/ssh/authorized_keys/${user#/home/}; done'
+Warning: Be careful during this step not to lock yourself out of the machine you're working on. Always have a secondary method of access, such as an additional ssh session open or console access should things go awry
+Restart sshd:
+ sudo systemctl restart sshd.service
+Adding new chrooted users
+If using the group method above, ensure all sftp users are put in the appropriate group, i.e.:
+ sudo usermod -g sftponly username
+Also, set their shell to /usr/bin/false to prevent a normal ssh login:
+ sudo usermod -s /bin/false username
+Their chroot will be the same as their home directory. The permissions are not the same as a normal home, though. Their home directory must be owned as root and not writable by another user or group. This includes the path leading to the directory.
+
+
+#AWS SES Configuration
+relayhost = [email-smtp.us-east-1.amazonaws.com]:25
+smtp_sasl_auth_enable = yes
+
+[email-smtp.us-east-1.amazonaws.com]:25 AKIAINVLLSGHWRX34YBA:AsMBLIG54aMqaGZqRivoupFyQZo+aVWD0JF7wLpxo4MM
+
+
+sendmail -f testuser@domain.com travis.runyard@domain.com
+
+
+
+<?php
+$to      = ‘travis.runyard@domain.com’;
+$subject = 'the subject';
+$message = 'hello';
+$headers = 'From: no-reply@domain.com’ . "\r\n" .
+    'Reply-To: no-reply@domain.com’ . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+mail($to, $subject, $message, $headers);
+?>
+

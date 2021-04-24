@@ -1,0 +1,2631 @@
+;
+;  Group Policy template for Citrix Receiver
+;
+;  Copyright 2006-2009 Citrix Systems
+;
+
+CLASS MACHINE
+CATEGORY !!Citrix
+  #if version >= 4
+  EXPLAIN !!Explain_Citrix
+  #endif
+  CATEGORY !!ICAClient
+    #if version >= 4
+    EXPLAIN !!Explain_ICAClient
+    #endif
+    ;
+    ; Remotely disable the ICA Client.
+    ;
+    POLICY !!Policy_EnableICAClient
+      EXPLAIN !!Explain_EnableICAClient
+      KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions"
+      PART   !!Part_EnableICAClient_Enable 
+        CHECKBOX
+        DEFCHECKED
+        VALUENAME "AllowConnection"
+        VALUEON NUMERIC 1
+        VALUEOFF NUMERIC 0
+      END PART
+      PART   !!Part_EnableICAClient_Minimum
+        NUMERIC
+        VALUENAME "Version Minimum"
+        MIN 10000
+        MAX 100000
+        DEFAULT 10000
+      END PART
+    END POLICY
+    CATEGORY !!Network
+      #if version >= 4
+      EXPLAIN !!Explain_Network
+      #endif
+      CATEGORY !!Proxy
+        #if version >= 4
+        EXPLAIN !!Explain_Proxy
+        #endif
+        ;
+        ; Remotely define which proxy to use.
+        ;
+        POLICY !!Policy_ProxyLockdown
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\Proxy"
+          EXPLAIN !!Explain_ProxyLockdown
+          PART   !!Part_Proxy_ProxyTypeLockdown 
+            COMBOBOX
+            VALUENAME "ProxyType"
+            SUGGESTIONS
+              "Auto" "None" "SOCKS" "SOCKSv4" "SOCKSv5" "Secure" "Script"
+            END SUGGESTIONS
+          END PART
+          PART   !!Part_Proxy_ProxyHostLockdown 
+            EDITTEXT
+            VALUENAME "ProxyHost"
+          END PART
+          PART   !!Part_Proxy_ProxyPortLockdown 
+            EDITTEXT
+            VALUENAME "ProxyPort"
+          END PART
+          PART   !!Part_Proxy_ProxyAutoConfigUrlLockdown 
+            EDITTEXT
+            VALUENAME "ProxyAutoConfigUrl"
+          END PART
+          PART   !!Part_Proxy_ProxyBypassListLockdown 
+            EDITTEXT
+            VALUENAME "ProxyBypassList"
+          END PART
+        END POLICY
+      
+        ;
+        ; Remotely define which Alternate proxy to use
+        ;
+        POLICY !!Policy_AltProxyLockdown
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\Proxy"
+          EXPLAIN !!Explain_AltProxyLockdown
+          PART   !!Part_AltProxy_ProxyTypeLockdown 
+            COMBOBOX
+            VALUENAME "AltProxyType"
+            SUGGESTIONS
+              "Auto" "None" "SOCKS" "SOCKSv4" "SOCKSv5" "Secure" "Script"
+            END SUGGESTIONS
+          END PART
+          PART   !!Part_AltProxy_ProxyHostLockdown 
+            EDITTEXT
+            VALUENAME "AltProxyHost"
+          END PART
+          PART   !!Part_AltProxy_ProxyPortLockdown 
+            EDITTEXT
+            VALUENAME "AltProxyPort"
+          END PART
+          PART   !!Part_AltProxy_ProxyAutoConfigUrlLockdown 
+            EDITTEXT
+            VALUENAME "AltProxyAutoConfigUrl"
+          END PART
+          PART   !!Part_AltProxy_ProxyBypassListLockdown 
+            EDITTEXT
+            VALUENAME "AltProxyBypassList"
+          END PART
+          PART   !!Part_AltProxy_ProxyFallbackLockdown 
+            CHECKBOX
+            DEFCHECKED
+            VALUENAME "ProxyFallback"
+            VALUEON  "true,false"
+            VALUEOFF "false"
+          END PART
+        END POLICY
+        ;
+        ; Remotely define which proxy to use.
+        ;
+        POLICY !!Policy_ProxySocks
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\Proxy"
+          EXPLAIN !!Explain_ProxySocks
+          PART   !!Part_ProxySocks_Version 
+            DROPDOWNLIST
+            VALUENAME "ICASOCKSProtocolVersion"
+            ITEMLIST
+              NAME "Disabled"       VALUE "-1,default" DEFAULT
+              NAME "Detect version" VALUE "0,4,5"
+              NAME "SOCKS v4"       VALUE "4"
+              NAME "SOCKS v5"       VALUE "5"
+            END ITEMLIST
+          END PART
+          PART   !!Part_ProxySocks_ProxyHostLockdown 
+            EDITTEXT
+            VALUENAME "ICASOCKSProxyHost"
+          END PART
+          PART   !!Part_ProxySOCKS_ProxyPortLockdown 
+            EDITTEXT
+            VALUENAME "ICASOCKSProxyPortNumber"
+          END PART
+        END POLICY
+        
+        ;
+        ; Remotely define which proxy to use.
+        ;
+        POLICY !!Policy_ProxyAuthentication
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\Proxy"
+          EXPLAIN !!Explain_ProxyAuthentication
+          PART   !!Policy_ProxyExplicitAuthenticationEnabled 
+            CHECKBOX
+            DEFCHECKED
+            VALUENAME "ProxyAuthenticationPrompt"
+            VALUEON "*"
+            VALUEOFF "false"
+          END PART
+          PART   !!Policy_ProxyBasicAuthenticationEnabled 
+            CHECKBOX
+            DEFCHECKED
+            VALUENAME "ProxyAuthenticationBasic"
+            VALUEON "*"
+            VALUEOFF "false"
+          END PART
+          PART   !!Policy_ProxyNTLMAuthenticationEnabled 
+            CHECKBOX
+            DEFCHECKED
+            VALUENAME "ProxyAuthenticationNTLM"
+            VALUEON "*"
+            VALUEOFF "false"
+          END PART
+          PART   !!Part_Proxy_Socks5User 
+            EDITTEXT
+            VALUENAME "ProxyUsername"
+          END PART
+          PART   !!Part_Proxy_Socks5Password
+            EDITTEXT
+            VALUENAME "ProxyPassword"
+          END PART
+        END POLICY
+      END CATEGORY
+      ;
+      ; Remotely define SSL Settings
+      ;
+      POLICY !!Policy_SSLLockdown
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\SSL"
+        EXPLAIN !!Explain_SSLLockdown
+        PART   !!Part_SSL_EnabledLockdown 
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "SSLEnable"
+          VALUEON "true"
+          VALUEOFF "*"
+        END PART
+        PART   !!Part_SSL_SSLProxyHostLockdown 
+          COMBOBOX
+          VALUENAME "SSLProxyHost"
+          SUGGESTIONS
+            "*:443"
+          END SUGGESTIONS
+        END PART
+        PART   !!Part_SSL_SSLProtocolLockdown 
+          DROPDOWNLIST
+          VALUENAME "SecureChannelProtocol"
+          ITEMLIST
+            NAME "Detect version" VALUE "" DEFAULT
+            NAME "TLS v1.0"       VALUE "TLS"
+            NAME "SSL v3.0"       VALUE "SSL"
+          END ITEMLIST
+        END PART
+        PART   !!Part_SSL_CiphersuiteLockdown 
+          DROPDOWNLIST
+          VALUENAME "SSLCiphers"
+          ITEMLIST
+            NAME "Detect version" VALUE "" DEFAULT
+            NAME "Government"     VALUE "GOV"
+            NAME "Commercial"     VALUE "COM"
+          END ITEMLIST
+        END PART
+        PART   !!Part_SSL_RevocationLockdown 
+          DROPDOWNLIST
+          VALUENAME "SSLCertificateRevocationCheckPolicy"
+          ITEMLIST
+            NAME "Default"                         VALUE "" DEFAULT
+            NAME "Disabled"                        VALUE "NoCheck"
+            NAME "Only check locally stored CRLs"  VALUE "CheckNoNetworkAccess"
+            NAME "Retrieve CRLs from network"      VALUE "FullAccessCheck"
+            NAME "Require CRLs for connection"     VALUE "FullAccessCheckAndCrlRequired"
+          END ITEMLIST
+        END PART
+	   PART   !!Part_SSL_SSLPolicyOID
+          COMBOBOX
+          VALUENAME "SSLPolicyExtensionOID"
+          SUGGESTIONS
+            "2.5.29.32.0"
+          END SUGGESTIONS
+        END PART
+
+        PART   !!Part_SSL_ClientAuthentication
+          DROPDOWNLIST
+          VALUENAME "SSLClientAuthentication"
+          ITEMLIST
+            NAME "Not Configured"     VALUE "" DEFAULT
+            NAME "Display certificate selector"     VALUE "AlwaysPromptUser" 
+            NAME "Disabled"                        VALUE "Off"
+            NAME "Use specified certificate"  VALUE "On"
+            NAME "Select automatically if possible"      VALUE "PromptUser"
+          END ITEMLIST
+        END PART
+
+        PART   !!Part_SSL_ClientCertificate
+          COMBOBOX
+          VALUENAME "SSLClientCertificate"
+          SUGGESTIONS
+            ""
+          END SUGGESTIONS
+        END PART
+      END POLICY
+
+      ;
+      ; Remotely configure the Client Selective Trust feature.
+      ;
+      POLICY !!Policy_ConfigureClientSelectiveTrust
+        EXPLAIN !!Explain_ConfigureClientSelectiveTrust
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\ClientSelectiveTrust"
+        PART   !!Part_EnableClientSelectiveTrust
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "EnableClientSelectiveTrust"
+          VALUEON "true"
+          VALUEOFF "*"
+        END PART
+        PART   !!Part_ConfigureClientSelectiveTrust_IEZone
+          COMBOBOX
+          KEYNAME "SOFTWARE\Citrix\ICA Client\Engine\Configuration\Region Identification\Trusted Region\Evidence"
+          VALUENAME "InternetExplorerZone"
+          SUGGESTIONS
+            "Trusted" "Trusted,Intranet"
+          END SUGGESTIONS
+        END PART
+        PART   !!Part_ConfigureClientSelectiveTrust_EffectiveAddress 
+          COMBOBOX
+          KEYNAME "SOFTWARE\Citrix\ICA Client\Engine\Configuration\Region Identification\Trusted Region\Evidence"
+          VALUENAME "EffectiveAddress"
+          SUGGESTIONS
+            "*.finance.citrix.com,*.sales.citrix.com" "cps*.citrix.com"
+          END SUGGESTIONS
+        END PART
+      END POLICY
+      
+      ;
+      ; Remotely enable Auto Client Reconnect.
+      ;
+      POLICY !!Policy_ClientAutoReconnect
+        EXPLAIN !!Explain_ClientAutoReconnect
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\Reconnection"
+        PART !!Part_ClientAutoReconnect_Reconnect 
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "TransportReconnectEnabled"
+          VALUEON "*"
+          VALUEOFF "false"
+        END PART
+        PART !!Part_ClientAutoReconnect_CGP 
+          CHECKBOX
+          DEFCHECKED
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\CGP"
+          VALUENAME "CGPAddress"
+          VALUEON ""
+          VALUEOFF "0.0.0.0"
+        END PART
+        PART !!Part_ClientAutoReconnect_Attempts 
+          EDITTEXT
+          VALUENAME "TransportReconnectRetries"
+        END PART
+      END POLICY
+    END CATEGORY
+    
+    CATEGORY !!Authentication
+      #if version >= 4
+      EXPLAIN !!Explain_Authentication
+      #endif
+      ;
+      ; Remotely define smartcard Settings
+      ;  For Windows 2000 servers, use DisableCtrlAltDel=false
+      ;
+      POLICY !!Policy_Smartcard
+        EXPLAIN !!Explain_Smartcard
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Smartcard"
+        VALUENAME "SmartCardAllowed"
+        VALUEON "*"
+        VALUEOFF "false"
+        PART !!Part_Smartcard_Enable
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "SmartCardAllowed"
+          VALUEON   "*"
+          VALUEOFF  "false"
+        END PART
+        PART !!Part_SmartcardPin_Enable
+          CHECKBOX
+          KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Smartcard"
+          VALUENAME "DisableCtrlAltDel"
+          VALUEON   "true,false"
+          VALUEOFF  "*"
+          ACTIONLISTON
+            KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+            VALUENAME "SSOnUserSetting"
+            VALUE     "true,false"
+
+            KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+            VALUENAME "UseLocalUserAndPassword"
+            VALUE     "true,false"
+
+            KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+            VALUENAME "EnableSSOnThruICAFile"
+            VALUE     "true"
+          END ACTIONLISTON
+        END PART
+      END POLICY
+      ;
+      ; Remotely define logon Settings
+      ;
+      POLICY !!Policy_KerberosLockdown
+        EXPLAIN !!Explain_KerberosLockdown
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Kerberos"
+        VALUENAME "SSPIEnabled"
+        VALUEON   "true,false"
+        VALUEOFF  "false"
+        ACTIONLISTON
+          KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+          VALUENAME "SSOnUserSetting"
+          VALUE     "true,false"
+
+          KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+          VALUENAME "EnableSSOnThruICAFile"
+          VALUE     "true"
+          
+          KEYNAME   "Software\Citrix\ICA Client"
+          VALUENAME "SSPIEnabled"
+          VALUE     NUMERIC 1          
+        END ACTIONLISTON
+      END POLICY
+      ;
+      ; Remotely define Logon Settings
+      ;
+      POLICY !!Policy_LocalCredentialsLockdown
+        EXPLAIN !!Explain_LocalCredentialsLockdown
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+        VALUENAME "UseLocalUserAndPassword"
+        VALUEON   "true,false"
+        VALUEOFF  "false"
+        ACTIONLISTOFF
+          KEYNAME   "Software\Policies\Citrix\ICA Client\SSON"
+          VALUENAME "Enable"
+          VALUE     "false"
+        END ACTIONLISTOFF
+        ACTIONLISTON
+          KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+          VALUENAME "SSOnUserSetting"
+          VALUE     "true,false"
+
+          KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+          VALUENAME "EnableSSOnThruICAFile"
+          VALUE     "true"
+        END ACTIONLISTON
+        PART !!Part_LocalCredentialsLockdown_Enable
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "UseLocalUserAndPassword"
+          VALUEON   "true,false"
+          VALUEOFF  "false"
+	      ACTIONLISTON
+            KEYNAME   "Software\Policies\Citrix\ICA Client\SSON"
+            VALUENAME "Enable"
+            VALUE     "true"
+		  END ACTIONLISTON
+	      ACTIONLISTOFF
+            KEYNAME   "Software\Policies\Citrix\ICA Client\SSON"
+            VALUENAME "Enable"
+            VALUE     "false"
+		  END ACTIONLISTOFF
+        END PART
+;        PART !!Part_LegacyLocalUserNameAndPassword_Enable
+;          CHECKBOX
+;          VALUENAME "LegacyLocalUserNameAndPassword"
+;VALUEON   "true"
+;          VALUEOFF  "false"
+;        END PART
+        PART !!Part_NovellCredentials
+          CHECKBOX
+          VALUENAME "SSOnCredentialType"
+          VALUEON   "NDS"
+          VALUEOFF  "Any,NT,NDS"
+        END PART
+      END POLICY
+      ;
+      ; Remotely define Logon Settings
+      ;
+      POLICY !!Policy_WITicket
+        EXPLAIN !!Explain_WITicket
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Saved Credentials"
+        PART !!Part_WITicket_Legacy_Enable
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "ClearPassword"
+          VALUEON ""
+          VALUEOFF "xxxxxxxxx"
+        END PART
+        PART !!Part_WITicket_LogonTicket_Enable
+          CHECKBOX
+          DEFCHECKED
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Ticket"
+          VALUENAME "LogonTicket"
+          VALUEON ""
+          VALUEOFF "xxxxxxxxx"
+        END PART
+      END POLICY
+    END CATEGORY
+
+    CATEGORY !!VirtualChannels
+      #if version >= 4
+      EXPLAIN !!Explain_VirtualChannels
+      #endif
+      ;
+      ; Remotely define Drive Mapping options
+      ;
+      POLICY !!Policy_EnableDriveMapping
+        EXPLAIN !!Explain_EnableDriveMapping
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Drives"
+        PART   !!Part_EnableDriveMappingCheckbox CHECKBOX
+          DEFCHECKED
+          VALUENAME "CDMAllowed"
+          VALUEON "true,false"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_EnableDriveMappingReadonly CHECKBOX
+          VALUENAME "CDMReadOnly"
+          VALUEON "true"
+          VALUEOFF "false,true"
+        END PART
+        PART   !!Part_EnableDriveMappingDisableDrives
+          COMBOBOX
+          VALUENAME "DisableDrives"
+          SUGGESTIONS
+            "C" "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
+          END SUGGESTIONS
+        END PART
+      END POLICY
+      ;
+      ; Remotely define Printer Settings
+      ;
+      POLICY !!Policy_EnablePrinterMapping
+        EXPLAIN !!Explain_EnablePrinterMapping
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Printing"
+        VALUENAME "VSLAllowed"
+        VALUEON "true,false"
+        VALUEOFF "false"
+      END POLICY
+      ;
+      ; Remotely define Hardware device access
+      ;
+      POLICY !!Policy_LocalPort
+        EXPLAIN !!Explain_LocalPort
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Serial Port"
+        ACTIONLISTOFF
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Serial Port"
+          VALUENAME "COMAllowed"
+          VALUE     "false"
+
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Serial Port"
+          VALUENAME "VirtualCOMPortEmulation"
+          VALUE     "false"
+
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Printing"
+          VALUENAME "CPMAllowed"
+          VALUE     "false"
+        END ACTIONLISTOFF
+        PART !!Part_MaxPort
+          EDITTEXT
+          VALUENAME "MaxPort"
+        END PART        
+        PART   !!Part_EnableSerialPortCheckbox CHECKBOX
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Serial Port"
+          DEFCHECKED
+          VALUENAME "COMAllowed"
+          VALUEON "true,false"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_EnableVirtualSerialPortCheckbox CHECKBOX
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Serial Port"
+          DEFCHECKED
+          VALUENAME "VirtualCOMPortEmulation"
+          VALUEON "true,false"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_EnableParallelPortCheckbox CHECKBOX
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Printing"
+          DEFCHECKED
+          VALUENAME "CPMAllowed"
+          VALUEON "true,false"
+          VALUEOFF "false"
+        END PART
+      END POLICY
+      ;
+      ; Remotely define Camera/Scanner Settings
+      ;
+      POLICY !!Policy_ImageCapture
+        EXPLAIN !!Explain_ImageCapture
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Image Capture"
+        VALUENAME "TWAINAllowed"
+        VALUEON "true,false"
+        VALUEOFF "false"
+      END POLICY
+      ;
+      ; Remotely define Bidirectional Audio Settings
+      ;
+      POLICY !!Policy_AudioInput
+        EXPLAIN !!Explain_AudioInput
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Audio"
+        VALUENAME "EnableAudioInput"
+        VALUEON "true,false"
+        VALUEOFF "false"
+        PART !!Part_BiDiAudio_Enable
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "EnableAudioInput"
+          VALUEON   "true,false"
+          VALUEOFF  "false"
+        END PART
+      END POLICY
+      ;
+      ; Remotely define Clipboard Settings
+      ;
+      POLICY !!Policy_Clipboard
+        EXPLAIN !!Explain_Clipboard
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Clipboard"
+        VALUENAME "ClipboardAllowed"
+        VALUEON "true,false"
+        VALUEOFF "false"
+      END POLICY
+      ;
+      ; Remotely define Point of Sales Settings
+      ;
+      POLICY !!Policy_USB_PNP_Devices
+        EXPLAIN !!Explain_USB_PNP_Devices
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\DVC_PlugAndPlay"
+        VALUENAME "PNPDeviceAllowed"
+        VALUEON "true,false"
+        VALUEOFF "false"
+      END POLICY
+      ;
+      ; Remotely define Point of Sales Settings
+      ;
+      POLICY !!Policy_PointOfSales
+        EXPLAIN !!Explain_PointOfSales
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\DVC_PlugAndPlay"
+        VALUENAME "POSDeviceAllowed"
+        VALUEON "true,false"
+        VALUEOFF "false"
+      END POLICY
+    END CATEGORY
+    CATEGORY !!UserExperience
+      #if version >= 4
+      EXPLAIN !!Explain_UserExperience
+      #endif
+      ;
+      ; Remotely define the ICA Client Audio Settings
+      ;
+      POLICY !!Policy_Audio
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Audio"
+        EXPLAIN !!Explain_Audio
+        PART   !!Part_Audio_Enabled
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "ClientAudio"
+          VALUEON "true,false"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_Audio_Quality 
+          DROPDOWNLIST
+          VALUENAME "AudioBandwidthLimit"
+          ITEMLIST
+            NAME "High"       VALUE "0-"
+            NAME "Low"        VALUE "2-"
+            NAME "Medium"     VALUE "1-" DEFAULT
+          END ITEMLIST
+        END PART
+        PART   !!Part_RealtimeTransport_Enabled
+          CHECKBOX
+          VALUENAME "EnableRtpAudio"
+          VALUEON "true,false"
+          VALUEOFF "false"
+        END PART        
+        PART !!Part_RtpAudioLowestPort
+          NUMERIC
+          TXTCONVERT
+          VALUENAME "RtpAudioLowestPort"
+          MIN 16384
+          MAX 32767
+          DEFAULT 16500
+          SPIN 2
+        END PART
+        PART !!Part_RtpAudioHighestPort
+          NUMERIC
+          TXTCONVERT        
+          VALUENAME "RtpAudioHighestPort"
+          MIN 16384
+          MAX 32767
+          DEFAULT 16509
+          SPIN 2
+        END PART        
+      END POLICY
+      ;
+      ; Remotely define Display settings  Settings
+      ;
+      POLICY !!Policy_Graphics
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Thinwire Graphics"
+        EXPLAIN !!Explain_Graphics
+        PART   !!Part_Graphics_ColorDepth 
+          DROPDOWNLIST
+          VALUENAME "DesiredColor"
+          ITEMLIST
+            NAME "16-bit color"    VALUE "4"
+            NAME "32-bit color"    VALUE "8" DEFAULT
+          END ITEMLIST
+        END PART
+        PART   !!Part_Graphics_DiskCache 
+          CHECKBOX
+          VALUENAME "PersistentCacheEnabled"
+          VALUEON "true"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_Graphics_ImageAcceleration 
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "SpeedScreenIA"
+          VALUEON "*"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_Graphics_SpeedScreenBrowser 
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "SpeedScreenBA"
+          VALUEON "*"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_Graphics_SpeedScreenBrowserCompression 
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "SpeedScreenBACompressionEnabled"
+          VALUEON "*"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_Graphics_SpeedScreenMultimedia 
+          CHECKBOX
+          DEFCHECKED
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Multimedia"
+          VALUENAME "SpeedScreenMMA"
+          VALUEON "*"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_Graphics_ZeroLatencyKeyboard
+          CHECKBOX
+          DEFCHECKED
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Zero Latency"
+          VALUENAME "ZLKeyboardMode"
+          VALUEON "2,1,0"
+          VALUEOFF "0"
+        END PART
+        PART   !!Part_Graphics_ZeroLatencyMouse
+          CHECKBOX
+          DEFCHECKED
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Zero Latency"
+          VALUENAME "ZLMouseMode"
+          VALUEON "2,1,0"
+          VALUEOFF "0"
+        END PART
+      END POLICY
+      ;
+      ; Remotely define Display settings  Settings
+      ;
+      POLICY !!Policy_Display
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Thinwire Graphics"
+        EXPLAIN !!Explain_Display
+        PART   !!Part_Display_Seamless 
+          COMBOBOX
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Seamless Windows"
+          VALUENAME "TWIMode"
+          SUGGESTIONS
+            "True" "False"
+          END SUGGESTIONS
+        END PART
+        PART   !!Part_Display_Width 
+          COMBOBOX
+          VALUENAME "DesiredHRES"
+          SUGGESTIONS
+            "1024-" "800-"
+          END SUGGESTIONS
+        END PART
+        PART   !!Part_Display_Height
+          COMBOBOX
+          VALUENAME "DesiredVRES"
+          SUGGESTIONS
+            "734-" "600-"
+          END SUGGESTIONS
+        END PART
+        PART   !!Part_Display_Percent
+          DROPDOWNLIST
+          VALUENAME "ScreenPercent"
+          ITEMLIST
+            NAME ""       VALUE "0" DEFAULT
+            NAME "50%"    VALUE "50"
+            NAME "75%"    VALUE "75"
+            NAME "Other"  VALUE ""
+          END ITEMLIST
+        END PART
+	  PART   !!Part_Display_WorkArea
+          COMBOBOX
+	    KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Seamless Windows"
+          VALUENAME "TWIShrinkWorkArea"
+          SUGGESTIONS
+            "5"
+          END SUGGESTIONS
+        END PART
+        PART   !!Part_Display_FullScreen 
+          CHECKBOX
+          VALUENAME "TWIFullScreenMode"
+          VALUEON "true"
+          VALUEOFF "*"
+        END PART
+      END POLICY
+      ;
+      ; Remotely define Hotkeys
+      ;
+      POLICY !!Policy_Keyboard_Hotkeys
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Client Engine\Hot Keys"
+        EXPLAIN !!Explain_Keyboard_Hotkeys
+          PART   !!Part_Keyboard_Windows_Key
+            DROPDOWNLIST
+            KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Keyboard"
+            VALUENAME "TransparentKeyPassthrough"
+            ITEMLIST
+              NAME "Access Local Desktop"    VALUE "Local"
+              NAME "Access Remote Session"   VALUE "Remote"
+              NAME "Access Remote Session in full-screen only" VALUE "FullScreenOnly" DEFAULT
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Tasklist
+            DROPDOWNLIST
+            VALUENAME "HotKey1Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Alt"      VALUE "Alt"
+              NAME "Ctrl"     VALUE "Ctrl"
+              NAME "Shift"    VALUE "Shift" DEFAULT
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Tasklist_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey1Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "F1"    VALUE "F1" DEFAULT
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+              NAME "F2"    VALUE "F2"
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "minus" VALUE "minus"
+              NAME "plus"  VALUE "plus"
+              NAME "star"  VALUE "star"
+              NAME "tab"   VALUE "tab"
+			  END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Close_Remote_Application
+            DROPDOWNLIST
+            VALUENAME "HotKey2Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Alt"      VALUE "Alt"
+              NAME "Ctrl"     VALUE "Ctrl"
+              NAME "Shift"    VALUE "Shift" DEFAULT
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Close_Remote_Application_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey2Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "F1"    VALUE "F1"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+              NAME "F2"    VALUE "F2"
+              NAME "F3"    VALUE "F3" DEFAULT
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "minus" VALUE "minus"
+              NAME "plus"  VALUE "plus"
+              NAME "star"  VALUE "star"
+              NAME "tab"   VALUE "tab"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Toggle_Title_Bar
+            DROPDOWNLIST
+            VALUENAME "HotKey3Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Alt"      VALUE "Alt"
+              NAME "Ctrl"     VALUE "Ctrl"
+              NAME "Shift"    VALUE "Shift" DEFAULT
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Toggle_Title_Bar_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey3Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "F1"    VALUE "F1"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+              NAME "F2"    VALUE "F2" DEFAULT
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "minus" VALUE "minus"
+              NAME "plus"  VALUE "plus"
+              NAME "star"  VALUE "star"
+              NAME "tab"   VALUE "tab"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Ctrl_Alt_Del
+            DROPDOWNLIST
+            VALUENAME "HotKey4Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Alt"      VALUE "Alt"
+              NAME "Ctrl"     VALUE "Ctrl" DEFAULT
+              NAME "Shift"    VALUE "Shift"
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Ctrl_Alt_Del_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey4Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "F1"    VALUE "F1" DEFAULT
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+              NAME "F2"    VALUE "F2"
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "minus" VALUE "minus"
+              NAME "plus"  VALUE "plus"
+              NAME "star"  VALUE "star"
+              NAME "tab"   VALUE "tab"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Ctrl_Shift_Esc
+            DROPDOWNLIST
+            VALUENAME "HotKey9Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Alt"      VALUE "Alt"
+              NAME "Ctrl"     VALUE "Ctrl" DEFAULT
+              NAME "Shift"    VALUE "Shift"
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Ctrl_Shift_Esc_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey9Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "F1"    VALUE "F1"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+              NAME "F2"    VALUE "F2"
+              NAME "F3"    VALUE "F3" DEFAULT
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "minus" VALUE "minus"
+              NAME "plus"  VALUE "plus"
+              NAME "star"  VALUE "star"
+              NAME "tab"   VALUE "tab"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Alt_Tab
+            DROPDOWNLIST
+            VALUENAME "HotKey7Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Alt"      VALUE "Alt" DEFAULT
+              NAME "Ctrl"     VALUE "Ctrl"
+              NAME "Shift"    VALUE "Shift"
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Alt_Tab_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey7Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "F1"    VALUE "F1"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+              NAME "F2"    VALUE "F2"
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8" DEFAULT
+              NAME "F9"    VALUE "F9"
+              NAME "minus" VALUE "minus"
+              NAME "plus"  VALUE "plus"
+              NAME "star"  VALUE "star"
+              NAME "tab"   VALUE "tab"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Alt_Backtab
+            DROPDOWNLIST
+            VALUENAME "HotKey8Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Alt"      VALUE "Alt" DEFAULT
+              NAME "Ctrl"     VALUE "Ctrl"
+              NAME "Shift"    VALUE "Shift"
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Alt_Backtab_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey8Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "F1"    VALUE "F1"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+              NAME "F2"    VALUE "F2"
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9" DEFAULT
+              NAME "minus" VALUE "minus"
+              NAME "plus"  VALUE "plus"
+              NAME "star"  VALUE "star"
+              NAME "tab"   VALUE "tab"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Ctrl_Esc
+            DROPDOWNLIST
+            VALUENAME "HotKey5Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Alt"      VALUE "Alt"
+              NAME "Ctrl"     VALUE "Ctrl" DEFAULT
+              NAME "Shift"    VALUE "Shift"
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Ctrl_Esc_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey5Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "F1"    VALUE "F1"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+              NAME "F2"    VALUE "F2" DEFAULT
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "minus" VALUE "minus"
+              NAME "plus"  VALUE "plus"
+              NAME "star"  VALUE "star"
+              NAME "tab"   VALUE "tab"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Ctrl_Alt
+            DROPDOWNLIST
+            VALUENAME "HotKey6Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Alt"      VALUE "Alt" DEFAULT
+              NAME "Ctrl"     VALUE "Ctrl"
+              NAME "Shift"    VALUE "Shift"
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Ctrl_Alt_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey6Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "F1"    VALUE "F1"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+              NAME "F2"    VALUE "F2" DEFAULT
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "minus" VALUE "minus"
+              NAME "plus"  VALUE "plus"
+              NAME "star"  VALUE "star"
+              NAME "tab"   VALUE "tab"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Toggle_Latency_Reduction
+            DROPDOWNLIST
+            VALUENAME "HotKey10Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Alt"      VALUE "Alt"
+              NAME "Ctrl"     VALUE "Ctrl" DEFAULT
+              NAME "Shift"    VALUE "Shift"
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Toggle_Latency_Reduction_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey10Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "F1"    VALUE "F1"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+              NAME "F2"    VALUE "F2"
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5" DEFAULT
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "minus" VALUE "minus"
+              NAME "plus"  VALUE "plus"
+              NAME "star"  VALUE "star"
+              NAME "tab"   VALUE "tab"
+            END ITEMLIST
+          END PART
+        END POLICY
+      ;
+      ; Remotely define Display settings  Settings
+      ;
+      POLICY !!Policy_PublishedApplications
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Client Engine\Application Launching"
+        EXPLAIN !!Explain_PublishedApplications
+        PART   !!Part_PublishedApplications_InitialProgram
+          COMBOBOX
+          VALUENAME "InitialProgram"
+          SUGGESTIONS
+            "#Notepad" "#*"
+          END SUGGESTIONS
+        END PART
+        PART   !!Part_PublishedApplications_SessionSharing
+          CHECKBOX
+          DEFCHECKED
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Client Engine\Session Sharing"
+          VALUENAME "EnableSessionSharing"
+          VALUEON "*"
+          VALUEOFF "false"
+        END PART
+      END POLICY
+    END CATEGORY
+	
+	CATEGORY !!ClientEngine
+      #if version >= 4
+      EXPLAIN !!Explain_ClientEngine
+      #endif
+	  ;
+      ; Define settings  for ICA file
+      ;
+		POLICY !!Policy_ICAFileSettings
+			KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Client Engine\ICA File"
+			EXPLAIN !!Explain_ICAFileSettings
+		    PART   !!Part_ICAFileSettings_RemoveICAFile
+			  CHECKBOX
+			  KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Client Engine\ICA File"
+			  VALUENAME "RemoveICAFile"
+			  VALUEON "True"
+			  VALUEOFF "False"
+			END PART
+		END POLICY
+	  ;
+      ; Define whether a per user install is allowed to run
+      ;
+      POLICY !!Policy_AllowPerUserInstall
+        EXPLAIN !!Explain_AllowPerUserInstall
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Client Engine"
+        VALUENAME "AllowPerUserInstall"
+        VALUEON "true,false"
+        VALUEOFF "false"
+      END POLICY
+	END CATEGORY
+
+
+	CATEGORY !!MultiStreamICA
+      #if version >= 4
+      EXPLAIN !!Explain_MultiStreamICA
+      #endif
+	 ;
+      ; Define settings  for MSI
+      ;
+		POLICY !!Policy_MSISettings
+		    KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\Multi-Stream"				    EXPLAIN !!Explain_MSISettings
+		    PART   !!Part_MSISettings_Enable
+			   CHECKBOX
+			   DEFCHECKED
+			   VALUENAME "MSIEnabled"
+			   VALUEON "True"
+			   VALUEOFF "False"
+			END PART
+        	    PART !!Part_MSISettings_MaxStreams 
+			   NUMERIC
+			   TXTCONVERT
+          		   VALUENAME "MSIMaxStreams"
+			   DEFAULT 4
+			   MIN 0
+			   MAX 4
+        		END PART
+		END POLICY
+	END CATEGORY
+
+	
+  END CATEGORY
+END CATEGORY
+
+CLASS USER
+CATEGORY !!Citrix
+  #if version >= 4
+  EXPLAIN !!Explain_Citrix
+  #endif
+  CATEGORY !!ICAClient
+    #if version >= 4
+    EXPLAIN !!Explain_ICAClient
+    #endif
+    ;
+    ; Remotely disable the ICA Client.
+    ;
+    POLICY !!Policy_EnableICAClient
+      EXPLAIN !!Explain_EnableICAClient
+      KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions"
+      PART   !!Part_EnableICAClient_Enable 
+        CHECKBOX
+        DEFCHECKED
+        VALUENAME "AllowConnection"
+        VALUEON NUMERIC 1
+        VALUEOFF NUMERIC 0
+      END PART
+      PART   !!Part_EnableICAClient_Minimum
+        NUMERIC
+        VALUENAME "Version Minimum"
+        MIN 10000
+        MAX 100000
+        DEFAULT 10000
+      END PART
+    END POLICY
+    CATEGORY !!Network
+      #if version >= 4
+      EXPLAIN !!Explain_Network
+      #endif
+      CATEGORY !!Proxy
+        #if version >= 4
+        EXPLAIN !!Explain_Proxy
+        #endif
+        ;
+        ; Remotely define which proxy to use.
+        ;
+        POLICY !!Policy_ProxyLockdown
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\Proxy"
+          EXPLAIN !!Explain_ProxyLockdown
+          PART   !!Part_Proxy_ProxyTypeLockdown 
+            COMBOBOX
+            VALUENAME "ProxyType"
+            SUGGESTIONS
+              "Auto" "None" "SOCKS" "SOCKSv4" "SOCKSv5" "Secure" "Script"
+            END SUGGESTIONS
+          END PART
+          PART   !!Part_Proxy_ProxyHostLockdown 
+            EDITTEXT
+            VALUENAME "ProxyHost"
+          END PART
+          PART   !!Part_Proxy_ProxyPortLockdown 
+            EDITTEXT
+            VALUENAME "ProxyPort"
+          END PART
+          PART   !!Part_Proxy_ProxyAutoConfigUrlLockdown 
+            EDITTEXT
+            VALUENAME "ProxyAutoConfigUrl"
+          END PART
+          PART   !!Part_Proxy_ProxyBypassListLockdown 
+            EDITTEXT
+            VALUENAME "ProxyBypassList"
+          END PART
+        END POLICY
+      
+        ;
+        ; Remotely define which Alternate proxy to use
+        ;
+        POLICY !!Policy_AltProxyLockdown
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\Proxy"
+          EXPLAIN !!Explain_AltProxyLockdown
+          PART   !!Part_AltProxy_ProxyTypeLockdown 
+            COMBOBOX
+            VALUENAME "AltProxyType"
+            SUGGESTIONS
+              "Auto" "None" "SOCKS" "SOCKSv4" "SOCKSv5" "Secure" "Script"
+            END SUGGESTIONS
+          END PART
+          PART   !!Part_AltProxy_ProxyHostLockdown 
+            EDITTEXT
+            VALUENAME "AltProxyHost"
+          END PART
+          PART   !!Part_AltProxy_ProxyPortLockdown 
+            EDITTEXT
+            VALUENAME "AltProxyPort"
+          END PART
+          PART   !!Part_AltProxy_ProxyAutoConfigUrlLockdown 
+            EDITTEXT
+            VALUENAME "AltProxyAutoConfigUrl"
+          END PART
+          PART   !!Part_AltProxy_ProxyBypassListLockdown 
+            EDITTEXT
+            VALUENAME "AltProxyBypassList"
+          END PART
+          PART   !!Part_AltProxy_ProxyFallbackLockdown 
+            COMBOBOX
+            VALUENAME "ProxyFallback"
+            SUGGESTIONS
+              "false" "true"
+            END SUGGESTIONS
+          END PART
+        END POLICY
+        ;
+        ; Remotely define which proxy to use.
+        ;
+        POLICY !!Policy_ProxySocks
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\Proxy"
+          EXPLAIN !!Explain_ProxySocks
+          PART   !!Part_ProxySocks_Version 
+            DROPDOWNLIST
+            VALUENAME "ICASOCKSProtocolVersion"
+            ITEMLIST
+              NAME "Disabled"       VALUE "-1,default" DEFAULT
+              NAME "Detect version" VALUE "0,4,5"
+              NAME "SOCKS v4"       VALUE "4"
+              NAME "SOCKS v5"       VALUE "5"
+            END ITEMLIST
+          END PART
+          PART   !!Part_ProxySocks_ProxyHostLockdown 
+            EDITTEXT
+            VALUENAME "ICASOCKSProxyHost"
+          END PART
+          PART   !!Part_ProxySOCKS_ProxyPortLockdown 
+            EDITTEXT
+            VALUENAME "ICASOCKSProxyPortNumber"
+          END PART
+        END POLICY
+        
+        ;
+        ; Remotely define which proxy to use.
+        ;
+        POLICY !!Policy_ProxyAuthentication
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\Proxy"
+          EXPLAIN !!Explain_ProxyAuthentication
+          PART   !!Policy_ProxyExplicitAuthenticationEnabled 
+            CHECKBOX
+            DEFCHECKED
+            VALUENAME "ProxyAuthenticationPrompt"
+            VALUEON "*"
+            VALUEOFF "false"
+          END PART
+          PART   !!Policy_ProxyBasicAuthenticationEnabled 
+            CHECKBOX
+            DEFCHECKED
+            VALUENAME "ProxyAuthenticationBasic"
+            VALUEON "*"
+            VALUEOFF "false"
+          END PART
+          PART   !!Policy_ProxyNTLMAuthenticationEnabled 
+            CHECKBOX
+            DEFCHECKED
+            VALUENAME "ProxyAuthenticationNTLM"
+            VALUEON "*"
+            VALUEOFF "false"
+          END PART
+          PART   !!Part_Proxy_Socks5User 
+            EDITTEXT
+            VALUENAME "ProxyUsername"
+          END PART
+          PART   !!Part_Proxy_Socks5Password
+            EDITTEXT
+            VALUENAME "ProxyPassword"
+          END PART
+        END POLICY
+      END CATEGORY
+      ;
+      ; Remotely define SSL Settings
+      ;
+      POLICY !!Policy_SSLLockdown
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\SSL"
+        EXPLAIN !!Explain_SSLLockdown
+        PART   !!Part_SSL_EnabledLockdown 
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "SSLEnable"
+          VALUEON "true"
+          VALUEOFF "*"
+        END PART
+        PART   !!Part_SSL_SSLProxyHostLockdown 
+          COMBOBOX
+          VALUENAME "SSLProxyHost"
+          SUGGESTIONS
+            "*:443"
+          END SUGGESTIONS
+        END PART
+        PART   !!Part_SSL_SSLProtocolLockdown 
+          DROPDOWNLIST
+          VALUENAME "SecureChannelProtocol"
+          ITEMLIST
+            NAME "Detect version" VALUE "" DEFAULT
+            NAME "TLS v1.0"       VALUE "TLS"
+            NAME "SSL v3.0"       VALUE "SSL"
+          END ITEMLIST
+        END PART
+        PART   !!Part_SSL_CiphersuiteLockdown 
+          DROPDOWNLIST
+          VALUENAME "SSLCiphers"
+          ITEMLIST
+            NAME "Detect version" VALUE "" DEFAULT
+            NAME "Government"     VALUE "GOV"
+            NAME "Commercial"     VALUE "COM"
+          END ITEMLIST
+        END PART
+        PART   !!Part_SSL_RevocationLockdown 
+          DROPDOWNLIST
+          VALUENAME "SSLCertificateRevocationCheckPolicy"
+          ITEMLIST
+            NAME "Default"                         VALUE "" DEFAULT
+            NAME "Disabled"                        VALUE "NoCheck"
+            NAME "Only check locally stored CRLs"  VALUE "CheckNoNetworkAccess"
+            NAME "Retrieve CRLs from network"      VALUE "FullAccessCheck"
+            NAME "Require CRLs for connection"     VALUE "FullAccessCheckAndCrlRequired"
+          END ITEMLIST
+        END PART
+        PART   !!Part_SSL_SSLPolicyOID
+          COMBOBOX
+          VALUENAME "SSLPolicyExtensionOID"
+          SUGGESTIONS
+            "2.5.29.32.0"
+          END SUGGESTIONS
+        END PART
+
+        PART   !!Part_SSL_ClientAuthentication
+          DROPDOWNLIST
+          VALUENAME "SSLClientAuthentication"
+          ITEMLIST
+            NAME "Not Configured"     VALUE "" DEFAULT
+            NAME "Display certificate selector"     VALUE "AlwaysPromptUser" 
+            NAME "Disabled"                        VALUE "Off"
+            NAME "Use specified certificate"  VALUE "On"
+            NAME "Select automatically if possible"      VALUE "PromptUser"
+          END ITEMLIST
+        END PART
+
+        PART   !!Part_SSL_ClientCertificate
+          COMBOBOX
+          VALUENAME "SSLClientCertificate"
+          SUGGESTIONS
+            ""
+          END SUGGESTIONS
+        END PART
+      END POLICY
+
+      ;
+      ; Remotely configure the Client Selective Trust feature.
+      ;
+      POLICY !!Policy_ConfigureClientSelectiveTrust
+        EXPLAIN !!Explain_ConfigureClientSelectiveTrust
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\ClientSelectiveTrust"
+        PART   !!Part_EnableClientSelectiveTrust
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "EnableClientSelectiveTrust"
+          VALUEON "true"
+          VALUEOFF "*"
+        END PART
+      END POLICY
+      
+      ;
+      ; Remotely enable Auto Client Reconnect.
+      ;
+      POLICY !!Policy_ClientAutoReconnect
+        EXPLAIN !!Explain_ClientAutoReconnect
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\Reconnection"
+        PART !!Part_ClientAutoReconnect_Reconnect 
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "TransportReconnectEnabled"
+          VALUEON "*"
+          VALUEOFF "false"
+        END PART
+        PART !!Part_ClientAutoReconnect_CGP 
+          CHECKBOX
+          DEFCHECKED
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\CGP"
+          VALUENAME "CGPAddress"
+          VALUEON ""
+          VALUEOFF "0.0.0.0"
+        END PART
+        PART !!Part_ClientAutoReconnect_Attempts 
+          EDITTEXT
+          VALUENAME "TransportReconnectRetries"
+        END PART
+      END POLICY
+    END CATEGORY
+    
+    CATEGORY !!Authentication
+      #if version >= 4
+      EXPLAIN !!Explain_Authentication
+      #endif
+      ;
+      ; Remotely define smartcard Settings
+      ;  For Windows 2000 servers, use DisableCtrlAltDel=false
+      ;
+      POLICY !!Policy_Smartcard
+        EXPLAIN !!Explain_Smartcard
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Smartcard"
+        VALUENAME "SmartCardAllowed"
+        VALUEON "*"
+        VALUEOFF "false"
+        PART !!Part_Smartcard_Enable
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "SmartCardAllowed"
+          VALUEON   "*"
+          VALUEOFF  "false"
+        END PART
+        PART !!Part_SmartcardPin_Enable
+          CHECKBOX
+          KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Smartcard"
+          VALUENAME "DisableCtrlAltDel"
+          VALUEON   "true,false"
+          VALUEOFF  "*"
+          ACTIONLISTON
+            KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+            VALUENAME "SSOnUserSetting"
+            VALUE     "true,false"
+
+            KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+            VALUENAME "UseLocalUserAndPassword"
+            VALUE     "true,false"
+
+            KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+            VALUENAME "EnableSSOnThruICAFile"
+            VALUE     "true"
+          END ACTIONLISTON
+        END PART
+      END POLICY
+      ;
+      ; Remotely define logon Settings
+      ;
+      POLICY !!Policy_KerberosLockdown
+        EXPLAIN !!Explain_KerberosLockdown
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Kerberos"
+        VALUENAME "SSPIEnabled"
+        VALUEON   "true,false"
+        VALUEOFF  "false"
+        ACTIONLISTON
+          KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+          VALUENAME "SSOnUserSetting"
+          VALUE     "true,false"
+
+          KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+          VALUENAME "EnableSSOnThruICAFile"
+          VALUE     "true"
+        END ACTIONLISTON
+      END POLICY
+      ;
+      ; Remotely define Logon Settings
+      ;
+      POLICY !!Policy_LocalCredentialsLockdown
+        EXPLAIN !!Explain_LocalCredentialsLockdown
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+        VALUENAME "UseLocalUserAndPassword"
+        VALUEON   "true,false"
+        VALUEOFF  "false"
+        ACTIONLISTON
+          KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+          VALUENAME "SSOnUserSetting"
+          VALUE     "true,false"
+
+          KEYNAME   "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials"
+          VALUENAME "EnableSSOnThruICAFile"
+          VALUE     "true"
+        END ACTIONLISTON
+        PART !!Part_LocalCredentialsLockdown_Enable
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "UseLocalUserAndPassword"
+          VALUEON   "true,false"
+          VALUEOFF  "false"
+        END PART
+;        PART !!Part_LegacyLocalUserNameAndPassword_Enable
+;          CHECKBOX
+;          VALUENAME "LegacyLocalUserNameAndPassword"
+;          VALUEON   "true"
+;          VALUEOFF  "false"
+;        END PART
+        PART !!Part_NovellCredentials
+          CHECKBOX
+          VALUENAME "SSOnCredentialType"
+          VALUEON   "NDS"
+          VALUEOFF  "Any,NT,NDS"
+        END PART
+      END POLICY
+      ;
+      ; Remotely define Logon Settings
+      ;
+      POLICY !!Policy_WITicket
+        EXPLAIN !!Explain_WITicket
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Saved Credentials"
+        PART !!Part_WITicket_Legacy_Enable
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "ClearPassword"
+          VALUEON ""
+          VALUEOFF "xxxxxxxxx"
+        END PART
+        PART !!Part_WITicket_LogonTicket_Enable
+          CHECKBOX
+          DEFCHECKED
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Ticket"
+          VALUENAME "LogonTicket"
+          VALUEON ""
+          VALUEOFF "xxxxxxxxx"
+        END PART
+      END POLICY
+    END CATEGORY
+
+    CATEGORY !!VirtualChannels
+      #if version >= 4
+      EXPLAIN !!Explain_VirtualChannels
+      #endif
+      ;
+      ; Remotely define Drive Mapping options
+      ;
+      POLICY !!Policy_EnableDriveMapping
+        EXPLAIN !!Explain_EnableDriveMapping
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Drives"
+        PART   !!Part_EnableDriveMappingCheckbox CHECKBOX
+          DEFCHECKED
+          VALUENAME "CDMAllowed"
+          VALUEON "true,false"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_EnableDriveMappingReadonly CHECKBOX
+          VALUENAME "CDMReadOnly"
+          VALUEON "true"
+          VALUEOFF "false,true"
+        END PART
+        PART   !!Part_EnableDriveMappingDisableDrives
+          COMBOBOX
+          VALUENAME "DisableDrives"
+          SUGGESTIONS
+            "C" "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
+          END SUGGESTIONS
+        END PART
+      END POLICY
+      ;
+      ; Remotely define Printer Settings
+      ;
+      POLICY !!Policy_EnablePrinterMapping
+        EXPLAIN !!Explain_EnablePrinterMapping
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Printing"
+        VALUENAME "VSLAllowed"
+        VALUEON "true,false"
+        VALUEOFF "false"
+      END POLICY
+      ;
+      ; Remotely define Hardware device access
+      ;
+      POLICY !!Policy_LocalPort
+        EXPLAIN !!Explain_LocalPort
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Serial Port"
+        ACTIONLISTOFF
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Serial Port"
+          VALUENAME "COMAllowed"
+          VALUE     "false"
+
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Serial Port"
+          VALUENAME "VirtualCOMPortEmulation"
+          VALUE     "false"
+
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Printing"
+          VALUENAME "CPMAllowed"
+          VALUE     "false"
+        END ACTIONLISTOFF
+        PART !!Part_MaxPort
+          EDITTEXT
+          VALUENAME "MaxPort"
+        END PART        
+        PART   !!Part_EnableSerialPortCheckbox CHECKBOX
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Serial Port"
+          DEFCHECKED
+          VALUENAME "COMAllowed"
+          VALUEON "true,false"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_EnableVirtualSerialPortCheckbox CHECKBOX
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Serial Port"
+          DEFCHECKED
+          VALUENAME "VirtualCOMPortEmulation"
+          VALUEON "true,false"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_EnableParallelPortCheckbox CHECKBOX
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Printing"
+          DEFCHECKED
+          VALUENAME "CPMAllowed"
+          VALUEON "true,false"
+          VALUEOFF "false"
+        END PART
+      END POLICY
+      ;
+      ; Remotely define Scanner/Camera Settings
+      ;
+      POLICY !!Policy_ImageCapture
+        EXPLAIN !!Explain_ImageCapture
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Image Capture"
+        VALUENAME "TWAINAllowed"
+        VALUEON "true,false"
+        VALUEOFF "false"
+      END POLICY
+      ;
+      ; Remotely define Bidirectional Audio Settings
+      ;
+      POLICY !!Policy_AudioInput
+        EXPLAIN !!Explain_AudioInput
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Audio"
+        VALUENAME "EnableAudioInput"
+        VALUEON "true,false"
+        VALUEOFF "false"
+        PART !!Part_BiDiAudio_Enable
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "EnableAudioInput"
+          VALUEON   "true,false"
+          VALUEOFF  "false"
+        END PART
+      END POLICY
+      ;
+      ; Remotely define Clipboard Settings
+      ;
+      POLICY !!Policy_Clipboard
+        EXPLAIN !!Explain_Clipboard
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Clipboard"
+        VALUENAME "ClipboardAllowed"
+        VALUEON "true,false"
+        VALUEOFF "false"
+      END POLICY
+      ;
+      ; Remotely define USB PNP Settings
+      ;
+      POLICY !!Policy_USB_PNP_Devices
+        EXPLAIN !!Explain_USB_PNP_Devices
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\DVC_PlugAndPlay"
+        VALUENAME "PNPDeviceAllowed"
+        VALUEON "true,false"
+        VALUEOFF "false"
+      END POLICY     
+      ;
+      ; Remotely define Point of Sales Settings
+      ;
+      POLICY !!Policy_PointOfSales
+        EXPLAIN !!Explain_PointOfSales
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\DVC_PlugAndPlay"
+        VALUENAME "POSDeviceAllowed"
+        VALUEON "true,false"
+        VALUEOFF "false"
+      END POLICY
+    END CATEGORY
+    CATEGORY !!UserExperience
+      #if version >= 4
+      EXPLAIN !!Explain_UserExperience
+      #endif
+      ;
+      ; Remotely define the ICA Client Audio Settings
+      ;
+      POLICY !!Policy_Audio
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Audio"
+        EXPLAIN !!Explain_Audio
+        PART   !!Part_Audio_Enabled
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "ClientAudio"
+          VALUEON "true,false"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_Audio_Quality 
+          DROPDOWNLIST
+          VALUENAME "AudioBandwidthLimit"
+          ITEMLIST
+            NAME "High"       VALUE "0-"
+            NAME "Low"        VALUE "2-"
+            NAME "Medium"     VALUE "1-" DEFAULT
+          END ITEMLIST
+        END PART
+        PART   !!Part_RealtimeTransport_Enabled
+          CHECKBOX
+          VALUENAME "EnableRtpAudio"
+          VALUEON "true,false"
+          VALUEOFF "false"
+        END PART        
+        PART !!Part_RtpAudioLowestPort
+          NUMERIC
+          TXTCONVERT
+          VALUENAME "RtpAudioLowestPort"
+          MIN 16384
+          MAX 32767
+          DEFAULT 16500
+          SPIN 2
+        END PART
+        PART !!Part_RtpAudioHighestPort
+          NUMERIC
+          TXTCONVERT
+          VALUENAME "RtpAudioHighestPort"
+          MIN 16384
+          MAX 32767
+          DEFAULT 16509
+          SPIN 2
+        END PART
+      END POLICY
+      ;
+      ; Remotely define Display settings  Settings
+      ;
+      POLICY !!Policy_Graphics
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Thinwire Graphics"
+        EXPLAIN !!Explain_Graphics
+        PART   !!Part_Graphics_ColorDepth 
+          DROPDOWNLIST
+          VALUENAME "DesiredColor"
+          ITEMLIST
+            NAME "16-bit color"    VALUE "4"
+            NAME "32-bit color"    VALUE "8" DEFAULT
+          END ITEMLIST
+        END PART
+        PART   !!Part_Graphics_DiskCache 
+          CHECKBOX
+          VALUENAME "PersistentCacheEnabled"
+          VALUEON "true"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_Graphics_ImageAcceleration 
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "SpeedScreenIA"
+          VALUEON "*"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_Graphics_SpeedScreenBrowser 
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "SpeedScreenBA"
+          VALUEON "*"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_Graphics_SpeedScreenBrowserCompression 
+          CHECKBOX
+          DEFCHECKED
+          VALUENAME "SpeedScreenBACompressionEnabled"
+          VALUEON "*"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_Graphics_SpeedScreenMultimedia 
+          CHECKBOX
+          DEFCHECKED
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Multimedia"
+          VALUENAME "SpeedScreenMMA"
+          VALUEON "*"
+          VALUEOFF "false"
+        END PART
+        PART   !!Part_Graphics_ZeroLatencyKeyboard
+          CHECKBOX
+          DEFCHECKED
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Zero Latency"
+          VALUENAME "ZLKeyboardMode"
+          VALUEON "2,1,0"
+          VALUEOFF "0"
+        END PART
+        PART   !!Part_Graphics_ZeroLatencyMouse
+          CHECKBOX
+          DEFCHECKED
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Zero Latency"
+          VALUENAME "ZLMouseMode"
+          VALUEON "2,1,0"
+          VALUEOFF "0"
+        END PART
+      END POLICY
+      ;
+      ; Remotely define Display settings  Settings
+      ;
+      POLICY !!Policy_Display
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Thinwire Graphics"
+        EXPLAIN !!Explain_Display
+        PART   !!Part_Display_Seamless 
+          COMBOBOX
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Seamless Windows"
+          VALUENAME "TWIMode"
+          SUGGESTIONS
+            "True" "False"
+          END SUGGESTIONS
+        END PART
+        PART   !!Part_Display_Width 
+          COMBOBOX
+          VALUENAME "DesiredHRES"
+          SUGGESTIONS
+            "1024-" "800-"
+          END SUGGESTIONS
+        END PART
+        PART   !!Part_Display_Height
+          COMBOBOX
+          VALUENAME "DesiredVRES"
+          SUGGESTIONS
+            "734-" "600-"
+          END SUGGESTIONS
+        END PART
+        PART   !!Part_Display_Percent
+          DROPDOWNLIST
+          VALUENAME "ScreenPercent"
+          ITEMLIST
+            NAME ""       VALUE "0" DEFAULT
+            NAME "50%"    VALUE "50"
+            NAME "75%"    VALUE "75%"
+            NAME "Other"  VALUE ""
+          END ITEMLIST
+        END PART
+	  PART   !!Part_Display_WorkArea
+          COMBOBOX
+	    KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Seamless Windows"
+          VALUENAME "TWIShrinkWorkArea"
+          SUGGESTIONS
+            "5"
+          END SUGGESTIONS
+        END PART
+        PART   !!Part_Display_FullScreen 
+          CHECKBOX
+          VALUENAME "TWIFullScreenMode"
+          VALUEON "true"
+          VALUEOFF "*"
+        END PART
+      END POLICY
+      ;
+      ; Remotely define Hotkeys
+      ;
+      POLICY !!Policy_Keyboard_Hotkeys
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Client Engine\Hot Keys"
+        EXPLAIN !!Explain_Keyboard_Hotkeys
+          PART   !!Part_Keyboard_Windows_Key
+            DROPDOWNLIST
+            KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Keyboard"
+            VALUENAME "TransparentKeyPassthrough"
+            ITEMLIST
+              NAME "Access Local Desktop"    VALUE "Local"
+              NAME "Access Remote Session"   VALUE "Remote"
+              NAME "Access Remote Session in full-screen only" VALUE "FullScreenOnly" DEFAULT
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Tasklist
+            DROPDOWNLIST
+            VALUENAME "HotKey1Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Shift"    VALUE "Shift" DEFAULT
+              NAME "Ctrl"     VALUE "Ctrl"
+              NAME "Alt"      VALUE "Alt"
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Tasklist_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey1Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "tab"   VALUE "tab"
+              NAME "star"  VALUE "star"
+              NAME "plus"  VALUE "plus"
+              NAME "minus" VALUE "minus"
+              NAME "F1"    VALUE "F1" DEFAULT
+              NAME "F2"    VALUE "F2"
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Close_Remote_Application
+            DROPDOWNLIST
+            VALUENAME "HotKey2Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Shift"    VALUE "Shift" DEFAULT
+              NAME "Ctrl"     VALUE "Ctrl"
+              NAME "Alt"      VALUE "Alt"
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Close_Remote_Application_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey2Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "tab"   VALUE "tab"
+              NAME "star"  VALUE "star"
+              NAME "plus"  VALUE "plus"
+              NAME "minus" VALUE "minus"
+              NAME "F1"    VALUE "F1"
+              NAME "F2"    VALUE "F2"
+              NAME "F3"    VALUE "F3" DEFAULT
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Toggle_Title_Bar
+            DROPDOWNLIST
+            VALUENAME "HotKey3Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Shift"    VALUE "Shift" DEFAULT
+              NAME "Ctrl"     VALUE "Ctrl"
+              NAME "Alt"      VALUE "Alt"
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Toggle_Title_Bar_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey3Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "tab"   VALUE "tab"
+              NAME "star"  VALUE "star"
+              NAME "plus"  VALUE "plus"
+              NAME "minus" VALUE "minus"
+              NAME "F1"    VALUE "F1"
+              NAME "F2"    VALUE "F2" DEFAULT
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Ctrl_Alt_Del
+            DROPDOWNLIST
+            VALUENAME "HotKey4Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Shift"    VALUE "Shift"
+              NAME "Ctrl"     VALUE "Ctrl" DEFAULT
+              NAME "Alt"      VALUE "Alt"
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Ctrl_Alt_Del_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey4Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "tab"   VALUE "tab"
+              NAME "star"  VALUE "star"
+              NAME "plus"  VALUE "plus"
+              NAME "minus" VALUE "minus"
+              NAME "F1"    VALUE "F1" DEFAULT
+              NAME "F2"    VALUE "F2"
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Ctrl_Shift_Esc
+            DROPDOWNLIST
+            VALUENAME "HotKey9Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Shift"    VALUE "Shift"
+              NAME "Ctrl"     VALUE "Ctrl" DEFAULT
+              NAME "Alt"      VALUE "Alt"
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Ctrl_Shift_Esc_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey9Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "tab"   VALUE "tab"
+              NAME "star"  VALUE "star"
+              NAME "plus"  VALUE "plus"
+              NAME "minus" VALUE "minus"
+              NAME "F1"    VALUE "F1"
+              NAME "F2"    VALUE "F2"
+              NAME "F3"    VALUE "F3" DEFAULT
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Alt_Tab
+            DROPDOWNLIST
+            VALUENAME "HotKey7Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Shift"    VALUE "Shift"
+              NAME "Ctrl"     VALUE "Ctrl"
+              NAME "Alt"      VALUE "Alt" DEFAULT
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Alt_Tab_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey7Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "tab"   VALUE "tab"
+              NAME "star"  VALUE "star"
+              NAME "plus"  VALUE "plus" DEFAULT
+              NAME "minus" VALUE "minus"
+              NAME "F1"    VALUE "F1"
+              NAME "F2"    VALUE "F2"
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Alt_Backtab
+            DROPDOWNLIST
+            VALUENAME "HotKey8Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Shift"    VALUE "Shift"
+              NAME "Ctrl"     VALUE "Ctrl"
+              NAME "Alt"      VALUE "Alt" DEFAULT
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Alt_Backtab_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey8Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "tab"   VALUE "tab"
+              NAME "star"  VALUE "star"
+              NAME "plus"  VALUE "plus"
+              NAME "minus" VALUE "minus" DEFAULT
+              NAME "F1"    VALUE "F1"
+              NAME "F2"    VALUE "F2"
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Ctrl_Esc
+            DROPDOWNLIST
+            VALUENAME "HotKey5Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Shift"    VALUE "Shift"
+              NAME "Ctrl"     VALUE "Ctrl" DEFAULT
+              NAME "Alt"      VALUE "Alt"
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Ctrl_Esc_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey5Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "tab"   VALUE "tab"
+              NAME "star"  VALUE "star"
+              NAME "plus"  VALUE "plus"
+              NAME "minus" VALUE "minus"
+              NAME "F1"    VALUE "F1"
+              NAME "F2"    VALUE "F2" DEFAULT
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Ctrl_Alt
+            DROPDOWNLIST
+            VALUENAME "HotKey6Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Shift"    VALUE "Shift"
+              NAME "Ctrl"     VALUE "Ctrl"
+              NAME "Alt"      VALUE "Alt" DEFAULT
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Ctrl_Alt_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey6Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "tab"   VALUE "tab"
+              NAME "star"  VALUE "star"
+              NAME "plus"  VALUE "plus"
+              NAME "minus" VALUE "minus"
+              NAME "F1"    VALUE "F1"
+              NAME "F2"    VALUE "F2" DEFAULT
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5"
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+            END ITEMLIST
+          END PART
+          PART   !!Part_Keyboard_Hotkey_Toggle_Latency_Reduction
+            DROPDOWNLIST
+            VALUENAME "HotKey10Shift"
+            ITEMLIST
+              NAME "<Disabled>" VALUE "(none)"
+              NAME "Shift"    VALUE "Shift"
+              NAME "Ctrl"     VALUE "Ctrl" DEFAULT
+              NAME "Alt"      VALUE "Alt"
+            END ITEMLIST
+          END PART
+          PART !!Part_Keyboard_Hotkey_Toggle_Latency_Reduction_Plus
+            DROPDOWNLIST
+            VALUENAME "HotKey10Char"
+            ITEMLIST
+              NAME "<Disabled>"   VALUE "(none)"
+              NAME "tab"   VALUE "tab"
+              NAME "star"  VALUE "star"
+              NAME "plus"  VALUE "plus"
+              NAME "minus" VALUE "minus"
+              NAME "F1"    VALUE "F1"
+              NAME "F2"    VALUE "F2"
+              NAME "F3"    VALUE "F3"
+              NAME "F4"    VALUE "F4"
+              NAME "F5"    VALUE "F5" DEFAULT
+              NAME "F6"    VALUE "F6"
+              NAME "F7"    VALUE "F7"
+              NAME "F8"    VALUE "F8"
+              NAME "F9"    VALUE "F9"
+              NAME "F10"   VALUE "F10"
+              NAME "F11"   VALUE "F11"
+              NAME "F12"   VALUE "F12"
+            END ITEMLIST
+          END PART
+        END POLICY
+      ;
+      ; Remotely define Display settings  Settings
+      ;
+      POLICY !!Policy_PublishedApplications
+        KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Client Engine\Application Launching"
+        EXPLAIN !!Explain_PublishedApplications
+        PART   !!Part_PublishedApplications_InitialProgram
+          COMBOBOX
+          VALUENAME "InitialProgram"
+          SUGGESTIONS
+            "#Notepad" "#*"
+          END SUGGESTIONS
+        END PART
+        PART   !!Part_PublishedApplications_SessionSharing
+          CHECKBOX
+          DEFCHECKED
+          KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Client Engine\Session Sharing"
+          VALUENAME "EnableSessionSharing"
+          VALUEON "*"
+          VALUEOFF "false"
+        END PART
+      END POLICY
+    END CATEGORY
+	
+	CATEGORY !!ClientEngine
+      #if version >= 4
+      EXPLAIN !!Explain_ClientEngine
+      #endif
+	  ;
+      ; Define settings  for ICA file
+      ;
+		POLICY !!Policy_ICAFileSettings
+			KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Client Engine\ICA File"
+			EXPLAIN !!Explain_ICAFileSettings
+		    PART   !!Part_ICAFileSettings_RemoveICAFile
+			  CHECKBOX
+			  KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Client Engine\ICA File"
+			  VALUENAME "RemoveICAFile"
+			  VALUEON "True"
+			  VALUEOFF "False"
+			END PART
+		END POLICY
+	      ;
+	      ; Allow Legacy Client Session Sharing Behavior
+	      ;
+	      POLICY !!Policy_AllowLegacySessionSharing
+		EXPLAIN !!Explain_AllowLegacySessionSharing
+		KEYNAME "Software\Policies\Citrix\ICA Client"
+		PART !!Part_AllowLegacySessionSharing_SessionSharing
+		  CHECKBOX
+		  VALUENAME "AllowLegacySessionSharing"
+		  KEYNAME "Software\Policies\Citrix\ICA Client"
+		  VALUEON "1"
+		  VALUEOFF "0"
+		  END PART
+	      END POLICY		
+	END CATEGORY
+	CATEGORY !!MultiStreamICA
+      #if version >= 4
+      EXPLAIN !!Explain_MultiStreamICA
+      #endif
+	 ;
+      ; Define settings  for MSI
+      ;
+		POLICY !!Policy_MSISettings
+		    KEYNAME "Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\Multi-Stream"				    EXPLAIN !!Explain_MSISettings
+		    PART   !!Part_MSISettings_Enable
+			   CHECKBOX
+			   DEFCHECKED
+			   VALUENAME "MSIEnabled"
+			   VALUEON "True"
+			   VALUEOFF "False"
+			END PART
+        	    PART !!Part_MSISettings_MaxStreams 
+			   NUMERIC
+			   TXTCONVERT
+          		   VALUENAME "MSIMaxStreams"
+			   DEFAULT 4
+			   MIN 0
+			   MAX 4
+        		END PART
+		END POLICY
+	END CATEGORY
+
+  END CATEGORY
+END CATEGORY
+
+
+[strings]
+;
+; Group Policy Directory Structure
+;
+Citrix="Citrix Components"
+Explain_Citrix="The group policies in this folder can be used to manage your Citrix Systems Access Infrastructure."
+
+ICAClient="Citrix Receiver"
+Explain_ICAClient="The Citrix Receiver is used to connect to remote applications and desktops in server farms."
+
+Network="Network routing"
+Explain_Network="These policies can be used to control how the Citrix Receiver routes its connections to a server farm."
+
+Authentication="User authentication"
+Explain_Authentication="These policies control how the Citrix Receiver authenticates its user to a remote application or desktop."
+
+VirtualChannels="Remoting client devices"
+Explain_VirtualChannels="These policies control how the server accesses client machine resources.  The Citrix Receiver can be configured to allow remote applications to use disk-drives, printers, etc. as if running on the client machine."
+
+UserExperience="User experience"
+Explain_UserExperience="The Citrix Receiver can be configured to interact with client machine applications in different ways.  These settings can be used to control how client machines present remote applications and desktops to the user."
+
+Proxy="Proxy"
+Explain_Proxy="The Citrix Receiver can be configured to use specific proxy routing for remote application and desktops.  These settings allow client proxies to be configured independently of other programs on the client machine."
+
+ClientEngine="Client Engine"
+Explain_ClientEngine="The Citrix Receiver can be configured to interact with client engine configuration properties like ICA File Settings"
+
+MultiStreamICA="Multi-Stream ICA"
+Explain_MultiStreamICA="These policies control the Multi-Stream ICA feature."
+
+RealTimeTransport="Real-time transport"
+Explain_RealTimeTransport="Real-time transport"
+ 
+;
+; Top Level Policies
+;
+Policy_EnableICAClient="Allow client connections"
+Explain_EnableICAClient="Use this policy to enable or completely disable connections from the Citrix Receiver.  \n\nWhen this policy is not configured, the client will allow connection to servers.  \n\nWhen this policy is enabled, the client will only connect to a server if the "Enable client" option is selected, and if its version number is greater or equal to the "Minimum client version".  \n\nWhen the policy is disabled, the client will not allow connections to any servers.  \n\n\nTroubleshooting:\nIf a connection is refused because the client is not enabled, the error message "<Server> ERROR:  Cannot connect to the Citrix XenApp server.  The Server (…) is not trusted for ICA connections.  Connections to the (All Regions) Region are not allowed by lockdown settings.  Please contact your administrator." appears.  \n\nIf the client does not allow a connection because the version number is too low, the error message "Error number 2321:  ICA Client Configuration Manager:  The ICA Client version is too low to run using the installed configuration data." appears."
+Part_EnableICAClient_Enable="Enable client"
+Part_EnableICAClient_Minimum="Minimum client version"
+
+;
+; Network Policies
+;
+
+;
+; Proxy Policies
+;
+Policy_ProxyLockdown="Configure client proxy settings"
+Explain_ProxyLockdown="Use this policy to configure the primary network proxies that the client can use when connecting to a remote application or desktop.  \n\nWhen this policy is not configured, the client will use its own settings to decide whether to connect through a proxy server.  \n\nWhen this policy is enabled, the client will use the proxy configured based on the proxy type selected:\n\nProxy type:  None\n\nWhen "None" is selected, the client will attempt to connect to the server directly without traversing a proxy server.\n\nProxy type:  Auto\n\nWhen "Auto" is selected, the client will use the local machine settings to determine which proxy server to use for a connection.  This is usually the settings used by the Web browser installed on the machine.\n\nProxy type:  Script\n\nWhen "Script" is selected, the client will retrieve a JavaScript based ".pac" file  from the URL specified in the "Proxy script URLs" policy option.  The ".pac" file is executed to identify which proxy server should be used for the connection.\n\nProxy type:  Secure\n\nWhen "Secure" is selected, the client will contact the proxy identified by the "Proxy host names" and "Proxy ports" settings.  The negotiation protocol will use a "HTTP CONNECT" header request specifying the desired destination address.  This proxy protocol is commonly used for HTTP based traffic, and supports GSSAPI proxy authentication.\n\nProxy Type:  SOCKS/SOCKS V4/SOCKS V5\n\nWhen a "SOCKS" proxy is selected, the client will perform a SOCKS V4 or SOCKS V5 handshake to the proxy identified by the "Proxy hostnames" and "Proxy ports" settings.  The "SOCKS" option will detect and use the correct version of Socks.\n\n\nFor any proxy type, you can provide a list of servers that do not traverse the proxy.  These should be placed in the "Bypass server list".\n\n\nTroubleshooting:\nSome client platforms do not support the "Auto" proxy type due to operating system limitations.  See the appropriate Administrator's Guide for details.  For these platforms, the proxy settings should be manually set on the client device.  \n\nWhen configuring the Web Interface server, an appropriate proxy server can be indicated for the particular location of the client.  When configuring proxies via Group Policy, it is important to avoid overriding these settings.  Where multiple proxies can be chosen, simply use a comma-separated list of options with the first being the default.  \n\nMost Intranet client deployments should use the "None" option for the proxy type, otherwise the client may attempt to connect over the Internet.  For more advanced deployments the "Bypass server list" option can be used, alternatively ".pac" scripts or Trusted Server Configuration are available to suit the network topology.  \n\nSome proxy servers will automatically disconnect connections that are idle for a certain length of time.  This can cause client sessions to be disconnected when not in use.  A server-side option "ICA Keep-Alive" is available to send extra data packets during periods of inactivity that can be used prevent proxies closing connections."
+Part_Proxy_ProxyTypeLockdown="Proxy types"
+Part_Proxy_ProxyHostLockdown="Proxy host names"
+Part_Proxy_ProxyPortLockdown="Proxy ports"
+Part_Proxy_ProxyAutoConfigUrlLockdown="Proxy script URLs"
+Part_Proxy_ProxyBypassListLockdown="Bypass server list"
+
+;
+; AltProxy Policies
+;
+Policy_AltProxyLockdown="Configure client failover proxy settings"
+Explain_AltProxyLockdown="Use this policy to configure alternative network proxies that the client can use if the primary network proxy fails to connect to a remote application or desktop.  \n\nWhen this policy is not configured, the client will use its own settings to decide whether to connect through a proxy server.  \n\nWhen this policy is enabled, the client will attempt a connection using an alternative proxy if connection to a primary proxy fails.  The failover proxy settings operate in an identical fashion to the primary proxy settings.  \n\nIf both the primary and alternative proxy fail to service the connection, selecting the "Failover to direct" check box instructs the client to attempt a final direct connection with no proxies.\n\n\nTroubleshooting:\nSome proxy failures can make the client appear to hang on connection.  This is usually due to the proxy server reattempting the connection itself, or having a long time-out period.  Depending on the network topology, it may be preferable to configure the Web Interface server to identify the currently functioning proxy, or alter the proxy server time-out settings."
+Part_AltProxy_ProxyTypeLockdown="Proxy types"
+Part_AltProxy_ProxyHostLockdown="Proxy host names"
+Part_AltProxy_ProxyPortLockdown="Proxy ports"
+Part_AltProxy_ProxyAutoConfigUrlLockdown="Proxy script URLs"
+Part_AltProxy_ProxyBypassListLockdown="Bypass server list"
+Part_AltProxy_ProxyFallbackLockdown="Failover to direct"
+
+;
+; SOCKS Proxy Policies
+;
+Policy_ProxySocks="Configure SOCKS proxy settings"
+Explain_ProxySocks="Use this policy to configure the use of additional SOCKS proxies that are required for some advanced network topologies.  \n\nWhen enabled, the client will examine the "SOCKS protocol version" setting.  If connection via SOCKS is not disabled, the client will attempt to connect using the SOCKS proxy specified by the "Proxy host names" and "Proxy ports" settings.  \n\nThe client supports connections using either SOCKS v4 or SOCKS v5 proxy servers.  Alternatively, it can attempt to automatically detect the version being used by the proxy server.  \n\n\nTroubleshooting:\nThe SOCKS proxy settings are designed for traversing a proxy in addition to the primary or alternative proxy server.  When traversing only a single proxy, these SOCKS proxy settings should be disabled."
+Part_ProxySocks_Version="SOCKS protocol version"
+Part_ProxySocks_ProxyHostLockdown="Proxy host names"
+Part_ProxySOCKS_ProxyPortLockdown="Proxy ports"
+
+;
+; Proxy Authentication Policies
+;
+Policy_ProxyAuthentication="Configure proxy authentication"
+Explain_ProxyAuthentication="Use this policy to control the authentication mechanisms that the client uses when connecting to a proxy server.  Authenticating proxy servers can be used to monitor data traffic in large network deployments.  \n\nIn general, authentication is handled by the operating system but in some scenarios, the user may be provided with a specific user name and password.  To prevent the user from being specifically prompted for these credentials, clear the "Prompt user for credentials" check box.  This will force the client to attempt an anonymous connection.  Alternatively, you can configure the client to connect using credentials passed to it by the Web Interface server, or these can be explicitly specified via Group Policy using the "Explicit user name" and "Explicit password" options.  \n\n\nTroubleshooting:\nIn general NTLM proxy authentication will be performed under the control of the Domain Controller, and cannot be controlled by the client.  Both client and proxy will need to be configured with the appropriate domain level trust relations.  \n\nProxy authentication cannot be linked to the pass-through authentication feature of the client.  In general, the proxy password will be unrelated to users' passwords."
+Policy_ProxyExplicitAuthenticationEnabled="Prompt user for credentials"
+Policy_ProxyBasicAuthenticationEnabled="Allow clear text authentication"
+Policy_ProxyNTLMAuthenticationEnabled="Allow NTLM hash authentication"
+Part_Proxy_Socks5User="Explicit user name"
+Part_Proxy_Socks5Password="Explicit password"
+
+
+;
+; Network Policies
+;
+
+;
+; Client Reconnect and CGP Policies
+;
+Policy_ClientAutoReconnect="Session reliability and automatic reconnection"
+Explain_ClientAutoReconnect="Use this policy to control how the client behaves when a network failure causes a dropped connection.    \n\nIf you select "Enable" and then choose a check box for "Enable session reliability" and/or "Enable automatic reconnection," the client attempts to reconnect to a server. By default, the client tries to reconnect three times.  To change the default, specify a number in the “Number of retries” text box.  \n\nThe "Enable session reliability" selection enables reconnection to an SSL/TLS server.  Support for this setting depends on the SSL server configuration. The "Enable automatic reconnection" setting enables auto reconnection. If both options are enabled, session reliability has precedence. If session reliability is unable to reconnect, auto reconnection tries to connect. If "Enabled" is selected, but you do not choose one of the check boxes, the policy is not enforced.  \n\n\nTroubleshooting:\nSome proxy servers automatically disconnect connections that are idle for a certain length of time.  This can cause client sessions to be disconnected when not in use.  A server-side option "ICA Keep-Alive" is available to send extra data packets during periods of inactivity that can be used prevent proxies from closing connections."
+Part_ClientAutoReconnect_Reconnect="Enable automatic reconnection"
+Part_ClientAutoReconnect_CGP="Enable session reliability (has precedence if both are selected)"
+Part_ClientAutoReconnect_Attempts="Number of retries"
+
+
+;
+; SSL/TLS Policies
+;
+Policy_SSLLockdown="TLS/SSL data encryption and server identification"
+Explain_SSLLockdown="Use this policy to configure the TLS/SSL options that help to ensure the client securely identifies the server that it is connecting to, and encrypts data so that confidential data cannot be intercepted.  Citrix recommends that any connection over untrusted networks use TLS/SSL or another encryption solution with at least the same level of protection.\n\nWhen this policy is enabled, you can force the plug-in to use TLS/SSL for all connections to published applications and desktops by checking the "Require SSL for all connections" checkbox.\n\nThe plug-in identifies the server by the name on the security certificate that the server presents.  This has the form of a DNS name; for example,  www.citrix.com.  You can restrict the plug-in to connect only to particular servers specified by a comma separated list in the "Allowed SSL servers" setting.  Wildcards and port numbers can be specified here; for example,  *.citrix.com:4433 allows connection to any server whose common name ends with  .citrix.com on port 4433. The accuracy of the information in a security certificate is asserted by the certificate's issuer.  If the plug-in does not recognize and trust a certificate's issuer, the connection is rejected.\n\nWhen connecting by TLS/SSL, the server may be configured to require the plug-in provide a security certificate identifying itself.  Use the "Client Authentication" setting to configure whether or not identification is provided automatically or if the user is notified.  The options are to:\n\n- never supply identification\n- only use the certificate configured here\n- to always prompt the user to select a certificate\n- to prompt the user only if there a choice of certificate to supply\nUse the "Client Certificate" setting to specify the identifying certificate's thumbprint to avoid prompting the user unnecessarily.\n\nWhen verifying the server's security certificate, you can configure the plug-in to contact the certificate's issuer to obtain a Certificate Revocation List (CRL) to ensure that the server certificateis still acceptable.  This enables a certificate to be invalidated by its issuer should a system be compromised.  Use the “CRL verification setting” to configure the plug-in to:\n- not check CRLs at all\n- only check CRLs that have been previously obtained from the issuer\n- actively retrieve an up-to-date CRL\n- to refuse to connect unless it can obtain an up-to-date CRL\n\nOrganizations that configure TLS/SSL for a range of products can choose to identify servers intended for Citrix plug-ins by specifying a Certificate Policy OID as part of the security certificate.  If a Policy OID is configured here, the plug-in accepts only certificates that declare a compatible Policy.\n\nSome security policies have requirements related to the cryptographic algorithms used for a connection.  You can restrict the plug-in to use only TLS v1.0 or SSL v3.0 with the "SSL/TLS version" setting.  Similarly, you can restrict the plug-in to use only certain cryptographic ciphersuites:\n\nGovernment Ciphersuites:\n  TLS_RSA_WITH_AES_256_CBC_SHA\n  TLS_RSA_WITH_3DES_EDE_CBC_SHA\n\nCommercial Ciphersuites:\n  TLS_RSA_WITH_AES_128_CBC_SHA\n  TLS_RSA_WITH_RC4_128_SHA\n  TLS_RSA_WITH_RC4_128_MD5\n\nTroubleshooting:\n
+For more information to troubleshoot TLS/SSL error messages, see the Citrix Knowledgebase article CTX711855\n"
+Part_SSL_EnabledLockdown="Require SSL for all connections"
+Part_SSL_SSLProxyHostLockdown="Allowed SSL servers"
+Part_SSL_SSLPolicyOID="Policy Extension OID"
+Part_SSL_SSLProtocolLockdown="SSL/TLS version"
+Part_SSL_CiphersuiteLockdown="SSL ciphersuite"
+Part_SSL_RevocationLockdown="CRL verification"
+Part_SSL_ClientAuthentication="Client Authentication"
+Part_SSL_ClientCertificate="Client Certificate"
+
+;
+; Client Selective Trust Policy
+;
+Policy_ConfigureClientSelectiveTrust="Configure trusted server configuration"
+Explain_ConfigureClientSelectiveTrust="Use this policy to control how the client identifies the published application or desktop it is connecting to.  The client will determine a trust level, called a "trust region" with a connection.  The trust region will then determine how the client is configured for the connection.  \n\nWhen this policy is enabled, the client can be forced to perform region identification using the "Enforce trusted server configuration" option.  \n\nBy default, region identification is based on the address of the server the client is connecting to.  To be a member of the trusted region, the server must be a member of the Windows Trusted Sites zone.  You can configure this using the "Windows Internet zone" setting.  \n\nAlternatively, for compatibility with non-Windows clients, the server address can be specifically trusted using the "Address" setting.  This is a comma-separated list of servers supporting the use of wildcards, for example, cps*.citrix.com.  \n\n\nTroubleshooting:\nIn the default configuration, when trusted server configuration prevents the client from connecting, the following error message is displayed:\n\n    "<Server> ERROR:  Cannot connect to the Citrix XenApp server.  The server (xxx) is not trusted for ICA connections.  Connections to the (Untrusted Region) Region are not allowed by lockdown settings.  Please contact your administrator."\n\nThe server identified in the "xxx" must be added to the Windows Trusted Sites zone (as either http:// or https:// for SSL connections) for the connection to succeed.  \n\nNote that for SSL connections, the certificate common name must be trusted.  For non-SSL connections all servers that are contacted must be individually trusted.  This means that when using application browsing, both the XML service and the server this redirects to must be trusted."
+Part_ConfigureClientSelectiveTrust_IEZone="Windows internet zone"
+Part_ConfigureClientSelectiveTrust_EffectiveAddress ="Address"
+Part_EnableClientSelectiveTrust="Enforce trusted server configuration"
+
+;
+; Smartcard Policy
+;
+Policy_Smartcard="Smart card authentication"
+Explain_Smartcard="Use this policy to control how the client uses smart cards attached to the client device.  \n\nWhen enabled, this policy allows the remote server to access smart cards attached to the client device for authentication and other purposes.  \n\nWhen disabled, the server cannot access smart cards attached to the client device.  \n\n\nTroubleshooting:\nWhen using smart cards in a Citrix environment, the smart card device driver must be installed on the server.  When using a different operating system on the client machine, it may be necessary to ensure that the smart card device drivers in use interoperate correctly."
+Part_Smartcard_Enable="Allow smart card authentication"
+Part_SmartcardPin_Enable="Use pass-through authentication for PIN"
+
+;
+; Web Interface tickets.
+;
+Policy_WITicket="Web Interface authentication ticket"
+Explain_WITicket="Use this policy to control the ticketing infrastructure used when authenticating through the Web Interface.  \n\nWhen this policy is enabled, legacy Web Interface ticketing can be disabled by clearing the "Legacy ticket handling" check box.  Legacy Web Interface ticketing was implemented by passing a single-use authentication cookie to the server in the ClearText password field.  \n\nStarting with version 4.5 of the Web Interface, the client handles an authentication token in the form of an opaque LogonTicket with an associated interpretation defined by the LogonTicketType.  This functionality can be disabled by clearing the "Web Interface 4.5 and above" check box."
+Part_WITicket_Legacy_Enable="Legacy ticket handling"
+Part_WITicket_LogonTicket_Enable="Web Interface 4.5 and above"
+
+;
+; Kerberos authentication.
+;
+Policy_KerberosLockdown="Kerberos authentication"
+Explain_KerberosLockdown="Use this policy to control how the client uses Kerberos to authenticate the user to the remote application or desktop.\n\nWhen enabled, this policy allows the client to authenticate the user using the Kerberos protocol.  Kerberos is a Domain Controller authorised authentication transaction that avoids the need to transmit the real user credential data to the server.  \n\nWhen disabled, the client will not attempt Kerberos authentication.  \n\n\nTroubleshooting:\nThe machine running the client and the server running the remote application must be in domains that have a trust relationship.  The Domain Controller must be aware that the Citrix XenApp server will be performing a full user logon (interactive logon) using Kerberos.  This is configured using the "Trust for Delegated Authentication" settings on the Domain Controller.\n\nWhen connecting using the Web Interface, the Web Interface server must be aware that the client will connect using Kerberos authentication.  This is necessary because by default the Web Interface server will use an IP address for the destination server whereas Kerberos authentication requires a Fully Qualified Domain Name.\n\nBoth client and server machines must have correctly registered DNS entries.  This is necessary because endpoints will authenticate each other during connection."
+
+;
+; SSon.
+;
+Policy_LocalCredentialsLockdown="Local user name and password"
+Explain_LocalCredentialsLockdown="Use this policy to instruct the client to use the same logon credentials (pass-through authentication) for the Citrix XenApp server as the client computer.  \n\nWhen this policy is enabled, the client can be prevented from using the current user's logon credentials to authenticate to the remote server by clearing the "Enable pass-through authentication" check box.  \n\nThe client imposes certain restrictions specifying when pass-through authentication can occur (for details, see Citrix eDocs at http://support.citrix.com/proddocs/).  If these restrictions are too strict for your environment, select the "Allow pass-through authentication for all ICA connections" check box to bypass the pass-through authentication restrictions. \n\nWhen run in a Novell Directory Server environment, selecting the "Use Novell Directory Server credentials" check box requests that the client uses the user’s NDS credentials.  \n\n\nTroubleshooting:\nTo enable pass-through authentication, the client must have been installed by an administrator, and the "Allow Local Credential Pass-through" option must have been selected at that time.  \n\nEach user can choose to disable pass-through authentication through the client registry settings, the Program Neighbourhood window, or by editing their copy of AppSrv.ini.  To enable pass-through authentication, the user's copy of AppSrv.ini must contain the setting "EnableSSonThruICAFile=true"."
+Part_LocalCredentialsLockdown_Enable="Enable pass-through authentication"
+;Part_LegacyLocalUserNameAndPassword_Enable="Allow pass-through authentication for all ICA connections"
+Part_NovellCredentials="Use Novell Directory Server credentials"
+
+
+Policy_EnableDriveMapping="Client drive mapping"
+Explain_EnableDriveMapping="Use this policy to enable and restrict the remote application or desktop's access to the client file systems.  \n\nWhen enabled, the client will completely deny client drive mapping (CDM) virtual channel access to the client's file system if the check box "Enable client drive mapping" is not selected.  This stops the DLL implementing the client drive mapping virtual channel (vdcdmn.dll) from loading on client start up.  At this point, you can delete the DLL from the client package.  \n\nIf CDM is enabled, further options are available to restrict the type of access available to the server.  If the "Read-only client drives" check box is selected, the CDM virtual channel only permits read access to client drives.  \n\nAccess to Windows drives can be disabled by entering the relevant drive letter in the "Do not map drives" box.  This is a concatenation of all drives that should not be mapped when connecting to a published application or desktop, for example "ABFK" disables the drives A, B, F and K.  \n\n\nTroubleshooting:\nThese policies do not override the selections made by the user in the File Security dialog boxes.  These can be accessed at any time via the Client Connection Center."
+Part_EnableDriveMappingCheckbox="Enable client drive mapping"
+Part_EnableDriveMappingReadonly="Read-only client drives"
+Part_EnableDriveMappingDisableDrives="Do not map drives"
+
+Policy_EnablePrinterMapping="Client printers"
+Explain_EnablePrinterMapping="Use this policy to enable and restrict the remote application or desktop's access to client printers.  \n\nWhen this policy is disabled, the client prevents the server from accessing or printing to printers available to the client device."
+Part_EnablePrinterMapping="Map client printers"
+
+
+Policy_LocalPort="Client hardware access"
+Explain_LocalPort="Use this policy to specify maximum number of serial ports supported by the client platform. \n\nAlso, use this policy to enable and restrict the remote application or desktop's access to the client’s serial, USB, and parallel ports. This allows the server to use locally attached hardware. \n\n\nTroubleshooting:\nRemote PDA synchronization uses "virtual COM ports".  These are serial port connections that are routed through USB connections.  It is necessary to enable serial port access to use PDA synchronization for this reason."
+Part_MaxPort="Maximum serial ports"
+Part_EnableSerialPortCheckbox="Map serial ports"
+Part_EnableVirtualSerialPortCheckbox="Allow PDA synchronization"
+Part_EnableParallelPortCheckbox="Map parallel ports"
+
+
+Policy_ImageCapture="Image capture"
+Explain_ImageCapture="Use this policy to enable and restrict the remote application or desktop's access to scanners, webcams, and other imaging devices on the client device."
+
+Policy_AudioInput="Client microphone"
+Explain_AudioInput="Use this policy to enable and restrict the remote application or desktop's access to local audio capture devices (microphones)."
+Part_BiDiAudio_Enable="Enable client microphone"
+
+Policy_Clipboard="Clipboard"
+Explain_Clipboard="Use this policy to enable and restrict the remote application or desktop's access to the client clipboard contents."
+Part_Clipboard_Enabled="Enable clipboard"
+
+Policy_USB_PNP_Devices="USB Plug-n-Play Devices"
+Explain_USB_PNP_Devices="Use this policy to enable and disable published application or desktop access to the client USB Plug-n-Play devices. The Not Configured setting allows device access until you explicitly enable or disable access."
+Part_USB_PNP_Enabled="Enable PNP"
+
+Policy_PointOfSales="USB Point of Sale Devices"
+Explain_PointOfSales="Use this policy to enable and disable published application or desktop access to the client USB Point of Sale devices. This policy is applied if the USB Plug-n-Play Devices policy is set to Enabled and Not Configured."
+Part_PointOfSales_Enabled="Enable POS"
+
+Policy_Audio="Client audio settings"
+Explain_Audio="Use this policy to control how sound effects and music produced by remote applications or desktops are directed to the client machine.  \n\nWhen this policy is enabled, the "Enable audio" check box can be used to completely disable client audio mapping.  This does not affect the client to server audio data, which is controlled through the "Remoting client devices" policy.  \n\nIt is also possible to control the audio quality.  Three quality levels are supported: low, medium and high.  This setting affects both server to client and client to server audio quality.  Note that the bandwidth requirements for high quality audio could make this setting unsuitable for many deployments.  \n\n\nTroubleshooting:\nThe server audio options take precedence over these settings, so selecting high quality from the client might not result in a high quality audio being used.  The server cannot increase the quality of the audio selected by the client.\n\nWhen using voice dictation software, it is usually necessary to select high quality audio settings.  \n\nAudio settings are chosen on a per-session basis, not per-application.  All applications sharing a session will share the same audio settings."\n\nReal-Time Transport:\nAllows transmission using Real-Time Protocol.\nRange of RRP/UDP Source Ports to use.\nThe host will attempt to use a UDP port pair starting from the lowest number port first, incrementing by 2 until it attempts the highest port. These UDP ports would be used to send and receive audio data between the host and the client.\nThe port range should start with an even number ending with an odd number."
+Part_Audio_Enabled="Enable audio"
+Part_Audio_Quality="Sound quality"
+Part_RealtimeTransport_Enabled="Enable Real-Time Transport"
+Part_RtpAudioLowestPort="Lowest Port Number"
+Part_RtpAudioHighestPort="Highest Port Number"
+
+Policy_Graphics="Client graphics settings"
+Explain_Graphics="Use this policy to control the quality of graphics presented by remote applications or desktops.  Lower quality graphics can help to improve the user experience when there is restricted bandwidth available. \n\nColor depth:\n\nThis specifies the preferred color depth for a session.  In general, low color depths give better performance over low bandwidth; however some of the compression technologies available can only be used with full color, so the effective performance depends on the individual application and usage pattern. The server may choose not to honor the color depth setting chosen because higher color depths result in heavy memory usage on the servers.  \n\n\nDisk-based caching:\n\nFor client devices with limited RAM, better compression rates can be achieved by saving temporary graphics objects to the disk cache.  \n\n\nLossy compression:\n\nFor maximum compression and responsiveness, the server will sometimes allow the transfered image data to degrade in quality.  This usually occurs when the connection is slow, or bandwidth is limited and large area updates are taking place.  This is not appropriate for all applications and usages.  Clearing this setting forces all image data to be transmitted at full quality.\n\n\nHDX 3D browser acceleration:\n\nThis feature allows images being displayed by Microsoft Internet Explorer to be specially handled by the HDX 3D Browser Acceleration virtual channel.  This improves responsiveness when using Microsoft Internet Explorer remotely.\n\n\nHDX 3D browser acceleration lossy compression:\n\nThis is an extension to the HDX 3D browser acceleration setting, allowing images displayed by Microsoft Internet Explorer to be degraded before transmission to the client.  This is not appropriate for all applications and usages.  Clearing this option forces all Web browser image data to be transmitted at full quality.\n\n\nRemote Video:\n\nThe remote video option allows the server to directly stream certain video data to the client.  This provides better performance than decompressing and recompressing video data on the computer running Citrix XenApp.\n\n\nSpeedScreen Latency Reduction:\n\nEnabling SpeedScreen Latency Reduction settings allows the client to predict how mouse movement and text entry will appear on the server.  This results in the user getting immediate feedback when typing or moving the mouse pointer."
+Part_Graphics_ColorDepth="Color depth"
+Part_Graphics_ImageAcceleration="Lossy compression"
+Part_Graphics_SpeedScreenBrowser="HDX 3D Browser Acceleration"
+Part_Graphics_SpeedScreenBrowserCompression="HDX 3D Browser Acceleration - lossy compression"
+Part_Graphics_SpeedScreenMultimedia="Remote video"
+Part_Graphics_ZeroLatencyKeyboard="SpeedScreen Latency Reduction - keyboard local echo"
+Part_Graphics_ZeroLatencyMouse="SpeedScreen Latency Reduction - mouse pointer prediction"
+Part_Graphics_DiskCache="Disk-based caching"
+
+Policy_Display="Client display settings"
+Explain_Display="Use this policy to control how the client presents remote applications and desktops to the end user.  Remote applications can be seamlessly integrated with local applications, or the entire local environment can be replaced with a remote desktop.  \n\nSeamless windows: \n\nWhen set to false this setting allows the client to disable the use of seamless windows, instead displaying a fixed size window.  When set to true it forces the client to request seamless windows, although the server may choose to reject this request.\n\n\nWindow width and height:\n\nThese settings determine window width and height.  It is possible to define ranges of preferred values (for example 800-).  The server may choose to ignore this value.  This setting is ignored when seamless windows is in use.  \n\n\nWindow percent:\n\nThis can be used as an alternative to manually choosing the width and height.  It selects a window size as a fixed percentage of the entire screen.  The server may choose to ignore this value.  This setting is ignored when seamless windows is in use.\n\n\nShrink work area:\n\nTo reduce the work area for seamless windows, set the value of this property to 3 or more. When the taskbar is set to auto-hide, seamless applications cover the local taskbar preventing access to the Start menu and other taskbar items on computers running Windows 2000 or later. Setting this property makes the auto-hide taskbar accessible.\n\n\nFull screen:\n\nThis setting switches the client to full screen mode.  The server display will completely cover the client display."
+Part_Display_Seamless="Seamless windows"
+Part_Display_Width="Window width"
+Part_Display_Height="Window height"
+Part_Display_Percent="Window percent"
+Part_Display_WorkArea="Shrink work area"
+Part_Display_FullScreen="Full screen"
+
+Policy_Keyboard_Hotkeys="Keyboard shortcuts"
+Explain_Keyboard_Hotkeys="Use this policy to configure the combinations of keys that the receiver interprets as having special functionality.\n\nWhen enabled, this policy allows users to control additional functionality of the published application or desktop, such as switching between full-screen and windowed mode. It also allows the user to issue command keystrokes such as Ctrl+Alt+Del to remote resources.\n\nWindows key:\n\nSpecifies how the mapping of certain windows key combinations are used when connecting to ICA sessions. e.g. Alt+Tab, Alt+F4, easy access to the "Start Menu" using windows key, "Windows key + D" to minimize all applications etc. When "Access Local Desktop" is set, the key combinations apply to the local desktop - When "Access Remote Session" is set, the key combinations apply to seamless and non-seamless ICA sessions when their windows have the keyboard focus - When "Access Remote Session in full-screen only" is set, the key combinations apply to the non-seamless ICA session in full screen mode The default value is "Access Remote Session in full-screen only". \n\nCommand keys:\n\nCommand keys are key combinations that the local computer's operating system intercepts  to provide special functionality, for example: Ctrl+Alt+Del.  You can configure the plugin to use alternative key combinations to access similar functionality within a remote published application or desktop.  For example, by default Ctrl+F1 instructs the plugin to send a Ctrl+Alt+Del key combination to the published application or desktop.\n\nHot keys:\n\nHot keys are key combinations that are interpreted by the plugin.  For example, by default Shift+F2 switches the plugin out of full screen mode.\n\nNote:\n\nDisabling this policy only disables the ability to change the configured mapping of hotkeys. To disable the individual hotkeys, enable this policy and then explicitly disable the hotkeys."
+Part_Keyboard_Windows_Key="Windows key:"
+Part_Keyboard_Hotkey_Tasklist="Task List:"
+Part_Keyboard_Hotkey_Tasklist_Plus="             +"
+Part_Keyboard_Hotkey_Close_Remote_Application="Close Application:"
+Part_Keyboard_Hotkey_Close_Remote_Application_Plus="                          +"
+Part_Keyboard_Hotkey_Toggle_Title_Bar="Toggle Full-screen:"
+Part_Keyboard_Hotkey_Toggle_Title_Bar_Plus="                            +"
+Part_Keyboard_Hotkey_Ctrl_Alt_Del="Crtl-Alt-Del:"
+Part_Keyboard_Hotkey_Ctrl_Alt_Del_Plus="               +"
+Part_Keyboard_Hotkey_Ctrl_Esc="Ctrl-Esc:"
+Part_Keyboard_Hotkey_Ctrl_Esc_Plus="           +"
+Part_Keyboard_Hotkey_Ctrl_Alt="Crtl-Alt:"
+Part_Keyboard_Hotkey_Ctrl_Alt_Plus="         +"
+Part_Keyboard_Hotkey_Alt_Tab="Alt-Tab:"
+Part_Keyboard_Hotkey_Alt_Tab_Plus="          +"
+Part_Keyboard_Hotkey_Alt_Backtab="Alt-Shift-Tab:"
+Part_Keyboard_Hotkey_Alt_Backtab_Plus="                  +"
+Part_Keyboard_Hotkey_Ctrl_Shift_Esc="Task Manager:"
+Part_Keyboard_Hotkey_Ctrl_Shift_Esc_Plus="                      +"
+Part_Keyboard_Hotkey_Toggle_Latency_Reduction="Latency Reduction:"
+Part_Keyboard_Hotkey_Toggle_Latency_Reduction_Plus="                             +"
+
+Policy_PublishedApplications="Remote applications"
+Explain_PublishedApplications="Use this policy to configure the client's handling of remote applications.  \n\nWhen enabled, this policy uses the list in the "Application" box to determine which published applications can be directly launched by the client.  \n\nYou can request that remote applications share sessions (run in a single ICA connection).  This provides a better user experience, but is sometimes not desirable.  The session sharing feature can be disabled by clearing the "Session sharing" check box.  \n\n\nTroubleshooting:\nPublished applications are denoted by a # in front of the application name.  Omitting the # symbol attempts to launch a particular program or desktop.  A computer running Citrix XenApp will not allow this by default, and rejects the connection, displaying:  "You do not have access to this session."\n\nSession sharing is controlled by the SessionSharingKey that prevents applications launched from different Web Interface servers from sharing sessions.  In addition, applications with different graphics or security settings are prevented from sharing sessions."
+Part_PublishedApplications_InitialProgram="Application"
+Part_PublishedApplications_SessionSharing="Session sharing"
+
+Policy_ICAFileSettings="ICA File Settings"
+Explain_ICAFileSettings="Use this policy to configure whether or not the client deletes the ICA file when the session ends. \n\nWhen this policy is enabled, the client deletes the ICA file when the session ends."
+Part_ICAFileSettings_RemoveICAFile="RemoveICAFile"
+
+Policy_AllowPerUserInstall="Allow Per-User Install"
+Explain_AllowPerUserInstall="Use this policy to enable and disable a per-user install to run. The Not Configured setting allows the per-user install to execute."
+Part_AllowPerUserInstall="Enable Per User Install"
+
+Policy_AllowLegacySessionSharing="Allow Legacy Session Sharing"
+Explain_AllowLegacySessionSharing="Allow session sharing for Program Neighborhood sessions"
+Part_AllowLegacySessionSharing_SessionSharing="AllowLegacySessionSharing"
+
+Policy_MSISettings="Multi-Stream ICA"
+Explain_MSISettings="Use this policy to enable and configure Multi-Stream ICA functionality.\n\n'Maximum Streams' controls the maximum simultaneous streams a session can have."
+Part_MSISettings_Enable="Enable Multi-Stream ICA"
+Part_MSISettings_MaxStreams="Maximum Streams"
+

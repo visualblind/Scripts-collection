@@ -1,0 +1,203 @@
+Windows 2000/XP Install Procedure 
+=================================
+
+
+Note: This will not work for Windows 95/98/Me, it's only for Windows 2000/XP and maybe NT 4.0
+
+The installation should be done as and Administrator User.
+
+This guide is for Apache2 with PHP5. If you want to use older versions, 
+read the JFFNMS 0.7.9 INSTALL.win32.txt file.
+
+Installation:
+-------------
+
+Install Apache: 
+	Download Apache2 from: http://www.apache.org/dist/httpd/binaries/win32/
+	Get the latest release "no_ssl.msi" package, like "apache_2.0.52-win32-x86-no_ssl.msi".
+	Complete Install, Click on Next until Finish. 
+	You should see Apache running in your taskbar.
+	Test it going browsing to http://localhost/ or http://IP.OF.YOUR.BOX/
+
+Install MySQL: 
+	Download from: http://www.mysql.com/downloads/mysql/4.1.html
+	Scroll down until you find MySQL Essentials for Windows.
+	
+	Select the "Complete Install", Click on Next until Finish.
+
+	When you go into the configuration phase, select "Server Machine", 
+	and then "Non-Transacctional Database Only".
+	
+	Then set a new root password.
+	
+	All other configuration leave as default.
+		
+Install PHP:
+	Download PHP 5 from: http://www.php.net/downloads.php
+	Get the "Windows Binaries ZIP package" with all the modules (First One).
+
+	Extract the archive to c:\php 
+
+	Execute the following: 
+	    c:\> copy c:\php\php.ini-dist c:\windows\php.ini
+	    c:\> copy c:\php\libmysql.dll c:\windows\
+	
+	Create Folder c:\usr
+	Copy c:\php\extra\mibs to c:\usr\mibs
+
+Install JFFNMS:
+	Download the .zip file (I'm sure you already have done this) and extract it to c:\jffnms 
+
+	Create the User 'jffnms' in the Windows User Manager with any password you choose.
+	
+	Remember to CHECK 'Password Never Expires' and UNCHECK 'Must Change password at next logon' for this user.
+	
+	Give the 'jffnms' user FULL CONTROL over the c:\jffnms folder (and its sub-folders)
+
+Install RRDTOOL:
+	Download from: http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/pub/?M=D
+	Get the rrdtool-1.0.49-win32-bin.zip (or newer) file.
+	Extract the archive to a temporary location.
+	Copy the rrdtool.exe file from inside the archive to c:\jffnms 
+
+Install NMAP: (If you are running Windows XP please read the NMAP page carefully, it may not work)
+	Download it from: http://www.insecure.org/nmap/nmap_download.html
+	Get the nmap-3.81-win32.zip file (or newer)
+	Extract the nmap.exe file from the archive to c:\jffnms\
+
+Install WinPCAP for NMAP:
+    
+	Download it from: http://winpcap.polito.it/
+	Choose the Auto-Installer.
+	Complete Install, Click on Next until Finish.
+	
+	
+Configuration:
+--------------
+
+Configure Apache for PHP5:
+
+	Add this to the bottom of your c:\program files\apache group\Apache2\conf\httpd.conf file:
+
+	LoadModule php5_module c:/php/php5apache2.dll
+	AddType application/x-httpd-php .php
+
+	NameVirtualHost *
+
+	<VirtualHost *>
+    	    ServerAdmin webmaster@your-domain.com
+    	    DocumentRoot c:\jffnms\htdocs
+    	    ServerName nms.yourdomain.com
+	    DirectoryIndex index.php
+	    LimitRequestLine 20000
+	</VirtualHost>
+
+	* Make sure you modify the above information to match your needed settings
+
+Configure PHP:	
+	Make sure you have this on your php.ini file:
+
+	register_globals = On
+	register_argc_argv = On
+	allow_url_fopen = On
+	
+	extension_dir = c:\php\ext
+	
+	(Uncomment the following):
+	extension=php_gd2.dll
+	extension=php_snmp.dll
+	extension=php_mysql.dll
+	extension=php_sockets.dll
+	
+	SMTP = your.mail.server.com	(set it to your mail server IP or DNS name)
+
+	Now Restart the Apache Service.
+
+	if you don't change these, JFFNMS will not work.
+
+Configure MySQL:
+
+	To create the JFFNMS DB run the following:
+	
+	Check the path to mysql.exe
+
+	c:\> c:\Program Files\MySQL\MySQL Server 4.1\bin\mysql.exe -u root -p<Root MySQL Password>
+	
+	mysql>CREATE DATABASE jffnms;
+	mysql>GRANT ALL PRIVILEGES ON jffnms.* TO jffnms@localhost IDENTIFIED BY 'jffnms';  
+	mysql>FLUSH PRIVILEGES;  
+	mysql>quit;
+	
+	And:
+
+	c:\> c:\Program Files\MySQL\MySQL Server 4.1\bin\mysql.exe -ujffnms -pjffnms jffnms < c:\jffnms\docs\jffnms-0.8.x.mysql 	
+    
+	Replace x with the version you are installing.
+
+Configure JFFNMS:
+	
+	-----------------
+	I M P O R T A N T
+	-----------------
+	
+	Go to: http://yourserver/
+
+	Verify and change (if needed) the options. 
+	
+	Don't mind the errors on diff, neato, smsclient, fping, ntpq, PgSQL and SOAP.
+	
+	Save the configuration and change the values until everything needed is Green.
+	
+	Everything else SHOULD be OK. 
+
+	Scheduled Tasks:
+	----------------
+		If you did not install jffnms in c:\jffnms you will have to change the 
+		contents of the .bat files (path).
+
+		Start/Settings/Control Panel/Scheduled Tasks/Add Scheduled Task.
+			1) Next
+			2) Click Browse
+			3) Browse to c:\jffnms\engine\windows and select the first .bat file. 
+			4) Select Daily, then Next.
+			5) Change the Start time to 12:00 AM
+			6) Select Every 1 Days then Next.
+			7) Enter Username: jffnms and Password: (the one you choosed before), then Next.
+			8) Click the 'Open Avanced...' checkbox, then click Finish
+			9) Change "Start In" to c:\jffnms\engine
+			10) Click the Schedule tab
+			11) For autodiscovery_interfaces, consolidate, poller & rrd_analizer:
+				Click on the Advanced Button.
+				Check Repeat Task.  In the Every Field enter the respective times: 
+					autodiscovery_interfaces every 30 minutes.				
+					consolidate Every 1 Minute.
+					poller Every 4 minutes.
+					rrd_analizer every 30 minutes.
+				Duration: 24 Hours.
+
+			12) Click on OK.
+			13) Click on OK.
+			
+		** REPEAT THESE STEPS FOR EACH .BATCH FILE IN THE C:\JFFNMS\ENGINE\WINDOWS PATH!
+
+
+Now... try to access http://yourserver/ or http://yourserver/jffnms/ (if you took this way)
+Remember to add the last slash / to the URL.
+The Default Username and password is "admin".
+
+If you want to read more, please read the INSTALL file and skip the Unix Parts.
+
+
+=========================================================================
+
+If you need anything, contact us at: jffnms-users@lists.sourceforge.net
+
+Thank You for trying 'Just For Fun' Network Management System
+
+Don't forget to Donate to the project if you find it useful for your work.
+
+=========================================================================
+Javier Szyszlican aka SzYsZ
+Buenos Aires, Argentina
+javier@jffnms.org (please try the mailing list first) 
+ICQ #397319

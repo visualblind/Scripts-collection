@@ -1,0 +1,3 @@
+#wmic os get lastbootuptime
+
+wmic /node:ServerName os get lastbootuptime

@@ -1,0 +1,174 @@
+Node Runner - Open Source Network Monitor
+
+Overview
+========
+
+Node Runner is a PHP network monitor designed to contact nodes in a
+hierarchial fashion based on the configuration of the node. If a node does
+not respond, dependencies (parents) of that node are systematically checked
+until the problem is isolated.
+
+Node Runner uses a shell script for its basic network polling, a PHP web
+interface for node information, reports, etc., and and abstraction
+layers for multi-platform database support.
+
+Why bother?  Well, most network monitor packages available on the market
+today are commercially distributed and Windows-based.  Of the open source
+network monitors I've seen, few seem to have the capability to query
+dependant nodes if a primary node is unreachable, and those that do include
+this functionality are difficult to set up or maintain.  Node Runner
+strives to exceed both of these goals and more.
+
+
+Installation
+============
+For installation instructions, see the INSTALL file that came with this
+application.
+
+
+System Requirements
+===================
+1. PHP 4.3+ (compiled w/ cgi, socket and SNMP support highly recommended)
+2. MySQL 3.x
+3. Available Web server with PHP support (does not need to be local machine)
+
+NOTE 1: If you do not compile PHP with cgi, socket, and SNMP support, you will
+likely see errors if you attempt to query nodes of these types. Node Runner
+has NOT been designed to check for proper compilation of these features before
+it attempts to poll a node. Therefore, based on the operating system, it may
+generate errors or simply fail if you do not have these features compiled
+properly. To check for proper compilation, you will need to create a script
+that outputs the configuration of php using the phpinfo() function.
+
+That script could be as simple as the following code:
+
+<?php
+phpinfo();
+?>
+
+Save it as any filename you like, and upload it to your web documents root.
+When you pull it up in the browser, you should see sections for socket, SNMP,
+etc.
+
+NOTE 2: Due to the nature of the query script (node.start), it is recommended
+that you adjust the error reporting levels of PHP to prevent warnings.  The
+decision is completely up to you, but if you don't, you will likely see a number
+of WARNING messages in your debugging output if nodes fail to respond to network
+queries.  To adjust the error reporting level, modify the error_reporting line
+in your php.ini file to the following:
+
+error_reporting  =  E_ALL & ~E_NOTICE & ~E_WARNING
+
+
+
+MODULAR NETWORK QUERIES
+=======================
+
+As of version 0.6.0, network queries have been extracted from the node.start
+script and moved to the 'include' directory.  The scripts you will find in that
+directory each serve their own purpose, such as polling SNMP or ICMP.  There is
+a template file for creating your own query scripts in the 'contribs' directory,
+but you should have a good understanding of sockets before attempting to write
+your own custom queries.
+
+
+CONSIDERATIONS FOR CRON SCHEDULING
+==================================
+
+My test setup is configured to run the 'node.start' script every
+three minutes, but you can use your own judgement, bearing in mind
+that more servers take more time to poll, so don't set your
+cron jobs too close together.
+
+(My production setup uses about 150 servers, and takes less than
+3 minutes to execute even with multiple failing nodes.)  Your
+$max_attempts variable (nr.inc) is an important factor to consider
+also.  Put some thought into your configuration, and check your
+total execution time using the $debug option if you think your cron
+jobs are bleeding into one another.
+
+
+USING THE DEBUG OPTION
+======================
+
+Beginning in version 0.4.4, I've added a level of debugging that can
+be used when troubleshooting the node.start script.  Set the $debug
+variable to 1 in the 'nr.inc' file, and change your cron to output
+to a file .
+
+You also have the option of running the node.start script manually, (which
+will give you screen output), but because of the anal nature of my timing
+functions within the script, I would not recommend it.
+
+The output should give you a status of each server.  If a server does not
+respond, it will display the status of its dependency, and so on.  Execution
+time is also summarized at the end of each cycle.
+
+In the early stages of development, while getting a feel for my own network,
+I turned the debugging option on and added one more cron job to delete the
+text file (created by the output) at the end of each day.  This way, if I get
+a strange alert, I'll be able to track it down.
+
+
+ENDPOINTS vs. NON-ENDPOINTS
+===========================
+
+"Endpoints" are defined as nodes that will be contacted on a regular
+schedule (eg. each time the cron job executes the 'node.start' script).
+In most cases, people will use actual servers in this list, but if you
+need to continually monitor another node, you should classify it as an
+endpoint.  An example of this might be an an ethernet interface of a router.
+Treat it as an endpoint, and it will be polled each time.  "Non-endpoints"
+are only polled when an endpoint doesn't respond, at which time Node Runner
+starts polling backward up the chain of parent nodes (think traceroute) that
+you defined as you added each node to the web interface.  Be careful not
+to create endpoint-to-endpoint dependencies (one endpoint depends on another),
+as it wastes resources and slows down the scripts.
+
+
+KEEP WORKSTATION TIME ACCURATE
+==============================
+
+It is very important to have the correct time on your Node Runner
+(localhost) machine.  All logging features (measuring downtime) are
+dependent upon a consistent time.  The best way to keep time consistent
+is to keep it up to date.  Most people set up a cron job to handle that.
+
+
+DATABASE ABSTRACTION LAYERS
+===========================
+
+The original files have been revised to allow use of database abstraction
+layers instead of hardcoded MySQL support.  So far, I've only tested
+the abstraction layer for MySQL, but it's fairly easy to build layers for
+other databases as well.  There are really only 4-5 functions that need
+to run, so it's not a huge undertaking to make the layers.  I'll post
+the development layers and .sql import files on Sourceforge if anyone
+would like to take a crack at testing/fixing them.  If anyone is
+interested in making one or more of them work, I'd be glad to give them
+all the credit for doing so, but I won't distribute those files until
+I know they've been tested.
+
+
+
+License Information
+===================
+
+Copyright (C) 2001-2005 Brad Fears.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+-- Brad Fears <brad@tricountywebdesign.com>
+

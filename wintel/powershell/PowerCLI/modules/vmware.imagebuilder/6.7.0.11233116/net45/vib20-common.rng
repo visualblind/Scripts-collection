@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!--
+    The '&' denotes that order of elements does not matter
+    
+  -->
+  <define name="VIB_META_COMMON">
+    <interleave>
+      <optional>
+        <element name="type">
+          <choice>
+            <value>bootbank</value>
+            <value>meta</value>
+          </choice>
+        </element>
+      </optional>
+      <element name="name">
+        <ref name="NameString"/>
+      </element>
+      <element name="version">
+        <ref name="VIBVersion"/>
+      </element>
+      <element name="vendor">
+        <ref name="NameString"/>
+      </element>
+      <optional>
+        <element name="summary">
+          <data type="string">
+            <param name="maxLength">80</param>
+          </data>
+        </element>
+      </optional>
+      <optional>
+        <element name="description">
+          <data type="string"/>
+        </element>
+      </optional>
+      <optional>
+        <element name="release-date">
+          <data type="dateTime"/>
+        </element>
+      </optional>
+      <optional>
+        <element name="urls">
+          <zeroOrMore>
+            <ref name="UrlWithKey"/>
+          </zeroOrMore>
+        </element>
+      </optional>
+      <ref name="Relationships"/>
+      <optional>
+        <element name="software-tags">
+          <zeroOrMore>
+            <element name="tag">
+              <data type="string"/>
+            </element>
+          </zeroOrMore>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+  <define name="SYSTEM_REQUIRES">
+    <element name="system-requires">
+      <interleave>
+        <!--
+          If both on-install and on-remove are specified, the base boolean isn't
+          needed
+        -->
+        <element name="maintenance-mode">
+          <choice>
+            <group>
+              <attribute name="on-install">
+                <data type="boolean"/>
+              </attribute>
+              <attribute name="on-remove">
+                <data type="boolean"/>
+              </attribute>
+            </group>
+            <group>
+              <optional>
+                <attribute name="on-install">
+                  <data type="boolean"/>
+                </attribute>
+              </optional>
+              <optional>
+                <attribute name="on-remove">
+                  <data type="boolean"/>
+                </attribute>
+              </optional>
+              <data type="boolean"/>
+            </group>
+          </choice>
+        </element>
+        <zeroOrMore>
+          <element name="hwplatform">
+            <attribute name="vendor">
+              <data type="string"/>
+            </attribute>
+            <optional>
+              <attribute name="model">
+                <data type="string"/>
+              </attribute>
+            </optional>
+          </element>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+  <define name="BOOTBANK_VIB_ONLY">
+    <interleave>
+      <ref name="SYSTEM_REQUIRES"/>
+      <optional>
+        <element name="acceptance-level">
+          <choice>
+            <value>certified</value>
+            <value>accepted</value>
+            <value>partner</value>
+            <value>community</value>
+          </choice>
+        </element>
+      </optional>
+      <optional>
+        <element name="live-install-allowed">
+          <data type="boolean"/>
+        </element>
+      </optional>
+      <optional>
+        <element name="live-remove-allowed">
+          <data type="boolean"/>
+        </element>
+      </optional>
+      <optional>
+        <element name="cimom-restart">
+          <data type="boolean"/>
+        </element>
+      </optional>
+      <optional>
+        <element name="stateless-ready">
+          <data type="boolean"/>
+        </element>
+      </optional>
+      <optional>
+        <element name="resources">
+          <optional>
+            <element name="sched-group-path">
+              <data type="string"/>
+            </element>
+          </optional>
+          <optional>
+            <element name="mem-size-limit-mb">
+              <data type="nonNegativeInteger"/>
+            </element>
+          </optional>
+        </element>
+      </optional>
+      <optional>
+        <element name="overlay">
+          <data type="boolean"/>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+  <define name="nonEmptyString">
+    <data type="string">
+      <param name="minLength">1</param>
+    </data>
+  </define>
+  <!-- Colons and whitespace are not allowed. -->
+  <define name="NameString">
+    <data type="string">
+      <param name="pattern">[0-9A-Za-z_\-\.]*</param>
+      <param name="maxLength">35</param>
+    </data>
+  </define>
+  <!--
+    Note: hyphen and colon is not allowed. Also, it is recommended that versions
+          start with a numeric digit, but only because it makes comparisons more
+          intuitive for human readers: There is no technical reason why a
+          version must start with a digit, and so we do not enforce it here.
+  -->
+  <define name="VIBVersion">
+    <data type="string">
+      <param name="pattern">\w+(\.\w+)*-\w+(\.\w+)*</param>
+      <param name="maxLength">35</param>
+    </data>
+  </define>
+  <define name="VirtualVersion">
+    <data type="string">
+      <param name="pattern">\w+(\.\w+)*(-\w+(\.\w+)*)?</param>
+      <param name="maxLength">35</param>
+    </data>
+  </define>
+  <!--
+    
+     Relationships
+    
+  -->
+  <define name="Relationships">
+    <element name="relationships">
+      <element name="depends">
+        <zeroOrMore>
+          <ref name="Relation"/>
+        </zeroOrMore>
+      </element>
+      <element name="conflicts">
+        <zeroOrMore>
+          <ref name="Relation"/>
+        </zeroOrMore>
+      </element>
+      <element name="replaces">
+        <zeroOrMore>
+          <ref name="Relation"/>
+        </zeroOrMore>
+      </element>
+      <element name="provides">
+        <zeroOrMore>
+          <ref name="Provide"/>
+        </zeroOrMore>
+      </element>
+      <element name="compatibleWith">
+        <zeroOrMore>
+          <ref name="Relation"/>
+        </zeroOrMore>
+      </element>
+    </element>
+  </define>
+  <!--
+    
+    Constraint/Relation
+    
+  -->
+  <define name="Relation">
+    <element name="constraint">
+      <attribute name="name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="relation">
+          <choice>
+            <value>&lt;&lt;</value>
+            <value>&lt;=</value>
+            <value>=</value>
+            <value>&gt;=</value>
+            <value>&gt;&gt;</value>
+          </choice>
+        </attribute>
+        <attribute name="version">
+          <ref name="VirtualVersion"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <!--
+    
+    Provide
+    
+  -->
+  <define name="Provide">
+    <element name="provide">
+      <attribute name="name">
+        <data type="string"/>
+      </attribute>
+      <optional>
+        <attribute name="version">
+          <ref name="VirtualVersion"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <!--
+    
+    Checksum
+    
+  -->
+  <define name="Checksum">
+    <element name="checksum">
+      <attribute name="checksum-type">
+        <value type="token">sha-256</value>
+      </attribute>
+      <data type="string"/>
+    </element>
+  </define>
+  <!--
+    
+    URL with Key
+    
+  -->
+  <define name="UrlWithKey">
+    <element name="url">
+      <attribute name="key">
+        <data type="string">
+          <param name="maxLength">20</param>
+        </data>
+      </attribute>
+      <data type="anyURI"/>
+    </element>
+  </define>
+</grammar>

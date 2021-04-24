@@ -1,0 +1,1 @@
+﻿Get-childitem "C:\Folder" -recurse | ForEach-Object -process {if (($_.attributes -band 0x100) -eq 0x100) {$_.attributes = ($_.attributes -band 0xFEFF)}}

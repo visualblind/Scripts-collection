@@ -1,0 +1,540 @@
+# Note: Removed php line because I'm tired of answering questions about why it's different on some machines.
+<?
+
+$path_to_etc = "etc/"; // Change this as needed. (Remember trailing slash)
+
+
+# ---------- DO NOT MODIFY BELOW THIS LINE ----------- #
+
+require_once($path_to_etc."nr.inc");
+
+function list_of_includes($dir) {
+    // Returns array of file names from $dir
+
+    $i=0;
+      if ($use_dir = @opendir($dir)) {
+        while (($file = readdir($use_dir)) != false) {
+          if (ereg("query_",$file)) {
+            $includes_arr[$i] = "$file";
+            $i++;
+          }
+        }
+      closedir($use_dir);
+    }
+
+    return $includes_arr;
+}
+
+$query_type_includes = list_of_includes($path_to_include);
+$queries_type_array = array();
+foreach ($query_type_includes as $types) {
+	include_once($path_to_include.$types);
+}
+
+
+if ($debug == 1) { $start_time = mktime(); }
+switch (strtolower($dbtype)) {
+    case ("mysql"):
+      require ($path_to_etc."mysql.inc");
+      break;
+    /* //not implemented yet
+    case ("postgresql"):
+      require ($path_to_etc."postgres.inc");
+      break;
+    */ //not implemented yet
+}
+
+function count_deps($parent) {
+        GLOBAL $cnt;
+        // Recursive function to count dependencies
+        // Used for detailed email alerts
+        $sql = "SELECT id FROM objects WHERE dependency='$parent'";
+        $result = db_query($sql);
+        while ($r = db_fetch_array($result)) {
+               $cnt++;
+               count_deps($r['id']);
+        }
+  return $cnt;
+}
+
+function build_avoid_polling($node_id, $node_description) {
+        global $dont_poll;
+        // Recursive function to backtrace dependencies
+        $dont_poll[$node_id] = $node_description;
+
+        $sql = "SELECT id,description FROM objects WHERE dependency='$node_id'";
+        $result = db_query($sql);
+        while ($r = db_fetch_array($result)) {
+	           $id = $r["id"];
+	           $description = $r["description"];
+		       $dont_poll[$id] = $description;
+	           build_avoid_polling($id, $description);
+        }
+        
+  return $dont_poll;
+}
+
+function mailer($id, $mail_id, $status, $status_msg, $now, $sender, $downtime) {
+ GLOBAL $detailed_email,$qtime;
+ $query = "SELECT email FROM mail_group WHERE id='$mail_id'";
+ $result = db_query($query);
+ while ($r = db_fetch_array($result)) {
+        $email=$r["email"];
+
+		$query_comments = "SELECT description,ipaddress,port,query_type,comments FROM objects WHERE id='$id'";
+        $result_comments = db_query($query_comments);
+        list($id_description,$id_ipaddress,$id_port,$id_query_type,$id_comments) = db_fetch_array($result_comments);
+        if ($detailed_email == 1) {
+        
+          if ($id_comments) { $comments = "Comments: ".$id_comments; }
+          $query_affected = "SELECT description FROM objects WHERE dependency='$id'";
+          $result_affected = db_query($query_affected);
+          $num_rows_affected = db_num_rows($result_affected);
+          unset($dir_affected);
+          if ($num_rows_affected == 0) {
+              $dir_affected = "NONE";
+              $affected_cnt = 0;
+          } else {
+              $affected_cnt = count_deps($id);
+              $dir_affected = "\n";
+              while ($s = db_fetch_array($result_affected)) {
+                     $each_affected = $s["description"];
+                     $dir_affected .= $each_affected."\n";
+              }
+          }
+          
+          if (($id_query_type == 'SNMP') || ($id_query_type == 'ICMP')) {
+               $id_port_info = $id_query_type;
+          } else {
+               $id_port_info = $id_query_type.' Port: '. $id_port;
+          }
+	  
+          if (!$downtime) {
+              $downtime = "Less than $qtime minute(s)";
+          } else {
+              if ($downtime < 60) {
+                  $downtime = "$downtime Second(s)";
+              } elseif (($downtime >= 60) && ($downtime < 3600)) {
+                  $downtime = round($downtime/60, 2) . " Minute(s)";
+              } else {
+                  $downtime = round($downtime/3600, 2) . " Hour(s)";
+              }
+          }
+
+          if (!$status) {
+              mail("$email","$id_description DOWN","$status_msg\nIP: $id_ipaddress - $id_port_info\n\n$now\n\nDowntime: $downtime\n\nNodes Directly Affected: $dir_affected\nTotal Nodes Affected: $affected_cnt\n\n$comments","From:$sender");
+          } else {
+              // Send a different message if up - we don't need as much info when it comes back up.
+              mail("$email","$id_description UP","$status_msg\n$now\n\nTotal Downtime: $downtime","From:$sender");
+          }
+
+        } else {
+		  if (!$status) {
+		    $subject = $id_description." DOWN";
+		  } else {
+		    $subject = $id_description." UP";
+		  }
+          mail("$email","$subject","$status_msg\n$now","From:$sender");
+        }
+  }
+}
+
+
+function query_socket($description, $ipaddress, $port, $query_type, $snmp_comm, $url, $username, $pass, $ptime, $max_attempts) {
+    GLOBAL $debug,$allow_refused;
+    $i=0;
+    do {
+      if ($debug == 1) { echo "Attempting query #".intval($i+1)." of $description...\n"; } //debugging
+      if ($i > 0) { sleep(3); }
+	  switch($query_type) {
+	    case "HTTP":
+		  $stat = http_query($description, $ipaddress, $port, $url, $username, $pass, $ptime);
+		  break;
+		case "ICMP":
+		  $stat = icmp_query($description, $ipaddress, $ptime);
+		  break;
+		case "TCP":
+		  $stat = tcp_query($description, $ipaddress, $port, $ptime);
+		  break;
+		case "SNMP":
+		  $stat = snmp_query($description, $ipaddress, $snmp_comm, $ptime);
+		  break;
+		case "UDP":
+		  $stat = udp_query($description, $ipaddress, $port, $ptime);
+		  break;
+	  }
+      $i++;
+    } while (($i < $max_attempts) && (!$stat[0]));
+    return $stat;
+}
+
+db_connect();
+
+
+//Make sure dont_poll array is empty to start script
+$dont_poll = array();
+
+
+// Used for identifying resurrected servers
+$al_time = mktime();
+$al_now = date("m-d-Y g:i:s a", $al_time);
+$query9 = "SELECT * FROM alert_log WHERE resolved='N'";
+$result9 = db_query($query9);
+  while ($r = db_fetch_array($result9)) {
+    $al_id = $r["id"];
+    $al_description = $r["description"];
+    if ((!empty($dont_poll)) && (in_array($al_description, $dont_poll))) {
+        continue; // Don't poll this node if we've already determined that a higher-level parent node is down.
+    }
+    $al_ipaddress = $r["ipaddress"];
+    
+    // Query ID from 'objects' table
+    $query_real_id = "SELECT id,enabled FROM objects WHERE description='".$al_description."' AND ipaddress='".$al_ipaddress."'";
+	$result_real_id = db_query($query_real_id);
+	list($objects_id,$objects_enabled) = db_fetch_array($result_real_id);
+	
+    $al_dependency = $r["dependency"];
+    $al_port = $r["port"];
+    $al_query_type = $r["query_type"];
+    $al_snmp_comm = $r["snmp_comm"];
+    $al_start_time = $r["time"];
+    $al_downtime = $r["downtime"];
+    $al_lastnotif = $r["lastnotif"];
+    $al_ptime = $r["ptime"];
+    $al_url = $r["url"];
+    $al_user = $r["auth_user"];
+    $al_pass = $r["auth_pass"];
+    $query10 = "SELECT mail_group FROM objects WHERE description='$al_description' AND dependency='$al_dependency'";
+    $result10 = db_query($query10);
+    list($al_mail_group) = db_fetch_array($result10);
+
+    // 'orphans' a log entry if node becomes unreachable during dependent server's downtime
+    $dep_query1 = "SELECT description,ipaddress,port,query_type,snmp_comm,url,ptime,auth_user,auth_pass FROM objects WHERE id='$al_dependency'";
+    $dep_result1 = db_query($dep_query1);
+    list($parents_description,$parents_ipaddress,$parents_port,$parents_query_type,$parents_snmp_comm,$parents_url,$parents_ptime,$parents_auth_user,$parents_auth_pass) = db_fetch_array($dep_result1);
+    $dep_query2 = db_query("SELECT id FROM alert_log WHERE description='$parents_description' AND resolved='N'");
+    if(db_num_rows($dep_query2) == 1) {
+        $query12 = "UPDATE alert_log SET resolved='O' WHERE id='$al_id'";
+        $result12 = db_query($query12);
+        if ($result12 == 1) {
+            unset($result12);
+			continue;
+		}
+    }
+    
+    // 'orphans' a log entry if node is manually disabled by admin during its own downtime
+	if ($objects_enabled == 'N') {
+        $query12 = "UPDATE alert_log SET resolved='O' WHERE id='$al_id'";
+        $result12 = db_query($query12);
+        if ($result12 == 1) {
+            unset($result12);
+			continue;
+		}
+	}
+
+    $connection1 = query_socket($al_description, $al_ipaddress, $al_port, $al_query_type, $al_snmp_comm, $al_url, $al_user, $al_pass, $al_ptime, 1);
+    
+    if ($connection1[0]) { // if server is back UP...
+	  unset($al_stat,$al_stat_msg);
+      $al_stat = $connection1[0];
+      $al_stat_msg = $connection1[1];
+	  $al_time = mktime(); //update the time
+      $al_newtime = $al_time - $al_start_time;
+      
+      if ($al_downtime == 0) {
+        $al_mailer_time = $al_newtime;
+        $query11 = "UPDATE alert_log SET downtime='$al_newtime',lastnotif='$al_time',resolved='Y' WHERE id='$al_id'";
+      } else {
+        $al_mailer_time = $al_downtime;
+        $query11 = "UPDATE alert_log SET lastnotif='$al_time',resolved='Y' WHERE id='$al_id'";
+      }
+      $result11 = db_query($query11);
+      
+      if ($firstmail == 0) { // If $firstmail is zero, we know that a DOWN message has already been sent when the node first went offline.
+        $out = mailer($objects_id, $al_mail_group, $al_stat, $al_stat_msg, $al_now, $sender, $al_mailer_time);
+      } else if (($firstmail>0) && ($al_start_time != $al_lastnotif)) { // If $firstmail is NOT zero, we need to make sure we've been notified at least once before of the DOWN status before we send an UP status.
+        $out = mailer($objects_id, $al_mail_group, $al_stat, $al_stat_msg, $al_now, $sender, $al_mailer_time);
+      }
+      
+      if ($debug == 1) {  //Used for debugging
+        echo $al_stat_msg;
+        echo "$al_description came back up.\n";
+      } //end debugging
+
+      
+
+      
+      // Insert entry into dont_poll array to avoid polling later in this script.
+      $dont_poll[$objects_id] = $al_description;
+      //Used for debugging
+	  if (($debug == 1) && (!empty($dont_poll))) {
+	    echo "As a result, $al_description will not be polled again during this iteration.\n\n";
+	  }
+      
+    } else { // if server is NOT back up yet...
+    
+		// First test parent, maybe it's the parent's fault...
+		if ($debug == 1) {  //Used for debugging
+		  echo "Checking parent just in case...\n";
+		} // end debugging
+		
+		$connection1a = query_socket($parents_description, $parents_ipaddress, $parents_port, $parents_query_type, $parents_snmp_comm, $parents_url, $parents_user, $parents_pass, $parents_ptime, 1);
+		if (!$connection1a[0]) { // if parent is down, change resolved status to 'O'
+          $parents_stat_msg = $connection1a[1];
+          
+          $query_orphan1 = db_query("UPDATE alert_log SET resolved='O' WHERE id='$al_id'");
+          
+          // Note that we don't make an alert_log entry for the down parent at this point.
+          // We'll let NR do that during its process of querying normal nodes.
+		
+		  if ($debug == 1) {  //Used for debugging
+		    echo $parents_stat_msg;
+            echo "$al_description has been orphaned because $parents_description is now down.\n\n";
+          } //end debugging
+          
+		  continue; // Skip the rest - if we've orphaned this node, we don't need to send a mail or modify it any further.
+		} else if (($connection1a[0]) && ($debug == 1)) {
+		  echo "Parent appears to be up, so that's not the problem.  Moving on...\n\n";
+		}
+
+		$al_stat_msg = $connection1[1];
+	    $al_time = mktime(); //update the time
+        $al_newtime = $al_time - $al_start_time;
+        $al_mailer_time = $al_newtime;
+    
+        if ($al_downtime == 0) {
+          $al_newtime = ($qtime * 60);
+          $query11 = "UPDATE alert_log SET downtime='$al_newtime' WHERE id='$al_id'";
+        } else {
+          $al_newtime = ((intval($al_downtime)) + ($qtime * 60));
+          $query11 = "UPDATE alert_log SET downtime='$al_newtime' WHERE id='$al_id'";
+        }
+        $result11 = db_query($query11);
+        
+        $chktime = intval(mktime() - $al_start_time);
+        if (($firstmail>0) && ($al_start_time == $al_lastnotif) && ((($chktime/60) >= $firstmail))) {
+		  // We need to make sure we wait at least $firstmail minutes before sending the first mail.
+          $query8a = "UPDATE alert_log SET lastnotif='$al_time' WHERE id='$al_id'";
+          $result8a = db_query($query8a);
+          $out = mailer($objects_id, $al_mail_group, $al_stat, $al_stat_msg, $al_now, $sender, $al_mailer_time);
+        } else if ($al_start_time != $al_lastnotif) {
+          // Since lastnotif has been updated, we know that the first email has already been sent.  Now check to see if we need to send additional emails.
+          if (($al_time - ($delay * 60)) > $al_lastnotif) {
+          $query8a = "UPDATE alert_log SET lastnotif='$al_time' WHERE id='$al_id'";
+          $result8a = db_query($query8a);
+              if ($max_alerts == 0) { // Send unlimited email notifications in $delay increments until node comes back up.
+                  $out = mailer($objects_id, $al_mail_group, $al_stat, $al_stat_msg, $al_now, $sender, $al_mailer_time);
+              } else if (($al_lastnotif - $al_start_time) <= (($delay * 60) * $max_alerts)) {
+                  $out = mailer($objects_id, $al_mail_group, $al_stat, $al_stat_msg, $al_now, $sender, $al_mailer_time);
+              }
+          }
+        }
+        
+        if ($debug == 1) {  //Used for debugging
+		  echo $al_stat_msg;
+          echo "$al_description is still down.\n";
+        } //end debugging
+        
+        // Insert entry into dont_poll array to avoid polling later in this script.
+        $dont_poll = build_avoid_polling($objects_id, $al_description);
+        //Used for debugging
+	    if (($debug == 1) && (!empty($dont_poll))) {
+	      echo "$al_description nor it dependents will be polled again during this iteration.\n\n";
+	    } //end debugging
+        
+    }
+    
+  }
+
+// Begin recursive queries for down servers
+$time_x = mktime();
+$date_x = intval(date("Hi", $time_x));
+$today = date("D", $time_x);
+$query1 = "SELECT * FROM objects WHERE server='Y' and enabled='Y' and smon_time<='$date_x' and emon_time>='$date_x' and days like '%$today%' ORDER BY description ASC";
+$result1 = db_query($query1);
+while ($r = db_fetch_array($result1)) {
+        $id_x = $r["id"];
+        $dependency_x = $r["dependency"];
+        $description_x = $r["description"];
+        $ipaddress_x = $r["ipaddress"];
+        $port_x = $r["port"];
+        $query_type_x = $r["query_type"];
+        $snmp_comm_x = $r["snmp_comm"];
+        $server_x = $r["server"];
+        $mail_group_x = $r["mail_group"];
+        $ptime_x = $r["ptime"];
+        $url_x = $r["url"];
+	    $user_x = $r["auth_user"];
+	    $pass_x = $r["auth_pass"];
+
+       if ((!empty($dont_poll)) && (in_array($description_x, $dont_poll))) {
+          continue;
+       }
+
+       $connection2 = query_socket($description_x, $ipaddress_x, $port_x, $query_type_x, $snmp_comm_x, $url_x, $user_x, $pass_x, $ptime_x, $max_attempts);
+
+       if (!$connection2[0]) {
+		 // This one is down too, try the next node in the chain (ping3)
+		 
+		 unset($stat,$stat_msg);
+         $stat = $connection2[0];
+         $stat_msg = $connection2[1];
+
+         if ($debug == 1) { //Used for debugging
+		   unset($output);
+           //$output = $description_x." unreachable, trying parent...\n";
+           $output = $connection2[1];
+		   $output .= $description_x." unreachable, trying parent...\n\n";
+           echo $output;
+         } //end debugging
+       
+         $recursion = $dependency_x;
+
+         $n=0; //node counter
+         do {
+	       $query2 = "SELECT * FROM objects WHERE id='$recursion'";
+	       $result2 = db_query($query2);
+           while ($r = db_fetch_array($result2)) {
+	        $id = $r["id"];
+	        $dependency = $r["dependency"];
+	        $description = $r["description"];
+	        $ipaddress = $r["ipaddress"];
+	        $port = $r["port"];
+	        $query_type = $r["query_type"];
+	        $snmp_comm = $r["snmp_comm"];
+	        $server = $r["server"];
+	        $mail_group = $r["mail_group"];
+	        $ptime = $r["ptime"];
+	        $url = $r["url"];
+	        $user = $r["auth_user"];
+	        $pass = $r["auth_pass"];
+
+           $connection3 = query_socket($description, $ipaddress, $port, $query_type, $snmp_comm, $url, $user, $pass, $ptime, $max_attempts);
+
+           if (!$connection3[0]) {
+			   // This one is down too.  Set $recursion to next parent level up and try that one.
+			   
+			   unset($stat,$stat_msg);
+               $stat = $connection3[0];
+               $stat_msg = $connection3[1];
+
+               $recursion = $dependency;
+
+               // The following values are generated to identify the failing dependent
+               $return_id = $id;
+               $return_dependency = $dependency;
+               $return_description = $description;
+               $return_ipaddress = $ipaddress;
+               $return_port = $port;
+               $return_query_type = $query_type;
+               $return_server = $server;
+               $return_mail_group = $mail_group;
+               $return_ptime = $ptime;
+               $return_url = $url;
+               $return_snmp_comm = $snmp_comm;
+
+               if ($debug == 1) { //Used for debugging
+				  unset($output);
+                  //$output = "$description unreachable, trying parent...\n";
+                  $output = $connection3[1];
+				  $output .= $description." unreachable, trying parent...\n\n";
+	              echo $output;
+               } //end debugging
+	
+	           $end = "N";
+               $n++;
+	
+           } else {
+			   // This one is up, so it must be its child that is down.
+	
+               if ($n < 1) {
+                 $return_id = $id_x;
+                 $return_dependency = $dependency_x;
+                 $return_description = $description_x;
+                 $return_ipaddress = $ipaddress_x;
+                 $return_port = $port_x;
+                 $return_query_type = $query_type_x;
+                 $return_server = $server_x;
+                 $return_mail_group = $mail_group_x;
+                 $return_ptime = $ptime_x;
+                 $return_url = $url_x;
+                 $return_snmp_comm = $snmp_comm_x;
+               }
+	     
+               //Used for debugging
+               if ($debug == 1) { echo "$description is up.\nMust be $return_description that's down.\n\n"; }
+               //end debugging
+               
+               if (($debug == 1) && (!empty($dont_poll))) {
+				 $sizeof_dont_poll_before = sizeof($dont_poll);
+               }
+
+               $dont_poll = build_avoid_polling($return_id, $return_description);
+
+               if (($debug == 1) && (!empty($dont_poll))) {
+				 $sizeof_dont_poll_after = sizeof($dont_poll);
+               }
+	     
+	           //Used for debugging
+	           if (($debug == 1) && (!empty($dont_poll)) && ($sizeof_dont_poll_after > $sizeof_dont_poll_before)) {
+	             echo "As a result, these servers will not be polled again during this iteration:\n";
+	             foreach ($dont_poll as $arr_desc) {
+	               echo "==> $arr_desc\n";
+	             }
+	             echo "\n\n";
+	           } //end debugging
+	           
+	           //unset($dont_poll);
+
+
+               $time = mktime();
+               $now = date("m-d-Y g:i:s a", $time);
+               
+               // The following check was added to ensure that duplicate entries are not created in the case of overlapping query script executions.
+               // This would only occur if the collective polling time for the iteration took longer than $qtime.
+               $already_exist = db_query("SELECT id FROM alert_log WHERE description='$return_description' AND resolved='N'");
+               $num_rows_exist = db_num_rows($already_exist);
+               if (!$num_rows_exist) {
+                 if ($return_url) {
+                   $query7 = "INSERT INTO alert_log VALUES ('','$return_dependency','$return_description','$return_ipaddress','$return_port','$return_query_type','$return_server','$time',0,'$time','$return_ptime','$return_url',NULL,'N')";
+                 } else if ($return_snmp_comm) {
+                   $query7 = "INSERT INTO alert_log VALUES ('','$return_dependency','$return_description','$return_ipaddress','$return_port','$return_query_type','$return_server','$time',0,'$time','$return_ptime',NULL,'$return_snmp_comm','N')";
+                 } else {
+                   $query7 = "INSERT INTO alert_log VALUES ('','$return_dependency','$return_description','$return_ipaddress','$return_port','$return_query_type','$return_server','$time',0,'$time','$return_ptime',NULL,NULL,'N')";
+                 }
+	             $result7 = db_query($query7);
+
+                 if ($firstmail == 0) { // Assume user wants to know immediately, otherwise we'll send a mail as we're checking for resurrected servers in the next iteration.
+                   $out = mailer($return_id, $return_mail_group, $stat, $stat_msg, $now, $sender, 0);
+                 }
+               }
+
+	           $end = "Y";
+               $n++;
+           } // end if
+           } // end while
+         } while ($end != "Y"); // while from the 'do' statement
+
+       
+       } else { // debugging
+       
+          if ($debug == 1) {
+			  unset($output);
+              //$output = "$description_x UP\n";
+			  $output = $connection2[1];
+			  $output .= "\n";
+              echo $output;
+          } // end debugging
+          
+       } 
+} // end while
+
+if ($debug == 1) {
+  $end_time = mktime();
+  $exec_time = $end_time - $start_time;
+  echo "\n\n";
+  echo ''. date("l n/d/y g:i a", $end_time) .'';
+  echo "\nExecution Time: $exec_time Seconds";
+  echo "\n------------------------------\n\n";
+}
+?>

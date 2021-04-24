@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems
+	xmlns="http://msh" schema="maml">
+	<command:command
+		xmlns:maml="http://schemas.microsoft.com/maml/2004/10"
+		xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10"
+		xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<command:details>
+			<command:name>Connect-HVServer</command:name>
+			<maml:description>
+				<maml:para>This cmdlet establishes a connection to the Horizon API service that runs on an instance of the Horizon Connection server.</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para />
+				<!--Add copy right info here.-->
+			</maml:copyright>
+			<command:verb>Connect</command:verb>
+			<command:noun>HVServer</command:noun>
+			<!--Add Dev version info here.-->
+			<dev:version />
+		</command:details>
+		<maml:description>
+			<maml:para>This cmdlet establishes a connection to the Horizon API service of the Horizon Connection server specified by the -Server parameter.
+
+The connect and disconnect operations for a server use a reference counting mechanism. Every server is identified by its connection string which contains a unique server and user name. If there is already an existing connection to the server, a new connection is not established. Instead, the cmdlet returns the object which represents the existing connection. The RefCount property of the object is incremented by one. When a server is disconnected, then its RefCount property is decreased by one. If this number becomes equal to zero, then the server is disconnected.
+
+PowerCLI supports a list of default servers on which the Horizon API service runs. The Horizon API service runs on an instance of the Horizon Connection server. When an operation is performed, if the target servers cannot be determined from the specified parameters, the cmdlet runs against the servers in the default server list. The target servers are kept in a global variable called $DefaultHVServers. The variable is of an array type and its initial value is an empty array. When you connect to a server, the server is added at the beginning of the array, unless -NotDefault parameter is specified. When you disconnect from a server, the server is removed from the $DefaultHVServers variable. When all servers are removed from the variable, its value is an empty array.</maml:para>
+		</maml:description>
+		<command:syntax>
+			<command:syntaxItem>
+				<maml:name>Connect-HVServer</maml:name>
+				<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "1" >
+					<maml:name>Server</maml:name>
+					<maml:description>
+						<maml:para>Specifies the IP or FQDN of the Horizon Connection server on which the Horizon API service runs.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength = "true" >String</command:parameterValue>
+				</command:parameter>
+				<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+					<maml:name>Domain</maml:name>
+					<maml:description>
+						<maml:para>Specifies the NetBIOS name or short form of the DNS of the Horizon Connection server on which the Horizon API service runs.</maml:para>
+					</maml:description>
+					<command:parameterValue required="false" variableLength = "true" >String</command:parameterValue>
+				</command:parameter>
+				<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+					<maml:name>User</maml:name>
+					<maml:description>
+						<maml:para>Specifies the user name you want to use for authenticating with the Horizon Connection server on which the Horizon API service runs. For more information about the server authentication logic of PowerCLI, run &quot;help about_server_authentication&quot;.
+
+Note: If the user name contains special characters, enclose the entire string in single quotes (&#39;).</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength = "false" >String</command:parameterValue>
+				</command:parameter>
+				<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+					<maml:name>Password</maml:name>
+					<maml:description>
+						<maml:para>Specifies the password you want to use for authenticating with Horizon Connection server on which the Horizon API service runs. For more information about the server authentication logic of PowerCLI, run &quot;help about_server_authentication&quot;.
+
+Note: If the password contains special characters, enclose the entire string in single quotes (&#39;).</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength = "false" >SecureString</command:parameterValue>
+				</command:parameter>
+				<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+					<maml:name>NotDefault</maml:name>
+					<maml:description>
+						<maml:para>Specifies that you do not want to save the specified servers as default servers.</maml:para>
+					</maml:description>
+				</command:parameter>
+				<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+					<maml:name>Force</maml:name>
+					<maml:description>
+						<maml:para>Suppresses all user interface prompts during the cmdlet execution such as multiple default servers and invalid certificate action.</maml:para>
+					</maml:description>
+				</command:parameter>
+			</command:syntaxItem>
+			<command:syntaxItem>
+				<maml:name>Connect-HVServer</maml:name>
+				<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "1" >
+					<maml:name>Server</maml:name>
+					<maml:description>
+						<maml:para>Specifies the IP or FQDN of the Horizon Connection server on which the Horizon API service runs.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength = "true" >String</command:parameterValue>
+				</command:parameter>
+				<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+					<maml:name>SessionId</maml:name>
+					<maml:description>
+						<maml:para>Specifies the ID of an existing Horizon Connection server session that you want to reestablish.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength = "false" >String</command:parameterValue>
+				</command:parameter>
+				<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+					<maml:name>NotDefault</maml:name>
+					<maml:description>
+						<maml:para>Specifies that you do not want to save the specified servers as default servers.</maml:para>
+					</maml:description>
+				</command:parameter>
+				<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+					<maml:name>Force</maml:name>
+					<maml:description>
+						<maml:para>Suppresses all user interface prompts during the cmdlet execution such as multiple default servers and invalid certificate action.</maml:para>
+					</maml:description>
+				</command:parameter>
+			</command:syntaxItem>
+			<command:syntaxItem>
+				<maml:name>Connect-HVServer</maml:name>
+				<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "1" >
+					<maml:name>Server</maml:name>
+					<maml:description>
+						<maml:para>Specifies the IP or FQDN of the Horizon Connection server on which the Horizon API service runs.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength = "true" >String</command:parameterValue>
+				</command:parameter>
+				<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+					<maml:name>Credential</maml:name>
+					<maml:description>
+						<maml:para>Specifies a PSCredential object that contains credentials for authenticating with the server. For more information about the server authentication logic of PowerCLI, run &quot;help about_server_authentication&quot;.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength = "false" >PSCredential</command:parameterValue>
+				</command:parameter>
+				<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+					<maml:name>Domain</maml:name>
+					<maml:description>
+						<maml:para>Specifies the NetBIOS name or short form of the DNS of the Horizon Connection server on which the Horizon API service runs.</maml:para>
+					</maml:description>
+					<command:parameterValue required="false" variableLength = "true" >String</command:parameterValue>
+				</command:parameter>
+				<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+					<maml:name>NotDefault</maml:name>
+					<maml:description>
+						<maml:para>Specifies that you do not want to save the specified servers as default servers.</maml:para>
+					</maml:description>
+				</command:parameter>
+				<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+					<maml:name>Force</maml:name>
+					<maml:description>
+						<maml:para>Suppresses all user interface prompts during the cmdlet execution. Currently these include Multiple default servers and Invalid certificate action.</maml:para>
+					</maml:description>
+				</command:parameter>
+			</command:syntaxItem>
+		</command:syntax>
+		<command:parameters>
+			<command:parameter required = "true" variableLength = "true" globbing = "false" pipelineInput = "false" position = "1" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the IP or FQDN of the Horizon Connection server on which the Horizon API service runs.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength = "true" >String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Domain</maml:name>
+				<maml:description>
+					<maml:para>Specifies the NetBIOS name or short form of the DNS of the Horizon Connection server on which the Horizon API service runs.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength = "true" >String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>User</maml:name>
+				<maml:description>
+					<maml:para>Specifies the user name you want to use for authenticating with the Horizon Connection server on which the Horizon API service runs. For more information about the server authentication logic of PowerCLI, run &quot;help about_server_authentication&quot;.
+
+Note: If the user name contains special characters, enclose the entire string in single quotes (&#39;).</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength = "false" >String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Password</maml:name>
+				<maml:description>
+					<maml:para>Specifies the password you want to use for authenticating with Horizon Connection server on which the Horizon API service runs. For more information about the server authentication logic of PowerCLI, run &quot;help about_server_authentication&quot;.
+
+Note: If the password contains special characters, enclose the entire string in single quotes (&#39;).</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength = "false" >SecureString</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>SessionId</maml:name>
+				<maml:description>
+					<maml:para>Specifies the ID of an existing Horizon Connection server session that you want to reestablish.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength = "false" >String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required = "true" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Credential</maml:name>
+				<maml:description>
+					<maml:para>Specifies a PSCredential object that contains credentials for authenticating with the server. For more information about the server authentication logic of PowerCLI, run &quot;help about_server_authentication&quot;.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength = "false" >PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>NotDefault</maml:name>
+			<maml:description>
+				<maml:para>Specifies that you do not want to save the specified servers as default servers.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		    </command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>Suppresses all user interface prompts during the cmdlet execution such as multiple default servers and invalid certificate action.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		    </command:parameter>
+		    </command:parameters>
+		    <command:inputTypes>
+			<command:inputType>
+				<dev:type>
+					<maml:name></maml:name>
+					<maml:uri/>
+					<maml:description>
+						<maml:para></maml:para>
+					</maml:description>
+				</dev:type>
+				<maml:description></maml:description>
+			</command:inputType>
+		</command:inputTypes>
+		<command:returnValues>
+			<command:returnValue>
+				<dev:type>
+					<maml:name>ViewServer</maml:name>
+					<maml:uri />
+					<maml:description>
+						<maml:para></maml:para>
+					</maml:description>
+				</dev:type>
+				<maml:description></maml:description>
+			</command:returnValue>
+		</command:returnValues>
+		<command:terminatingErrors></command:terminatingErrors>
+		<command:nonTerminatingErrors></command:nonTerminatingErrors>
+		<maml:alertSet>
+			<maml:title></maml:title>
+			<maml:alert>
+				<maml:para>If PowerCLI runs in the non-interactive mode, you do not need to enter user credentials.</maml:para>
+			</maml:alert>
+		</maml:alertSet>
+		<command:examples>
+			<command:example>
+				<maml:title>--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+			<dev:code>Connect-HVServer -Server server -User username -Password pass -Domain domain</dev:code>
+			<dev:remarks>
+				<maml:para>Connects to the Horizon API service that runs on an instance of a Horizon Connection server by using the User, Password, and Domain parameters.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+			<dev:code>$cs = Connect-HVServer -Server server -Username user -Password pass -Domain domain; Connect-HVServer -Server server -SessionId $cs.SessionSecret</dev:code>
+			<dev:remarks>
+				<maml:para>Connects to the Horizon API service that runs on an instance of a Horizon Connection server with an existing session and returns the Horizon API service object. Username is alias to parameter user.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 3 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+			<dev:code>Connect-HVServer -Server server -User username@domain -Password pass</dev:code>
+			<dev:remarks>
+				<maml:para>Connects to the Horizon API service of a Horizon Connection server by passing the domain as a part of the user name and returns the Horizon API service object.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 4 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+			<dev:code>Connect-HVServer -Server server</dev:code>
+			<dev:remarks>
+				<maml:para>Connects to the Horizon API service that runs on an instance of a Horizon Connection server. The user, domain, and password parameters are read by the PowerCLI user interface. Returns the Horizon API service object.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>http://www.vmware.com/support/developer/PowerCLI/PowerCLI65R1/html/Connect-HVServer.html</maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Disconnect-HVServer</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+    </command:command>
+	<command:command
+		xmlns:maml="http://schemas.microsoft.com/maml/2004/10"
+		xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10"
+		xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<command:details>
+			<command:name>Disconnect-HVServer</command:name>
+			<maml:description>
+				<maml:para>This cmdlet closes the connection to one or more Horizon API services that run on one or more instances of Horizon Connection servers.</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para />
+				<!--Add copy right info here.-->
+			</maml:copyright>
+			<command:verb>Disconnect</command:verb>
+			<command:noun>HVServer</command:noun>
+			<!--Add Dev version info here.-->
+			<dev:version />
+		</command:details>
+		<maml:description>
+			<maml:para>This cmdlet disconnects the connection to a Horizon API service that runs on an instance of the Horizon Connection server specified by the -Server parameter.
+
+When there are no active connections to the server, the server is disconnected and removed from the $DefaultHVServers variable. For more information about this variable, see Connect-HVServer.
+
+When no server and no user parameter is specified, and if there is only one connected server in the $DefaultHVServers variable, this server is disconnected. If there is no connected server or multiple servers, the cmdlet throws a terminating error.
+
+This functionality uses the reference counting mechanism. A disconnect decreases the RefCount for that server.  For more information about the mechanism, see Connect-HVServer.
+
+If -Force is specified, the server is disconnected even if there is more than one connection to it.</maml:para>
+		</maml:description>
+		<command:syntax>
+			<command:syntaxItem>
+				<maml:name>Disconnect-HVServer</maml:name>
+				<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "true (ByValue)" position = "0" >
+					<maml:name>Server</maml:name>
+					<maml:description>
+						<maml:para>Specifies the Horizon API service that runs on an instance of a Horizon Connection server that you want to disconnect from.</maml:para>
+					</maml:description>
+					<command:parameterValue required="false" variableLength = "true" >ViewServer[]</command:parameterValue>
+				</command:parameter>
+				<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+					<maml:name>Force</maml:name>
+					<maml:description>
+						<maml:para>Specifies that you want to remove all existing connections to the specified server.</maml:para>
+					</maml:description>
+				</command:parameter>
+				<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+					<maml:name>WhatIf</maml:name>
+					<maml:description>
+						<maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+					</maml:description>
+			    </command:parameter>
+				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+					<maml:name>Confirm</maml:name>
+					<maml:description>
+						<maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+					</maml:description>
+					<dev:type>
+						<maml:name>SwitchParameter</maml:name>
+						<maml:uri/>
+					</dev:type>
+					<dev:defaultValue>$true</dev:defaultValue>
+				</command:parameter>
+			</command:syntaxItem>
+		</command:syntax>
+		<command:parameters>
+			<command:parameter required = "false" variableLength = "true" globbing = "false" pipelineInput = "true" position = "0" >
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Horizon API service that runs on an instance of a Horizon Connection server that you want to disconnect from.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength = "true" >ViewServer[]</command:parameterValue>
+				<dev:type>
+				<maml:name>ViewServer[]</maml:name>
+				<maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			</command:parameter>
+			<command:parameter required = "false" variableLength = "false" globbing = "false" pipelineInput = "false" position = "named" >
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Specifies that you want to remove all existing connections to the specified servers.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</maml:para>
+			</maml:description>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</maml:para>
+				</maml:description>
+				<dev:type>
+					<maml:name>SwitchParameter</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue>$true</dev:defaultValue>
+			</command:parameter>
+		</command:parameters>
+		<command:inputTypes>
+			<command:inputType>
+				<dev:type>
+					<maml:name></maml:name>
+					<maml:uri/>
+					<maml:description>
+						<maml:para>The view server object you have connected to</maml:para>
+					</maml:description>
+				</dev:type>
+				<maml:description></maml:description>
+			</command:inputType>
+		</command:inputTypes>
+		<command:returnValues>
+			<command:returnValue>
+				<dev:type>
+					<maml:name>None</maml:name>
+					<maml:uri />
+					<maml:description>
+						<maml:para></maml:para>
+					</maml:description>
+				</dev:type>
+				<maml:description></maml:description>
+			</command:returnValue>
+		</command:returnValues>
+		<command:terminatingErrors></command:terminatingErrors>
+		<command:nonTerminatingErrors></command:nonTerminatingErrors>
+		<maml:alertSet>
+			<maml:title></maml:title>
+			<maml:alert>
+				<maml:para></maml:para>
+			</maml:alert>
+		</maml:alertSet>
+		<command:examples>
+			<command:example>
+				<maml:title>--------------  Example 1 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+			<dev:code>$HVServer = Connect-HVServer -Server server; Disconnect-HVServer -server $HVServer</dev:code>
+			<dev:remarks>
+				<maml:para>Disconnects the connection to the specified Horizon API service that runs on an instance of a Horizon Connection server.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>
+--------------  Example 2 --------------			</maml:title>
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+C:\PS&gt;			</maml:introduction>
+			<dev:code>$HVServer = Connect-HVServer -Server server; Disconnect-HVServer -Force *</dev:code>
+			<dev:remarks>
+				<maml:para>Disconnects all connected Horizon API services that run on instances of Horizon Connection servers.</maml:para>
+				<maml:para></maml:para>
+				<maml:para></maml:para>
+				<maml:para>
+				</maml:para>
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>http://www.vmware.com/support/developer/PowerCLI/PowerCLI65R1/html/Disconnect-HVServer.html</maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Connect-HVServer</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+</helpItems>

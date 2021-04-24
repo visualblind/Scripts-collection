@@ -1,0 +1,644 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="dynamic-content.js" type="text/javascript"></script>
+<script src="actb.js" type="text/javascript" language="javascript"></script>
+<script src="common.js" type="text/javascript" language="javascript"></script>
+<script>
+var picklist = new Array('Add-CIDatastore','Add-DeployRule','Add-EntityBaseline','Add-EsxSoftwareDepot','Add-EsxSoftwarePackage','Add-PassthroughDevice','Add-ProxyServer','Add-ScriptBundle','Add-VDSwitchPhysicalNetworkAdapter','Add-VDSwitchVMHost','Add-VirtualSwitchPhysicalNetworkAdapter','Add-VMHost','Add-VMHostNtpServer','Compare-EsxImageProfile','Connect-AutoDeployServer','Connect-CIServer','Connect-CisServer','Connect-HVServer','Connect-OMServer','Connect-PIServer','Connect-SrmServer','Connect-VIServer','Copy-DatastoreItem','Copy-DeployRule','Copy-HardDisk','Copy-Patch','Copy-VDisk','Copy-VMGuestFile','Disconnect-AutoDeployServer','Disconnect-CIServer','Disconnect-CisServer','Disconnect-HVServer','Disconnect-OMServer','Disconnect-PIServer','Disconnect-SrmServer','Disconnect-VIServer','Dismount-Tools','Export-AutoDeployState','Export-EsxImageProfile','Export-SpbmStoragePolicy','Export-VApp','Export-VDPortGroup','Export-VDSwitch','Export-VMHostProfile','Format-VMHostDiskPartition','Get-AdvancedSetting','Get-AlarmAction','Get-AlarmActionTrigger','Get-AlarmDefinition','Get-Annotation','Get-Baseline','Get-Catalog','Get-CDDrive','Get-CIAccessControlRule','Get-CIDatastore','Get-CINetworkAdapter','Get-CIRole','Get-CisCommand','Get-CisService','Get-CIUser','Get-CIVApp','Get-CIVAppNetwork','Get-CIVAppStartRule','Get-CIVAppTemplate','Get-CIView','Get-CIVM','Get-CIVMTemplate','Get-CloudCommand','Get-Cluster','Get-Compliance','Get-ContentLibraryItem','Get-CustomAttribute','Get-Datacenter','Get-Datastore','Get-DatastoreCluster','Get-DeployRule','Get-DeployRuleSet','Get-DrmInfo','Get-DrsClusterGroup','Get-DrsRecommendation','Get-DrsRule','Get-DrsVMHostRule','Get-ErrorReport','Get-EsxCli','Get-EsxImageProfile','Get-EsxSoftwarePackage','Get-EsxTop','Get-ExternalNetwork','Get-FloppyDrive','Get-Folder','Get-HAPrimaryVMHost','Get-HardDisk','Get-HvCommand','Get-Inventory','Get-IScsiHbaTarget','Get-LicenseDataManager','Get-LicensingCommand','Get-Log','Get-LogType','Get-Media','Get-NetworkAdapter','Get-NetworkPool','Get-NfsUser','Get-NicTeamingPolicy','Get-OMAlert','Get-OMAlertDefinition','Get-OMAlertSubType','Get-OMAlertType','Get-OMRecommendation','Get-OMResource','Get-OMStat','Get-OMStatKey','Get-OMUser','Get-Org','Get-OrgNetwork','Get-OrgVdc','Get-OrgVdcNetwork','Get-OSCustomizationNicMapping','Get-OSCustomizationSpec','Get-OvfConfiguration','Get-PassthroughDevice','Get-Patch','Get-PatchBaseline','Get-PIComputeInstance','Get-PIDatacenter','Get-PowerCLIConfiguration','Get-PowerCLIVersion','Get-ProviderVdc','Get-ProxyServer','Get-ResourcePool','Get-ScriptBundle','Get-ScsiController','Get-ScsiLun','Get-ScsiLunPath','Get-SecurityPolicy','Get-Snapshot','Get-SpbmCapability','Get-SpbmCompatibleStorage','Get-SpbmEntityConfiguration','Get-SpbmFaultDomain','Get-SpbmPointInTimeReplica','Get-SpbmReplicationGroup','Get-SpbmReplicationPair','Get-SpbmStoragePolicy','Get-Stat','Get-StatInterval','Get-StatType','Get-Tag','Get-TagAssignment','Get-TagCategory','Get-Task','Get-Template','Get-UsbDevice','Get-VAIOFilter','Get-VApp','Get-VasaProvider','Get-VasaStorageArray','Get-VDBlockedPolicy','Get-VDisk','Get-VDPort','Get-VDPortgroup','Get-VDPortgroupOverridePolicy','Get-VDSecurityPolicy','Get-VDSwitch','Get-VDSwitchPrivateVlan','Get-VDTrafficShapingPolicy','Get-VDUplinkLacpPolicy','Get-VDUplinkTeamingPolicy','Get-VIAccount','Get-VICommand','Get-VICredentialStoreItem','Get-VIEvent','Get-View','Get-VIObjectByVIView','Get-VIPermission','Get-VIPrivilege','Get-VIProperty','Get-VIRole','Get-VirtualPortGroup','Get-VirtualSwitch','Get-VM','Get-VMGuest','Get-VMGuestNetworkInterface','Get-VMGuestRoute','Get-VMHost','Get-VMHostAccount','Get-VMHostAdvancedConfiguration','Get-VMHostAttributes','Get-VMHostAuthentication','Get-VMHostAvailableTimeZone','Get-VMHostDiagnosticPartition','Get-VMHostDisk','Get-VMHostDiskPartition','Get-VMHostFirewallDefaultPolicy','Get-VMHostFirewallException','Get-VMHostFirmware','Get-VMHostHardware','Get-VMHostHba','Get-VMHostImageProfile','Get-VMHostMatchingRules','Get-VMHostModule','Get-VMHostNetwork','Get-VMHostNetworkAdapter','Get-VMHostNtpServer','Get-VMHostPatch','Get-VMHostPciDevice','Get-VMHostProfile','Get-VMHostProfileRequiredInput','Get-VMHostRoute','Get-VMHostService','Get-VMHostSnmp','Get-VMHostStartPolicy','Get-VMHostStorage','Get-VMHostSysLogServer','Get-VMQuestion','Get-VMResourceConfiguration','Get-VMStartPolicy','Get-vROpsCommand','Get-VsanClusterConfiguration','Get-VsanDisk','Get-VsanDiskGroup','Get-VsanFaultDomain','Get-VsanIscsiInitiatorGroup','Get-VsanIscsiInitiatorGroupTargetAssociation','Get-VsanIscsiLun','Get-VsanIscsiTarget','Get-VsanResyncingComponent','Get-VsanSpaceUsage','Get-VsanStat','Get-VsanView','Import-AutoDeployState','Import-CIVApp','Import-CIVAppTemplate','Import-SpbmStoragePolicy','Import-VApp','Import-VMHostProfile','Install-VMHostPatch','Invoke-DrsRecommendation','Invoke-VMHostProfile','Invoke-VMScript','left-pane','Mount-Tools','Move-Cluster','Move-Datacenter','Move-Datastore','Move-Folder','Move-HardDisk','Move-Inventory','Move-ResourcePool','Move-Template','Move-VApp','Move-VDisk','Move-VM','Move-VMHost','New-AdvancedSetting','New-AlarmAction','New-AlarmActionTrigger','New-CDDrive','New-CIAccessControlRule','New-CIVApp','New-CIVAppNetwork','New-CIVAppTemplate','New-CIVM','New-Cluster','New-CustomAttribute','New-Datacenter','New-Datastore','New-DatastoreCluster','New-DatastoreDrive','New-DeployRule','New-DrsClusterGroup','New-DrsRule','New-DrsVMHostRule','New-EsxImageProfile','New-FloppyDrive','New-Folder','New-HardDisk','New-IScsiHbaTarget','New-NetworkAdapter','New-NfsUser','New-Org','New-OrgNetwork','New-OrgVdc','New-OSCustomizationNicMapping','New-OSCustomizationSpec','New-PatchBaseline','New-ResourcePool','New-ScsiController','New-Snapshot','New-SpbmRule','New-SpbmRuleSet','New-SpbmStoragePolicy','New-StatInterval','New-Tag','New-TagAssignment','New-TagCategory','New-Template','New-VAIOFilter','New-VApp','New-VasaProvider','New-VDisk','New-VDPortgroup','New-VDSwitch','New-VDSwitchPrivateVlan','New-VICredentialStoreItem','New-VIInventoryDrive','New-VIPermission','New-VIProperty','New-VIRole','New-VirtualPortGroup','New-VirtualSwitch','New-VM','New-VMGuestRoute','New-VMHostAccount','New-VMHostNetworkAdapter','New-VMHostProfile','New-VMHostRoute','New-VsanDisk','New-VsanDiskGroup','New-VsanFaultDomain','New-VsanIscsiInitiatorGroup','New-VsanIscsiInitiatorGroupTargetAssociation','New-VsanIscsiLun','New-VsanIscsiTarget','Open-VMConsoleWindow','Remove-AdvancedSetting','Remove-AlarmAction','Remove-AlarmActionTrigger','Remove-Baseline','Remove-CDDrive','Remove-CIAccessControlRule','Remove-CIVApp','Remove-CIVAppNetwork','Remove-CIVAppTemplate','Remove-Cluster','Remove-CustomAttribute','Remove-Datacenter','Remove-Datastore','Remove-DatastoreCluster','Remove-DeployRule','Remove-DrsClusterGroup','Remove-DrsRule','Remove-DrsVMHostRule','Remove-EntityBaseline','Remove-EsxSoftwareDepot','Remove-EsxSoftwarePackage','Remove-FloppyDrive','Remove-Folder','Remove-HardDisk','Remove-Inventory','Remove-IScsiHbaTarget','Remove-NetworkAdapter','Remove-NfsUser','Remove-Org','Remove-OrgNetwork','Remove-OrgVdc','Remove-OSCustomizationNicMapping','Remove-OSCustomizationSpec','Remove-PassthroughDevice','Remove-ProxyServer','Remove-ResourcePool','Remove-Snapshot','Remove-SpbmStoragePolicy','Remove-StatInterval','Remove-Tag','Remove-TagAssignment','Remove-TagCategory','Remove-Template','Remove-UsbDevice','Remove-VAIOFilter','Remove-VApp','Remove-VasaProvider','Remove-VDisk','Remove-VDPortGroup','Remove-VDSwitch','Remove-VDSwitchPhysicalNetworkAdapter','Remove-VDSwitchPrivateVlan','Remove-VDSwitchVMHost','Remove-VICredentialStoreItem','Remove-VIPermission','Remove-VIProperty','Remove-VIRole','Remove-VirtualPortGroup','Remove-VirtualSwitch','Remove-VirtualSwitchPhysicalNetworkAdapter','Remove-VM','Remove-VMGuestRoute','Remove-VMHost','Remove-VMHostAccount','Remove-VMHostNetworkAdapter','Remove-VMHostNtpServer','Remove-VMHostProfile','Remove-VMHostRoute','Remove-VsanDisk','Remove-VsanDiskGroup','Remove-VsanFaultDomain','Remove-VsanIscsiInitiatorGroup','Remove-VsanIscsiInitiatorGroupTargetAssociation','Remove-VsanIscsiLun','Remove-VsanIscsiTarget','Repair-DeployImageCache','Repair-DeployRuleSetCompliance','Restart-CIVApp','Restart-CIVAppGuest','Restart-CIVM','Restart-CIVMGuest','Restart-VM','Restart-VMGuest','Restart-VMHost','Restart-VMHostService','Search-Cloud','Set-AdvancedSetting','Set-AlarmDefinition','Set-Annotation','Set-CDDrive','Set-CIAccessControlRule','Set-CINetworkAdapter','Set-CIVApp','Set-CIVAppNetwork','Set-CIVAppStartRule','Set-CIVAppTemplate','Set-Cluster','Set-CustomAttribute','Set-Datacenter','Set-Datastore','Set-DatastoreCluster','Set-DeployRule','Set-DeployRuleSet','Set-DrsClusterGroup','Set-DrsRule','Set-DrsVMHostRule','Set-EsxImageProfile','Set-ESXImageProfileAssociation','Set-FloppyDrive','Set-Folder','Set-HardDisk','Set-IScsiHbaTarget','Set-NetworkAdapter','Set-NfsUser','Set-NicTeamingPolicy','Set-OMAlert','Set-Org','Set-OrgNetwork','Set-OrgVdc','Set-OSCustomizationNicMapping','Set-OSCustomizationSpec','Set-PatchBaseline','Set-PowerCLIConfiguration','Set-ResourcePool','Set-ScsiController','Set-ScsiLun','Set-ScsiLunPath','Set-SecurityPolicy','Set-Snapshot','Set-SpbmEntityConfiguration','Set-SpbmStoragePolicy','Set-StatInterval','Set-Tag','Set-TagCategory','Set-Template','Set-VAIOFilter','Set-VApp','Set-VDBlockedPolicy','Set-VDisk','Set-VDPort','Set-VDPortgroup','Set-VDPortgroupOverridePolicy','Set-VDSecurityPolicy','Set-VDSwitch','Set-VDTrafficShapingPolicy','Set-VDUplinkLacpPolicy','Set-VDUplinkTeamingPolicy','Set-VDVlanConfiguration','Set-VIPermission','Set-VIRole','Set-VirtualPortGroup','Set-VirtualSwitch','Set-VM','Set-VMGuestNetworkInterface','Set-VMHost','Set-VMHostAccount','Set-VMHostAdvancedConfiguration','Set-VMHostAuthentication','Set-VMHostDiagnosticPartition','Set-VMHostFirewallDefaultPolicy','Set-VMHostFirewallException','Set-VMHostFirmware','Set-VMHostHba','Set-VMHostModule','Set-VMHostNetwork','Set-VMHostNetworkAdapter','Set-VMHostProfile','Set-VMHostRoute','Set-VMHostService','Set-VMHostSnmp','Set-VMHostStartPolicy','Set-VMHostStorage','Set-VMHostSysLogServer','Set-VMQuestion','Set-VMResourceConfiguration','Set-VMStartPolicy','Set-VsanClusterConfiguration','Set-VsanFaultDomain','Set-VsanIscsiInitiatorGroup','Set-VsanIscsiLun','Set-VsanIscsiTarget','Start-CIVApp','Start-CIVM','Start-SpbmReplicationFailover','Start-SpbmReplicationPrepareFailover','Start-SpbmReplicationPromote','Start-SpbmReplicationReverse','Start-SpbmReplicationTestFailover','Start-VApp','Start-VM','Start-VMHost','Start-VMHostService','Start-VsanClusterDiskUpdate','Stop-CIVApp','Stop-CIVAppGuest','Stop-CIVM','Stop-CIVMGuest','Stop-SpbmReplicationTestFailover','Stop-Task','Stop-VApp','Stop-VM','Stop-VMGuest','Stop-VMHost','Stop-VMHostService','Suspend-CIVApp','Suspend-CIVM','Suspend-VM','Suspend-VMGuest','Suspend-VMHost','Switch-ActiveDeployRuleSet','Sync-Patch','Sync-SpbmReplicationGroup','Test-Compliance','Test-DeployRuleSetCompliance','Test-VMHostProfileCompliance','Test-VMHostSnmp','Test-VsanClusterHealth','Test-VsanNetworkPerformance','Test-VsanStoragePerformance','Test-VsanVMCreation','Update-Entity','Update-Tools','Update-VmfsDatastore','Update-VsanHclDatabase','Wait-Task','Wait-Tools');
+var urls = new Array();
+urls['Add-CIDatastore'] = 'Add-CIDatastore.html';urls['Add-DeployRule'] = 'Add-DeployRule.html';urls['Add-EntityBaseline'] = 'Add-EntityBaseline.html';urls['Add-EsxSoftwareDepot'] = 'Add-EsxSoftwareDepot.html';urls['Add-EsxSoftwarePackage'] = 'Add-EsxSoftwarePackage.html';urls['Add-PassthroughDevice'] = 'Add-PassthroughDevice.html';urls['Add-ProxyServer'] = 'Add-ProxyServer.html';urls['Add-ScriptBundle'] = 'Add-ScriptBundle.html';urls['Add-VDSwitchPhysicalNetworkAdapter'] = 'Add-VDSwitchPhysicalNetworkAdapter.html';urls['Add-VDSwitchVMHost'] = 'Add-VDSwitchVMHost.html';urls['Add-VirtualSwitchPhysicalNetworkAdapter'] = 'Add-VirtualSwitchPhysicalNetworkAdapter.html';urls['Add-VMHost'] = 'Add-VMHost.html';urls['Add-VMHostNtpServer'] = 'Add-VMHostNtpServer.html';urls['Compare-EsxImageProfile'] = 'Compare-EsxImageProfile.html';urls['Connect-AutoDeployServer'] = 'Connect-AutoDeployServer.html';urls['Connect-CIServer'] = 'Connect-CIServer.html';urls['Connect-CisServer'] = 'Connect-CisServer.html';urls['Connect-HVServer'] = 'Connect-HVServer.html';urls['Connect-OMServer'] = 'Connect-OMServer.html';urls['Connect-PIServer'] = 'Connect-PIServer.html';urls['Connect-SrmServer'] = 'Connect-SrmServer.html';urls['Connect-VIServer'] = 'Connect-VIServer.html';urls['Copy-DatastoreItem'] = 'Copy-DatastoreItem.html';urls['Copy-DeployRule'] = 'Copy-DeployRule.html';urls['Copy-HardDisk'] = 'Copy-HardDisk.html';urls['Copy-Patch'] = 'Copy-Patch.html';urls['Copy-VDisk'] = 'Copy-VDisk.html';urls['Copy-VMGuestFile'] = 'Copy-VMGuestFile.html';urls['Disconnect-AutoDeployServer'] = 'Disconnect-AutoDeployServer.html';urls['Disconnect-CIServer'] = 'Disconnect-CIServer.html';urls['Disconnect-CisServer'] = 'Disconnect-CisServer.html';urls['Disconnect-HVServer'] = 'Disconnect-HVServer.html';urls['Disconnect-OMServer'] = 'Disconnect-OMServer.html';urls['Disconnect-PIServer'] = 'Disconnect-PIServer.html';urls['Disconnect-SrmServer'] = 'Disconnect-SrmServer.html';urls['Disconnect-VIServer'] = 'Disconnect-VIServer.html';urls['Dismount-Tools'] = 'Dismount-Tools.html';urls['Export-AutoDeployState'] = 'Export-AutoDeployState.html';urls['Export-EsxImageProfile'] = 'Export-EsxImageProfile.html';urls['Export-SpbmStoragePolicy'] = 'Export-SpbmStoragePolicy.html';urls['Export-VApp'] = 'Export-VApp.html';urls['Export-VDPortGroup'] = 'Export-VDPortGroup.html';urls['Export-VDSwitch'] = 'Export-VDSwitch.html';urls['Export-VMHostProfile'] = 'Export-VMHostProfile.html';urls['Format-VMHostDiskPartition'] = 'Format-VMHostDiskPartition.html';urls['Get-AdvancedSetting'] = 'Get-AdvancedSetting.html';urls['Get-AlarmAction'] = 'Get-AlarmAction.html';urls['Get-AlarmActionTrigger'] = 'Get-AlarmActionTrigger.html';urls['Get-AlarmDefinition'] = 'Get-AlarmDefinition.html';urls['Get-Annotation'] = 'Get-Annotation.html';urls['Get-Baseline'] = 'Get-Baseline.html';urls['Get-Catalog'] = 'Get-Catalog.html';urls['Get-CDDrive'] = 'Get-CDDrive.html';urls['Get-CIAccessControlRule'] = 'Get-CIAccessControlRule.html';urls['Get-CIDatastore'] = 'Get-CIDatastore.html';urls['Get-CINetworkAdapter'] = 'Get-CINetworkAdapter.html';urls['Get-CIRole'] = 'Get-CIRole.html';urls['Get-CisCommand'] = 'Get-CisCommand.html';urls['Get-CisService'] = 'Get-CisService.html';urls['Get-CIUser'] = 'Get-CIUser.html';urls['Get-CIVApp'] = 'Get-CIVApp.html';urls['Get-CIVAppNetwork'] = 'Get-CIVAppNetwork.html';urls['Get-CIVAppStartRule'] = 'Get-CIVAppStartRule.html';urls['Get-CIVAppTemplate'] = 'Get-CIVAppTemplate.html';urls['Get-CIView'] = 'Get-CIView.html';urls['Get-CIVM'] = 'Get-CIVM.html';urls['Get-CIVMTemplate'] = 'Get-CIVMTemplate.html';urls['Get-CloudCommand'] = 'Get-CloudCommand.html';urls['Get-Cluster'] = 'Get-Cluster.html';urls['Get-Compliance'] = 'Get-Compliance.html';urls['Get-ContentLibraryItem'] = 'Get-ContentLibraryItem.html';urls['Get-CustomAttribute'] = 'Get-CustomAttribute.html';urls['Get-Datacenter'] = 'Get-Datacenter.html';urls['Get-Datastore'] = 'Get-Datastore.html';urls['Get-DatastoreCluster'] = 'Get-DatastoreCluster.html';urls['Get-DeployRule'] = 'Get-DeployRule.html';urls['Get-DeployRuleSet'] = 'Get-DeployRuleSet.html';urls['Get-DrmInfo'] = 'Get-DrmInfo.html';urls['Get-DrsClusterGroup'] = 'Get-DrsClusterGroup.html';urls['Get-DrsRecommendation'] = 'Get-DrsRecommendation.html';urls['Get-DrsRule'] = 'Get-DrsRule.html';urls['Get-DrsVMHostRule'] = 'Get-DrsVMHostRule.html';urls['Get-ErrorReport'] = 'Get-ErrorReport.html';urls['Get-EsxCli'] = 'Get-EsxCli.html';urls['Get-EsxImageProfile'] = 'Get-EsxImageProfile.html';urls['Get-EsxSoftwarePackage'] = 'Get-EsxSoftwarePackage.html';urls['Get-EsxTop'] = 'Get-EsxTop.html';urls['Get-ExternalNetwork'] = 'Get-ExternalNetwork.html';urls['Get-FloppyDrive'] = 'Get-FloppyDrive.html';urls['Get-Folder'] = 'Get-Folder.html';urls['Get-HAPrimaryVMHost'] = 'Get-HAPrimaryVMHost.html';urls['Get-HardDisk'] = 'Get-HardDisk.html';urls['Get-HvCommand'] = 'Get-HvCommand.html';urls['Get-Inventory'] = 'Get-Inventory.html';urls['Get-IScsiHbaTarget'] = 'Get-IScsiHbaTarget.html';urls['Get-LicenseDataManager'] = 'Get-LicenseDataManager.html';urls['Get-LicensingCommand'] = 'Get-LicensingCommand.html';urls['Get-Log'] = 'Get-Log.html';urls['Get-LogType'] = 'Get-LogType.html';urls['Get-Media'] = 'Get-Media.html';urls['Get-NetworkAdapter'] = 'Get-NetworkAdapter.html';urls['Get-NetworkPool'] = 'Get-NetworkPool.html';urls['Get-NfsUser'] = 'Get-NfsUser.html';urls['Get-NicTeamingPolicy'] = 'Get-NicTeamingPolicy.html';urls['Get-OMAlert'] = 'Get-OMAlert.html';urls['Get-OMAlertDefinition'] = 'Get-OMAlertDefinition.html';urls['Get-OMAlertSubType'] = 'Get-OMAlertSubType.html';urls['Get-OMAlertType'] = 'Get-OMAlertType.html';urls['Get-OMRecommendation'] = 'Get-OMRecommendation.html';urls['Get-OMResource'] = 'Get-OMResource.html';urls['Get-OMStat'] = 'Get-OMStat.html';urls['Get-OMStatKey'] = 'Get-OMStatKey.html';urls['Get-OMUser'] = 'Get-OMUser.html';urls['Get-Org'] = 'Get-Org.html';urls['Get-OrgNetwork'] = 'Get-OrgNetwork.html';urls['Get-OrgVdc'] = 'Get-OrgVdc.html';urls['Get-OrgVdcNetwork'] = 'Get-OrgVdcNetwork.html';urls['Get-OSCustomizationNicMapping'] = 'Get-OSCustomizationNicMapping.html';urls['Get-OSCustomizationSpec'] = 'Get-OSCustomizationSpec.html';urls['Get-OvfConfiguration'] = 'Get-OvfConfiguration.html';urls['Get-PassthroughDevice'] = 'Get-PassthroughDevice.html';urls['Get-Patch'] = 'Get-Patch.html';urls['Get-PatchBaseline'] = 'Get-PatchBaseline.html';urls['Get-PIComputeInstance'] = 'Get-PIComputeInstance.html';urls['Get-PIDatacenter'] = 'Get-PIDatacenter.html';urls['Get-PowerCLIConfiguration'] = 'Get-PowerCLIConfiguration.html';urls['Get-PowerCLIVersion'] = 'Get-PowerCLIVersion.html';urls['Get-ProviderVdc'] = 'Get-ProviderVdc.html';urls['Get-ProxyServer'] = 'Get-ProxyServer.html';urls['Get-ResourcePool'] = 'Get-ResourcePool.html';urls['Get-ScriptBundle'] = 'Get-ScriptBundle.html';urls['Get-ScsiController'] = 'Get-ScsiController.html';urls['Get-ScsiLun'] = 'Get-ScsiLun.html';urls['Get-ScsiLunPath'] = 'Get-ScsiLunPath.html';urls['Get-SecurityPolicy'] = 'Get-SecurityPolicy.html';urls['Get-Snapshot'] = 'Get-Snapshot.html';urls['Get-SpbmCapability'] = 'Get-SpbmCapability.html';urls['Get-SpbmCompatibleStorage'] = 'Get-SpbmCompatibleStorage.html';urls['Get-SpbmEntityConfiguration'] = 'Get-SpbmEntityConfiguration.html';urls['Get-SpbmFaultDomain'] = 'Get-SpbmFaultDomain.html';urls['Get-SpbmPointInTimeReplica'] = 'Get-SpbmPointInTimeReplica.html';urls['Get-SpbmReplicationGroup'] = 'Get-SpbmReplicationGroup.html';urls['Get-SpbmReplicationPair'] = 'Get-SpbmReplicationPair.html';urls['Get-SpbmStoragePolicy'] = 'Get-SpbmStoragePolicy.html';urls['Get-Stat'] = 'Get-Stat.html';urls['Get-StatInterval'] = 'Get-StatInterval.html';urls['Get-StatType'] = 'Get-StatType.html';urls['Get-Tag'] = 'Get-Tag.html';urls['Get-TagAssignment'] = 'Get-TagAssignment.html';urls['Get-TagCategory'] = 'Get-TagCategory.html';urls['Get-Task'] = 'Get-Task.html';urls['Get-Template'] = 'Get-Template.html';urls['Get-UsbDevice'] = 'Get-UsbDevice.html';urls['Get-VAIOFilter'] = 'Get-VAIOFilter.html';urls['Get-VApp'] = 'Get-VApp.html';urls['Get-VasaProvider'] = 'Get-VasaProvider.html';urls['Get-VasaStorageArray'] = 'Get-VasaStorageArray.html';urls['Get-VDBlockedPolicy'] = 'Get-VDBlockedPolicy.html';urls['Get-VDisk'] = 'Get-VDisk.html';urls['Get-VDPort'] = 'Get-VDPort.html';urls['Get-VDPortgroup'] = 'Get-VDPortgroup.html';urls['Get-VDPortgroupOverridePolicy'] = 'Get-VDPortgroupOverridePolicy.html';urls['Get-VDSecurityPolicy'] = 'Get-VDSecurityPolicy.html';urls['Get-VDSwitch'] = 'Get-VDSwitch.html';urls['Get-VDSwitchPrivateVlan'] = 'Get-VDSwitchPrivateVlan.html';urls['Get-VDTrafficShapingPolicy'] = 'Get-VDTrafficShapingPolicy.html';urls['Get-VDUplinkLacpPolicy'] = 'Get-VDUplinkLacpPolicy.html';urls['Get-VDUplinkTeamingPolicy'] = 'Get-VDUplinkTeamingPolicy.html';urls['Get-VIAccount'] = 'Get-VIAccount.html';urls['Get-VICommand'] = 'Get-VICommand.html';urls['Get-VICredentialStoreItem'] = 'Get-VICredentialStoreItem.html';urls['Get-VIEvent'] = 'Get-VIEvent.html';urls['Get-View'] = 'Get-View.html';urls['Get-VIObjectByVIView'] = 'Get-VIObjectByVIView.html';urls['Get-VIPermission'] = 'Get-VIPermission.html';urls['Get-VIPrivilege'] = 'Get-VIPrivilege.html';urls['Get-VIProperty'] = 'Get-VIProperty.html';urls['Get-VIRole'] = 'Get-VIRole.html';urls['Get-VirtualPortGroup'] = 'Get-VirtualPortGroup.html';urls['Get-VirtualSwitch'] = 'Get-VirtualSwitch.html';urls['Get-VM'] = 'Get-VM.html';urls['Get-VMGuest'] = 'Get-VMGuest.html';urls['Get-VMGuestNetworkInterface'] = 'Get-VMGuestNetworkInterface.html';urls['Get-VMGuestRoute'] = 'Get-VMGuestRoute.html';urls['Get-VMHost'] = 'Get-VMHost.html';urls['Get-VMHostAccount'] = 'Get-VMHostAccount.html';urls['Get-VMHostAdvancedConfiguration'] = 'Get-VMHostAdvancedConfiguration.html';urls['Get-VMHostAttributes'] = 'Get-VMHostAttributes.html';urls['Get-VMHostAuthentication'] = 'Get-VMHostAuthentication.html';urls['Get-VMHostAvailableTimeZone'] = 'Get-VMHostAvailableTimeZone.html';urls['Get-VMHostDiagnosticPartition'] = 'Get-VMHostDiagnosticPartition.html';urls['Get-VMHostDisk'] = 'Get-VMHostDisk.html';urls['Get-VMHostDiskPartition'] = 'Get-VMHostDiskPartition.html';urls['Get-VMHostFirewallDefaultPolicy'] = 'Get-VMHostFirewallDefaultPolicy.html';urls['Get-VMHostFirewallException'] = 'Get-VMHostFirewallException.html';urls['Get-VMHostFirmware'] = 'Get-VMHostFirmware.html';urls['Get-VMHostHardware'] = 'Get-VMHostHardware.html';urls['Get-VMHostHba'] = 'Get-VMHostHba.html';urls['Get-VMHostImageProfile'] = 'Get-VMHostImageProfile.html';urls['Get-VMHostMatchingRules'] = 'Get-VMHostMatchingRules.html';urls['Get-VMHostModule'] = 'Get-VMHostModule.html';urls['Get-VMHostNetwork'] = 'Get-VMHostNetwork.html';urls['Get-VMHostNetworkAdapter'] = 'Get-VMHostNetworkAdapter.html';urls['Get-VMHostNtpServer'] = 'Get-VMHostNtpServer.html';urls['Get-VMHostPatch'] = 'Get-VMHostPatch.html';urls['Get-VMHostPciDevice'] = 'Get-VMHostPciDevice.html';urls['Get-VMHostProfile'] = 'Get-VMHostProfile.html';urls['Get-VMHostProfileRequiredInput'] = 'Get-VMHostProfileRequiredInput.html';urls['Get-VMHostRoute'] = 'Get-VMHostRoute.html';urls['Get-VMHostService'] = 'Get-VMHostService.html';urls['Get-VMHostSnmp'] = 'Get-VMHostSnmp.html';urls['Get-VMHostStartPolicy'] = 'Get-VMHostStartPolicy.html';urls['Get-VMHostStorage'] = 'Get-VMHostStorage.html';urls['Get-VMHostSysLogServer'] = 'Get-VMHostSysLogServer.html';urls['Get-VMQuestion'] = 'Get-VMQuestion.html';urls['Get-VMResourceConfiguration'] = 'Get-VMResourceConfiguration.html';urls['Get-VMStartPolicy'] = 'Get-VMStartPolicy.html';urls['Get-vROpsCommand'] = 'Get-vROpsCommand.html';urls['Get-VsanClusterConfiguration'] = 'Get-VsanClusterConfiguration.html';urls['Get-VsanDisk'] = 'Get-VsanDisk.html';urls['Get-VsanDiskGroup'] = 'Get-VsanDiskGroup.html';urls['Get-VsanFaultDomain'] = 'Get-VsanFaultDomain.html';urls['Get-VsanIscsiInitiatorGroup'] = 'Get-VsanIscsiInitiatorGroup.html';urls['Get-VsanIscsiInitiatorGroupTargetAssociation'] = 'Get-VsanIscsiInitiatorGroupTargetAssociation.html';urls['Get-VsanIscsiLun'] = 'Get-VsanIscsiLun.html';urls['Get-VsanIscsiTarget'] = 'Get-VsanIscsiTarget.html';urls['Get-VsanResyncingComponent'] = 'Get-VsanResyncingComponent.html';urls['Get-VsanSpaceUsage'] = 'Get-VsanSpaceUsage.html';urls['Get-VsanStat'] = 'Get-VsanStat.html';urls['Get-VsanView'] = 'Get-VsanView.html';urls['Import-AutoDeployState'] = 'Import-AutoDeployState.html';urls['Import-CIVApp'] = 'Import-CIVApp.html';urls['Import-CIVAppTemplate'] = 'Import-CIVAppTemplate.html';urls['Import-SpbmStoragePolicy'] = 'Import-SpbmStoragePolicy.html';urls['Import-VApp'] = 'Import-VApp.html';urls['Import-VMHostProfile'] = 'Import-VMHostProfile.html';urls['Install-VMHostPatch'] = 'Install-VMHostPatch.html';urls['Invoke-DrsRecommendation'] = 'Invoke-DrsRecommendation.html';urls['Invoke-VMHostProfile'] = 'Invoke-VMHostProfile.html';urls['Invoke-VMScript'] = 'Invoke-VMScript.html';urls['left-pane'] = 'left-pane.html';urls['Mount-Tools'] = 'Mount-Tools.html';urls['Move-Cluster'] = 'Move-Cluster.html';urls['Move-Datacenter'] = 'Move-Datacenter.html';urls['Move-Datastore'] = 'Move-Datastore.html';urls['Move-Folder'] = 'Move-Folder.html';urls['Move-HardDisk'] = 'Move-HardDisk.html';urls['Move-Inventory'] = 'Move-Inventory.html';urls['Move-ResourcePool'] = 'Move-ResourcePool.html';urls['Move-Template'] = 'Move-Template.html';urls['Move-VApp'] = 'Move-VApp.html';urls['Move-VDisk'] = 'Move-VDisk.html';urls['Move-VM'] = 'Move-VM.html';urls['Move-VMHost'] = 'Move-VMHost.html';urls['New-AdvancedSetting'] = 'New-AdvancedSetting.html';urls['New-AlarmAction'] = 'New-AlarmAction.html';urls['New-AlarmActionTrigger'] = 'New-AlarmActionTrigger.html';urls['New-CDDrive'] = 'New-CDDrive.html';urls['New-CIAccessControlRule'] = 'New-CIAccessControlRule.html';urls['New-CIVApp'] = 'New-CIVApp.html';urls['New-CIVAppNetwork'] = 'New-CIVAppNetwork.html';urls['New-CIVAppTemplate'] = 'New-CIVAppTemplate.html';urls['New-CIVM'] = 'New-CIVM.html';urls['New-Cluster'] = 'New-Cluster.html';urls['New-CustomAttribute'] = 'New-CustomAttribute.html';urls['New-Datacenter'] = 'New-Datacenter.html';urls['New-Datastore'] = 'New-Datastore.html';urls['New-DatastoreCluster'] = 'New-DatastoreCluster.html';urls['New-DatastoreDrive'] = 'New-DatastoreDrive.html';urls['New-DeployRule'] = 'New-DeployRule.html';urls['New-DrsClusterGroup'] = 'New-DrsClusterGroup.html';urls['New-DrsRule'] = 'New-DrsRule.html';urls['New-DrsVMHostRule'] = 'New-DrsVMHostRule.html';urls['New-EsxImageProfile'] = 'New-EsxImageProfile.html';urls['New-FloppyDrive'] = 'New-FloppyDrive.html';urls['New-Folder'] = 'New-Folder.html';urls['New-HardDisk'] = 'New-HardDisk.html';urls['New-IScsiHbaTarget'] = 'New-IScsiHbaTarget.html';urls['New-NetworkAdapter'] = 'New-NetworkAdapter.html';urls['New-NfsUser'] = 'New-NfsUser.html';urls['New-Org'] = 'New-Org.html';urls['New-OrgNetwork'] = 'New-OrgNetwork.html';urls['New-OrgVdc'] = 'New-OrgVdc.html';urls['New-OSCustomizationNicMapping'] = 'New-OSCustomizationNicMapping.html';urls['New-OSCustomizationSpec'] = 'New-OSCustomizationSpec.html';urls['New-PatchBaseline'] = 'New-PatchBaseline.html';urls['New-ResourcePool'] = 'New-ResourcePool.html';urls['New-ScsiController'] = 'New-ScsiController.html';urls['New-Snapshot'] = 'New-Snapshot.html';urls['New-SpbmRule'] = 'New-SpbmRule.html';urls['New-SpbmRuleSet'] = 'New-SpbmRuleSet.html';urls['New-SpbmStoragePolicy'] = 'New-SpbmStoragePolicy.html';urls['New-StatInterval'] = 'New-StatInterval.html';urls['New-Tag'] = 'New-Tag.html';urls['New-TagAssignment'] = 'New-TagAssignment.html';urls['New-TagCategory'] = 'New-TagCategory.html';urls['New-Template'] = 'New-Template.html';urls['New-VAIOFilter'] = 'New-VAIOFilter.html';urls['New-VApp'] = 'New-VApp.html';urls['New-VasaProvider'] = 'New-VasaProvider.html';urls['New-VDisk'] = 'New-VDisk.html';urls['New-VDPortgroup'] = 'New-VDPortgroup.html';urls['New-VDSwitch'] = 'New-VDSwitch.html';urls['New-VDSwitchPrivateVlan'] = 'New-VDSwitchPrivateVlan.html';urls['New-VICredentialStoreItem'] = 'New-VICredentialStoreItem.html';urls['New-VIInventoryDrive'] = 'New-VIInventoryDrive.html';urls['New-VIPermission'] = 'New-VIPermission.html';urls['New-VIProperty'] = 'New-VIProperty.html';urls['New-VIRole'] = 'New-VIRole.html';urls['New-VirtualPortGroup'] = 'New-VirtualPortGroup.html';urls['New-VirtualSwitch'] = 'New-VirtualSwitch.html';urls['New-VM'] = 'New-VM.html';urls['New-VMGuestRoute'] = 'New-VMGuestRoute.html';urls['New-VMHostAccount'] = 'New-VMHostAccount.html';urls['New-VMHostNetworkAdapter'] = 'New-VMHostNetworkAdapter.html';urls['New-VMHostProfile'] = 'New-VMHostProfile.html';urls['New-VMHostRoute'] = 'New-VMHostRoute.html';urls['New-VsanDisk'] = 'New-VsanDisk.html';urls['New-VsanDiskGroup'] = 'New-VsanDiskGroup.html';urls['New-VsanFaultDomain'] = 'New-VsanFaultDomain.html';urls['New-VsanIscsiInitiatorGroup'] = 'New-VsanIscsiInitiatorGroup.html';urls['New-VsanIscsiInitiatorGroupTargetAssociation'] = 'New-VsanIscsiInitiatorGroupTargetAssociation.html';urls['New-VsanIscsiLun'] = 'New-VsanIscsiLun.html';urls['New-VsanIscsiTarget'] = 'New-VsanIscsiTarget.html';urls['Open-VMConsoleWindow'] = 'Open-VMConsoleWindow.html';urls['Remove-AdvancedSetting'] = 'Remove-AdvancedSetting.html';urls['Remove-AlarmAction'] = 'Remove-AlarmAction.html';urls['Remove-AlarmActionTrigger'] = 'Remove-AlarmActionTrigger.html';urls['Remove-Baseline'] = 'Remove-Baseline.html';urls['Remove-CDDrive'] = 'Remove-CDDrive.html';urls['Remove-CIAccessControlRule'] = 'Remove-CIAccessControlRule.html';urls['Remove-CIVApp'] = 'Remove-CIVApp.html';urls['Remove-CIVAppNetwork'] = 'Remove-CIVAppNetwork.html';urls['Remove-CIVAppTemplate'] = 'Remove-CIVAppTemplate.html';urls['Remove-Cluster'] = 'Remove-Cluster.html';urls['Remove-CustomAttribute'] = 'Remove-CustomAttribute.html';urls['Remove-Datacenter'] = 'Remove-Datacenter.html';urls['Remove-Datastore'] = 'Remove-Datastore.html';urls['Remove-DatastoreCluster'] = 'Remove-DatastoreCluster.html';urls['Remove-DeployRule'] = 'Remove-DeployRule.html';urls['Remove-DrsClusterGroup'] = 'Remove-DrsClusterGroup.html';urls['Remove-DrsRule'] = 'Remove-DrsRule.html';urls['Remove-DrsVMHostRule'] = 'Remove-DrsVMHostRule.html';urls['Remove-EntityBaseline'] = 'Remove-EntityBaseline.html';urls['Remove-EsxSoftwareDepot'] = 'Remove-EsxSoftwareDepot.html';urls['Remove-EsxSoftwarePackage'] = 'Remove-EsxSoftwarePackage.html';urls['Remove-FloppyDrive'] = 'Remove-FloppyDrive.html';urls['Remove-Folder'] = 'Remove-Folder.html';urls['Remove-HardDisk'] = 'Remove-HardDisk.html';urls['Remove-Inventory'] = 'Remove-Inventory.html';urls['Remove-IScsiHbaTarget'] = 'Remove-IScsiHbaTarget.html';urls['Remove-NetworkAdapter'] = 'Remove-NetworkAdapter.html';urls['Remove-NfsUser'] = 'Remove-NfsUser.html';urls['Remove-Org'] = 'Remove-Org.html';urls['Remove-OrgNetwork'] = 'Remove-OrgNetwork.html';urls['Remove-OrgVdc'] = 'Remove-OrgVdc.html';urls['Remove-OSCustomizationNicMapping'] = 'Remove-OSCustomizationNicMapping.html';urls['Remove-OSCustomizationSpec'] = 'Remove-OSCustomizationSpec.html';urls['Remove-PassthroughDevice'] = 'Remove-PassthroughDevice.html';urls['Remove-ProxyServer'] = 'Remove-ProxyServer.html';urls['Remove-ResourcePool'] = 'Remove-ResourcePool.html';urls['Remove-Snapshot'] = 'Remove-Snapshot.html';urls['Remove-SpbmStoragePolicy'] = 'Remove-SpbmStoragePolicy.html';urls['Remove-StatInterval'] = 'Remove-StatInterval.html';urls['Remove-Tag'] = 'Remove-Tag.html';urls['Remove-TagAssignment'] = 'Remove-TagAssignment.html';urls['Remove-TagCategory'] = 'Remove-TagCategory.html';urls['Remove-Template'] = 'Remove-Template.html';urls['Remove-UsbDevice'] = 'Remove-UsbDevice.html';urls['Remove-VAIOFilter'] = 'Remove-VAIOFilter.html';urls['Remove-VApp'] = 'Remove-VApp.html';urls['Remove-VasaProvider'] = 'Remove-VasaProvider.html';urls['Remove-VDisk'] = 'Remove-VDisk.html';urls['Remove-VDPortGroup'] = 'Remove-VDPortGroup.html';urls['Remove-VDSwitch'] = 'Remove-VDSwitch.html';urls['Remove-VDSwitchPhysicalNetworkAdapter'] = 'Remove-VDSwitchPhysicalNetworkAdapter.html';urls['Remove-VDSwitchPrivateVlan'] = 'Remove-VDSwitchPrivateVlan.html';urls['Remove-VDSwitchVMHost'] = 'Remove-VDSwitchVMHost.html';urls['Remove-VICredentialStoreItem'] = 'Remove-VICredentialStoreItem.html';urls['Remove-VIPermission'] = 'Remove-VIPermission.html';urls['Remove-VIProperty'] = 'Remove-VIProperty.html';urls['Remove-VIRole'] = 'Remove-VIRole.html';urls['Remove-VirtualPortGroup'] = 'Remove-VirtualPortGroup.html';urls['Remove-VirtualSwitch'] = 'Remove-VirtualSwitch.html';urls['Remove-VirtualSwitchPhysicalNetworkAdapter'] = 'Remove-VirtualSwitchPhysicalNetworkAdapter.html';urls['Remove-VM'] = 'Remove-VM.html';urls['Remove-VMGuestRoute'] = 'Remove-VMGuestRoute.html';urls['Remove-VMHost'] = 'Remove-VMHost.html';urls['Remove-VMHostAccount'] = 'Remove-VMHostAccount.html';urls['Remove-VMHostNetworkAdapter'] = 'Remove-VMHostNetworkAdapter.html';urls['Remove-VMHostNtpServer'] = 'Remove-VMHostNtpServer.html';urls['Remove-VMHostProfile'] = 'Remove-VMHostProfile.html';urls['Remove-VMHostRoute'] = 'Remove-VMHostRoute.html';urls['Remove-VsanDisk'] = 'Remove-VsanDisk.html';urls['Remove-VsanDiskGroup'] = 'Remove-VsanDiskGroup.html';urls['Remove-VsanFaultDomain'] = 'Remove-VsanFaultDomain.html';urls['Remove-VsanIscsiInitiatorGroup'] = 'Remove-VsanIscsiInitiatorGroup.html';urls['Remove-VsanIscsiInitiatorGroupTargetAssociation'] = 'Remove-VsanIscsiInitiatorGroupTargetAssociation.html';urls['Remove-VsanIscsiLun'] = 'Remove-VsanIscsiLun.html';urls['Remove-VsanIscsiTarget'] = 'Remove-VsanIscsiTarget.html';urls['Repair-DeployImageCache'] = 'Repair-DeployImageCache.html';urls['Repair-DeployRuleSetCompliance'] = 'Repair-DeployRuleSetCompliance.html';urls['Restart-CIVApp'] = 'Restart-CIVApp.html';urls['Restart-CIVAppGuest'] = 'Restart-CIVAppGuest.html';urls['Restart-CIVM'] = 'Restart-CIVM.html';urls['Restart-CIVMGuest'] = 'Restart-CIVMGuest.html';urls['Restart-VM'] = 'Restart-VM.html';urls['Restart-VMGuest'] = 'Restart-VMGuest.html';urls['Restart-VMHost'] = 'Restart-VMHost.html';urls['Restart-VMHostService'] = 'Restart-VMHostService.html';urls['Search-Cloud'] = 'Search-Cloud.html';urls['Set-AdvancedSetting'] = 'Set-AdvancedSetting.html';urls['Set-AlarmDefinition'] = 'Set-AlarmDefinition.html';urls['Set-Annotation'] = 'Set-Annotation.html';urls['Set-CDDrive'] = 'Set-CDDrive.html';urls['Set-CIAccessControlRule'] = 'Set-CIAccessControlRule.html';urls['Set-CINetworkAdapter'] = 'Set-CINetworkAdapter.html';urls['Set-CIVApp'] = 'Set-CIVApp.html';urls['Set-CIVAppNetwork'] = 'Set-CIVAppNetwork.html';urls['Set-CIVAppStartRule'] = 'Set-CIVAppStartRule.html';urls['Set-CIVAppTemplate'] = 'Set-CIVAppTemplate.html';urls['Set-Cluster'] = 'Set-Cluster.html';urls['Set-CustomAttribute'] = 'Set-CustomAttribute.html';urls['Set-Datacenter'] = 'Set-Datacenter.html';urls['Set-Datastore'] = 'Set-Datastore.html';urls['Set-DatastoreCluster'] = 'Set-DatastoreCluster.html';urls['Set-DeployRule'] = 'Set-DeployRule.html';urls['Set-DeployRuleSet'] = 'Set-DeployRuleSet.html';urls['Set-DrsClusterGroup'] = 'Set-DrsClusterGroup.html';urls['Set-DrsRule'] = 'Set-DrsRule.html';urls['Set-DrsVMHostRule'] = 'Set-DrsVMHostRule.html';urls['Set-EsxImageProfile'] = 'Set-EsxImageProfile.html';urls['Set-ESXImageProfileAssociation'] = 'Set-ESXImageProfileAssociation.html';urls['Set-FloppyDrive'] = 'Set-FloppyDrive.html';urls['Set-Folder'] = 'Set-Folder.html';urls['Set-HardDisk'] = 'Set-HardDisk.html';urls['Set-IScsiHbaTarget'] = 'Set-IScsiHbaTarget.html';urls['Set-NetworkAdapter'] = 'Set-NetworkAdapter.html';urls['Set-NfsUser'] = 'Set-NfsUser.html';urls['Set-NicTeamingPolicy'] = 'Set-NicTeamingPolicy.html';urls['Set-OMAlert'] = 'Set-OMAlert.html';urls['Set-Org'] = 'Set-Org.html';urls['Set-OrgNetwork'] = 'Set-OrgNetwork.html';urls['Set-OrgVdc'] = 'Set-OrgVdc.html';urls['Set-OSCustomizationNicMapping'] = 'Set-OSCustomizationNicMapping.html';urls['Set-OSCustomizationSpec'] = 'Set-OSCustomizationSpec.html';urls['Set-PatchBaseline'] = 'Set-PatchBaseline.html';urls['Set-PowerCLIConfiguration'] = 'Set-PowerCLIConfiguration.html';urls['Set-ResourcePool'] = 'Set-ResourcePool.html';urls['Set-ScsiController'] = 'Set-ScsiController.html';urls['Set-ScsiLun'] = 'Set-ScsiLun.html';urls['Set-ScsiLunPath'] = 'Set-ScsiLunPath.html';urls['Set-SecurityPolicy'] = 'Set-SecurityPolicy.html';urls['Set-Snapshot'] = 'Set-Snapshot.html';urls['Set-SpbmEntityConfiguration'] = 'Set-SpbmEntityConfiguration.html';urls['Set-SpbmStoragePolicy'] = 'Set-SpbmStoragePolicy.html';urls['Set-StatInterval'] = 'Set-StatInterval.html';urls['Set-Tag'] = 'Set-Tag.html';urls['Set-TagCategory'] = 'Set-TagCategory.html';urls['Set-Template'] = 'Set-Template.html';urls['Set-VAIOFilter'] = 'Set-VAIOFilter.html';urls['Set-VApp'] = 'Set-VApp.html';urls['Set-VDBlockedPolicy'] = 'Set-VDBlockedPolicy.html';urls['Set-VDisk'] = 'Set-VDisk.html';urls['Set-VDPort'] = 'Set-VDPort.html';urls['Set-VDPortgroup'] = 'Set-VDPortgroup.html';urls['Set-VDPortgroupOverridePolicy'] = 'Set-VDPortgroupOverridePolicy.html';urls['Set-VDSecurityPolicy'] = 'Set-VDSecurityPolicy.html';urls['Set-VDSwitch'] = 'Set-VDSwitch.html';urls['Set-VDTrafficShapingPolicy'] = 'Set-VDTrafficShapingPolicy.html';urls['Set-VDUplinkLacpPolicy'] = 'Set-VDUplinkLacpPolicy.html';urls['Set-VDUplinkTeamingPolicy'] = 'Set-VDUplinkTeamingPolicy.html';urls['Set-VDVlanConfiguration'] = 'Set-VDVlanConfiguration.html';urls['Set-VIPermission'] = 'Set-VIPermission.html';urls['Set-VIRole'] = 'Set-VIRole.html';urls['Set-VirtualPortGroup'] = 'Set-VirtualPortGroup.html';urls['Set-VirtualSwitch'] = 'Set-VirtualSwitch.html';urls['Set-VM'] = 'Set-VM.html';urls['Set-VMGuestNetworkInterface'] = 'Set-VMGuestNetworkInterface.html';urls['Set-VMHost'] = 'Set-VMHost.html';urls['Set-VMHostAccount'] = 'Set-VMHostAccount.html';urls['Set-VMHostAdvancedConfiguration'] = 'Set-VMHostAdvancedConfiguration.html';urls['Set-VMHostAuthentication'] = 'Set-VMHostAuthentication.html';urls['Set-VMHostDiagnosticPartition'] = 'Set-VMHostDiagnosticPartition.html';urls['Set-VMHostFirewallDefaultPolicy'] = 'Set-VMHostFirewallDefaultPolicy.html';urls['Set-VMHostFirewallException'] = 'Set-VMHostFirewallException.html';urls['Set-VMHostFirmware'] = 'Set-VMHostFirmware.html';urls['Set-VMHostHba'] = 'Set-VMHostHba.html';urls['Set-VMHostModule'] = 'Set-VMHostModule.html';urls['Set-VMHostNetwork'] = 'Set-VMHostNetwork.html';urls['Set-VMHostNetworkAdapter'] = 'Set-VMHostNetworkAdapter.html';urls['Set-VMHostProfile'] = 'Set-VMHostProfile.html';urls['Set-VMHostRoute'] = 'Set-VMHostRoute.html';urls['Set-VMHostService'] = 'Set-VMHostService.html';urls['Set-VMHostSnmp'] = 'Set-VMHostSnmp.html';urls['Set-VMHostStartPolicy'] = 'Set-VMHostStartPolicy.html';urls['Set-VMHostStorage'] = 'Set-VMHostStorage.html';urls['Set-VMHostSysLogServer'] = 'Set-VMHostSysLogServer.html';urls['Set-VMQuestion'] = 'Set-VMQuestion.html';urls['Set-VMResourceConfiguration'] = 'Set-VMResourceConfiguration.html';urls['Set-VMStartPolicy'] = 'Set-VMStartPolicy.html';urls['Set-VsanClusterConfiguration'] = 'Set-VsanClusterConfiguration.html';urls['Set-VsanFaultDomain'] = 'Set-VsanFaultDomain.html';urls['Set-VsanIscsiInitiatorGroup'] = 'Set-VsanIscsiInitiatorGroup.html';urls['Set-VsanIscsiLun'] = 'Set-VsanIscsiLun.html';urls['Set-VsanIscsiTarget'] = 'Set-VsanIscsiTarget.html';urls['Start-CIVApp'] = 'Start-CIVApp.html';urls['Start-CIVM'] = 'Start-CIVM.html';urls['Start-SpbmReplicationFailover'] = 'Start-SpbmReplicationFailover.html';urls['Start-SpbmReplicationPrepareFailover'] = 'Start-SpbmReplicationPrepareFailover.html';urls['Start-SpbmReplicationPromote'] = 'Start-SpbmReplicationPromote.html';urls['Start-SpbmReplicationReverse'] = 'Start-SpbmReplicationReverse.html';urls['Start-SpbmReplicationTestFailover'] = 'Start-SpbmReplicationTestFailover.html';urls['Start-VApp'] = 'Start-VApp.html';urls['Start-VM'] = 'Start-VM.html';urls['Start-VMHost'] = 'Start-VMHost.html';urls['Start-VMHostService'] = 'Start-VMHostService.html';urls['Start-VsanClusterDiskUpdate'] = 'Start-VsanClusterDiskUpdate.html';urls['Stop-CIVApp'] = 'Stop-CIVApp.html';urls['Stop-CIVAppGuest'] = 'Stop-CIVAppGuest.html';urls['Stop-CIVM'] = 'Stop-CIVM.html';urls['Stop-CIVMGuest'] = 'Stop-CIVMGuest.html';urls['Stop-SpbmReplicationTestFailover'] = 'Stop-SpbmReplicationTestFailover.html';urls['Stop-Task'] = 'Stop-Task.html';urls['Stop-VApp'] = 'Stop-VApp.html';urls['Stop-VM'] = 'Stop-VM.html';urls['Stop-VMGuest'] = 'Stop-VMGuest.html';urls['Stop-VMHost'] = 'Stop-VMHost.html';urls['Stop-VMHostService'] = 'Stop-VMHostService.html';urls['Suspend-CIVApp'] = 'Suspend-CIVApp.html';urls['Suspend-CIVM'] = 'Suspend-CIVM.html';urls['Suspend-VM'] = 'Suspend-VM.html';urls['Suspend-VMGuest'] = 'Suspend-VMGuest.html';urls['Suspend-VMHost'] = 'Suspend-VMHost.html';urls['Switch-ActiveDeployRuleSet'] = 'Switch-ActiveDeployRuleSet.html';urls['Sync-Patch'] = 'Sync-Patch.html';urls['Sync-SpbmReplicationGroup'] = 'Sync-SpbmReplicationGroup.html';urls['Test-Compliance'] = 'Test-Compliance.html';urls['Test-DeployRuleSetCompliance'] = 'Test-DeployRuleSetCompliance.html';urls['Test-VMHostProfileCompliance'] = 'Test-VMHostProfileCompliance.html';urls['Test-VMHostSnmp'] = 'Test-VMHostSnmp.html';urls['Test-VsanClusterHealth'] = 'Test-VsanClusterHealth.html';urls['Test-VsanNetworkPerformance'] = 'Test-VsanNetworkPerformance.html';urls['Test-VsanStoragePerformance'] = 'Test-VsanStoragePerformance.html';urls['Test-VsanVMCreation'] = 'Test-VsanVMCreation.html';urls['Update-Entity'] = 'Update-Entity.html';urls['Update-Tools'] = 'Update-Tools.html';urls['Update-VmfsDatastore'] = 'Update-VmfsDatastore.html';urls['Update-VsanHclDatabase'] = 'Update-VsanHclDatabase.html';urls['Wait-Task'] = 'Wait-Task.html';urls['Wait-Tools'] = 'Wait-Tools.html';
+</script><link href="index-style.css" type="text/css" rel="StyleSheet" /></head>
+<body bgcolor="white"><a name="navbar_top"></a><table class="header-footer" cellspacing="0">
+<tr><td><a href="javascript:void(location.href='left-pane.html'); void(parent.frames[1].location.href='Overview.html');">PowerCLI Overview</a></td></tr>
+<tr><td><a href="javascript:void(location.href='index-all_cmdlets.html'); void(parent.frames[1].location.href='Overview.html');">All Cmdlets</a></td></tr>
+<tr><td><a href="javascript:void(location.href='index-all_types.html'); void(parent.frames[1].location.href='Overview.html');">All Types</a></td></tr>
+<tr><td><a href="javascript:void(location.href='index-all_enums.html'); void(parent.frames[1].location.href='Overview.html');">All Enumerations</a></td></tr>
+<tr><td><a href="javascript:void(location.href='index-parameters.html'); void(parent.frames[1].location.href='Overview.html');">All Parameters</a></td></tr>
+<tr><td><a href="javascript:void(location.href='index-about_articles.html'); void(parent.frames[1].location.href='Overview.html');">About Articles</a></td></tr></table>
+<h2 class="index">Resources</h2>
+<br><table class="header-footer" cellspacing="0">
+<tr><td><a title="Download PowerCLI" target="classFrame" href="http://www.vmware.com/support/developer/PowerCLI/index.html">Download PowerCLI</a></td></tr><tr><td><a title="PowerCLI Community" target="classFrame" href="http://www.vmware.com/go/powercli">PowerCLI Community</a></td></tr><tr><td><a title="PowerCLI Blog" target="classFrame" href="http://blogs.vmware.com/powercli/">PowerCLI Blog</a></td></tr></table>
+<h2 class="index">All Cmdlets</h2>
+<input onfocus="this.value=&quot;&quot;" value=" -- Quick Index -- " id="tb" style="font-family: verdana; width: 95%; margin-bottom: 10px" type="text"><br>
+<script>var obj = actb(document.getElementById('tb'),picklist,urls);</script>
+<div style="margin-bottom: 5px"><b><font size="-1">
+<a onclick="sweeptoggle('contract');expandcontent(this, 'Get')" style="padding: 2" href="#">Get</a>
+<a onclick="sweeptoggle('contract');expandcontent(this, 'Set')" style="padding: 2" href="#">Set</a>
+<a onclick="sweeptoggle('contract');expandcontent(this, 'New')" style="padding: 2" href="#">New</a>
+<a onclick="sweeptoggle('contract');expandcontent(this, 'Remove')" style="padding: 2" href="#">Remove</a>
+<a onclick="sweeptoggle('expand')" style="padding: 2" href="#">All</a>
+</font></b></div>
+<font size="-1">
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Add">
+<nobr><a title="Add-CIDatastore" target="classFrame" href="Add-CIDatastore.html">Add-CIDatastore</a><br></nobr>
+<nobr><a title="Add-DeployRule" target="classFrame" href="Add-DeployRule.html">Add-DeployRule</a><br></nobr>
+<nobr><a title="Add-EntityBaseline" target="classFrame" href="Add-EntityBaseline.html">Add-EntityBaseline</a><br></nobr>
+<nobr><a title="Add-EsxSoftwareDepot" target="classFrame" href="Add-EsxSoftwareDepot.html">Add-EsxSoftwareDepot</a><br></nobr>
+<nobr><a title="Add-EsxSoftwarePackage" target="classFrame" href="Add-EsxSoftwarePackage.html">Add-EsxSoftwarePackage</a><br></nobr>
+<nobr><a title="Add-PassthroughDevice" target="classFrame" href="Add-PassthroughDevice.html">Add-PassthroughDevice</a><br></nobr>
+<nobr><a title="Add-ProxyServer" target="classFrame" href="Add-ProxyServer.html">Add-ProxyServer</a><br></nobr>
+<nobr><a title="Add-ScriptBundle" target="classFrame" href="Add-ScriptBundle.html">Add-ScriptBundle</a><br></nobr>
+<nobr><a title="Add-VDSwitchPhysicalNetworkAdapter" target="classFrame" href="Add-VDSwitchPhysicalNetworkAdapter.html">Add-VDSwitchPhysicalNetworkAdapter</a><br></nobr>
+<nobr><a title="Add-VDSwitchVMHost" target="classFrame" href="Add-VDSwitchVMHost.html">Add-VDSwitchVMHost</a><br></nobr>
+<nobr><a title="Add-VirtualSwitchPhysicalNetworkAdapter" target="classFrame" href="Add-VirtualSwitchPhysicalNetworkAdapter.html">Add-VirtualSwitchPhysicalNetworkAdapter</a><br></nobr>
+<nobr><a title="Add-VMHost" target="classFrame" href="Add-VMHost.html">Add-VMHost</a><br></nobr>
+<nobr><a title="Add-VMHostNtpServer" target="classFrame" href="Add-VMHostNtpServer.html">Add-VMHostNtpServer</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Compare">
+<nobr><a title="Compare-EsxImageProfile" target="classFrame" href="Compare-EsxImageProfile.html">Compare-EsxImageProfile</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Connect">
+<nobr><a title="Connect-AutoDeployServer" target="classFrame" href="Connect-AutoDeployServer.html">Connect-AutoDeployServer</a><br></nobr>
+<nobr><a title="Connect-CIServer" target="classFrame" href="Connect-CIServer.html">Connect-CIServer</a><br></nobr>
+<nobr><a title="Connect-CisServer" target="classFrame" href="Connect-CisServer.html">Connect-CisServer</a><br></nobr>
+<nobr><a title="Connect-HVServer" target="classFrame" href="Connect-HVServer.html">Connect-HVServer</a><br></nobr>
+<nobr><a title="Connect-OMServer" target="classFrame" href="Connect-OMServer.html">Connect-OMServer</a><br></nobr>
+<nobr><a title="Connect-PIServer" target="classFrame" href="Connect-PIServer.html">Connect-PIServer</a><br></nobr>
+<nobr><a title="Connect-SrmServer" target="classFrame" href="Connect-SrmServer.html">Connect-SrmServer</a><br></nobr>
+<nobr><a title="Connect-VIServer" target="classFrame" href="Connect-VIServer.html">Connect-VIServer</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Copy">
+<nobr><a title="Copy-DatastoreItem" target="classFrame" href="Copy-DatastoreItem.html">Copy-DatastoreItem</a><br></nobr>
+<nobr><a title="Copy-DeployRule" target="classFrame" href="Copy-DeployRule.html">Copy-DeployRule</a><br></nobr>
+<nobr><a title="Copy-HardDisk" target="classFrame" href="Copy-HardDisk.html">Copy-HardDisk</a><br></nobr>
+<nobr><a title="Copy-Patch" target="classFrame" href="Copy-Patch.html">Copy-Patch</a><br></nobr>
+<nobr><a title="Copy-VDisk" target="classFrame" href="Copy-VDisk.html">Copy-VDisk</a><br></nobr>
+<nobr><a title="Copy-VMGuestFile" target="classFrame" href="Copy-VMGuestFile.html">Copy-VMGuestFile</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Disconnect">
+<nobr><a title="Disconnect-AutoDeployServer" target="classFrame" href="Disconnect-AutoDeployServer.html">Disconnect-AutoDeployServer</a><br></nobr>
+<nobr><a title="Disconnect-CIServer" target="classFrame" href="Disconnect-CIServer.html">Disconnect-CIServer</a><br></nobr>
+<nobr><a title="Disconnect-CisServer" target="classFrame" href="Disconnect-CisServer.html">Disconnect-CisServer</a><br></nobr>
+<nobr><a title="Disconnect-HVServer" target="classFrame" href="Disconnect-HVServer.html">Disconnect-HVServer</a><br></nobr>
+<nobr><a title="Disconnect-OMServer" target="classFrame" href="Disconnect-OMServer.html">Disconnect-OMServer</a><br></nobr>
+<nobr><a title="Disconnect-PIServer" target="classFrame" href="Disconnect-PIServer.html">Disconnect-PIServer</a><br></nobr>
+<nobr><a title="Disconnect-SrmServer" target="classFrame" href="Disconnect-SrmServer.html">Disconnect-SrmServer</a><br></nobr>
+<nobr><a title="Disconnect-VIServer" target="classFrame" href="Disconnect-VIServer.html">Disconnect-VIServer</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Dismount">
+<nobr><a title="Dismount-Tools" target="classFrame" href="Dismount-Tools.html">Dismount-Tools</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Export">
+<nobr><a title="Export-AutoDeployState" target="classFrame" href="Export-AutoDeployState.html">Export-AutoDeployState</a><br></nobr>
+<nobr><a title="Export-EsxImageProfile" target="classFrame" href="Export-EsxImageProfile.html">Export-EsxImageProfile</a><br></nobr>
+<nobr><a title="Export-SpbmStoragePolicy" target="classFrame" href="Export-SpbmStoragePolicy.html">Export-SpbmStoragePolicy</a><br></nobr>
+<nobr><a title="Export-VApp" target="classFrame" href="Export-VApp.html">Export-VApp</a><br></nobr>
+<nobr><a title="Export-VDPortGroup" target="classFrame" href="Export-VDPortGroup.html">Export-VDPortGroup</a><br></nobr>
+<nobr><a title="Export-VDSwitch" target="classFrame" href="Export-VDSwitch.html">Export-VDSwitch</a><br></nobr>
+<nobr><a title="Export-VMHostProfile" target="classFrame" href="Export-VMHostProfile.html">Export-VMHostProfile</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Format">
+<nobr><a title="Format-VMHostDiskPartition" target="classFrame" href="Format-VMHostDiskPartition.html">Format-VMHostDiskPartition</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Get">
+<nobr><a title="Get-AdvancedSetting" target="classFrame" href="Get-AdvancedSetting.html">Get-AdvancedSetting</a><br></nobr>
+<nobr><a title="Get-AlarmAction" target="classFrame" href="Get-AlarmAction.html">Get-AlarmAction</a><br></nobr>
+<nobr><a title="Get-AlarmActionTrigger" target="classFrame" href="Get-AlarmActionTrigger.html">Get-AlarmActionTrigger</a><br></nobr>
+<nobr><a title="Get-AlarmDefinition" target="classFrame" href="Get-AlarmDefinition.html">Get-AlarmDefinition</a><br></nobr>
+<nobr><a title="Get-Annotation" target="classFrame" href="Get-Annotation.html">Get-Annotation</a><br></nobr>
+<nobr><a title="Get-Baseline" target="classFrame" href="Get-Baseline.html">Get-Baseline</a><br></nobr>
+<nobr><a title="Get-Catalog" target="classFrame" href="Get-Catalog.html">Get-Catalog</a><br></nobr>
+<nobr><a title="Get-CDDrive" target="classFrame" href="Get-CDDrive.html">Get-CDDrive</a><br></nobr>
+<nobr><a title="Get-CIAccessControlRule" target="classFrame" href="Get-CIAccessControlRule.html">Get-CIAccessControlRule</a><br></nobr>
+<nobr><a title="Get-CIDatastore" target="classFrame" href="Get-CIDatastore.html">Get-CIDatastore</a><br></nobr>
+<nobr><a title="Get-CINetworkAdapter" target="classFrame" href="Get-CINetworkAdapter.html">Get-CINetworkAdapter</a><br></nobr>
+<nobr><a title="Get-CIRole" target="classFrame" href="Get-CIRole.html">Get-CIRole</a><br></nobr>
+<nobr><a title="Get-CisCommand" target="classFrame" href="Get-CisCommand.html">Get-CisCommand</a><br></nobr>
+<nobr><a title="Get-CisService" target="classFrame" href="Get-CisService.html">Get-CisService</a><br></nobr>
+<nobr><a title="Get-CIUser" target="classFrame" href="Get-CIUser.html">Get-CIUser</a><br></nobr>
+<nobr><a title="Get-CIVApp" target="classFrame" href="Get-CIVApp.html">Get-CIVApp</a><br></nobr>
+<nobr><a title="Get-CIVAppNetwork" target="classFrame" href="Get-CIVAppNetwork.html">Get-CIVAppNetwork</a><br></nobr>
+<nobr><a title="Get-CIVAppStartRule" target="classFrame" href="Get-CIVAppStartRule.html">Get-CIVAppStartRule</a><br></nobr>
+<nobr><a title="Get-CIVAppTemplate" target="classFrame" href="Get-CIVAppTemplate.html">Get-CIVAppTemplate</a><br></nobr>
+<nobr><a title="Get-CIView" target="classFrame" href="Get-CIView.html">Get-CIView</a><br></nobr>
+<nobr><a title="Get-CIVM" target="classFrame" href="Get-CIVM.html">Get-CIVM</a><br></nobr>
+<nobr><a title="Get-CIVMTemplate" target="classFrame" href="Get-CIVMTemplate.html">Get-CIVMTemplate</a><br></nobr>
+<nobr><a title="Get-CloudCommand" target="classFrame" href="Get-CloudCommand.html">Get-CloudCommand</a><br></nobr>
+<nobr><a title="Get-Cluster" target="classFrame" href="Get-Cluster.html">Get-Cluster</a><br></nobr>
+<nobr><a title="Get-Compliance" target="classFrame" href="Get-Compliance.html">Get-Compliance</a><br></nobr>
+<nobr><a title="Get-ContentLibraryItem" target="classFrame" href="Get-ContentLibraryItem.html">Get-ContentLibraryItem</a><br></nobr>
+<nobr><a title="Get-CustomAttribute" target="classFrame" href="Get-CustomAttribute.html">Get-CustomAttribute</a><br></nobr>
+<nobr><a title="Get-Datacenter" target="classFrame" href="Get-Datacenter.html">Get-Datacenter</a><br></nobr>
+<nobr><a title="Get-Datastore" target="classFrame" href="Get-Datastore.html">Get-Datastore</a><br></nobr>
+<nobr><a title="Get-DatastoreCluster" target="classFrame" href="Get-DatastoreCluster.html">Get-DatastoreCluster</a><br></nobr>
+<nobr><a title="Get-DeployRule" target="classFrame" href="Get-DeployRule.html">Get-DeployRule</a><br></nobr>
+<nobr><a title="Get-DeployRuleSet" target="classFrame" href="Get-DeployRuleSet.html">Get-DeployRuleSet</a><br></nobr>
+<nobr><a title="Get-DrmInfo" target="classFrame" href="Get-DrmInfo.html">Get-DrmInfo</a><br></nobr>
+<nobr><a title="Get-DrsClusterGroup" target="classFrame" href="Get-DrsClusterGroup.html">Get-DrsClusterGroup</a><br></nobr>
+<nobr><a title="Get-DrsRecommendation" target="classFrame" href="Get-DrsRecommendation.html">Get-DrsRecommendation</a><br></nobr>
+<nobr><a title="Get-DrsRule" target="classFrame" href="Get-DrsRule.html">Get-DrsRule</a><br></nobr>
+<nobr><a title="Get-DrsVMHostRule" target="classFrame" href="Get-DrsVMHostRule.html">Get-DrsVMHostRule</a><br></nobr>
+<nobr><a title="Get-ErrorReport" target="classFrame" href="Get-ErrorReport.html">Get-ErrorReport</a><br></nobr>
+<nobr><a title="Get-EsxCli" target="classFrame" href="Get-EsxCli.html">Get-EsxCli</a><br></nobr>
+<nobr><a title="Get-EsxImageProfile" target="classFrame" href="Get-EsxImageProfile.html">Get-EsxImageProfile</a><br></nobr>
+<nobr><a title="Get-EsxSoftwarePackage" target="classFrame" href="Get-EsxSoftwarePackage.html">Get-EsxSoftwarePackage</a><br></nobr>
+<nobr><a title="Get-EsxTop" target="classFrame" href="Get-EsxTop.html">Get-EsxTop</a><br></nobr>
+<nobr><a title="Get-ExternalNetwork" target="classFrame" href="Get-ExternalNetwork.html">Get-ExternalNetwork</a><br></nobr>
+<nobr><a title="Get-FloppyDrive" target="classFrame" href="Get-FloppyDrive.html">Get-FloppyDrive</a><br></nobr>
+<nobr><a title="Get-Folder" target="classFrame" href="Get-Folder.html">Get-Folder</a><br></nobr>
+<nobr><a title="Get-HAPrimaryVMHost" target="classFrame" href="Get-HAPrimaryVMHost.html">Get-HAPrimaryVMHost</a><br></nobr>
+<nobr><a title="Get-HardDisk" target="classFrame" href="Get-HardDisk.html">Get-HardDisk</a><br></nobr>
+<nobr><a title="Get-HvCommand" target="classFrame" href="Get-HvCommand.html">Get-HvCommand</a><br></nobr>
+<nobr><a title="Get-Inventory" target="classFrame" href="Get-Inventory.html">Get-Inventory</a><br></nobr>
+<nobr><a title="Get-IScsiHbaTarget" target="classFrame" href="Get-IScsiHbaTarget.html">Get-IScsiHbaTarget</a><br></nobr>
+<nobr><a title="Get-LicenseDataManager" target="classFrame" href="Get-LicenseDataManager.html">Get-LicenseDataManager</a><br></nobr>
+<nobr><a title="Get-LicensingCommand" target="classFrame" href="Get-LicensingCommand.html">Get-LicensingCommand</a><br></nobr>
+<nobr><a title="Get-Log" target="classFrame" href="Get-Log.html">Get-Log</a><br></nobr>
+<nobr><a title="Get-LogType" target="classFrame" href="Get-LogType.html">Get-LogType</a><br></nobr>
+<nobr><a title="Get-Media" target="classFrame" href="Get-Media.html">Get-Media</a><br></nobr>
+<nobr><a title="Get-NetworkAdapter" target="classFrame" href="Get-NetworkAdapter.html">Get-NetworkAdapter</a><br></nobr>
+<nobr><a title="Get-NetworkPool" target="classFrame" href="Get-NetworkPool.html">Get-NetworkPool</a><br></nobr>
+<nobr><a title="Get-NfsUser" target="classFrame" href="Get-NfsUser.html">Get-NfsUser</a><br></nobr>
+<nobr><a title="Get-NicTeamingPolicy" target="classFrame" href="Get-NicTeamingPolicy.html">Get-NicTeamingPolicy</a><br></nobr>
+<nobr><a title="Get-OMAlert" target="classFrame" href="Get-OMAlert.html">Get-OMAlert</a><br></nobr>
+<nobr><a title="Get-OMAlertDefinition" target="classFrame" href="Get-OMAlertDefinition.html">Get-OMAlertDefinition</a><br></nobr>
+<nobr><a title="Get-OMAlertSubType" target="classFrame" href="Get-OMAlertSubType.html">Get-OMAlertSubType</a><br></nobr>
+<nobr><a title="Get-OMAlertType" target="classFrame" href="Get-OMAlertType.html">Get-OMAlertType</a><br></nobr>
+<nobr><a title="Get-OMRecommendation" target="classFrame" href="Get-OMRecommendation.html">Get-OMRecommendation</a><br></nobr>
+<nobr><a title="Get-OMResource" target="classFrame" href="Get-OMResource.html">Get-OMResource</a><br></nobr>
+<nobr><a title="Get-OMStat" target="classFrame" href="Get-OMStat.html">Get-OMStat</a><br></nobr>
+<nobr><a title="Get-OMStatKey" target="classFrame" href="Get-OMStatKey.html">Get-OMStatKey</a><br></nobr>
+<nobr><a title="Get-OMUser" target="classFrame" href="Get-OMUser.html">Get-OMUser</a><br></nobr>
+<nobr><a title="Get-Org" target="classFrame" href="Get-Org.html">Get-Org</a><br></nobr>
+<nobr><a title="Get-OrgNetwork" target="classFrame" href="Get-OrgNetwork.html">Get-OrgNetwork</a><br></nobr>
+<nobr><a title="Get-OrgVdc" target="classFrame" href="Get-OrgVdc.html">Get-OrgVdc</a><br></nobr>
+<nobr><a title="Get-OrgVdcNetwork" target="classFrame" href="Get-OrgVdcNetwork.html">Get-OrgVdcNetwork</a><br></nobr>
+<nobr><a title="Get-OSCustomizationNicMapping" target="classFrame" href="Get-OSCustomizationNicMapping.html">Get-OSCustomizationNicMapping</a><br></nobr>
+<nobr><a title="Get-OSCustomizationSpec" target="classFrame" href="Get-OSCustomizationSpec.html">Get-OSCustomizationSpec</a><br></nobr>
+<nobr><a title="Get-OvfConfiguration" target="classFrame" href="Get-OvfConfiguration.html">Get-OvfConfiguration</a><br></nobr>
+<nobr><a title="Get-PassthroughDevice" target="classFrame" href="Get-PassthroughDevice.html">Get-PassthroughDevice</a><br></nobr>
+<nobr><a title="Get-Patch" target="classFrame" href="Get-Patch.html">Get-Patch</a><br></nobr>
+<nobr><a title="Get-PatchBaseline" target="classFrame" href="Get-PatchBaseline.html">Get-PatchBaseline</a><br></nobr>
+<nobr><a title="Get-PIComputeInstance" target="classFrame" href="Get-PIComputeInstance.html">Get-PIComputeInstance</a><br></nobr>
+<nobr><a title="Get-PIDatacenter" target="classFrame" href="Get-PIDatacenter.html">Get-PIDatacenter</a><br></nobr>
+<nobr><a title="Get-PowerCLIConfiguration" target="classFrame" href="Get-PowerCLIConfiguration.html">Get-PowerCLIConfiguration</a><br></nobr>
+<nobr><a title="Get-PowerCLIVersion" target="classFrame" href="Get-PowerCLIVersion.html">Get-PowerCLIVersion</a><br></nobr>
+<nobr><a title="Get-ProviderVdc" target="classFrame" href="Get-ProviderVdc.html">Get-ProviderVdc</a><br></nobr>
+<nobr><a title="Get-ProxyServer" target="classFrame" href="Get-ProxyServer.html">Get-ProxyServer</a><br></nobr>
+<nobr><a title="Get-ResourcePool" target="classFrame" href="Get-ResourcePool.html">Get-ResourcePool</a><br></nobr>
+<nobr><a title="Get-ScriptBundle" target="classFrame" href="Get-ScriptBundle.html">Get-ScriptBundle</a><br></nobr>
+<nobr><a title="Get-ScsiController" target="classFrame" href="Get-ScsiController.html">Get-ScsiController</a><br></nobr>
+<nobr><a title="Get-ScsiLun" target="classFrame" href="Get-ScsiLun.html">Get-ScsiLun</a><br></nobr>
+<nobr><a title="Get-ScsiLunPath" target="classFrame" href="Get-ScsiLunPath.html">Get-ScsiLunPath</a><br></nobr>
+<nobr><a title="Get-SecurityPolicy" target="classFrame" href="Get-SecurityPolicy.html">Get-SecurityPolicy</a><br></nobr>
+<nobr><a title="Get-Snapshot" target="classFrame" href="Get-Snapshot.html">Get-Snapshot</a><br></nobr>
+<nobr><a title="Get-SpbmCapability" target="classFrame" href="Get-SpbmCapability.html">Get-SpbmCapability</a><br></nobr>
+<nobr><a title="Get-SpbmCompatibleStorage" target="classFrame" href="Get-SpbmCompatibleStorage.html">Get-SpbmCompatibleStorage</a><br></nobr>
+<nobr><a title="Get-SpbmEntityConfiguration" target="classFrame" href="Get-SpbmEntityConfiguration.html">Get-SpbmEntityConfiguration</a><br></nobr>
+<nobr><a title="Get-SpbmFaultDomain" target="classFrame" href="Get-SpbmFaultDomain.html">Get-SpbmFaultDomain</a><br></nobr>
+<nobr><a title="Get-SpbmPointInTimeReplica" target="classFrame" href="Get-SpbmPointInTimeReplica.html">Get-SpbmPointInTimeReplica</a><br></nobr>
+<nobr><a title="Get-SpbmReplicationGroup" target="classFrame" href="Get-SpbmReplicationGroup.html">Get-SpbmReplicationGroup</a><br></nobr>
+<nobr><a title="Get-SpbmReplicationPair" target="classFrame" href="Get-SpbmReplicationPair.html">Get-SpbmReplicationPair</a><br></nobr>
+<nobr><a title="Get-SpbmStoragePolicy" target="classFrame" href="Get-SpbmStoragePolicy.html">Get-SpbmStoragePolicy</a><br></nobr>
+<nobr><a title="Get-Stat" target="classFrame" href="Get-Stat.html">Get-Stat</a><br></nobr>
+<nobr><a title="Get-StatInterval" target="classFrame" href="Get-StatInterval.html">Get-StatInterval</a><br></nobr>
+<nobr><a title="Get-StatType" target="classFrame" href="Get-StatType.html">Get-StatType</a><br></nobr>
+<nobr><a title="Get-Tag" target="classFrame" href="Get-Tag.html">Get-Tag</a><br></nobr>
+<nobr><a title="Get-TagAssignment" target="classFrame" href="Get-TagAssignment.html">Get-TagAssignment</a><br></nobr>
+<nobr><a title="Get-TagCategory" target="classFrame" href="Get-TagCategory.html">Get-TagCategory</a><br></nobr>
+<nobr><a title="Get-Task" target="classFrame" href="Get-Task.html">Get-Task</a><br></nobr>
+<nobr><a title="Get-Template" target="classFrame" href="Get-Template.html">Get-Template</a><br></nobr>
+<nobr><a title="Get-UsbDevice" target="classFrame" href="Get-UsbDevice.html">Get-UsbDevice</a><br></nobr>
+<nobr><a title="Get-VAIOFilter" target="classFrame" href="Get-VAIOFilter.html">Get-VAIOFilter</a><br></nobr>
+<nobr><a title="Get-VApp" target="classFrame" href="Get-VApp.html">Get-VApp</a><br></nobr>
+<nobr><a title="Get-VasaProvider" target="classFrame" href="Get-VasaProvider.html">Get-VasaProvider</a><br></nobr>
+<nobr><a title="Get-VasaStorageArray" target="classFrame" href="Get-VasaStorageArray.html">Get-VasaStorageArray</a><br></nobr>
+<nobr><a title="Get-VDBlockedPolicy" target="classFrame" href="Get-VDBlockedPolicy.html">Get-VDBlockedPolicy</a><br></nobr>
+<nobr><a title="Get-VDisk" target="classFrame" href="Get-VDisk.html">Get-VDisk</a><br></nobr>
+<nobr><a title="Get-VDPort" target="classFrame" href="Get-VDPort.html">Get-VDPort</a><br></nobr>
+<nobr><a title="Get-VDPortgroup" target="classFrame" href="Get-VDPortgroup.html">Get-VDPortgroup</a><br></nobr>
+<nobr><a title="Get-VDPortgroupOverridePolicy" target="classFrame" href="Get-VDPortgroupOverridePolicy.html">Get-VDPortgroupOverridePolicy</a><br></nobr>
+<nobr><a title="Get-VDSecurityPolicy" target="classFrame" href="Get-VDSecurityPolicy.html">Get-VDSecurityPolicy</a><br></nobr>
+<nobr><a title="Get-VDSwitch" target="classFrame" href="Get-VDSwitch.html">Get-VDSwitch</a><br></nobr>
+<nobr><a title="Get-VDSwitchPrivateVlan" target="classFrame" href="Get-VDSwitchPrivateVlan.html">Get-VDSwitchPrivateVlan</a><br></nobr>
+<nobr><a title="Get-VDTrafficShapingPolicy" target="classFrame" href="Get-VDTrafficShapingPolicy.html">Get-VDTrafficShapingPolicy</a><br></nobr>
+<nobr><a title="Get-VDUplinkLacpPolicy" target="classFrame" href="Get-VDUplinkLacpPolicy.html">Get-VDUplinkLacpPolicy</a><br></nobr>
+<nobr><a title="Get-VDUplinkTeamingPolicy" target="classFrame" href="Get-VDUplinkTeamingPolicy.html">Get-VDUplinkTeamingPolicy</a><br></nobr>
+<nobr><a title="Get-VIAccount" target="classFrame" href="Get-VIAccount.html">Get-VIAccount</a><br></nobr>
+<nobr><a title="Get-VICommand" target="classFrame" href="Get-VICommand.html">Get-VICommand</a><br></nobr>
+<nobr><a title="Get-VICredentialStoreItem" target="classFrame" href="Get-VICredentialStoreItem.html">Get-VICredentialStoreItem</a><br></nobr>
+<nobr><a title="Get-VIEvent" target="classFrame" href="Get-VIEvent.html">Get-VIEvent</a><br></nobr>
+<nobr><a title="Get-View" target="classFrame" href="Get-View.html">Get-View</a><br></nobr>
+<nobr><a title="Get-VIObjectByVIView" target="classFrame" href="Get-VIObjectByVIView.html">Get-VIObjectByVIView</a><br></nobr>
+<nobr><a title="Get-VIPermission" target="classFrame" href="Get-VIPermission.html">Get-VIPermission</a><br></nobr>
+<nobr><a title="Get-VIPrivilege" target="classFrame" href="Get-VIPrivilege.html">Get-VIPrivilege</a><br></nobr>
+<nobr><a title="Get-VIProperty" target="classFrame" href="Get-VIProperty.html">Get-VIProperty</a><br></nobr>
+<nobr><a title="Get-VIRole" target="classFrame" href="Get-VIRole.html">Get-VIRole</a><br></nobr>
+<nobr><a title="Get-VirtualPortGroup" target="classFrame" href="Get-VirtualPortGroup.html">Get-VirtualPortGroup</a><br></nobr>
+<nobr><a title="Get-VirtualSwitch" target="classFrame" href="Get-VirtualSwitch.html">Get-VirtualSwitch</a><br></nobr>
+<nobr><a title="Get-VM" target="classFrame" href="Get-VM.html">Get-VM</a><br></nobr>
+<nobr><a title="Get-VMGuest" target="classFrame" href="Get-VMGuest.html">Get-VMGuest</a><br></nobr>
+<nobr><a title="Get-VMGuestNetworkInterface" target="classFrame" href="Get-VMGuestNetworkInterface.html">Get-VMGuestNetworkInterface</a><br></nobr>
+<nobr><a title="Get-VMGuestRoute" target="classFrame" href="Get-VMGuestRoute.html">Get-VMGuestRoute</a><br></nobr>
+<nobr><a title="Get-VMHost" target="classFrame" href="Get-VMHost.html">Get-VMHost</a><br></nobr>
+<nobr><a title="Get-VMHostAccount" target="classFrame" href="Get-VMHostAccount.html">Get-VMHostAccount</a><br></nobr>
+<nobr><a title="Get-VMHostAdvancedConfiguration" target="classFrame" href="Get-VMHostAdvancedConfiguration.html">Get-VMHostAdvancedConfiguration</a><br></nobr>
+<nobr><a title="Get-VMHostAttributes" target="classFrame" href="Get-VMHostAttributes.html">Get-VMHostAttributes</a><br></nobr>
+<nobr><a title="Get-VMHostAuthentication" target="classFrame" href="Get-VMHostAuthentication.html">Get-VMHostAuthentication</a><br></nobr>
+<nobr><a title="Get-VMHostAvailableTimeZone" target="classFrame" href="Get-VMHostAvailableTimeZone.html">Get-VMHostAvailableTimeZone</a><br></nobr>
+<nobr><a title="Get-VMHostDiagnosticPartition" target="classFrame" href="Get-VMHostDiagnosticPartition.html">Get-VMHostDiagnosticPartition</a><br></nobr>
+<nobr><a title="Get-VMHostDisk" target="classFrame" href="Get-VMHostDisk.html">Get-VMHostDisk</a><br></nobr>
+<nobr><a title="Get-VMHostDiskPartition" target="classFrame" href="Get-VMHostDiskPartition.html">Get-VMHostDiskPartition</a><br></nobr>
+<nobr><a title="Get-VMHostFirewallDefaultPolicy" target="classFrame" href="Get-VMHostFirewallDefaultPolicy.html">Get-VMHostFirewallDefaultPolicy</a><br></nobr>
+<nobr><a title="Get-VMHostFirewallException" target="classFrame" href="Get-VMHostFirewallException.html">Get-VMHostFirewallException</a><br></nobr>
+<nobr><a title="Get-VMHostFirmware" target="classFrame" href="Get-VMHostFirmware.html">Get-VMHostFirmware</a><br></nobr>
+<nobr><a title="Get-VMHostHardware" target="classFrame" href="Get-VMHostHardware.html">Get-VMHostHardware</a><br></nobr>
+<nobr><a title="Get-VMHostHba" target="classFrame" href="Get-VMHostHba.html">Get-VMHostHba</a><br></nobr>
+<nobr><a title="Get-VMHostImageProfile" target="classFrame" href="Get-VMHostImageProfile.html">Get-VMHostImageProfile</a><br></nobr>
+<nobr><a title="Get-VMHostMatchingRules" target="classFrame" href="Get-VMHostMatchingRules.html">Get-VMHostMatchingRules</a><br></nobr>
+<nobr><a title="Get-VMHostModule" target="classFrame" href="Get-VMHostModule.html">Get-VMHostModule</a><br></nobr>
+<nobr><a title="Get-VMHostNetwork" target="classFrame" href="Get-VMHostNetwork.html">Get-VMHostNetwork</a><br></nobr>
+<nobr><a title="Get-VMHostNetworkAdapter" target="classFrame" href="Get-VMHostNetworkAdapter.html">Get-VMHostNetworkAdapter</a><br></nobr>
+<nobr><a title="Get-VMHostNtpServer" target="classFrame" href="Get-VMHostNtpServer.html">Get-VMHostNtpServer</a><br></nobr>
+<nobr><a title="Get-VMHostPatch" target="classFrame" href="Get-VMHostPatch.html">Get-VMHostPatch</a><br></nobr>
+<nobr><a title="Get-VMHostPciDevice" target="classFrame" href="Get-VMHostPciDevice.html">Get-VMHostPciDevice</a><br></nobr>
+<nobr><a title="Get-VMHostProfile" target="classFrame" href="Get-VMHostProfile.html">Get-VMHostProfile</a><br></nobr>
+<nobr><a title="Get-VMHostProfileRequiredInput" target="classFrame" href="Get-VMHostProfileRequiredInput.html">Get-VMHostProfileRequiredInput</a><br></nobr>
+<nobr><a title="Get-VMHostRoute" target="classFrame" href="Get-VMHostRoute.html">Get-VMHostRoute</a><br></nobr>
+<nobr><a title="Get-VMHostService" target="classFrame" href="Get-VMHostService.html">Get-VMHostService</a><br></nobr>
+<nobr><a title="Get-VMHostSnmp" target="classFrame" href="Get-VMHostSnmp.html">Get-VMHostSnmp</a><br></nobr>
+<nobr><a title="Get-VMHostStartPolicy" target="classFrame" href="Get-VMHostStartPolicy.html">Get-VMHostStartPolicy</a><br></nobr>
+<nobr><a title="Get-VMHostStorage" target="classFrame" href="Get-VMHostStorage.html">Get-VMHostStorage</a><br></nobr>
+<nobr><a title="Get-VMHostSysLogServer" target="classFrame" href="Get-VMHostSysLogServer.html">Get-VMHostSysLogServer</a><br></nobr>
+<nobr><a title="Get-VMQuestion" target="classFrame" href="Get-VMQuestion.html">Get-VMQuestion</a><br></nobr>
+<nobr><a title="Get-VMResourceConfiguration" target="classFrame" href="Get-VMResourceConfiguration.html">Get-VMResourceConfiguration</a><br></nobr>
+<nobr><a title="Get-VMStartPolicy" target="classFrame" href="Get-VMStartPolicy.html">Get-VMStartPolicy</a><br></nobr>
+<nobr><a title="Get-vROpsCommand" target="classFrame" href="Get-vROpsCommand.html">Get-vROpsCommand</a><br></nobr>
+<nobr><a title="Get-VsanClusterConfiguration" target="classFrame" href="Get-VsanClusterConfiguration.html">Get-VsanClusterConfiguration</a><br></nobr>
+<nobr><a title="Get-VsanDisk" target="classFrame" href="Get-VsanDisk.html">Get-VsanDisk</a><br></nobr>
+<nobr><a title="Get-VsanDiskGroup" target="classFrame" href="Get-VsanDiskGroup.html">Get-VsanDiskGroup</a><br></nobr>
+<nobr><a title="Get-VsanFaultDomain" target="classFrame" href="Get-VsanFaultDomain.html">Get-VsanFaultDomain</a><br></nobr>
+<nobr><a title="Get-VsanIscsiInitiatorGroup" target="classFrame" href="Get-VsanIscsiInitiatorGroup.html">Get-VsanIscsiInitiatorGroup</a><br></nobr>
+<nobr><a title="Get-VsanIscsiInitiatorGroupTargetAssociation" target="classFrame" href="Get-VsanIscsiInitiatorGroupTargetAssociation.html">Get-VsanIscsiInitiatorGroupTargetAssociation</a><br></nobr>
+<nobr><a title="Get-VsanIscsiLun" target="classFrame" href="Get-VsanIscsiLun.html">Get-VsanIscsiLun</a><br></nobr>
+<nobr><a title="Get-VsanIscsiTarget" target="classFrame" href="Get-VsanIscsiTarget.html">Get-VsanIscsiTarget</a><br></nobr>
+<nobr><a title="Get-VsanResyncingComponent" target="classFrame" href="Get-VsanResyncingComponent.html">Get-VsanResyncingComponent</a><br></nobr>
+<nobr><a title="Get-VsanSpaceUsage" target="classFrame" href="Get-VsanSpaceUsage.html">Get-VsanSpaceUsage</a><br></nobr>
+<nobr><a title="Get-VsanStat" target="classFrame" href="Get-VsanStat.html">Get-VsanStat</a><br></nobr>
+<nobr><a title="Get-VsanView" target="classFrame" href="Get-VsanView.html">Get-VsanView</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Import">
+<nobr><a title="Import-AutoDeployState" target="classFrame" href="Import-AutoDeployState.html">Import-AutoDeployState</a><br></nobr>
+<nobr><a title="Import-CIVApp" target="classFrame" href="Import-CIVApp.html">Import-CIVApp</a><br></nobr>
+<nobr><a title="Import-CIVAppTemplate" target="classFrame" href="Import-CIVAppTemplate.html">Import-CIVAppTemplate</a><br></nobr>
+<nobr><a title="Import-SpbmStoragePolicy" target="classFrame" href="Import-SpbmStoragePolicy.html">Import-SpbmStoragePolicy</a><br></nobr>
+<nobr><a title="Import-VApp" target="classFrame" href="Import-VApp.html">Import-VApp</a><br></nobr>
+<nobr><a title="Import-VMHostProfile" target="classFrame" href="Import-VMHostProfile.html">Import-VMHostProfile</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Install">
+<nobr><a title="Install-VMHostPatch" target="classFrame" href="Install-VMHostPatch.html">Install-VMHostPatch</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Invoke">
+<nobr><a title="Invoke-DrsRecommendation" target="classFrame" href="Invoke-DrsRecommendation.html">Invoke-DrsRecommendation</a><br></nobr>
+<nobr><a title="Invoke-VMHostProfile" target="classFrame" href="Invoke-VMHostProfile.html">Invoke-VMHostProfile</a><br></nobr>
+<nobr><a title="Invoke-VMScript" target="classFrame" href="Invoke-VMScript.html">Invoke-VMScript</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="left">
+<nobr><a title="left-pane" target="classFrame" href="left-pane.html">left-pane</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Mount">
+<nobr><a title="Mount-Tools" target="classFrame" href="Mount-Tools.html">Mount-Tools</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Move">
+<nobr><a title="Move-Cluster" target="classFrame" href="Move-Cluster.html">Move-Cluster</a><br></nobr>
+<nobr><a title="Move-Datacenter" target="classFrame" href="Move-Datacenter.html">Move-Datacenter</a><br></nobr>
+<nobr><a title="Move-Datastore" target="classFrame" href="Move-Datastore.html">Move-Datastore</a><br></nobr>
+<nobr><a title="Move-Folder" target="classFrame" href="Move-Folder.html">Move-Folder</a><br></nobr>
+<nobr><a title="Move-HardDisk" target="classFrame" href="Move-HardDisk.html">Move-HardDisk</a><br></nobr>
+<nobr><a title="Move-Inventory" target="classFrame" href="Move-Inventory.html">Move-Inventory</a><br></nobr>
+<nobr><a title="Move-ResourcePool" target="classFrame" href="Move-ResourcePool.html">Move-ResourcePool</a><br></nobr>
+<nobr><a title="Move-Template" target="classFrame" href="Move-Template.html">Move-Template</a><br></nobr>
+<nobr><a title="Move-VApp" target="classFrame" href="Move-VApp.html">Move-VApp</a><br></nobr>
+<nobr><a title="Move-VDisk" target="classFrame" href="Move-VDisk.html">Move-VDisk</a><br></nobr>
+<nobr><a title="Move-VM" target="classFrame" href="Move-VM.html">Move-VM</a><br></nobr>
+<nobr><a title="Move-VMHost" target="classFrame" href="Move-VMHost.html">Move-VMHost</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="New">
+<nobr><a title="New-AdvancedSetting" target="classFrame" href="New-AdvancedSetting.html">New-AdvancedSetting</a><br></nobr>
+<nobr><a title="New-AlarmAction" target="classFrame" href="New-AlarmAction.html">New-AlarmAction</a><br></nobr>
+<nobr><a title="New-AlarmActionTrigger" target="classFrame" href="New-AlarmActionTrigger.html">New-AlarmActionTrigger</a><br></nobr>
+<nobr><a title="New-CDDrive" target="classFrame" href="New-CDDrive.html">New-CDDrive</a><br></nobr>
+<nobr><a title="New-CIAccessControlRule" target="classFrame" href="New-CIAccessControlRule.html">New-CIAccessControlRule</a><br></nobr>
+<nobr><a title="New-CIVApp" target="classFrame" href="New-CIVApp.html">New-CIVApp</a><br></nobr>
+<nobr><a title="New-CIVAppNetwork" target="classFrame" href="New-CIVAppNetwork.html">New-CIVAppNetwork</a><br></nobr>
+<nobr><a title="New-CIVAppTemplate" target="classFrame" href="New-CIVAppTemplate.html">New-CIVAppTemplate</a><br></nobr>
+<nobr><a title="New-CIVM" target="classFrame" href="New-CIVM.html">New-CIVM</a><br></nobr>
+<nobr><a title="New-Cluster" target="classFrame" href="New-Cluster.html">New-Cluster</a><br></nobr>
+<nobr><a title="New-CustomAttribute" target="classFrame" href="New-CustomAttribute.html">New-CustomAttribute</a><br></nobr>
+<nobr><a title="New-Datacenter" target="classFrame" href="New-Datacenter.html">New-Datacenter</a><br></nobr>
+<nobr><a title="New-Datastore" target="classFrame" href="New-Datastore.html">New-Datastore</a><br></nobr>
+<nobr><a title="New-DatastoreCluster" target="classFrame" href="New-DatastoreCluster.html">New-DatastoreCluster</a><br></nobr>
+<nobr><a title="New-DatastoreDrive" target="classFrame" href="New-DatastoreDrive.html">New-DatastoreDrive</a><br></nobr>
+<nobr><a title="New-DeployRule" target="classFrame" href="New-DeployRule.html">New-DeployRule</a><br></nobr>
+<nobr><a title="New-DrsClusterGroup" target="classFrame" href="New-DrsClusterGroup.html">New-DrsClusterGroup</a><br></nobr>
+<nobr><a title="New-DrsRule" target="classFrame" href="New-DrsRule.html">New-DrsRule</a><br></nobr>
+<nobr><a title="New-DrsVMHostRule" target="classFrame" href="New-DrsVMHostRule.html">New-DrsVMHostRule</a><br></nobr>
+<nobr><a title="New-EsxImageProfile" target="classFrame" href="New-EsxImageProfile.html">New-EsxImageProfile</a><br></nobr>
+<nobr><a title="New-FloppyDrive" target="classFrame" href="New-FloppyDrive.html">New-FloppyDrive</a><br></nobr>
+<nobr><a title="New-Folder" target="classFrame" href="New-Folder.html">New-Folder</a><br></nobr>
+<nobr><a title="New-HardDisk" target="classFrame" href="New-HardDisk.html">New-HardDisk</a><br></nobr>
+<nobr><a title="New-IScsiHbaTarget" target="classFrame" href="New-IScsiHbaTarget.html">New-IScsiHbaTarget</a><br></nobr>
+<nobr><a title="New-NetworkAdapter" target="classFrame" href="New-NetworkAdapter.html">New-NetworkAdapter</a><br></nobr>
+<nobr><a title="New-NfsUser" target="classFrame" href="New-NfsUser.html">New-NfsUser</a><br></nobr>
+<nobr><a title="New-Org" target="classFrame" href="New-Org.html">New-Org</a><br></nobr>
+<nobr><a title="New-OrgNetwork" target="classFrame" href="New-OrgNetwork.html">New-OrgNetwork</a><br></nobr>
+<nobr><a title="New-OrgVdc" target="classFrame" href="New-OrgVdc.html">New-OrgVdc</a><br></nobr>
+<nobr><a title="New-OSCustomizationNicMapping" target="classFrame" href="New-OSCustomizationNicMapping.html">New-OSCustomizationNicMapping</a><br></nobr>
+<nobr><a title="New-OSCustomizationSpec" target="classFrame" href="New-OSCustomizationSpec.html">New-OSCustomizationSpec</a><br></nobr>
+<nobr><a title="New-PatchBaseline" target="classFrame" href="New-PatchBaseline.html">New-PatchBaseline</a><br></nobr>
+<nobr><a title="New-ResourcePool" target="classFrame" href="New-ResourcePool.html">New-ResourcePool</a><br></nobr>
+<nobr><a title="New-ScsiController" target="classFrame" href="New-ScsiController.html">New-ScsiController</a><br></nobr>
+<nobr><a title="New-Snapshot" target="classFrame" href="New-Snapshot.html">New-Snapshot</a><br></nobr>
+<nobr><a title="New-SpbmRule" target="classFrame" href="New-SpbmRule.html">New-SpbmRule</a><br></nobr>
+<nobr><a title="New-SpbmRuleSet" target="classFrame" href="New-SpbmRuleSet.html">New-SpbmRuleSet</a><br></nobr>
+<nobr><a title="New-SpbmStoragePolicy" target="classFrame" href="New-SpbmStoragePolicy.html">New-SpbmStoragePolicy</a><br></nobr>
+<nobr><a title="New-StatInterval" target="classFrame" href="New-StatInterval.html">New-StatInterval</a><br></nobr>
+<nobr><a title="New-Tag" target="classFrame" href="New-Tag.html">New-Tag</a><br></nobr>
+<nobr><a title="New-TagAssignment" target="classFrame" href="New-TagAssignment.html">New-TagAssignment</a><br></nobr>
+<nobr><a title="New-TagCategory" target="classFrame" href="New-TagCategory.html">New-TagCategory</a><br></nobr>
+<nobr><a title="New-Template" target="classFrame" href="New-Template.html">New-Template</a><br></nobr>
+<nobr><a title="New-VAIOFilter" target="classFrame" href="New-VAIOFilter.html">New-VAIOFilter</a><br></nobr>
+<nobr><a title="New-VApp" target="classFrame" href="New-VApp.html">New-VApp</a><br></nobr>
+<nobr><a title="New-VasaProvider" target="classFrame" href="New-VasaProvider.html">New-VasaProvider</a><br></nobr>
+<nobr><a title="New-VDisk" target="classFrame" href="New-VDisk.html">New-VDisk</a><br></nobr>
+<nobr><a title="New-VDPortgroup" target="classFrame" href="New-VDPortgroup.html">New-VDPortgroup</a><br></nobr>
+<nobr><a title="New-VDSwitch" target="classFrame" href="New-VDSwitch.html">New-VDSwitch</a><br></nobr>
+<nobr><a title="New-VDSwitchPrivateVlan" target="classFrame" href="New-VDSwitchPrivateVlan.html">New-VDSwitchPrivateVlan</a><br></nobr>
+<nobr><a title="New-VICredentialStoreItem" target="classFrame" href="New-VICredentialStoreItem.html">New-VICredentialStoreItem</a><br></nobr>
+<nobr><a title="New-VIInventoryDrive" target="classFrame" href="New-VIInventoryDrive.html">New-VIInventoryDrive</a><br></nobr>
+<nobr><a title="New-VIPermission" target="classFrame" href="New-VIPermission.html">New-VIPermission</a><br></nobr>
+<nobr><a title="New-VIProperty" target="classFrame" href="New-VIProperty.html">New-VIProperty</a><br></nobr>
+<nobr><a title="New-VIRole" target="classFrame" href="New-VIRole.html">New-VIRole</a><br></nobr>
+<nobr><a title="New-VirtualPortGroup" target="classFrame" href="New-VirtualPortGroup.html">New-VirtualPortGroup</a><br></nobr>
+<nobr><a title="New-VirtualSwitch" target="classFrame" href="New-VirtualSwitch.html">New-VirtualSwitch</a><br></nobr>
+<nobr><a title="New-VM" target="classFrame" href="New-VM.html">New-VM</a><br></nobr>
+<nobr><a title="New-VMGuestRoute" target="classFrame" href="New-VMGuestRoute.html">New-VMGuestRoute</a><br></nobr>
+<nobr><a title="New-VMHostAccount" target="classFrame" href="New-VMHostAccount.html">New-VMHostAccount</a><br></nobr>
+<nobr><a title="New-VMHostNetworkAdapter" target="classFrame" href="New-VMHostNetworkAdapter.html">New-VMHostNetworkAdapter</a><br></nobr>
+<nobr><a title="New-VMHostProfile" target="classFrame" href="New-VMHostProfile.html">New-VMHostProfile</a><br></nobr>
+<nobr><a title="New-VMHostRoute" target="classFrame" href="New-VMHostRoute.html">New-VMHostRoute</a><br></nobr>
+<nobr><a title="New-VsanDisk" target="classFrame" href="New-VsanDisk.html">New-VsanDisk</a><br></nobr>
+<nobr><a title="New-VsanDiskGroup" target="classFrame" href="New-VsanDiskGroup.html">New-VsanDiskGroup</a><br></nobr>
+<nobr><a title="New-VsanFaultDomain" target="classFrame" href="New-VsanFaultDomain.html">New-VsanFaultDomain</a><br></nobr>
+<nobr><a title="New-VsanIscsiInitiatorGroup" target="classFrame" href="New-VsanIscsiInitiatorGroup.html">New-VsanIscsiInitiatorGroup</a><br></nobr>
+<nobr><a title="New-VsanIscsiInitiatorGroupTargetAssociation" target="classFrame" href="New-VsanIscsiInitiatorGroupTargetAssociation.html">New-VsanIscsiInitiatorGroupTargetAssociation</a><br></nobr>
+<nobr><a title="New-VsanIscsiLun" target="classFrame" href="New-VsanIscsiLun.html">New-VsanIscsiLun</a><br></nobr>
+<nobr><a title="New-VsanIscsiTarget" target="classFrame" href="New-VsanIscsiTarget.html">New-VsanIscsiTarget</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Open">
+<nobr><a title="Open-VMConsoleWindow" target="classFrame" href="Open-VMConsoleWindow.html">Open-VMConsoleWindow</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Remove">
+<nobr><a title="Remove-AdvancedSetting" target="classFrame" href="Remove-AdvancedSetting.html">Remove-AdvancedSetting</a><br></nobr>
+<nobr><a title="Remove-AlarmAction" target="classFrame" href="Remove-AlarmAction.html">Remove-AlarmAction</a><br></nobr>
+<nobr><a title="Remove-AlarmActionTrigger" target="classFrame" href="Remove-AlarmActionTrigger.html">Remove-AlarmActionTrigger</a><br></nobr>
+<nobr><a title="Remove-Baseline" target="classFrame" href="Remove-Baseline.html">Remove-Baseline</a><br></nobr>
+<nobr><a title="Remove-CDDrive" target="classFrame" href="Remove-CDDrive.html">Remove-CDDrive</a><br></nobr>
+<nobr><a title="Remove-CIAccessControlRule" target="classFrame" href="Remove-CIAccessControlRule.html">Remove-CIAccessControlRule</a><br></nobr>
+<nobr><a title="Remove-CIVApp" target="classFrame" href="Remove-CIVApp.html">Remove-CIVApp</a><br></nobr>
+<nobr><a title="Remove-CIVAppNetwork" target="classFrame" href="Remove-CIVAppNetwork.html">Remove-CIVAppNetwork</a><br></nobr>
+<nobr><a title="Remove-CIVAppTemplate" target="classFrame" href="Remove-CIVAppTemplate.html">Remove-CIVAppTemplate</a><br></nobr>
+<nobr><a title="Remove-Cluster" target="classFrame" href="Remove-Cluster.html">Remove-Cluster</a><br></nobr>
+<nobr><a title="Remove-CustomAttribute" target="classFrame" href="Remove-CustomAttribute.html">Remove-CustomAttribute</a><br></nobr>
+<nobr><a title="Remove-Datacenter" target="classFrame" href="Remove-Datacenter.html">Remove-Datacenter</a><br></nobr>
+<nobr><a title="Remove-Datastore" target="classFrame" href="Remove-Datastore.html">Remove-Datastore</a><br></nobr>
+<nobr><a title="Remove-DatastoreCluster" target="classFrame" href="Remove-DatastoreCluster.html">Remove-DatastoreCluster</a><br></nobr>
+<nobr><a title="Remove-DeployRule" target="classFrame" href="Remove-DeployRule.html">Remove-DeployRule</a><br></nobr>
+<nobr><a title="Remove-DrsClusterGroup" target="classFrame" href="Remove-DrsClusterGroup.html">Remove-DrsClusterGroup</a><br></nobr>
+<nobr><a title="Remove-DrsRule" target="classFrame" href="Remove-DrsRule.html">Remove-DrsRule</a><br></nobr>
+<nobr><a title="Remove-DrsVMHostRule" target="classFrame" href="Remove-DrsVMHostRule.html">Remove-DrsVMHostRule</a><br></nobr>
+<nobr><a title="Remove-EntityBaseline" target="classFrame" href="Remove-EntityBaseline.html">Remove-EntityBaseline</a><br></nobr>
+<nobr><a title="Remove-EsxSoftwareDepot" target="classFrame" href="Remove-EsxSoftwareDepot.html">Remove-EsxSoftwareDepot</a><br></nobr>
+<nobr><a title="Remove-EsxSoftwarePackage" target="classFrame" href="Remove-EsxSoftwarePackage.html">Remove-EsxSoftwarePackage</a><br></nobr>
+<nobr><a title="Remove-FloppyDrive" target="classFrame" href="Remove-FloppyDrive.html">Remove-FloppyDrive</a><br></nobr>
+<nobr><a title="Remove-Folder" target="classFrame" href="Remove-Folder.html">Remove-Folder</a><br></nobr>
+<nobr><a title="Remove-HardDisk" target="classFrame" href="Remove-HardDisk.html">Remove-HardDisk</a><br></nobr>
+<nobr><a title="Remove-Inventory" target="classFrame" href="Remove-Inventory.html">Remove-Inventory</a><br></nobr>
+<nobr><a title="Remove-IScsiHbaTarget" target="classFrame" href="Remove-IScsiHbaTarget.html">Remove-IScsiHbaTarget</a><br></nobr>
+<nobr><a title="Remove-NetworkAdapter" target="classFrame" href="Remove-NetworkAdapter.html">Remove-NetworkAdapter</a><br></nobr>
+<nobr><a title="Remove-NfsUser" target="classFrame" href="Remove-NfsUser.html">Remove-NfsUser</a><br></nobr>
+<nobr><a title="Remove-Org" target="classFrame" href="Remove-Org.html">Remove-Org</a><br></nobr>
+<nobr><a title="Remove-OrgNetwork" target="classFrame" href="Remove-OrgNetwork.html">Remove-OrgNetwork</a><br></nobr>
+<nobr><a title="Remove-OrgVdc" target="classFrame" href="Remove-OrgVdc.html">Remove-OrgVdc</a><br></nobr>
+<nobr><a title="Remove-OSCustomizationNicMapping" target="classFrame" href="Remove-OSCustomizationNicMapping.html">Remove-OSCustomizationNicMapping</a><br></nobr>
+<nobr><a title="Remove-OSCustomizationSpec" target="classFrame" href="Remove-OSCustomizationSpec.html">Remove-OSCustomizationSpec</a><br></nobr>
+<nobr><a title="Remove-PassthroughDevice" target="classFrame" href="Remove-PassthroughDevice.html">Remove-PassthroughDevice</a><br></nobr>
+<nobr><a title="Remove-ProxyServer" target="classFrame" href="Remove-ProxyServer.html">Remove-ProxyServer</a><br></nobr>
+<nobr><a title="Remove-ResourcePool" target="classFrame" href="Remove-ResourcePool.html">Remove-ResourcePool</a><br></nobr>
+<nobr><a title="Remove-Snapshot" target="classFrame" href="Remove-Snapshot.html">Remove-Snapshot</a><br></nobr>
+<nobr><a title="Remove-SpbmStoragePolicy" target="classFrame" href="Remove-SpbmStoragePolicy.html">Remove-SpbmStoragePolicy</a><br></nobr>
+<nobr><a title="Remove-StatInterval" target="classFrame" href="Remove-StatInterval.html">Remove-StatInterval</a><br></nobr>
+<nobr><a title="Remove-Tag" target="classFrame" href="Remove-Tag.html">Remove-Tag</a><br></nobr>
+<nobr><a title="Remove-TagAssignment" target="classFrame" href="Remove-TagAssignment.html">Remove-TagAssignment</a><br></nobr>
+<nobr><a title="Remove-TagCategory" target="classFrame" href="Remove-TagCategory.html">Remove-TagCategory</a><br></nobr>
+<nobr><a title="Remove-Template" target="classFrame" href="Remove-Template.html">Remove-Template</a><br></nobr>
+<nobr><a title="Remove-UsbDevice" target="classFrame" href="Remove-UsbDevice.html">Remove-UsbDevice</a><br></nobr>
+<nobr><a title="Remove-VAIOFilter" target="classFrame" href="Remove-VAIOFilter.html">Remove-VAIOFilter</a><br></nobr>
+<nobr><a title="Remove-VApp" target="classFrame" href="Remove-VApp.html">Remove-VApp</a><br></nobr>
+<nobr><a title="Remove-VasaProvider" target="classFrame" href="Remove-VasaProvider.html">Remove-VasaProvider</a><br></nobr>
+<nobr><a title="Remove-VDisk" target="classFrame" href="Remove-VDisk.html">Remove-VDisk</a><br></nobr>
+<nobr><a title="Remove-VDPortGroup" target="classFrame" href="Remove-VDPortGroup.html">Remove-VDPortGroup</a><br></nobr>
+<nobr><a title="Remove-VDSwitch" target="classFrame" href="Remove-VDSwitch.html">Remove-VDSwitch</a><br></nobr>
+<nobr><a title="Remove-VDSwitchPhysicalNetworkAdapter" target="classFrame" href="Remove-VDSwitchPhysicalNetworkAdapter.html">Remove-VDSwitchPhysicalNetworkAdapter</a><br></nobr>
+<nobr><a title="Remove-VDSwitchPrivateVlan" target="classFrame" href="Remove-VDSwitchPrivateVlan.html">Remove-VDSwitchPrivateVlan</a><br></nobr>
+<nobr><a title="Remove-VDSwitchVMHost" target="classFrame" href="Remove-VDSwitchVMHost.html">Remove-VDSwitchVMHost</a><br></nobr>
+<nobr><a title="Remove-VICredentialStoreItem" target="classFrame" href="Remove-VICredentialStoreItem.html">Remove-VICredentialStoreItem</a><br></nobr>
+<nobr><a title="Remove-VIPermission" target="classFrame" href="Remove-VIPermission.html">Remove-VIPermission</a><br></nobr>
+<nobr><a title="Remove-VIProperty" target="classFrame" href="Remove-VIProperty.html">Remove-VIProperty</a><br></nobr>
+<nobr><a title="Remove-VIRole" target="classFrame" href="Remove-VIRole.html">Remove-VIRole</a><br></nobr>
+<nobr><a title="Remove-VirtualPortGroup" target="classFrame" href="Remove-VirtualPortGroup.html">Remove-VirtualPortGroup</a><br></nobr>
+<nobr><a title="Remove-VirtualSwitch" target="classFrame" href="Remove-VirtualSwitch.html">Remove-VirtualSwitch</a><br></nobr>
+<nobr><a title="Remove-VirtualSwitchPhysicalNetworkAdapter" target="classFrame" href="Remove-VirtualSwitchPhysicalNetworkAdapter.html">Remove-VirtualSwitchPhysicalNetworkAdapter</a><br></nobr>
+<nobr><a title="Remove-VM" target="classFrame" href="Remove-VM.html">Remove-VM</a><br></nobr>
+<nobr><a title="Remove-VMGuestRoute" target="classFrame" href="Remove-VMGuestRoute.html">Remove-VMGuestRoute</a><br></nobr>
+<nobr><a title="Remove-VMHost" target="classFrame" href="Remove-VMHost.html">Remove-VMHost</a><br></nobr>
+<nobr><a title="Remove-VMHostAccount" target="classFrame" href="Remove-VMHostAccount.html">Remove-VMHostAccount</a><br></nobr>
+<nobr><a title="Remove-VMHostNetworkAdapter" target="classFrame" href="Remove-VMHostNetworkAdapter.html">Remove-VMHostNetworkAdapter</a><br></nobr>
+<nobr><a title="Remove-VMHostNtpServer" target="classFrame" href="Remove-VMHostNtpServer.html">Remove-VMHostNtpServer</a><br></nobr>
+<nobr><a title="Remove-VMHostProfile" target="classFrame" href="Remove-VMHostProfile.html">Remove-VMHostProfile</a><br></nobr>
+<nobr><a title="Remove-VMHostRoute" target="classFrame" href="Remove-VMHostRoute.html">Remove-VMHostRoute</a><br></nobr>
+<nobr><a title="Remove-VsanDisk" target="classFrame" href="Remove-VsanDisk.html">Remove-VsanDisk</a><br></nobr>
+<nobr><a title="Remove-VsanDiskGroup" target="classFrame" href="Remove-VsanDiskGroup.html">Remove-VsanDiskGroup</a><br></nobr>
+<nobr><a title="Remove-VsanFaultDomain" target="classFrame" href="Remove-VsanFaultDomain.html">Remove-VsanFaultDomain</a><br></nobr>
+<nobr><a title="Remove-VsanIscsiInitiatorGroup" target="classFrame" href="Remove-VsanIscsiInitiatorGroup.html">Remove-VsanIscsiInitiatorGroup</a><br></nobr>
+<nobr><a title="Remove-VsanIscsiInitiatorGroupTargetAssociation" target="classFrame" href="Remove-VsanIscsiInitiatorGroupTargetAssociation.html">Remove-VsanIscsiInitiatorGroupTargetAssociation</a><br></nobr>
+<nobr><a title="Remove-VsanIscsiLun" target="classFrame" href="Remove-VsanIscsiLun.html">Remove-VsanIscsiLun</a><br></nobr>
+<nobr><a title="Remove-VsanIscsiTarget" target="classFrame" href="Remove-VsanIscsiTarget.html">Remove-VsanIscsiTarget</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Repair">
+<nobr><a title="Repair-DeployImageCache" target="classFrame" href="Repair-DeployImageCache.html">Repair-DeployImageCache</a><br></nobr>
+<nobr><a title="Repair-DeployRuleSetCompliance" target="classFrame" href="Repair-DeployRuleSetCompliance.html">Repair-DeployRuleSetCompliance</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Restart">
+<nobr><a title="Restart-CIVApp" target="classFrame" href="Restart-CIVApp.html">Restart-CIVApp</a><br></nobr>
+<nobr><a title="Restart-CIVAppGuest" target="classFrame" href="Restart-CIVAppGuest.html">Restart-CIVAppGuest</a><br></nobr>
+<nobr><a title="Restart-CIVM" target="classFrame" href="Restart-CIVM.html">Restart-CIVM</a><br></nobr>
+<nobr><a title="Restart-CIVMGuest" target="classFrame" href="Restart-CIVMGuest.html">Restart-CIVMGuest</a><br></nobr>
+<nobr><a title="Restart-VM" target="classFrame" href="Restart-VM.html">Restart-VM</a><br></nobr>
+<nobr><a title="Restart-VMGuest" target="classFrame" href="Restart-VMGuest.html">Restart-VMGuest</a><br></nobr>
+<nobr><a title="Restart-VMHost" target="classFrame" href="Restart-VMHost.html">Restart-VMHost</a><br></nobr>
+<nobr><a title="Restart-VMHostService" target="classFrame" href="Restart-VMHostService.html">Restart-VMHostService</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Search">
+<nobr><a title="Search-Cloud" target="classFrame" href="Search-Cloud.html">Search-Cloud</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Set">
+<nobr><a title="Set-AdvancedSetting" target="classFrame" href="Set-AdvancedSetting.html">Set-AdvancedSetting</a><br></nobr>
+<nobr><a title="Set-AlarmDefinition" target="classFrame" href="Set-AlarmDefinition.html">Set-AlarmDefinition</a><br></nobr>
+<nobr><a title="Set-Annotation" target="classFrame" href="Set-Annotation.html">Set-Annotation</a><br></nobr>
+<nobr><a title="Set-CDDrive" target="classFrame" href="Set-CDDrive.html">Set-CDDrive</a><br></nobr>
+<nobr><a title="Set-CIAccessControlRule" target="classFrame" href="Set-CIAccessControlRule.html">Set-CIAccessControlRule</a><br></nobr>
+<nobr><a title="Set-CINetworkAdapter" target="classFrame" href="Set-CINetworkAdapter.html">Set-CINetworkAdapter</a><br></nobr>
+<nobr><a title="Set-CIVApp" target="classFrame" href="Set-CIVApp.html">Set-CIVApp</a><br></nobr>
+<nobr><a title="Set-CIVAppNetwork" target="classFrame" href="Set-CIVAppNetwork.html">Set-CIVAppNetwork</a><br></nobr>
+<nobr><a title="Set-CIVAppStartRule" target="classFrame" href="Set-CIVAppStartRule.html">Set-CIVAppStartRule</a><br></nobr>
+<nobr><a title="Set-CIVAppTemplate" target="classFrame" href="Set-CIVAppTemplate.html">Set-CIVAppTemplate</a><br></nobr>
+<nobr><a title="Set-Cluster" target="classFrame" href="Set-Cluster.html">Set-Cluster</a><br></nobr>
+<nobr><a title="Set-CustomAttribute" target="classFrame" href="Set-CustomAttribute.html">Set-CustomAttribute</a><br></nobr>
+<nobr><a title="Set-Datacenter" target="classFrame" href="Set-Datacenter.html">Set-Datacenter</a><br></nobr>
+<nobr><a title="Set-Datastore" target="classFrame" href="Set-Datastore.html">Set-Datastore</a><br></nobr>
+<nobr><a title="Set-DatastoreCluster" target="classFrame" href="Set-DatastoreCluster.html">Set-DatastoreCluster</a><br></nobr>
+<nobr><a title="Set-DeployRule" target="classFrame" href="Set-DeployRule.html">Set-DeployRule</a><br></nobr>
+<nobr><a title="Set-DeployRuleSet" target="classFrame" href="Set-DeployRuleSet.html">Set-DeployRuleSet</a><br></nobr>
+<nobr><a title="Set-DrsClusterGroup" target="classFrame" href="Set-DrsClusterGroup.html">Set-DrsClusterGroup</a><br></nobr>
+<nobr><a title="Set-DrsRule" target="classFrame" href="Set-DrsRule.html">Set-DrsRule</a><br></nobr>
+<nobr><a title="Set-DrsVMHostRule" target="classFrame" href="Set-DrsVMHostRule.html">Set-DrsVMHostRule</a><br></nobr>
+<nobr><a title="Set-EsxImageProfile" target="classFrame" href="Set-EsxImageProfile.html">Set-EsxImageProfile</a><br></nobr>
+<nobr><a title="Set-ESXImageProfileAssociation" target="classFrame" href="Set-ESXImageProfileAssociation.html">Set-ESXImageProfileAssociation</a><br></nobr>
+<nobr><a title="Set-FloppyDrive" target="classFrame" href="Set-FloppyDrive.html">Set-FloppyDrive</a><br></nobr>
+<nobr><a title="Set-Folder" target="classFrame" href="Set-Folder.html">Set-Folder</a><br></nobr>
+<nobr><a title="Set-HardDisk" target="classFrame" href="Set-HardDisk.html">Set-HardDisk</a><br></nobr>
+<nobr><a title="Set-IScsiHbaTarget" target="classFrame" href="Set-IScsiHbaTarget.html">Set-IScsiHbaTarget</a><br></nobr>
+<nobr><a title="Set-NetworkAdapter" target="classFrame" href="Set-NetworkAdapter.html">Set-NetworkAdapter</a><br></nobr>
+<nobr><a title="Set-NfsUser" target="classFrame" href="Set-NfsUser.html">Set-NfsUser</a><br></nobr>
+<nobr><a title="Set-NicTeamingPolicy" target="classFrame" href="Set-NicTeamingPolicy.html">Set-NicTeamingPolicy</a><br></nobr>
+<nobr><a title="Set-OMAlert" target="classFrame" href="Set-OMAlert.html">Set-OMAlert</a><br></nobr>
+<nobr><a title="Set-Org" target="classFrame" href="Set-Org.html">Set-Org</a><br></nobr>
+<nobr><a title="Set-OrgNetwork" target="classFrame" href="Set-OrgNetwork.html">Set-OrgNetwork</a><br></nobr>
+<nobr><a title="Set-OrgVdc" target="classFrame" href="Set-OrgVdc.html">Set-OrgVdc</a><br></nobr>
+<nobr><a title="Set-OSCustomizationNicMapping" target="classFrame" href="Set-OSCustomizationNicMapping.html">Set-OSCustomizationNicMapping</a><br></nobr>
+<nobr><a title="Set-OSCustomizationSpec" target="classFrame" href="Set-OSCustomizationSpec.html">Set-OSCustomizationSpec</a><br></nobr>
+<nobr><a title="Set-PatchBaseline" target="classFrame" href="Set-PatchBaseline.html">Set-PatchBaseline</a><br></nobr>
+<nobr><a title="Set-PowerCLIConfiguration" target="classFrame" href="Set-PowerCLIConfiguration.html">Set-PowerCLIConfiguration</a><br></nobr>
+<nobr><a title="Set-ResourcePool" target="classFrame" href="Set-ResourcePool.html">Set-ResourcePool</a><br></nobr>
+<nobr><a title="Set-ScsiController" target="classFrame" href="Set-ScsiController.html">Set-ScsiController</a><br></nobr>
+<nobr><a title="Set-ScsiLun" target="classFrame" href="Set-ScsiLun.html">Set-ScsiLun</a><br></nobr>
+<nobr><a title="Set-ScsiLunPath" target="classFrame" href="Set-ScsiLunPath.html">Set-ScsiLunPath</a><br></nobr>
+<nobr><a title="Set-SecurityPolicy" target="classFrame" href="Set-SecurityPolicy.html">Set-SecurityPolicy</a><br></nobr>
+<nobr><a title="Set-Snapshot" target="classFrame" href="Set-Snapshot.html">Set-Snapshot</a><br></nobr>
+<nobr><a title="Set-SpbmEntityConfiguration" target="classFrame" href="Set-SpbmEntityConfiguration.html">Set-SpbmEntityConfiguration</a><br></nobr>
+<nobr><a title="Set-SpbmStoragePolicy" target="classFrame" href="Set-SpbmStoragePolicy.html">Set-SpbmStoragePolicy</a><br></nobr>
+<nobr><a title="Set-StatInterval" target="classFrame" href="Set-StatInterval.html">Set-StatInterval</a><br></nobr>
+<nobr><a title="Set-Tag" target="classFrame" href="Set-Tag.html">Set-Tag</a><br></nobr>
+<nobr><a title="Set-TagCategory" target="classFrame" href="Set-TagCategory.html">Set-TagCategory</a><br></nobr>
+<nobr><a title="Set-Template" target="classFrame" href="Set-Template.html">Set-Template</a><br></nobr>
+<nobr><a title="Set-VAIOFilter" target="classFrame" href="Set-VAIOFilter.html">Set-VAIOFilter</a><br></nobr>
+<nobr><a title="Set-VApp" target="classFrame" href="Set-VApp.html">Set-VApp</a><br></nobr>
+<nobr><a title="Set-VDBlockedPolicy" target="classFrame" href="Set-VDBlockedPolicy.html">Set-VDBlockedPolicy</a><br></nobr>
+<nobr><a title="Set-VDisk" target="classFrame" href="Set-VDisk.html">Set-VDisk</a><br></nobr>
+<nobr><a title="Set-VDPort" target="classFrame" href="Set-VDPort.html">Set-VDPort</a><br></nobr>
+<nobr><a title="Set-VDPortgroup" target="classFrame" href="Set-VDPortgroup.html">Set-VDPortgroup</a><br></nobr>
+<nobr><a title="Set-VDPortgroupOverridePolicy" target="classFrame" href="Set-VDPortgroupOverridePolicy.html">Set-VDPortgroupOverridePolicy</a><br></nobr>
+<nobr><a title="Set-VDSecurityPolicy" target="classFrame" href="Set-VDSecurityPolicy.html">Set-VDSecurityPolicy</a><br></nobr>
+<nobr><a title="Set-VDSwitch" target="classFrame" href="Set-VDSwitch.html">Set-VDSwitch</a><br></nobr>
+<nobr><a title="Set-VDTrafficShapingPolicy" target="classFrame" href="Set-VDTrafficShapingPolicy.html">Set-VDTrafficShapingPolicy</a><br></nobr>
+<nobr><a title="Set-VDUplinkLacpPolicy" target="classFrame" href="Set-VDUplinkLacpPolicy.html">Set-VDUplinkLacpPolicy</a><br></nobr>
+<nobr><a title="Set-VDUplinkTeamingPolicy" target="classFrame" href="Set-VDUplinkTeamingPolicy.html">Set-VDUplinkTeamingPolicy</a><br></nobr>
+<nobr><a title="Set-VDVlanConfiguration" target="classFrame" href="Set-VDVlanConfiguration.html">Set-VDVlanConfiguration</a><br></nobr>
+<nobr><a title="Set-VIPermission" target="classFrame" href="Set-VIPermission.html">Set-VIPermission</a><br></nobr>
+<nobr><a title="Set-VIRole" target="classFrame" href="Set-VIRole.html">Set-VIRole</a><br></nobr>
+<nobr><a title="Set-VirtualPortGroup" target="classFrame" href="Set-VirtualPortGroup.html">Set-VirtualPortGroup</a><br></nobr>
+<nobr><a title="Set-VirtualSwitch" target="classFrame" href="Set-VirtualSwitch.html">Set-VirtualSwitch</a><br></nobr>
+<nobr><a title="Set-VM" target="classFrame" href="Set-VM.html">Set-VM</a><br></nobr>
+<nobr><a title="Set-VMGuestNetworkInterface" target="classFrame" href="Set-VMGuestNetworkInterface.html">Set-VMGuestNetworkInterface</a><br></nobr>
+<nobr><a title="Set-VMHost" target="classFrame" href="Set-VMHost.html">Set-VMHost</a><br></nobr>
+<nobr><a title="Set-VMHostAccount" target="classFrame" href="Set-VMHostAccount.html">Set-VMHostAccount</a><br></nobr>
+<nobr><a title="Set-VMHostAdvancedConfiguration" target="classFrame" href="Set-VMHostAdvancedConfiguration.html">Set-VMHostAdvancedConfiguration</a><br></nobr>
+<nobr><a title="Set-VMHostAuthentication" target="classFrame" href="Set-VMHostAuthentication.html">Set-VMHostAuthentication</a><br></nobr>
+<nobr><a title="Set-VMHostDiagnosticPartition" target="classFrame" href="Set-VMHostDiagnosticPartition.html">Set-VMHostDiagnosticPartition</a><br></nobr>
+<nobr><a title="Set-VMHostFirewallDefaultPolicy" target="classFrame" href="Set-VMHostFirewallDefaultPolicy.html">Set-VMHostFirewallDefaultPolicy</a><br></nobr>
+<nobr><a title="Set-VMHostFirewallException" target="classFrame" href="Set-VMHostFirewallException.html">Set-VMHostFirewallException</a><br></nobr>
+<nobr><a title="Set-VMHostFirmware" target="classFrame" href="Set-VMHostFirmware.html">Set-VMHostFirmware</a><br></nobr>
+<nobr><a title="Set-VMHostHba" target="classFrame" href="Set-VMHostHba.html">Set-VMHostHba</a><br></nobr>
+<nobr><a title="Set-VMHostModule" target="classFrame" href="Set-VMHostModule.html">Set-VMHostModule</a><br></nobr>
+<nobr><a title="Set-VMHostNetwork" target="classFrame" href="Set-VMHostNetwork.html">Set-VMHostNetwork</a><br></nobr>
+<nobr><a title="Set-VMHostNetworkAdapter" target="classFrame" href="Set-VMHostNetworkAdapter.html">Set-VMHostNetworkAdapter</a><br></nobr>
+<nobr><a title="Set-VMHostProfile" target="classFrame" href="Set-VMHostProfile.html">Set-VMHostProfile</a><br></nobr>
+<nobr><a title="Set-VMHostRoute" target="classFrame" href="Set-VMHostRoute.html">Set-VMHostRoute</a><br></nobr>
+<nobr><a title="Set-VMHostService" target="classFrame" href="Set-VMHostService.html">Set-VMHostService</a><br></nobr>
+<nobr><a title="Set-VMHostSnmp" target="classFrame" href="Set-VMHostSnmp.html">Set-VMHostSnmp</a><br></nobr>
+<nobr><a title="Set-VMHostStartPolicy" target="classFrame" href="Set-VMHostStartPolicy.html">Set-VMHostStartPolicy</a><br></nobr>
+<nobr><a title="Set-VMHostStorage" target="classFrame" href="Set-VMHostStorage.html">Set-VMHostStorage</a><br></nobr>
+<nobr><a title="Set-VMHostSysLogServer" target="classFrame" href="Set-VMHostSysLogServer.html">Set-VMHostSysLogServer</a><br></nobr>
+<nobr><a title="Set-VMQuestion" target="classFrame" href="Set-VMQuestion.html">Set-VMQuestion</a><br></nobr>
+<nobr><a title="Set-VMResourceConfiguration" target="classFrame" href="Set-VMResourceConfiguration.html">Set-VMResourceConfiguration</a><br></nobr>
+<nobr><a title="Set-VMStartPolicy" target="classFrame" href="Set-VMStartPolicy.html">Set-VMStartPolicy</a><br></nobr>
+<nobr><a title="Set-VsanClusterConfiguration" target="classFrame" href="Set-VsanClusterConfiguration.html">Set-VsanClusterConfiguration</a><br></nobr>
+<nobr><a title="Set-VsanFaultDomain" target="classFrame" href="Set-VsanFaultDomain.html">Set-VsanFaultDomain</a><br></nobr>
+<nobr><a title="Set-VsanIscsiInitiatorGroup" target="classFrame" href="Set-VsanIscsiInitiatorGroup.html">Set-VsanIscsiInitiatorGroup</a><br></nobr>
+<nobr><a title="Set-VsanIscsiLun" target="classFrame" href="Set-VsanIscsiLun.html">Set-VsanIscsiLun</a><br></nobr>
+<nobr><a title="Set-VsanIscsiTarget" target="classFrame" href="Set-VsanIscsiTarget.html">Set-VsanIscsiTarget</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Start">
+<nobr><a title="Start-CIVApp" target="classFrame" href="Start-CIVApp.html">Start-CIVApp</a><br></nobr>
+<nobr><a title="Start-CIVM" target="classFrame" href="Start-CIVM.html">Start-CIVM</a><br></nobr>
+<nobr><a title="Start-SpbmReplicationFailover" target="classFrame" href="Start-SpbmReplicationFailover.html">Start-SpbmReplicationFailover</a><br></nobr>
+<nobr><a title="Start-SpbmReplicationPrepareFailover" target="classFrame" href="Start-SpbmReplicationPrepareFailover.html">Start-SpbmReplicationPrepareFailover</a><br></nobr>
+<nobr><a title="Start-SpbmReplicationPromote" target="classFrame" href="Start-SpbmReplicationPromote.html">Start-SpbmReplicationPromote</a><br></nobr>
+<nobr><a title="Start-SpbmReplicationReverse" target="classFrame" href="Start-SpbmReplicationReverse.html">Start-SpbmReplicationReverse</a><br></nobr>
+<nobr><a title="Start-SpbmReplicationTestFailover" target="classFrame" href="Start-SpbmReplicationTestFailover.html">Start-SpbmReplicationTestFailover</a><br></nobr>
+<nobr><a title="Start-VApp" target="classFrame" href="Start-VApp.html">Start-VApp</a><br></nobr>
+<nobr><a title="Start-VM" target="classFrame" href="Start-VM.html">Start-VM</a><br></nobr>
+<nobr><a title="Start-VMHost" target="classFrame" href="Start-VMHost.html">Start-VMHost</a><br></nobr>
+<nobr><a title="Start-VMHostService" target="classFrame" href="Start-VMHostService.html">Start-VMHostService</a><br></nobr>
+<nobr><a title="Start-VsanClusterDiskUpdate" target="classFrame" href="Start-VsanClusterDiskUpdate.html">Start-VsanClusterDiskUpdate</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Stop">
+<nobr><a title="Stop-CIVApp" target="classFrame" href="Stop-CIVApp.html">Stop-CIVApp</a><br></nobr>
+<nobr><a title="Stop-CIVAppGuest" target="classFrame" href="Stop-CIVAppGuest.html">Stop-CIVAppGuest</a><br></nobr>
+<nobr><a title="Stop-CIVM" target="classFrame" href="Stop-CIVM.html">Stop-CIVM</a><br></nobr>
+<nobr><a title="Stop-CIVMGuest" target="classFrame" href="Stop-CIVMGuest.html">Stop-CIVMGuest</a><br></nobr>
+<nobr><a title="Stop-SpbmReplicationTestFailover" target="classFrame" href="Stop-SpbmReplicationTestFailover.html">Stop-SpbmReplicationTestFailover</a><br></nobr>
+<nobr><a title="Stop-Task" target="classFrame" href="Stop-Task.html">Stop-Task</a><br></nobr>
+<nobr><a title="Stop-VApp" target="classFrame" href="Stop-VApp.html">Stop-VApp</a><br></nobr>
+<nobr><a title="Stop-VM" target="classFrame" href="Stop-VM.html">Stop-VM</a><br></nobr>
+<nobr><a title="Stop-VMGuest" target="classFrame" href="Stop-VMGuest.html">Stop-VMGuest</a><br></nobr>
+<nobr><a title="Stop-VMHost" target="classFrame" href="Stop-VMHost.html">Stop-VMHost</a><br></nobr>
+<nobr><a title="Stop-VMHostService" target="classFrame" href="Stop-VMHostService.html">Stop-VMHostService</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Suspend">
+<nobr><a title="Suspend-CIVApp" target="classFrame" href="Suspend-CIVApp.html">Suspend-CIVApp</a><br></nobr>
+<nobr><a title="Suspend-CIVM" target="classFrame" href="Suspend-CIVM.html">Suspend-CIVM</a><br></nobr>
+<nobr><a title="Suspend-VM" target="classFrame" href="Suspend-VM.html">Suspend-VM</a><br></nobr>
+<nobr><a title="Suspend-VMGuest" target="classFrame" href="Suspend-VMGuest.html">Suspend-VMGuest</a><br></nobr>
+<nobr><a title="Suspend-VMHost" target="classFrame" href="Suspend-VMHost.html">Suspend-VMHost</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Switch">
+<nobr><a title="Switch-ActiveDeployRuleSet" target="classFrame" href="Switch-ActiveDeployRuleSet.html">Switch-ActiveDeployRuleSet</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Sync">
+<nobr><a title="Sync-Patch" target="classFrame" href="Sync-Patch.html">Sync-Patch</a><br></nobr>
+<nobr><a title="Sync-SpbmReplicationGroup" target="classFrame" href="Sync-SpbmReplicationGroup.html">Sync-SpbmReplicationGroup</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Test">
+<nobr><a title="Test-Compliance" target="classFrame" href="Test-Compliance.html">Test-Compliance</a><br></nobr>
+<nobr><a title="Test-DeployRuleSetCompliance" target="classFrame" href="Test-DeployRuleSetCompliance.html">Test-DeployRuleSetCompliance</a><br></nobr>
+<nobr><a title="Test-VMHostProfileCompliance" target="classFrame" href="Test-VMHostProfileCompliance.html">Test-VMHostProfileCompliance</a><br></nobr>
+<nobr><a title="Test-VMHostSnmp" target="classFrame" href="Test-VMHostSnmp.html">Test-VMHostSnmp</a><br></nobr>
+<nobr><a title="Test-VsanClusterHealth" target="classFrame" href="Test-VsanClusterHealth.html">Test-VsanClusterHealth</a><br></nobr>
+<nobr><a title="Test-VsanNetworkPerformance" target="classFrame" href="Test-VsanNetworkPerformance.html">Test-VsanNetworkPerformance</a><br></nobr>
+<nobr><a title="Test-VsanStoragePerformance" target="classFrame" href="Test-VsanStoragePerformance.html">Test-VsanStoragePerformance</a><br></nobr>
+<nobr><a title="Test-VsanVMCreation" target="classFrame" href="Test-VsanVMCreation.html">Test-VsanVMCreation</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Update">
+<nobr><a title="Update-Entity" target="classFrame" href="Update-Entity.html">Update-Entity</a><br></nobr>
+<nobr><a title="Update-Tools" target="classFrame" href="Update-Tools.html">Update-Tools</a><br></nobr>
+<nobr><a title="Update-VmfsDatastore" target="classFrame" href="Update-VmfsDatastore.html">Update-VmfsDatastore</a><br></nobr>
+<nobr><a title="Update-VsanHclDatabase" target="classFrame" href="Update-VsanHclDatabase.html">Update-VsanHclDatabase</a><br></nobr>
+</div>
+<div style="width: 100%; overflow: hidden; text-overflow: ellipsis; display: block" class="switchcontent" id="Wait">
+<nobr><a title="Wait-Task" target="classFrame" href="Wait-Task.html">Wait-Task</a><br></nobr>
+<nobr><a title="Wait-Tools" target="classFrame" href="Wait-Tools.html">Wait-Tools</a><br></nobr>
+</div>
+</font></body></html>
+

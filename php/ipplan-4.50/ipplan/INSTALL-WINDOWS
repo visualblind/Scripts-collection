@@ -1,0 +1,117 @@
+Quick install:
+-------------
+
+AppServ can be obtained from http://www.appservnetwork.com
+AppServ is a complete package of Apache, MySQL and PHP and includes
+everything required by IPplan to run on a Windows platform. If you use
+AppServ, you do not need ODBC.
+
+The latest version of AppServ tested was 2.4.2 - AppServ had some issues
+with IPplan. Wampserver was tested too and IPplan had no issues with
+Wampserver (see http://www.wampserver.com/en/index.php) - version 1.3.2
+was used. Wampserver works very similar to AppServ - just change the
+directories below accordingly.
+
+If you want to view or edit any of the files under Windows, use WordPad,
+not NotePad as NotePad does not understand Unix files.
+
+NOTE: if upgrading, read the UPGRADE file.
+NOTE2: if you get a fatal error about an undefined database function, read
+       the FAQ section in the README
+
+I assume a working installation of MySQL 3.23.15 or higher and php 4.1 
+using AppServ. 
+To get multilingual support (languages other than English), you will 
+need to follow the steps later in this document.
+
+In your web tree (normally c:\appserv\www), 
+
+1) create a directory called ipplan
+2) untar tar-ball into this directory (WinZIP can handle tar files)
+3) create the database and tables by issuing the following at the
+   DOS command prompt for the default MyISAM table type:
+
+[NOTE: You may need to modify c:\windows\my.ini and comment out the line
+ under the [client] section called default-character-set with a #
+ as this caused an error when running mysqladmin on my machine]
+
+[NOTE: user is the master user you created when you installed AppServ]
+
+   \appserv\mysql\bin\mysqladmin -p -u user create ipplan
+
+   ONLY DO THIS STEP ONCE FOR A NEW INSTALLATION
+4) add a database user for ipplan using \appserv\mysql\bin\mysql -p
+   GRANT SELECT,INSERT,UPDATE,DELETE on ipplan.* 
+       TO ipplan@localhost IDENTIFIED by 'password';
+
+   Change the above password to whatever you wish
+
+   ONLY DO THIS STEP ONCE FOR A NEW INSTALLATION
+
+   NOTE: The default installation of AppServ does not have secure
+   database permissions for default MySQL users. Make sure you fix
+   this in your install as anybody can access your system.
+
+   NOTE: You may get errors about password compatibility with later
+   versions of AppServ when running the IPplan install script. If you
+   do, you may need to issue the following on a MySQL prompt:
+
+      set password for 'ipplan'@'localhost' = old_password('password');
+
+   Replace password with the password you want to use for your database
+
+5) modify the user and password info in the config.php script.
+   additional settings can be changed in the config.php script at this
+   stage too. See the README for more information.
+
+   if you are using InnoDB transaction safe tables, make sure to enable 
+   transaction support in config.php
+
+6) open a web browser and point it to the installation script in the
+   admin directory (http://mywebserver.com/ipplan/admin/install.php)
+
+   you will be prompted to create the database schema. The user created
+   above does not have enough rights to create tables so you will need
+   to either copy the statements into the database, or temporarily change
+   the database password in the config.php file to a database user that has
+   enough rights to do this.
+
+   you can manually load the statements by copying the display output
+   from the install.php script into a file (example ipplandbf.sql)
+   and then executing the file by logining in as the newly created user using
+   mysql and issue:
+
+   \appserv\mysql\bin\mysql -p -u user ipplan < ipplandbf.sql
+
+7) now point your web browser to the main IPplan web page
+   (http://mywebserver.com/ipplan), select the admin drop down menu and add 
+   customers, groups and users using the admin user defined in the config.php
+   file - you MUST create at least one regular user, one group and one customer
+
+8) send me an e-mail about how you use IPplan!
+
+If you have any problems, you can look in the \\apserv\apache\logs directory
+
+Enabling multilingual support:
+-----------------------------
+
+From the php manual
+
+Note to Win32 Users:  In order to enable this module on a Windows environment, 
+you must copy gnu_gettext.dll from the DLL folder of the PHP/Win32 binary 
+package to the SYSTEM32 folder of your windows machine. (Ex: C:\WINNT\SYSTEM32  or C:\WINDOWS\SYSTEM32). Starting with PHP 4.2.3 the name changed to 
+libintl-1.dll, this requires also iconv.dll to be copied.
+
+To do this, follow the instructions for installing php from http://www.php.net.
+
+ To check if gettext is enabled in php, execute this simple php script:
+
+<?php
+phpinfo();
+?>
+
+If your language is not currently available, feel free to follow the 
+instructions in the TRANSLATIONS file and do your own.
+
+Hope it works!
+ipplan@gmail.com

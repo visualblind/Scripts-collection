@@ -1,0 +1,18 @@
+<ComponentDescriptor>
+   <Name>VMware.VimAutomation.Cis.Nsxt</Name>
+   <Assembly>VMware.VimAutomation.Cis.Nsxt.Impl</Assembly>
+   <ImplementingType>VMware.VimAutomation.Cis.Nsxt.Impl.V1.NsxtComponentImpl</ImplementingType>
+
+   <IsSnapin>false</IsSnapin>
+
+   <ProvidedServiceList>
+      <ServiceDescriptor>
+         <Name>NsxtCoreService</Name>
+         <Version>1.0</Version>
+      </ServiceDescriptor>
+   </ProvidedServiceList>
+
+   <RequiredServiceList></RequiredServiceList>
+
+   <ExtendedServiceList></ExtendedServiceList>
+</ComponentDescriptor>

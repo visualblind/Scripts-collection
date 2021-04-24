@@ -1,0 +1,33 @@
+
+-----------------------------------------------------------------------
+Pg-3
+
+cd /home/shakil/bssg
+
+## Find all files whose permission are not 0777
+find . -type f ! -perm 0777
+
+## Find all files whose permission are 0777
+find . -type f  -perm 0777
+
+## Find all files with the sticky bit permission set
+find / -perm /u=s
+
+## Find all the read only files
+find /etc -perm /u=r
+
+## Find files which has execute bit set for 
+#users/group/others as signified by a
+find /etc -perm /a=x
+
+
+
+cd /home/shakil/bssg
+
+## Find in /home for all the files belonging to user john
+## Typically used when looking at the /tmp folders
+sudo find /home -user john
+
+## Search all files by user shakil ina  given path which has extension cpp
+find . -user shakil -iname "*.cpp"
+

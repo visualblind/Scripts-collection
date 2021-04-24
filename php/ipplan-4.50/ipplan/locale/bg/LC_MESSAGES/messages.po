@@ -1,0 +1,3734 @@
+# Bulgarian translation of IPPlan.
+# Copyright (C) 2005 THE IPPlan's COPYRIGHT HOLDER
+# This file is distributed under the same license as the IPPlan package.
+# Nickola Kolev <n_kolev@yahoo.com>, 2005.
+# , fuzzy
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: IPPLAN 4.40Beta\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-08-17 19:00+1000\n"
+"PO-Revision-Date: 2005-08-17 10:06+0300\n"
+"Last-Translator: Nickola Kolev <nickola@gmail.com>\n"
+"Language-Team: Bulgarian <bg@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#: class.dbflib.php:268
+#, php-format
+msgid "User %s modified ip details %s index %u"
+msgstr "Потребителят %s промени ip детайлите %s индекс %u"
+
+#: class.dbflib.php:1029 user/displayswip.php:88 user/modifybase.php:275
+msgid "Invalid IP address!"
+msgstr "Невалиден IP адрес!"
+
+#: class.dnslib.php:148
+#, php-format
+msgid "Zone transfer for domain %s failed - using defaults: %s"
+msgstr ""
+"Трансферът на зона за домейн %s не успя - използвам стойности по "
+"подразбиране: %s"
+
+#: class.dnslib.php:189
+msgid "Cannot delete domain zone - there are still DNS records\n"
+msgstr "Не мога да изтрия зоната на домейна - в нея все още има ДНС записи\n"
+
+#: class.dnslib.php:290
+msgid ""
+"You are changing this zone to a slave only zone, but there are zone records\n"
+msgstr "Променяте тази зона да е само подчинена, но в нея има зонови записи\n"
+
+#: class.dnslib.php:393 class.dnslib.php:419 class.dnslib.php:774
+#: class.dnslib.php:800
+#, php-format
+msgid "DNS Domain %s could not be created - possibly duplicate zone"
+msgstr ""
+"ДНС домейнът %s не можа да бъде създаден - вероятно има повтаряща се зона"
+
+#: class.dnslib.php:450 class.dnslib.php:830 user/exportdhcp.php:125
+msgid "Could not create temporary file!"
+msgstr "Не мога да създам временен файл!"
+
+#: class.dnslib.php:504 class.dnslib.php:889
+msgid "Invalid zone - zone should have at least two name servers defined"
+msgstr "Невалидна зона - тя трябва да съдържа поне два сървъра за имена"
+
+#: class.dnslib.php:588 schema.php:39 schema.php:66 user/createarea.php:53
+#: user/createrange.php:70 user/createsubnetform.php:56
+#: user/createsubnet.php:66 user/deletearea.php:47 user/deletecustomer.php:51
+#: user/deleterange.php:46 user/displaybaseform.php:48 user/displaybase.php:58
+#: user/displaycustomerform.php:50 user/displayoverlapform.php:53
+#: user/displayoverlap.php:227 user/displayrouterform.php:51
+#: user/displayrouter.php:107 user/displayswipform.php:51
+#: user/displayswip.php:60 user/emailswip.php:63 user/exportdhcp.php:57
+#: user/findfreeform.php:52 user/findfree.php:58
+#: user/modifyarearangeform.php:46 user/modifyarearange.php:56
+#: user/modifybaseform.php:49 user/modifybase.php:75
+#: user/modifycustomer.php:53 user/modifydnsform.php:63 user/modifydns.php:68
+#: user/modifydnsrecordform.php:58 user/modifydnsrecord.php:73
+#: user/modifyipformmul.php:56 user/modifyipform.php:93
+#: user/modifysubnet.php:55 user/modifyzoneform.php:58 user/modifyzone.php:67
+#: user/requestip.php:49 user/searchallform.php:53 user/searchall.php:76
+#: admin/changepassword.php:47 admin/deletebounds.php:53
+#: admin/displayauditlog.php:48 admin/displayboundsform.php:50
+#: admin/exportbaseform.php:49 admin/exportbase.php:44
+#: admin/exportipform.php:53 admin/exportip.php:45 admin/importbaseform.php:53
+#: admin/importbase.php:107 admin/importipform.php:57 admin/importip.php:73
+#: admin/maintenance.php:49 admin/usermanager.php:66
+msgid "Could not connect to database"
+msgstr "Не мога да се свържа с базата данни"
+
+#: class.dnslib.php:608
+#, php-format
+msgid "Invalid address %s"
+msgstr "Невалиден адрес %s"
+
+#: class.dnslib.php:629
+#, php-format
+msgid "No subnet found for address %s"
+msgstr "Няма намерена подмрежа за адрес %s"
+
+#: class.dnslib.php:911
+#, php-format
+msgid "Invalid record - ignored: %s %s"
+msgstr "Невалиден запис - игнрориран: %s %s"
+
+#: ipplanlib.php:251
+msgid "Customer/autonomous system"
+msgstr "Клиент/автономна система"
+
+#: ipplanlib.php:309
+msgid "Area (optional)"
+msgstr "Област (по избор)"
+
+#: ipplanlib.php:311
+msgid "No area selected"
+msgstr "Няма избрана област"
+
+#: ipplanlib.php:339
+msgid "Range (optional)"
+msgstr "Диапазон (по избор)"
+
+#: ipplanlib.php:341
+msgid "No range selected"
+msgstr "Няма избран диапазон"
+
+#: ipplanlib.php:523
+msgid "IPPlan - IP Address Management and Tracking"
+msgstr "IPPlan - управление и следене на IP адресни пространства"
+
+#: ipplanlib.php:541
+#, php-format
+msgid "Logged in as %s"
+msgstr "Потребител: %s"
+
+#: ipplanlib.php:571
+msgid "Refine Search"
+msgstr "Уточняване на търсенето"
+
+#: ipplanlib.php:590
+msgid "Starts with"
+msgstr "Започва с"
+
+#: ipplanlib.php:591
+msgid "Ends with"
+msgstr "Завършва с"
+
+#: ipplanlib.php:592
+msgid "Contains"
+msgstr "Съдържа"
+
+#: ipplanlib.php:593
+msgid "Does not contain"
+msgstr "Не съдържа"
+
+#: ipplanlib.php:594
+msgid "Equal to"
+msgstr "Е равно на"
+
+#: ipplanlib.php:596
+msgid "Regex contains"
+msgstr "Регулярен израз съдържа"
+
+#: ipplanlib.php:600
+msgid "Does not regex contain"
+msgstr "Регулярен израз не съдържа"
+
+#: ipplanlib.php:615 user/createarea.php:163 user/createrange.php:255
+#: user/createsubnetform.php:165 user/displaybaseform.php:135
+#: user/displayoverlapform.php:122 user/displayrouterform.php:81
+#: user/displaysubnet.php:365 user/displayswipform.php:114
+#: user/displayswip.php:185 user/findfreeform.php:105
+#: user/modifyarearangeform.php:59 user/modifybaseform.php:93
+#: user/modifycustomer.php:282 user/modifycustomer.php:773
+#: user/modifyipformmul.php:115 user/modifyipform.php:611
+#: user/modifysubnet.php:398 user/requestip.php:292 user/searchallform.php:173
+#: admin/changepassword.php:120 admin/changesettings.php:128
+#: admin/exportbaseform.php:58 admin/exportipform.php:62
+#: admin/importbaseform.php:85 admin/importipform.php:79
+msgid "Submit"
+msgstr "Изпълни"
+
+#: menudefs.php:22
+msgid "Main"
+msgstr "Начало"
+
+#: menudefs.php:23
+msgid "Customers"
+msgstr "Клиенти"
+
+#: menudefs.php:24
+msgid "Create a New Customer/Autonomous System"
+msgstr "Създаване на нов клиент/автономна система"
+
+#: menudefs.php:25
+msgid "Edit Existing Customer/Autonomous System"
+msgstr "Редактиране на съществуващ клиент/автономна система"
+
+#: menudefs.php:26
+msgid "Network"
+msgstr "Мрежа"
+
+#: menudefs.php:27
+msgid "Hierarchy"
+msgstr "Йерархия"
+
+#: menudefs.php:28
+msgid "Create a new Network Area"
+msgstr "Създаване на нова мрежова област"
+
+#: menudefs.php:29
+msgid "Create a new Network Range/Supernet"
+msgstr "Създаване на нов мрежов диапазон или супермрежа"
+
+#: menudefs.php:30
+msgid "Display/Modify/Delete Ranges/Supernets"
+msgstr "Показване/промяна/изтриване на диапазони/супермрежи"
+
+#: menudefs.php:35
+msgid "Registrar"
+msgstr "Регистър"
+
+#: menudefs.php:36
+msgid "Display Registrar Information"
+msgstr "Показване на информация за регистър"
+
+#: menudefs.php:40
+msgid "Subnets"
+msgstr "Подмрежи"
+
+#: menudefs.php:41
+msgid "Create Subnet"
+msgstr "Създаване на подмрежа"
+
+#: menudefs.php:42
+msgid "Create from Routing Table"
+msgstr "Създаване от маршрутна таблица"
+
+#: menudefs.php:43
+msgid "Delete/Edit/Modify/Split/Join Subnet"
+msgstr "Изтриване/редактиране/промяна/разделяне/присъединяване на подмрежа"
+
+#: menudefs.php:44
+msgid "Display Subnet Information"
+msgstr "Показване на информация за подмрежа"
+
+#: menudefs.php:45
+msgid "Search All Subnets"
+msgstr "Търсене във всички подмрежи"
+
+#: menudefs.php:46
+msgid "Find Free Space"
+msgstr "Намиране на свободно пространство"
+
+#: menudefs.php:47
+msgid "Display Subnet Overlap"
+msgstr "Показване на застъпващи се подмрежи"
+
+#: menudefs.php:48 user/requestip.php:44
+msgid "Request an IP address"
+msgstr "Заявка за IP адрес"
+
+#: menudefs.php:52 user/modifyipform.php:411
+msgid "DNS"
+msgstr "DNS"
+
+#: menudefs.php:53
+msgid "Create/Modify/Export Zone Domains"
+msgstr "Създаване/промяна/изнасяне на зонови домейни"
+
+#: menudefs.php:54
+msgid "Create/Modify Zone DNS Records"
+msgstr "Създаване/промяна на зонови ДНС записи"
+
+#: menudefs.php:55
+msgid "Create/Modify Reverse DNS Records"
+msgstr "Създаване/промяна на обратни ДНС записи"
+
+#: menudefs.php:59
+msgid "Options"
+msgstr "Опции"
+
+#: menudefs.php:60
+msgid "Settings"
+msgstr "Опции"
+
+#: menudefs.php:61
+msgid "Change my Password"
+msgstr "Смяна на моята парола"
+
+#: menudefs.php:62
+msgid "Admin"
+msgstr "Аминистратор"
+
+#: menudefs.php:63
+msgid "Users"
+msgstr "Потребители"
+
+#: menudefs.php:64
+msgid "Create a new User"
+msgstr "Създаване на нов потребител"
+
+#: menudefs.php:65
+msgid "Add a user to Group"
+msgstr "Добавяне на потребител към група"
+
+#: menudefs.php:66
+msgid "Display/Edit Users"
+msgstr "Показване/редакция на потребители"
+
+#: menudefs.php:67 admin/usermanager.php:347
+msgid "Groups"
+msgstr "Групи"
+
+#: menudefs.php:68
+msgid "Create a new Group"
+msgstr "Създаване на нова група"
+
+#: menudefs.php:69
+msgid "Add Authority Bounderies to Group"
+msgstr "Добавяне на граници на пълномощие към група"
+
+#: menudefs.php:70
+msgid "Display/Modify Authority Boundary Info"
+msgstr "Показване на информация за граници на пълномощие"
+
+#: menudefs.php:71
+msgid "Import"
+msgstr "Внасяне"
+
+#: menudefs.php:72
+msgid "Import Subnet Descriptions"
+msgstr "Внасяне на описания на подмрежи"
+
+#: menudefs.php:73
+msgid "Import IP Address Detail Records"
+msgstr "Внасяне на записи за IP адреси"
+
+#: menudefs.php:74
+msgid "Export"
+msgstr "Изнасяне"
+
+#: menudefs.php:75
+msgid "Export Subnet Descriptions"
+msgstr "Изнасяне на описания на подмрежи"
+
+#: menudefs.php:76
+msgid "Export IP Address Detail Records"
+msgstr "Изнасяне на записи за IP адреси"
+
+#: menudefs.php:77
+msgid "Maintenance"
+msgstr "Поддръжка"
+
+#: menudefs.php:78 admin/displayauditlog.php:41
+msgid "Display Audit Log"
+msgstr "Показване на журнала"
+
+#: menudefs.php:79
+msgid "Help"
+msgstr "Помощ"
+
+#: menudefs.php:80
+msgid "Online Manual"
+msgstr "Онлайн справочник"
+
+#: menudefs.php:81
+msgid "Support Groups"
+msgstr "Групи за поддръжка"
+
+#: menudefs.php:82
+msgid "Home Page"
+msgstr "Домашна страница"
+
+#: menudefs.php:83
+msgid "License"
+msgstr "Лиценз"
+
+#: menudefs.php:92
+msgid "Logout"
+msgstr "Изход"
+
+#: schema.php:65
+msgid ""
+"Problem with database permission or database tables - have installation "
+"instructions been followed?"
+msgstr ""
+"Проблем с позволенията или таблиците на базата данни - следвахте ли "
+"инструкциите за инсталация?"
+
+#: schema.php:76
+msgid "You are trying to downgrade IPplan - impossible"
+msgstr "Опитвате се да свалите версията на IPplan, което е невъзможно"
+
+#: schema.php:80
+msgid "Schema version outdated"
+msgstr "Версията на схемата на базата данни е остаряла"
+
+#: schema.php:81
+#, php-format
+msgid ""
+"The database structures need to be upgraded to accommodate new features. For "
+"this to happen, you require enough access rights on the %s database. If you "
+"get errors back from the upgrade process, you will need to temporarily grant "
+"more access rights to the %s database for the duration of the upgrade"
+msgstr ""
+"Структурите на базата данни трябва да бъдат обновени, за да могат да бъдат "
+"използвани някои нови характеристики. За да стане това ви трябват достатъчно "
+"права върху %s база данни. Ако в процеса на обновяване получите грешки, "
+"трябва временно да отпуснете повече права на %s база."
+
+#: schema.php:83
+msgid ""
+"This process needs to be done by the administrator by executing the "
+"installation scripts. See information in the INSTALL and UPGRADE files."
+msgstr ""
+"Този процес трябва да бъде извършен от администратора чрез изпълнение на "
+"инсталационните скриптове. Вижте информацията във файловете INSTALL и "
+"UPGRADE."
+
+#: user/createarea.php:45
+msgid "Modify a network area"
+msgstr "Промяна на мрежова област"
+
+#: user/createarea.php:48
+msgid "Create a new network area"
+msgstr "Създаване на нова мрежова област"
+
+#: user/createarea.php:63
+msgid "You need to enter a description for the area"
+msgstr "Трябва да въведете описание на областта."
+
+#: user/createarea.php:69
+msgid "Area address may not be blank"
+msgstr "Адресът на областта не може да бъде празен."
+
+#: user/createarea.php:71
+msgid "Invalid area address - it must be the same format as an IP address"
+msgstr "Невалиден адрес на областта - трябва да е в същия формат като IP адрес"
+
+#: user/createarea.php:81
+msgid ""
+"You may not create/modify an area for this customer as you are not a member "
+"of the customers admin group"
+msgstr ""
+"Не можете да създадете област за този клиент, тъй като не сте член на  "
+"администраторската група за клиенти "
+
+#: user/createarea.php:111
+msgid "Area created"
+msgstr "Областта е създадена"
+
+#: user/createarea.php:117
+msgid "Area could not be created/modified - probably a duplicate name"
+msgstr "Областта не бе създадена - вероятно има повтарящо се име"
+
+#: user/createarea.php:128
+msgid ""
+"Create a new network area by entering a unique identifier address for the "
+"area. The identifier has the same format as IP addresses, but has no "
+"relation to existing IP address records. Areas usually define geographic or "
+"administrative boundaries. Areas can also contain multiple ranges of address "
+"space, as in many cases the address space is not contiguous - there may be a "
+"mix of private or public address space used."
+msgstr ""
+"Създайте нова мрежова област като въведете уникален идентификационен адрес "
+"за областта. Идентификаторът е в същия формат като IP адрес, но няма връзка "
+"със съществуващите записи за IP адреси. Областите обикновено определят "
+"географски или административни граници. Областите могат също да съдържат "
+"множество диапазони от адресно пространство, като в много случаи адресното "
+"пространство не е непрекъснато - може да се използва смес от частно и "
+"публично адресно пространство."
+
+#: user/createarea.php:146 user/createrange.php:199
+#: user/createsubnetform.php:63 user/displaybaseform.php:60
+#: user/displayrouterform.php:57 user/displayswipform.php:58
+#: user/findfreeform.php:64 user/modifyarearangeform.php:56
+#: user/modifybaseform.php:56 user/modifydns.php:296
+#: user/modifydnsrecord.php:376 user/modifysubnet.php:290
+#: user/modifyzone.php:310 user/searchallform.php:62
+#: admin/exportbaseform.php:55 admin/exportipform.php:59
+#: admin/importbaseform.php:60 admin/importipform.php:64
+msgid "No customers"
+msgstr "Няма клиенти"
+
+#: user/createarea.php:149 user/modifyarearange.php:78
+#: user/modifyarearange.php:191
+msgid "Area address"
+msgstr "Адрес на областта"
+
+#: user/createarea.php:156 user/createrange.php:227
+#: user/createsubnetform.php:96 user/displaybase.php:147
+#: user/displayoverlap.php:102 user/displayoverlap.php:111
+#: user/displayrouter.php:168 user/findfree.php:164
+#: user/modifyarearange.php:80 user/modifyarearange.php:90
+#: user/modifyarearange.php:193 user/modifybase.php:341
+#: user/modifyipform.php:638 user/searchallform.php:87
+msgid "Description"
+msgstr "Описание"
+
+#: user/createarea.php:164 user/createrange.php:256
+#: user/createsubnetform.php:166 user/displaybaseform.php:136
+#: user/displayoverlapform.php:123 user/displayrouterform.php:82
+#: user/displaysubnet.php:366 user/displayswipform.php:115
+#: user/findfreeform.php:106 user/modifyarearangeform.php:60
+#: user/modifybaseform.php:94 user/modifycustomer.php:283
+#: user/modifycustomer.php:774 user/modifydnsform.php:232
+#: user/modifydnsrecordform.php:134 user/modifyipformmul.php:116
+#: user/modifyipform.php:612 user/modifysubnet.php:399
+#: user/modifyzoneform.php:256 user/requestip.php:293
+#: user/searchallform.php:174 admin/changepassword.php:121
+#: admin/changesettings.php:129 admin/exportbaseform.php:59
+#: admin/exportipform.php:63 admin/importbaseform.php:86
+#: admin/importipform.php:80 admin/usermanager.php:613
+msgid "Clear"
+msgstr "Изчисти"
+
+#: user/createrange.php:62
+msgid "Modify a range or supernet/summary"
+msgstr "Промяна на диапазон или супермрежа/резюме"
+
+#: user/createrange.php:65
+msgid "Create a new range or supernet/summary"
+msgstr "Създаване на нов диапазон или супермрежа/резюме"
+
+#: user/createrange.php:80
+msgid "You need to enter a description for the range"
+msgstr "Трябва да въведете описание за диапазона"
+
+#: user/createrange.php:86
+msgid "Range address may not be blank"
+msgstr "Адресът на диапазона не може да бъде празен"
+
+#: user/createrange.php:88
+msgid "Invalid range address"
+msgstr "Невалиден адрес на диапазон"
+
+#: user/createrange.php:90 user/createsubnet.php:74 user/modifyzone.php:149
+#: admin/usermanager.php:977
+msgid "Size may not be zero"
+msgstr "Размерът не може да бъде нула"
+
+#: user/createrange.php:93
+msgid ""
+"Range cannot be modified - overlaps with existing range or overlaps with "
+"self if trying to change size. Try moving the range out of the way first "
+"before resizing."
+msgstr ""
+"Диапазонът не може да бъде променен - застъпва се с вече съществуващ или със "
+"себе си, ако се опитвате да промените размера му. Опитайте да преместите "
+"диапазона някъде настрани, преди да го преоразмерявате."
+
+#: user/createrange.php:96
+msgid "Range cannot be created - overlaps with existing range"
+msgstr ""
+"Диапазонът не може да бъде създаден, защото се застъпва с вече съществуващ"
+
+#: user/createrange.php:102 admin/usermanager.php:983
+msgid "Invalid base address"
+msgstr "Невалиден базов адрес"
+
+#: user/createrange.php:113
+msgid ""
+"You may not create/modify a range for this customer as you are not a member "
+"of the customers admin group"
+msgstr ""
+"Не можете да създадете диапазон за този клиент, тъй като не сте член на "
+"административната група за клиенти"
+
+#: user/createrange.php:154
+msgid "Range created"
+msgstr "Диапазонът е създаден"
+
+#: user/createrange.php:160
+msgid "Range could not be created/modified - probably duplicate name"
+msgstr "Диапазонът не бе създаден - вероятно е с повтарящо се име"
+
+#: user/createrange.php:171
+msgid ""
+"Modify a range supernet/summary. Changing the range address or size to "
+"overlap with the currently defined range and size is not supported. Move the "
+"range out of the way first."
+msgstr ""
+"Промяна на диапазон супермрежа/резюме. Промяната на адреса на диапазона, "
+"така че да се застъпва с вече дефиниран диапазон и размер не се поддържа. "
+"Първо преместете диапазона някъде другаде."
+
+#: user/createrange.php:174
+msgid ""
+"Create a new range or supernet/summary by entering the base (network) "
+"address. A range is an aggregation of a number of subnets which can "
+"ultimately be used to reduce the number of routing entries in routing "
+"tables. Ranges are essentially the same as a normal subnet, just bigger with "
+"a wider view."
+msgstr ""
+"Създаване на нов диапазон от супермрежи/резюме като въведете базовия "
+"(мрежов) адрес. Диапазонът е съвкупност от мрежи, която може да бъде "
+"използвана за намаляване броя на записите в маршрутните таблици. По същество "
+"диапазоните са същите като обикновените мрежи, само че по-големи."
+
+#: user/createrange.php:220 user/modifyarearange.php:84
+msgid "Range address"
+msgstr "Адрес на диапазона"
+
+#: user/createrange.php:232
+msgid "Range size/mask"
+msgstr "Размер/маска на диапазона"
+
+#: user/createsubnetform.php:40
+msgid "Create a new subnet"
+msgstr "Създаване на нова подмрежа"
+
+#: user/createsubnetform.php:50
+msgid ""
+"Create a new subnet by entering the base (network) address of the subnet. "
+"Subnets are the building blocks of all networks, and are all that is "
+"required for small networks."
+msgstr ""
+"Създаване на нова подмрежа като въведете базовия (мрежов) адрес на "
+"подмрежата. Подмрежите са градивните елементи на всички мрежи. Те са всичко, "
+"което ви е необходимо за малка мрежа."
+
+#: user/createsubnetform.php:52
+msgid ""
+"Unused subnets can be pre-allocated with a description of either 'free' or "
+"'spare'. These can be searched for at a later stage using the 'Find Free' "
+"function."
+msgstr ""
+"Неизползваните подмрежи могат да бъдат преразпределени с описание \"free"
+"\" (свободна) или \"spare\" (неизползвана). Те могат да бъдат намерени по-"
+"късно при търсене с функцията \"Намиране на свободни мрежи\"."
+
+#: user/createsubnetform.php:54
+msgid ""
+"It may also be beneficial to give ASE (Autonomous System External, networks "
+"not local to yours) a special handle like EXTERNAL so that they can be "
+"searched for at a later stage. These networks often appear in routing tables "
+"as static routes to third parties (not via the Internet)."
+msgstr ""
+"Би било полезно също да дадете на ASE (външните автономни системи) специален "
+"идентификатор като EXTERNAL (Външен), за да могат да бъдат намирани в по-"
+"късен етап. Тези мрежи често се появяват в маршрутните таблици като статични "
+"пътища към трети доставчици (не през Интернет)."
+
+#: user/createsubnetform.php:73 user/modifycustomer.php:253
+#: user/modifysubnet.php:317 admin/importbaseform.php:70
+msgid "You first need to create some groups!"
+msgstr "Първо трябва да създадете някакви групи!"
+
+#: user/createsubnetform.php:76 user/modifysubnet.php:364
+#: admin/importbaseform.php:73
+msgid "Admin Group"
+msgstr "Администраторска група"
+
+#: user/createsubnetform.php:77 user/modifycustomer.php:276
+#: user/modifysubnet.php:365
+msgid ""
+"WARNING: If you choose a group that you do not have access to, you will not "
+"be able to see or access the data"
+msgstr ""
+"ВНИМАНИЕ: Ако изберете група, в която нямате достъп, няма да можете да "
+"виждате или да редактирате данните"
+
+#: user/createsubnetform.php:81
+msgid "Network address"
+msgstr "Мрежов адрес"
+
+#: user/createsubnetform.php:89
+msgid "Number of contiguous networks to create"
+msgstr "Брой последователни мрежи за създаване"
+
+#: user/createsubnetform.php:97
+msgid "Leave blank to automatically describe"
+msgstr "Оставете празно за автоматично описание"
+
+#: user/createsubnetform.php:101
+msgid "Subnet size/mask"
+msgstr "Размер/маска на подмрежа"
+
+#: user/createsubnetform.php:130
+msgid "Add active hosts using NMAP"
+msgstr "Добавяне на активни хостове с NMAP"
+
+#: user/createsubnetform.php:135
+msgid "Add host names from DNS"
+msgstr "Добавяне на имена на хостове от ДНС"
+
+#: user/createsubnetform.php:139 user/modifysubnet.php:346
+msgid "Is this a DHCP subnet?"
+msgstr "Това DHCP мрежа ли е?"
+
+#: user/createsubnetform.php:159 user/modifycustomer.php:767
+#: user/modifyipform.php:582 user/modifysubnet.php:390 user/requestip.php:280
+msgid "Additional information"
+msgstr "Допълнителна информация"
+
+#: user/createsubnet.php:45
+msgid "Create subnet results"
+msgstr "Резултати от създаване на подмрежи"
+
+#: user/createsubnet.php:60
+msgid "Number of subnets to create is out of bounds."
+msgstr "Броят на подмрежите за създаване излиза извън границите"
+
+#: user/createsubnet.php:70 user/modifyzone.php:145 admin/importbase.php:192
+msgid "IP address may not be blank"
+msgstr "IP адресът не може да бъде празен"
+
+#: user/createsubnet.php:72 user/displayrouter.php:110 user/dns.php:42
+#: user/modifyzone.php:147 user/ping.php:49 user/traceroute.php:52
+#: admin/importip.php:170
+msgid "Invalid IP address"
+msgstr "Невалиден IP адрес"
+
+#: user/createsubnet.php:77 user/modifyzone.php:152 admin/importbase.php:258
+msgid "Invalid base address!"
+msgstr "Невалиден базов адрес"
+
+#: user/createsubnet.php:130
+#, php-format
+msgid "Subnet %s not created - out of defined authority boundary"
+msgstr ""
+"Подмрежа %s не е създадена - намира се извън дефинираните граници на "
+"пълномощие"
+
+#: user/createsubnet.php:137
+#, php-format
+msgid ""
+"Subnet %s could not be created - possibly overlaps with an existing subnet"
+msgstr ""
+"Подмрежата %s не можа да бъде създадена, тъй като вероятно се застъпва с "
+"вече съществуваща"
+
+#: user/createsubnet.php:145
+msgid "WARNING: "
+msgstr "ВНИМАНИЕ:"
+
+#: user/createsubnet.php:146
+#, php-format
+msgid ""
+"Subnet %s overlaps with the following subnets from other customers.  This "
+"may not be a problem as the subnet may occur in both customers routing "
+"tables:"
+msgstr ""
+"Подмрежата %s се застъпва със следните мрежи на други клиенти. Това може и "
+"да не се окаже проблем, тъй като подмрежите могат да се виждат в маршрутните "
+"таблици и на двата клиента."
+
+#: user/createsubnet.php:155 user/deletecustomer.php:72
+#: user/displaybase.php:141 user/displayoverlap.php:96
+#: user/displayoverlap.php:105 user/displayrouter.php:162
+#: user/findfree.php:158 user/modifybase.php:335
+msgid "Base address"
+msgstr "Базов адрес"
+
+#: user/createsubnet.php:157 user/deletecustomer.php:74
+#: user/modifysubnet.php:337
+msgid "Subnet description"
+msgstr "Описание на подмрежа"
+
+#: user/createsubnet.php:159 user/requestip.php:228
+msgid "Customer"
+msgstr "Клиент"
+
+#: user/createsubnet.php:185
+msgid ""
+"You may not create a subnet for this customer as you are not a member of the "
+"customers admin group"
+msgstr ""
+"Не можете да създадете подмрежа за този клиент, тъй като не сте член на "
+"групата за администриране на клиенти"
+
+#: user/createsubnet.php:195
+#, php-format
+msgid "Subnet %s created"
+msgstr "Подмрежа %s е създадена"
+
+#: user/createsubnet.php:201
+msgid "NMAP data not in XML format or XML not available"
+msgstr "Данните от NMAP не са в XML формат или XML не е наличен"
+
+#: user/createsubnet.php:226
+#, php-format
+msgid "Subnet %s could not be created"
+msgstr "Подмрежа %s не можа да бъде създадена"
+
+#: user/deletearea.php:39
+msgid "Delete a network area"
+msgstr "Изтриване на мрежова област"
+
+#: user/deletearea.php:60 user/deleterange.php:59
+msgid ""
+"You may not delete an area for this customer as you are not a member of the "
+"customers admin group"
+msgstr ""
+"Не можете да изтриете областта на този клиент, тъй като не сте в групата за "
+"администриране на клиенти"
+
+#: user/deletearea.php:82
+msgid "Area could not be deleted"
+msgstr "Областта не можа да бъде изтрита"
+
+#: user/deletecustomer.php:37
+msgid "Delete customer/autonomous system results"
+msgstr "Резултати от изтриването на клиент/автономна система"
+
+#: user/deletecustomer.php:45 user/displaybase.php:53
+#: user/displayoverlap.php:222 user/displayrouter.php:98
+#: user/displaysubnet.php:68 user/displayswip.php:55 user/dns.php:38
+#: user/emailswip.php:55 user/findfree.php:53 user/modifyarearange.php:51
+#: user/modifybase.php:70 user/modifydnsform.php:58
+#: user/modifydnsrecordform.php:53 user/modifyipformmul.php:50
+#: user/modifyipform.php:87 user/modifyzoneform.php:53 user/ping.php:45
+#: user/searchall.php:53 user/traceroute.php:48 user/whois.php:53
+#: admin/deletebounds.php:47 admin/importip.php:51
+msgid "You cannot reload or bookmark this page!"
+msgstr "Не можете да презареждате или отбелязвате тази страница!"
+
+#: user/deletecustomer.php:54
+msgid ""
+"You may not delete customers as you are not a member a group that can delete "
+"customers"
+msgstr ""
+"Не можете да триете клиенти, тъй като не сте член на група, която може да "
+"трие клиенти"
+
+#: user/deletecustomer.php:63
+msgid ""
+"Cannot delete customer because the following subnets are assigned to the "
+"customer (limited to first 100):"
+msgstr ""
+"Не можах да изтрия клиента, тъй като той е собственик на следните мрежи "
+"(показвам само първите 100):"
+
+#: user/deletecustomer.php:97
+msgid "Cannot delete customer because customer has DNS zones defined"
+msgstr "Не мога да изтрия този клиент, тъй като той има дефинирани ДНС зони"
+
+#: user/deletecustomer.php:109
+msgid "Cannot delete customer because customer has reverse DNS zones defined"
+msgstr ""
+"Не мога да изтрия този клиент, тъй като той има дефинирани обратни ДНС зони"
+
+#: user/deletecustomer.php:140
+msgid "Customer deleted"
+msgstr "Клиентът е изтрит"
+
+#: user/deletecustomer.php:143
+msgid "Customer could not be deleted"
+msgstr "Клиентът не можа да бъде изтрит"
+
+#: user/deleterange.php:39
+msgid "Delete a range or supernet/summary"
+msgstr "Изтриване на диапазон или супермрежа/резюме"
+
+#: user/deleterange.php:82
+msgid "Range could not be deleted"
+msgstr "Диапазонът не можа да бъде изтрит"
+
+#: user/deleterange.php:86
+msgid "Range index is invalid"
+msgstr "Индексът на диапазона е невалиден"
+
+#: user/displaybaseform.php:41
+msgid "Display subnet information"
+msgstr "Показване на информация за подмрежа"
+
+#: user/displaybaseform.php:46 user/displayswipform.php:49
+msgid "Display subnets."
+msgstr "Показване на подмрежи"
+
+#: user/displaybaseform.php:78 user/displayswipform.php:76
+#: user/findfreeform.php:81 user/modifybaseform.php:75
+#: user/searchallform.php:81
+msgid "Search criteria"
+msgstr "Критерий за търсене"
+
+#: user/displaybaseform.php:81 user/displayswipform.php:78
+msgid "Subnet network address (leave blank if range selected)"
+msgstr "Мрежов адрес на подмрежа (оставете празно, ако е избран диапазон)"
+
+#: user/displaybaseform.php:82 user/displayswipform.php:79
+#: user/modifybaseform.php:79
+msgid "Partial subnet addresses can be used eg. 172.20"
+msgstr "Могат да бъдат използвани частични подмрежови адреси, например 172.20"
+
+#: user/displaybaseform.php:92
+msgid "Match any IP address in subnet"
+msgstr "Съвпадане с произволен IP адрес в подмрежата"
+
+#: user/displaybaseform.php:95
+msgid "Jump to IP address record if found"
+msgstr "Прескочи към запис за IP адрес, ако е намерен такъв"
+
+#: user/displaybaseform.php:98
+msgid ""
+"Enter a complete ip address in above field and select the above options to "
+"go to the address record or subnet record"
+msgstr ""
+"Въведете цял IP адрес в полето горе и изберете опциите, за да отидете на "
+"записите за адрес или подмрежа"
+
+#: user/displaybaseform.php:101 user/displayswipform.php:85
+#: user/modifybaseform.php:85
+msgid "Description (only display networks matching the regular expression)"
+msgstr "Описание (показват се само мрежи, съвпадащи с регулярен израз)"
+
+#: user/displaybaseform.php:103 user/displayswipform.php:87
+#: user/modifybaseform.php:87
+msgid "Description (only display networks containing)"
+msgstr "Описание (показване само на мрежи, съдържащи)"
+
+#: user/displaybaseform.php:109
+msgid "Display subnets larger than"
+msgstr "Показване на подмрежи, по-големи от"
+
+#: user/displaybaseform.php:110
+msgid "Display all subnets"
+msgstr "Показване на всички подмрежи"
+
+#: user/displaybase.php:45 user/displayoverlap.php:211
+#: user/displaysubnet.php:42 user/displayswip.php:44 user/findfree.php:45
+#: user/searchall.php:45
+msgid "Results of your search"
+msgstr "Резултати от търсенето"
+
+#: user/displaybase.php:88 user/displayswip.php:103 user/modifybase.php:291
+#: user/searchall.php:165
+#, php-format
+msgid "Search for IP subnets between multiple ranges for customer '%s'"
+msgstr "Търсене на IP подмрежи в множество диапазони за клиент '%s'"
+
+#: user/displaybase.php:91 user/displayswip.php:107 user/findfree.php:89
+#: user/modifybase.php:295 user/searchall.php:186
+#, php-format
+msgid "Search for IP subnets between %s and %s %s for customer '%s'"
+msgstr "Търсене на IP подмрежи между %s и %s %s за клиент '%s'"
+
+#: user/displaybase.php:95 user/displayswip.php:111 user/modifybase.php:299
+msgid "IP address filter: "
+msgstr "Филтър по IP адрес:"
+
+#: user/displaybase.php:99 user/displayswip.php:115 user/modifybase.php:303
+msgid "Description filter: "
+msgstr "Филтър по описание:"
+
+#: user/displaybase.php:103
+msgid "Subnet size filter: Subnets larger than "
+msgstr "Филтър по размер на подмрежа: Подмрежи, по-големи от "
+
+#: user/displaybase.php:143 user/displayoverlap.php:98
+#: user/displayoverlap.php:107 user/displayrouter.php:164
+#: user/findfree.php:160 user/modifybase.php:337
+msgid "Subnet size"
+msgstr "Размер на подмрежа"
+
+#: user/displaybase.php:145 user/displayoverlap.php:100
+#: user/displayoverlap.php:109 user/findfree.php:162 user/modifybase.php:339
+msgid "Subnet mask"
+msgstr "Мрежова маска"
+
+#: user/displaybase.php:149 user/displaysubnet.php:413 user/modifydns.php:352
+#: user/modifydnsrecord.php:479 user/modifyzone.php:366 user/searchall.php:237
+msgid "Last modified"
+msgstr "Последна промяна"
+
+#: user/displaybase.php:151 user/displaysubnet.php:415 user/modifydns.php:354
+#: user/modifydnsrecord.php:481 user/modifyzone.php:368
+msgid "Changed by"
+msgstr "Променено от"
+
+#: user/displaybase.php:154
+msgid "Update sent"
+msgstr "Обновената информация е изпратена"
+
+#: user/displaybase.php:185 user/displayoverlap.php:156
+#: user/displayrouter.php:190 user/displayrouter.php:211 user/findfree.php:227
+#: user/modifybase.php:357 user/modifydnsrecord.php:473
+msgid "Host"
+msgstr "Хост"
+
+#: user/displaybase.php:219 user/displaysubnet.php:295
+#: user/displayswip.php:189 user/findfree.php:145 user/modifybase.php:466
+#: user/searchall.php:306
+msgid "Search found no matching entries"
+msgstr "При търсенето не са открити резултати"
+
+#: user/displaycustomerform.php:41
+msgid "Display customer/autonomous system information"
+msgstr "Показване на информация за клиент/автономна система"
+
+#: user/displaycustomerform.php:56
+msgid "All customer/autonomous system info"
+msgstr "Информация за всички клиенти/автономни системи"
+
+#: user/displaycustomerform.php:60 user/displaysubnet.php:370
+msgid "Refine Search on Description"
+msgstr "Уточняване търсенето по описание"
+
+#: user/displaycustomerform.php:73 admin/maintenance.php:89
+msgid "Customer description"
+msgstr "Описание на клиент"
+
+#: user/displaycustomerform.php:75 admin/displayboundsform.php:70
+#: admin/maintenance.php:91
+msgid "Group name"
+msgstr "Име на група"
+
+#: user/displaycustomerform.php:77 user/modifyarearange.php:82
+#: user/modifyarearange.php:92 user/modifyarearange.php:195
+#: user/modifybase.php:345 user/modifydns.php:356 user/modifydnsrecord.php:483
+#: user/modifyipform.php:644 user/modifyzone.php:370
+#: admin/displayauditlog.php:90
+msgid "Action"
+msgstr "Действие"
+
+#: user/displaycustomerform.php:106
+msgid "Delete customer/AS"
+msgstr "Изтриване на клиент/автономна система"
+
+#: user/displaycustomerform.php:107 user/modifyarearange.php:118
+#: user/modifyarearange.php:155 user/modifyarearange.php:211
+#: user/modifybase.php:387 user/modifybase.php:401 user/modifybase.php:409
+#: user/modifydns.php:410 user/modifydnsrecord.php:528
+#: user/modifydnsrecord.php:605 user/modifyipformmul.php:124
+#: user/modifyipform.php:436 user/modifyzone.php:435 user/modifyzone.php:460
+#: admin/displayboundsform.php:100 admin/usermanager.php:564
+msgid "Are you sure?"
+msgstr "Сигурни ли сте?"
+
+#: user/displaycustomerform.php:112
+msgid "Modify customer/AS details"
+msgstr "Промяна на детайлите за клиент/автономна система"
+
+#: user/displaycustomerform.php:115
+msgid "Export DHCP details"
+msgstr "Изнасяне на детайли за DHCP"
+
+#: user/displaycustomerform.php:118
+msgid "Group membership"
+msgstr "Членство в групи"
+
+#: user/displaycustomerform.php:125 user/displayrouter.php:224
+#: user/modifyarearange.php:171 user/modifyarearange.php:224
+#: admin/displayboundsform.php:107
+#, php-format
+msgid "Total records: %u"
+msgstr "Общо записи: %u"
+
+#: user/displayoverlapform.php:41
+msgid "Display overlapping address space between customers/autonomous systems"
+msgstr ""
+"Показване на застъпващо се адресно пространство между клиенти/автономни "
+"системи"
+
+#: user/displayoverlapform.php:59
+msgid "Customer/autonomous system 1 - select multiple"
+msgstr "Клиент/автономна система 1 - избиране на няколко"
+
+#: user/displayoverlapform.php:96
+msgid "Customer/autonomous system 2 - select multiple"
+msgstr "Клиент/автономна система 2 - избиране на няколко"
+
+#: user/displayoverlap.php:229
+msgid "Search for overlapping subnets between customers/autonomous systems"
+msgstr "Търсене за застъпващи се подмрежи между клиенти/автономни системи"
+
+#: user/displayoverlap.php:236
+msgid "Both customers selected are the same - all subnets will overlap!"
+msgstr "Двата клиента са едни и същи - всички мрежи ще се застъпят!"
+
+#: user/displayrouterform.php:39
+msgid "Display subnet information obtained from a routing table"
+msgstr "Показване на информация за подмрежи, получена от маршрутна таблица"
+
+#: user/displayrouterform.php:49
+msgid ""
+"Display subnet information obtained from a routing table will show the "
+"routing table information on the left of the screen and the corresponding "
+"entries in the database on the right. If there are entries on both sides of "
+"the table, the subnet exists in the routing table and the database. If there "
+"are only entries on the left, the subnet only exists in the routing table. "
+"The same is true for the right hand side. If you click on the left, you can "
+"add the subnet to the database. If you click on the right, you can view the "
+"existing database information."
+msgstr ""
+"Показване на подмрежова информация, получена от маршрутна таблица ще "
+"изобрази информация от маршрутна таблица в лявата част на екрана и "
+"съответните записи в базата данни от дясно. Ако има записи и в двете части "
+"на таблицата, подмрежата съществува в маршрутната таблица и в базата. Ако "
+"има само записи вляво, подмрежата съществува само в маршрутната таблица. "
+"Същото важи и за дясната страна. АКо щракнете вляво, можете да добавите "
+"подмрежата в базата. Ако щракнете вдясно, можете да видите съществуващата в "
+"базата информация."
+
+#: user/displayrouterform.php:59
+msgid "IP address of device to query"
+msgstr "IP адрес на устройството, което ще бъде запитано"
+
+#: user/displayrouterform.php:60
+msgid "The device must be SNMP capable"
+msgstr "Устройството трябва да поддържа SNMP"
+
+#: user/displayrouterform.php:66
+msgid "Community string"
+msgstr "Комюнити низ"
+
+#: user/displayrouterform.php:72
+msgid "Router type"
+msgstr "Тип на маршрутизатора"
+
+#: user/displayrouterform.php:73
+msgid "Type 'Generic' will work for most routers"
+msgstr "Тип 'Generic' ще работи с повето маршрутизатори"
+
+#: user/displayrouter.php:90
+msgid "Display routing table results"
+msgstr "Показване на резултати от маршрутна таблица"
+
+#: user/displayrouter.php:114
+msgid "Could not query router - no SNMP on router or firewall blocking access?"
+msgstr ""
+"Не можах да говоря с маршрутизатора - това означава, че или той не поддържа "
+"SNMP, или има някаква огнена стена, която блокира достъпа до него."
+
+#: user/displayrouter.php:119
+#, php-format
+msgid "Search for IP subnets from a routing table for customer '%s'"
+msgstr "Търсене на IP подмрежи от маршрутна таблица за клиент '%s'"
+
+#: user/displayrouter.php:147
+msgid "Routing Table"
+msgstr "Маршрутна таблица"
+
+#: user/displayrouter.php:151
+msgid "IPplan information"
+msgstr "Информация за IPplan"
+
+#: user/displayrouter.php:156
+msgid "Routing Table Base address"
+msgstr "Базов адрес на маршрутната таблица"
+
+#: user/displayrouter.php:158
+msgid "Routing Table Subnet size"
+msgstr "Размер на мрежата в маршрутната таблица"
+
+#: user/displayrouter.php:160
+msgid "Routing Table Subnet Mask"
+msgstr "Мрежова маска в маршрутната таблица"
+
+#: user/displayrouter.php:166
+msgid "Subnet Mask"
+msgstr "Мрежова маска"
+
+#: user/displaysubnet.php:81
+msgid "Another user modified the information before you saved - restart"
+msgstr ""
+"Друг потребител е променил информацията преди да я запазите - рестартирайте"
+
+#: user/displaysubnet.php:135
+msgid "IP address records deleted"
+msgstr "Детайлите за IP адрес са изтрити"
+
+#: user/displaysubnet.php:169
+#, php-format
+msgid "Invalid hostname: %s %s"
+msgstr "Невалидно име на host: %s %s"
+
+#: user/displaysubnet.php:193
+msgid "IP hostname field in DNS forward zone modified"
+msgstr "Полето 'име на хост' за IP в правата ДНС зона е променено"
+
+#: user/displaysubnet.php:205
+msgid "DNS forward A record not updated - multiple A records for this customer"
+msgstr "Правият DNS А запис не можа да бъде обновен - за този клиент съществуват "
+"множество А записи"
+
+#: user/displaysubnet.php:207
+#, php-format
+msgid "Hostname: %s IP address: %s\n"
+msgstr "Име на хост: %s IP адрес: %s\n"
+
+#: user/displaysubnet.php:224
+#, php-format
+msgid "Invalid link address: %s"
+msgstr "Невалиден IP адрес %s"
+
+#: user/displaysubnet.php:234
+#, php-format
+msgid "Invalid MAC address: %s"
+msgstr "Невалиден MAC адрес %s"
+
+#: user/displaysubnet.php:245
+#, php-format
+msgid "User %s actioned request %s"
+msgstr "Потребителят %s задейства заявка %s"
+
+#: user/displaysubnet.php:249 admin/importip.php:218
+msgid "IP address details modified"
+msgstr "Детайлите за IP адреса са променени"
+
+#: user/displaysubnet.php:252 admin/importip.php:221
+msgid "IP address details could not be modified"
+msgstr "Детайлите за този IP адрес не можаха да бъдат променени"
+
+#: user/displaysubnet.php:257
+msgid "You are not the owner of the subnet"
+msgstr "Вие не сте собственик на подмрежата"
+
+#: user/displaysubnet.php:261
+msgid ""
+"Could not find the owner of the subnet - subnet possibly deleted by another "
+"user"
+msgstr ""
+"Не мога да намеря собственика на подмрежата - тя вероятно е изтрита от друг "
+"потребител"
+
+#: user/displaysubnet.php:302
+msgid ""
+"This page was bookmarked and contains invalid information which cannot be "
+"displayed anymore - restart from main menu"
+msgstr ""
+"Тази страница е отбелязана и съдържа невалидна информация, която вече не "
+"може да бъде показана - рестартирайте от главното меню"
+
+#: user/displaysubnet.php:306 user/modifyipform.php:274
+#: user/modifysubnet.php:277
+msgid "Subnet:"
+msgstr "Подмрежа:"
+
+#: user/displaysubnet.php:307 user/modifyipform.php:275
+#: user/modifysubnet.php:278
+msgid "Mask:"
+msgstr "Маска:"
+
+#: user/displaysubnet.php:311 user/modifyipform.php:278
+#: user/modifysubnet.php:282
+msgid "Description:"
+msgstr "Описание:"
+
+#: user/displaysubnet.php:320
+msgid "Show used addresses"
+msgstr "Показване на използваните адреси "
+
+#: user/displaysubnet.php:322
+msgid ""
+" This can take a while as each address is polled.  Green is active, Red is "
+"inactive"
+msgstr ""
+"Това може да отнеме известно време, тъй като се проверява всеки адрес.  "
+"Зелените са активни, червените - неактивни"
+
+#: user/displaysubnet.php:330
+msgid "Show DNS changes"
+msgstr "Показване на промените по DNS "
+
+#: user/displaysubnet.php:332
+msgid ""
+" Show descriptions that do not match DNS reverse entries. Red is new DNS "
+"value"
+msgstr ""
+" Показване на описания, които не съвпадат с обратните ДНС записи. Червените "
+"са нови ДНС стойности"
+
+#: user/displaysubnet.php:349
+msgid "Select multiple addresses to do a bulk change"
+msgstr "Изберете множество адреси за промени на едро"
+
+#: user/displaysubnet.php:350
+msgid "Ideal for reserving DHCP ranges"
+msgstr "Идеално за резервиране на DHCP диапазони"
+
+#: user/displaysubnet.php:381
+msgid "Use next available address"
+msgstr "Използвай следващия свободен адрес"
+
+#: user/displaysubnet.php:384
+msgid "Use next available address and probe network if active"
+msgstr "Използвай следващия свободен адрес и пробвай по мрежата, ако е активен"
+
+#: user/displaysubnet.php:401 user/modifyipformmul.php:78
+#: user/modifyipform.php:506 user/requestip.php:242 user/searchallform.php:85
+#: user/searchall.php:229
+msgid "User"
+msgstr "Потребител"
+
+#: user/displaysubnet.php:403 user/modifyipformmul.php:84
+#: user/modifyipform.php:513 user/requestip.php:247 user/searchallform.php:86
+#: user/searchall.php:231
+msgid "Location"
+msgstr "Местоположение"
+
+#: user/displaysubnet.php:405 user/modifyipformmul.php:88
+#: user/modifyipform.php:518 user/requestip.php:252 user/searchall.php:233
+msgid "Device description"
+msgstr "Описание на устройството"
+
+#: user/displaysubnet.php:407 user/searchallform.php:89 user/searchall.php:235
+msgid "Telephone Number"
+msgstr "Телефонен номер"
+
+#: user/displaysubnet.php:409
+msgid "P"
+msgstr ""
+
+#: user/displaysubnet.php:410
+msgid "o"
+msgstr "o"
+
+#: user/displaysubnet.php:411
+msgid "l"
+msgstr ""
+
+#: user/displaysubnet.php:498
+msgid "Reserved - network address"
+msgstr "Запазен - мрежов адрес"
+
+#: user/displaysubnet.php:504
+msgid "Reserved - broadcast address"
+msgstr "Запазен - броудкаст адрес"
+
+#: user/displaysubnet.php:548
+msgid "No DNS entry defined"
+msgstr "Няма дефиниран DNS запис"
+
+#: user/displaysubnet.php:598
+msgid "Subnet Summary"
+msgstr "Резюме за подмрежата"
+
+#: user/displaysubnet.php:600
+msgid "Total addresses:"
+msgstr "Общо адреси:"
+
+#: user/displaysubnet.php:601
+msgid "Used addresses:"
+msgstr "Използвани адреси:"
+
+#: user/displaysubnet.php:601
+msgid " (Including network and broadcast)"
+msgstr " (Включително мрежов и броудкаст)"
+
+#: user/displaysubnet.php:602
+msgid "Free addresses:"
+msgstr "Свободни адреси:"
+
+#: user/displaysubnet.php:603
+msgid "Active polled (D/W/M/Y):"
+msgstr "Активни запитани (Д/С/М/Г):"
+
+#: user/displaysubnet.php:605
+msgid "Utilization:"
+msgstr "Оползотворяване:"
+
+#: user/displaysubnet.php:606
+msgid "Efficiency:"
+msgstr "Ефикасност:"
+
+#: user/displaysubnet.php:644 user/searchall.php:227
+msgid "IP address"
+msgstr "IP адрес"
+
+#: user/displaysubnet.php:730
+#, php-format
+msgid "Destination linked address %s IP record created"
+msgstr "Създаден е запис за свързан по назначение IP адрес %"
+
+#: user/displayswipform.php:41
+msgid "Display registrar information"
+msgstr "Показване на информация за регистър"
+
+#: user/displayswipform.php:101
+msgid "Template"
+msgstr "Шаблон"
+
+#: user/displayswipform.php:105
+msgid "Network name (ntname field on registrar template)"
+msgstr "Име на мрежата (полето netname в шаблона за регистър)"
+
+#: user/displayswipform.php:108
+msgid "Generate automatically"
+msgstr "Автоматично генериране"
+
+#: user/displayswipform.php:111
+msgid "Use subnet description"
+msgstr "Използване на описанието на подмрежата"
+
+#: user/displayswip.php:68 user/emailswip.php:71
+msgid ""
+"You may not send a registrar update for this customer as you are not a "
+"member of the customers admin group"
+msgstr ""
+"Не можете да изпратите заявка за обновяване в регистъра за този клиент, тъй "
+"като не сте член на административната му група"
+
+#: user/displayswip.php:130 user/exportdhcp.php:82
+msgid "Error reading template!"
+msgstr "Грешка при четенето на шаблона!"
+
+#: user/displayswip.php:139
+msgid "E-mail this entry?"
+msgstr "Да изпратя ли този запис по e-mail?"
+
+#: user/displayswip.php:141
+msgid "Previously sent:"
+msgstr "Предишно изпратени:"
+
+#: user/displayswip.php:180 user/modifydnsrecord.php:575
+msgid "Check all"
+msgstr "Избери всички"
+
+#: user/displayswip.php:182 user/modifybase.php:459
+#: user/modifydnsrecord.php:577
+msgid "Clear all"
+msgstr "Изчисти всички"
+
+#: user/dns.php:30
+msgid "DNS results"
+msgstr "ДНС резултати"
+
+#: user/dns.php:48
+msgid " No DNS reverse record found"
+msgstr " Не са открити обратни ДНС записи"
+
+#: user/emailswip.php:44
+msgid "Registrar information sent"
+msgstr "Информацията за регистъра е изпратена"
+
+#: user/emailswip.php:58
+msgid "No registrar updates selected to send"
+msgstr "Няма избрани съобщения за обновяване, които да се изпратят"
+
+#: user/emailswip.php:94 user/requestip.php:157
+msgid "E-mail message was not sent"
+msgstr "E-mail съобщението не беше изпратено"
+
+#: user/emailswip.php:95 user/requestip.php:158
+msgid "Mailer Error: "
+msgstr "Грешка в пощенската система: "
+
+#: user/exportdhcp.php:43
+msgid "Export DHCP subnet details"
+msgstr "Изнасяне на детайли за DHCP подмрежа"
+
+#: user/exportdhcp.php:66
+msgid ""
+"You may not export DHCP subnets as you are not a member of the customers "
+"admin group"
+msgstr ""
+"Не можете да изнесете DHCP подмрежи на този клиент, тъй като не сте член на "
+"неговата административна група"
+
+#: user/exportdhcp.php:85
+#, php-format
+msgid ""
+"Exporting all subnets marked as DHCP and all IP addresses with a user marked "
+"as '%s'"
+msgstr ""
+"Изнасям всички подмрежи, маркирани като DHCP и всички IP адреси с "
+"потребител, посочен като '%s'"
+
+#: user/exportdhcp.php:110
+#, php-format
+msgid "Exporting DHCP for %s"
+msgstr "Изнасям DHCP за %s"
+
+#: user/exportdhcp.php:167
+#, php-format
+msgid "Found IP with MAC: %s, %s"
+msgstr "Намерен е IP с MAC: %s, %s"
+
+#: user/exportdhcp.php:173
+#, php-format
+msgid "Found IP with invalid MAC - ignoring: %s, %s"
+msgstr "Намерен е IP с невалиден MAC - игнорирам: %s, %s"
+
+#: user/exportdhcp.php:189 user/modifydns.php:272 user/modifyzone.php:286
+#, php-format
+msgid "Sent update to Backend Processor as file %s"
+msgstr "Изпратено е обновяване на Backend Processor като файл %s"
+
+#: user/exportdhcp.php:193
+msgid "No DHCP subnets could be found."
+msgstr "Не са открити DHCP подмрежи."
+
+#: user/findfreeform.php:41
+msgid "Find free address space/Statistics"
+msgstr "Намиране на свободно адресно пространство/статистики"
+
+#: user/findfreeform.php:48
+msgid ""
+"Display free address space shows blocks or holes that are available for "
+"potential assignment as networks. The search will not display free space if "
+"the search only covers unallocated address space."
+msgstr ""
+"Показване на свободното адресно пространство показва блокове или дупки, "
+"които са налични за потенциално присвояване като мрежи. Това търсене няма да "
+"покаже свободното пространство, ако покрива само неразпределеното адресно "
+"пространство."
+
+#: user/findfreeform.php:50
+msgid "Subnets with a description of 'free' or 'spare' will also be shown."
+msgstr "Ще бъдат показани също подмрежи с описание \"free\" или \"spare\"."
+
+#: user/findfreeform.php:83
+msgid "IP range start (leave blank if range selected)"
+msgstr "Начало на IP диапазон (оставете празно, ако е избран диапазон)"
+
+#: user/findfreeform.php:88
+msgid "IP range end (leave blank if range selected)"
+msgstr "Край на IP диапазон (оставете празно, ако е избран диапазон)"
+
+#: user/findfreeform.php:93
+msgid "Show filter"
+msgstr "Показване на филтър"
+
+#: user/findfreeform.php:96
+msgid "Free and Unassigned"
+msgstr "Свободни и неразпределени"
+
+#: user/findfreeform.php:99
+msgid "Unassigned only"
+msgstr "Само неразпределени"
+
+#: user/findfreeform.php:102
+msgid "All"
+msgstr "Всички"
+
+#: user/findfree.php:73
+msgid ""
+"Invalid IP address! You must select a range or fill in the start and end IP "
+"address."
+msgstr ""
+"Невалиден IP адрес! Трябва да изберете диапазон или да въведете начален и "
+"краен IP адрес."
+
+#: user/findfree.php:80
+msgid "Your end ip address is smaller than your start!"
+msgstr "Крайният ви IP адрес е по-малък от началния!"
+
+#: user/findfree.php:166
+msgid "Utilization"
+msgstr "Оползотворяване"
+
+#: user/findfree.php:169
+msgid "Barchart"
+msgstr ""
+
+#: user/findfree.php:198 user/findfree.php:287 user/findfree.php:312
+msgid "Free space"
+msgstr "Свободно пространство"
+
+#: user/findfree.php:241
+msgid "Free/Unassigned space"
+msgstr "Свободно/неразпределено пространство"
+
+#: user/findfree.php:324
+msgid "Total:"
+msgstr "Общо:"
+
+#: user/findfree.php:336
+msgid ""
+"WARNING: you are displaying statistics across all customers/AS's. These "
+"figures will be incorrect if there are subnet overlaps amoung customers."
+msgstr ""
+"ВНИМАНИЕ: вие изобразявате статистика за всички клиенти/автономни системи. Тези стойности ще бъдат неправилни, ако има застъпване на подмрежи сред клиентите."
+
+#: user/findfree.php:339
+msgid "Total allocated networks/subnets: "
+msgstr "Общо разпределени мрежи/подмрежи:"
+
+#: user/findfree.php:341
+msgid "Network/subnet space allocated: "
+msgstr "Разпределено мрежово/подмрежово пространство:"
+
+#: user/findfree.php:350
+msgid "Total unassigned subnets (pre-allocated subnets marked as free): "
+msgstr ""
+"Общо неразпределени подмрежи (предварително заделени подмрежи, отбелязани "
+"като свободни): "
+
+#: user/findfree.php:352
+msgid "Unassigned subnets (pre-allocated subnets marked as free): "
+msgstr ""
+"Неразпределени подмрежи (предварително заделени подмрежи, отбелязани като "
+"свободни): "
+
+#: user/findfree.php:362
+msgid ""
+"IP addresses allocated (including reserved addresses/excluding reserved "
+"addresses): "
+msgstr "Заделени IP адреси (включително запазени адреси/без запазени адреси): "
+
+#: user/modifyarearangeform.php:39
+msgid "Display/Modify/Delete area information"
+msgstr "Показване/промяна/изтриване на информация за област"
+
+#: user/modifyarearangeform.php:44
+msgid "Display/Modify/Delete an area."
+msgstr "Показване/промяна/изтриване на област"
+
+#: user/modifyarearange.php:43
+msgid "Results of your search for areas"
+msgstr "Резултати от вашето търсене за области"
+
+#: user/modifyarearange.php:60
+#, php-format
+msgid "Search for areas and ranges for customer '%s'"
+msgstr "Търсене на области и диапазони за клиент '%s'"
+
+#: user/modifyarearange.php:86
+msgid "Range size"
+msgstr "Размер на диапазона"
+
+#: user/modifyarearange.php:88
+msgid "Range mask"
+msgstr "Маска на диапазона"
+
+#: user/modifyarearange.php:117 user/modifyarearange.php:210
+msgid "Delete Area"
+msgstr "Изтриване на област"
+
+#: user/modifyarearange.php:130
+msgid "No area"
+msgstr "Няма област"
+
+#: user/modifyarearange.php:133
+msgid "Range not part of area"
+msgstr "Диапазонът не е част от област"
+
+#: user/modifyarearange.php:154
+msgid "Delete Range"
+msgstr "Изтриване на диапазон"
+
+#: user/modifyarearange.php:182
+msgid "Areas that have no ranges defined"
+msgstr "Области, които нямат дефинирани диапазони"
+
+#: user/modifybaseform.php:39
+msgid "Modify/Copy/Move/Delete/Split/Join subnets"
+msgstr ""
+"Промяна/копиране/преместване/изтриване/съединяване/разцепване на подмрежи"
+
+#: user/modifybaseform.php:78
+msgid "Subnet address (leave blank if range selected)"
+msgstr "Подмрежов адрес (оставете празно, ако е избран диапазон)"
+
+#: user/modifybase.php:43
+msgid "Results of your search for subnet to modify"
+msgstr "Резултати от търсенето на подмрежи за промяна"
+
+#: user/modifybase.php:84
+msgid ""
+"You may not delete a subnet for this customer as you are not a member of the "
+"customers admin group"
+msgstr ""
+"Не можете да изтриете подмрежа за този клиент, къй като не сте член на "
+"групата за администриране на клиенти"
+
+#: user/modifybase.php:111
+#, php-format
+msgid "Subnet %s not deleted - out of defined authority boundary"
+msgstr ""
+"Подмрежата %s не е изтрита - излиза извън дефинираната граница на пълномощия"
+
+#: user/modifybase.php:122
+#, php-format
+msgid "IP address %s has files attached"
+msgstr "IP адресът %s има прикачени файлове"
+
+#: user/modifybase.php:133
+#, php-format
+msgid "Subnet %s deleted"
+msgstr "Подмрежата %s е изтрита"
+
+#: user/modifybase.php:136
+#, php-format
+msgid "Subnet %s could not be deleted"
+msgstr "Подмрежата %s не можа да бъде изтрита"
+
+#: user/modifybase.php:140
+#, php-format
+msgid "Subnet %s could not be deleted - there are files attached"
+msgstr "Подмрежата %s не можа да бъде създадена - има прикачени файлове"
+
+#: user/modifybase.php:151
+msgid ""
+"You may not split or join a subnet for this customer as you are not a member "
+"of the customers admin group"
+msgstr ""
+"Не можете да съедините или разцепите подмрежа за този клиент, къй като не "
+"сте член на административната му група"
+
+#: user/modifybase.php:174
+#, php-format
+msgid "Subnet %s not split or joined - out of defined authority boundary"
+msgstr ""
+"Подмрежата %s не е присъединена или разцепена - излиза извън дефинираната "
+"граница на пълномощия"
+
+#: user/modifybase.php:186
+msgid "Subnets cannot be joined - Invalid base address!"
+msgstr "Подмрежите не могат да бъдат присъединени - невалиден базов адрес!"
+
+#: user/modifybase.php:208
+msgid "Subnets cannot be joined - not the same size!"
+msgstr "Подмрежите не могат да бъдат присъединени - не са с еднакъв размер!"
+
+#: user/modifybase.php:212
+msgid "Subnets cannot be joined - subnet created would be too big!"
+msgstr ""
+"Подмрежите не могат да бъдат присъединени - получената мрежа ще стане "
+"прекалено голяма!"
+
+#: user/modifybase.php:229
+msgid "Subnets cannot be split - host network!"
+msgstr "Подмрежите не могат да бъдат разделени - това е хост мрежа!"
+
+#: user/modifybase.php:256
+msgid "Subnet split or joined"
+msgstr "Подмрежата е присъединена или разделена"
+
+#: user/modifybase.php:343
+msgid "Admin group"
+msgstr "Администраторска група"
+
+#: user/modifybase.php:386
+msgid "Delete Subnet"
+msgstr "Изтриване на подмрежа"
+
+#: user/modifybase.php:394 user/modifysubnet.php:43
+msgid "Modify/Copy/Move subnet details"
+msgstr "Показване/промяна/изтриване на детайли за подмрежа"
+
+#: user/modifybase.php:400
+msgid "Join Subnet"
+msgstr "Присъединяване на подмрежа"
+
+#: user/modifybase.php:408
+msgid "Split Subnet"
+msgstr "Разцепване на подмрежа"
+
+#: user/modifybase.php:462 user/modifydnsrecord.php:580
+msgid "Delete multiple"
+msgstr "Изтриване на множество"
+
+#: user/modifycustomer.php:47
+msgid "Create a new customer/autonomous system"
+msgstr "Създаване на нов клиент/автономна система"
+
+#: user/modifycustomer.php:49
+msgid "Modify a customer/autonomous system details"
+msgstr "Промяна на детайли за клиент/автономна система"
+
+#: user/modifycustomer.php:59
+msgid "The customer description must be longer"
+msgstr "Описанието на клиента трябва да бъде по-дълго"
+
+#: user/modifycustomer.php:63
+msgid "Invalid zipcode"
+msgstr "Невалиден пощенски код"
+
+#: user/modifycustomer.php:67
+msgid "Invalid contact zipcode"
+msgstr "Невалиден пощенски код за контакти"
+
+#: user/modifycustomer.php:70
+msgid "Invalid E-mail address"
+msgstr "Невалиден e-mail адрес"
+
+#: user/modifycustomer.php:75 user/modifydns.php:151 user/modifyzone.php:162
+#, php-format
+msgid "Invalid hostname %u"
+msgstr "Невалидно име на host %u"
+
+#: user/modifycustomer.php:78
+#, php-format
+msgid "Invalid IP address %u"
+msgstr "Невалиден IP адрес %u"
+
+#: user/modifycustomer.php:81
+#, php-format
+msgid "Invalid hostname/IP address combination %u"
+msgstr "Невалидна комбинация име на хост/IP адрес"
+
+#: user/modifycustomer.php:98 user/requestip.php:85
+msgid "Additional information error"
+msgstr "Допълнителна информация за грешка"
+
+#: user/modifycustomer.php:108
+msgid ""
+"You may not create customers as you are not a member a group that can create "
+"customers"
+msgstr "Не можее да създавате клиенти, тъй като не сте член на подходяща група"
+
+#: user/modifycustomer.php:231
+msgid "Customer/autonomous system details modified"
+msgstr "Детайлите за клиент/автономна система са променени"
+
+#: user/modifycustomer.php:234
+msgid ""
+"Customer/autonomous system details could not be modified - possibly a "
+"duplicate description"
+msgstr ""
+"Детайлите за клиент/автономна система не можаха да бъдат променени - най-"
+"вероятно описанието се дублира"
+
+#: user/modifycustomer.php:263
+msgid "Required information"
+msgstr "Необходима информация"
+
+#: user/modifycustomer.php:265
+msgid "Customer/autonomous system description:"
+msgstr "Описание на клиент/автономна система:"
+
+#: user/modifycustomer.php:275
+msgid "Customer/autonomous system admin group:"
+msgstr "Администраторска група на клиент/автономна система:"
+
+#: user/modifycustomer.php:623
+msgid "Customer information (optional)"
+msgstr "Информация за клиента (по желание)"
+
+#: user/modifycustomer.php:625 user/modifycustomer.php:705
+msgid "Organization:"
+msgstr "Организация:"
+
+#: user/modifycustomer.php:631 user/modifycustomer.php:711
+msgid "Street:"
+msgstr "Улица:"
+
+#: user/modifycustomer.php:637 user/modifycustomer.php:717
+msgid "City:"
+msgstr "Град:"
+
+#: user/modifycustomer.php:643 user/modifycustomer.php:723
+msgid "State:"
+msgstr "Щат:"
+
+#: user/modifycustomer.php:647 user/modifycustomer.php:728
+msgid "Zipcode:"
+msgstr "Пощенски код:"
+
+#: user/modifycustomer.php:653 user/modifycustomer.php:734
+msgid "Country:"
+msgstr "Държава:"
+
+#: user/modifycustomer.php:659
+msgid "Reverse DNS information (optional)"
+msgstr "Информация за обратен ДНС (по желание)"
+
+#: user/modifycustomer.php:664
+#, php-format
+msgid "Hostname %u:"
+msgstr "Име на хост %u:"
+
+#: user/modifycustomer.php:670
+#, php-format
+msgid "IP address %u:"
+msgstr "IP адрес %u:"
+
+#: user/modifycustomer.php:679
+msgid "Technical contact information (optional)"
+msgstr "Информация за технически контакт (по желание)"
+
+#: user/modifycustomer.php:681
+msgid "Nickname/handle:"
+msgstr "Прякор/handle:"
+
+#: user/modifycustomer.php:687
+msgid "Last name/surname:"
+msgstr "Фамилия:"
+
+#: user/modifycustomer.php:693
+msgid "First name:"
+msgstr "Име:"
+
+#: user/modifycustomer.php:699
+msgid "Middle name:"
+msgstr "Презиме:"
+
+#: user/modifycustomer.php:739
+msgid "Telephone number:"
+msgstr "Телефонен номер:"
+
+#: user/modifycustomer.php:745
+msgid "E-mail address:"
+msgstr "E-mail адрес:"
+
+#: user/modifydnsform.php:46
+msgid "Create DNS Zones"
+msgstr "Създаване на ДНС зони"
+
+#: user/modifydnsform.php:49
+msgid "Edit DNS Zones"
+msgstr "Редактиране на ДНС зони"
+
+#: user/modifydnsform.php:106
+msgid "Maintain forward zone SOA information."
+msgstr "Поддържане на SOA информация в правата зона."
+
+#: user/modifydnsform.php:110
+msgid "Forward zone information"
+msgstr "Информация за правата зона"
+
+#: user/modifydnsform.php:112 user/modifyzoneform.php:109
+msgid "Zone (Domain Name)"
+msgstr "Зона (име на домейн)"
+
+#: user/modifydnsform.php:114 user/modifyzoneform.php:111
+msgid "Separate multiple domain names with ;"
+msgstr "За разделяне на множество домейн имена използвайте ';'"
+
+#: user/modifydnsform.php:129 user/modifyzoneform.php:154
+msgid "Zone transfer from DNS server"
+msgstr "Зонов трансфер от ДНС сървър"
+
+#: user/modifydnsform.php:130 user/modifyzoneform.php:155
+msgid "Blank for no zone transfer"
+msgstr "Оставете празно, за да не се извършва зонов трансфер"
+
+#: user/modifydnsform.php:131 user/modifyzoneform.php:156
+msgid "Slave zones only import SOA information, not zone records"
+msgstr "Slave зоната внася само SOA информация, не зонови записи"
+
+#: user/modifydnsform.php:150 user/modifyzoneform.php:175
+msgid "Zone SOA information if zone not created via zone transfer"
+msgstr ""
+"Информация за SOA на зона, ако тя не е създадена посредством зонов трансфер"
+
+#: user/modifydnsform.php:153 user/modifyzoneform.php:178
+msgid "Zone SOA information"
+msgstr "SOA информация за зоната"
+
+#: user/modifydnsform.php:164 user/modifyzoneform.php:189
+#, php-format
+msgid "Name server %u:"
+msgstr "Сървър за имена %u:"
+
+#: user/modifydnsform.php:174
+msgid "Forward zone SOA header information"
+msgstr "Информация за заглавната SOA на правата зона"
+
+#: user/modifydnsform.php:176 user/modifyzoneform.php:200
+msgid "Technical contact email address"
+msgstr "E-mail адрес на технически контакт"
+
+#: user/modifydnsform.php:177 user/modifyzoneform.php:201
+msgid "No @ allowed - replace with ."
+msgstr "Тук не е позволен символът '@'. Вместо него използвайте точка"
+
+#: user/modifydnsform.php:182 user/modifydns.php:342
+#: user/modifyzoneform.php:206 user/modifyzone.php:356
+msgid "TTL"
+msgstr "TTL"
+
+#: user/modifydnsform.php:188 user/modifydns.php:344
+#: user/modifyzoneform.php:212 user/modifyzone.php:358
+msgid "Refresh"
+msgstr "Refresh"
+
+#: user/modifydnsform.php:194 user/modifydns.php:346
+#: user/modifyzoneform.php:218 user/modifyzone.php:360
+msgid "Retry"
+msgstr "Retry"
+
+#: user/modifydnsform.php:200 user/modifydns.php:348
+#: user/modifyzoneform.php:224 user/modifyzone.php:362
+msgid "Expire"
+msgstr "Expire"
+
+#: user/modifydnsform.php:206 user/modifyzoneform.php:230
+msgid "Minimum TTL"
+msgstr "Minimum TTL"
+
+#: user/modifydnsform.php:214
+msgid "Forward zone location"
+msgstr "Местонахождени на правата зона"
+
+#: user/modifydnsform.php:216 user/modifyzoneform.php:240
+msgid "Zone File Path"
+msgstr "Път до файла на зоната"
+
+#: user/modifydnsform.php:217 user/modifyzoneform.php:241
+msgid ""
+"The path where the zone file will be written once exported and processed. "
+"Examples:"
+msgstr ""
+"Пътят, където ще бъде записан зоновият файл, след като бъде изнесен и "
+"обработен. Примери:"
+
+#: user/modifydnsform.php:218 user/modifyzoneform.php:242
+msgid ""
+"ftp://myhost.com/var/named/test.zone - if you want to transfer the zone "
+"using ncftput"
+msgstr ""
+"tp://myhost.com/var/named/test.zone - ако искате да трансферирате зона чрез "
+"ncftput"
+
+#: user/modifydnsform.php:219 user/modifyzoneform.php:243
+msgid ""
+"user@myhost.com:/var/named/test.zone - if you want to transfer the zone "
+"using scp"
+msgstr ""
+"user@myhost.com:/var/named/test.zone - ако искате да трансферирате зона чрез "
+"scp"
+
+#: user/modifydnsform.php:225 user/modifyzoneform.php:249
+msgid "Secondary Zone File Path"
+msgstr "Път до файла на вторична зона"
+
+#: user/modifydnsform.php:231 user/modifydnsrecordform.php:133
+#: user/modifyzoneform.php:255
+msgid "Save"
+msgstr "Запазване"
+
+#: user/modifydns.php:42
+msgid "DNS Domain Zones"
+msgstr "ДНС Домейн зони"
+
+#: user/modifydns.php:80
+msgid ""
+"You may not delete a DNS zone as you are not a member of the customers admin "
+"group"
+msgstr ""
+"Не можете да изтриете ДНС зоната на този клиент, тъй като не сте в неговата "
+"административна група"
+
+#: user/modifydns.php:93
+msgid "DNS Zone deleted"
+msgstr "ДНС зоната е изтрита"
+
+#: user/modifydns.php:99
+msgid "DNS Zone could not be deleted"
+msgstr "ДНС зоната не можа да бъде изтрита"
+
+#: user/modifydns.php:112 user/modifyzone.php:112 user/modifyzone.php:268
+msgid ""
+"You may not add a zone as you are not a member of the customers admin group"
+msgstr ""
+"Не можете да добавите зона, тъй като не сте член на клиенската "
+"административна група"
+
+#: user/modifydns.php:117 user/modifyzone.php:117
+msgid "Domain may not be blank"
+msgstr "Полето 'Домейн' не може да бъде празно"
+
+#: user/modifydns.php:128 user/modifyzone.php:128
+#, php-format
+msgid "Invalid domain name %s"
+msgstr "Невалидно име на домейн %s"
+
+#: user/modifydns.php:140 user/modifyzone.php:140
+#, php-format
+msgid "Invalid hostname %s"
+msgstr "Невалидно име на хост %s"
+
+#: user/modifydns.php:158 user/modifyzone.php:169
+msgid "Invalid zone - you need at least two nameservers"
+msgstr "Невалидна зона - трябва да въведете поне 2 сървъра за имена"
+
+#: user/modifydns.php:164 user/modifyzone.php:174
+msgid "Invalid domain timeout values"
+msgstr "Невалидни timeout стойности за домейн"
+
+#: user/modifydns.php:168
+msgid "Serial Date can not be blank. Use YYYYMMDD."
+msgstr "Серийният номер не може да бъде празен. Използвайте ГГГГММДД."
+
+#: user/modifydns.php:173 user/modifyzone.php:183
+msgid "Invalid zone email address - no @ allowed, replace with ."
+msgstr ""
+"Невалиден e-mail адрес в зоната - не е позволен знак '@'. Заменете го с "
+"точка."
+
+#: user/modifydns.php:201 user/modifyzone.php:211
+#, php-format
+msgid "DNS Zone created %s"
+msgstr "ДНС зоната %s е създадена"
+
+#: user/modifydns.php:206 user/modifyzone.php:216
+#, php-format
+msgid "DNS Zone %s could not be created"
+msgstr "ДНС зоната %s не можа да бъде създадена"
+
+#: user/modifydns.php:237 user/modifyzone.php:250
+msgid "DNS Zone Modified"
+msgstr "ДНС зоната е променена"
+
+#: user/modifydns.php:241 user/modifyzone.php:254
+msgid "DNS Zone could not be modifed. Try again."
+msgstr "ДНС зоната не можа да бъде променена"
+
+#: user/modifydns.php:254
+msgid ""
+"You may not export a zone as you are not a member of the customers admin "
+"group"
+msgstr ""
+"Не можете да изнесете зона, тъй като не сте в клиенската административна "
+"група"
+
+#: user/modifydns.php:277 user/modifyzone.php:291
+msgid "Zone could not be exported.  Try again."
+msgstr "Зоната не можа да бъде изнесена.  Опитайте отново."
+
+#: user/modifydns.php:287
+msgid ""
+"Create (manually and via a zone transfer) and maintain forward DNS zones."
+msgstr ""
+"Саздаване (ръчно и посредством зонов трансфер) и поддържане на прави ДНС "
+"зони."
+
+#: user/modifydns.php:311
+msgid "Refine Search on Domain"
+msgstr "Уточняване на търсене за домейн"
+
+#: user/modifydns.php:334 user/modifydnsrecord.php:394
+msgid "Domain"
+msgstr "Домейн"
+
+#: user/modifydns.php:336 user/modifyzone.php:350
+msgid "Primary NS"
+msgstr "Първичен сървър за имена"
+
+#: user/modifydns.php:338 user/modifyzone.php:352
+msgid "Secondary NS"
+msgstr "Вторичен сървър за имена"
+
+#: user/modifydns.php:340 user/modifyzone.php:354
+msgid "SerialDate"
+msgstr "Сериен номер"
+
+#: user/modifydns.php:350 user/modifyzone.php:364
+msgid "Min. TTL"
+msgstr "Минимален TTL"
+
+#: user/modifydns.php:366 user/modifyzone.php:381
+msgid "Slave zone"
+msgstr "Подчинена зона"
+
+#: user/modifydns.php:409
+msgid "Delete DNS Zone"
+msgstr "Изтриване на ДНС зона"
+
+#: user/modifydns.php:426
+msgid "Edit DNS Zone"
+msgstr "Редакция на ДНС зона"
+
+#: user/modifydns.php:442
+msgid "Export DNS Zone"
+msgstr "Изнасяне на ДНС зона"
+
+#: user/modifydns.php:443
+msgid "Are you sure to Export?"
+msgstr "Сигурни ли сте, че искате да изнесете?"
+
+#: user/modifydns.php:446 user/modifyipform.php:399
+msgid "Whois"
+msgstr "Whois"
+
+#: user/modifydns.php:470
+msgid "Search found no DNS Zone entries"
+msgstr "При търсенето не са открити ДНС зонови записи"
+
+#: user/modifydns.php:475
+msgid "Add a DNS Zone"
+msgstr "Добавяне на ДНС зона"
+
+#: user/modifydnsrecordform.php:45
+msgid "Add / Edit  DNS Host"
+msgstr "Добавяне/редакция на ДНС хост"
+
+#: user/modifydnsrecordform.php:68
+msgid "DNS record"
+msgstr "ДНС запис"
+
+#: user/modifydnsrecordform.php:89 user/searchallform.php:88
+msgid "Host Name"
+msgstr "Име на хост"
+
+#: user/modifydnsrecordform.php:91
+msgid ""
+"Terminate Fully Qualified Domand Name's (FQDN) with a . eg. mywwwserver.com. "
+"to signify 'This domain'"
+msgstr ""
+"Завършете Напълно квалифицираното име на домейн (FQDN) с точка, например "
+"mywwwserver.com. за да означите 'Този домейн'"
+
+#: user/modifydnsrecordform.php:99
+msgid "This domain"
+msgstr "Този домейн"
+
+#: user/modifydnsrecordform.php:110 user/modifydnsrecord.php:475
+msgid "Record Type"
+msgstr "Тип на записа"
+
+#: user/modifydnsrecordform.php:118
+msgid "IP / Hostname"
+msgstr "IP / Име на хост"
+
+#: user/modifydnsrecordform.php:120
+msgid ""
+"For MX records, format is \"preference hostname\", eg. \"10 mymailserver.com."
+"\""
+msgstr ""
+"За MX записи, форматът е \"степен на предпочитание  име на хост\", например "
+"\"10 mymailserver.com.\""
+
+#: user/modifydnsrecordform.php:127
+msgid "Sort Order"
+msgstr "Начин на подреждане"
+
+#: user/modifydnsrecord.php:41
+msgid "Zone Domain DNS Records"
+msgstr "ДНС записи за зонов домейн"
+
+#: user/modifydnsrecord.php:85 user/modifydnsrecord.php:118
+msgid ""
+"You may not delete dns records as you are not a member of the customers "
+"admin group"
+msgstr ""
+"Не можете да изтриете областта на този клиент, тъй като не сте в клиентската "
+"административна група"
+
+#: user/modifydnsrecord.php:101
+msgid "Domain DNS Record Deleted."
+msgstr "Домейн ДНС записът е изтрит."
+
+#: user/modifydnsrecord.php:105
+msgid "DNS Record could not be deleted."
+msgstr "ДНС записът не можа да бъде изтрит."
+
+#: user/modifydnsrecord.php:149
+msgid "Domain Records Renumbered."
+msgstr "Записите за домейна са преномерирани."
+
+#: user/modifydnsrecord.php:153
+msgid "DNS Records could not be renumbered."
+msgstr "Записите за домейна не можаха да бъдат преномерирани."
+
+#: user/modifydnsrecord.php:168
+msgid ""
+"You may not add a record as you are not a member of the customers admin group"
+msgstr ""
+"Не можете да добавите запис за този клиент, тъй като не сте в клиенската "
+"административна група"
+
+#: user/modifydnsrecord.php:173
+msgid "Bind @ shortcut converted to Fully Qualified Domain Name (FQDN)"
+msgstr ""
+"Съкращението @ на Bind е конвертирано към Напълно Квалифицирано Домейн Име "
+"(FQDN)"
+
+#: user/modifydnsrecord.php:180 user/modifydnsrecord.php:186
+msgid "Invalid hostname"
+msgstr "Невалидно име на host"
+
+#: user/modifydnsrecord.php:184
+msgid "Host may not be blank"
+msgstr "Полето 'Хост' не може да бъде празно"
+
+#: user/modifydnsrecord.php:189
+msgid "Record Type may not be blank."
+msgstr "Типът на записа не може да бъде празен"
+
+#: user/modifydnsrecord.php:193
+msgid "IP / Hostname may not be blank."
+msgstr "IP адресът/името на хост не може да бъде празен"
+
+#: user/modifydnsrecord.php:200 user/modifydnsrecord.php:206
+#: user/modifydnsrecord.php:216 user/modifydnsrecord.php:232
+msgid "Invalid IP/ Hostname"
+msgstr "Невалиден IP/Име на хост"
+
+#: user/modifydnsrecord.php:228
+msgid "For A type, IP / Hostname must be an IP address"
+msgstr "За тип А, IP/Име на хост трябва да бъде във вид на IP адрес"
+
+#: user/modifydnsrecord.php:253
+msgid "Cannot create duplicate records"
+msgstr "Не мога да създам повтарящи се записи"
+
+#: user/modifydnsrecord.php:293 user/modifydnsrecord.php:336
+msgid "Subnet IP record updated with hostname: "
+msgstr "Подмрежовият запис за IP е обновен с име на хост: "
+
+#: user/modifydnsrecord.php:312
+msgid "Host record added."
+msgstr "Записът за хост е добавен."
+
+#: user/modifydnsrecord.php:316
+msgid "Host record could not be added."
+msgstr "Записът за хост не можа да бъде създаден"
+
+#: user/modifydnsrecord.php:353
+msgid "Host Record Modified"
+msgstr "Записът за хост е променен"
+
+#: user/modifydnsrecord.php:358
+msgid "Host record could not be modifed. Try again."
+msgstr "Записът за хост не можа да бъде променен. Опитайте отново."
+
+#: user/modifydnsrecord.php:387
+msgid "No domains found. Create some domains and try again."
+msgstr "Няма открити домейни. Създайте няколко и опитайте отново."
+
+#: user/modifydnsrecord.php:395
+msgid "Master domains only"
+msgstr "Само главни домейни"
+
+#: user/modifydnsrecord.php:441
+msgid "Refine Search on Host"
+msgstr "Уточнете търсенето по хост"
+
+#: user/modifydnsrecord.php:471
+msgid "Sort-Order"
+msgstr "Начин на подреждане"
+
+#: user/modifydnsrecord.php:477
+msgid "IP/Hostname"
+msgstr "IP/Име на хост"
+
+#: user/modifydnsrecord.php:527
+msgid "Delete Record"
+msgstr "Изтриване на запис"
+
+#: user/modifydnsrecord.php:536
+msgid "Edit Record"
+msgstr "Редактиране на запис"
+
+#: user/modifydnsrecord.php:596
+msgid "Add a Host"
+msgstr "Добавяне на хост"
+
+#: user/modifydnsrecord.php:600
+msgid "No Records found.  Please choose a domain and try again."
+msgstr "Няма открити записи.  Моля изберете домейн и опитайте отново."
+
+#: user/modifydnsrecord.php:604
+msgid "Renumber SortOrder"
+msgstr "Преномериране на начина на подреждане"
+
+#: user/modifyipformmul.php:41
+msgid "Modify IP address details (range)"
+msgstr "Промяна на детайли за IP адрес (диапазон)"
+
+#: user/modifyipformmul.php:63
+msgid "IP Addresses to modify: "
+msgstr "IP адреси за промяна:"
+
+#: user/modifyipformmul.php:77 user/modifyipform.php:505
+#: user/requestip.php:241
+msgid "User information"
+msgstr "Потребителска информация"
+
+#: user/modifyipformmul.php:93 user/modifyipform.php:528
+#: user/requestip.php:262
+msgid "Telephone number"
+msgstr "Телефонен номер"
+
+#: user/modifyipformmul.php:145
+msgid "Delete records"
+msgstr "Изтриване на записи"
+
+#: user/modifyipformmul.php:146
+msgid ""
+"WARNING: Deleting an entry does not preserve the last modified information "
+"as the record is completely removed from the database to conserve space."
+msgstr ""
+"ВНИМАНИЕ: Изтриването на запис не запазва последната променена информация, "
+"тъй като записът се отстранява напълно от базата, за да не консумира място."
+
+#: user/modifyipform.php:76
+msgid "Modify IP address details"
+msgstr "Промяна на детайли за IP адрес"
+
+#: user/modifyipform.php:127
+msgid "There are no available addresses"
+msgstr "Няма свободни адреси"
+
+#: user/modifyipform.php:148 admin/importbase.php:91 admin/importip.php:57
+msgid "File uploads may have been disabled in the php.ini configuration file"
+msgstr ""
+"Качването на файлове може би е забранено в конфигурационния файл php.ini"
+
+#: user/modifyipform.php:154
+#, php-format
+msgid ""
+"Possible file size exceeded php.ini or webserver limit of %s - break file "
+"into smaller parts"
+msgstr ""
+"Възможният размер на файл надвишава границата от %s, установена в php.ini "
+"или от уеб сървъра - разделете файла на по-малки части"
+
+#: user/modifyipform.php:157 admin/importbase.php:99 admin/importip.php:65
+msgid "Possible file upload attack"
+msgstr "Вероятна атака с качване на файлове"
+
+#: user/modifyipform.php:163
+msgid "Filename must have a description - uploaded aborted"
+msgstr "Името на файла трябва да има описание - качването е спряно"
+
+#: user/modifyipform.php:204
+msgid ""
+"File could not be moved to upload location - upload failed probably due to "
+"directory permission problem"
+msgstr ""
+"Файлът не може да бъде преместен в мястото за качване - вероятно има проблем "
+"с позволенията на директорията"
+
+#: user/modifyipform.php:236
+msgid ""
+"File could not be deleted - delete failed probably due to directory "
+"permission problem"
+msgstr ""
+"Файлът не може да бъде изтрит - вероятно има проблем с позволенията на "
+"директорията"
+
+#: user/modifyipform.php:263
+msgid ""
+"File could not be downloaded - download failed probably due to directory "
+"permission problem"
+msgstr ""
+"Файлът не може да бъде свален - вероятно има проблем с позволенията на "
+"директорията"
+
+#: user/modifyipform.php:369
+msgid "Requested addresses"
+msgstr "Заявени адреси"
+
+#: user/modifyipform.php:378
+msgid "IP Address to modify:"
+msgstr "IP адрес за промяна:"
+
+#: user/modifyipform.php:384 user/modifyipform.php:390
+msgid " (Address active on network) "
+msgstr "(Активни адреси в мрежата)"
+
+#: user/modifyipform.php:404
+msgid "Ping"
+msgstr "Ping"
+
+#: user/modifyipform.php:407
+msgid "Traceroute"
+msgstr "Traceroute"
+
+#: user/modifyipform.php:417
+msgid "Update hostname from DNS"
+msgstr "Добавяне на имена на хостове от ДНС"
+
+#: user/modifyipform.php:425
+msgid "Query device info via SNMP"
+msgstr "Запитване на устройство по SNMP"
+
+#: user/modifyipform.php:488
+msgid "The subnet mask configured on the device appears to be incorrect!"
+msgstr "Конфигурираната мрежова маска на устройството изглежда неправилна!"
+
+#: user/modifyipform.php:523 user/requestip.php:257
+msgid "Device hostname"
+msgstr "Име на хост на устройството"
+
+#: user/modifyipform.php:533 user/requestip.php:267
+msgid "MAC address"
+msgstr "MAC адрес"
+
+#: user/modifyipform.php:538
+msgid "Linked address"
+msgstr "Свързан адрес"
+
+#: user/modifyipform.php:539
+msgid ""
+"Link this address by pointing it to another address - useful for NAT "
+"definitions"
+msgstr ""
+"Свържете този адрес като го насочите към друг - полезно за NAT дефиниции"
+
+#: user/modifyipform.php:546
+msgid "Go to address"
+msgstr "Отиди на адрес"
+
+#: user/modifyipform.php:621
+msgid "Upload files"
+msgstr "Качване на файлове"
+
+#: user/modifyipform.php:636
+msgid "Filename"
+msgstr "Име на файл"
+
+#: user/modifyipform.php:640
+msgid "Size"
+msgstr "Размер"
+
+#: user/modifyipform.php:642
+msgid "Date"
+msgstr "Дата"
+
+#: user/modifyipform.php:673
+msgid "Filename description"
+msgstr "Описание на файла"
+
+#: user/modifyipform.php:678 admin/importbaseform.php:77
+#: admin/importipform.php:66
+msgid "File name"
+msgstr "Име на файл"
+
+#: user/modifyipform.php:687
+msgid "Upload file"
+msgstr "Качване на файл"
+
+#: user/modifyipform.php:709
+msgid "Delete record"
+msgstr "Изтриване на запис"
+
+#: user/modifyipform.php:710
+msgid ""
+"WARNING: Deleting an entry does not preserve the last modified information "
+"as the record is completely removed from the database to conserve space. "
+msgstr ""
+"ВНИМАНИЕ: Изтриването на запис не запазва последната променена информация, "
+"тъй като записът се отстранява напълно от базата, за да не консумира място. "
+
+#: user/modifyipform.php:713
+msgid "Deleting this record will delete all associated uploaded files!"
+msgstr "Изтриването на запис ще изтрие всички свързани качени файлове!"
+
+#: user/modifysubnet.php:70
+msgid ""
+"You may not modify this subnet for this customer as you are not a member of "
+"the new customers admin group"
+msgstr ""
+"Не можете да промените подмрежата за този клиент, тъй като не сте член на "
+"клиентската група за администриране"
+
+#: user/modifysubnet.php:76
+msgid "You need to enter a description for the subnet"
+msgstr "Трябва да въведете описание на подмрежата"
+
+#: user/modifysubnet.php:90
+msgid ""
+"You may not move this subnet for this customer as you are not a member of "
+"the original customers admin group"
+msgstr ""
+"Не можете да преместите подмрежата на този клиент, тъй като не сте член на "
+"оригиналната клиентска администраторска група"
+
+#: user/modifysubnet.php:95 user/modifysubnet.php:181
+msgid "Subnet cannot be found!"
+msgstr "Подмрежата не бе открита!"
+
+#: user/modifysubnet.php:112 user/modifysubnet.php:198
+#, php-format
+msgid "Subnet %s not modified - out of defined authority boundary"
+msgstr ""
+"Подмрежата %s не е променена - излиза извън определените граници на "
+"пълномощие"
+
+#: user/modifysubnet.php:117
+msgid ""
+"Subnet could not be created - possibly overlaps with an existing subnet on "
+"new customers network"
+msgstr ""
+"Подмрежата не можа да бъде създадена - вероятно се застъпва със съществуваща "
+"подмрежа в мрежата на новия клиент"
+
+#: user/modifysubnet.php:255
+msgid "Subnet modified"
+msgstr "Подмрежата е променена"
+
+#: user/modifysubnet.php:262
+msgid "Subnet could not be modified"
+msgstr "Подмрежата не можа да бъде променена"
+
+#: user/modifysubnet.php:327
+msgid "Move subnet to new customer"
+msgstr "Преместване на подмрежа към нов клиент"
+
+#: user/modifysubnet.php:330
+msgid "Duplicate subnet on new customer"
+msgstr "Дублиране на подмрежа към нов клиент"
+
+#: user/modifysubnet.php:333
+msgid "Duplicate subnet on new customer without IP detail"
+msgstr "Дублиране на подмрежа към нов клиент без подробности за IP"
+
+#: user/modifyzoneform.php:45
+msgid "Create DNS Reverse Zones"
+msgstr "Създаване на обратни ДНС зони"
+
+#: user/modifyzoneform.php:102
+msgid "Maintain reverse zone SOA information"
+msgstr "Поддържане на SOA информация за обратна зона"
+
+#: user/modifyzoneform.php:106
+msgid "Reverse zone information"
+msgstr "Информация за обратна зона"
+
+#: user/modifyzoneform.php:112
+msgid "Sample domain would be 20.172.in-addr.arpa"
+msgstr "Примерният домейн ще бъде 20.172.in-addr.arpa"
+
+#: user/modifyzoneform.php:123
+msgid "Zone (Base IP of Zone)"
+msgstr "Зона (Базов IP адрес на зоната)"
+
+#: user/modifyzoneform.php:130
+msgid "Reverse zone size/mask"
+msgstr "Размер/маска на обратната зона"
+
+#: user/modifyzoneform.php:198
+msgid "Reverse zone SOA header information"
+msgstr "Информация за SOA заглавието на обратната зона"
+
+#: user/modifyzoneform.php:238
+msgid "Reverse zone location"
+msgstr "Местоположение на обратната зона"
+
+#: user/modifyzone.php:42
+msgid "DNS Reverse Zones"
+msgstr "Обратни ДНС зони"
+
+#: user/modifyzone.php:79
+msgid ""
+"You may not delete a zone as you are not a member of the customers admin "
+"group"
+msgstr ""
+"Не можете да изтриете зона за този клиент, тъй като не сте в "
+"административната клиентска група"
+
+#: user/modifyzone.php:93
+msgid "Zone deleted"
+msgstr "Зоната е изтрита"
+
+#: user/modifyzone.php:99
+msgid "Zone could not be deleted."
+msgstr "Зоната не можа да бъде изтрита"
+
+#: user/modifyzone.php:178
+msgid "Serial Date can not be blank.  Use YYMMDD."
+msgstr "Серийният номер не може да бъде празен.  Използвайте ГГММДД"
+
+#: user/modifyzone.php:325
+msgid "Refine Search on Zone"
+msgstr "Уточняване търсене по зона"
+
+#: user/modifyzone.php:348
+msgid "Zone"
+msgstr "Зона"
+
+#: user/modifyzone.php:434
+msgid "Delete Zone"
+msgstr "Изтриване на зона"
+
+#: user/modifyzone.php:452
+msgid "Edit Zone"
+msgstr "Редактиране на зона"
+
+#: user/modifyzone.php:459
+msgid "Export Zone"
+msgstr "Изнасяне на зона"
+
+#: user/modifyzone.php:483
+msgid "Search found no Zone entries"
+msgstr "При търсенето не са зонови записи"
+
+#: user/modifyzone.php:488
+msgid "Add a Zone"
+msgstr "Добавяне на зона"
+
+#: user/ping.php:37
+msgid "Ping results"
+msgstr "Резултати от ping"
+
+#: user/requestip.php:57
+msgid "You need to enter request details for the ip address request"
+msgstr "Трябва да въведете подробности за заявката на IP адрес"
+
+#: user/requestip.php:60
+msgid "You need to enter user details for the request"
+msgstr "Трябва да въведете подробности за потребителя, който подава заявката"
+
+#: user/requestip.php:63
+msgid "You need to enter location details for the request"
+msgstr "Трябва да въведете подробности за местоположението, от което се подава заявката"
+
+#: user/requestip.php:66
+msgid "You need to enter description details for the request"
+msgstr "Трябва да въведете описание за заявката"
+
+#: user/requestip.php:69
+msgid "You need to enter a telephone number for the request"
+msgstr "Трябва да въведете телефонен номер за заявката"
+
+#: user/requestip.php:96
+msgid "Maximum number of outstanding IP requests exceeded"
+msgstr "Превишен е максималният брой от неуредени заявки за IP адреси"
+
+#: user/requestip.php:122
+msgid "IP address request created"
+msgstr "Създадена е заявка за IP адрес"
+
+#: user/requestip.php:161
+msgid "IP request E-mail message sent"
+msgstr "Изпратен е e-mail за заявка на IP адреси"
+
+#: user/requestip.php:167
+msgid "Request could not be created - possibly a duplicate request"
+msgstr "Заявката не можа да бъде създадена - вероятно има повторение"
+
+#: user/requestip.php:177
+msgid ""
+"Complete the details below to request an IP address. An administrator will "
+"need to action the request before an address will be allocated."
+msgstr "За да изискате IP адрес, попълнете заявката по-долу. Администратор ще трябва "
+" да предприеме необходимите действие по заявката, преди да ви бъде отпуснат IP адрес."
+
+#: user/requestip.php:233
+msgid "Request details"
+msgstr "Подробности за заявката"
+
+#: user/requestip.php:234
+msgid ""
+"Enter full details describing the request to enable the administrators to "
+"allocate the correct IP address on the network"
+msgstr "Въведете детайли, описващи заявката, за да могат администраторите да "
+"заделят правилния IP адрес в мрежата"
+
+#: user/searchallform.php:41
+msgid "Search for user info"
+msgstr "Търсене на потребителска информация"
+
+#: user/searchallform.php:51
+msgid "Search for user info searches the individual IP address records."
+msgstr "Търсенето на потребителска информация се извръшва в индивидуалните записи за "
+"IP адреси"
+
+#: user/searchallform.php:83
+msgid "Field to search"
+msgstr "Поле за търсене"
+
+#: user/searchallform.php:90
+msgid "Search in Template"
+msgstr "Търсене в шаблон"
+
+#: user/searchallform.php:95
+msgid "Date to search from"
+msgstr "Дата за търсене"
+
+#: user/searchallform.php:96
+msgid "Day"
+msgstr "Ден"
+
+#: user/searchallform.php:97 user/searchallform.php:132
+#: user/searchallform.php:148
+msgid "Any"
+msgstr "Всеки"
+
+#: user/searchallform.php:131
+msgid "Month"
+msgstr "Месец"
+
+#: user/searchallform.php:133
+msgid "January"
+msgstr "Януари"
+
+#: user/searchallform.php:134
+msgid "February"
+msgstr "Февруари"
+
+#: user/searchallform.php:135
+msgid "March"
+msgstr "Март"
+
+#: user/searchallform.php:136
+msgid "April"
+msgstr "Април"
+
+#: user/searchallform.php:137
+msgid "May"
+msgstr "Май"
+
+#: user/searchallform.php:138
+msgid "June"
+msgstr "Юни"
+
+#: user/searchallform.php:139
+msgid "July"
+msgstr "Юли"
+
+#: user/searchallform.php:140
+msgid "August"
+msgstr "Август"
+
+#: user/searchallform.php:141
+msgid "September"
+msgstr "Септември"
+
+#: user/searchallform.php:142
+msgid "October"
+msgstr "Октомври"
+
+#: user/searchallform.php:143
+msgid "November"
+msgstr "Ноември"
+
+#: user/searchallform.php:144
+msgid "December"
+msgstr "Декември"
+
+#: user/searchallform.php:147
+msgid "Year"
+msgstr "Година"
+
+#: user/searchallform.php:165
+msgid "Search criteria (only display records matching the regular expression)"
+msgstr "Критерий за търсене (показват се само записите, които съвпадат по регулярен "
+"израз)"
+
+#: user/searchallform.php:167
+msgid "Search criteria (only display records containing)"
+msgstr "Критерий за търсене (показват се само записите, съдържащи)"
+
+#: user/searchall.php:57
+msgid "You need to enter a longer search criteria."
+msgstr "Трябва да въведете по-дълъг критерий за търсене"
+
+#: user/searchall.php:62
+msgid "Invalid search field."
+msgstr "Неправилно поле за търсене"
+
+#: user/searchall.php:69
+msgid "Invalid search date."
+msgstr "Неправилна дата за търсене"
+
+#: user/searchall.php:204
+#, php-format
+msgid "Search filter on %s: "
+msgstr "Филтър за търсене на %s:"
+
+#: user/traceroute.php:40
+msgid "Traceroute results"
+msgstr "Резултати от traceroute"
+
+#: user/whois.php:45
+msgid "WHOIS results"
+msgstr "Резултати от WHOIS"
+
+#: user/whois.php:60
+msgid "Whois query failed - are you behind a firewall?"
+msgstr "Запитването към whois не успя - може би се намирате за огнена стена?"
+
+#: admin/changepassword.php:39
+msgid "Change user password"
+msgstr "Смяна на потребителска парола"
+
+#: admin/changepassword.php:54 admin/usermanager.php:643
+#: admin/usermanager.php:864
+msgid "The password entered must be at least five characters"
+msgstr "Въведената парола трябва да бъде поне 5 символа"
+
+#: admin/changepassword.php:57 admin/usermanager.php:646
+#: admin/usermanager.php:868
+msgid "The passwords entered do not match"
+msgstr "Въведените пароли не съвпадат"
+
+#: admin/changepassword.php:72 admin/usermanager.php:878
+#, php-format
+msgid "User %s changed password"
+msgstr "Потребителят %s си смени паролата"
+
+#: admin/changepassword.php:76 admin/usermanager.php:882
+msgid "Password changed"
+msgstr "Паролата е сменена"
+
+#: admin/changepassword.php:79 admin/usermanager.php:886
+msgid "Password could not be changed"
+msgstr "Паролата не можа да бъде сменена"
+
+#: admin/changepassword.php:88 admin/changepassword.php:91
+#, php-format
+msgid "Change password for user %s"
+msgstr "Смяна на паролата на потребител %s"
+
+#: admin/changepassword.php:108 admin/usermanager.php:317
+msgid "New password (case sensitive!):"
+msgstr "Нова парола (има разлика ГОЛЕМИ/малки):"
+
+#: admin/changepassword.php:114 admin/usermanager.php:321
+msgid "New password (again):"
+msgstr "Нова парола (отново):"
+
+#: admin/changesettings.php:39
+msgid "Change display settings"
+msgstr "Смяна на опциите за изобразяване"
+
+#: admin/changesettings.php:61
+msgid "Settings changed"
+msgstr "Опциите са сменени"
+
+#: admin/changesettings.php:80
+msgid "Change display settings for this workstation"
+msgstr "Смяна на опциите за изобразяване за тази работна станция"
+
+#: admin/changesettings.php:82
+msgid "Setting paranoid prompts 'Are you sure?' for all deletes"
+msgstr "Установяване по подразбиране на параноичния въпрос \"Сигурни ли сте?\" за "
+"всяко изтриване"
+
+#: admin/changesettings.php:83 admin/changesettings.php:91
+#: admin/usermanager.php:270 admin/usermanager.php:276
+#: admin/usermanager.php:424 admin/usermanager.php:431
+msgid "No"
+msgstr "Не"
+
+#: admin/changesettings.php:84 admin/changesettings.php:92
+#: admin/usermanager.php:271 admin/usermanager.php:275
+#: admin/usermanager.php:425 admin/usermanager.php:432
+msgid "Yes"
+msgstr "Да"
+
+#: admin/changesettings.php:90
+msgid ""
+"Setting poll forces a scan of the IP address before assigning it, and warns "
+"the user if the address is active. This slows down address assignment."
+msgstr "Установяването на \"запитване\" сканира IP адрес преди присвояването му и "
+"предупреждава потребителя, ако даденият адрес е активен. Това забавя "
+"присвояването на адреси."
+
+#: admin/changesettings.php:118
+msgid "Theme:"
+msgstr "Тема:"
+
+#: admin/deletebounds.php:39
+msgid "Delete authority boundary results"
+msgstr "Резултати от изтриване на граница на пълномощие"
+
+#: admin/deletebounds.php:61 admin/usermanager.php:1034
+msgid "Boundary deleted"
+msgstr "Границата е изтрита"
+
+#: admin/deletebounds.php:64 admin/usermanager.php:1037
+msgid "Boundary could not be deleted"
+msgstr "Границата не можа да бъде изтрита"
+
+#: admin/displayauditlog.php:88
+msgid "Timestamp"
+msgstr "Последно време"
+
+#: admin/displayauditlog.php:123
+msgid "Total records:"
+msgstr "Общо записи:"
+
+#: admin/displayboundsform.php:41
+msgid "Display authority boundary information"
+msgstr "Показване на информация за граници на пълномощие"
+
+#: admin/displayboundsform.php:72
+msgid "Boundary address"
+msgstr "Адрес на граница"
+
+#: admin/displayboundsform.php:74
+msgid "Boundary mask"
+msgstr "Маска на граница"
+
+#: admin/displayboundsform.php:76
+msgid "Group action"
+msgstr "Действие за група"
+
+#: admin/displayboundsform.php:99 admin/usermanager.php:563
+msgid "Delete boundary"
+msgstr "Изтриване на граница"
+
+#: admin/exportbaseform.php:41
+msgid "Export subnet data"
+msgstr "Изнасяне на данни за подмрежа"
+
+#: admin/exportbaseform.php:47
+msgid ""
+"Export network data to flat ascii files.  The file will contain three "
+"columns each delimited by TAB. The first column contains the IP base "
+"address, the second the description and the third the mask in dotted decimal "
+"format."
+msgstr ""
+"Изнасяне на мрежови данни в обикновени ascii файлове. Този файл ще съдържа "
+"три колони, всяка отделена с табулатор. Първата колона съдържа базовия IP "
+"адрес, втората описанието, а третата - маска в точков десетичен формат."
+
+#: admin/exportipform.php:41
+msgid "Export IP details data"
+msgstr "Изнасяне на данни за IP адреси"
+
+#: admin/exportipform.php:47
+msgid ""
+"Export IP details data to flat ascii files.  The file will contain six "
+"columns each delimited by TAB. The first column contains the IP address, the "
+"second the user, the third the location, the fourth the description, fifth "
+"the hostname and the sixth the telephone number."
+msgstr ""
+"Изнасяне на данни за IP адреси в обикновени ascii файлове. Файлът съдържа "
+"шест колони, всяка отделена с табулатор. Първата колона съдържа IP адрес, "
+"втората потребител, третата местоположение, четвъртата описание, петата - "
+"името на хоста, а шестата - телефонен номер."
+
+#: admin/exportipform.php:50
+msgid ""
+"The user defined fields defined in the iptemplate.xml file will be appended "
+"as additional columns to the above in the order specified in the template."
+msgstr ""
+"Избраните от потребителя полета, дефинирани във файла iptemplate.xml, ще "
+"бъдат добавени като допълнителни колони към горния в реда, определен в "
+"шаблона."
+
+#: admin/importbaseform.php:41
+msgid "Import subnet data"
+msgstr "Внасяне на данни за подмрежи"
+
+#: admin/importbaseform.php:47
+msgid ""
+"Import network data from flat ascii files.  The file should contain three "
+"columns each delimited by TAB. The first column contains the IP base "
+"address, the second the description and the third the mask either in dotted "
+"decimal format or in bit format."
+msgstr ""
+"Внасяне на мрежови данни от обикновени ascii файлове. Файлът би трябвало да "
+"съдържа три колони, всяка отделена с табулатор. Първата колона съдържа "
+"базовия IP адрес, втората описанието, а третата - маска в точков десетичен "
+"формат."
+
+#: admin/importbaseform.php:49
+msgid ""
+"If the import file has more than three columns, each additional column will "
+"be added to the user defined fields defined in the basetemplate.xml file in "
+"the order specified in the template."
+msgstr ""
+"Ако файлът за внасяне има повече от три колони, всяка допълнителна колона ще "
+"бъда добавена към определени от потребителя полета, дефинирани във файла "
+"basetemplate.xml в реда, определен от шаблона."
+
+#: admin/importbaseform.php:51 admin/importipform.php:53
+msgid ""
+"If an error occurs during the import, the process will stop. Records that "
+"have been successfully imported should be deleted from the import file, the "
+"error corrected and the import resumed."
+msgstr ""
+"Ако по време на внасянето се появи грешка, процедурата ще спре. Записите, "
+"които са били внесени успешно, би трябвало да бъдат изтрити от файла за "
+"внасяне, грешките да бъдат поправени, а внасянето наченато отново."
+
+#: admin/importbase.php:81
+msgid "Import subnet results"
+msgstr "Резултати от внасяне на подмрежи"
+
+#: admin/importbase.php:96 admin/importip.php:62
+msgid ""
+"Possible file size exceeded php.ini or webserver limit of 2meg - break file "
+"into smaller parts"
+msgstr ""
+"Възможният размер на файл надвишава границата от 2МБ, установена в php.ini "
+"или от уеб сървъра - разделете файла на по-малки части"
+
+#: admin/importbase.php:112 admin/importip.php:120
+msgid "File could not be opened."
+msgstr "Файлът не можа да бъде отворен."
+
+#: admin/importbase.php:123 admin/importbase.php:128 admin/importip.php:128
+#: admin/importip.php:133
+msgid "Template could not be opened."
+msgstr "Шаблонът не можа да бъде отворен."
+
+#: admin/importbase.php:138 admin/importip.php:140
+msgid "Importing row:"
+msgstr "Внасяне на ред:"
+
+#: admin/importbase.php:143 admin/importip.php:159
+msgid "Row is blank - ignoring"
+msgstr "Редът е празен - игнорирам го"
+
+#: admin/importbase.php:148
+#, php-format
+msgid "Row %u of imported file is not the correct format [ %s ]"
+msgstr "Редът %u от файла за внасяне не е в правилен формат [ %s ]"
+
+#: admin/importbase.php:177 admin/importip.php:196
+msgid "Row failed template verify."
+msgstr "Грешка при проверка реда на шаблон."
+
+#: admin/importbase.php:188
+msgid "No description for the subnet"
+msgstr "Няма описание за подмрежата"
+
+#: admin/importbase.php:196
+#, php-format
+msgid "Invalid IP address [ %s ]"
+msgstr "Невалиден IP адрес [ %s]"
+
+#: admin/importbase.php:200
+msgid "Subnet mask is invalid"
+msgstr "Подмрежовата маска е неправилна"
+
+#: admin/importbase.php:209
+#, php-format
+msgid ""
+"Subnet could not be updated - start address and size do not EXACTLY match "
+"existing subnet [ %s ]"
+msgstr ""
+"Подмрежата не можа да бъде обновена - началният адрес и размера не съвпадат "
+"ТОЧНО със съществуващата подмрежа [ %s ]"
+
+#: admin/importbase.php:212
+#, php-format
+msgid "Row is duplicate - updating with [ %s, %s ]"
+msgstr "Редът се повтаря - обновявам с [ %s, %s ]"
+
+#: admin/importbase.php:243 admin/importbase.php:285
+msgid "Error inserting/updating info."
+msgstr "Грешка при въвеждане/обновяване на информация."
+
+#: admin/importbase.php:250
+#, php-format
+msgid "User %s modified subnet details %s size %u customer cust %u"
+msgstr "Потребителят %s промени детайлите за подмрежа %s с размер %u клиент %u"
+
+#: admin/importbase.php:265
+#, php-format
+msgid "User %s created new subnet %s size %u cust %u"
+msgstr "Потребителят %s създаде нова подмрежа %s с размер %u клиент %u"
+
+#: admin/importbase.php:294
+msgid "Subnet could not be created"
+msgstr "Подмрежата не можа да бъде създадена"
+
+#: admin/importipform.php:41
+msgid "Import IP details data"
+msgstr "Внасяне на данни за IP адреси"
+
+#: admin/importipform.php:47
+msgid ""
+"Import IP details data in XML format. The data is in the same format "
+"generated by <a HREF=\"http://www.insecure.org\">NMAP's</a> -oX parameter. "
+"This is useful to scan and obtain records for sites that have no previous "
+"information."
+msgstr ""
+"Внасяне на данни за IP адреси във формат XML. Данните са в същия формат, "
+"генериран с параметъра -oX на <a·HREF=\"http://www.insecure.org\">NMAP</a>. "
+"Това е полезно в случаи, когато се сканират и обновяват записи за сайтове, "
+"за които няма предишна информация."
+
+#: admin/importipform.php:49
+msgid ""
+"Import IP details data from flat ascii files.  The file should contain a "
+"minimum of six columns each delimited by TAB. The first column contains the "
+"IP address, the second the user, the third the location, the fourth the "
+"description, the fifth the hostname and the sixth the telephone number."
+msgstr ""
+"Внасяне на данни за IP адреси от обикновени ascii файлове. Файлът съдържа "
+"минимум шест колони, всяка отделена с табулатор. Първата колона съдържа IP "
+"адрес, втората потребител, третата местоположение, четвъртата описание, "
+"петата - име на хост, а шестата - телефонен номер."
+
+#: admin/importipform.php:51
+msgid ""
+"If the import file has more than six columns, each additional column will be "
+"added to the user defined fields defined in the iptemplate.xml file in the "
+"order specified in the template."
+msgstr "Ако файлът за внасяне има повече от 6 колони, всяка допълнителна колона ще "
+" бъде добавена към дефинираните от потребителя във файла iptemplate.xml полета по "
+" реда, определен в шаблона."
+
+#: admin/importipform.php:55
+msgid ""
+"NOTE: Any number of IP address records for various subnets can be in the "
+"file.  Any existing information will be overwritten."
+msgstr ""
+"ОБЪРНЕТЕ ВНИМАНИЕ: Във файла може да има произволен брой IP адресни записи "
+"за различни подмрежи. Всяка съществуваща информация ще бъде презаписана."
+
+#: admin/importipform.php:72
+msgid "Format"
+msgstr "Формат"
+
+#: admin/importipform.php:73
+msgid "Standard fields - text format"
+msgstr "Стандартни полета - текстов формат"
+
+#: admin/importipform.php:74
+msgid "Standard fields - NMAP XML format"
+msgstr "Стандартни полета - XML формат на NMAP"
+
+#: admin/importip.php:43
+msgid "Import IP details result"
+msgstr "Резултати от внасяне на IP адреси"
+
+#: admin/importip.php:82
+msgid "XML not available"
+msgstr "XML не е достъпен"
+
+#: admin/importip.php:86
+msgid "Data not in XML format"
+msgstr "Данните не са във формат XML"
+
+#: admin/importip.php:92
+msgid "Importing record:"
+msgstr "Внасям запис:"
+
+#: admin/importip.php:166
+msgid "Row not the correct format."
+msgstr "Редът не е в правилния формат."
+
+#: admin/importip.php:209
+#, php-format
+msgid "Subnet could not be found for IP address %s"
+msgstr "За IP адрес %s не бе открита подмрежа"
+
+#: admin/install.php:46
+msgid "Install/Upgrade IPPlan"
+msgstr "Инсталация/надграждане на IPPlan"
+
+#: admin/install.php:49
+msgid "IPplan v4.40-BETA Installation System"
+msgstr "Инсталационна система на IPplan v4.40-BETA"
+
+#: admin/install.php:70
+msgid "Language"
+msgstr "Език"
+
+#: admin/install.php:72
+msgid "Please choose your language:"
+msgstr "Моля, изберете език:"
+
+#: admin/install.php:83
+msgid "  Change  "
+msgstr "  Променено от  "
+
+#: admin/install.php:92
+msgid "IF YOU ARE UPGRADING IPPLAN, BACKUP YOUR DATABASE NOW"
+msgstr "Ако надграждате IPplan, ВЕДНАГА СИ АРХИВИРАЙТЕ БАЗАТА ДАННИ"
+
+#: admin/install.php:93
+msgid "THERE IS NO WAY TO RECOVER YOUR DATA IF SOMETHING GOES WRONG."
+msgstr "Няма начин да се възстановят данните ви, ако нещо се обърка."
+
+#: admin/install.php:99
+msgid ""
+"For security purposes, it is highly recomended that IPPlan is installed on "
+"an SSL Webserver."
+msgstr ""
+"За по-сигурно е силно желателно IPPlan да бъде инсталиран върху SSL уеб "
+"сървър."
+
+#: admin/install.php:102
+msgid ""
+"Production systems need to use a transaction-aware database table. Do not "
+"use MYISAM (use INNODB) and enable it in config.php"
+msgstr ""
+"Системите, където този софтуер се използва за реална работа трябва да "
+"използват бази данни, които да разбират от транзакции. Не използвайте "
+"MyISAM, а InnoDB, и направете необходимите промени в config.php"
+
+#: admin/install.php:105
+msgid "Read all Instructions carefully before proceeding!"
+msgstr "Внимателно прочетете всички инструкции, преди да продължите!"
+
+#: admin/install.php:108
+msgid ""
+"Have you read the <a href=\"http://iptrack.sourceforge.net/doku.php?id=faq"
+"\">FAQ</a>? How about the <a href=\"http://iptrack.sourceforge.net/"
+"documentation/\">User Manual</a>? "
+msgstr ""
+"Прочетохте ли <a href=\"http://iptrack.sourceforge.net/doku.php?id=faq"
+"\">ЧЗВ</a>? А <a href=\"http://iptrack.sourceforge.net/documentation/"
+"\">Наръчника на потребителя</a>? "
+
+#: admin/install.php:109
+msgid "Have you read the UPGRADE document if upgrading?"
+msgstr "Прочетохте ли документа UPGRADE, ако надграждате?"
+
+#: admin/install.php:112
+msgid "What would you like to do today?"
+msgstr "Какво искате да правите днес?"
+
+#: admin/install.php:119
+msgid ""
+"Would you like us to run the SQL against the database defined in config.php "
+"or would you rather print it to the screen so you can do it yourself?"
+msgstr ""
+"Бихте ли желали да пуснем SQL заявките директно в базата, дефинирана в "
+"config.php, или предпочитате да ги изпечатаме на екрана, за да го направите "
+"сами?"
+
+#: admin/install.php:121
+msgid "Run the SQL Now"
+msgstr "Пусни SQL"
+
+#: admin/install.php:122
+msgid "Just print it to the screen"
+msgstr "Просто го отпечатай на екрана"
+
+#: admin/install.php:123
+msgid "display"
+msgstr "покажи"
+
+#: admin/install.php:126
+msgid ""
+"If you are displaying the schema, please remove the comments with a text "
+"editor before executing into your database."
+msgstr ""
+"Ако отпечатвате схемата, моля отстранете коментарите с текстов редактор, "
+"преди да я изпълните в своята база данни."
+
+#: admin/install.php:128
+msgid "Go!"
+msgstr "Давай!"
+
+#: admin/maintenance.php:42
+msgid "IPplan Maintenance"
+msgstr "Управление на IPplan"
+
+#: admin/maintenance.php:56
+msgid "Requested IP addresses cleared"
+msgstr "Заявените IP адреси са изчистени"
+
+#: admin/maintenance.php:60
+msgid "Requested IP addresses cleared!"
+msgstr "Заявените IP адреси са изчистени!"
+
+#: admin/maintenance.php:63
+msgid "Requested IP addresses could not be cleared."
+msgstr "Заявените IP адреси не можаха да бъдат изчистени."
+
+#: admin/maintenance.php:70
+msgid "Audit log cleared"
+msgstr "Журналът е изтрит"
+
+#: admin/maintenance.php:74
+msgid "Audit log cleared!"
+msgstr "Журналът е изтрит!"
+
+#: admin/maintenance.php:77
+msgid "Audit log could not be cleared."
+msgstr "Журналът не можа да бъде изтрит."
+
+#: admin/maintenance.php:93
+msgid "Customer index"
+msgstr "Клиентски индекс"
+
+#: admin/maintenance.php:117
+msgid "Perform the selected IPplan database maintenance."
+msgstr "Извършване на избраното действие върху базата данни на IPplan."
+
+#: admin/maintenance.php:127
+msgid "Display list of customer indexes"
+msgstr "Показване на списък от клиентски индекси"
+
+#: admin/maintenance.php:137
+msgid "Clear IP address request list"
+msgstr "Изчистване на списък от заявки за IP адреси"
+
+#: admin/maintenance.php:147
+msgid "Clear Audit Log"
+msgstr "Изтриване на журнала"
+
+#: admin/usermanager.php:42
+msgid "User Manager"
+msgstr "Управление на потребители"
+
+#: admin/usermanager.php:101
+msgid "Search Result"
+msgstr "Резултати от търсене"
+
+#: admin/usermanager.php:107
+msgid "No Matches Found"
+msgstr "Няма намерени съвпадения"
+
+#: admin/usermanager.php:134
+msgid "All Groups"
+msgstr "Всички групи"
+
+#: admin/usermanager.php:142
+msgid "No users in group"
+msgstr "Няма потребители в тази група"
+
+#: admin/usermanager.php:158
+msgid "Orphan Users"
+msgstr "Потребители, които не са членове на група"
+
+#: admin/usermanager.php:163
+msgid "Current Users/Groups"
+msgstr "Текущи потребители/групи"
+
+#: admin/usermanager.php:167
+msgid "New User"
+msgstr "Нов потребител"
+
+#: admin/usermanager.php:170
+msgid "New Group"
+msgstr "Нова група"
+
+#: admin/usermanager.php:177 admin/usermanager.php:184
+msgid "Search"
+msgstr "Търсене"
+
+#: admin/usermanager.php:185
+msgid "Edit Users/Groups"
+msgstr "Редакция на потребители/групи"
+
+#: admin/usermanager.php:187
+msgid "Click on a group or user"
+msgstr "Щракнете на група или потребител"
+
+#: admin/usermanager.php:252 admin/usermanager.php:279
+msgid "Create group"
+msgstr "Създаване на група"
+
+#: admin/usermanager.php:255
+msgid "Group name:"
+msgstr "Име на групата:"
+
+#: admin/usermanager.php:262 admin/usermanager.php:420
+msgid "Group description:"
+msgstr "Описание на групата:"
+
+#: admin/usermanager.php:269 admin/usermanager.php:423
+msgid "Group can create/modify/delete customers?"
+msgstr "Може ли групата да създава/променя/изтрива клиенти?"
+
+#: admin/usermanager.php:274 admin/usermanager.php:429
+msgid "Group can view any customers data?"
+msgstr "Може ли групата да вижда данните на всички клиенти?"
+
+#: admin/usermanager.php:302
+msgid "Real Name: "
+msgstr "Истинско име: "
+
+#: admin/usermanager.php:307
+msgid "Delete User"
+msgstr "Изтриване на потребител"
+
+#: admin/usermanager.php:313 admin/usermanager.php:326
+msgid "Change Password"
+msgstr "Смяна на паролата"
+
+#: admin/usermanager.php:353
+msgid "Add User to Group"
+msgstr "Добавяне на потребител към група"
+
+#: admin/usermanager.php:373
+msgid "Group Membership"
+msgstr "Членство в групи"
+
+#: admin/usermanager.php:387
+msgid " Remove From Group"
+msgstr " Премахване от група"
+
+#: admin/usermanager.php:405
+msgid "Editing Group:"
+msgstr "Редактиране на група:"
+
+#: admin/usermanager.php:406
+msgid " Description: "
+msgstr "Описание: "
+
+#: admin/usermanager.php:412
+msgid "Delete Group"
+msgstr "Изтриване на група"
+
+#: admin/usermanager.php:417
+msgid "Modify group"
+msgstr "Промяна на група"
+
+#: admin/usermanager.php:437
+msgid "Update"
+msgstr "Обновяване"
+
+#: admin/usermanager.php:455
+msgid "User Membership"
+msgstr "Членство в групи"
+
+#: admin/usermanager.php:465
+msgid "Add User"
+msgstr "Добавяне на потребител"
+
+#: admin/usermanager.php:479
+msgid "Current Members"
+msgstr "Текущи потребители"
+
+#: admin/usermanager.php:492
+msgid "Remove From Group"
+msgstr "Премахване от група"
+
+#: admin/usermanager.php:502
+msgid "Authority Boundaries"
+msgstr "Граници на пълномощие"
+
+#: admin/usermanager.php:508
+msgid "Authority boundary start address"
+msgstr "Начален адрес на границата на пълномощие"
+
+#: admin/usermanager.php:514
+msgid "Authority size/mask"
+msgstr "Размер/маска на пълномощие"
+
+#: admin/usermanager.php:534
+msgid "Add Boundary"
+msgstr "Добавяне на граница"
+
+#: admin/usermanager.php:550
+msgid "Current Boundaries"
+msgstr "Текущи граници"
+
+#: admin/usermanager.php:578
+msgid "Create new user"
+msgstr "Създаване на нов потребител"
+
+#: admin/usermanager.php:579
+msgid "User-id (case sensitive!):"
+msgstr "Потребителски индикатив (има значение ГОЛЕМИ/малки!):"
+
+#: admin/usermanager.php:584
+msgid "User's fullname:"
+msgstr "Пълно име на потребителя:"
+
+#: admin/usermanager.php:590
+msgid "Password (case sensitive!):"
+msgstr "Парола (има значение ГОЛЕМИ/малки!):"
+
+#: admin/usermanager.php:594
+msgid "Password (again):"
+msgstr "Парола (отново):"
+
+#: admin/usermanager.php:607
+msgid "Group"
+msgstr "Група"
+
+#: admin/usermanager.php:612
+msgid "Create User"
+msgstr "Създаване на нов потребител"
+
+#: admin/usermanager.php:637
+msgid "The user-id must be longer"
+msgstr "Потребителският индикатив трябва да бъде по-дълъг"
+
+#: admin/usermanager.php:640
+msgid "The user description must be longer"
+msgstr "Потребителското описание трябва да бъде по-дълго"
+
+#: admin/usermanager.php:675
+msgid "Existing user overwritten"
+msgstr "Съществуващият потребител е презаписан"
+
+#: admin/usermanager.php:677
+msgid "User created"
+msgstr "Потребителят е създаден"
+
+#: admin/usermanager.php:681
+msgid "User could not be created"
+msgstr "Потребителят не можа да бъде създаден"
+
+#: admin/usermanager.php:695
+msgid "The group name must be longer"
+msgstr "Името на групата трябва да бъде по-дълго"
+
+#: admin/usermanager.php:698 admin/usermanager.php:932
+msgid "The group description must be longer"
+msgstr "Описанието на групата трябва да бъде по-дълго"
+
+#: admin/usermanager.php:701
+msgid "Only numbers and digits are allowed in the group name"
+msgstr "В името на групата се допускат само букви и цифри"
+
+#: admin/usermanager.php:728
+msgid "Group created"
+msgstr "Групата е създадена"
+
+#: admin/usermanager.php:733
+msgid "Group could not be created - possibly a duplicate"
+msgstr "Групата не можа да бъде създадена - вероятно има повтаряне"
+
+#: admin/usermanager.php:749
+msgid "User deleted from group"
+msgstr "Потребителят е изтрит от групата"
+
+#: admin/usermanager.php:758 admin/usermanager.php:808
+msgid "User could not be deleted from group"
+msgstr "Потребителят не можа да бъде изтрит от групата"
+
+#: admin/usermanager.php:786
+msgid "User could not be deleted"
+msgstr "Потребителят не можа да бъде изтрит"
+
+#: admin/usermanager.php:818
+msgid ""
+"Cannot delete group because the following customers are assigned to the "
+"group:"
+msgstr ""
+"Не можах да изтрия групата, тъй като следните потребители са част от нея:"
+
+#: admin/usermanager.php:831
+msgid ""
+"Cannot delete group because the following subnets are assigned to the group:"
+msgstr "Не можах да изтрия групата, тъй като следните подмрежи са част от нея:"
+
+#: admin/usermanager.php:851
+msgid "Group could not be deleted"
+msgstr "Групата не можа да бъде изтрита"
+
+#: admin/usermanager.php:913
+msgid "User added to group"
+msgstr "Потребителят е добавен към групата"
+
+#: admin/usermanager.php:921
+msgid "User could not be added to group"
+msgstr "Потребителят не можа да бъде добавен към групата"
+
+#: admin/usermanager.php:957
+msgid "Group details could not be modified"
+msgstr "Детайлите за групата не можаха да бъдат променени"
+
+#: admin/usermanager.php:973
+msgid "Boundary address may not be blank"
+msgstr "Граничният адрес не може да бъде празен"
+
+#: admin/usermanager.php:975
+msgid "Invalid boundary address"
+msgstr "Неправилен граничен адрес"
+
+#: admin/usermanager.php:979
+msgid "Boundary cannot be created - overlaps with existing boundary"
+msgstr "Границата не може да бъде създадена - застъпва се с вече съществуваща"
+
+#: admin/usermanager.php:998
+msgid "Boundary created"
+msgstr "Границата е създадена"
+
+#: admin/usermanager.php:1002
+msgid "Boundary could not be created"
+msgstr "Границата не можа да бъде създадена"
+
+#~ msgid ""
+#~ "You may not a registrar update for this customer as you are not a member "
+#~ "of the customers admin group"
+#~ msgstr ""
+#~ "Не можете да изпратите заявка за обновяване в регистъра за този клиент, "
+#~ "тъй като не сте член на административната му група"
+
+#~ msgid "Add authority boundary to a group"
+#~ msgstr "Добавяне на граница на пълномощие към група"
+
+#~ msgid ""
+#~ "Create a new authority boundary limit by entering the base (network) "
+#~ "address. The boundary will limit the members of the group to only be able "
+#~ "to create new subnets in this range, thus preventing the user from "
+#~ "creating networks outside their area of authority."
+#~ msgstr ""
+#~ "За създаване на нова граница на пълномощие като въведете базов (мрежов) "
+#~ "адрес. Границата ще ограничи членовете на групата да могат да създават "
+#~ "само подмрежи в този диапазон, като по този начин даден потребител няма "
+#~ "да може да създава мрежи извън своята област на пълномощие."
+
+#~ msgid ""
+#~ "A group with no boundary limits (the default) can create networks with no "
+#~ "limitations."
+#~ msgstr ""
+#~ "Група без граница на пълномощия (както е по подразбиране) може да създава "
+#~ "мрежи без ограничения."
+
+#~ msgid "Add a user to a group"
+#~ msgstr "Добавяне на потребител към група"
+
+#~ msgid "You first need to create some users!"
+#~ msgstr "Първо трябва да създадете някакви потребители"
+
+#~ msgid "User-id"
+#~ msgstr "Потребителски индикатив"
+
+#~ msgid "Create a new group"
+#~ msgstr "Създаване на нова група"
+
+#~ msgid "IPPlan User Administration"
+#~ msgstr "IPplan Администриране на потребители"
+
+#~ msgid "Create New User"
+#~ msgstr "Създаване на нов потребител"
+
+#~ msgid "Search userid or realname (case insensitive!):"
+#~ msgstr "Потребителски индикатив (има значение ГОЛЕМИ/малки!):"
+
+#~ msgid "Delete access control results"
+#~ msgstr "Резултати от изтриване на контрол на достъпа"
+
+#~ msgid "User deleted"
+#~ msgstr "Потребителят е изтрит"
+
+#~ msgid "Group deleted"
+#~ msgstr "Групата е изтрита"
+
+#~ msgid "Display user access information"
+#~ msgstr "Показване на информация за достъп на потребителя"
+
+#~ msgid "All groups and users assigned to them"
+#~ msgstr "Всички групи и потребители, присъединени към тях"
+
+#~ msgid "All info for group %s"
+#~ msgstr "Пълна информация да група %s"
+
+#~ msgid "Group description"
+#~ msgstr "Описание на група"
+
+#~ msgid "User's fullname"
+#~ msgstr "Пълно име на потребителя"
+
+#~ msgid "User action"
+#~ msgstr "Действие за потребителя"
+
+#~ msgid "Display/delete group bounds"
+#~ msgstr "Показване/изтриване граници на групи"
+
+#~ msgid "Modify group details"
+#~ msgstr "Промяна на детайлите за група"
+
+#~ msgid "No users belong to this group"
+#~ msgstr "В тази група няма потребители"
+
+#~ msgid "Delete user from group"
+#~ msgstr "Изтриване на потребител от група"
+
+#~ msgid "Users not assigned to any group"
+#~ msgstr "Потребители, които не са членове на никоя група"
+
+#~ msgid ""
+#~ "These users will not be able to login as they do not have access anywhere."
+#~ msgstr ""
+#~ "Тези потребители няма да могат да влязат, тъй като нямат никакви права за "
+#~ "достъп"
+
+#~ msgid "Group details modified"
+#~ msgstr "Детайлите за групата са променени"
+
+#~ msgid "Modify group: "
+#~ msgstr "Промяна на група:"
+
+#~ msgid "Add authority bounds to group"
+#~ msgstr "Добавяне на граница на пълномощие към група"

@@ -1,0 +1,49 @@
+Extend VMWare disk of system (powered on or powered off)
+
+echo 1 > /sys/class/block/sda/device/rescan
+This tells the kernel to scan scsi bus
+
+parted
+print free
+
+cfdisk
+create new partition with the free space (type=Linux)
+
+reboot
+
+pvcreate /dev/sda#
+
+vgdisplay
+(note the VG Name)
+
+vgextend (VG Name) /dev/sda#
+
+lvdisplay
+and note down the entry next to "LV Name". This is your logical volume's name (e.g. /dev/srv/root), which you'll now extend to the newly added partition/physical volume.
+
+df -h
+Note the filesystem name like /dev/mapper/vg--group-root
+
+lvextend -r -l +100%FREE /dev/mapper/vg--group-root
+
+  Size of logical volume vg-group/root changed from 14.52 GiB (3717 extents) to 28.52 GiB (7301 extents).
+  Logical volume root successfully resized.
+resize2fs 1.42.13 (17-May-2015)
+Filesystem at /dev/mapper/vg--group-root is mounted on /; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 2
+The filesystem on /dev/mapper/vg--group-root is now 7476224 (4k) blocks long.
+
+df -hT
+
+Filesystem                 Type      Size  Used Avail Use% Mounted on
+udev                       devtmpfs  972M     0  972M   0% /dev
+tmpfs                      tmpfs     199M  6.0M  193M   3% /run
+/dev/mapper/vg--group-root ext4       28G   13G   14G  49% /
+tmpfs                      tmpfs     992M     0  992M   0% /dev/shm
+tmpfs                      tmpfs     5.0M     0  5.0M   0% /run/lock
+tmpfs                      tmpfs     992M     0  992M   0% /sys/fs/cgroup
+/dev/sda1                  ext2      472M  107M  342M  24% /boot
+//win2016-3/DFSROOT        cifs      3.2T  1.4T  1.8T  44% /mnt/windows/dfs-rw
+//win2016-3/DFSROOT/FTP    cifs      3.2T  1.4T  1.8T  44% /mnt/windows/ftp-rw
+//win2016-3/DFSROOT        cifs      3.2T  1.4T  1.8T  44% /mnt/windows/dfs
+tmpfs                      tmpfs     199M     0  199M   0% /run/user/0

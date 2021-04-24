@@ -1,0 +1,3 @@
+# A method for using this script is to use node.js to pull the data.
+
+node /var/www/html/bitcoin_api_coindesk.com.js

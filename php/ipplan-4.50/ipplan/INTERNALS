@@ -1,0 +1,78 @@
+
+   This document will attempt to describe how the program works
+   internally to simplify making code changes.
+   
+   On the database side there are tables to hold the area, range,
+   customers etc. I think that is self explanatory. IP addresses and
+   network addresses are stored in the databases as integer so that
+   comparisons can be made directly in the database. There are numerous
+   helper functions in the ipplanlib.php script to deal with the
+   conversion from int to quad and vice versa. (These functions should be
+   converted to a class, but it looks like too much of a mission to
+   integrate). The integrated functions that is available in php for IP
+   conversion are broken, so they cannot be used.
+   
+   Most of the tables also have complex indexing schemes to prevent
+   duplicate info being entered (see ipplandbf.sql for the table
+   layouts). I use the indexes to test for integrity by just inserting
+   into the table and checking for errors. All referential integrity
+   is handled by ipplan itself, not the underlying database. The reason
+   for this is to make ipplan as cross database as possible.
+   
+   Subnet sizes are stored as "number of hosts", not masks. This once
+   again makes calculating overlaps simpler. Most of the helper functions
+   used many times are in ipplanlib.php, most of the database stuff used
+   many times is in class.dbflib.php. There are some database calls local to
+   some scripts too, but they are only used in those scripts.
+   
+   Getting back to the databases. Table base contains all the subnet
+   definitions for all customers. There cannot be dups within a customer
+   (customer field has a multiple primary key), but there can be overlaps
+   between customers (you will be warned via a test in createsubnet.php).
+   When a subnet is created, an auto increment is generated. This is the
+   key for the ipaddr table which contains the individual ip address
+   details. Only ip addresses that actually have assignments or values
+   exist in this table - reason is to conserve space. Imagine allocating
+   a class B and adding 64k entries to this table - just not on. The
+   display functions know this fact and "fill in the blanks". See
+   displaysubnet.php around line 216. Conversely if a record is deleted
+   or is entirely blank, it gets removed from this table.
+   
+   The access control is described in a little detail in the README. It
+   consists of three tables; user, usergrp, and grp. user contains all
+   the users and usergrp contain which users belong to which groups from
+   the grp table. Access to the base table for modifying or creating
+   subnets are governed by these groups. If you belong to a group, you
+   can do stuff, if not access denied. So everything is group based.
+   Users cant get access anywhere, only groups. So when you log in, all
+   the groups you belong to get returned from the authentication class in
+   an array. A simple scan is then done through this array to see if you
+   can work with the component in question. You will see code like this:
+   
+   $grps=$auth->authenticate();
+   
+   $grps is the array containing which groups you belong to. Later a scan
+   is done when inserting, deleting, modifying etc.
+
+   Additional attributes are available as part of the group. The one is 
+   if a group can create customers (createcust) and the other is a binary
+   encoded integer (getopt) which can contain many attributes. Currently
+   only bit 1 is used. If it is 0, user can only see info for groups he
+   belongs to, if 1, user can see everything. If 1, this does not imply
+   that the user can modify all, but mearly view all.
+
+   Note that if a user belongs to more than one group, a true value for
+   createcust or getopt implies true for all groups the user belongs to.
+   
+   Finally, there is a table called schema. This contains a version
+   number which describes what the tables look like. At each startup
+   (called from the main index page) a check is made against this version
+   number. If the version number in the database and the version number
+   embedded in schema.php are the same you can run the program. If the
+   schema version is out of sync, ipplan will try to perform the
+   database schema changes to bring the database in sync. So if a person
+   wants to add extension (like SWIP) which will require database
+   changes, bump the version and add the "ALTER TABLE" etc statements to
+   the array in schema.php. Next time the users starts ipplan, they will
+   be prompted that changes need to be made with enough rights. If they
+   cannot make the changes, the program will not continue.

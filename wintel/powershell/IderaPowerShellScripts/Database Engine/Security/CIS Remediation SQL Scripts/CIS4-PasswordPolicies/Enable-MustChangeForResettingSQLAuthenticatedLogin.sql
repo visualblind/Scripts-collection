@@ -1,0 +1,6 @@
+-- Enable MUST_CHANGE for All SQL Authenticated Logins
+-- CIS 4.1 Check (Password Policies)
+
+--Set the MUST_CHANGE option for SQL Authenticated logins when resetting a password:
+ALTER LOGIN $(LoginName) WITH PASSWORD = '$(Password)' MUST_CHANGE;
+

@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi,\nwhen I try to run it on Powershell 3.0 i get this error:\n\n```\nAt C:\\Users\\admin_rojek\\Desktop\\roboPowerCopy.ps1:3406 char:6\n+                     return $false\n+                     ~~~~~~~~~~~~~\nControl cannot leave a finally block.\nAt C:\\Users\\admin_rojek\\Desktop\\roboPowerCopy.ps1:3703 char:8\n+                             return $false\n+                             ~~~~~~~~~~~~~\nControl cannot leave a finally block.\n    + CategoryInfo          : ParserError: (:) [], ParseException\n    + FullyQualifiedErrorId : ControlLeavingFinally\n```\nAny way to fix this?",
+    "LastUpdatedDate": "2014-04-02T08:47:11.993-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "robopowercopy",
+    "ReportedDate": "2013-10-28T06:31:57.823-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Doesn't work on Powershell 3.0",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1887
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Create and set a variable above the 'try/catch/finally' and set it to true\nReplace the return statement to set the variable above to false\nBelow and outside of the finally, return the value of the variable.\r\n\r\nThat works for me.",
+      "PostedDate": "2014-04-02T05:14:39.363-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There are over 44 \"try\" statement :/ Could you be a more specific?",
+      "PostedDate": "2014-04-02T08:47:11.993-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

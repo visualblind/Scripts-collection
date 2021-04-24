@@ -1,0 +1,21 @@
+pg-1
+------------------------------------------------
+find .
+
+find /home/shakil/bssg -name abc.txt
+
+find /home/shakil/bssg -iname abc.txt
+
+find /home/shakil/bssg -print
+
+cd /home/shakil/bssg
+
+find . -iname *.cpp
+
+find . -maxdepth 2 -iname "*.cpp"
+## Dont go beyond 2 levels of depth for finding the files
+
+find . -maxdepth 2 -not -iname "*.cpp"
+## Find all files whose name is not .cpp
+
+

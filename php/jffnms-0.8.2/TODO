@@ -1,0 +1,82 @@
+This are the remaining tasks to be done in JFFNMS.
+If you want to contribute and you dont know where to start, please read this lines.
+If you want to add a task, send me an email.
+
+
+To Do
+=====
+
+    - Host Types
+    - events/interface JS/CSS font-size
+    - popup selector full-text search
+    - discovery params: new/old field ?
+    - SNMP Timeout per-host
+    - Host Types, IT by Host Type
+    - Host Groups (modify maps)
+    - alarm backend: N Downs. db records per-int and global
+    - Chris ESI: Pix config transfer
+    - Host Groups (like maps) (modify maps to allow hosts)
+    - Craig: NUT UPS
+    - ALL Button in admin_header
+    - Configurable Delay in the DHTML popups
+    - TCP Port Hello/Quit string
+    - new/poller+ad satellite filter
+	 
+
+For Later:
+----------
+
+API:
+    - Thomas DNS monitoring
+    - Generic Interface Type
+    - Sort directly not via SQL in interfaces_list
+        
+    - Poller Helper: Poll only State
+    - Satellite Remote (Auto)Discovery
+    - Satellite Sync (virtual satellite in case theres no connection and I'm not the master)
+    - Modify Pollers that handle the buffer locally to somehow use the backend (or sync it)
+
+    - RRD Analyzers:
+	- How much traffic the Interface had in X time (95th Percentile also)
+	- TOP 10 (Top Traffic, Errors, RTT, etc.)
+
+    - Tools:
+	- Host Tools (Routing Table, ARP Table, Socket State, etc. SNMP-based)
+	- Tools for all interface types (id =1)
+
+    - New Trigger/Action to allow config transfer as soon as a config change is made (event)
+    - Make consolidate scripts functions (like the other parts)
+    - Asset Tracking (Inventory) (Part Number, Serial Number, Cards, etc) (could use ENTITY-MIB/STACK-MIB)
+    - TFTP Configuration CVS Upload (Requested by Mike Hyde)
+    - TFTP Configuration Scheduled Upload (Requested by Rob Laidlaw)
+    - SLA Planned Outages/Maintence Windows
+    - SNMP Traps Processing more useful and flexible. (match by interfacenumber also) (Call Handler Scripts)
+    - Event Flap Detection.
+    
+GUI:
+    - Send a URL to the interface in the Email Action (Requested by Rob Laidlaw)
+    - Stored Reports
+    
+MISC:
+    - NetFlow Integration
+    - Use the Standard msyslog, not one modified for JFFNMS
+    - MD5 Signature of the tarball
+    - Gentoo ebuild
+    - RPM Package
+    - Better SOAP Interoperatibility testing
+    - Snort SNMP TRAP messages integration
+    - Radius Integration
+    - Trouble Ticket Plugins (Framework Ready)
+    - Implement ENTITY-MIB & STACK-MIB for Cisco's & others
+
+
+In the Works:
+=============
+
+    - Documentation (on CVS by Craig Small and Javier Szyszlican)
+    - Documentation in Spanish (by Jack Snir)
+    - Finish migration to new API (Javier Szyszlican)
+    - Interface inter-dependece (will be based on DMII Designated Main Interfaces)
+    - Use COUNTER64 in polling (Mike Hyde)
+    - Multi Language Support (Sergio Martinez)
+    - Install Script (Javier Szyszlican)

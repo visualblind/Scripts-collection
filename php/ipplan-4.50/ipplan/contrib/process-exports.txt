@@ -1,0 +1,8 @@
+Hi!
+
+I like ipplan very much, good job so far!
+
+Just to meet our needs, I wrote a small perl script according to
+DNS-USAGE. As it might be useful for others I'm sending it to you.
+
+Karsten Hecker

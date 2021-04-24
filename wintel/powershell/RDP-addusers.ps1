@@ -1,0 +1,1 @@
+﻿(get-WmiObject -Namespace "root/cimv2/terminalservices" -Class win32_tspermissionssetting|Where-Object {$_.TerminalName -eq "RDP-Tcp"}).AddAccount("domain\customGroup",2)

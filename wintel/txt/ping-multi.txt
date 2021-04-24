@@ -1,0 +1,5 @@
+cmd.exe /C "for /L %i in (0,0,0) do ping -n 10 <GATEWAY IP> & ping -n 10 ping <WAN GATEWAY> & ping -n 10 google.com & ping -n 10 8.8.8.8 & ping -n 10 sysinfo.io"
+cmd.exe /C "for /L %i in (0,0,0) do ping 10.10.10.1 & ping 47.156.0.1 & ping google.com & ping 8.8.8.8 & ping sysinfo.io"
+
+for /L %i in (0,0,0) do ping 10.10.10.1 & ping 47.156.0.1 & ping google.com & ping 8.8.8.8 & ping sysinfo.io
+for /L %i in (0,0,0) do ping -n 10 docker1 & ping -n 10 docker2 & ping -n 10 10.10.10.1 & ping -n 10 google.com & ping -n 10 8.8.8.8

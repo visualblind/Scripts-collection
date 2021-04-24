@@ -1,0 +1,2 @@
+$big32 = Get-ChildItem F:\Applications -recurse | Sort-Object length -descending | select-object -first 32 | measure-object -property length –sum
+$big32.sum /1gb

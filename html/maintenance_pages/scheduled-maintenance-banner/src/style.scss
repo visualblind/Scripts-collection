@@ -1,0 +1,23 @@
+.notification-bar{
+  width: 100%;
+  padding: 10px 5%;
+  color: #31708f;
+  background: #d9edf7;
+  position: absolute;
+  box-sizing: border-box;
+  display: none;
+  
+  font-size: 14px;
+  
+  .close{
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    cursor: pointer;
+  }
+}
+
+html, body{
+  margin: 0;
+  font-family: sans-serif;
+}

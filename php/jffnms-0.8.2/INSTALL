@@ -1,0 +1,224 @@
+'Just For Fun' Network Management System Version 0.8.x
+	    By Javier Szyszlican
+======================================================
+
+--------------------------------------------------------------
+If you are a technical writer, want to be one, or happen to be 
+inspired... We need your contribution with the Documentation.
+--------------------------------------------------------------
+
+Requirements:
+=============
+
+-Operating System:
+    . *NIX (Development is on GNU/Linux, It has been tested on FreeBSD and Solaris too)
+    . Windows 2000/XP also works (A good crond for windows will be useful). 
+	If you are installing on Windows please read the INSTALL.win32.txt file.
+    
+-Apache ( > 1.3.x or > 2.0.x)
+
+-MySQL ( > 3.23.x or > 4.0.x ) or PostgreSQL ( Tested with 7.4.6 )
+
+-RRDtool (www.rrdtool.org) (> 1.0.33 )
+
+-PHP  ( >= 4.1.2 or > 5.0.x )
+	Extensions: snmp, ssl, gd, sockets, mysql or pgsql, pcre, posix, ob and session
+
+-NET-SNMP utilities and trapd server (optional) 
+
+-GNU Diff 
+
+-TFTP Server (optional)
+
+-JFF NMS Integration Packages (TACACS+ & Syslog) (optional, useful on routers) 
+
+-Graphviz & WebFonts (http://www.graphviz.org) (optional)
+
+-NMAP PortScanner > 2.54B (http://www.insecure.org/nmap/) for TCP Port Discovery (optional)
+
+-Fping (http://www.fping.com) for Reachability (Only Linux/*NIX)
+
+
+Steps:
+======
+
+. Compile and/or Install MySQL / PgSQL
+
+. Compile and/or Install Apache
+
+. Compile and/or Install Graphviz and WebFonts (optional)
+
+. Compile and/or Install NMAP
+    
+    Nmap should be set-uid root if you want UDP port monitoring & discovery to work.
+
+    Execute: 
+        # chmod +s /usr/bin/nmap
+        # chmod a+x /usr/bin/nmap
+
+. Compile and/or Install Fping
+
+    Verify that the user running the cron jobs, is able to execute fping and that it is set-uid root.
+     
+    Execute: 
+        # chmod +s /usr/sbin/fping
+        # chmod a+x /usr/sbin/fping
+    
+    And you should see something like this:
+	-rwsr-xr-x    1 root     adm         28291 May 31 22:14 /usr/sbin/fping
+
+. Compile and/or Install RRDtool
+    
+. Compile and/or Install PHP 
+
+	I M P O R T A N T
+	-----------------
+
+    PHP Modules Needed: sockets, snmp, gd, (pgsql and/or mysql), wddx (for satellites), pcre (syslog parsing)
+
+    Be sure to add the required modules to your /etc/php.ini file.
+    
+    Remember to verify that your modules are loaded with /admin/adm/test.php or the JFFNMS setup screen.
+
+    A N D
+
+    ---------------------------------------------------
+    ---------------------------------------------------
+    Change This in your php.ini file.
+
+    register_globals = On 
+    register_argc_argv = On 
+    error_reporting  =  E_ALL & ~E_NOTICE
+    allow_url_fopen = On
+    include_path = .:/usr/share/pear
+    short_open_tag = On
+    
+    ---------------------------------------------------
+    ---------------------------------------------------
+
+    Also check if your Apache is loading mod_php.
+
+    Any change to the PHP ini file (ie. /etc/php.ini) requires Apache to be restarted to take effect.
+
+--------------------------------------------------------------
+. Read the docs/* files, these are examples of configuration.
+--------------------------------------------------------------
+
+. Optional: Install Integration Packages tac_plus and msyslog (read the README and INSTALL files of each program).
+    Hints: 
+	-If you have problems with mysql when compiling (mysql.h lines ~245 & ~256) change DB to db (lowercase);
+	-If you have a linking problem with compress add -lz to the Makefile libraries      
+	-msyslog: Remember to change your init.d/syslog to the new binary and command line options. (read the example)
+
+. Create User & Group
+
+	Note: replace apache by your Apache user (like apache, httpd, www-data, etc)
+
+	# groupadd jffnms
+	# useradd -g jffnms -d /opt/jffnms -s /bin/false -c 'JFFNMS User' jffnms
+	# usermod -G jffnms apache
+
+. Unpack the release:
+
+	# tar xvzf jffnms-0.8.x.tar.gz 
+
+    You will get a directory called jffnms-0.8.x/ 
+
+	# mv jffnms-0.8.x /opt/jffnms
+
+. Permissions
+	
+	# chown -R jffnms:jffnms /opt/jffnms
+	# chmod 770 /opt/jffnms
+	# chmod -R ug+rw /opt/jffnms
+
+. Crontab
+	Install the JFFNMS crontab file	
+
+	# crontab -u jffnms /opt/jffnms/docs/unix/crontab
+	
+	Now modify the values at the top if they don't match your system:
+
+	# crontab -e -u jffnms 
+
+. Create the Databases
+
+    Manually create the database "jffnms", set the permissions and then import the schema and data.
+    
+    Replace the 'x' with the jffnms version number.
+    
+    MySQL:
+    ======
+	# mysql -u <mysql admin username> -p<password>
+	mysql> CREATE DATABASE jffnms;
+	mysql> GRANT ALL PRIVILEGES ON jffnms.* TO jffnms@localhost IDENTIFIED BY 'jffnms';
+	mysql> FLUSH PRIVILEGES;
+	mysql> quit
+    
+	# mysql -u jffnms -pjffnms jffnms < docs/jffnms-0.8.x.mysql
+    
+    PostgreSQL:
+    ===========
+	# psql template1 postgres
+	template1=# create user jffnms password 'jffnms' createdb;
+	template1=# \connect template1 jffnms
+	template1=# create database jffnms;
+	template1=# \q
+	
+	# psql jffnms jffnms < docs/jffnms-0.8.x.pgsql
+    
+    This will create the jffnms Tables and required records.  
+
+
+. Configure Apache as follows (from docs/*): 
+
+    1. As a Virtual Host (if you control a DNS server):
+
+	<VirtualHost *>
+            ServerAdmin you@yournet.com
+            DocumentRoot /opt/jffnms/htdocs
+            ServerName nms.yournet.com
+  	    LimitRequestLine 20000
+        </VirtualHost>
+
+    2. As a sym-link (in Unix):
+
+	ln -s /opt/jffnms/htdocs /var/www/html/jffnms 
+
+	(or the path your Apache uses).
+
+    JFFNMS needs to be at the main Document Root, a VirtualHost or a SymLink. 
+
+. Restart/Reload Apache, MySQL or PgSQL, xINETD (tftpd)
+
+. PHP Module Load Errors are reported to /var/log/httpd/error_log (RedHat) or /var/log/apache/error_log (Gentoo)
+
+. Point your browser to http://www.yourserver.com/jffnms or http://nms.yournet.com/ (depending on what you choose)
+
+	You should see the Setup screen, it should have auto-discovered your configuration.
+	Verify that everything is correct (OK, YES in green) before saving the config.
+    
+. Point your browser (again) to http://www.yourserver.com/jffnms or http://nms.yournet.com/ (depending on what you 
+choose)
+
+    Username: admin 
+    Password: admin
+
+    And now, you are inside the system.
+
+
+. You can read the manual at http://www.jffnms.org
+
+
+=========================================================================
+If you need anything, contact us at: jffnms-users@lists.sourceforge.net
+
+Thank You for trying 'Just For Fun' Network Management System
+
+Don't forget to Donate to the project if you find it useful for your work.
+=========================================================================
+
+Javier Szyszlican aka SzYsZ
+Buenos Aires, Argentina
+javier@jffnms.org (please try the mailing list first) 
+ICQ #397319

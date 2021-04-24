@@ -1,0 +1,79 @@
+﻿TOPIC
+
+LicenseDataManager
+
+SHORT DESCRIPTION
+
+LicenseDataManager is used to control how license data is associated with inventory nodes. Presence of such license data makes it possible to support automatic licensing.
+
+LONG DESCRIPTION
+
+LicenseDataManager allows for extending the vCenter Server inventory with license data associated with inventory nodes. The license data consists of VMware licensing material and takes the form of a list of {license type id, license key} pairs. The inventory nodes which can be associated with license data are individual hosts or host containers, such as clusters, datacenters and datacenter folders. Presence of such license data makes it possible to support automatic licensing when hosts are added to a particular host container entity.
+
+LicenseDataManager provides methods for retrieving, creating, modifying and removing associations between license data and inventory nodes.
+
+TYPES
+
+
+TYPE
+VMware.VimAutomation.License.Types.LicenseKeyEntry
+
+Description:
+Represents a pair of license type id and a corresponding license key.
+
+Property:
+String TypeId - The license type id.
+
+Property:
+String LicenseKey - Licensing material.
+
+
+TYPE
+VMware.VimAutomation.License.Types.LicenseData
+
+Description:
+Contains a collection of VMware.VimAutomation.License.Types.LicenseKeyEntry objects. License data can be associated with inventory nodes.
+
+Property:
+VMware.VimAutomation.License.Types.LicenseKeyEntry[] LicenseKeys - Array of (license type id, license key) pairs.
+
+
+TYPE
+VMware.VimAutomation.License.Types.EntityLicenseData
+
+Description:
+Represents an association between inventory node and license data.
+
+Property:
+VMware.Vim.ManagedObjectReference Entity - The inventory node.
+
+Property:
+VMware.VimAutomation.License.Types.LicenseData LicenseData - The license data.
+
+
+TYPE
+VMware.VimAutomation.License.Types.LicenseDataManager
+
+Description:
+Provides methods for retrieving, creating, modifying and removing associations between license data and inventory nodes.
+
+Method:
+VMware.VimAutomation.License.Types.EntityLicenseData[] QueryEntityLicenseData() - Retrieves all entity<->license data associations.
+
+Method:
+VMware.VimAutomation.License.Types.LicenseData QueryAssociatedLicenseData(VMware.Vim.ManagedObjectReference entity) - Retrieves the license data associated with the given inventory entity
+
+Method:
+System.Void UpdateAssociatedLicenseData(VMware.Vim.ManagedObjectReference entity, VMware.VimAutomation.License.Types.LicenseData licenseData) - Overwrites the license data associated with the given inventory entity.
+
+Method:
+VMware.VimAutomation.License.Types.LicenseData QueryEffectiveLicenseData(VMware.Vim.ManagedObjectReference entity) - Retrieves the merged license data associated with the given entity and its host container predecessors (in the context of the inventory).
+
+Method:
+VMware.VimAutomation.License.Types.LicenseData ApplyAssociatedLicenseData(VMware.Vim.ManagedObjectReference entity) - Applies associated license data to an entity. The license data to apply is derived using the same rules as in QueryEffectiveLicenseData(VMware.Vim.ManagedObjectReference entity). In case of host container entity, this method finds all hosts below the specified container (in the context of the inventory) and applies the license data to each of the hosts.
+
+
+Send feedback to docfeedback@vmware.com | Copyright 1998 - 2011 VMware, Inc. All rights reserved. Protected by one or more U.S. Patents listed at http://www.vmware.com/go/patents.
+
+
+

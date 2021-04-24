@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Started : Mon December 16 10:44:33 2013\n\n     Source : \\\\cmfp043\\villeneuma7$\\\nDestination : c:\\temp\\villeneuma7\n\n      Files : *.*\n              \n      Excluded Files : \n\nExcluded Directories : \n                       \n  Options: /MIR\n\n------------------------------------------------------------------------------\t\t\n\n                            8    cmfp043\\villeneuma7$\\\n               *Restart                -1        11-29-2013 timesheet.xls\n\n-------------------------------------------------------------------------------\n\n Thanks for using RoboPowerCopy!\n\nException calling \"SetLength\" with \"1\" argument(s): \"Non-negative number required.\nParameter name: value\"\nAt C:\\temp\\roboPowerCopy.ps1:3538 char:28\n+                     $writeStream.SetLength <<<< ($fiSrc.Length )\n    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException\n    + FullyQualifiedErrorId : DotNetMethodException",
+    "LastUpdatedDate": "2013-12-16T07:50:42.15-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "robopowercopy",
+    "ReportedDate": "2013-12-16T07:50:42.15-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "-1 attribute when trying to copy over a file from original location.",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1945
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

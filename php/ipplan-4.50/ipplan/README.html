@@ -1,0 +1,2844 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>IPplan - IP address management and tracking</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="docu.css"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="title"
+><A
+NAME="AEN2"
+>IPplan - IP address management and tracking</A
+></H1
+><DIV
+CLASS="revhistory"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+><TR
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+COLSPAN="3"
+><B
+>Revision History</B
+></TH
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 4.50</TD
+><TD
+ALIGN="LEFT"
+>2005-11-19</TD
+><TD
+ALIGN="LEFT"
+>Revised by: re</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 2.91</TD
+><TD
+ALIGN="LEFT"
+>2002-05-17</TD
+><TD
+ALIGN="LEFT"
+>Revised by: re</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+><DIV
+CLASS="abstract"
+><P
+></P
+><A
+NAME="AEN15"
+></A
+><P
+>IPplan is a free (GPL), web based, multilingual, IP address 
+      management and tracking tool written in 
+      <A
+HREF="http://www.php.net"
+TARGET="_top"
+>php 4</A
+>, simplifying the 
+      administration of your IP address space. IPplan goes beyond IP 
+      address management including DNS administration, configuration 
+      file management, circuit management (customizable via templates) 
+      and storing of hardware information (customizable via templates). 
+      IPplan can handle a single network or cater for multiple networks 
+      and customers with overlapping address space. See the 
+      introduction section for more.</P
+><P
+></P
+></DIV
+></DIV
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1. <A
+HREF="#intro"
+>Introduction</A
+></DT
+><DD
+><DL
+><DT
+>1.1. <A
+HREF="#copyright"
+>Copyright Information</A
+></DT
+><DT
+>1.2. <A
+HREF="#disclaimer"
+>Disclaimer</A
+></DT
+><DT
+>1.3. <A
+HREF="#newversions"
+>New Versions</A
+></DT
+><DT
+>1.4. <A
+HREF="#credits"
+>Credits</A
+></DT
+><DT
+>1.5. <A
+HREF="#feedback"
+>Feedback</A
+></DT
+><DT
+>1.6. <A
+HREF="#translations"
+>Translations</A
+></DT
+></DL
+></DD
+><DT
+>2. <A
+HREF="#requirements"
+>Requirements</A
+></DT
+><DD
+><DL
+><DT
+>2.1. <A
+HREF="#databases"
+>Databases</A
+></DT
+><DT
+>2.2. <A
+HREF="#addons"
+>Additional features</A
+></DT
+></DL
+></DD
+><DT
+>3. <A
+HREF="#installation"
+>Installation</A
+></DT
+><DD
+><DL
+><DT
+>3.1. <A
+HREF="#custom"
+>Customization</A
+></DT
+></DL
+></DD
+><DT
+>4. <A
+HREF="#downloads"
+>Downloads, bugs and forums</A
+></DT
+><DD
+><DL
+><DT
+>4.1. <A
+HREF="#screenshots"
+>Screenshots</A
+></DT
+></DL
+></DD
+><DT
+>5. <A
+HREF="#modes"
+>Mode of operation</A
+></DT
+><DD
+><DL
+><DT
+>5.1. <A
+HREF="#mode-services"
+>Services company</A
+></DT
+><DT
+>5.2. <A
+HREF="#mode-isp"
+>ISP</A
+></DT
+></DL
+></DD
+><DT
+>6. <A
+HREF="#concepts"
+>Concepts</A
+></DT
+><DD
+><DL
+><DT
+>6.1. <A
+HREF="#deployment"
+>Deployment strategy</A
+></DT
+><DT
+>6.2. <A
+HREF="#linking"
+>Linking addresses</A
+></DT
+></DL
+></DD
+><DT
+>7. <A
+HREF="#admin"
+>Administration</A
+></DT
+><DD
+><DL
+><DT
+>7.1. <A
+HREF="#admin-user"
+>Admin user</A
+></DT
+><DT
+>7.2. <A
+HREF="#customer-access"
+>Customer access</A
+></DT
+><DT
+>7.3. <A
+HREF="#subnet-access"
+>Subnet access</A
+></DT
+><DT
+>7.4. <A
+HREF="#g-a-b"
+>Group authority boundaries</A
+></DT
+></DL
+></DD
+><DT
+>8. <A
+HREF="#circuit"
+>Circuit administration, host configuration data and asset 
+    information</A
+></DT
+><DT
+>9. <A
+HREF="#file"
+>Device configuration file management</A
+></DT
+><DT
+>10. <A
+HREF="#AEN206"
+>DNS administration</A
+></DT
+><DD
+><DL
+><DT
+>10.1. <A
+HREF="#individual"
+>Automatic updating of zone records</A
+></DT
+></DL
+></DD
+><DT
+>11. <A
+HREF="#registrars"
+>Dealing with registrars</A
+></DT
+><DT
+>12. <A
+HREF="#searching"
+>Searching</A
+></DT
+><DD
+><DL
+><DT
+>12.1. <A
+HREF="#individual"
+>Searching for individual address details</A
+></DT
+><DT
+>12.2. <A
+HREF="#areas"
+>Searching areas and ranges</A
+></DT
+></DL
+></DD
+><DT
+>13. <A
+HREF="#config"
+>Config file</A
+></DT
+><DT
+>14. <A
+HREF="#import-data"
+>Importing data</A
+></DT
+><DD
+><DL
+><DT
+>14.1. <A
+HREF="#tab"
+>TAB delimited data</A
+></DT
+><DT
+>14.2. <A
+HREF="#nmap"
+>Importing using NMAP</A
+></DT
+></DL
+></DD
+><DT
+>15. <A
+HREF="#templates"
+>Templates</A
+></DT
+><DD
+><DL
+><DT
+>15.1. <A
+HREF="#iptemplates"
+>Customer, Subnet and IP address templates</A
+></DT
+><DT
+>15.2. <A
+HREF="#registrartemplates"
+>Registrar templates</A
+></DT
+></DL
+></DD
+><DT
+>16. <A
+HREF="#AEN360"
+>Triggers</A
+></DT
+><DT
+>17. <A
+HREF="#poller"
+>External command line poller</A
+></DT
+><DT
+>18. <A
+HREF="#AEN395"
+>IP address request system</A
+></DT
+><DT
+>19. <A
+HREF="#AEN401"
+>Authentication schemes</A
+></DT
+><DT
+>20. <A
+HREF="#problems"
+>Problems</A
+></DT
+><DT
+>21. <A
+HREF="#limitations"
+>Limitations</A
+></DT
+><DT
+>22. <A
+HREF="#faq"
+>Questions and Answers (FAQ)</A
+></DT
+></DL
+></DIV
+><P
+><A
+HREF="http://sourceforge.net"
+TARGET="_top"
+>http://sourceforge.net</A
+></P
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="intro"
+>1. Introduction</A
+></H2
+><P
+>IPplan is a web based, multilingual, IP address management 
+    and tracking tool based on <A
+HREF="http://www.php.net"
+TARGET="_top"
+>php 
+    4</A
+>, simplifying the administration of your IP address space. 
+    IPplan can handle a single network or cater for multiple networks 
+    with overlapping address space.</P
+><P
+>&#13;
+      Current functionality includes
+      <P
+></P
+><UL
+><LI
+><P
+>internationalization</P
+></LI
+><LI
+><P
+>importing network definitions from routing tables</P
+></LI
+><LI
+><P
+>importing definitions from TAB delimited files and 
+          <A
+HREF="http://www.insecure.org"
+TARGET="_top"
+>NMAP's</A
+> XML 
+          format</P
+></LI
+><LI
+><P
+>multiple administrators with different access profiles 
+          (per group, allowing access per customer, per network 
+          etc.)</P
+></LI
+><LI
+><P
+>define address space authority boundaries per 
+          group</P
+></LI
+><LI
+><P
+>finding free address space across a range</P
+></LI
+><LI
+><P
+>split and join networks to make them smaller and larger 
+          - ip definitions remain intact</P
+></LI
+><LI
+><P
+>display overlapping address space between 
+          networks</P
+></LI
+><LI
+><P
+>search capabilities</P
+></LI
+><LI
+><P
+>an audit log - contents before and after change is 
+          logged</P
+></LI
+><LI
+><P
+>statistics</P
+></LI
+><LI
+><P
+>keeping track of and sending SWIP/registrar 
+          information</P
+></LI
+><LI
+><P
+>DNS administration (forward and reverse zones, import 
+          existing zones via zone transfer)</P
+></LI
+><LI
+><P
+>template system to extend IPplan to contain site 
+          specific information like circuit data, host configuration 
+          data, asset information</P
+></LI
+><LI
+><P
+>device configuration file management</P
+></LI
+><LI
+><P
+>external stylesheet to change display look</P
+></LI
+><LI
+><P
+>triggers - every user event can call a user defined 
+          function - useful to execute backend DNS scripts</P
+></LI
+><LI
+><P
+>external poller - scan subnets for active addresses to 
+          gather usage statistics</P
+></LI
+><LI
+><P
+>IP address request system - allows users to request 
+          static IP addresses from the database</P
+></LI
+></UL
+>
+
+    </P
+><P
+>Two authentication methods are available - either 
+    IPplan's own internal authentication scheme, or alternatively 
+    make use of any external Apache authentication module. This 
+    includes single sign on systems like SiteMinder or your own scheme 
+    based on LDAP, or any other Apache compatible system.</P
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="copyright"
+>1.1. Copyright Information</A
+></H3
+><P
+>This document is copyrighted (c) 2002 Richard E and is 
+      distributed under the terms of the Linux Documentation Project 
+      (LDP) license, stated below.</P
+><P
+>Unless otherwise stated, Linux HOWTO documents are 
+      copyrighted by their respective authors. Linux HOWTO documents 
+      may be reproduced and distributed in whole or in part, in any 
+      medium physical or electronic, as long as this copyright notice 
+      is retained on all copies. Commercial redistribution is allowed 
+      and encouraged; however, the author would like to be notified of 
+      any such distributions.</P
+><P
+>All translations, derivative works, or aggregate works 
+      incorporating any Linux HOWTO documents must be covered under 
+      this copyright notice. That is, you may not produce a derivative 
+      work from a HOWTO and impose additional restrictions on its 
+      distribution. Exceptions to these rules may be granted under 
+      certain conditions; please contact the Linux HOWTO coordinator at 
+      the address given below.</P
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="disclaimer"
+>1.2. Disclaimer</A
+></H3
+><P
+>No liability for the contents of this documents can be 
+      accepted. Use the concepts, examples and other content at your 
+      own risk. As this is a new edition of this document, there may be 
+      errors and inaccuracies, that may of course be damaging to your 
+      system. Proceed with caution, and although this is highly 
+      unlikely, the author(s) do not take any responsibility for 
+      that.</P
+><P
+>All copyrights are held by their by their respective 
+      owners, unless specifically noted otherwise. Use of a term in 
+      this document should not be regarded as affecting the validity of 
+      any trademark or service mark.</P
+><P
+>Naming of particular products or brands should not be seen 
+      as endorsements.</P
+><DIV
+CLASS="warning"
+><P
+></P
+><TABLE
+CLASS="warning"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/warning.gif"
+HSPACE="5"
+ALT="Warning"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>It is strongly recommended to make a backup of your 
+        system before major installation or upgrades and to backup at 
+        regular intervals.</P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="newversions"
+>1.3. New Versions</A
+></H3
+><P
+>See the CHANGELOG file for more information.</P
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="credits"
+>1.4. Credits</A
+></H3
+><P
+>Thanks to <A
+HREF="http://www.vhconsultants.com"
+TARGET="_top"
+>&#13;      ValueHunt Inc.</A
+> for the use of their layout class used for 
+      rendering all HTML pages.</P
+><P
+>Thanks to <A
+HREF="http://adodb.sourceforge.net/"
+TARGET="_top"
+>&#13;      AdoDB</A
+> for the use of their generic database abstraction 
+      class.</P
+><P
+>Thanks to <A
+HREF="http://vex.sourceforge.net"
+TARGET="_top"
+>&#13;      Vex</A
+> for their Visual Editor for XML used to generate the 
+      IPplan documentation.</P
+><P
+>Thanks to <A
+HREF="http://phplayersmenu.sourceforge.net"
+TARGET="_top"
+>&#13;      The PHP Layers Menu System</A
+> for their menu system.</P
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="feedback"
+>1.5. Feedback</A
+></H3
+><P
+>Feedback is most certainly welcome for this document. 
+      Without your submissions and input, this document wouldn't 
+      exist. Please send your additions, comments and criticisms to the 
+      following email address : <CODE
+CLASS="email"
+>&#60;<A
+HREF="mailto:ipplan@gmail.com"
+>ipplan@gmail.com</A
+>&#62;</CODE
+>.</P
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="translations"
+>1.6. Translations</A
+></H3
+><P
+>See the INSTALL and TRANSLATIONS files on how to enable 
+      multilingual support and how to do a translation to your own 
+      language. Doing a translation does not require any programming 
+      experience. Current languages supported are English, Bulgarian, 
+      French - Auto Translation, German - Auto Translation, Italian - 
+      Auto Translation, Norwegian - Auto Translation, Portuguese - Auto 
+      Translation and Spanish - Auto Translation.</P
+><P
+>Bulgarian language files contributed by Nickola 
+      Kolev.</P
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="requirements"
+>2. Requirements</A
+></H2
+><P
+>IPplan requires a working web server installation. Currently 
+    the <A
+HREF="http://httpd.apache.org"
+TARGET="_top"
+>Apache</A
+> web server 
+    is preferred, but php as an ISAPI or CGI module on IIS works too - 
+    follow the appropriate installation instructions in the IPplan 
+    directory (INSTALL-IIS+MSSQL). Apache works just fine on Windows 
+    platforms too. For installing Apache on a Windows platform, follow 
+    <A
+HREF="http://httpd.apache.org/docs/windows.html"
+TARGET="_top"
+>&#13;    these</A
+> instructions. Or you can use 
+    <A
+HREF="http://www.appservnetwork.com/"
+TARGET="_top"
+>AppServ</A
+> or 
+    <A
+HREF="http://www.wampserver.com/en/index.php"
+TARGET="_top"
+>&#13;    WampServer</A
+> which are complete installation packages for 
+    Apache, MySQL and PHP for Windows - just add IPplan by following 
+    the installation instructions in the IPPLAN-WINDOWS file (part of 
+    IPPlan).</P
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="databases"
+>2.1. Databases</A
+></H3
+><P
+>IPplan requires a working database installation. The 
+      following databases currently work:</P
+><P
+></P
+><UL
+><LI
+><P
+><A
+HREF="http://www.mysql.com"
+TARGET="_top"
+>MySQL 3.23.15 or 
+          higher</A
+> (preferred)</P
+></LI
+><LI
+><P
+><A
+HREF="http://www.postgresql.org"
+TARGET="_top"
+>PostgreSQL 7.1 
+          or higher</A
+></P
+></LI
+><LI
+><P
+><A
+HREF="http://www.oracle.com"
+TARGET="_top"
+>Oracle 9i or 
+          higher</A
+> (SQL99)</P
+></LI
+><LI
+><P
+>Microsoft SQL server (both 7 and 2000)</P
+></LI
+></UL
+><P
+>The following may work, but are untested - Sybase. In fact, 
+      any database that supports SQL99 compliant joins, in particular 
+      LEFT JOIN, should work. See limitations section below for 
+      more.</P
+><P
+>The web scripting language <A
+HREF="http://www.php.net"
+TARGET="_top"
+>&#13;      php 4.1 or higher</A
+> must also be installed as a module in 
+      Apache (NOT as a cgi). Php must have the preferred database 
+      driver compiled in and enabled. See the respective web sites and 
+      installation documents for more detail. IPplan works just fine 
+      with a combination of the Apache web server and php on a Windows 
+      platform - just read the relevant installation instructions for 
+      Windows carefully.</P
+><DIV
+CLASS="tip"
+><P
+></P
+><TABLE
+CLASS="tip"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/tip.gif"
+HSPACE="5"
+ALT="Tip"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>IPplan is also known to work in a distributed, replicated 
+        MySQL environment with multiple database servers. See 
+        <A
+HREF="http://www.oreilly.com/catalog/hpmysql/chapter/ch07.pdf"
+TARGET="_top"
+>&#13;        www.oreilly.com</A
+> for more information.</P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="addons"
+>2.2. Additional features</A
+></H3
+><P
+>To enable SNMP support, you will require the 
+      <A
+HREF="http://sourceforge.net/projects/net-snmp"
+TARGET="_top"
+>&#13;      ucd-snmp</A
+> package installed and configured in your 
+      environment. This must also be activated in the php 
+      configuration. SNMP support is only required if you wish to read 
+      routing tables directly from routers.</P
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="installation"
+>3. Installation</A
+></H2
+><P
+>Follow the instructions for your platform and database in the 
+    INSTALL files in the IPplan directory.</P
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="custom"
+>3.1. Customization</A
+></H3
+><P
+>IPplan is customizable in many ways. See the sections on 
+      templates, triggers and pollers. You can also extend the menu 
+      system to include your own custom menus for other systems at your 
+      site - see the config.php file for an example.</P
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="downloads"
+>4. Downloads, bugs and forums</A
+></H2
+><P
+>You can report bugs, contribute to forums and download it 
+    <A
+HREF="http://sourceforge.net/projects/iptrack"
+TARGET="_top"
+>here</A
+> 
+    and look at the latest 
+    <A
+HREF="http://cvs.sourceforge.net/viewcvs.py/iptrack/ipplan/TODO?view=markup"
+TARGET="_top"
+>&#13;    TODO</A
+> and 
+    <A
+HREF="http://cvs.sourceforge.net/viewcvs.py/iptrack/ipplan/CHANGELOG?view=markup"
+TARGET="_top"
+>&#13;    CHANGELOG</A
+>.</P
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="screenshots"
+>4.1. Screenshots</A
+></H3
+><P
+>You can find some screen shots <A
+HREF="screenshots"
+TARGET="_top"
+>&#13;      here.</A
+></P
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="modes"
+>5. Mode of operation</A
+></H2
+><P
+>There are two modes of operation, one can be classified as a 
+    services company and the other as an ISP.</P
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="mode-services"
+>5.1. Services company</A
+></H3
+><P
+>As a services company your primary use of IPplan will be to 
+      manage individual IP address records and the address plan of one 
+      or more customers.</P
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="mode-isp"
+>5.2. ISP</A
+></H3
+><P
+>In ISP mode, you will assign blocks of IP address space to 
+      your customers. In this mode, you will not be concerned at all 
+      with individual IP address records and how the customer breaks 
+      down his assigned address space. When you operate as an ISP, you 
+      may also generate SWIP/registrar entries, which are only useful 
+      if you deal directly with ARIN or any other registrar. (SWIP is 
+      enabled in the config.php file, see ARIN 
+      <A
+HREF="http://www.arin.net/minutes/tutorials/swipit.htm"
+TARGET="_top"
+>&#13;      tutorial</A
+> for more details). All the relevant 
+      SWIP/registrar information is entered when the customer is 
+      created.</P
+><P
+>When using this mode, I suggest creating a dummy customer 
+      which holds all the allocated address space from your regional 
+      registrar (ARIN?) already broken up into the various blocks that 
+      you will eventually assign to your customers. All these blocks 
+      should be called "free" to allow them to be found using 
+      the "Find free" menu option. Once you are ready to 
+      assign a block, create a new customer with all the relevant 
+      SWIP/registrar information completed, go to your dummy customer 
+      and move a block of address space to the newly created customer, 
+      and finally generate a SWIP/registrar entry for the new block. In 
+      this mode areas and ranges are not too relevant except for the 
+      dummy customer (see concepts below). You may also need to create 
+      a template for your registrar in the templates directory. If you 
+      have done this, feel free to contribute it to IPplan.</P
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="concepts"
+>6. Concepts</A
+></H2
+><P
+>The flow of address management is based on the creation of 
+    areas, then ranges which belong to areas, and finally, subnets 
+    which belong to ranges. Actually, only subnets are required, but on 
+    large networks it makes logical sense to group the network into 
+    areas to ease administration and to reduce routing updates on the 
+    network. There is a jpeg drawing included with the distribution 
+    that graphically shows these relationships. The methodology 
+    employed borrows significantly from OSPF routing concepts which are 
+    explained more fully 
+    <A
+HREF="http://www.cisco.com/univercd/cc/td/doc/cisintwk/ito_doc/ospf.htm"
+TARGET="_top"
+>&#13;    here</A
+>.</P
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="deployment"
+>6.1. Deployment strategy</A
+></H3
+><P
+>So in a new installation, first create the areas, then 
+      create ranges adding them to areas, and finally create subnets. 
+      Searching is now a simple matter of selecting an area which will 
+      display all the ranges for the area, or selecting no area and 
+      simply selecting a range from the total list of ranges, or simply 
+      selecting a base network address.</P
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Within a customer or autonomous system, no overlaps of 
+        address space is allowed. This follows standard IP addressing 
+        rules. You can have overlapping ranges/aggregates, but the 
+        default behaviour of ranges also prevents overlaps. This can be 
+        changed in the config.php file.</P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>To handle challenges like NAT or other overlapping address 
+      space, you will be required to create multiple autonomous 
+      systems. See 'Searching' below how to see information 
+      across multiple autonomous systems.</P
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="linking"
+>6.2. Linking addresses</A
+></H3
+><P
+>IP address records can be linked together. This allows one 
+      address or multiple addresses to reference another address or 
+      addresses. Using this feature allows for the referencing of NATed 
+      addresses or having a link to a loopback address of a device. 
+      Linking is done on the IP address details page by completing the 
+      "Linked address" field. Once the field is completed, 
+      you can follow the link. The link also appears on subnet summary 
+      pages.</P
+><P
+>You can also link many addresses in one go by choosing 
+      multiple addresses in the "Select multiple addresses to do a 
+      bulk change" window, then completing the "User" 
+      field as follows:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>LNKx.x.x.x userinfo</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>The LNK identifier must be in uppercase, followed by 
+      exactly one valid IP address with no spaces, then followed by an 
+      optional space and user description. After the page is submitted, 
+      the embedded LNK will vanish.</P
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>If the destination record of a linked address does not 
+        exist, a record will automatically get created pointing back to 
+        the source address, but only if the destination subnet exists. 
+        This is to signal the "Find Next Free" address logic 
+        of the subnet that the destination address is used.</P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="admin"
+>7. Administration</A
+></H2
+><P
+>The access control is divided up into three layers and 
+    revolves around the creation of groups:</P
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="admin-user"
+>7.1. Admin user</A
+></H3
+><P
+>Firstly you will need to create users and groups using the 
+      admin user defined in the config.php script. The admin user can 
+      only be used on the admin pages. Once you are done with the admin 
+      functions, you will be required to re-authenticate as one of the 
+      newly created users as soon as you access functions on the main 
+      index page.</P
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="customer-access"
+>7.2. Customer access</A
+></H3
+><P
+>When a customer is created, a group must be assigned to the 
+      customer. This will be the customers admin group and all members 
+      of this group can create and delete both subnets, ranges, areas 
+      and individual IP address records for the customer.</P
+><P
+>When the subnet is created, the creator will choose a 
+      subnet admin group.</P
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="subnet-access"
+>7.3. Subnet access</A
+></H3
+><P
+>The users assigned to the group that has subnet access can 
+      only modify individual IP records for that subnet.</P
+><P
+>Initially I would create three groups, one group that can 
+      create customers, one group that can create subnets, areas and 
+      ranges, and another group which can only modify individual IP 
+      records. Normally in large networks the people that modify IP 
+      records are not the same people that administer routers and 
+      configure the IP address space.</P
+><P
+>If a group is set to see only a particular customer, the 
+      same group needs to be used for all operations for the customer. 
+      The side effect to this is that the users assigned to the group 
+      have full access to the customer and can make any changes to the 
+      customers data, including creating and deletion of subnets. This 
+      is not ideal and will be changed in future.</P
+><DIV
+CLASS="tip"
+><P
+></P
+><TABLE
+CLASS="tip"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/tip.gif"
+HSPACE="5"
+ALT="Tip"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Groups can be created that prevent certain users from 
+        changing an administrator defined number of reserved addresses 
+        at the start of a subnet.</P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="g-a-b"
+>7.4. Group authority boundaries</A
+></H3
+><P
+>Areas of responsibility can be assigned to a group, thus 
+      limiting what address space a group can create networks in. The 
+      default behavior allows administration anywhere. Care should be 
+      taken when using this feature as changing the boundaries at a 
+      later stage may orphan some parts of the database and yield data 
+      inaccessible.</P
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>If a user belongs to multiple groups and one of the 
+        groups does not have boundaries defined, then the user is 
+        granted all access. Thus boundaries are a sum of all the 
+        boundaries the user belongs to.</P
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="tip"
+><P
+></P
+><TABLE
+CLASS="tip"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/tip.gif"
+HSPACE="5"
+ALT="Tip"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Bounds are also useful to create users that only have 
+        read access to the IPplan information. Select the "Read 
+        Only" option when creating a new group.</P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="circuit"
+>8. Circuit administration, host configuration data and asset 
+    information</A
+></H2
+><P
+>Using the template capability IPplan can be extended to 
+    contain custom information about your site. You can add any number 
+    of custom fields for your site. See the section on 
+    "Templates" for further information.</P
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="file"
+>9. Device configuration file management</A
+></H2
+><P
+>Any number of files can be attached to individual IP records. 
+    Using this feature, configuration data (text and binary, drawings 
+    etc) for devices can be stored and managed by IPplan.</P
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="AEN206"
+>10. DNS administration</A
+></H2
+><P
+>Both forward and reverse zones can be created via the web 
+    interface. Zone domains are forward zones - there can be as many 
+    forward zones as you like per customer. Each of these can be unique 
+    or they can even overlap with other customers.</P
+><P
+><EM
+>Forward Zones:</EM
+></P
+><P
+>To create a forward zone, select a customer and select 
+    "Add a DNS zone". The next screen will allow you to enter 
+    information for the new zone. The domain name must be entered as 
+    must at least two nameservers.</P
+><P
+>At this point you have the option of creating a new zone from 
+    scratch, or importing an existing zone via a zone transfer. If you 
+    do a zone transfer, the PRIMARY or SECONDARY DNS servers must be 
+    directly contactable from the webserver on which IPplan is running. 
+    If the DNS server is not contactable an error will be 
+    returned.</P
+><P
+>If a domain is created from scratch, the domain name must be 
+    entered as must at least two upstream DNS servers. The DNS servers 
+    are automatically entered for you if the customer record (created 
+    via "Create a new customer/autonomous system") contains 
+    DNS servers. This is a good way to not have to manually add the DNS 
+    servers for each new zone created. The DNS servers can be changed 
+    and will be independent per zone created. At the bottom of the 
+    Add/Edit screen is place to enter two zone file paths. In future 
+    this can be used to determine where the zone must be saved or on 
+    what DNS server the zone must be created - currently these fields 
+    do nothing.</P
+><P
+>The next step is to add individual records to the newly 
+    created zone. Do this under the "Zone DNS records" main 
+    menu function. Select the customer, select the domain and add a 
+    host. The "Host name" refers to the left hand side of a 
+    bind zone file, then the type (A, CNAME or MX - more types in 
+    future) and the "IP/Hostname" refers to the right hand 
+    side of the zone file. In future the screen will change depending 
+    on the record type you select and more record types will be 
+    possible. The sort order determines the placement of the record in 
+    the zone and on the screen. This is a number and the default is 
+    9999 or the end of the file. If you want to insert records between 
+    other records, work out a numbering plan.</P
+><P
+>In future this will be automatic with options to "Insert 
+    before" and "Insert after". Currently you can 
+    renumber the values retaining the order of the entries.</P
+><P
+><EM
+>Reverse zones:</EM
+></P
+><P
+>To create reverse zones is very much like creating a forward 
+    zone, except that there are no detail records. All that is required 
+    is to create a starting address and mask. The actual reverse 
+    records are extracted based on the start and mask from the IP 
+    records when you create a subnet and add records to the subnet. The 
+    field used is the host name field and all invalid information in 
+    this field will be ignored with a warning.</P
+><P
+>Once your forward and reverse zones are created, each time a 
+    change is made you will be required to export the zone by clicking 
+    on the "Export zone" option. The output generated is in 
+    XML and must then be parsed using and XSLT processor into a format 
+    compatible with your DNS server.</P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+CELLSPACING="0"
+CELLPADDING="0"
+CLASS="EPIGRAPH"
+><TR
+><TD
+WIDTH="45%"
+>&nbsp;</TD
+><TD
+WIDTH="45%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+><P
+><I
+>See the DNS-USAGE file for more information.</I
+></P
+></I
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="individual"
+>10.1. Automatic updating of zone records</A
+></H3
+><P
+>IP subnet records (which equate to zone PTR records) and 
+      forward zone A records will automatically get syncronised and 
+      updated provided a number of criteria are fulfilled.</P
+><P
+>If a DNS A record is created or updated, and there is 
+      exactly one A record across all the customers zones matching one 
+      IP subnet record, then the IP record hostname field will be 
+      updated with the A record hostname field.</P
+><P
+>If an IP record hostname field is updated, then the zone A 
+      record field will be updated if there is exactly one A record 
+      matching the IP record across all the customers zones.</P
+><P
+>If an IP record hostname field is updated and a matching A 
+      record cannot be found, then an A record will automatically be 
+      created in the matching domain provided there is only one 
+      matching domain. This will only happen if the DNSAUTOCREATE 
+      setting is TRUE in config.php.</P
+><P
+>Under all the above conditions a warning message will be 
+      displayed stating that an update occured. The appropriate log 
+      entries will be made and triggers will fire.</P
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="registrars"
+>11. Dealing with registrars</A
+></H2
+><P
+>Registrars are interacted with by email. IPplan can manage 
+    all the records and manage all the fields and data required to 
+    generate the registrar updates, no matter what the registrar is 
+    (ARIN, RIPE, APNIC etc). Before these functions will work, the 
+    correct config variables need to be set - these include the 
+    MAINTAINERID, REGISTRY, REGEMAIL etc. Only users belonging to the 
+    customer admin group can send these updates. Additional fields can 
+    be added to the IPplan display pages if required, and these fields 
+    are also available to the registrar templates.</P
+><P
+>To generate updates, the required registrar template is 
+    selected. IPplan includes a limited number of templates, but these 
+    are fully customizable and simple to create and modify - see the 
+    section on "Templates" later in the manual. Once the 
+    template is selected, the fields from the database are substituted 
+    into the template file and the output is displayed on the screen. 
+    The user then selects which updates should be sent to the 
+    registrar. The selected updates are then sent via email and the 
+    date the updates were sent are recorded in the IPplan 
+    database.</P
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="searching"
+>12. Searching</A
+></H2
+><P
+>Creating a special customer called 'All' allows 
+    searching for information across all the available 
+    customer/autonomous systems using the 'Display subnet' 
+    function. This special customer can contain areas and ranges that 
+    limit the scope of searches, just like normal customers. Using this 
+    feature allows a user to see the entire network picture in one 
+    view.</P
+><DIV
+CLASS="tip"
+><P
+></P
+><TABLE
+CLASS="tip"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/tip.gif"
+HSPACE="5"
+ALT="Tip"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>When creating new subnets, it is also beneficial to create 
+      unused subnets with a a description of either 'free' or 
+      'spare'. These can be searched for at a later stage 
+      using the 'Find Free' function.</P
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="tip"
+><P
+></P
+><TABLE
+CLASS="tip"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/tip.gif"
+HSPACE="5"
+ALT="Tip"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>It may also be beneficial to give ASE (Autonomous System 
+      External, networks not local to yours) a special handle like 
+      EXTERNAL so that they can be searched for at a later stage. These 
+      networks often appear in routing tables as static routes to third 
+      parties (not via the Internet).</P
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="individual"
+>12.1. Searching for individual address details</A
+></H3
+><P
+>Searching can also be done on individual addresses using 
+      the 'Match any IP address in subnet' option of the 
+      'Display subnet information' option. This is useful for 
+      finding which networks, either for a single customer, or for all 
+      customers an IP address belongs to. Using this option makes it 
+      easy to find the offending network in a complaint situation if 
+      you are an ISP.</P
+><P
+>If matching by IP address, you will automatically jump to 
+      the IP address edit page if the search is unique and matches only 
+      one subnet from one customer. If you use the 'All' 
+      customer you will need to click on the relevant customer network 
+      you wish to work with.</P
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="areas"
+>12.2. Searching areas and ranges</A
+></H3
+><P
+>You can also create areas and ranges to search across only 
+      certain address space ranges. Areas are containers for ranges. 
+      Selecting an area that has ranges attached will search only in 
+      those ranges. Select an area and not selecting a range will 
+      search across all the ranges in the area.</P
+><P
+>Depending on what settings have been selected in the 
+      config.php file, ranges may either never overlap (the default), 
+      have overlaps within an area only, or overlap in anyway, 
+      including having duplicate ranges.</P
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Areas with no attached ranges will not display in the 
+        "Area" selection list until ranges are added to the 
+        area. Areas with no ranges yeild no search results.</P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="config"
+>13. Config file</A
+></H2
+><P
+>A a number of settings that can be changed in the config.php 
+    file. These include the database connection information, admin user 
+    and password, and the number of lines displayed in tables. See the 
+    comments in the config.php file for more details.</P
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="import-data"
+>14. Importing data</A
+></H2
+><P
+>Data can be imported by the admin user via TAB delimited text 
+    files or from output generated in XML format by 
+    <A
+HREF="http://www.insecure.org"
+TARGET="_top"
+>NMAP</A
+>.</P
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="tab"
+>14.1. TAB delimited data</A
+></H3
+><P
+>Network definitions or individual ip records can be 
+      imported in TAB delimited format.</P
+><P
+>The order of columns for network definitions or subnet 
+      descriptions are (three columns required): The first column 
+      contains the IP base address, the second the description and the 
+      third the mask either in dotted decimal format or in bit 
+      format.</P
+><P
+>The order of columns for importing IP records should be 
+      (six columns required): The first column contains the IP address, 
+      the second the user, the third the location, the fourth the 
+      description, the fifth the hostname and the sixth the telephone 
+      number.</P
+><P
+>If you have more than six columns, the remaining columns 
+      will be entered into the user defined fields specified in the 
+      template. The order will be the order the fields are defined in 
+      the XML template file.</P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+CELLSPACING="0"
+CELLPADDING="0"
+CLASS="EPIGRAPH"
+><TR
+><TD
+WIDTH="45%"
+>&nbsp;</TD
+><TD
+WIDTH="45%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+><P
+><I
+>See the templates section for details on how the 
+        templates work.</I
+></P
+></I
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="nmap"
+>14.2. Importing using NMAP</A
+></H3
+><P
+>A typical application for this would be to obtain data for 
+      networks that there are no records for. NMAP would be used to 
+      obtain the host info of all the addresses that are active on the 
+      network. Once this is done, the data can be read into IPplan. The 
+      NMAP parameters required by IPplan to generate a valid import 
+      file are:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+> -sP -oX output.xml</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>To speed up the process, you can add -n to not resolve host 
+      names. The import process also understands the -O operating 
+      system detection parameter. To use -O, you will need to drop the 
+      -sP parameter. Using -O increases scanning time 
+      significantly.</P
+><P
+>As of version 3.93 of nmap, the -sP option also returns the 
+      MAC address which will be recorded in the MAC address field of 
+      the subnet IP record. MAC addresses only appear if the scan was 
+      done using root user - thus the MAC address will not appear if 
+      nmap was executed through php and the webserver. You can set the 
+      S bit on the nmap binary, but this is not advised due to security 
+      concerns.</P
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="templates"
+>15. Templates</A
+></H2
+><P
+>Various forms of templates are available. These include 
+    templates that add additional, custom fields to the IPplan display 
+    pages (different templates can be added to the customer, subnet and 
+    ip address record pages), and templates that then munipulate the 
+    data contained in the IPplan databases to generate output for 
+    various registrars. All of these templates are fully administrator 
+    customizable with display fields added to customer and subnet pages 
+    automatically available in output templates used to generate 
+    registrar updates.</P
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="iptemplates"
+>15.1. Customer, Subnet and IP address templates</A
+></H3
+><P
+>The administrator can define a custom template in IPplan to 
+      allow the addition of as many custom fields to the customer, 
+      subnet and ip address record pages as the administrator wishes. 
+      This functionality allows flexibility in the way data is added to 
+      the database. Some uses for these templates include tracking 
+      asset information or WAN circuit information, the management of 
+      DHCP address space, dealing with additional and ever changing 
+      registrar requirements.</P
+><P
+>As mentioned there are different template files for the 
+      customer, subnet and IP address pages. The template for each of 
+      these pages has a different name:</P
+><P
+><CODE
+CLASS="varname"
+>Customer pages - custtemplate.xml</CODE
+></P
+><P
+><CODE
+CLASS="varname"
+>Subnet pages - basetemplate.xml</CODE
+></P
+><P
+><CODE
+CLASS="varname"
+>IP address pages - iptemplate.xml</CODE
+></P
+><P
+><CODE
+CLASS="varname"
+>IP address pages (network address) - 
+      iptemplate-network.xml</CODE
+></P
+><P
+>A sample template called iptemplate.xml.sample can be found 
+      in the /ipplan/user directory.</P
+><P
+>If a template called called iptemplate-network.xml exists, 
+      then this template will be used for network addresses (the first 
+      address of the subnet). This is useful to define subnet wide 
+      information like VLAN id's, telco line numbers, router 
+      configurations etc. If the iptemplate-network.xml does not exist, 
+      then the iptemplate.xml template will be used for network 
+      addresses.</P
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="format"
+>15.1.1. Format of Customer, Subnet and IP address template 
+        files</A
+></H4
+><P
+>The templates are well formed XML files with a .xml 
+        extension and should be stored in the /ipplan/users 
+        directory.</P
+><P
+>The standard iptemplate.xml file adds a free form text 
+        field to all the ip address record pages and has this 
+        definition:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>&#60;?xml version="1.0" ?&#62;
+&#60;TEMPLATE&#62;
+    &#60;FIELD&#62;
+     &#60;DEFINITION NAME="info" DESCRIP="Additional information" TYPE="T" MAXLENGTH="10000" SIZE="80" ROWS="10" REGEX="" ERRMSG="Invalid field: Additional information" /&#62;
+    &#60;/FIELD&#62;
+&#60;/TEMPLATE&#62;</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>A field definition to add a select drop down list:</P
+><P
+>&#13;
+          <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>    &#60;FIELD&#62;
+     &#60;DEFINITION NAME="select" TYPE="S" DESCRIP="This is select list with two options" DEFAULT="2"&#62;
+       &#60;SELECT OPTION="Option 1" VAL="1" /&#62;
+       &#60;SELECT OPTION="Option 2" VAL="2" /&#62;
+     &#60;/DEFINITION&#62;
+    &#60;/FIELD&#62;</PRE
+></FONT
+></TD
+></TR
+></TABLE
+>
+        </P
+><P
+>The template file must be surrounded with 
+        &#60;TEMPLATE&#62; statements. Note that XML tags are case 
+        sensitive and must match as per the example. Each field is 
+        contained in a &#60;FIELD&#62;&#60;/FIELD&#62; statement. Each 
+        field must have exactly one &#60;DEFINITION&#62; line. Any line 
+        with an error will be silently ignore! The following are valid 
+        for a definition:</P
+><P
+><CODE
+CLASS="varname"
+>NAME</CODE
+></P
+><P
+>This is the field name used internally to track the names 
+        of the variables. Can contain letters and numbers only - no 
+        spaces or anything else.</P
+><P
+><CODE
+CLASS="varname"
+>DESCRIP</CODE
+></P
+><P
+>This is the description that will be displayed above the 
+        field.</P
+><P
+><CODE
+CLASS="varname"
+>TYPE</CODE
+></P
+><P
+>This is the type of the field. C for a character field 
+        and T for a memo or multi-line field, S for a select drop down 
+        list.</P
+><P
+><CODE
+CLASS="varname"
+>DEFAULT</CODE
+></P
+><P
+>The default value for the field the first time the field 
+        is completed.</P
+><P
+><CODE
+CLASS="varname"
+>MAXLENGTH</CODE
+></P
+><P
+>This is the maximum number of characters a field can 
+        consist of.</P
+><P
+><CODE
+CLASS="varname"
+>SIZE</CODE
+></P
+><P
+>This is the display length of the field on the screen - 
+        if SIZE is less than MAXLENGTH, the field will scroll. SIZE may 
+        not be more than MAXLENGTH.</P
+><P
+><CODE
+CLASS="varname"
+>ROWS</CODE
+></P
+><P
+>This is the number of rows to display on the screen - 
+        only valid for text or multi-line fields.</P
+><P
+><CODE
+CLASS="varname"
+>REGEX</CODE
+></P
+><P
+>This is a regular expression to test validity of the 
+        entered information. To test a field, use ^ and $ to signify 
+        the start and end of the field, so something like</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>^[a-zA-Z0-9]$</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>ensures that the field only contains numbers and letters. 
+        See http://regexlib.com/ for more on regular 
+        expressions.</P
+><P
+>Regular expressions are PERL compatible and use a / 
+        character as the delimiter, thus if you want to match on a /, 
+        you will need to escape the /. So to match a letter, / and a 
+        number, this is the expression</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>^[a-zA-Z\/0-9]$</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>Regular expression | can be used for multiple matches. 
+        Thus the following will match a field or a blank entry</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>^[a-zA-Z\/0-9]$|^$</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+><CODE
+CLASS="varname"
+>ERRMSG</CODE
+></P
+><P
+>This is the error message that is displayed if the 
+        regular expression match fails.</P
+><P
+><EM
+>Default template:</EM
+></P
+><P
+>The default template contains one field which is the 
+        "Additional information" field of older versions of 
+        IPplan. If you do not want this field, change the template or 
+        delete the template entirely.</P
+><P
+><EM
+>Template rules:</EM
+></P
+><P
+>If you delete the template all fields will vanish and 
+        cannot be accessed. IP records that have been completed with 
+        fields from a template will not be lost, but records that do 
+        not have template fields cannot have template fields added 
+        until the template is either restored or similar fields are 
+        added.</P
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Deleting fields from a template results in existing 
+          fields in the database with template data using a default 
+          field definition. The data is not lost. It is not a good idea 
+          to modify or change the template on a production system. Plan 
+          the template fields carefully before implementing.</P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="registrartemplates"
+>15.2. Registrar templates</A
+></H3
+><P
+>Templates for sending information to registrars should be 
+      well formed XML stylesheets. See the existing templates in the 
+      /ipplan/templates directory for examples. Currently only 
+      the</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>&#60;xsl:value-of select="variable"/&#62;</PRE
+></FONT
+></TD
+></TR
+></TABLE
+><P
+>tag is understood and all other XML tags are stripped, thus 
+      only variable substitution is done. This is to prevent requiring 
+      the XSLT php library to be compiled in. In future XML stylesheets 
+      will be supported in full.</P
+><P
+>There are a number of special variables available during 
+      the registrar output process which are defined in the config.php 
+      file:</P
+><P
+>&#13;
+        <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>source      -&#62; the REGISTRY config setting
+maint       -&#62; the MAINTAINERID config setting
+regid       -&#62; the REGID config setting
+password    -&#62; the REGPASS config setting
+date        -&#62; todays date in UTC format</PRE
+></FONT
+></TD
+></TR
+></TABLE
+>
+      </P
+><P
+>in addition to the standard customer page variables:</P
+><P
+>&#13;
+        <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>ntsnum      -&#62; starting of IP address range
+ntenum      -&#62; end of IP address range
+ntname      -&#62; network name as defined in the
+               subnet description field
+DNS:
+hname1      -&#62; DNS hostname 1
+ipaddr1     -&#62; Primary DNS server
+hname2      -&#62; DNS hostname 2
+ipaddr2     -&#62; Secondary DNS server
+hname3      -&#62; DNS hostname 3
+ipaddr3     -&#62; Third DNS server
+   .
+   .
+   .
+hname10     -&#62; DNS hostname 10
+ipaddr10    -&#62; Thenth DNS server
+
+Contact:
+org         -&#62; Organization
+street      -&#62; Street
+city        -&#62; City
+state       -&#62; State
+zipcode     -&#62; Zip code/Postal code
+country     -&#62; Two letter country code
+
+Technical contact:
+nichandl    -&#62; Nickname/handle
+lname       -&#62; Lastname
+fname       -&#62; Firstname
+mname       -&#62; Middle name
+torg        -&#62; Organization
+tstreet     -&#62; Street
+tcity       -&#62; City
+tstate      -&#62; State
+tzipcode    -&#62; Zip code/Postal code
+tcntry      -&#62; Two letter country code
+phne        -&#62; Phone number
+mbox        -&#62; Email address</PRE
+></FONT
+></TD
+></TR
+></TABLE
+>
+      </P
+><P
+>Plus any variables defined in a customer template 
+      (custtemplate.xml) and also the subnet template 
+      (basetemplate.xml) as described above will also be available. The 
+      names of the variables will be the same as defined in the 
+      customer template.</P
+><P
+>Thus the following basetemplate.xml file:</P
+><P
+>&#13;
+        <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>&#60;?xml version="1.0" ?&#62;
+&#60;TEMPLATE&#62;
+    &#60;FIELD&#62;
+     &#60;DEFINITION NAME="remarks" DESCRIP="Remarks" TYPE="C" MAXLENGTH="100" SIZE="100" ROWS="1" REGEX="" ERRMSG="RIPE remarks" /&#62;
+    &#60;/FIELD&#62;
+&#60;/TEMPLATE&#62;</PRE
+></FONT
+></TD
+></TR
+></TABLE
+>
+      </P
+><P
+>will provide the following additional variable to the 
+      registrar template</P
+><P
+>&#13;
+        <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>remarks        -&#62; Remarks field for subnet</PRE
+></FONT
+></TD
+></TR
+></TABLE
+>
+      </P
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>If there are duplicate variable names defined, the 
+        variables in the basetemplate.xml file, then the 
+        custtemplate.xml file appearing in the "Additional 
+        information" section of the customer and subnet 
+        administration pages will have precedence over any standard 
+        variables.</P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+></P
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="AEN360"
+>16. Triggers</A
+></H2
+><P
+>Every database event (create a customer, update an ip record, 
+    export a DNS zone file etc) in IPplan can trigger an external user 
+    defined function or script. This is useful to update and external 
+    system like a DNS server once something in IPplan has 
+    changed.</P
+><P
+>You will be required to write your own custom script to do 
+    the required action. This script will be called from the 
+    user_trigger() function in the ipplanlib.php script. See the 
+    comments of this function for more details.</P
+><TABLE
+BORDER="0"
+WIDTH="100%"
+CELLSPACING="0"
+CELLPADDING="0"
+CLASS="EPIGRAPH"
+><TR
+><TD
+WIDTH="45%"
+>&nbsp;</TD
+><TD
+WIDTH="45%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+><P
+><I
+>A list of all the IPplan triggers and what information is 
+      passed to the user_trigger() function can be found in the 
+      TRIGGERS file.</I
+></P
+></I
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="poller"
+>17. External command line poller</A
+></H2
+><P
+>The poller allows you to periodically scan subnets for 
+    addresses that are active on the network. This information is then 
+    logged in the IPplan database and will appear on the display subnet 
+    page. You can find the poller script in the IPplan contrib 
+    directory.</P
+><P
+>The scans are done using nmap, thus large networks can be 
+    scanned rapidly. Subnets that are to be scanned get entered into a 
+    plain text file, so maintenance is easy. Polling can be automated 
+    by adding the poller to cron.</P
+><P
+>Firstly, you will need to create a file containing a list of 
+    networks/addresses that you would like to poll. The file is a text 
+    file with one address per line in the any format that the nmap 
+    command understands (type nmap -h for more info).</P
+><P
+>&#13;
+      <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>10.10.10.0/24 
+10.10.11.* 
+10.12.12.1</PRE
+></FONT
+></TD
+></TR
+></TABLE
+>
+    </P
+><P
+>Once you have created your file you will need to make sure 
+    the poller is configured correctly. Edit the poller file and change 
+    the path at the top to the correct place where the command line php 
+    can be found on your system.</P
+><P
+>You can find the location by typing</P
+><P
+>&#13;
+      <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>which php</PRE
+></FONT
+></TD
+></TR
+></TABLE
+>
+    </P
+><P
+>Next make sure that nmap can be found. Type</P
+><P
+>&#13;
+      <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>which nmap</PRE
+></FONT
+></TD
+></TR
+></TABLE
+>
+    </P
+><P
+>and either update the NMAP statement in the IPplan config.php 
+    file, or uncomment the NMAP define at the top of ipplan-poller.php 
+    and update to reflect the correct path to nmap. This define will 
+    override whatever is in config.php allowing a different NMAP to be 
+    used. You may also leave config.php blank to prevent scanning from 
+    within the IPplan web frontend.</P
+><P
+>Now run the ipplan-poller.php file with the -d option, or 
+    navigate to the admin-&#62;maintenance page. This will dump a list 
+    of customers and customer id's. You need to find the id of the 
+    customer you want to update:</P
+><P
+>&#13;
+      <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>php -q ipplan-poller.php -d</PRE
+></FONT
+></TD
+></TR
+></TABLE
+>
+    </P
+><P
+>&#13;
+      <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>ID      Description
+2       Test
+46      Test customer
+47      Test customer 2</PRE
+></FONT
+></TD
+></TR
+></TABLE
+>
+    </P
+><P
+>Finally run the poller again with the correct command line 
+    (assuming you want to update the customer called "Test 
+    customer" which has id 46):</P
+><P
+>&#13;
+      <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>php -q ipplan-poller.php -c 46 -f nmap.list</PRE
+></FONT
+></TD
+></TR
+></TABLE
+>
+    </P
+><P
+>If the configuration is correct and there are no errors, 
+    there should be no output - the database is updated silently in the 
+    background. Any address that was successfully polled will now have 
+    a key in the "Pol" column on the IPplan display 
+    pages.</P
+><P
+>&#13;
+      <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><FONT
+COLOR="#000000"
+><PRE
+CLASS="programlisting"
+>D polled today 
+W polled within last week 
+M last month 
+Y last year</PRE
+></FONT
+></TD
+></TR
+></TABLE
+>
+    </P
+><P
+>You can now add the above line to cron to scan certain 
+    subnets periodically.</P
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Security: You should use a different user and password to 
+      access the database using the command line poller. I suggest 
+      creating a user that can only SELECT, UPDATE and INSERT into the 
+      ipaddr table, and SELECT from the base and customer tables. See 
+      your database administrator or manual for more details.</P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="AEN395"
+>18. IP address request system</A
+></H2
+><P
+>IPplan has a request feature whereby users can request 
+    individual IP addresses by completing a form. This form is then 
+    submitted into the IPplan database and via email to an 
+    administrator or help desk account for processing. When the 
+    administrator processes the request, all outstanding requests for a 
+    particular customer/AS will appear on the IP address modify screen. 
+    The administrator picks the relevant address from the list and all 
+    the fields are automatically completed with the request details. 
+    The administrator can then change some of the fields details before 
+    submitting. When the form is submitted, the request is 
+    deleted.</P
+><P
+>Up to 100 outstanding requests can be active at one time 
+    (this is configurable by changing a variable at the start of the 
+    requestip.php script). This is to prevent denial of service on the 
+    database as the request page is not authenticated. Excess junk 
+    requests can be cleared via an admin only option on the maintenance 
+    page.</P
+><P
+>Request email addresses are set in the config file. The list 
+    of visible customers/AS's that addresses can be requested for 
+    are also set via config options. The default is that addresses can 
+    be requested for all customers.</P
+><P
+>The request page also has the top menu structure disabled by 
+    default (this can be enabled by changing a variable at the start of 
+    the requestip.php script). Disabling the menu allows the page to be 
+    used as a generic request page on a sites intranet server without 
+    confusing regular users with menu options they cannot use or 
+    access.</P
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="AEN401"
+>19. Authentication schemes</A
+></H2
+><P
+>IPplan supports either its own internal authentication 
+    scheme, or an external scheme based on the Apache webservers 
+    authentication modules. To use an external scheme, change the 
+    setting in the config.php file. Next, place the relevant .htaccess 
+    file in the IPplan user subdirectory (/ipplan/user). Do not place 
+    an equivalent file in the admin subdirectory as the admin account 
+    cannot be overridden.</P
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>When using the external authentication method, IPplan never 
+      prompts for a userid and password. It is the responsibility of 
+      the external module to do the prompting, if any. IPplan uses the 
+      credentials supplied and matches them to the IPplan userid 
+      records to determine if access should be granted.</P
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="important"
+><P
+></P
+><TABLE
+CLASS="important"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/important.gif"
+HSPACE="5"
+ALT="Important"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>The relevant users requiring access to IPplan must still be 
+      created via the IPplan admin interface, but no password 
+      information is required as this is overridden by the external 
+      authenticator.</P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>If the user is removed from the external authenticators 
+    database (ldap, radius etc), the user will no longer be able to log 
+    in to IPplan even if the account still exists in IPplan. This 
+    scheme only handles single signon and password changes, not single 
+    point of administration.</P
+><P
+>Make sure that the external authenticator only returns the 
+    userid in the php REMOTE_USER variable. Ldap (or auth_ldap) by 
+    default will return the entire DN, but this can be configured to 
+    return only the userid. Read the instructions in config.php 
+    carefully for debug tips.</P
+><P
+>External authentication was tested against SiteMinder and the 
+    Apache <A
+HREF="http://www.rudedog.org/auth_ldap/"
+TARGET="_top"
+>&#13;    auth_ldap</A
+> module.</P
+><DIV
+CLASS="warning"
+><P
+></P
+><TABLE
+CLASS="warning"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="images/warning.gif"
+HSPACE="5"
+ALT="Warning"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+><EM
+>THE HTTP BASIC AUTHENTICATION SCHEME DOES NOT 
+      ENCRYPT USER-IDS AND PASSWORDS TRANSMITTED TO THE WEBSERVER - IT 
+      IS RECOMMENDED THAT IPPLAN IS INSTALLED ON AN SSL PROTECTED 
+      WEBSERVER ON PRODUCTION SYSTEMS.</EM
+></P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="problems"
+>20. Problems</A
+></H2
+><P
+></P
+><UL
+><LI
+><P
+>PHP's IP management functions and binary arithmetic 
+        functions are seriously broken (see 
+        <A
+HREF="http://www.php.net/bugs.php?id=10924"
+TARGET="_top"
+>bug</A
+> 
+        report logged) Due to this limitation, the biggest subnet that 
+        can be created is limited to 254k hosts.</P
+></LI
+><LI
+><P
+>This brokenness also prevents the use of the ip2long() 
+        and long2ip() functions introduced with php 4.x. I have used 
+        php only functions called inet_aton() and inet_ntoa().</P
+></LI
+><LI
+><P
+>SNMP appears to be broken on Redhat 7.2 systems. Try 
+        following these 
+        <A
+HREF="https://sourceforge.net/forum/forum.php?thread_id=627391&#38;forum_id=101033"
+TARGET="_top"
+>&#13;        instructions</A
+> for help.</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="limitations"
+>21. Limitations</A
+></H2
+><P
+></P
+><UL
+><LI
+><P
+>Due to the authentication scheme used, only the Apache 
+        web server is supported currently. PHP installed under IIS as a 
+        cgi is reported to work too.</P
+></LI
+><LI
+><P
+>IPplan can be run with php configured for safe_mode=on 
+        and register_globals=off.</P
+></LI
+><LI
+><P
+>IPplan was developed using MySQL as a database. Using 
+        other databases require workarounds for some functionality 
+        which is not optimal. During my own tests, speed was visibly 
+        faster using MySQL.</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="faq"
+>22. Questions and Answers (FAQ)</A
+></H2
+><P
+><EM
+>Check the forums on SourceForge 
+    too.</EM
+></P
+><P
+>The FAQ is no longer maintained in the manual - check online 
+    at the <A
+HREF="http://iptrack.sourceforge.net"
+TARGET="_top"
+>IPplan 
+    homepage</A
+>.</P
+></DIV
+></DIV
+></BODY
+></HTML
+>

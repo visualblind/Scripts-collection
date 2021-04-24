@@ -1,0 +1,5 @@
+for /L %i in (0) do curl -1 -I https://sysinfo.io/
+
+for /L %i in (0) do curl https://sysinfo.io/
+
+for /L %i in (0) do curl -1 -I https://sysinfo.io/wp-content/uploads/2016/08/150px-Lulz_Security.svg_.png

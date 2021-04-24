@@ -1,0 +1,4 @@
+Import-Module PSWindowsUpdate
+Get-WUInstall -AcceptAll 
+
+%SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe

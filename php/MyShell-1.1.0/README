@@ -1,0 +1,272 @@
+README for MyShell
+(c)2001 Alejandro Vasquez <admin@digitart.net>
+http://www.digitart.net
+Licensed under the GNU GPL. See the file LICENSE for details.
+
+based on phpShell by Martin Geisler <gimpster@gimpster.com>
+
+What is MyShell?
+------------------
+MyShell is a shell wrapped in a PHP script. It's a tool you can use
+to execute arbiritary shell-commands or browse the filesystem on your
+remote webserver. This replaces, to a degree, a normal telnet-connection.
+You can use it for transferring your site as a compressed file, and
+then unpack it on the webserver, administration and maintenance of
+your website using commands like ps, free, du, df etc...
+
+It includes a built-in password protection system that restrict access
+to the application and a built-in file editor to allow you to edit and
+create files directly from MyShell.
+ 
+
+Limitations
+-----------
+There are some limitations on what kind of programs you can run. It
+won't do no good if you start something like Netscape or even vi. All
+programs have to be strictly command-line programs, and they will have
+no chance of getting user input after they have been lunched. They
+properly also have to terminate or give some text response within 30 
+seconds, as this is the default time-limit imposed unto all PHP-scripts,
+to prevent them from running in an infinite loop.
+Your ISP may have set this time-limit to something else.
+
+Features
+--------
+You can rely on all the normal shell-functionality, like pipes,
+output and input redirection, etc ... (There is no <tab>-completion, though :-)
+
+You can use cd command to change directories, but at the moment you
+have to execute it without pipes and any other commands on the same line. i.e.:
+"cd /home | ls -l" won't work but "cd /home" and then "ls -l" will kork fine.
+
+You also can read online manuals using the "man" command and get meaningfull text
+without unredeable control chars.
+
+
+Protect yourself from MyShell
+-----------------------------
+Being able to reveal contents of directories and files, and run commands
+directly on the server, this is a potentialy hazardous application
+that could challenge your data security.
+
+In order to get some sort of protection against this, MyShell has a
+simple but effective built in password protection that even sends you
+a warning email if someone is trying to log in with a wrong password/username.
+If you prefer, you can use .htaccess to restrict access to MyShell and turn
+off the built in password protection.
+The point here is that you should never install MyShell in your server 
+without some kind of access restriction.
+
+Being a monolithic application -an application integrated in only one file-,
+you can rename the `shell.php' file to any name you want, and MyShell
+will remain fully operative despite it's file name. This way you'll prevent
+some malicious search for the explicit `shell.php' file on your system.
+
+You can also prevent MyShell to change to directories above some directory
+level i.e.: /home/userdirectory/. This is intended to be a System Admin 
+friendly option. Let's face it. If you are a Sys Admin and host users on your 
+server, you'll not allow them to install MyShell and be able to snoop arround 
+your system without a bash_log trace. With this feature, you can let them 
+use MyShell on their own websites as long as they keep this option restricted 
+to their own directory. Maybe this can even replace the need of grant them 
+sell access using telnet or ssh.
+
+In the other hand, if you are being hosted by someone else, it would be nice
+and polite to restrict access to your own directory. After all, you don't want
+your own security being challenged because someone else fails to prevent a
+lamer to snoop on your files using an unprotected MyShell, so start by
+yourself. After all, if you don't have access to system files it's because
+you don't need them in your day to day website administration. 
+
+In any of the above circumstances, you are the only responsable of the use or
+missuse you do of MyShell. 
+We do not accept any direct or implied responsability of any kind on how 
+MyShell is used or installed on your system, so in this matter I'm affraid you
+are left alone by your own.
+For more details on the subject please read the LICENSE file included in this
+distribution.
+
+Who am I?
+---------
+You may not be the same user, as when you upload your files with
+ftp. On some systems you will be nobody, on other systems you will
+become httpd. This is a rather dangerous "feature" of MyShell! So
+use it at your own risk - We wont be responsible if your account gets
+locked or something like that happens.
+To find out who you are just type whoami
+
+
+How to use it
+-------------
+When you point your browser to MyShell and type in your password
+(see the file INSTALL for more information on how to password-protect
+MyShell), you'll be presented with a rather simple page emulating
+a terminal for telnet (at some extent). It has the following elements:
+
+
+The current working directory:
+  This is the directory where all commands are being executed. You can
+  use the dropdown-box down the page near the command input to choose 
+  a new working directory or use cd command to change the current working 
+  directory i.e.: "cd /home/mydir/www" in the Command Input box.
+  To quickly jump towards the root of the filesystem, just click on
+  one of the links on the top to jump to that directory.
+
+The Output
+  Here goes the output from your commands. You will be able to scroll
+  through the box if the output is to large to fit inside.
+  
+  In normal conditions, only output to stdout goes into the Output 
+  box. This can be rather confusing, because then sometimes you just 
+  don't get any output.
+  
+  If you select left enabled "auto stderr trap" when configuring shell.php  
+  file, you will get output even if your command repororts an error to stderr 
+  so you'll get output most of the time.
+  
+  Anyway, to achive this MyShell has to execute the faulty command twice
+  in case of error, the first time, the usual way, to detect the error and 
+  the second one to get the error message using the workarround designed 
+  by Martin Geisler:
+  
+  <command> 1> /tmp/output.txt 2>&1; cat /tmp/output.txt; rm /tmp/output.txt
+
+  It is done by simply appending the arguments to your command. It
+  redirects all output from your command to a file, both stdout and
+  stderr. It then shows the file, and cleans things up when
+  finished. It's quick and dirty, and will only work if you haven't
+  already redirected the output.
+  
+  Most of the time this double execution of faulty commands should not be
+  a problem, anyway you can turn "auto stderr trap" off and select to use
+  it or not at your own will using a checkbox near the "Go!" button that
+  appears when you turn it off.
+  
+
+The Command Input box:
+  Here you can type a command, and when you press ENTER or the "Go!" button
+  the command will be executed in the current working directory.
+  You'll discover that most of the time you can work as fast as in any
+  console application because every time the page reloads this input box
+  is autmaticly selected and ready to recive your typing.
+  
+The Echo Checkbox
+  Sometimes it's usefull to know what command you've just typed in, 
+  specially if you've just recived an error from your last command.
+  By default this checkbox is off, but once tou select to turn it on, 
+  it will keep on for the rest of the session -until you close your 
+  browser screen- or until you check it off again.
+  
+Cols and Rows
+  Some commands produce wider results, i.e.: `ls -l' on directories with
+  files with long file names.
+  You can change on the fly the width and height of the Output Box to suit
+  your needs just typing the number of columns or rows required.
+  This change will keep on for the rest of the session -until you close
+  your browser screen- or untill you change them again.
+  If you want to recover the defaults cols and rows defined on the 
+  shell.php file just let the fields blank and for the next command they'll
+  recover the default sizes.
+  
+Built-in File Editor
+  You can invoke the MyShell's built-in File Editor using the command
+  you defined when installing MyShell. It defaults to "edit", so in
+  order to invoke File Editor to edit a file called myfile.htm you 
+  should type:
+             edit myfile.htm
+  This will open the file's content into the Output box where you can
+  start editing.
+  On the top of the page, you'll find the file's path and info like
+  owner and permissions. Use this information to prevent what will 
+  happen when you'll try to save the edited file.
+  You can also invoke editor with a nonexisting file or even without
+  defining a file's name, i.e.:
+             edit nonexistingfile.php
+  In such case, instead of the file's info you'll get a NEW FILE report.
+  Just below the Output Box where you edit the file's contents, there 
+  are four buttons:
+  
+  Save: This will save the file with the name defined in the 
+        "Save file as: " box below, and will resume the File Editor 
+        ready to continue editing.
+        CAUTION: There's not any warning if a file is going to be
+        overwrited and certanly there's no messages like 
+        'are you shure you want to...?'. I asume you know what you are
+        doing.
+        
+  Save and Exit: This will save the file much in the same way of Save
+        but will exit the File Editor to get back to the standar MyShell.
+        
+  Restore Original: This let you recover the original file using
+        a mere type='restore' button function.
+        
+  Cancel/Exit: You can exit the File Editor using this button. Bear in
+        mind that this will make you loose any changes you haven't saved
+        at the moment, and that there's no warning about this.
+        MyShell is a model of obedience. When you say exit, it just do it.
+        Wouldn't be great your girl or boyfriend behaves like this? :-)
+        
+  The Command Input box: You'll find that even though you are running
+  the editor, you are able to see and use the Command Input Box. Actually
+  you can use it as the fastest way to get back to MyShell and exit from the
+  file editor. Just type any command, hit Enter, and MyShell will execute 
+  it exiting inmediatly from the File Editor (unless you type the file 
+  editor's invoking command in which case File Editor will restart).
+  To keep using over and over again the File Editor, keep this box blank,
+  otherwise File Editor will exit without saving no matter if you clicked any
+  of the Save buttons or simply hited the Enter key.
+  
+  The File Name Box: Below the Comand Input Box, there's a box with
+  the name of the file being edited. This is the file name the File Editor
+  will use the next time you'll try to save your edited file. If you want to
+  save the file over its previous version, then leave it as it is.
+  In case you want to save it with a different name, or give it a brand
+  new name -in case of new files-, you should change it before clicking over
+  any of the Save buttons.
+  
+  Errors while Saving: If you try to save the file over a file or directory
+  in wich you don't have permissions, or into a filesystem with no file space left,
+  etc. you'll recive an error report in the Output Box.
+  To recover your recent changes, step back using the back button in your browser
+  and try to save the file with another name or in another directory/filesystem
+  using the File Name Box.
+  
+  
+
+Download
+--------
+You can download PHP Shell from http://www.digitart.net/php/myshell. 
+The MyShell-x.x.x.tar.gz distribution file contains these files:
+
+shell.php
+  This is the script you run when you use MyShell. You can rename it
+  for your final installation.
+
+ChangeLog
+  This file describe the changes We've made to MyShell. By reading it
+  you'll always know when We've added a new feature or made a bugfix,
+  and the nature of the feature/bugfix.
+
+README
+  (This file:-)
+
+INSTALL
+  Tells you how to install MyShell. It explains how you can
+  password-protect MyShell - this is very important, or else
+  everybody will be able so snoop into your files and perhaps also be
+  able to delete them! Please take the time to read it carefully.
+
+sample.htaccess
+  MyShell has a built in password-protect access that doesn't need
+  any extra file in order to ask you for your username and password.
+  
+  Anyhow, if you prefer to use .htaccess to password-protect MyShell,
+  we've include this template for a .htaccess-file. 
+  If you set this up correctly Apache will prompt you for a username 
+  and password when you try to access the directory containing 
+  MyShell.
+  
+  These file are not required if you use the built in password protection.
+
+LICENSE
+  Standard GNU disclamer.

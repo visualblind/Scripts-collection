@@ -1,0 +1,26 @@
+<ComponentDescriptor>
+  <Name>VMware.VimAutomation.Cloud.Commands</Name>
+  <Assembly>VMware.VimAutomation.Cloud.Commands</Assembly>
+  <ImplementingType>VMware.VimAutomation.Cloud.Commands.CICmdletsComponentImpl</ImplementingType>
+  <IsSnapin>true</IsSnapin>
+  <ProvidedServiceList>
+  </ProvidedServiceList>
+  <RequiredServiceList>
+    <ServiceDescriptor>
+      <Name>CICoreService</Name>
+      <Version>1.0</Version>
+    </ServiceDescriptor>
+  </RequiredServiceList>
+  <ExtendedServiceList>
+  </ExtendedServiceList>
+  <Version>
+    <Major>11</Major>
+    <Minor>0</Minor>
+    <Revision>0</Revision>
+    <Build>10379994</Build>
+    <Company>VMware Inc.</Company>
+    <Copyright>Copyright 2012</Copyright>
+    <UserFriendlyVersion>VMware VimAutomation Cloud PowerCLI Component PowerCLI Component 11.0 build 10379994</UserFriendlyVersion>
+    <Description>Provides cmdlets for managing VMware vCloud.</Description>
+  </Version>
+</ComponentDescriptor>

@@ -1,0 +1,147 @@
+Short Term:
+----------
+
+Investigate tree layout of info
+	For user administration in displayaccess and area/range display
+	Use php-layers menu system
+Customer should only see his own data
+	add multiple groups to a customer
+	update docs about how groups work and also anonymous access
+	createcust attrib should also be part of auth class
+		second bit?
+Displayoverlap
+	Appears to not show all customers when group auth
+Printing
+	Create @print additions to main.css file, provide print button on pages
+Change auth.php to be more modular for external authentication
+	ldap?
+	when obtaining groups via auth, pass group attribs too
+Alternate auth
+	http://sourceforge.net/projects/tackle/
+Matrix for free space
+	divided into class C blocks - green all free, yellow partly free
+		red all used
+Attach user to registrar via selection - can send to one only or all?
+Does custom error handler break API?
+	see sf request
+move of subnet used wrong group - used ip address modify group, not subnet modify group!!!
+http://jodies.de/ipcalc
+	add something like this to the boring start/homepage?
+template
+	fulltext search feature?
+	re-use variables to conserve memory
+	various templates per network object, ie selectable?
+		select template on IP record and store in infobinfn
+Uploaded files
+	authentication - can anybody see all files?
+Unique number for uploaded filenames
+	$better_token = md5(uniqid(rand(), true));
+Find gaps in series
+	http://www.mail-archive.com/mysql@lists.mysql.com/msg46223.html
+Save previous info in auditlog
+	done for ip records, add to more places
+Add, update functions for IP recs in dbf class should be arrays -
+	makes easier to add additional fields.
+Check 
+	http://sourceforge.net/forum/forum.php?thread_id=1246266&forum_id=101034
+Debug and Location: header do not work
+Appears odd that md5sum has group by? On non indexed column lastmod?
+Link from displaysubnet page to search for DNS zone A records if hname field completed
+Use md5 passwd in config.php for admin user
+RowLock and UserTimeStamp fixes in adodb?
+	Add RowLock() to prevent transaction issues
+Check out PageExecute
+http://www.internetassociatesllc.com/ - matrix view
+Logout?
+	$user = 'user';
+	$pass = 'pass';
+	header("Authorization: Basic " . base64endode("$user:$pass"));
+SNMP_COMMUNITY not hardcoded - should be per customer or subnet? Use template field when
+	available - being done as part of DHCP code
+Allow changing field seperator - idea by Frank Elsner
+	should be selectable on screen?
+Some places cannot bookmark pages due to actions - need to strip and use Location: header
+	join/split has action issues on page reload - check other places
+		same for modify descrip etc
+	cannot use location as cannot then see messages displayed
+The show used addresses will not change the color of the address whether it's
+	probe is successful or not. Solaris
+	is this a safe mode issue?
+Modifybase search is wrong format
+Complete better search 
+	save displaysubnet search in cookie
+Warning if subnet gets low on free addresses
+	Possibly email? What is criteria? Size of subnet > than 128
+		and less than 5 free? Config options
+		Andy Wilson - Irish Broadband
+Edit button on displaysubnet page - jump to modify subnet, exportdhcp too.
+Linked addresses - option to link bidirectional for 1-1 NAT - extra
+	button which then completes other side
+	Consider linked addresses across customers
+	Multiple linked addresses per address - see sf 1252209
+Perl network crawler via snmp to document network/routing.
+	http://snmp-info.sourceforge.net/
+Tweak div boxes to fill entire screen
+Expand searches in displaysubnet to also search on other fields
+Add check all button back to modifybase - should be dependent of "paranoid" option
+Install overwrites templates and config file, need better way to handle this
+Language should be choosen in header, not each script?
+XMLRPC needs updating - security fix
+	http://phpxmlrpc.sourceforge.net/
+	http://pear.php.net/package/XML_RPC/
+Test anonymous access
+Md5sum added to modifyipform var list - for file upload?
+Poller
+	update hname field with DNS entry when doing poll?
+Subnet request page feature
+Test DNS deleted/submit on other page - extra safety checks
+Add colour to reserved addresses on displaysubnet - yellow
+Searchall - search across all fields
+Should rollback transactions if error?
+Check filepath of zones - can have illegal chars like < etc
+	check for UNC paths too
+Requestip pager/deleter for admin user
+Some way of generating an A record automatically if it does not exist
+	Does this check if user is allowed to modify zone records?
+	button on displayform to create record
+
+
+
+
+IPplanAPI:
+---------
+
+Check: whoisd must run as root, cannot run under safemode
+Cannot access template vars 
+
+DNS management:
+--------------
+Update internals docs
+Have search button to find duplicate IP addresses across zones on ip hostname form
+Some way of checking for PTR without A - on zone export maybe?
+Warn on multiple A's pointing to same address - should be OK - used for virtual hosts
+Warn on too few MX's - should be 2 for valid zones
+Modify modifydnsrecordform.php and bind9_zone.xsl to allow to add subdomains. 
+	added 'NS' to selectbox 'recordtype'  
+	use textbox 'host' as the subdomain and 'iphostname' as the name server for the subdomain. 
+TTL on individual zone records - why?? What benefit? Bind specific or standard?
+Access control - add group to data
+	only fwdzone has admingrp field, but could be used to different group for DNS admins
+
+Longer Term:
+-----------
+Some separate poller 
+	show efficiency of networks relative to actually used addresses
+Whois server
+	http://www.generic-nic.net/sheets/practical/whois-en
+Create IP address php class
+Modify user details page for now just delete and recreate
+Split "import from routing table" and "find free" into MAXTABLESIZE
+	does not really make sense to do this as you will miss free blocks
+	on start and end of range
+IPv6
+DBF Table name prefixes - useful for Oracle and shared databases
+	where ipplan is installed with other apps
+Move multiple subnets from one customer to another - sf request
+
+Richarde@users.sourceforge.net

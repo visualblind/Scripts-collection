@@ -1,0 +1,5 @@
+winrm set winrm/config/client @{TrustedHosts="server1,server2,server3,server4"}
+winrm set winrm/config/client @{TrustedHosts=""}
+winrm get winrm/config -format:pretty
+
+winrm set winrm/config/client @{TrustedHosts="dc01-tr,dc01-tr.travisrunyard.me"}

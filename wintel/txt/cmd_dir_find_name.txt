@@ -1,0 +1,1 @@
+dir /s /d "c:\program files (x86)\*" | find /I "kace"

@@ -1,0 +1,59 @@
+This file defines the trigger event codes and the additional variables
+passed to the trigger function as associative array variables.
+
+ONLY EVENT CODES FOR THE DNS FUNCTIONS HAVE BEEN DEFINED. ALL THE REST OF
+THE CALLS TO AuditLog THROUGHOUT IPPLAN STILL NEED TO BE MODIFIED.
+
+See ipplanlib.php and the function user_trigger() for more.
+
+Event codes:
+
+event	action					additional variables
+--------------------------------------------------------------------
+100	Delete reverse zone			cust, user, id, zoneip, zone
+101	Add reverse zone			cust, user, id, zoneip, zone
+102	Modify reverse zone			cust, user, id, zoneip, zone
+103	Export reverse zone			cust, user, id, zoneip, zone
+
+110	Delete forward zone			cust, user, id, domain
+111	Add forward zone			cust, user, id, domain
+112	Modify forward zone			cust, user, id, domain
+113	Export forward zone			cust, user, id, domain
+
+120	Delete zone record			cust, user, id, domain
+121	Add zone record				cust, user, domain, host, recordtype, iphostname
+122	Modify zone record			cust, user, domain, host, recordtype, iphostname
+123	Renumber zone record			cust, user, domain
+
+130	Update an ip address record 		baseindex, ipaddr, user, entire old record before update
+	logging old field data before update
+131	Modify an ip address record		baseindex, ipaddr, user, entire new record
+132	Delete an ip address record		baseindex, ipaddr, user, entire old record before delete
+
+140	Upload a file to ip address record	baseindex, ipaddr, user, filename
+141	Delete a file on ip address record	baseindex, ipaddr, user, filename
+142	Download a file on ip address record	baseindex, ipaddr, user, filename, 
+							tmpname (name on server)
+
+150	Create an area				cust, user, area, descrip
+151	Modify an area				cust, user, area, descrip
+152	Delete an area				cust, user, area
+
+160	Create a range				cust, user, baseaddr, descrip, areaindex, size
+161	Modify a range				cust, user, baseaddr, descrip, areaindex, size
+162	Delete a range				cust, user, baseaddr, size
+
+170	Create a subnet				cust, user, baseaddr, size, descrip
+171	Modify a subnet				cust, user, baseaddr, size, descrip
+172	Delete a subnet				cust, user, baseaddr, size
+173	Join a subnet				cust, user, baseaddr, size
+174	Split a subnet				cust, user, baseaddr, size
+175	Move a subnet				newcust, user, baseaddr, size
+
+180	Create a customer			cust, user, descrip
+181	Modify a customer			cust, user, descrip
+182	Delete a customer			cust, user
+
+190	Send a SWIP				cust, user, baseaddr, size, template
+
+200	Request an IP address			cust, user, baseaddr, size, template

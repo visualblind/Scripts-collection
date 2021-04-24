@@ -1,0 +1,7 @@
+vim-cmd vmsvc/getallvms
+
+vim-cmd vmsvc/get.tasklist vmid
+
+vim-cmd vmsvc/reload vmid
+
+/vmfs/volumes/name_of_the_datastore/VM_name/VM_name.vmx

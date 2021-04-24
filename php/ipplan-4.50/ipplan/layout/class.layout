@@ -1,0 +1,1097 @@
+<?php
+/*
+      (C) Copywrite 1999 Valuehunt Inc. <php@valuehunt.com>
+          Version 1.0
+
+	Copyright 1999 ValueHunt Inc. All rights reserved.
+	Permission is granted to anyone to use this software for any purpose
+	on any computer system, and to alter it and redistribute it, subject
+	to the following restrictions:
+
+	1. ValueHunt Inc. is not responsible for the consequences of
+	   use of this software, no matter how awful, even if they
+	   arise from flaws in it.
+
+	2. The origin of this software must not be misrepresented,
+	   either by explicit claim or by omission. Since few users
+	   ever read sources, credits must appear in the documentation.
+	   and also the URL http://www.vhconsultants.com
+
+	3. Altered versions must be plainly marked as such, and must
+	   not be misrepresented as being the original software.
+	   Since few users ever read sources, credits must appear in
+	   the documentation.
+
+	4. This notice may not be removed or altered.
+
+*/
+
+// 01-9-2001 Renamed select to selectbox to prevent duplicate function
+// 17-9-2001 Fixed bug with select box to quote value string
+// 30-4-2002 Text, textarea and selectbox now displayed with htmlspecialchars
+// 11-12-2004 Quoted the VALUE component to fix magic quotes issues
+// 11-01-2004 Added IFRAME, NOSCRIPT, extra parameter to wheader for META, better HTML 4 correctness
+//            Patrick Laux
+// 24-09-2005 added htmlspecialchars to anchor
+
+# Helper functions
+function insert($p,$c) {
+    $GLOBALS["$p"]->insert($c);
+}
+
+function setdefault($o,$a) {
+    $name = "def_".$o ;
+    $GLOBALS["$name"] = $a;
+}
+
+function defsetting($a) {
+    if( is_array($a) ) {
+        while( list($key,$val) = each($a) ) {
+          $name = "def_" . $key ;
+          $GLOBALS["$name"] = $val;
+        }
+    }
+}
+
+function newhtml(&$w,$a = "") {
+    $w = window($a);
+}
+
+function printhtml($w) {
+    $GLOBALS["$w"]->printit();
+}
+
+function printit($e) {
+    $GLOBALS["$e"]->printit();
+}
+
+function window($a = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Window($a);
+   return $na ;
+}
+
+function table($a = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Table($a) ;
+   return $na ;
+}
+
+function cell($a = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Cell($a) ;
+   return $na;
+}
+
+function image($s,$a,$ni = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Image($s,$a,$ni);
+   return $na;
+}
+
+function anchor($h,$s,$a = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Anchor($h,$s,$a) ;
+   return $na;
+}
+
+function block($t,$ni = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Block($t,$ni);
+   return $na;
+}
+
+function text($t,$a = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Text($t,$a);
+   return $na;
+}
+// special shortcut method for bold text
+function textb($t = "",$a = array("b"=>1)) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Text($t,$a);
+   return $na;
+}
+function textbr($t = "",$a = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new TextBR($t,$a);
+   return $na;
+}
+function textbrbr($t,$a = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new TextBRBR($t,$a);
+   return $na;
+}
+
+function span($t,$a = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Span($t,$a);
+   return $na;
+}
+
+function form($a = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Form($a) ;
+   return $na ;
+}
+
+function alist($t,$c,$a = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Alist($t,$c,$a);
+   return $na;
+}
+
+function comment($m) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Comment($m);
+   return $na;
+}
+
+function generic($t,$a = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Generic($t,$a);
+   return $na;
+}
+
+function container($t,$a = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Container($t,$a);
+   return $na;
+}
+
+function script($c,$a = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Script($c,$a);
+   return $na;
+}
+
+// plx: enhanced with noscript
+function noscript($c,$a = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new NoScript($c,$a);
+   return $na;
+}
+
+// plx: enhanced with meta name/content lines
+function wheader($t, $m = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new WHeader($t, $m);
+   return $na;
+}
+
+function heading($l,$c,$a = "" ) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Heading($l,$c,$a);
+   return $na;
+}
+
+function button($a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Button($a);
+   return $na;
+}
+
+function checkbox($a,$t,$c = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Checkbox($a,$t,$c);
+   return $na;
+}
+
+function inputfile($a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Inputfile($a);
+   return $na;
+}
+
+function hidden($a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Hidden($a);
+   return $na;
+}
+
+function imagebutton($s,$a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Imagebutton($s,$a);
+   return $na;
+}
+
+function password($a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Password($a);
+   return $na;
+}
+
+function radio($a,$t,$c = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Radio($a,$t,$c);
+   return $na;
+}
+
+function freset($a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Freset($a);
+   return $na;
+}
+
+function submit($a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Submit($a);
+   return $na;
+}
+
+function input_text($a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Input_text($a);
+   return $na;
+}
+
+function selectbox($o,$a,$s = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Selectbox($o,$a,$s);
+   return $na;
+}
+
+function textarea($a,$m = "") {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Textarea($a,$m);
+   return $na;
+}
+
+function imagemap($a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Imagemap($a);
+   return $na;
+}
+
+function area($a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Area($a);
+   return $na;
+}
+
+function layer($a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Layer($a);
+   return $na;
+}
+
+function nolayer($m) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Nolayer($m);
+   return $na;
+}
+
+// plx: enhanced with iframe
+function iframe($a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new IFrame($a);
+   return $na;
+}
+
+
+function frameset($a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Frameset($a);
+   return $na;
+}
+
+function frame($a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Frame($a);
+   return $na;
+}
+
+function noframe($m) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Noframe($m);
+   return $na;
+}
+
+function style($m,$a) {
+   $na = md5(microtime()); $GLOBALS["$na"] = new Style($m,$a);
+   return $na;
+}
+
+function getclass($c) {
+   if (isset($GLOBALS["$c"]->classname)) {
+        return $GLOBALS["$c"]->classname;
+   }
+   return false;
+}
+
+class HTMLBase {
+        var $classname = "htmlbase" ;
+        var $settings = "";
+        var $children = FALSE;
+        var $level = 0;
+
+        function insert($c) {
+           $this->children[] = $c ;
+           $GLOBALS["$c"]->level = $this->level + 1 ;
+        }
+
+        function listchild() {
+           reset($this->children);
+           while( list($key,$ch) = each($this->children) ) {
+                $val = $this->children[$key];
+           }
+        }
+
+        function printchild() {
+           if (is_array($this->children)) {
+                reset($this->children);
+                $ac = $this->children ; unset($this->children);
+
+                while ( list($key,$ch) = each($ac) ) {
+                       if ( getclass($ch) == "wheader" ) { continue ;}
+                       $this->children[] = $ch;
+                }
+                if(is_array($this->children)) {
+                    reset($this->children);
+                    while( list($key,$ch) = each($this->children) ) {
+                        $val = $this->children[$key];
+                        $GLOBALS["$val"]->printit();
+                    }
+                }
+           }
+        }
+
+        function indent() {
+           $l = $this->level;
+           echo "\n";
+//           for( $i=0; $i < $l ; ++$i ) {
+//                echo  "    ";
+//           }
+        }
+
+        function setparam($a = "") {
+          $temp = array();
+          $this->settings = "" ;
+          $def  = "def_" . $this->classname;
+          global $$def;
+          if ( is_array(${$def}) ) {
+            reset(${$def});
+            while( list($key,$val) = each(${$def}) ) {
+                $temp["$key"] = $val;
+            }
+          }
+          if ( is_array($a) ) {
+            reset($a);
+            while( list($key,$val) = each($a) ) {
+                $temp["$key"] = $val;
+            }
+          }
+          reset($temp);
+          while (list($key,$val) = each($temp) ) {
+                $key = strtoupper($key);
+                if ( $key == "COLS" && $this->classname == "table" )    { 
+                    $this->cols = $val;
+                    continue;
+                }
+                if ( ($key == "B" or $key == "I" or $key == "SMALL") 
+                    && $this->classname == "text" ) {
+                    $this->fmt .= "<~$key>"; 
+                    continue;
+                }
+                if ( $key == "COLSPAN" ) { $this->cs   = $val; }
+                if ( $key == "ROWSPAN" ) { $this->rs   = $val; }
+                if ( $val == "undef" || $val == "UNDEF" ) {
+                    $this->settings .= " $key";
+                } else {
+                    // quoted the VALUE component - RE 11/12/2004
+                    if ( $key == "VALUE" ) { 
+                       $this->settings .= " $key=\"".htmlspecialchars($val)."\"";
+                    } else {
+                       $this->settings .= " $key=\"$val\"";
+                    }
+                }
+          }
+        }
+}
+
+class Window extends HTMLBase {
+        var $classname = "window";
+
+        function Window($a = "") {
+          $this->setparam($a);
+        }
+
+        function printit() {
+           //echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n";
+           echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n";
+           echo "        \"http://www.w3.org/TR/html4/loose.dtd\">\n";
+           echo "<HTML>\n<HEAD>\n";
+           $this->printheader();
+           echo "\n</HEAD>\n<BODY" . $this->settings . ">";
+           $this->printchild();
+           echo "\n</BODY>\n</HTML>\n";
+        }
+
+        function printheader() {
+            if (is_array($this->children)) {
+                reset($this->children);
+                while ( list(,$ch) = each($this->children) ) {
+                    if ( getclass($ch) == "wheader" ) {
+                         $GLOBALS["$ch"]->printit();
+                    }
+                }
+            }
+        }
+}
+
+class WHeader extends HTMLBase {
+        var $classname = "wheader";
+        var $title;
+        // plx: adding var meta
+        var $meta; 
+
+        function WHeader($t = "", $m = "") {
+          $this->title = $t;
+          // plx: setting arg to var
+          $this->meta = $m; 
+        }
+
+        function printit() {
+          if ( isset($this->title) ) {
+             echo "        <TITLE>" . $this->title . "</TITLE>";
+          }
+          // plx: including the content var to head as meta
+          if (is_array($this->meta) && count(array_keys($this->meta)) > 0) {
+             while (list($name, $content) = each($this->meta)) {
+                 echo "        <META NAME=\"".$name."\" CONTENT=\"".$content."\" />";
+             }
+          }
+          $this->printchild();
+        }
+}
+
+class Table extends HTMLBase {
+        var $classname = "table";
+        var $cols = 1 ;
+        var $currow = 0;
+        var $count  = array();
+        var $printrow = array();
+
+        function Table($a = "") {
+          $this->setparam($a);
+        }
+
+        function printit() {
+           $this->indent(); echo "<TABLE" . $this->settings . ">";
+           $this->printtable();
+           $this->indent(); echo "</TABLE>";
+        }
+
+        function printtable() {
+           if (is_array($this->children)) {
+                reset($this->children);
+                while( list($key,$ch) = each($this->children) ) {
+                        if ( getclass($ch) != "cell" ) {
+                            $GLOBALS["$ch"]->printit();
+                            continue;
+                        }
+                        $row = $this->currow;
+                        if (empty($this->printrow[$row]) ) {
+                            $this->printrow[$row] = TRUE;
+                            $this->indent(); echo "<TR>";
+                        }
+
+                        $GLOBALS["$ch"]->printit();
+                        $cs = $GLOBALS["$ch"]->cs; $rs = $GLOBALS["$ch"]->rs;
+                        for($i = 0; $i < $rs ; ++$i) {
+                            $nextrow = $row + $i ;
+                            if (empty($this->count[$nextrow]))
+                               $this->count[$nextrow] = 0;
+                            $this->count[$nextrow] += $cs;
+                        }
+
+                        if ( $this->count[$row] == $this->cols ) {
+                            $this->indent(); echo "</TR>";
+                            ++$this->currow;
+                        }
+                }
+           }
+        }
+}
+
+class Cell extends HTMLBase {
+        var $classname = "cell";
+        var $cs = 1 ; var $rs = 1 ;
+
+        function Cell($a = "") {
+          $this->setparam($a);
+        }
+
+        function printit() {
+           $this->indent() ; echo "<TD" . $this->settings . ">";
+           $this->printchild() ; echo "</TD>";
+        }
+}
+
+class Image extends HTMLBase {
+        var $classname = "image";
+        var $source;
+        var $noindent;
+
+        function Image($src,$a,$ni  = "") {
+                $this->setparam($a);
+                $this->source = $src ;
+                if(!empty($ni)) { $this->noindent = TRUE; }
+        }
+
+        function printit() {
+                if(!$this->noindent) { $this->indent(); }
+                echo "<IMG SRC=\"". $this->source . "\" ";
+                if($this->noindent) {
+                    echo $this->settings . ">";
+                } else {
+                    echo $this->settings . ">";
+                }
+        }
+}
+
+class Anchor extends HTMLBase {
+    var $classname = "anchor";
+    var $source; var $href ;
+
+    function Anchor($h,$s,$a = "") {
+        $this->setparam($a);
+        if ( !empty($h) ) { $this->href = $h; }
+        if ( getclass($s) ) {
+              $this->insert($s);
+        } else {
+              $this->source = htmlspecialchars($s);
+        }
+    }
+
+    function printit() {
+        $this->indent();
+        echo "<A" . ( empty($this->href)? "" : " HREF=\"". $this->href . "\"");
+        echo $this->settings . ">";
+                if (empty($this->source)) {
+                       $this->printchild();
+                } else {
+                    echo $this->source;
+                }
+        echo "</A>";
+    }
+}
+
+class Block extends HTMLBase {
+    var $classname = "block";
+    var $source;
+
+    function Block($b) {
+       $this->source = $b;
+    }
+
+    function printit() {
+           echo $this->source;
+    }
+}
+
+class Text extends HTMLBase {
+    var $classname = "text";
+    var $str;
+    var $fmt = "";
+
+    function Text($s,$a = "") {
+        $this->setparam($a);
+        $this->str = (strlen($s)==0 and empty($s)) ? "" : htmlspecialchars($s);
+    }
+
+    function printit() {
+        if ($this->settings)
+           echo "<FONT". $this->settings . ">";
+        echo str_replace("~", "", $this->fmt).$this->str.str_replace("~", "/", $this->fmt);
+        if ($this->settings)
+           echo "</FONT>";
+    }
+}
+
+class TextBR extends HTMLBase {
+    var $classname = "text";
+    var $str;
+    var $fmt = "";
+
+    function TextBR($s = "",$a = "") {
+        $this->setparam($a);
+        $this->str = (strlen($s)==0 and empty($s)) ? "" : htmlspecialchars($s);
+    }
+
+    function printit() {
+//        if ($this->settings)
+//           echo "<FONT". $this->settings . ">";
+        echo str_replace("~", "", $this->fmt).$this->str.str_replace("~", "/", $this->fmt)."<br>";
+//        if ($this->settings)
+//           echo "</FONT>";
+    }
+}
+
+class TextBRBR extends HTMLBase {
+    var $classname = "text";
+    var $str;
+    var $fmt = "";
+
+    function TextBRBR($s,$a = "") {
+        $this->setparam($a);
+        $this->str = (strlen($s)==0 and empty($s)) ? "" : htmlspecialchars($s);
+    }
+
+    function printit() {
+//        if ($this->settings)
+//           echo "<FONT". $this->settings . ">";
+        echo "<br>".str_replace("~", "", $this->fmt).$this->str.str_replace("~", "/", $this->fmt)."<br>";
+//        if ($this->settings)
+//           echo "</FONT>";
+    }
+}
+
+class Span extends HTMLBase {
+    var $classname = "span";
+    var $str;
+
+    function Span($s,$a = "") {
+        $this->setparam($a);
+        $this->str = $s;
+    }
+
+    function printit() {
+        if (!empty($this->str)) {
+           echo "<SPAN". $this->settings . ">";
+           echo $this->str;
+           echo "</SPAN>";
+        }
+    }
+}
+
+class Form extends HTMLBase {
+    var $classname = "form";
+
+    function Form($a = "") {
+       $this->setparam($a);
+    }
+
+    function printit() {
+        $this->indent(); echo "<FORM" . $this->settings . ">";
+        $this->printchild();
+        $this->indent(); echo "</FORM>";
+    }
+}
+
+class Script extends HTMLBase {
+    var $classname = "script";
+    var $content;
+
+    function Script($c,$a = "") {
+       $this->setparam($a);
+       $this->content = $c;
+    }
+
+    function printit() {
+        $this->indent(); echo "<SCRIPT" . $this->settings . ">";
+        if (!empty($this->content)) {
+           $this->indent(); echo "     " . "<!--";
+           $this->indent(); echo "             " . $this->content . "";
+           $this->indent(); echo "     " . "//-->";
+        }
+        $this->indent(); echo "</SCRIPT>";
+    }
+}
+
+// plx: adding NoScript
+class NoScript extends HTMLBase {
+    var $classname = "noscript";
+    var $content;
+
+    function Script($c,$a = "") {
+       $this->setparam($a);
+       $this->content = $c;
+    }
+
+    function printit() {
+        $this->indent(); echo "<NOSCRIPT" . $this->settings . ">";
+        $this->indent(); echo "     " . $this->content . "";
+        $this->indent(); echo "</NOSCRIPT>";
+    }
+}
+
+class Heading extends HTMLBase {
+    var $classname = "heading";
+    var $content; var $lev ;
+
+    function Heading($l,$c,$a = "") {
+       $this->setparam($a);
+       $this->content = $c;
+       $this->lev = $l;
+    }
+
+    function printit() {
+        $this->indent(); echo "<H" . $this->lev . $this->settings . ">";
+        echo htmlspecialchars($this->content); echo "</H". $this->lev .">";
+    }
+}
+
+class Generic extends HTMLBase {
+    var $classname = "generic";
+    var $tag;
+
+    function Generic($t,$a = "") {
+       $t = strtoupper($t);        
+       $this->setparam($a);
+       $this->tag = $t;
+    }
+
+    function printit() {
+        $this->indent(); echo "<" . $this->tag . $this->settings . ">";
+    }
+}
+
+class Container extends HTMLBase {
+    var $classname = "container";
+    var $tag;
+
+    function Container($t,$a = "") {
+       $t = strtoupper($t);
+       $this->setparam($a);
+       $this->tag = strtoupper($t);
+    }
+
+    function printit() {
+        $this->indent();
+        echo "<" . $this->tag . $this->settings . ">";
+        $this->printchild();
+	$this->indent();
+        echo "</" . $this->tag . ">";
+    }
+}
+
+class Comment extends HTMLBase {
+    var $classname = "comment";
+    var $comment;
+
+    function Comment($m = "") {
+       $this->comment = $m;
+    }
+
+    function printit() {
+        $this->indent(); echo "<!-- " . $this->comment . " -->";
+    }
+}
+
+class Alist extends HTMLBase {
+    var $classname = "alist";
+    var $tag; var $content;
+
+    function Alist($t,$c,$a = "") {
+       $t = strtoupper($t);
+       $this->setparam($a);
+       $this->tag = $t;
+       $this->content = $c;
+    }
+
+    function printit() {
+        $this->indent(); echo "<" . $this->tag . $this->settings . ">";
+        if (is_array($this->content)) {
+            while (list(,$ll) = each($this->content) ) {
+                if ( getclass($ll) ) {
+		    $this->children = array();
+                    $this->insert($ll);
+                    $this->indent(); echo "<LI>";
+                    $this->printchild();
+                    echo "</LI>";
+                } else {
+                    $this->indent(); echo "<LI>" . $ll . "</LI>";
+                }
+            }
+        }
+        $this->indent(); echo "</" . $this->tag . ">";
+    }
+}
+
+class Button extends HTMLBase {
+    var $classname = "button";
+
+    function Button($a) {
+       $this->setparam($a);
+    }
+
+    function printit() {
+      $this->indent();
+      echo "<INPUT TYPE=\"BUTTON\"" . $this->settings . ">";
+    }
+}
+
+class Checkbox extends HTMLBase {
+    var $classname = "checkbox";
+    var $textfield = "";
+    var $checked = "" ;
+
+    function Checkbox($a,$t,$c = "") {
+       $this->setparam($a);
+       if (!empty($c)) { $this->checked = " CHECKED"; }
+       $this->textfield = $t ;
+    }
+
+    function printit() {
+      $this->indent();
+      echo "<INPUT TYPE=\"CHECKBOX\"". $this->checked . $this->settings . ">" . $this->textfield . "";
+    }
+}
+
+class Inputfile extends HTMLBase {
+    var $classname = "inputfile";
+
+    function Inputfile($a) {
+       $this->setparam($a);
+    }
+
+    function printit() {
+      $this->indent();
+      echo "<INPUT TYPE=\"FILE\"". $this->settings . ">";
+    }
+}
+
+class Hidden extends HTMLBase {
+    var $classname = "hidden";
+
+    function Hidden($a) {
+       $this->setparam($a);
+    }
+
+    function printit() {
+      $this->indent();
+      echo "<INPUT TYPE=\"HIDDEN\"". $this->settings . ">";
+    }
+}
+
+class Imagebutton extends HTMLBase {
+    var $classname = "imagebutton";
+    var $source ;
+
+    function Imagebutton($s,$a) {
+       $this->setparam($a);
+       $this->source = $s;
+    }
+
+    function printit() {
+      $this->indent();
+      echo "<INPUT TYPE=\"IMAGE\"". $this->settings . " SRC=\"". $this->source . "\">";
+    }
+}
+
+class Password extends HTMLBase {
+    var $classname = "password";
+
+    function Password($a) {
+       $this->setparam($a);
+    }
+
+    function printit() {
+      $this->indent();
+      echo "<INPUT TYPE=\"PASSWORD\"". $this->settings . ">";
+    }
+}
+
+class Radio extends HTMLBase {
+    var $classname = "radio";
+    var $textfield = "";
+    var $checked = "" ;
+
+    function Radio($a,$t,$c = "") {
+       $this->setparam($a);
+       if (!empty($c)) { $this->checked = " CHECKED"; }
+       if ( getclass($t) ) {
+           $this->insert($t);
+       } else {
+           $this->textfield = $t ;
+       }
+    }
+
+    function printit() {
+      $this->indent();
+      echo "<INPUT TYPE=\"RADIO\"". $this->checked . $this->settings ;
+	  echo ">&nbsp; ";
+	  if(!empty($this->textfield)) {
+         echo $this->textfield ;
+      } else {
+         $this->printchild();
+      }
+
+    }
+}
+
+class Freset extends HTMLBase {
+    var $classname = "freset";
+
+    function Freset($a) {
+       $this->setparam($a);
+    }
+
+    function printit() {
+      $this->indent();
+      echo "<INPUT TYPE=\"RESET\"". $this->settings . ">";
+    }
+}
+
+class Submit extends HTMLBase {
+    var $classname = "submit";
+
+    function Submit($a) {
+       $this->setparam($a);
+    }
+
+    function printit() {
+      $this->indent();
+      echo "<INPUT TYPE=\"SUBMIT\"". $this->settings . ">";
+    }
+}
+
+class Input_text extends HTMLBase {
+    var $classname = "input_text";
+
+    function Input_text($a) {
+       $this->setparam($a);
+    }
+
+    function printit() {
+      $this->indent();
+      echo "<INPUT TYPE=\"TEXT\"". $this->settings . ">";
+    }
+}
+
+class Selectbox extends HTMLBase {
+    var $classname = "selectbox";
+    var $options ; var $selected;
+
+    function Selectbox($o,$a, $s = "" ) {
+       $this->setparam($a);
+       $this->options = $o;
+       $this->selected= $s;
+       reset($this->options);
+    }
+
+    function printit() {
+      $this->indent(); echo "<SELECT". $this->settings . ">";
+      while( list($val,$na) = each($this->options) ) {
+         if (!is_array($na)) {
+             $this->indent(); echo "    <OPTION VALUE=\"$val\"";
+             if ( $this->selected == $val ) { echo " SELECTED"; }
+             echo ">".htmlspecialchars($na);
+         } else {
+             list($txt,$clr) = each($na);
+             $this->indent();
+             echo "    <OPTION VALUE=\"$val\"";
+             if ( $this->selected == $val ) { echo " SELECTED"; }
+             echo "><FONT COLOR=\"$clr\">$txt</FONT>";
+         }
+         echo "</OPTION>";
+      }
+      $this->indent(); echo "</SELECT>";
+    }
+}
+
+class Textarea extends HTMLBase {
+    var $classname = "textarea";
+    var $messages ;
+
+    function Textarea($a,$m = "") {
+       $this->setparam($a);
+       $this->messages = htmlspecialchars($m);
+    }
+
+    function printit() {
+      $this->indent(); echo "<TEXTAREA". $this->settings . ">";
+      echo $this->messages ; echo "</TEXTAREA>";
+    }
+}
+
+class Imagemap extends HTMLBase {
+    var $classname = "imagemap";
+
+    function Imagemap($a) {
+       $this->setparam($a);
+    }
+
+    function printit() {
+      $this->indent(); echo "<MAP". $this->settings . ">";
+      $this->printchild();
+      $this->indent(); echo "</MAP>";
+    }
+}
+
+class Area extends HTMLBase {
+    var $classname = "area";
+
+    function Area($a) {
+       $this->setparam($a);
+    }
+
+    function printit() {
+      $this->indent(); echo "<AREA". $this->settings . ">";
+    }
+}
+
+class Layer extends HTMLBase {
+    var $classname = "layer";
+
+    function Layer($a) {
+       $this->setparam($a);
+    }
+
+    function printit() {
+      $this->indent(); echo "<LAYER". $this->settings . ">";
+      $this->printchild();
+      $this->indent(); echo "</LAYER>";
+    }
+}
+
+class Nolayer extends HTMLBase {
+    var $classname = "nolayer";
+    var $messages;
+
+    function Nolayer($m) {
+        $this->messages = $m;
+    }
+
+    function printit() {
+      $this->indent(); echo "<NOLAYER>";
+      $this->indent(); echo $this->messages . "";
+      $this->indent(); echo "</NOLAYER>";
+    }
+}
+
+// plx: adding iframe
+class IFrame extends HTMLBase {
+    var $classname = "iframe";
+
+    function Frameset($a) {
+        $this->setparam($a);
+    }
+
+    function printit() {
+      $this->indent(); echo "<IFRAME". $this->settings . ">";
+      $this->printchild() ;
+      $this->indent(); echo "</IFRAME>";
+    }
+}
+
+
+class Frameset extends HTMLBase {
+    var $classname = "frameset";
+
+    function Frameset($a) {
+        $this->setparam($a);
+    }
+
+    function printit() {
+      $this->indent(); echo "<FRAMESET". $this->settings . ">";
+      $this->printchild() ;
+      $this->indent(); echo "</FRAMESET>";
+    }
+}
+
+class Frame extends HTMLBase {
+    var $classname = "frame";
+
+    function Frame($a) {
+        $this->setparam($a);
+    }
+
+    function printit() {
+      $this->indent(); echo "<FRAME". $this->settings . ">";
+    }
+}
+
+class Noframe extends HTMLBase {
+    var $classname = "noframe";
+    var $messages;
+
+    function Noframe($m) {
+        $this->messages = $m;
+    }
+
+    function printit() {
+      $this->indent(); echo "<NOFRAME>";
+      $this->indent(); echo $this->messages . "";
+      $this->indent(); echo "</NOFRAME>";
+    }
+}
+
+class Style extends HTMLBase {
+    var $classname = "style";
+    var $messages;
+
+    function Style($m,$a = "") {
+        $this->messages = $m;
+        $this->setparam($a);
+    }
+
+    function printit() {
+      $this->indent(); echo "<STYLE" . $this->settings . ">";
+      $this->indent(); echo $this->messages . "";
+      $this->indent(); echo "</STYLE>";
+    }
+}
+
+?>

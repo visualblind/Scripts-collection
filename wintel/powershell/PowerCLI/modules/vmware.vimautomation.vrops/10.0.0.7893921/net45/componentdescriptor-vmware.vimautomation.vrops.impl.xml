@@ -1,0 +1,23 @@
+<ComponentDescriptor>
+	<Name>VMware.VimAutomation.vROps.Impl</Name>
+	<Assembly>VMware.VimAutomation.vROps.Impl</Assembly>
+	<ImplementingType>VMware.VimAutomation.vROps.Impl.V1.OMComponentImpl</ImplementingType>
+	
+   <IsSnapin>false</IsSnapin>
+
+	<ProvidedServiceList>
+		<ServiceDescriptor>
+			<Name>OMCoreComponentService</Name>
+			<Version>1.0</Version>
+		</ServiceDescriptor>
+	</ProvidedServiceList>
+
+	<RequiredServiceList>
+		<ServiceDescriptor>
+			<Name>ViCoreService</Name>
+			<Version>1.0</Version>
+		</ServiceDescriptor>
+   </RequiredServiceList>
+
+	<ExtendedServiceList></ExtendedServiceList>
+</ComponentDescriptor>

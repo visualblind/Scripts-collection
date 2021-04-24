@@ -1,0 +1,1 @@
+cscript //b c:\windows\system32\slmgr.vbs /ipk J3XKQ-3KCGR-V28GB-7HDHT-PH9KM

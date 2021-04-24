@@ -1,0 +1,21 @@
+This is a traceroute-browser/admin userinterface:
+
+This is designed if you use MTR (http://www.bitwizard.nl/mtr/) as a traceroute/ping program
+You can add sites, places from where you traceroute and all in the info to a 
+database en then look at different traceroutes from one site on one screen, 
+and then eventually print them. You can set the order to see them on screen and so on
+quite easy :)
+
+INSTALL
+
+- Make a database (MySQL) named 'traceroute' and dump the 'dump.sql' file in the database.
+- change the connect.inc.php file to make the connection to your database
+- also set in the connect.inc.php the 'valign' value= this is important for the print on screen, if the colums start at top or bottom (to see when the traces come together 
+at one point :)
+- do a chmod on the 'data.txt' (777) (if you 're on linux ! - on windows there shouldn't be a problem duhuh :p), 
+this is a temporary file to write stuff in, if you don't the thing won't work
+
+
+plz drop me an email if you like this :) or
+all remarks to sweaty@urgent.rug.ac.be
+http://realize.be/swentel

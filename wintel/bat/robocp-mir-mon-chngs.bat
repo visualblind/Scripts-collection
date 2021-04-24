@@ -1,0 +1,1 @@
+robocopy \\SourceServer\Share \\DestinationServer\Share /E /COPY:DTO /M /XO /ZB /MON:1

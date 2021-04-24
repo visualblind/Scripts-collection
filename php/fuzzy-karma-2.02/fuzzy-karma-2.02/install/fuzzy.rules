@@ -1,0 +1,16 @@
+# (C) Copyright 2004 Jeremiah K. Jones, et. al.
+#    All rights reserved.
+#
+#-----------
+# FuZZY Rules - version Karma (2.0)
+#-----------
+
+
+alert tcp $HOME_NET any <> $EXTERNAL_NET 110 (msg:"FUZZY POP3 username"; content:"USER"; depth:5;)
+alert tcp $HOME_NET any <> $EXTERNAL_NET 110 (msg:"FUZZY POP3 pass"; content:"PASS"; depth:5;)
+alert tcp $HOME_NET any <> $EXTERNAL_NET 110 (msg:"FUZZY POP3 data"; dsize:>20;)
+alert tcp $HOME_NET any <> $EXTERNAL_NET 1863 (msg:"FUZZY MSN activity"; content:"MSG";)
+alert tcp $HOME_NET 80 <> $EXTERNAL_NET any (msg:"FUZZY HTTP port 80 GET request"; content:"GET "; depth:10;)
+alert tcp $HOME_NET 80 <> $EXTERNAL_NET any (msg:"FUZZY HTTP activity"; dsize:>10;)
+
+

@@ -1,0 +1,17 @@
+-Disable agent job LSBackup_Millennium on svr1
+-Run LSCopy on svr2
+-Disable LSCopy on svr2
+-Run LSRestore on svr2
+-Disable LSRestore on svr2
+-Backup the log tail of Millennium on svr1 with norecovery
+-Restore the tail log on svr2 with recovery
+-On svr2 run the script in this folder: create_logins_on_secondary_server.sql
+-Modify the SPath table
+
+/* replace string */
+-Use Millennium
+-select path from Millennium.dbo.SPath where path LIKE '%svr1%'
+-update SPath
+-set path = REPLACE(path,'svr1','svr2')
+
+

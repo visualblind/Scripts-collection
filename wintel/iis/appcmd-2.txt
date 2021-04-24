@@ -1,0 +1,27 @@
+To Import the website:
+%windir%\system32\inetsrv\appcmd add site /in < c:\sites.xml
+
+It’s also possible to export a single website or application pool all you need to do is add the name of the Application Pool or Website to the command line:
+
+To export/import a single application pool:
+%windir%\system32\inetsrv\appcmd list apppool “MyAppPool” /config /xml > c:\myapppool.xml
+
+Import:
+%windir%\system32\inetsrv\appcmd add apppool /in < c:\myapppool.xml
+
+To export/import a single website:
+%windir%\system32\inetsrv\appcmd list site “MyWebsite” /config /xml > c:\mywebsite.xml
+
+Import:
+%windir%\system32\inetsrv\appcmd add site /in < c:\mywebsite.xml
+
+
+appcmd list apppool /name:"$=prefix_*" /xml | appcmd set apppool /startMode:AlwaysRunning /in
+
+%systemroot%\system32\inetsrv\AppCmd.exe list site /name:"$=prefix_*" /xml | %windir%\system32\inetsrv\appcmd set site /in -applicationDefaults.preloadEnabled:True
+%systemroot%\system32\inetsrv\AppCmd.exe list site /name:"$=prefix_*" /xml | %windir%\system32\inetsrv\appcmd set site /in -applicationDefaults.preloadEnabled:False
+
+%windir%\system32\inetsrv\appcmd set config -section:applicationPools -applicationPoolDefaults.startMode:AlwaysRunning
+
+%systemroot%\system32\inetsrv\AppCmd.exe list apppool /name:"$=prefix_*" /xml | %systemroot%\system32\inetsrv\AppCmd.exe set apppool /startMode:AlwaysRunning /in
+%systemroot%\system32\inetsrv\AppCmd.exe list apppool /name:"$=prefix_*" /xml | %systemroot%\system32\inetsrv\AppCmd.exe set apppool /startMode:OnDemand /in

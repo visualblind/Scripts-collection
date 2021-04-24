@@ -1,0 +1,18 @@
+<ComponentDescriptor>
+	<Name>VMware.VimAutomation.HorizonView</Name>
+	<Assembly>VMware.VimAutomation.HorizonView.Impl</Assembly>
+	<ImplementingType>VMware.VimAutomation.HorizonView.Impl.V1.ViewComponentImpl</ImplementingType>
+	<IsSnapin>false</IsSnapin>
+
+	<ProvidedServiceList>
+		<ServiceDescriptor>
+			<Name>HViewService</Name>
+			<Version>1.0</Version>
+		</ServiceDescriptor>
+	</ProvidedServiceList>
+
+	<RequiredServiceList>
+	</RequiredServiceList>
+
+	<ExtendedServiceList></ExtendedServiceList>
+</ComponentDescriptor>

@@ -1,0 +1,98 @@
+Quick install:
+-------------
+
+NOTE: if upgrading, read the UPGRADE file.
+NOTE2: if you get a fatal error about an undefined database function, read
+       the FAQ section in the README
+
+I assume a working installation of Oracle 9i or higher and php 4.1 or 
+higher should work.
+To get multilingual support (languages other than English), you will need 
+to follow the steps later in this document.
+
+In your web tree (normally /home/httpd/html or /var/www/html), 
+
+1) create a directory called ipplan
+2) untar tar-ball into this directory
+3) change the directory ownership and permissions of the ipplan directory
+   chown -R root.nobody ipplan
+   chmod -R 750 ipplan
+
+   this is operating system dependent - the above line is for a Redhat 6.2
+   based system. Have a look at the rest of your web tree for the correct
+   settings for your system.
+
+   For Redhat 7.x systems use:
+
+   chown -R root.apache ipplan
+   chmod -R 750 ipplan
+
+   It is important to set the correct permissions to prevent people from
+   seeing your passwords stored in config.php
+
+4) create a new user and tables by issuing the following at the
+   command prompt as the system/manager user:
+
+   create user <user> identified by <psw> 
+      default tablespace users 
+      temporary tablespace temp;
+   grant connect, resource to <user>
+
+   ONLY DO THIS STEP ONCE FOR A NEW INSTALLATION
+5) modify the user and password info in the config.php script. The
+   DBF_HOST parameter will probably be blank. For the DBF_NAME parameter,
+   use the SID as defined in /etc/tnsnames.ora
+   additional settings can be changed in the config.php script at this
+   stage too. See the README for more information.
+
+   be sure to enable transaction support in config.php
+
+6) open a web browser and point it to the installation script in the
+   admin directory (http://mywebserver.com/ipplan/admin/install.php)
+
+   you will be prompted to create the database schema. The user created
+   above does not have enough rights to create tables so you will need
+   to either copy the statements into the database, or temporarily change
+   the database password in the config.php file to a database user that has
+   enough rights to do this.
+
+   you can manually load the statements by copying the display output
+   from the install.php script into a file (example ipplandbf-ORACLE9i.sql) 
+   and then executing the file by logining in as the newly created user using 
+   sqlplus and issue:
+
+   @ipplandbf-ORACLE9i.sql
+
+7) now point your web browser to the main IPplan web page
+   (http://mywebserver.com/ipplan), select the admin drop down menu and add 
+   customers, groups and users using the admin user defined in the config.php
+   file - you MUST create at least one regular user, one group and one customer
+
+8) send me an e-mail about how you use IPplan!
+
+Enabling multilingual support:
+-----------------------------
+
+To get multilingual support working, php must be compiled with GNU gettext
+support enabled. This is NOT enabled by default. gettext is normally 
+installed on all Linux distributions, but may not be available on other
+UNIX variants. So if you are not using Linux, download and install gettext
+from http://www.gnu.org/software/gettext before installing php. Once gettext
+is installed, you will need to recompile php with gettext support enabled.
+To do this, follow the instructions for installing php from http://www.php.net,
+but make sure you add
+
+	--with-gettext
+
+to the ./configure line. To check if gettext is enabled in php, execute this
+simple php script:
+
+<?php
+phpinfo();
+?>
+
+If your language is not currently available, feel free to follow the 
+instructions in the TRANSLATIONS file and do your own.
+
+Hope it works!
+ipplan@gmail.com

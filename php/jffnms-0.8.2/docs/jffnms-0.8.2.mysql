@@ -1,0 +1,1258 @@
+-- MySQL dump 9.11
+--
+-- Host: localhost    Database: jffnms-release
+-- ------------------------------------------------------
+-- Server version	4.0.24
+
+--
+-- Table structure for table `acct`
+--
+
+DROP TABLE IF EXISTS acct;
+CREATE TABLE acct (
+  id int(15) NOT NULL auto_increment,
+  usern char(15) NOT NULL default '',
+  s_name char(30) NOT NULL default '',
+  c_name char(30) NOT NULL default '',
+  elapsed_time int(11) NOT NULL default '0',
+  bytes_in int(11) default '0',
+  bytes_out int(11) default '0',
+  date datetime NOT NULL default '0000-00-00 00:00:00',
+  cmd char(250) NOT NULL default '',
+  type char(15) NOT NULL default '0',
+  analized tinyint(2) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id),
+  KEY analized (analized),
+  KEY s_name (s_name)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `acct`
+--
+
+
+--
+-- Table structure for table `actions`
+--
+
+DROP TABLE IF EXISTS actions;
+CREATE TABLE actions (
+  id int(10) NOT NULL auto_increment,
+  description char(40) NOT NULL default '',
+  command char(60) NOT NULL default 'none',
+  internal_parameters char(120) NOT NULL default '',
+  user_parameters char(120) NOT NULL default '',
+  PRIMARY KEY  (id),
+  KEY command (command)
+) TYPE=MyISAM COMMENT='Actions activated by Triggers';
+
+--
+-- Dumping data for table `actions`
+--
+
+INSERT INTO actions VALUES (1,'No Action','none','',''),(2,'Send Mail','email','from:nms,to:<profile-email>,subject:NMS','from:From,subject:Subject,comment:Comment'),(3,'Send SMS via Modem','smsclient','smsname:<profile-smsalias>',''),(4,'Send SMS via Mail','email','short:1,from:nms,to:<profile-email>,subject:NMS','from:From,subject:Subject');
+
+--
+-- Table structure for table `alarm_states`
+--
+
+DROP TABLE IF EXISTS alarm_states;
+CREATE TABLE alarm_states (
+  id int(10) NOT NULL auto_increment,
+  description char(30) NOT NULL default '',
+  activate_alarm tinyint(1) NOT NULL default '0',
+  sound_in char(30) NOT NULL default '',
+  sound_out char(30) NOT NULL default '',
+  state int(10) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id),
+  KEY description (description)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `alarm_states`
+--
+
+INSERT INTO alarm_states VALUES (1,'down',10,'down.wav','up.wav',1),(2,'up',100,'','',2),(3,'alert',60,'boing.wav','',3),(4,'testing',40,'','',4),(5,'running',100,'','',2),(6,'not running',20,'','',1),(7,'open',100,'','',2),(8,'closed',15,'','',1),(9,'error',90,'boing.wav','',3),(10,'invalid',30,'','',1),(11,'valid',110,'','',2),(12,'reachable',100,'','',2),(13,'unreachable',5,'','',1),(14,'lowerlayerdown',10,'down.wav','up.wav',1),(15,'synchronized',100,'','',2),(16,'unsynchronized',6,'','',1),(17,'battery normal',100,'','',2),(18,'battery low',4,'','',1),(19,'battery unknown',2,'','',1),(20,'on battery',3,'','',1),(21,'on line',90,'','',2),(22,'ok',100,'','',2),(23,'out of bounds',10,'','',1),(24,'unavailable',10,'down.wav','up.wav',1),(25,'available',100,'','',2),(26,'battery depleted',3,'','',1);
+
+--
+-- Table structure for table `alarms`
+--
+
+DROP TABLE IF EXISTS alarms;
+CREATE TABLE alarms (
+  id int(10) NOT NULL auto_increment,
+  date_start datetime NOT NULL default '0000-00-00 00:00:00',
+  date_stop datetime NOT NULL default '0000-00-00 00:00:00',
+  interface int(10) NOT NULL default '0',
+  type int(10) NOT NULL default '0',
+  active int(10) NOT NULL default '1',
+  referer_start int(10) NOT NULL default '0',
+  referer_stop int(10) NOT NULL default '0',
+  triggered tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY type (type),
+  KEY interface (interface),
+  KEY active (active),
+  KEY triggered (triggered)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `alarms`
+--
+
+
+--
+-- Table structure for table `auth`
+--
+
+DROP TABLE IF EXISTS auth;
+CREATE TABLE auth (
+  id int(10) NOT NULL auto_increment,
+  usern char(60) NOT NULL default '',
+  passwd char(60) NOT NULL default '',
+  fullname char(60) NOT NULL default '',
+  router tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY usern (usern)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `auth`
+--
+
+INSERT INTO auth VALUES (1,'No User','$1$txVdymrd$AO3Qa8js9lVNkyscQ552b1','No User Name',0),(2,'admin','adpexzg3FUZAk','Administrator',0);
+
+--
+-- Table structure for table `autodiscovery`
+--
+
+DROP TABLE IF EXISTS autodiscovery;
+CREATE TABLE autodiscovery (
+  id int(10) NOT NULL auto_increment,
+  description char(40) NOT NULL default '0',
+  poller_default tinyint(1) NOT NULL default '1',
+  permit_add tinyint(1) NOT NULL default '0',
+  permit_del tinyint(1) NOT NULL default '0',
+  permit_mod tinyint(1) NOT NULL default '0',
+  permit_disable tinyint(1) NOT NULL default '0',
+  skip_loopback tinyint(1) NOT NULL default '0',
+  check_state tinyint(1) NOT NULL default '1',
+  check_address tinyint(1) NOT NULL default '1',
+  alert_del tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `autodiscovery`
+--
+
+INSERT INTO autodiscovery VALUES (1,'No Autodiscovery',1,0,0,0,0,0,1,1,1),(2,'Standard',1,1,0,0,1,1,1,1,1),(3,'Automagic',1,1,1,1,0,1,1,1,1),(4,'Administrative',0,1,1,0,1,1,1,1,1),(5,'Just Inform',0,0,0,0,0,0,1,1,1),(6,'Standard (for Switches)',1,1,0,1,0,1,1,0,1);
+
+--
+-- Table structure for table `clients`
+--
+
+DROP TABLE IF EXISTS clients;
+CREATE TABLE clients (
+  id int(10) NOT NULL auto_increment,
+  username char(60) NOT NULL default '',
+  password char(30) NOT NULL default '',
+  name char(60) NOT NULL default '',
+  shortname char(30) NOT NULL default '',
+  enabled tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO clients VALUES (1,'unkclient','','Unknown Customer','Unknown',1),(2,'','','New Customer','Customer1',1);
+
+--
+-- Table structure for table `events`
+--
+
+DROP TABLE IF EXISTS events;
+CREATE TABLE events (
+  id int(10) NOT NULL auto_increment,
+  date datetime NOT NULL default '0000-00-00 00:00:00',
+  type int(10) NOT NULL default '0',
+  host int(10) NOT NULL default '0',
+  interface char(40) NOT NULL default '',
+  state char(40) NOT NULL default '',
+  username char(40) NOT NULL default '',
+  info char(150) NOT NULL default '',
+  referer int(10) NOT NULL default '0',
+  ack int(10) NOT NULL default '0',
+  analized tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  KEY host (host),
+  KEY interface (interface),
+  KEY username (username),
+  KEY ack (ack),
+  KEY type (type),
+  KEY state (state),
+  KEY date (date),
+  KEY analized (analized)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `events`
+--
+
+
+--
+-- Table structure for table `events_latest`
+--
+
+DROP TABLE IF EXISTS events_latest;
+CREATE TABLE events_latest (
+  id int(10) NOT NULL auto_increment,
+  date datetime NOT NULL default '0000-00-00 00:00:00',
+  type int(10) NOT NULL default '0',
+  host int(10) NOT NULL default '0',
+  interface char(40) NOT NULL default '',
+  state char(40) NOT NULL default '',
+  username char(40) NOT NULL default '',
+  info char(150) NOT NULL default '',
+  referencia int(10) NOT NULL default '0',
+  ack int(10) NOT NULL default '0',
+  analized tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY tipo (type),
+  KEY host (host),
+  KEY interface (interface),
+  KEY analized (analized),
+  KEY date (date),
+  KEY username (username),
+  KEY ack (ack)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `events_latest`
+--
+
+
+--
+-- Table structure for table `filters`
+--
+
+DROP TABLE IF EXISTS filters;
+CREATE TABLE filters (
+  id int(10) NOT NULL auto_increment,
+  description char(40) NOT NULL default '',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `filters`
+--
+
+INSERT INTO filters VALUES (1,'All Events'),(4,'Severity Level > Warning'),(5,'Dont Show SLA or Commands'),(8,'Dont Show SLA'),(10,'BGP Events'),(13,'Commands Only'),(17,'Interfaces'),(18,'UnACK Events'),(19,'Windows Events'),(20,'PIX');
+
+--
+-- Table structure for table `filters_cond`
+--
+
+DROP TABLE IF EXISTS filters_cond;
+CREATE TABLE filters_cond (
+  id int(10) NOT NULL auto_increment,
+  filter_id int(10) NOT NULL default '1',
+  pos int(5) NOT NULL default '1',
+  field_id int(10) NOT NULL default '1',
+  op char(10) NOT NULL default '=',
+  value char(60) NOT NULL default '',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id),
+  KEY filter (filter_id),
+  KEY field (field_id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `filters_cond`
+--
+
+INSERT INTO filters_cond VALUES (1,1,1,1,'=','1'),(2,5,1,2,'!=','12'),(3,4,1,3,'>','30'),(4,5,3,2,'!=','8'),(5,5,2,4,'=',''),(6,8,1,2,'!=','12'),(10,10,1,2,'=','6'),(13,13,1,2,'=','8'),(20,17,1,11,'>','1'),(21,18,1,12,'=','0'),(22,19,1,2,'=','46'),(23,19,5,5,'=',''),(24,19,10,2,'=','47'),(25,19,15,5,'=',''),(26,19,20,2,'=','48'),(27,19,25,5,'=',''),(28,19,30,2,'=','49'),(29,20,2,5,'=',''),(30,20,3,2,'=','63'),(31,20,4,5,'=',''),(32,20,5,2,'=','62'),(33,20,6,5,'=',''),(34,20,7,2,'=','65'),(35,20,9,2,'=','67'),(37,20,10,5,'=',''),(38,20,11,2,'=','61'),(39,20,12,5,'=',''),(40,20,13,2,'=','66'),(41,20,1,2,'=','64'),(43,20,8,5,'=',''),(44,20,14,5,'=',''),(45,20,15,2,'=','29'),(46,20,16,5,'=',''),(47,20,17,2,'=','28');
+
+--
+-- Table structure for table `filters_fields`
+--
+
+DROP TABLE IF EXISTS filters_fields;
+CREATE TABLE filters_fields (
+  id int(10) NOT NULL auto_increment,
+  description char(40) NOT NULL default '',
+  field char(40) NOT NULL default '',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id)
+) TYPE=MyISAM COMMENT='Fields that can be used for filtering';
+
+--
+-- Dumping data for table `filters_fields`
+--
+
+INSERT INTO filters_fields VALUES (1,'ALL',''),(2,'Event Type','types.id'),(3,'Severity Level','severity.level'),(4,'AND','AND'),(5,'OR','OR'),(6,'Host','hosts.id'),(7,'Zone','zones.id'),(11,'Interface ID','interfaces.id'),(12,'Acknowledge','events.ack');
+
+--
+-- Table structure for table `graph_types`
+--
+
+DROP TABLE IF EXISTS graph_types;
+CREATE TABLE graph_types (
+  id int(10) NOT NULL auto_increment,
+  description char(30) NOT NULL default '',
+  type int(10) NOT NULL default '1',
+  graph1 char(60) NOT NULL default '',
+  graph2 char(60) NOT NULL default '',
+  sizex1 int(4) NOT NULL default '0',
+  sizey1 int(4) NOT NULL default '0',
+  sizex2 int(4) NOT NULL default '0',
+  sizey2 int(4) NOT NULL default '0',
+  allow_aggregation tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id)
+) TYPE=MyISAM COMMENT='Performance Graph Types';
+
+--
+-- Dumping data for table `graph_types`
+--
+
+INSERT INTO graph_types VALUES (1,'No Graph Selected',1,'','',0,0,0,0,0),(3,'Traffic',4,'traffic','',500,150,0,0,1),(4,'Utilization',4,'traffic_util','',500,150,0,0,0),(5,'Packets',4,'packets','error_packets',275,170,250,170,1),(6,'Error Rate',4,'error_rate','',500,170,0,0,0),(7,'RTT & Packet Loss',4,'rtt','traffic_pl',275,155,260,140,0),(8,'Interface Packet Loss',4,'packetloss','',500,180,0,0,0),(9,'Cisco CPU Usage',3,'cpu_util','',500,175,0,0,1),(10,'Cisco Memory',3,'memory','',510,150,0,0,0),(11,'Drops',4,'drop_packets','',500,175,0,0,0),(14,'BGP Updates',6,'bgp_updates','',500,150,0,0,0),(15,'Used Storage',8,'storage','',500,150,0,0,1),(16,'CSS VIP Hits',9,'css_vip_hits','',500,150,0,0,0),(17,'CSS VIP Traffic',9,'css_vip_output_only_traffic','',500,150,0,0,0),(18,'Solaris Memory Usage',10,'ucd_memory','',500,180,0,0,0),(19,'Solaris Load Average',10,'ucd_load_average','',500,150,0,0,0),(20,'Solaris CPU Usage',10,'ucd_cpu_solaris','',500,175,0,0,0),(21,'CPU Usage',11,'ucd_cpu_linux','',500,175,0,0,1),(22,'Load Average',11,'ucd_load_average','',500,150,0,0,1),(23,'Established Connections',2,'tcp_conn_number','',500,175,0,0,1),(24,'Connection Delay',2,'tcp_conn_delay','',500,175,0,0,0),(25,'IP Accounting',3,'acct_bytes','acct_packets',275,170,260,170,0),(26,'Processes / Users',12,'hostmib_users_procs','',500,170,0,0,0),(27,'TCP Connection Status',12,'tcpmib_connections','',500,150,0,0,0),(28,'Processor Utilization',12,'cpu_util','',500,175,0,0,0),(29,'Processes / Users',11,'hostmib_users_procs','',500,170,0,0,0),(30,'TCP Connection Status',11,'tcpmib_connections','',500,150,0,0,0),(31,'TCP Connection Status',3,'tcpmib_connections','',500,150,0,0,0),(32,'Accounted Packets',13,'cisco_mac_packets','',500,150,0,0,0),(33,'Accounted Bytes',13,'cisco_mac_bytes','',500,150,0,0,0),(34,'SP RTT & Loss',14,'rtt','packetloss',270,170,265,170,0),(35,'Median RTT',14,'rtt','',500,175,0,0,0),(36,'Packets Lost',14,'packetloss','',500,175,0,0,0),(37,'Temperature',17,'temperature','',500,180,0,0,1),(38,'SA Agent Round-Trip Latency',19,'cisco_saagent_rtl','',500,150,0,0,0),(39,'SA Agent Jitter',19,'cisco_saagent_jitter','',500,150,0,0,0),(40,'SA Agent % Packet Loss',19,'cisco_saagent_packetloss','',500,150,0,0,0),(41,'Host Round Trip Time',20,'rtt','',500,150,0,0,0),(42,'Host Packet Loss',20,'packetloss','',500,175,0,0,0),(43,'TC Class Rate',21,'tc_rate','',500,150,0,0,1),(44,'Instances/Memory',15,'apps_instances','apps_memory',250,175,280,175,0),(45,'Connection Delay',23,'tcp_conn_delay','',500,175,0,0,0),(46,'Temperature',26,'temperature','',500,175,0,0,1),(47,'Packets New',4,'packets_new','',610,170,0,0,0),(48,'Livingston Portmaster Serial',28,'pm_serial','',500,175,0,0,0),(49,'CGI Requests',27,'iis_tcgir','',500,150,0,0,0),(50,'POSTs and GETs',27,'iis_tptg','',500,150,0,0,0),(51,'Files Sent',27,'iis_tfs','',500,150,0,0,0),(52,'Bytes Received',27,'iis_tbr','',500,150,0,0,0),(53,'Hits',29,'apache_tac','',500,175,0,0,1),(54,'KBytes',29,'apache_tkb','',500,175,0,0,1),(55,'Apache CPU Load',29,'apache_cplo','',500,175,0,0,0),(59,'Bytes Per Request',29,'apache_bpr','',500,175,0,0,0),(60,'Workers',29,'apache_workers','',500,175,0,0,0),(61,'Load/Capacity',31,'apc_load_capacity','',500,175,0,0,0),(62,'Voltages',31,'apc_voltages','',500,150,0,0,0),(63,'Time Remaining',31,'apc_time_remaining','',500,150,0,0,0),(64,'Temperature',31,'temperature','',500,150,0,0,0),(65,'Records',30,'sql_records','',500,150,0,0,0),(66,'Traffic',32,'alteon_octets','',500,175,0,0,1),(67,'Session Rate',32,'alteon_sessionrate','',500,175,0,0,1),(68,'Failures',32,'alteon_failures_sessions','',500,175,0,0,0),(69,'Current Sessions',32,'alteon_sessions','',500,175,0,0,1),(70,'Current Sessions',33,'alteon_sessions','',500,175,0,0,1),(71,'Sessions Rate',33,'alteon_sessionrate','',500,175,0,0,1),(72,'Octets',33,'alteon_octets','',500,175,0,0,1),(73,'Response Time',34,'response_time','',500,175,0,0,0),(74,'Memory',35,'alteon_memory','',500,175,0,0,0),(75,'CPU Load',35,'alteon_load_average','',500,175,0,0,0),(76,'TCP Connections',35,'tcpmib_connections','',500,150,0,0,0),(77,'Sensor Value',36,'brocade_sensor','',500,175,0,0,0),(78,'Frames',37,'frames','',500,175,0,0,0),(79,'Traffic',37,'traffic_words','',500,175,0,0,0),(80,'Cisco Dialup Usage',38,'cisco_serial','',500,175,0,0,0),(81,'Time Usage',39,'inf_ldisk_time','',500,150,0,0,0),(82,'I/O Rate',39,'inf_ldisk_rate','',500,150,0,0,0),(83,'Battery Temperature',40,'temperature','',500,150,0,0,0),(84,'Time Remaining',40,'ups_time_remaining','',500,150,0,0,0),(85,'UPS Voltage',41,'ups_voltage','',500,150,0,0,1),(86,'UPS Current',41,'ups_current','',500,150,0,0,1),(87,'UPS Load',41,'ups_load','',500,150,0,0,1),(88,'Charge Remaining',40,'ups_charge_remaining','',500,150,0,0,0),(89,'IPTables Rate',42,'iptables_rate','',500,150,0,170,1),(90,'Routes',6,'bgp_routes','',500,150,0,0,0),(91,'PIX Connections',43,'pix_connections','',500,175,0,0,0),(92,'NAT Active Binds',44,'cisco_nat_active','',500,150,0,0,0),(93,'NAT Packets',44,'cisco_nat_packets','',500,150,0,0,0),(94,'Sensor Value',45,'sensor_value','',500,150,0,0,0);
+
+--
+-- Table structure for table `hosts`
+--
+
+DROP TABLE IF EXISTS hosts;
+CREATE TABLE hosts (
+  id int(10) NOT NULL auto_increment,
+  ip_tacacs char(16) NOT NULL default '',
+  ip char(20) NOT NULL default '',
+  name char(30) NOT NULL default '',
+  rocommunity char(100) NOT NULL default '',
+  rwcommunity char(100) NOT NULL default '',
+  zone int(10) NOT NULL default '0',
+  tftp char(20) NOT NULL default '',
+  autodiscovery int(10) NOT NULL default '1',
+  config_type int(10) NOT NULL default '1',
+  autodiscovery_default_customer int(10) NOT NULL default '1',
+  satellite int(10) NOT NULL default '1',
+  dmii char(10) NOT NULL default '1',
+  lat decimal(12,2) NOT NULL default '0.00',
+  lon decimal(12,2) NOT NULL default '0.00',
+  show_host tinyint(1) NOT NULL default '1',
+  poll tinyint(1) NOT NULL default '1',
+  creation_date int(10) NOT NULL default '0',
+  modification_date int(10) NOT NULL default '0',
+  last_poll_date int(10) NOT NULL default '0',
+  last_poll_time int(10) NOT NULL default '0',
+  poll_interval int(10) NOT NULL default '300',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY zone (zone),
+  KEY ip (ip),
+  KEY ip_tacacs (ip_tacacs),
+  KEY autodiscovery_default_customer (autodiscovery_default_customer),
+  KEY autodiscovery (autodiscovery),
+  KEY satellite (satellite),
+  KEY poll (poll)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `hosts`
+--
+
+INSERT INTO hosts VALUES (1,'','','Unknown','','',1,'',1,1,1,1,'1','0.00','0.00',1,1,0,0,0,0,300);
+
+--
+-- Table structure for table `hosts_config`
+--
+
+DROP TABLE IF EXISTS hosts_config;
+CREATE TABLE hosts_config (
+  id int(10) NOT NULL auto_increment,
+  date datetime NOT NULL default '0000-00-00 00:00:00',
+  host int(10) NOT NULL default '0',
+  config longtext NOT NULL,
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY host (host)
+) TYPE=MyISAM COMMENT='Hosts Config Files';
+
+--
+-- Dumping data for table `hosts_config`
+--
+
+INSERT INTO hosts_config VALUES (1,'0000-00-00 00:00:00',1,'No Config');
+
+--
+-- Table structure for table `hosts_config_types`
+--
+
+DROP TABLE IF EXISTS hosts_config_types;
+CREATE TABLE hosts_config_types (
+  id int(10) NOT NULL auto_increment,
+  description char(60) NOT NULL default '',
+  command char(30) NOT NULL default '',
+  PRIMARY KEY  (id)
+) TYPE=MyISAM COMMENT='Host Config Commands';
+
+--
+-- Dumping data for table `hosts_config_types`
+--
+
+INSERT INTO hosts_config_types VALUES (1,'No Configuration Transfer','none'),(2,'Cisco IOS, Newer than 12.0 (CONFIG-COPY-MIB)','cisco_cc'),(3,'Cisco IOS, Older than 12.0 (SYS-MIB)','cisco_sys'),(4,'Cisco CatOS, Catalyst Switches (STACK-MIB)','cisco_catos'),(5,'Alteon WebOS Switches (DANGEROUS)','alteon_webos');
+
+--
+-- Table structure for table `interface_types`
+--
+
+DROP TABLE IF EXISTS interface_types;
+CREATE TABLE interface_types (
+  id int(10) NOT NULL auto_increment,
+  description varchar(40) NOT NULL default '',
+  autodiscovery_validate tinyint(1) NOT NULL default '0',
+  autodiscovery_enabled tinyint(1) NOT NULL default '0',
+  autodiscovery_function varchar(40) NOT NULL default '',
+  autodiscovery_parameters varchar(200) NOT NULL default '',
+  autodiscovery_default_poller int(10) NOT NULL default '1',
+  have_graph tinyint(1) NOT NULL default '0',
+  rrd_structure_rra text NOT NULL,
+  rrd_structure_res varchar(20) NOT NULL default '',
+  rrd_structure_step int(4) NOT NULL default '300',
+  graph_default int(10) NOT NULL default '1',
+  break_by_card tinyint(1) NOT NULL default '0',
+  update_handler varchar(30) NOT NULL default 'none',
+  allow_manual_add tinyint(1) NOT NULL default '0',
+  sla_default int(10) NOT NULL default '1',
+  have_tools tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id),
+  KEY autodiscovery_enabled (autodiscovery_enabled)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `interface_types`
+--
+
+INSERT INTO interface_types VALUES (1,'No Interface Type',0,0,'none','',1,0,'','',300,1,0,'none',0,1,0),(2,'TCP Ports',0,1,'tcp_ports','-sT -p1-500,600-1024',5,1,'RRA:LAST:0.5:1:<resolution>','103680',300,23,0,'tcp_ports',1,1,1),(3,'Cisco System Info',1,1,'host_information','cisco,9.1,9.5',3,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,9,0,'none',0,7,0),(4,'Physical Interfaces',1,1,'snmp_interfaces','',2,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,3,1,'none',0,1,1),(6,'BGP Neighbors',1,1,'bgp_peers','',8,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,90,0,'none',0,1,0),(8,'Storage',1,1,'storage','',9,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,15,0,'none',0,9,0),(9,'CSS VIPs',0,1,'css_vips','',10,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,17,0,'none',0,1,0),(10,'Solaris System Info',1,1,'host_information','solaris,sparc,sun,11.2.3.10,8072.3.2.3',12,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,20,0,'none',0,1,0),(11,'Linux/Unix System Info',1,1,'host_information','2021.250.10,linux,2021.250.255,freebsd,netSnmp,8072',11,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,21,0,'none',0,10,0),(12,'Windows System Info',1,1,'host_information','enterprises.311',13,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,28,0,'none',0,11,0),(13,'Cisco MAC Accounting',1,1,'cisco_accounting','',14,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,33,0,'none',0,1,0),(14,'Smokeping Host',1,1,'smokeping','/var/lib/smokeping',15,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,34,0,'none',0,8,0),(15,'Applications',1,0,'hostmib_apps','',16,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,44,0,'none',0,1,0),(16,'Cisco Power Supply',1,1,'cisco_envmib','PowerSupply,5.1.2,5.1.3',17,0,'','103680',300,1,1,'none',0,1,0),(17,'Cisco Temperature',1,1,'cisco_envmib','Temperature,3.1.2,3.1.6',18,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,37,1,'none',0,1,0),(18,'Cisco Voltage',1,1,'cisco_envmib','Voltage,2.1.2,2.1.7',19,0,'','103680',300,1,1,'none',0,1,0),(19,'Cisco SA Agent',1,1,'cisco_saagent','',20,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,39,0,'none',0,1,0),(20,'Reachable',1,1,'reachability','',21,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,41,0,'none',0,1,0),(21,'Linux Traffic Control',1,1,'linux_tc','.1.3.6.1.4.1.2021.5001',22,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,43,1,'none',0,1,0),(22,'NTP',0,1,'ntp_client','',23,0,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,1,0,'none',0,1,0),(23,'UDP Ports',0,0,'tcp_ports','-sU -p1-500,600-1024 --host_timeout 15000',24,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,45,0,'tcp_ports',1,1,0),(24,'Compaq Physical Drives',0,1,'cpqmib','phydrv',25,0,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,1,0,'none',0,1,0),(25,'Compaq Fans',0,1,'cpqmib','fans',26,0,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,1,0,'none',0,1,0),(26,'Compaq Temperature',0,1,'cpqmib','temperature',27,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,46,0,'none',0,1,0),(27,'IIS Webserver Information',0,1,'iis_info','',28,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,50,0,'none',0,1,0),(28,'Livingston Serial Port',0,1,'livingston_serial_port','',29,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,48,0,'none',0,1,0),(29,'Apache',0,1,'apache','',30,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,53,0,'none',1,1,0),(30,'SQL Query',0,1,'none','',32,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,65,0,'none',1,1,0),(31,'APC',1,1,'apc','enterprises.318',31,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,61,0,'none',0,1,0),(32,'Alteon Real Server',1,1,'alteon_realservers','',33,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,66,0,'none',0,1,0),(33,'Alteon Virtual Server',0,1,'alteon_virtualservers','',34,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,70,0,'none',0,1,0),(34,'Alteon Real Services',0,1,'alteon_realservices','',35,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,73,0,'none',0,1,0),(35,'Alteon System Info',1,1,'host_information','enterprises.1872',36,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,75,0,'none',0,1,0),(36,'Brocade Sensors',0,0,'brocade_sensors','',37,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,77,0,'none',0,1,0),(37,'Brocade FC Ports',0,0,'brocade_fcports','',38,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,78,0,'none',0,1,0),(38,'Cisco Dialup Usage',1,1,'cisco_serial_port','',39,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,80,0,'none',0,1,0),(39,'Windows Logical Disks',1,1,'informant_ldisks','',40,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,82,0,'none',0,1,0),(40,'UPS',1,1,'ups','',41,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,84,0,'none',0,1,0),(41,'UPS Lines',0,1,'ups_lines','',42,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,85,0,'none',0,1,0),(42,'IPTables Chains',1,1,'linux_iptables','.1.3.6.1.4.1.2021.5002',43,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,89,1,'none',0,1,0),(43,'Cisco PIX',1,1,'pix_connections','',44,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,91,0,'none',0,1,0),(44,'Cisco NAT',0,1,'simple','.1.3.6.1.4.1.9.10.77.1.2.1.0,NAT',45,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,93,0,'none',0,1,0),(45,'Sensors',1,1,'sensors','',46,1,'RRA:AVERAGE:0.5:1:<resolution>','103680',300,94,1,'none',0,1,0);
+
+--
+-- Table structure for table `interface_types_field_types`
+--
+
+DROP TABLE IF EXISTS interface_types_field_types;
+CREATE TABLE interface_types_field_types (
+  id int(10) NOT NULL auto_increment,
+  description char(30) NOT NULL default '',
+  handler char(30) NOT NULL default '',
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `interface_types_field_types`
+--
+
+INSERT INTO interface_types_field_types VALUES (1,'Unknown','none'),(3,'Index','text'),(5,'Boolean','bool'),(7,'Description','text'),(8,'Other','text'),(20,'RRDTool DS','rrd_ds');
+
+--
+-- Table structure for table `interface_types_fields`
+--
+
+DROP TABLE IF EXISTS interface_types_fields;
+CREATE TABLE interface_types_fields (
+  id int(10) NOT NULL auto_increment,
+  description char(40) NOT NULL default '',
+  name char(40) NOT NULL default '',
+  pos int(3) NOT NULL default '10',
+  itype int(10) NOT NULL default '1',
+  ftype int(10) NOT NULL default '1',
+  showable tinyint(1) NOT NULL default '1',
+  overwritable tinyint(1) NOT NULL default '1',
+  tracked tinyint(1) NOT NULL default '0',
+  default_value char(250) NOT NULL default '',
+  PRIMARY KEY  (id),
+  KEY ftype_itype (ftype,itype),
+  KEY ftype (ftype)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `interface_types_fields`
+--
+
+INSERT INTO interface_types_fields VALUES (1,'Unknown','unknown',10,1,1,0,0,0,''),(3,'SNMP IFIndex','interfacenumber',60,4,3,1,1,0,''),(4,'Description','description',10,4,7,1,1,1,''),(5,'IP Address','address',30,4,7,1,1,0,''),(6,'Input Bandwidth','bandwidthin',50,4,8,1,1,0,'1'),(7,'Port Number','port',10,2,3,1,1,0,''),(9,'Check Content','check_content',30,2,5,2,1,0,'0'),(10,'Port Description','description',20,2,7,1,1,0,''),(11,'Input Bytes','input',10,4,20,0,0,0,'DS:input:COUNTER:600:0:<bandwidth>'),(12,'Established Connections','tcp_conn_number',10,2,20,0,0,0,'DS:tcp_conn_number:GAUGE:600:0:10000'),(13,'Check Content URL','check_url',40,2,8,2,1,0,''),(14,'Output Bytes','output',20,4,20,0,0,0,'DS:output:COUNTER:600:0:<bandwidth>'),(15,'Input Packets','inpackets',70,4,20,0,0,0,'DS:inpackets:COUNTER:600:0:<bandwidth>'),(16,'Flip In Out in Graphs','flipinout',70,4,5,2,1,0,'0'),(20,'Connection Delay','conn_delay',20,2,20,0,0,0,'DS:conn_delay:GAUGE:600:0:100000'),(21,'Output Bandwidth','bandwidthout',51,4,8,2,1,0,'1'),(22,'Peer Address','peer',36,4,8,1,1,0,''),(23,'Input Errors','inputerrors',30,4,20,0,0,0,'DS:inputerrors:COUNTER:600:0:<bandwidth>'),(24,'Output Errors','outputerrors',40,4,20,0,0,0,'DS:outputerrors:COUNTER:600:0:<bandwidth>'),(25,'Round Trip Time','rtt',50,4,20,0,0,0,'DS:rtt:GAUGE:600:0:10000'),(26,'PacketLoss','packetloss',60,4,20,0,0,0,'DS:packetloss:GAUGE:600:0:1000'),(27,'Output Packets','outpackets',80,4,20,0,0,0,'DS:outpackets:COUNTER:600:0:<bandwidth>'),(28,'Drops','drops',90,4,20,0,0,0,'DS:drops:COUNTER:600:0:<bandwidth>'),(29,'Not Used','aux4',100,4,20,0,0,0,'DS:aux4:COUNTER:600:0:<bandwidth>'),(30,'Saved Input Bandwidth','bandwidthin',110,4,20,0,0,0,'DS:bandwidthin:GAUGE:600:0:<bandwidth>'),(31,'Saved Output Bandwidth','bandwidthout',120,4,20,0,0,0,'DS:bandwidthout:GAUGE:600:0:<bandwidth>'),(32,'Index','index',10,12,3,0,0,0,''),(33,'Description','description',20,12,7,1,0,1,'System Information'),(34,'Number of Processors','cpu_num',30,12,8,1,1,0,'1'),(35,'Index','index',10,11,3,0,0,0,''),(36,'Description','description',20,11,7,1,0,1,'System Information'),(37,'Number of CPUs','cpu_num',30,11,8,1,1,0,'1'),(43,'CPU','cpu',10,3,20,0,0,0,'DS:cpu:GAUGE:600:0:100'),(44,'Mem Used','mem_used',20,3,20,0,0,0,'DS:mem_used:GAUGE:600:0:100000000000'),(45,'Mem Free','mem_free',30,3,20,0,0,0,'DS:mem_free:GAUGE:600:0:100000000000'),(46,'Acct Packets','acct_packets',40,3,20,0,0,0,'DS:acct_packets:ABSOLUTE:600:0:100000000000'),(47,'Acct Bytes','acct_bytes',50,3,20,0,0,0,'DS:acct_bytes:GAUGE:600:0:100000000000'),(48,'Tcp Active','tcp_active',60,3,20,0,0,0,'DS:tcp_active:COUNTER:600:0:10000000'),(49,'Tcp Passive','tcp_passive',70,3,20,0,0,0,'DS:tcp_passive:COUNTER:600:0:1000000'),(50,'Tcp Established','tcp_established',80,3,20,0,0,0,'DS:tcp_established:COUNTER:600:0:1000000'),(51,'Bgpin','bgpin',10,6,20,0,0,0,'DS:bgpin:COUNTER:600:0:10000000'),(52,'Bgpout','bgpout',20,6,20,0,0,0,'DS:bgpout:COUNTER:600:0:10000000'),(53,'Bgpuptime','bgpuptime',30,6,20,0,0,0,'DS:bgpuptime:GAUGE:600:0:10000000'),(56,'Storage Block Size','storage_block_size',10,8,20,0,0,0,'DS:storage_block_size:GAUGE:600:0:<size>'),(57,'Storage Block Count','storage_block_count',20,8,20,0,0,0,'DS:storage_block_count:GAUGE:600:0:<size>'),(58,'Storage Used Blocks','storage_used_blocks',30,8,20,0,0,0,'DS:storage_used_blocks:GAUGE:600:0:<size>'),(59,'Output','output',10,9,20,0,0,0,'DS:output:COUNTER:600:0:<bandwidth>'),(60,'Hits','hits',20,9,20,0,0,0,'DS:hits:COUNTER:600:0:<bandwidth>'),(61,'Cpu User Ticks','cpu_user_ticks',10,10,20,0,0,0,'DS:cpu_user_ticks:COUNTER:600:0:86400'),(62,'Cpu Idle Ticks','cpu_idle_ticks',20,10,20,0,0,0,'DS:cpu_idle_ticks:COUNTER:600:0:86400'),(63,'Cpu Wait Ticks','cpu_wait_ticks',30,10,20,0,0,0,'DS:cpu_wait_ticks:COUNTER:600:0:86400'),(64,'Cpu Kernel Ticks','cpu_kernel_ticks',40,10,20,0,0,0,'DS:cpu_kernel_ticks:COUNTER:600:0:86400'),(65,'Swap Total','swap_total',50,10,20,0,0,0,'DS:swap_total:GAUGE:600:0:10000000000'),(66,'Swap Available','swap_available',60,10,20,0,0,0,'DS:swap_available:GAUGE:600:0:10000000000'),(67,'Mem Total','mem_total',70,10,20,0,0,0,'DS:mem_total:GAUGE:600:0:10000000000'),(68,'Mem Available','mem_available',80,10,20,0,0,0,'DS:mem_available:GAUGE:600:0:10000000000'),(69,'Load Average 1','load_average_1',90,10,20,0,0,0,'DS:load_average_1:GAUGE:600:0:1000'),(70,'Load Average 5','load_average_5',100,10,20,0,0,0,'DS:load_average_5:GAUGE:600:0:1000'),(71,'Load Average 15','load_average_15',110,10,20,0,0,0,'DS:load_average_15:GAUGE:600:0:1000'),(72,'Cpu User Ticks','cpu_user_ticks',10,11,20,0,0,0,'DS:cpu_user_ticks:COUNTER:600:0:86400'),(73,'Cpu Idle Ticks','cpu_idle_ticks',20,11,20,0,0,0,'DS:cpu_idle_ticks:COUNTER:600:0:86400'),(74,'Cpu Nice Ticks','cpu_nice_ticks',30,11,20,0,0,0,'DS:cpu_nice_ticks:COUNTER:600:0:86400'),(75,'Cpu System Ticks','cpu_system_ticks',40,11,20,0,0,0,'DS:cpu_system_ticks:COUNTER:600:0:86400'),(76,'Load Average 1','load_average_1',50,11,20,0,0,0,'DS:load_average_1:GAUGE:600:0:1000'),(77,'Load Average 5','load_average_5',60,11,20,0,0,0,'DS:load_average_5:GAUGE:600:0:1000'),(78,'Load Average 15','load_average_15',70,11,20,0,0,0,'DS:load_average_15:GAUGE:600:0:1000'),(79,'Num Users','num_users',80,11,20,0,0,0,'DS:num_users:GAUGE:600:0:100000'),(80,'Num Procs','num_procs',90,11,20,0,0,0,'DS:num_procs:GAUGE:600:0:10000000'),(81,'Tcp Active','tcp_active',100,11,20,0,0,0,'DS:tcp_active:COUNTER:600:0:10000000'),(82,'Tcp Passive','tcp_passive',110,11,20,0,0,0,'DS:tcp_passive:COUNTER:600:0:1000000'),(83,'Tcp Established','tcp_established',120,11,20,0,0,0,'DS:tcp_established:COUNTER:600:0:1000000'),(84,'CPU','cpu',10,12,20,0,0,0,'DS:cpu:GAUGE:600:0:100'),(85,'Num Users','num_users',20,12,20,0,0,0,'DS:num_users:GAUGE:600:0:100000'),(86,'Num Procs','num_procs',30,12,20,0,0,0,'DS:num_procs:GAUGE:600:0:10000000'),(87,'Tcp Active','tcp_active',40,12,20,0,0,0,'DS:tcp_active:COUNTER:600:0:10000000'),(88,'Tcp Passive','tcp_passive',50,12,20,0,0,0,'DS:tcp_passive:COUNTER:600:0:1000000'),(89,'Tcp Established','tcp_established',60,12,20,0,0,0,'DS:tcp_established:COUNTER:600:0:1000000'),(90,'Input','input',10,13,20,0,0,0,'DS:input:COUNTER:600:0:10000000000'),(91,'Output','output',20,13,20,0,0,0,'DS:output:COUNTER:600:0:10000000000'),(92,'Inputpackets','inputpackets',30,13,20,0,0,0,'DS:inputpackets:COUNTER:600:0:10000000000'),(93,'Outputpackets','outputpackets',40,13,20,0,0,0,'DS:outputpackets:COUNTER:600:0:10000000000'),(94,'RTT','rtt',10,14,20,0,0,0,'DS:rtt:GAUGE:600:0:10000'),(95,'Packetloss','packetloss',20,14,20,0,0,0,'DS:packetloss:GAUGE:600:0:1000'),(98,'Temperature','temperature',10,17,20,0,0,0,'DS:temperature:GAUGE:600:0:100'),(100,'Forward Jitter','forward_jitter',10,19,20,0,0,0,'DS:forward_jitter:GAUGE:600:0:100'),(101,'Backward Jitter','backward_jitter',20,19,20,0,0,0,'DS:backward_jitter:GAUGE:600:0:100'),(102,'Rt Latency','rt_latency',30,19,20,0,0,0,'DS:rt_latency:GAUGE:600:0:100'),(103,'Forward Packetloss','forward_packetloss',40,19,20,0,0,0,'DS:forward_packetloss:GAUGE:600:0:100'),(104,'Backward Packetloss','backward_packetloss',50,19,20,0,0,0,'DS:backward_packetloss:GAUGE:600:0:100'),(105,'RTT','rtt',10,20,20,0,0,0,'DS:rtt:GAUGE:600:0:10000'),(106,'Packetloss','packetloss',20,20,20,0,0,0,'DS:packetloss:GAUGE:600:0:1000'),(107,'Bytes','bytes',10,21,20,0,0,0,'DS:bytes:COUNTER:600:0:<ceil>'),(108,'Packets','packets',20,21,20,0,0,0,'DS:packets:COUNTER:600:0:<ceil>'),(109,'Disk Type','storage_type',10,8,7,1,0,1,''),(110,'Size (Bytes)','size',20,8,7,1,1,1,'0'),(111,'Description','description',30,8,7,1,1,0,''),(112,'Index','index',40,8,3,0,0,0,''),(113,'Index','index',10,10,3,1,0,0,''),(114,'Description','description',20,10,7,1,0,1,'System Information'),(115,'Number of Processors','cpu_num',30,10,8,1,1,0,'1'),(116,'Index','index',10,14,3,1,0,0,''),(117,'Description','description',20,14,7,1,1,0,''),(118,'Index','index',10,20,3,0,0,0,''),(119,'Description','description',20,20,7,1,0,1,''),(120,'Rate','rate',20,21,7,1,0,1,''),(121,'Ceil','ceil',30,21,7,1,0,1,''),(122,'Index','index',50,21,3,1,0,0,''),(123,'Description','description',40,21,7,2,1,0,''),(124,'Index','index',10,9,3,1,0,0,''),(125,'Owner','owner',20,9,7,1,0,1,''),(126,'VIP Address','address',30,9,7,1,0,1,''),(127,'Bandwidth','bandwidth',40,9,8,1,1,0,'1'),(128,'Description','description',20,18,7,1,1,0,''),(129,'Description','description',20,17,7,1,1,0,''),(130,'Description','description',20,16,7,1,1,0,''),(131,'Index','index',30,18,3,1,0,0,''),(132,'Index','index',30,17,3,1,0,0,''),(133,'Index','index',10,16,3,1,0,0,''),(134,'Number of Processors','cpu_num',30,3,8,1,1,0,'1'),(135,'Index','index',10,3,3,1,0,0,''),(136,'Description','description',20,3,7,1,0,1,'System Information'),(137,'Index','index',10,19,3,1,0,0,''),(138,'Description','description',20,19,7,1,1,0,''),(139,'Description','description',20,13,7,1,1,0,''),(140,'Index','index',35,13,3,1,0,0,''),(141,'MAC Address','mac',30,13,8,0,0,1,''),(142,'Interface Index','ifindex',40,13,8,2,0,1,''),(143,'IP Address','address',25,13,7,1,0,1,''),(144,'Flip Graph In/Out','flipinout',45,13,5,2,1,0,'0'),(145,'Local IP','local',30,6,7,1,0,1,''),(146,'Remote IP','remote',40,6,3,1,0,0,''),(147,'Autonomous System','asn',20,6,7,1,0,1,''),(149,'Description','description',50,6,7,2,1,0,''),(150,'Process Name','process_name',10,15,3,2,0,0,''),(151,'Description','description',20,15,7,1,1,0,''),(153,'Instances at Discovery','instances',30,15,8,1,1,0,'1'),(154,'Pings to Send','pings',80,4,8,2,1,0,'50'),(155,'Pings to Send','pings',30,20,8,2,1,0,'50'),(156,'PL Threshold %','threshold',40,20,8,2,1,0,'70'),(157,'Interval (ms)','interval',50,20,8,2,1,0,'300'),(158,'Check Content RegExp','check_regexp',50,2,8,2,1,0,''),(159,'Current Instances','current_instances',10,15,20,0,0,0,'DS:current_instances:GAUGE:600:0:99999'),(160,'Index','index',10,22,3,0,0,0,'1'),(161,'Fixed Admin Status','fixed_admin_status',99,4,5,2,1,0,'0'),(162,'Usage Threshold %','usage_threshold',40,8,8,2,1,0,'80'),(164,'Used Memory','used_memory',20,15,20,0,0,0,'DS:used_memory:GAUGE:600:0:9999999'),(165,'IP Mask','mask',32,4,8,2,1,1,''),(167,'Show in Celcius','show_celcius',40,17,5,2,1,0,'1'),(168,'Port Number','port',10,23,3,1,1,0,''),(169,'Port Description','description',20,23,7,1,1,0,''),(170,'Connection Delay','conn_delay',10,23,20,0,0,0,'DS:conn_delay:GAUGE:600:0:100000'),(171,'Controller','controller',10,24,7,1,0,1,''),(172,'Drive','drvindex',11,24,7,1,0,1,''),(173,'Drive Model','model',15,24,8,1,0,1,''),(174,'Index','index',5,24,3,0,0,0,''),(175,'Index','index',5,25,3,0,0,0,''),(176,'Chassis','chassis',10,25,8,1,0,1,''),(177,'Fan','fanindex',11,25,8,1,0,1,''),(178,'Location','location',20,25,7,1,0,1,''),(179,'Index','index',5,26,3,0,1,0,''),(180,'Chassis','chassis',10,26,7,1,0,1,''),(181,'Sensor','tempindex',11,26,7,1,0,1,''),(182,'Location','location',2,26,7,1,0,1,''),(183,'Temperature','temperature',80,26,20,0,0,0,'DS:temperature:GAUGE:600:0:1000'),(184,'Index','index',10,27,3,0,0,0,'1'),(185,'Total Bytes Received','tbr',10,27,20,0,0,0,'DS:tbr:COUNTER:600:0:999999999'),(186,'Total CGI Requests','tcgir',20,27,20,0,0,0,'DS:tcgir:COUNTER:600:0:999999999'),(187,'Total Files Sent','tfs',30,27,20,0,0,0,'DS:tfs:COUNTER:600:0:999999999'),(188,'Total Gets','tg',40,27,20,0,0,0,'DS:tg:COUNTER:600:0:999999999'),(189,'Total Posts','tp',50,27,20,0,0,0,'DS:tp:COUNTER:600:0:999999999'),(190,'Serial Lines Free','pm_serial_free',10,28,20,1,0,0,'DS:pm_serial_free:GAUGE:600:0:5000'),(191,'Serial Lines Connecting','pm_serial_connecting',20,28,20,1,0,0,'DS:pm_serial_connecting:GAUGE:600:0:5000'),(192,'Serial Lines Established','pm_serial_established',30,28,20,1,0,0,'DS:pm_serial_established:GAUGE:600:0:5000'),(193,'Serial Lines Disconnecting','pm_serial_disconnecting',40,28,20,1,0,0,'DS:pm_serial_disconnecting:GAUGE:600:0:5000'),(194,'Serial Lines Command','pm_serial_command',50,28,20,1,0,0,'DS:pm_serial_command:GAUGE:600:0:5000'),(195,'Serial Lines NoService','pm_serial_noservice',60,28,20,1,0,0,'DS:pm_serial_noservice:GAUGE:600:0:5000'),(196,'Index','index',10,28,3,0,0,0,'1'),(197,'Process Threshold','proc_threshold',40,12,8,2,1,0,'100'),(199,'Description','description',20,29,7,2,1,0,'Apache Stats'),(200,'Total Accesses','tac',30,29,20,0,0,0,'DS:tac:COUNTER:600:0:100000'),(201,'IP:Port','ip_port',10,29,3,1,1,0,''),(202,'Total KBytes','tkb',20,29,20,0,0,0,'DS:tkb:COUNTER:600:0:10000000'),(203,'CPU Load','cplo',60,29,20,0,0,0,'DS:cplo:GAUGE:600:0:1000'),(204,'Uptime','up',10,29,20,0,0,0,'DS:up:GAUGE:600:0:99999999999999'),(205,'Bytes Per Request','bpr',40,29,20,0,0,0,'DS:bpr:GAUGE:600:0:10000000'),(208,'Busy Workers','bw',90,29,20,0,0,0,'DS:bw:GAUGE:600:0:1000'),(209,'Idle Workers','iw',50,29,20,0,0,0,'DS:iw:GAUGE:600:0:1000'),(210,'Index','index',10,31,3,0,0,0,'1'),(211,'Description','description',20,31,7,1,0,1,''),(212,'Battery Capacity','capacity',10,31,20,0,0,0,'DS:capacity:GAUGE:600:0:100'),(213,'Output Load','load',20,31,20,0,0,0,'DS:load:GAUGE:600:0:100'),(214,'Input Voltage','in_voltage',31,31,20,0,0,0,'DS:in_voltage:GAUGE:600:0:400'),(215,'Output Voltage','out_voltage',40,31,20,0,0,0,'DS:out_voltage:GAUGE:600:0:400'),(216,'Time Remaining','time_remaining',50,31,20,0,0,0,'DS:time_remaining:GAUGE:600:0:9999999999'),(217,'Temperature','temperature',60,31,20,0,0,0,'DS:temperature:GAUGE:600:0:200'),(218,'Show Temp in Celcius','show_celcius',31,31,5,2,1,0,'1'),(220,'Index','index',10,30,3,1,1,0,'1'),(221,'Description','description',20,30,7,1,1,0,''),(222,'DSN','dsn',30,30,8,2,1,0,''),(223,'Username','username',40,30,8,2,1,0,''),(224,'Password','password',50,30,8,2,1,0,''),(225,'Max Records','max_records',60,30,8,2,1,0,''),(226,'Min Records','min_records',70,30,8,2,1,0,''),(227,'Counter Records','records_counter',10,30,20,0,0,0,'DS:records_counter:COUNTER:600:0:9999999999'),(228,'Query','query',55,30,8,2,1,0,''),(229,'Absolute Records','records_absolute',20,30,20,0,0,0,'DS:records_absolute:GAUGE:600:0:9999999999'),(230,'Is Absolute?','absolute',80,30,5,1,1,0,'0'),(231,'Percentile','percentile',55,4,8,2,1,0,''),(232,'Index','index',10,32,3,0,0,0,''),(233,'Hostname','hostname',20,32,7,1,1,0,''),(234,'Max Connections','max_connections',30,32,8,2,1,0,''),(235,'Total Sessions','total_sessions',50,32,20,0,0,0,'DS:total_sessions:COUNTER:600:0:100000000'),(236,'Current Sessions','current_sessions',55,32,20,0,0,0,'DS:current_sessions:GAUGE:600:0:<max_connections>'),(237,'Failures','failures',60,32,20,0,0,0,'DS:failures:COUNTER:600:0:10000'),(238,'Octets','octets',65,32,20,0,0,0,'DS:octets:COUNTER:600:0:1000000000'),(239,'Index','index',10,33,3,0,0,1,''),(240,'Hostname','hostname',20,33,7,1,1,0,''),(241,'Total Sessions','total_sessions',30,33,20,0,0,0,'DS:total_sessions:COUNTER:600:0:100000000'),(242,'Current Sessions','current_sessions',35,33,20,0,0,0,'DS:current_sessions:GAUGE:600:0:20000'),(243,'Octets','octets',40,33,20,0,0,0,'DS:octets:COUNTER:600:0:1000000000'),(244,'Index','index',10,34,3,0,0,0,''),(245,'Hostname','hostname',20,34,7,1,0,0,''),(246,'Address','address',30,34,7,1,0,0,''),(247,'Port','port',35,34,7,1,0,0,''),(248,'Real Server','real_server',15,34,8,0,0,1,''),(249,'Response Time','response_time',40,34,20,0,0,0,'DS:response_time:GAUGE:600:0:10000'),(250,'Index','index',10,35,3,0,0,0,''),(251,'Description','description',20,35,7,1,0,0,''),(252,'Number of CPUs','cpu_num',30,35,8,0,0,0,''),(253,'TCP Active','tcp_active',40,35,20,0,0,0,'DS:tcp_active:COUNTER:600:0:10000'),(254,'TCP Passive','tcp_passive',41,35,20,0,0,0,'DS:tcp_passive:COUNTER:600:0:10000'),(255,'TCP Established','tcp_established',42,35,20,0,0,0,'DS:tcp_established:COUNTER:600:0:10000'),(256,'Memory Total','mem_total',50,35,20,0,0,0,'DS:mem_total:GAUGE:600:0:100000000'),(257,'Memory Used','mem_used',51,35,20,0,0,0,'DS:mem_used:GAUGE:600:0:100000000'),(258,'CPU A 1 Sec','cpua_1sec',60,35,20,0,0,0,'DS:cpua_1sec:GAUGE:600:0:1000'),(259,'CPU A 4 Secs','cpua_4secs',61,35,20,0,0,0,'DS:cpua_4secs:GAUGE:600:0:1000'),(260,'CPU A 64 Secs','cpua_64secs',62,35,20,0,0,0,'DS:cpua_64secs:GAUGE:600:0:1000'),(261,'CPU B 1 Sec','cpub_1sec',65,35,20,0,0,0,'DS:cpub_1sec:GAUGE:600:0:1000'),(262,'CPU B 4 Secs','cpub_4secs',66,35,20,0,0,0,'DS:cpub_4secs:GAUGE:600:0:1000'),(263,'CPU B 64 Secs','cpub_64secs',67,35,20,0,0,0,'DS:cpub_64secs:GAUGE:600:0:1000'),(264,'Index','index',10,36,3,0,0,0,''),(265,'Type','sensor_type',30,36,8,1,0,0,''),(266,'Value','sensor_value',40,36,20,0,0,0,'DS:sensor_value:GAUGE:600:0:3000000000'),(267,'Index','index',10,37,3,0,0,0,''),(268,'Description','description',20,37,7,1,0,0,''),(269,'Physical Status','phy',40,37,8,1,0,0,''),(270,'Tx Words','tx_words',40,37,20,0,0,0,'DS:tx_words:COUNTER:600:0:1000000000'),(271,'Rx Words','rx_words',45,37,20,0,0,0,'DS:rx_words:COUNTER:600:0:1000000000'),(272,'Tx Frames','tx_frames',50,37,20,0,0,0,'DS:tx_frames:COUNTER:600:0:100000000'),(273,'Rx Frames','rx_frames',55,37,20,0,0,0,'DS:rx_frames:COUNTER:600:0:100000000'),(274,'Index','index',10,38,3,0,0,0,'1'),(275,'Async Used','cisco_async',10,38,20,0,0,0,'DS:cisco_async:GAUGE:600:0:5000'),(276,'DSX Used','cisco_dsx',20,38,20,0,0,0,'DS:cisco_dsx:GAUGE:600:0:5000'),(277,'Free','cisco_free',30,38,20,0,0,0,'DS:cisco_free:GAUGE:600:0:5000'),(278,'Description','description',20,38,7,2,1,0,''),(279,'System Name','name',40,11,7,1,0,1,''),(280,'Location','location',50,11,7,1,0,1,''),(281,'Contact','contact',60,11,7,1,0,1,''),(282,'System Name','name',50,12,7,1,0,1,''),(283,'Location','location',60,12,7,1,0,1,''),(284,'Contact','contact',70,12,7,1,0,1,''),(285,'System Name','name',40,3,7,1,0,1,''),(286,'Location','location',50,3,7,1,0,1,''),(287,'Contact','contact',60,3,7,1,0,1,''),(288,'System Name','name',40,10,7,1,0,1,''),(289,'Location','location',50,10,7,1,0,1,''),(290,'Contact','contact',60,10,7,1,0,1,''),(291,'System Name','name',40,35,7,1,0,1,''),(292,'Location','location',50,35,7,1,0,1,''),(293,'Contact','contact',60,35,7,1,0,1,''),(294,'Index','index',10,39,3,0,0,0,''),(295,'Description','description',20,39,7,2,1,0,'SNMP Informant Disk Stats'),(296,'lDisk % Read Time','inf_d_read_time',20,39,20,0,0,0,'DS:inf_d_read_time:GAUGE:600:0:100'),(297,'lDisk % Write Time','inf_d_write_time',10,39,20,0,0,0,'DS:inf_d_write_time:GAUGE:600:0:100'),(298,'lDisk Read Rate','inf_d_read_rate',30,39,20,0,0,0,'DS:inf_d_read_rate:GAUGE:600:0:1048576000'),(299,'lDisk Write Rate','inf_d_write_rate',25,39,20,0,0,0,'DS:inf_d_write_rate:GAUGE:600:0:1048576000'),(300,'Index','index',10,40,3,0,0,0,'1'),(301,'Identification','ident',20,40,7,1,0,1,''),(302,'Description','description',30,40,7,2,1,0,''),(303,'Battery Temperature','temperature',10,40,20,0,0,0,'DS:temperature:GAUGE:600:0:200'),(304,'Show in Celcius','show_celcius',40,40,5,2,1,0,'1'),(305,'Minutes Remaining','minutes_remaining',20,40,20,0,0,0,'DS:minutes_remaining:GAUGE:600:0:10000'),(306,'Index','index',10,41,3,0,0,0,''),(307,'Line Type','line_type',20,41,8,0,0,0,''),(308,'Line Index','line_index',30,41,8,0,0,0,''),(309,'Description','description',40,41,7,2,1,0,''),(310,'Voltage','voltage',10,41,20,0,0,0,'DS:voltage:GAUGE:600:0:500'),(311,'Current','current',20,41,20,0,0,0,'DS:current:GAUGE:600:0:100'),(312,'Load','load',30,41,20,0,0,0,'DS:load:GAUGE:600:0:100'),(313,'Charge Remaining','charge_remaining',30,40,20,0,0,0,'DS:charge_remaining:GAUGE:600:0:100'),(314,'IPTables Chain','chainnumber',10,42,3,1,1,0,''),(315,'Default Policy','policy',30,42,7,1,1,0,''),(316,'Number of Packets','ipt_packets',10,42,20,0,0,0,'DS:ipt_packets:COUNTER:600:0:1000000000'),(317,'Number of Bytes','ipt_bytes',20,42,20,0,0,0,'DS:ipt_bytes:COUNTER:600:0:<bandwidth>'),(318,'Description','description',20,42,7,2,1,0,''),(319,'Accepted Routers','accepted_routes',40,6,20,0,0,0,'DS:accepted_routes:GAUGE:600:0:900000'),(320,'Advertised Routers','advertised_routes',50,6,20,0,0,0,'DS:advertised_routes:GAUGE:600:0:900000'),(322,'Estimated Bandwidth','bandwidth',40,42,8,2,1,0,'10240000'),(323,'Index','index',10,43,3,0,0,0,''),(324,'Connections','pix_connections',10,43,20,0,0,0,'DS:pix_connections:GAUGE:600:0:1000000'),(325,'Description','description',20,43,7,1,1,0,''),(326,'Index','index',10,44,3,0,0,0,'1'),(327,'Description','description',20,44,7,2,1,0,''),(328,'Cisco Max Inbound NAT Bytes','NatInMax',30,44,8,2,1,0,'1000000000'),(329,'Cisco Max Outbound NAT Bytes','NatOutMax',40,44,8,2,1,0,'1000000000'),(330,'Cisco NAT Other IP Outbound','cisco_nat_other_ip_outbound',10,44,20,0,0,0,'DS:cisco_nat_other_ip_outbound:COUNTER:600:0:<NatOutMax>'),(331,'Cisco NAT Other IP Inbound','cisco_nat_other_ip_inbound',15,44,20,0,0,0,'DS:cisco_nat_other_ip_inbound:COUNTER:600:0:<NatInMax>'),(332,'Cisco NAT ICMP Outbound','cisco_nat_icmp_outbound',20,44,20,0,0,0,'DS:cisco_nat_icmp_outbound:COUNTER:600:0:<NatOutMax>'),(333,'Cisco NAT ICMP Inbound','cisco_nat_icmp_inbound',25,44,20,0,0,0,'DS:cisco_nat_icmp_inbound:COUNTER:600:0:<NatInMax>'),(334,'Cisco NAT UDP Outbound','cisco_nat_udp_outbound',30,44,20,0,0,0,'DS:cisco_nat_udp_outbound:COUNTER:600:0:<NatOutMax>'),(335,'Cisco NAT UDP Inbound','cisco_nat_udp_inbound',35,44,20,0,0,0,'DS:cisco_nat_udp_inbound:COUNTER:600:0:<NatInMax>'),(336,'Cisco NAT TCP Outbound','cisco_nat_tcp_outbound',40,44,20,0,0,0,'DS:cisco_nat_tcp_outbound:COUNTER:600:0:<NatOutMax>'),(337,'Cisco NAT TCP Inbound','cisco_nat_tcp_inbound',45,44,20,0,0,0,'DS:cisco_nat_tcp_inbound:COUNTER:600:0:<NatInMax>'),(338,'Cisco NAT Active Binds','cisco_nat_active_binds',50,44,20,0,0,0,'DS:cisco_nat_active_binds:GAUGE:600:0:100000'),(339,'Index','index',10,45,3,0,0,0,''),(340,'Value','value',10,45,20,0,0,0,'DS:value:GAUGE:600:-100000:100000'),(341,'Description','description',20,45,7,1,1,0,''),(342,'Show in Celcius','show_celcius',31,45,5,2,1,0,'1'),(343,'Show in Celcius','show_in_celcius',30,26,5,2,1,0,'1');
+
+--
+-- Table structure for table `interfaces`
+--
+
+DROP TABLE IF EXISTS interfaces;
+CREATE TABLE interfaces (
+  id int(10) NOT NULL auto_increment,
+  type int(10) NOT NULL default '1',
+  interface char(30) NOT NULL default '',
+  host int(10) NOT NULL default '1',
+  client int(10) NOT NULL default '1',
+  sla int(10) NOT NULL default '1',
+  poll int(10) NOT NULL default '1',
+  make_sound tinyint(1) NOT NULL default '1',
+  show_rootmap tinyint(1) NOT NULL default '1',
+  rrd_mode tinyint(2) NOT NULL default '2',
+  creation_date int(10) NOT NULL default '0',
+  modification_date int(10) NOT NULL default '0',
+  last_poll_date int(10) NOT NULL default '0',
+  poll_interval int(5) NOT NULL default '0',
+  check_status tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (id),
+  UNIQUE KEY idint (id),
+  KEY interface (interface),
+  KEY host (host),
+  KEY client (client),
+  KEY poll (poll),
+  KEY sla (sla),
+  KEY interfacehost (interface,host),
+  KEY last_poll_date (last_poll_date),
+  KEY type (type),
+  KEY check_status (check_status)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `interfaces`
+--
+
+INSERT INTO interfaces VALUES (1,1,'Unknown0',1,1,1,1,1,1,1,0,0,0,0,1);
+
+--
+-- Table structure for table `interfaces_values`
+--
+
+DROP TABLE IF EXISTS interfaces_values;
+CREATE TABLE interfaces_values (
+  id int(10) NOT NULL auto_increment,
+  interface int(10) NOT NULL default '0',
+  field int(10) NOT NULL default '0',
+  value char(250) NOT NULL default '',
+  PRIMARY KEY  (id),
+  UNIQUE KEY interface_field (interface,field),
+  KEY interface (interface),
+  KEY field (field)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `interfaces_values`
+--
+
+INSERT INTO interfaces_values VALUES (1,1,1,'');
+
+--
+-- Table structure for table `journal`
+--
+
+DROP TABLE IF EXISTS journal;
+CREATE TABLE journal (
+  id int(10) NOT NULL auto_increment,
+  date_start datetime NOT NULL default '0000-00-00 00:00:00',
+  date_stop datetime NOT NULL default '0000-00-00 00:00:00',
+  comment longtext NOT NULL,
+  subject varchar(40) NOT NULL default '',
+  active tinyint(1) NOT NULL default '1',
+  ticket varchar(20) NOT NULL default '',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `journal`
+--
+
+INSERT INTO journal VALUES (1,'2002-01-20 19:09:07','0000-00-00 00:00:00','Internally used ID','',0,''),(2,'2002-01-20 19:09:07','0000-00-00 00:00:00','Internally used ID','',0,'');
+
+--
+-- Table structure for table `maps`
+--
+
+DROP TABLE IF EXISTS maps;
+CREATE TABLE maps (
+  id int(10) NOT NULL auto_increment,
+  parent int(10) NOT NULL default '0',
+  name char(60) NOT NULL default '',
+  color char(6) NOT NULL default '00A348',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id),
+  KEY parent (parent)
+) TYPE=MyISAM COMMENT='Map Hierarchy';
+
+--
+-- Dumping data for table `maps`
+--
+
+INSERT INTO maps VALUES (1,1,'Root Map','00A348');
+
+--
+-- Table structure for table `maps_interfaces`
+--
+
+DROP TABLE IF EXISTS maps_interfaces;
+CREATE TABLE maps_interfaces (
+  id int(10) NOT NULL auto_increment,
+  map int(10) NOT NULL default '0',
+  interface int(10) NOT NULL default '0',
+  x int(5) NOT NULL default '1',
+  y int(5) NOT NULL default '1',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id2 (id),
+  KEY map (map),
+  KEY interface (interface)
+) TYPE=MyISAM COMMENT='Map to Interface Mapping';
+
+--
+-- Dumping data for table `maps_interfaces`
+--
+
+INSERT INTO maps_interfaces VALUES (1,1,1,1,1);
+
+--
+-- Table structure for table `nad_hosts`
+--
+
+DROP TABLE IF EXISTS nad_hosts;
+CREATE TABLE nad_hosts (
+  id int(10) NOT NULL auto_increment,
+  snmp_name char(120) NOT NULL default '',
+  description char(250) NOT NULL default '',
+  snmp_community char(60) NOT NULL default '',
+  forwarding tinyint(2) NOT NULL default '0',
+  date_added int(10) NOT NULL default '0',
+  PRIMARY KEY  (id)
+) TYPE=MyISAM COMMENT='Network AutoDiscovery Hosts';
+
+--
+-- Dumping data for table `nad_hosts`
+--
+
+
+--
+-- Table structure for table `nad_ips`
+--
+
+DROP TABLE IF EXISTS nad_ips;
+CREATE TABLE nad_ips (
+  id int(10) NOT NULL auto_increment,
+  host int(10) NOT NULL default '1',
+  ip char(20) NOT NULL default '',
+  type int(4) NOT NULL default '0',
+  network int(10) NOT NULL default '1',
+  dns char(120) NOT NULL default '',
+  PRIMARY KEY  (id),
+  KEY host (host,ip),
+  KEY network (network)
+) TYPE=MyISAM COMMENT='Network AutoDiscovery IPs';
+
+--
+-- Dumping data for table `nad_ips`
+--
+
+
+--
+-- Table structure for table `nad_networks`
+--
+
+DROP TABLE IF EXISTS nad_networks;
+CREATE TABLE nad_networks (
+  id int(10) NOT NULL auto_increment,
+  network char(20) NOT NULL default '',
+  deep tinyint(2) NOT NULL default '1',
+  oper_status tinyint(2) NOT NULL default '1',
+  parent int(10) NOT NULL default '1',
+  seed int(10) NOT NULL default '1',
+  oper_status_changed int(10) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  KEY network (network),
+  KEY parent (parent),
+  KEY seed (seed)
+) TYPE=MyISAM COMMENT='Network AutoDiscovery Networks';
+
+--
+-- Dumping data for table `nad_networks`
+--
+
+
+--
+-- Table structure for table `pollers`
+--
+
+DROP TABLE IF EXISTS pollers;
+CREATE TABLE pollers (
+  id int(10) NOT NULL auto_increment,
+  name char(60) NOT NULL default '',
+  description char(60) NOT NULL default '',
+  command char(60) NOT NULL default '',
+  parameters char(100) NOT NULL default '',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `pollers`
+--
+
+INSERT INTO pollers VALUES (1,'no_poller','No Poller','no_poller',''),(2,'input','SNMP Input Rate','snmp_counter','.1.3.6.1.2.1.2.2.1.10.<interfacenumber>,.1.3.6.1.2.1.31.1.1.1.6.<interfacenumber>'),(3,'verify_interface_number','Cisco Verify Interface Number','verify_interface_number',''),(5,'cisco_snmp_ping_start','Cisco SNMP Ping Start','cisco_snmp_ping_start',''),(6,'cisco_snmp_ping_wait','Cisco SNMP Ping Wait','cisco_snmp_ping_wait',''),(7,'packetloss','Cisco SNMP Ping Get PL','cisco_snmp_ping_get_pl',''),(8,'rtt','Cisco SNMP Ping Get RTT','cisco_snmp_ping_get_rtt',''),(9,'cisco_snmp_ping_end','Cisco SNMP Ping End','cisco_snmp_ping_end',''),(10,'output','SNMP Output Rate','snmp_counter','.1.3.6.1.2.1.2.2.1.16.<interfacenumber>,.1.3.6.1.2.1.31.1.1.1.10.<interfacenumber>'),(11,'outputerrors','SNMP Output Errors','snmp_counter','.1.3.6.1.2.1.2.2.1.20.<interfacenumber>'),(12,'inputerrors','SNMP Input Errors','snmp_counter','.1.3.6.1.2.1.2.2.1.14.<interfacenumber>'),(13,'interface_oper_status','SNMP Interface Operational Status','snmp_interface_status_all','8'),(14,'interface_admin_status','SNMP Interface Administrative Status','snmp_interface_status_all','7'),(16,'cpu','Cisco CPU Utilization','snmp_counter','.1.3.6.1.4.1.9.9.109.1.1.1.1.5.1'),(21,'inpackets','SNMP Input Packets','snmp_counter','.1.3.6.1.2.1.2.2.1.11.<interfacenumber>,.1.3.6.1.2.1.31.1.1.1.7.<interfacenumber>'),(22,'outpackets','SNMP Output Packets','snmp_counter','.1.3.6.1.2.1.2.2.1.17.<interfacenumber>,.1.3.6.1.2.1.31.1.1.1.11.<interfacenumber>'),(23,'tcp_status,tcp_content,conn_delay','TCP Port Check & Delay','tcp_status',''),(24,'mem_used','Cisco Used Memory','snmp_counter','.1.3.6.1.4.1.9.9.48.1.1.1.5.1'),(25,'mem_free','Cisco Free Memory','snmp_counter','.1.3.6.1.4.1.9.9.48.1.1.1.6.1'),(26,'drops','SNMP Drops','snmp_counter','.1.3.6.1.2.1.2.2.1.19.<interfacenumber>'),(30,'cpu','Cisco 2500 Series CPU Utilization','snmp_counter','.1.3.6.1.4.1.9.2.1.56.0'),(31,'bgpin','BGP Inbound Updates','snmp_counter','.1.3.6.1.2.1.15.3.1.10.<remote>'),(32,'bgpout','BGP Outbound Updates','snmp_counter','.1.3.6.1.2.1.15.3.1.11.<remote>'),(33,'bgpuptime','BGP Uptime','snmp_counter','.1.3.6.1.2.1.15.3.1.16.<remote>'),(35,'storage_used_blocks','Storage Device Used Blocks','snmp_counter','.1.3.6.1.2.1.25.2.3.1.6.<index>'),(36,'storage_block_count','Storage Device Total Blocks','snmp_counter','.1.3.6.1.2.1.25.2.3.1.5.<index>'),(37,'storage_block_size','Storage Device Block Size','snmp_counter','.1.3.6.1.2.1.25.2.3.1.4.<index>'),(38,'bgp_peer_status','BGP Peer Status','bgp_peer_status','<remote>'),(40,'hits','CSS VIP Hits','snmp_counter','.1.3.6.1.4.1.2467.1.16.4.1.18.\"<owner>\".\"<interface>\"'),(41,'output','CSS VIP Traffic Rate','snmp_counter','.1.3.6.1.4.1.2467.1.16.4.1.25.\"<owner>\".\"<interface>\"'),(42,'cpu_kernel_ticks','CPU Kernel Time','snmp_counter','.1.3.6.1.4.1.2021.11.55.0'),(43,'cpu_idle_ticks','CPU Idle Time','snmp_counter','.1.3.6.1.4.1.2021.11.53.0'),(44,'cpu_wait_ticks','CPU Wait Time','snmp_counter','.1.3.6.1.4.1.2021.11.54.0'),(45,'cpu_system_ticks','CPU System Time','snmp_counter','.1.3.6.1.4.1.2021.11.52.0'),(46,'mem_available','Real Memory Available','snmp_counter','.1.3.6.1.4.1.2021.4.6.0'),(47,'mem_total','Real Memory Total','snmp_counter','.1.3.6.1.4.1.2021.4.5.0'),(48,'swap_available','Swap Memory Available','snmp_counter','.1.3.6.1.4.1.2021.4.4.0'),(49,'swap_total','Swap Memory Total','snmp_counter','.1.3.6.1.4.1.2021.4.3.0'),(50,'load_average_15','Load Average 15 min','snmp_counter','.1.3.6.1.4.1.2021.10.1.3.3'),(51,'load_average_5','Load Average 5 min','snmp_counter','.1.3.6.1.4.1.2021.10.1.3.2'),(52,'load_average_1','Load Average 1 min','snmp_counter','.1.3.6.1.4.1.2021.10.1.3.1'),(53,'cpu_user_ticks','CPU User Time','snmp_counter','.1.3.6.1.4.1.2021.11.50.0'),(54,'cpu_nice_ticks','CPU Nice Time','snmp_counter','.1.3.6.1.4.1.2021.11.51.0'),(55,'bandwidthin','Get Bandwidth IN from DB','db','bandwidthin,to_bytes'),(56,'bandwidthout','Get Bandwidth OUT from DB','db','bandwidthout,to_bytes'),(57,'tcp_conn_number','TCP Connection Numbers','tcp_connection_number',''),(58,'acct_bytes,acct_packets','Cisco Accounting','cisco_accounting',''),(59,'cpu','Host MIB Proc Average Util','snmp_walk_average','.1.3.6.1.2.1.25.3.3.1.2'),(60,'num_procs','Host MIB Number of Processes','snmp_counter','.1.3.6.1.2.1.25.1.6.0'),(61,'num_users','Host MIB Number of Users','snmp_counter','.1.3.6.1.2.1.25.1.5.0'),(62,'tcp_active','TCP MIB Active Opens','snmp_counter','.1.3.6.1.2.1.6.5.0'),(63,'tcp_passive','TCP MIB Passive Opens','snmp_counter','.1.3.6.1.2.1.6.6.0'),(64,'tcp_established','TCP MIB Established Connections','snmp_counter','.1.3.6.1.2.1.6.9.0'),(65,'inputpackets','Cisco MAC Accounting Input Packets','snmp_counter','.1.3.6.1.4.1.9.9.84.1.2.1.1.3.<ifindex>.1.<mac>'),(66,'outputpackets','Cisco MAC Accounting Output Packets','snmp_counter','.1.3.6.1.4.1.9.9.84.1.2.1.1.3.<ifindex>.2.<mac>'),(67,'input','Cisco MAC Accounting Input Bytes','snmp_counter','.1.3.6.1.4.1.9.9.84.1.2.1.1.4.<ifindex>.1.<mac>'),(68,'output','Cisco MAC Accounting Output Bytes','snmp_counter','.1.3.6.1.4.1.9.9.84.1.2.1.1.4.<ifindex>.2.<mac>'),(69,'packetloss','Smokeping Loss','smokeping','loss'),(70,'rtt','Smokeping RTT','smokeping','median'),(71,'app_status,current_instances','Host MIB Process Verifier','hostmib_apps','<interface>'),(72,'cisco_powersupply_status','Cisco Power Supply Status','cisco_envmib_status','5.1.3'),(73,'cisco_temperature_status','Cisco Temperature Status','cisco_envmib_status','3.1.6'),(74,'cisco_voltage_status','Cisco Voltage Status','cisco_envmib_status','2.1.7'),(75,'temperature','Cisco Temperature','snmp_counter','.1.3.6.1.4.1.9.9.13.1.3.1.3.<index>'),(76,'sa_agent_verify','Verify SA Agent Operation','cisco_saagent_verify',''),(77,'forward_jitter','SA Agent Forward Jitter','cisco_saagent_forwardjitter',''),(78,'backward_jitter','SA Agent Backward Jitter','cisco_saagent_backwardjitter',''),(79,'rt_latency','SA Agent Round-Trip Latency','cisco_saagent_rtl',''),(80,'forward_packetloss','SA Agent fw % PacketLoss','cisco_saagent_fwpacketloss',''),(81,'backward_packetloss','SA Agent bw % PacketLoss','cisco_saagent_bwpacketloss',''),(82,'verify_smokeping_number','Verify Smokeping Number','verify_smokeping_number',''),(85,'tcp_content_analisis','TCP Port Response Check','tcp_port_content','tcp_content'),(86,'ping','Reachability Start FPING','reachability_start',''),(87,'wait','Reachability Wait until finished','reachability_wait',''),(88,'rtt','Reachability RTT','reachability_values','rtt'),(89,'packetloss','Reachability PL','reachability_values','pl'),(90,'ping_cleanup','Reachability End','reachability_end',''),(91,'status','Reachability Status','reachability_status',''),(93,'bytes','Linux TC Bytes','snmp_counter','<autodiscovery_parameters>.1.6.<index>'),(94,'packets','Linux TC Packets','snmp_counter','<autodiscovery_parameters>.1.7.<index>'),(95,'verify_tc_number','Linux TC Verfy Interface Number','verify_tc_class_number',''),(100,'tcp_status,tcp_content','TCP Port Status','buffer',''),(101,'app_status','Host MIB Status','buffer',''),(102,'ntp_status','NTP Status','ntp_client',''),(103,'used_memory','Host MIB Process Memory Usage','hostmib_perf','2'),(105,'udp_status,conn_delay','UDP Port Status & Delay','udp_status',''),(106,'udp_status','UDP Port Status','buffer',''),(107,'temperature','Compaq Temperature','snmp_counter','.1.3.6.1.4.1.232.6.2.6.8.1.4.<chassis>.<tempindex>'),(108,'temp_status','Compaq Temperature Status','snmp_status','.1.3.6.1.4.1.232.6.2.6.8.1.6.<chassis>.<tempindex>,2=up'),(109,'fan_status','Compaq Fan Condition','snmp_status','.1.3.6.1.4.1.232.6.2.6.7.1.9.<chassis>.<fanindex>,2=up'),(110,'compaq_disk','Compaq Drive Condition','snmp_status','.1.3.6.1.4.1.232.3.2.5.1.1.6.<controller>.<drvindex>,2=up'),(111,'tbr','IIS Total Bytes Received','snmp_counter','.1.3.6.1.4.1.311.1.7.3.1.4.0'),(112,'tcgir','IIS Total CGI Requests','snmp_counter','.1.3.6.1.4.1.311.1.7.3.1.35.0'),(113,'tfs','IIS Total Files Sent','snmp_counter','.1.3.6.1.4.1.311.1.7.3.1.5.0'),(114,'tg','IIS Total GETs','snmp_counter','.1.3.6.1.4.1.311.1.7.3.1.18.0'),(115,'tp','IIS Total Posts','snmp_counter','.1.3.6.1.4.1.311.1.7.3.1.19.0'),(116,'pm_serial_free','Livingston Portmaster Free','livingston_serial_port_status','1'),(117,'pm_serial_established','Livingston Portmaster Established','livingston_serial_port_status','3'),(118,'pm_serial_disconnecting','Livingston Portmaster Disconnecting','livingston_serial_port_status','4'),(119,'pm_serial_command','Livingston Portmaster Command','livingston_serial_port_status','5'),(120,'pm_serial_connecting','Livingston Portmaster Connecting','livingston_serial_port_status','2'),(121,'pm_serial_noservice','Livingston Portmaster No Service','livingston_serial_port_status','6'),(122,'tac,tkb,cplo,up,bpr,bw,iw','Apache Status','apache',''),(123,'capacity','a APC Battery Capacity','snmp_counter','.1.3.6.1.4.1.318.1.1.1.2.2.1.0'),(124,'load','a APC Output Load','snmp_counter','.1.3.6.1.4.1.318.1.1.1.4.2.3.0'),(125,'in_voltage','a APC Input Voltage','snmp_counter','.1.3.6.1.4.1.318.1.1.1.3.2.1.0'),(126,'out_voltage','a APC Output Voltage','snmp_counter','.1.3.6.1.4.1.318.1.1.1.4.2.1.0'),(127,'time_remaining','a APC Time Remaining','snmp_counter','.1.3.6.1.4.1.318.1.1.1.2.2.3.0'),(128,'status','a APC Battery Status','snmp_status','.1.3.6.1.4.1.318.1.1.1.2.1.1.0,2=battery normal|1=battery unknown|3=battery low'),(129,'temperature','a APC Temperature','snmp_counter','.1.3.6.1.4.1.318.1.1.1.2.2.2.0'),(130,'output_status','a APC Output Status','snmp_status','.1.3.6.1.4.1.318.1.1.1.4.1.1.0,2=on line|3=on battery'),(131,'records_counter,records_absolute','ODBC Query','odbc_query',''),(132,'sql_status','SQL Query Status','sql_status',''),(133,'admin_state','Alteon RServer Admin','snmp_counter','.1.3.6.1.4.1.1872.2.1.5.2.1.10.<index>'),(134,'oper_state','Alteon RServer Oper','snmp_status','.1.3.6.1.4.1.1872.2.1.9.2.2.1.7.<index>,2=up'),(135,'current_sessions','Alteon RServer Current Sessions','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.2.5.1.2.<index>'),(136,'failures','Alteon RServer Failures','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.2.5.1.4.<index>'),(137,'octets','Alteon RServer Octets','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.2.5.1.7.<index>'),(138,'total_sessions','Alteon RServer Total Sessions','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.2.5.1.3.<index>'),(139,'admin_state','Alteon VServer Admin State','snmp_counter','.1.3.6.1.4.1.1872.2.1.5.5.1.4.<index>'),(140,'current_sessions','Alteon VServer Current Sessions','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.2.7.1.2.<index>'),(141,'total_sessions','Alteon VServer Total Sessions','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.2.7.1.3.<index>'),(142,'octets','Alteon VServer Octets','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.2.7.1.6.<index>'),(143,'admin_state','Alteon RService Admin State','snmp_counter','.1.3.6.1.4.1.1872.2.1.5.2.1.10.<real_server>'),(144,'oper_state','Alteon RService Oper State','snmp_status','.1.3.6.1.4.1.1872.2.1.9.2.4.1.6.<index>,2=up'),(145,'response_time','Alteon RService Response Time','snmp_counter','.1.3.6.1.4.1.1872.2.1.9.2.4.1.7.<index>'),(146,'cpua_1sec','Alteon CPU A 1Sec','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.16.1.0'),(147,'cpua_4secs','Alteon CPU A 4Secs','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.16.3.0'),(148,'cpua_64secs','Alteon CPU A 64Secs','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.16.5.0'),(149,'cpub_1sec','Alteon CPU B 1Sec','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.1.16.2.0'),(150,'cpub_4secs','Alteon CPU B 4 Secs','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.16.4.0'),(151,'cpub_64secs','Alteon CPU B 64Secs','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.16.6.0'),(152,'mem_total','Alteon Memory Total','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.12.6.0'),(153,'mem_used','Alteon Memory Used','snmp_counter','.1.3.6.1.4.1.1872.2.1.8.12.4.0'),(154,'sensor_value','Brocade Sensor Value','snmp_counter','1.3.6.1.4.1.1588.2.1.1.1.1.22.1.4.<index>'),(155,'oper_status','Brocade Sensor Oper','snmp_status','1.3.6.1.4.1.1588.2.1.1.1.1.22.1.3.<index>,4=ok|3=alert|5=alert'),(156,'tx_words','Brocade FCPort TxWords','snmp_counter','1.3.6.1.4.1.1588.2.1.1.1.6.2.1.11.<index>'),(157,'rx_words','Brocade FCPort RxWords','snmp_counter','1.3.6.1.4.1.1588.2.1.1.1.6.2.1.12.<index>'),(158,'tx_frames','Brocade FCPort TxFrames','snmp_counter','1.3.6.1.4.1.1588.2.1.1.1.6.2.1.13.<index>'),(159,'rx_frames','Brocade FCPort RxFrames','snmp_counter','1.3.6.1.4.1.1588.2.1.1.1.6.2.1.14.<index>'),(160,'admin_state','Brocade Fc Port Admin State','snmp_counter','1.3.6.1.4.1.1588.2.1.1.1.6.2.1.5.<index>'),(161,'oper_status','Brocade fC Ports Oper Status','snmp_status','1.3.6.1.4.1.1588.2.1.1.1.6.2.1.4.<index>,1=up|3=testing'),(162,'phy_state','Brocade FC Port Phy State','brocade_fcport_phystate','<index>'),(163,'cisco_async','Cisco Async Utilisation','cisco_serial_port_status','1'),(164,'cisco_dsx','Cisco DSX Utilisation','cisco_serial_port_status','2'),(165,'cisco_free','Cisco Port Free','cisco_serial_port_status','3'),(166,'inf_d_read_time','Informant Disk Read Time','snmp_counter','.1.3.6.1.4.1.9600.1.1.1.1.2.<index>'),(167,'inf_d_write_time','Informant Disk Write Time','snmp_counter','.1.3.6.1.4.1.9600.1.1.1.1.4.<index>'),(168,'inf_d_read_rate','Informant Disk Read Rate','snmp_counter','.1.3.6.1.4.1.9600.1.1.1.1.15.<index>'),(169,'inf_d_write_rate','Informant Disk Write Rate','snmp_counter','.1.3.6.1.4.1.9600.1.1.1.1.18.<index>'),(170,'status','UPS Battery Status','snmp_status','.1.3.6.1.2.1.33.1.2.1.0,2=battery normal|1=battery unknown|3=battery low|3=battery depleted'),(171,'temperature','UPS Battery Temperature','snmp_counter','.1.3.6.1.2.1.33.1.2.7.0'),(172,'minutes_remaining','UPS Battery Minutes Remaining','snmp_counter','.1.3.6.1.2.1.33.1.2.3.0'),(173,'charge_remaining','UPS Battery Charge Remaining','snmp_counter','.1.3.6.1.2.1.33.1.2.4.0'),(174,'voltage','UPS Lines Voltage','ups_line',''),(175,'current','UPS Lines Current','ups_line',''),(176,'load','UPS Lines Load','ups_line',''),(177,'ipt_packets','IPTables Chain Packets','snmp_counter','.1.3.6.1.4.1.2021.5002.1.4.<chainnumber>'),(178,'ipt_bytes','IPTables Chainl Bytes','snmp_counter','.1.3.6.1.4.1.2021.5002.1.5.<chainnumber>'),(179,'accepted_routes','BGP Accepted Routes','snmp_counter','.1.3.6.1.4.1.9.9.187.1.2.4.1.1.<remote>.1.1'),(180,'advertised_routes','BGP Advertised Routes','snmp_counter','.1.3.6.1.4.1.9.9.187.1.2.4.1.6.<remote>.1.1'),(181,'pix_connections','Pix Connections Poller','snmp_counter','.1.3.6.1.4.1.9.9.147.1.2.2.2.1.5.<index>'),(182,'cisco_nat_other_ip_inbound','Cisco NAT Other IP Inbound','snmp_counter','.1.3.6.1.4.1.9.10.77.1.3.1.1.2.1'),(183,'cisco_nat_icmp_inbound','Cisco NAT ICMP Inbound','snmp_counter','.1.3.6.1.4.1.9.10.77.1.3.1.1.2.2'),(184,'cisco_nat_udp_inbound','Cisco NAT UDP Inbound','snmp_counter','.1.3.6.1.4.1.9.10.77.1.3.1.1.2.3'),(185,'cisco_nat_tcp_inbound','Cisco NAT TCP Inbound','snmp_counter','.1.3.6.1.4.1.9.10.77.1.3.1.1.2.4'),(186,'cisco_nat_other_ip_outbound','Cisco NAT Other IP Outbound','snmp_counter','.1.3.6.1.4.1.9.10.77.1.3.1.1.3.1'),(187,'cisco_nat_icmp_outbound','Cisco NAT ICMP Outbound','snmp_counter','.1.3.6.1.4.1.9.10.77.1.3.1.1.3.2'),(188,'cisco_nat_udp_outbound','Cisco NAT UDP Outbound','snmp_counter','.1.3.6.1.4.1.9.10.77.1.3.1.1.3.3'),(189,'cisco_nat_tcp_outbound','Cisco NAT TCP Outbound','snmp_counter','.1.3.6.1.4.1.9.10.77.1.3.1.1.3.4'),(190,'cisco_nat_active_binds','Cisco NAT Active Binds','snmp_counter','.1.3.6.1.4.1.9.10.77.1.2.1.0'),(191,'value','Sensor Value','snmp_counter','.1.3.6.1.2.1.25.8.1.5.<index>');
+
+--
+-- Table structure for table `pollers_backend`
+--
+
+DROP TABLE IF EXISTS pollers_backend;
+CREATE TABLE pollers_backend (
+  id int(10) NOT NULL auto_increment,
+  description char(60) NOT NULL default '',
+  command char(60) NOT NULL default '',
+  parameters char(60) NOT NULL default '',
+  type tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY type (type)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `pollers_backend`
+--
+
+INSERT INTO pollers_backend VALUES (1,'No Backend','no_backend','',0),(2,'Unknown Event','event','1',0),(9,'Temporal Buffer','buffer','',0),(10,'RRDTool All DSs','rrd','*',0),(12,'Alarm Verify Operational','alarm','3,,180',1),(14,'Change Interface Number','verify_interface_number','',0),(19,'Alarm TCP Port','alarm','22',1),(20,'Alarm Environmental','alarm','26',1),(24,'Alarm BGP Peer','alarm','6,,180',1),(25,'Application Alarm','alarm','38',1),(27,'Alarm TCP Content','alarm','39',1),(28,'Alarm Reachability','alarm','40',1),(29,'Admin Status Change View','db','show_rootmap,down=2|up=1,0',1),(30,'Multiple Temporal Buffer','multi_buffer','',0),(31,'Alarm NTP','alarm','41,nothing',1),(32,'RRD Individual Value','rrd','',0),(33,'Alarm APC','alarm','60',1),(34,'Alarm SQL Records','alarm','50',1),(35,'Alteon Admin Status View','db','show_rootmap,down=0|up=2,2',1),(36,'Alarm Alteon RServer','alarm','68',1),(37,'Alarm Alteon Service','alarm','69',1),(38,'Alarm Alteon VServer','alarm','70',1),(39,'Brocace FC Admin View','db','show_rootmap,down=2|up=1,0',0),(40,'Alarm Brocade FC Port','alarm','71',1);
+
+--
+-- Table structure for table `pollers_groups`
+--
+
+DROP TABLE IF EXISTS pollers_groups;
+CREATE TABLE pollers_groups (
+  id int(10) NOT NULL auto_increment,
+  description char(60) NOT NULL default '',
+  interface_type int(10) NOT NULL default '1',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `pollers_groups`
+--
+
+INSERT INTO pollers_groups VALUES (1,'No Polling',1),(2,'Cisco Interface',4),(3,'Cisco Router',3),(5,'TCP/IP Port',2),(8,'BGP Neighbor',6),(9,'Storage Device',8),(10,'CSS VIP',9),(11,'Linux/Unix Host',11),(12,'Solaris Host',10),(13,'Windows Host',12),(14,'Cisco Accounting',13),(15,'Smokeping Host',14),(16,'HostMIB Application',15),(17,'Cisco Power Supply',16),(18,'Cisco Tempererature',17),(19,'Cisco Voltage',18),(20,'Cisco SA Agent',19),(21,'Reachability',20),(22,'TC Class',21),(23,'NTP',22),(24,'UDP/IP Port',23),(25,'Compaq Physical Drive',24),(26,'Compaq Fan',25),(27,'Compaq Temperature',26),(28,'IIS Info',27),(29,'Livingston Portmaster',28),(30,'Apache',29),(31,'APC',31),(32,'ODBC',30),(33,'Alteon Real Server',32),(34,'Alteon Virtual Server',33),(35,'Alteon Real Services',34),(36,'Alteon System Info',35),(37,'Brocade Sensors',36),(38,'Brocade FC Ports',37),(39,'Cisco Dialup',38),(40,'Windows Informant Disks',39),(41,'UPS',40),(42,'UPS Lines',41),(43,'IPTable Chain',42),(44,'PIX Connection Stat',43),(45,'Cisco NAT',44),(46,'Sensors',45);
+
+--
+-- Table structure for table `pollers_poller_groups`
+--
+
+DROP TABLE IF EXISTS pollers_poller_groups;
+CREATE TABLE pollers_poller_groups (
+  id int(10) NOT NULL auto_increment,
+  poller_group int(10) NOT NULL default '1',
+  pos tinyint(4) NOT NULL default '1',
+  poller int(10) NOT NULL default '1',
+  backend int(10) NOT NULL default '1',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY poller_group (poller_group),
+  KEY poller (poller),
+  KEY backend (backend)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `pollers_poller_groups`
+--
+
+INSERT INTO pollers_poller_groups VALUES (1,1,1,1,1),(2,2,20,2,9),(3,2,10,3,14),(4,2,15,5,9),(5,2,50,6,1),(6,2,55,7,9),(7,2,60,8,9),(8,2,65,9,1),(9,2,30,10,9),(10,2,40,11,9),(11,2,45,12,9),(12,2,80,1,10),(14,2,16,13,12),(16,3,10,16,9),(20,3,2,20,19),(21,2,25,21,9),(22,2,35,22,9),(23,5,10,23,30),(24,3,20,24,9),(25,3,50,1,10),(26,3,30,25,9),(27,2,46,26,9),(30,8,10,31,32),(31,8,40,32,32),(32,8,50,33,32),(35,9,10,37,9),(36,9,20,36,9),(37,9,30,35,9),(38,9,60,1,10),(39,8,5,38,24),(41,10,10,41,9),(42,10,20,40,9),(43,10,60,1,10),(44,11,10,54,9),(45,11,20,53,9),(46,11,30,43,9),(47,11,40,45,9),(48,11,50,52,9),(49,11,60,51,9),(50,11,70,50,9),(51,11,80,1,10),(52,12,10,45,9),(53,12,20,43,9),(54,12,30,42,9),(55,12,40,44,9),(56,12,50,52,9),(57,12,60,51,9),(58,12,70,50,9),(59,12,80,46,9),(60,12,90,47,9),(61,12,100,48,9),(62,12,110,49,9),(63,12,120,1,10),(64,2,47,55,9),(65,2,48,56,9),(66,5,20,57,9),(67,5,60,1,10),(68,3,40,58,30),(69,13,10,59,9),(70,13,20,60,9),(71,13,30,61,9),(72,13,40,62,9),(73,13,50,64,9),(74,13,60,63,9),(75,13,100,1,10),(76,11,15,60,9),(77,11,25,61,9),(78,11,35,64,9),(79,11,45,62,9),(80,11,55,63,9),(81,3,15,64,9),(82,3,25,62,9),(83,3,35,63,9),(84,14,10,65,9),(85,14,20,67,9),(86,14,30,68,9),(87,14,40,66,9),(88,14,50,1,10),(89,15,30,70,9),(90,15,20,69,9),(91,15,90,1,10),(92,16,10,71,30),(93,17,20,72,20),(94,18,10,73,20),(95,19,20,74,20),(96,18,20,75,9),(97,18,50,1,10),(98,20,10,76,11),(99,20,20,77,9),(100,20,30,81,9),(101,20,40,80,9),(102,20,50,79,9),(103,20,60,78,9),(104,20,90,1,10),(105,15,10,82,14),(106,5,30,85,27),(107,21,1,86,9),(108,21,122,87,1),(109,21,123,88,9),(110,21,124,89,9),(111,21,126,90,1),(112,21,125,91,28),(113,21,127,1,10),(114,22,92,93,9),(115,22,93,94,9),(116,22,91,95,14),(117,22,94,1,10),(122,2,17,14,29),(123,5,15,100,19),(124,16,20,101,25),(125,16,90,1,10),(126,23,50,102,31),(127,16,30,103,9),(129,24,10,105,30),(130,24,20,106,19),(131,24,30,1,10),(132,27,10,108,20),(133,27,20,107,9),(134,27,90,1,10),(135,26,10,109,20),(136,25,10,110,20),(137,28,10,111,9),(138,28,20,112,9),(139,28,30,113,9),(140,28,40,114,9),(141,28,50,115,9),(142,28,90,1,10),(143,29,90,1,10),(144,29,10,116,9),(145,29,20,120,9),(146,29,30,117,9),(147,29,50,119,9),(148,29,60,121,9),(149,29,40,118,9),(150,30,20,1,10),(151,30,10,122,30),(152,31,10,128,20),(153,31,20,123,9),(154,31,31,124,9),(155,31,40,125,9),(156,31,50,126,9),(157,31,60,127,9),(158,31,90,1,10),(159,31,70,129,9),(160,31,15,130,33),(161,32,10,131,30),(162,32,20,132,34),(163,32,90,1,10),(164,33,10,133,35),(165,33,15,134,12),(166,33,20,135,9),(167,33,25,136,9),(168,33,30,137,9),(169,33,35,138,9),(170,33,90,1,10),(171,34,10,139,29),(172,34,20,140,9),(173,34,30,142,9),(174,34,40,141,9),(175,34,90,1,10),(176,35,10,143,29),(177,35,30,144,37),(178,35,20,145,9),(179,35,90,1,10),(180,36,10,146,9),(181,36,11,147,9),(182,36,12,148,9),(183,36,15,149,9),(184,36,16,150,9),(185,36,17,151,9),(186,36,20,62,9),(187,36,21,63,9),(188,36,22,64,9),(189,36,30,153,9),(190,36,35,152,9),(191,36,90,1,10),(192,37,10,155,12),(193,37,20,154,9),(194,37,90,1,10),(195,38,40,156,9),(196,38,45,157,9),(197,38,50,158,9),(198,38,55,159,9),(199,38,90,1,10),(200,38,10,160,39),(201,38,20,161,12),(202,38,30,162,40),(203,39,10,165,9),(204,39,20,164,9),(205,39,30,163,9),(206,39,90,1,10),(207,40,10,168,32),(208,40,20,169,32),(209,40,30,166,32),(210,40,40,167,32),(211,41,10,170,20),(212,41,20,173,32),(213,41,30,172,32),(214,41,40,171,32),(215,42,10,174,32),(216,42,20,175,32),(217,42,30,176,32),(218,43,10,178,32),(219,43,20,177,32),(220,8,20,179,32),(221,8,30,180,32),(222,44,10,181,32),(223,45,50,190,32),(224,45,10,186,32),(225,45,20,187,32),(226,45,30,188,32),(227,45,40,189,32),(228,45,15,182,32),(229,45,25,183,32),(230,45,35,184,32),(231,45,45,185,32),(232,46,20,191,32);
+
+--
+-- Table structure for table `profiles`
+--
+
+DROP TABLE IF EXISTS profiles;
+CREATE TABLE profiles (
+  id int(10) NOT NULL auto_increment,
+  userid int(10) NOT NULL default '1',
+  profile_option int(10) default '1',
+  value int(10) default '1',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id),
+  KEY tag (profile_option),
+  KEY userid (userid)
+) TYPE=MyISAM COMMENT='User Authorization';
+
+--
+-- Dumping data for table `profiles`
+--
+
+INSERT INTO profiles VALUES (1,1,1,1),(2,2,9,12),(3,2,11,300),(4,2,13,30),(5,2,16,36),(6,2,20,46),(7,2,25,50),(8,2,2,8),(9,2,8,6),(10,2,14,32),(11,2,15,34),(12,2,6,20);
+
+--
+-- Table structure for table `profiles_options`
+--
+
+DROP TABLE IF EXISTS profiles_options;
+CREATE TABLE profiles_options (
+  id int(10) NOT NULL auto_increment,
+  tag char(30) NOT NULL default '',
+  description char(60) NOT NULL default '',
+  editable tinyint(1) NOT NULL default '0',
+  show_in_profile tinyint(1) NOT NULL default '1',
+  use_default tinyint(1) NOT NULL default '0',
+  default_value char(60) NOT NULL default '',
+  type char(10) NOT NULL default '',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id),
+  KEY tag (tag)
+) TYPE=MyISAM COMMENT='Authorization Tags';
+
+--
+-- Dumping data for table `profiles_options`
+--
+
+INSERT INTO profiles_options VALUES (1,'NO_TAG','No Option',1,1,0,'','select'),(2,'ADMIN_ACCESS','Administration Access',0,1,0,'1','select'),(6,'REPORTS_VIEW_ALL_INTERFACES','View All Interfaces',0,1,0,'1','select'),(8,'ADMIN_USERS','User Administration',0,1,0,'1','select'),(9,'MAP_SOUND','Map Sound',1,1,1,'1','select'),(11,'EMAIL','eMail',1,1,1,'','text'),(12,'MAP','Base Map',0,0,0,'1','text'),(13,'EVENTS_SOUND','Events Sound',1,1,1,'1','select'),(14,'ADMIN_SYSTEM','System Administration',0,1,0,'1','select'),(15,'ADMIN_HOSTS','Host Administration',0,1,0,'1','select'),(16,'VIEW_REPORTS','Reports Access',0,0,1,'1','select'),(19,'POPUPS_DISABLED','Disable Popups',0,1,0,'1','select'),(20,'VIEW_STARTPAGE_STATS','View Start Page Stats',1,1,1,'1','select'),(21,'EVENTS_DEFAULT_FILTER','Events Default Filter',1,1,0,'0','text'),(22,'EVENTS_REFRESH','Events Refresh Interval (secs)',1,1,0,'20','text'),(23,'MAP_REFRESH','Map Refresh Interval (secs)',1,1,0,'20','text'),(24,'SMSALIAS','SMS Pager Alias',1,1,0,'','text'),(25,'VIEW_TYPE_DEFAULT','Default View Type',1,1,1,'dhtml','select'),(26,'VIEW_DEFAULT','Default View',1,1,0,'start','select'),(27,'CUSTOMER','Customer Filter',0,1,0,'','text');
+
+--
+-- Table structure for table `profiles_values`
+--
+
+DROP TABLE IF EXISTS profiles_values;
+CREATE TABLE profiles_values (
+  id int(10) NOT NULL auto_increment,
+  profile_option int(10) NOT NULL default '1',
+  description char(30) NOT NULL default '',
+  value char(250) NOT NULL default '',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY profile_option (profile_option)
+) TYPE=MyISAM COMMENT='Profiles Options Values';
+
+--
+-- Dumping data for table `profiles_values`
+--
+
+INSERT INTO profiles_values VALUES (1,1,'No Value','1'),(5,9,'Disable','0'),(6,8,'Yes','1'),(7,8,'No','0'),(8,2,'Yes','1'),(12,9,'Enable','1'),(20,6,'Yes','1'),(21,6,'No','0'),(30,13,'Yes','1'),(31,13,'No','0'),(32,14,'Yes','1'),(33,14,'No','0'),(34,15,'Yes','1'),(35,15,'No','0'),(36,16,'Yes','1'),(37,16,'No','0'),(43,19,'Yes','1'),(44,19,'No','0'),(46,20,'Yes','1'),(47,20,'No','0'),(48,25,'Normal','normal'),(49,25,'Text Only','text'),(50,25,'DHTML','dhtml'),(52,25,'Normal Big','normal-big'),(53,25,'DHTML Big','dhtml-big'),(55,26,'Start Page','start'),(56,26,'Hosts & Events','hosts-events'),(57,26,'Interfaces & Events','interfaces-events'),(58,26,'Maps & Events','maps-events'),(59,26,'Alarmed Interfaces & Events','alarmed-events'),(60,26,'Alarmed Interfaces','alarmed'),(61,26,'Interfaces','interfaces'),(62,26,'Hosts','hosts'),(63,26,'Maps','maps'),(64,26,'Hosts All Interfaces','hosts-all-int'),(65,26,'Events','events'),(66,26,'Alarmed Hosts & Events','alarmed-hosts-events'),(300,11,'','');
+
+--
+-- Table structure for table `satellites`
+--
+
+DROP TABLE IF EXISTS satellites;
+CREATE TABLE satellites (
+  id int(10) NOT NULL auto_increment,
+  description char(40) NOT NULL default '',
+  parent int(10) NOT NULL default '1',
+  url char(150) NOT NULL default '',
+  sat_group int(10) NOT NULL default '1',
+  sat_type tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  KEY parent (parent),
+  KEY sat_type (sat_type)
+) TYPE=MyISAM COMMENT='Satellites';
+
+--
+-- Dumping data for table `satellites`
+--
+
+INSERT INTO satellites VALUES (1,'Local',1,'',1,1);
+
+--
+-- Table structure for table `severity`
+--
+
+DROP TABLE IF EXISTS severity;
+CREATE TABLE severity (
+  id tinyint(10) NOT NULL auto_increment,
+  level tinyint(10) NOT NULL default '0',
+  severity char(20) NOT NULL default '',
+  bgcolor char(15) NOT NULL default '',
+  fgcolor char(15) NOT NULL default '',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY nivel (level)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `severity`
+--
+
+INSERT INTO severity VALUES (1,127,'Unknown','000000','FFFFFF'),(2,30,'Warning','00AA00','FFFFFF'),(3,40,'Fault','F51D30','EEEEEE'),(4,50,'Big Fault','DA4725','FFFFFF'),(5,60,'Critical','FF0000','FFFFFF'),(13,10,'Administrative','8D00BA','FFFFFF'),(14,20,'Information','F9FD5F','000000'),(18,35,'Service','0090F0','FFFFFF');
+
+--
+-- Table structure for table `slas`
+--
+
+DROP TABLE IF EXISTS slas;
+CREATE TABLE slas (
+  id int(10) NOT NULL auto_increment,
+  description char(60) NOT NULL default '',
+  state tinyint(10) NOT NULL default '3',
+  info char(60) NOT NULL default '',
+  event_type int(10) NOT NULL default '12',
+  threshold tinyint(3) NOT NULL default '100',
+  interface_type int(10) NOT NULL default '1',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id),
+  KEY state (state),
+  KEY event_type (event_type)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `slas`
+--
+
+INSERT INTO slas VALUES (1,'No SLA',3,'No SLA',12,100,1),(4,'Customer Satellite Link',3,'Customer Sat Link:',12,75,4),(5,'Main Fiber Link',3,'Main Link:',12,100,4),(6,'Main Satellite Link',3,'Main Sat Link:',12,100,4),(7,'Cisco Router',3,'Router:',12,100,3),(8,'Smokeping Host',3,'Smokeping:',12,100,14),(9,'Storage',3,'Storage',12,100,8),(10,'Linux/Unix CPU',3,'',12,100,11),(11,'Windows CPU',3,'',12,100,12),(12,'APC UPS',3,'APC UPS',12,100,31);
+
+--
+-- Table structure for table `slas_cond`
+--
+
+DROP TABLE IF EXISTS slas_cond;
+CREATE TABLE slas_cond (
+  id int(10) NOT NULL auto_increment,
+  condition char(250) NOT NULL default '',
+  description char(60) NOT NULL default '',
+  event char(60) NOT NULL default '',
+  variable_show char(250) NOT NULL default '',
+  variable_show_info char(60) NOT NULL default '',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id)
+) TYPE=MyISAM COMMENT='SLA Atomic Conditions';
+
+--
+-- Dumping data for table `slas_cond`
+--
+
+INSERT INTO slas_cond VALUES (1,'1=2','Unknown','Unknown','',''),(2,'(<rtt> > 60)','RoundTrip Time > 60ms','RTT > 60','<rtt>','ms'),(3,'( ((<packetloss> * 100) / <pings>) > 20)','Packet Loss > 20%','PL > 20%','((<packetloss> * 100) / <pings>)','%'),(4,'(<in> < ((<bandwidthin>*95)/100))','Input Traffic < 95%','IN < 95%','(<in> / 1000)','Kbps'),(5,'AND','AND','','',''),(6,'OR','OR','','',''),(7,'(<rtt> > 700)','RoundTrip Time > 700ms','RTT > 700','<rtt>','ms'),(8,'(<rtt> > 900)','RoundTrip Time > 900ms','RTT > 900','<rtt>','ms'),(9,'(((<packetloss> * 100) / <pings>) > 50)','Packet Loss > 50%','PL > 50%','((<packetloss> * 100) / <pings>)','%'),(11,'(<in> > ((<bandwidthin>*90)/100))','Input Traffic > 90%','IN > 90%','(<in> / 1000)','Kbps'),(12,'(<in> < ((<bandwidthin>*1)/100))','Input Traffic < 1%','IN < 1 %','',''),(13,' (<out> > ((<bandwidthout>*90)/100))','Output Traffic > 90%','OUT > 90%','(<out> / 1000 )','kbps'),(14,'(<out> < ((<bandwidthout>*95)/100))','Output Traffic < 95%','OUT < 95%','(<out> / 1000 )','kbps'),(15,'( ( (<inerrors> / (<inpackets> + <inerrors> + 1) )*100) > 20)','Input Error Rate > 20%','IN ERR > 20%','( (<inerrors> / (<inpackets> + <inerrors> + 1) )*100)','% = <inerrors> eps'),(16,'( ( (<inerrors> / (<inpackets> + <inerrors> + 1) )*100) > 10)','Input Error Rate > 10%','IN ERR > 10%','( (<inerrors> / (<inpackets> + <inerrors> + 1) )*100)','% = <inerrors> eps'),(18,'( ( (<drops> / (<outpackets> + 1) )*100) > 1)','Drops > 1%','Drops > 1%','( (<drops> / (<outpackets> + 1) )*100)','% = <drops> dps'),(19,' ( ( (<drops> / (<outpackets> + 1) )*100) > 2)','Drops > 2%','Drops > 2%','( (<drops> / (<outpackets> + 1) )*100)','% = <drops> dps'),(20,'(((<packetloss> * 100) / <pings>) > 10)','Packet Loss > 10%','PL > 10%','((<packetloss> * 100) / <pings>)','%'),(21,'( ( (<drops> / (<outpackets> +<drops> + 1) )*100) > 10)','Drops > 10%','Drops > 10%','( (<drops> / (<outpackets> +<drops> + 1) )*100)','%'),(22,' (<in> < ((<bandwidthin>*99)/100))','Input Traffic < 99%','IN < 99%',' (<in> / 1000 )','Kbps'),(23,' (<out> < ((<bandwidthout>*99)/100))',' Output Traffic < 99%',' OUT < 99%',' (<out> / 1000 )','Kbps'),(24,'(<cpu> > 60)','CPU Utilization > 60%','CPU > 60%','<cpu>','%'),(25,'(<packetloss> > 10)','SP Packet Loss > 10%','Packet Loss > 10%','<packetloss>','%'),(26,'( <storage_used_blocks> > ((<storage_block_count>*<usage_threshold>)/100))','Used Storage','Used > <usage_threshold>%','((<storage_used_blocks> * 100)/<storage_block_count>)','%'),(27,'( <load_average_5> > 5 )','Load Average > 5','Load Average > 5','<load_average_5>',''),(28,'(((( <cpu_user_ticks> + <cpu_nice_ticks> + <cpu_system_ticks> ) * 100 ) / ( <cpu_user_ticks> + <cpu_idle_ticks> + <cpu_nice_ticks> + <cpu_system_ticks> )) > 80)','CPU Utilization > 80%','Usage > 80%','((( <cpu_user_ticks> + <cpu_nice_ticks> + <cpu_system_ticks> ) * 100 ) / ( <cpu_user_ticks> + <cpu_idle_ticks> + <cpu_nice_ticks> + <cpu_system_ticks> ))','%'),(29,'( ((<mem_used> * 100) / (<mem_used> + <mem_free>)) > 80)','Memory Usage > 80%','Memory Usage > 80%','((<mem_used> * 100) / (<mem_used> + <mem_free>))','%'),(30,'(<cpu> > 90)','CPU Utilization > 90%','CPU > 90%','<cpu>','%'),(31,'(<num_procs> > <proc_threshold>)','Too Many Processes','Processes > <proc_threshold>','<num_procs>','Processes'),(32,'(<temperature> > 55)','APC temp > 55','APC temp > 55','<temperature>','C'),(33,'(<time_remaining> < 300000)','APC time < 50 minutes','APC time < 50 minutes','<time_remaining>','min');
+
+--
+-- Table structure for table `slas_sla_cond`
+--
+
+DROP TABLE IF EXISTS slas_sla_cond;
+CREATE TABLE slas_sla_cond (
+  id int(10) NOT NULL auto_increment,
+  pos tinyint(2) NOT NULL default '1',
+  sla int(10) NOT NULL default '1',
+  cond int(10) NOT NULL default '1',
+  show_in_result tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id),
+  KEY sla (sla),
+  KEY cond (cond)
+) TYPE=MyISAM COMMENT='SLA - Condition Relationships';
+
+--
+-- Dumping data for table `slas_sla_cond`
+--
+
+INSERT INTO slas_sla_cond VALUES (1,1,1,1,0),(9,30,4,4,0),(10,40,4,7,1),(11,50,4,20,1),(12,70,4,6,0),(13,74,4,5,0),(14,10,5,11,1),(15,20,5,2,1),(16,40,5,20,1),(17,50,5,6,0),(18,60,5,6,0),(19,10,6,11,1),(20,30,6,7,1),(21,60,6,6,0),(22,40,6,3,1),(23,50,6,6,0),(33,20,4,14,0),(35,75,4,6,0),(36,15,5,13,1),(37,70,5,6,0),(38,20,6,13,1),(39,70,6,6,0),(40,10,4,16,1),(41,73,4,5,0),(42,45,6,16,1),(43,55,6,6,0),(44,30,5,16,1),(45,45,5,6,0),(47,60,4,18,1),(48,72,4,6,0),(49,10,7,24,1),(50,10,8,25,1),(51,30,8,6,0),(52,20,8,2,1),(53,1,9,26,1),(54,10,10,27,1),(55,20,10,28,1),(56,30,10,6,0),(57,20,7,29,1),(58,30,7,6,0),(59,10,11,30,1),(60,20,11,31,1),(61,30,11,6,0),(62,5,12,32,1),(63,10,12,6,0),(64,1,12,33,1);
+
+--
+-- Table structure for table `syslog`
+--
+
+DROP TABLE IF EXISTS syslog;
+CREATE TABLE syslog (
+  date datetime NOT NULL default '0000-00-00 00:00:00',
+  host varchar(128) default NULL,
+  date_logged datetime NOT NULL default '0000-00-00 00:00:00',
+  message text,
+  id int(10) unsigned NOT NULL auto_increment,
+  analized tinyint(2) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY analized (analized)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `syslog`
+--
+
+
+--
+-- Table structure for table `syslog_types`
+--
+
+DROP TABLE IF EXISTS syslog_types;
+CREATE TABLE syslog_types (
+  id int(10) NOT NULL auto_increment,
+  match_text char(255) NOT NULL default '',
+  interface char(10) NOT NULL default '',
+  username char(20) NOT NULL default '',
+  state char(10) NOT NULL default '',
+  info char(10) NOT NULL default '',
+  type int(10) NOT NULL default '1',
+  pos tinyint(3) NOT NULL default '1',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `syslog_types`
+--
+
+INSERT INTO syslog_types VALUES (1,'UNKNOWN','0','','','*',1,1),(2,'%SYS-5-CONFIG_I:.+|%SYS-5-CONFIG:','7','5','','3',2,1),(3,'%LINEPROTO-5-UPDOWN:','5','','9','',3,1),(4,'%LINK-3-UPDOWN:','2','','6','',4,1),(5,'%CONTROLLER-5-UPDOWN:','3','','7','2',5,1),(6,'%BGP-5-ADJCHANGE:','2','','3','6',6,1),(7,'%LINK-5-CHANGED:','2','','7','6',7,1),(9,'%RCMD-4-RSHPORTATTEMPT:','5','','','7',9,1),(17,'%CLEAR-5-COUNTERS:','5','7','','10',17,1),(20,'%PIX-2-106006:','7','5','1','3',29,1),(21,'%PIX-2-106007:','7','5','1','3',29,1),(22,'%PIX-2-106001:','8','6','4','2',29,1),(25,'%PIX-3-106010:','7','5','1','3',29,1),(26,'%PIX-3-106014:','7','5','1','3',29,1),(29,'%PIX-3-305006:.+|%PIX-2-106012:.+|%PIX-3-305005:.+|%PIX-3-307001:.+','','','','D',28,1),(30,'%CDP-4-DUPLEX_MISMATCH:','5','10','','11',34,1),(31,'%SEC-6-IPACCESSLOGS:','2','4','3','5',35,1),(32,'%SEC-6-IPACCESSLOGP:.+|%SEC-6-IPACCESSLOGNP:','2','7','3','8',35,1),(33,'%BGP-3-NOTIFICATION: (\\S+ \\S+) neighbor (\\S+) \\S+ (\\S+ \\S+ \\S+) \\S+ \\S+','2','','1','3',36,1),(34,'%SYS-5-RESTART:','','','','D',26,1),(35,'%SYS-5-RELOAD:','','','','D',26,1),(36,'%SEC-6-IPACCESSLOGDP:','2','5','3','9',35,1),(37,'EXCESSCOLL:','1','','','',37,1),(38,'^([^[]+)(?:\\[\\d+\\])?:\\s+(.+)$','1','','','2',44,100),(39,'CRON\\[\\d+\\]: \\((\\S+)\\) CMD (.*)','cron','1','','2',45,1),(40,'^(\\S.*)\\[info\\]\\s*(\\S+)\\s*(\\S.*)','1','','2','3',46,10),(41,'^(\\S.*)\\[error\\]\\s*(\\S+)\\s*(\\S.*)','1','','2','3',48,10),(42,'^(\\S.*)\\[warning\\]\\s*(\\S+)\\s*(\\S.*)','1','','2','3',47,10),(43,'^security\\[failure\\] (\\d*) (.*)','','','1','2',49,10),(44,'%PIX-1-(\\d*): (.*)','1','','','2',67,2),(45,'%PIX-2-(\\d*): (.*)','1','','','2',66,2),(46,'%PIX-3-(\\d*): (.*)','1','','','2',65,2),(47,'%PIX-4-(\\d*): (.*)','1','','','2',64,2),(48,'%PIX-6-(\\d*): (.*)','1','','','2',62,2),(49,'%PIX-5-(\\d*): (.*)','1','','','2',63,2),(50,'%PIX-7-(\\d*): (.*)','1','','','2',61,2),(51,'%PIX-4-106023:','6','4','1','2',29,1),(52,'^UPS: (.*)\\. (.*)$','UPS','','','1',26,1),(53,'WebOS <slb>: real server (\\S+) operational','1','','up','',68,1),(54,'WebOS <slb>: cannot contact real server (\\S+)','1','','down','',68,1),(55,'WebOS <slb>: No services are available for Virtual Server\\d+:(\\S+)','1','','down','',70,1),(56,'WebOS <slb>: Services are available for Virtual Server\\d+:(\\S+)','1','','up','',70,1),(57,'WebOS <slb>: real service (\\S+) operational','1','','up','',69,1),(58,'WebOS <slb>: cannot contact real service (\\S+)','1','','closed','',69,1),(59,'%ISDN-6-CONNECT: Interface (\\S+) is now (\\S+) (.+)$','1','','2','3',72,1),(60,'%ISDN-6-DISCONNECT: Interface (\\S+) (\\S+) (.+)$','1','','2','3',72,1);
+
+--
+-- Table structure for table `tools`
+--
+
+DROP TABLE IF EXISTS tools;
+CREATE TABLE tools (
+  id int(10) NOT NULL auto_increment,
+  description char(60) NOT NULL default '',
+  name char(30) NOT NULL default '',
+  file_group char(30) NOT NULL default '',
+  itype int(10) NOT NULL default '1',
+  pos int(3) NOT NULL default '1',
+  allow_set tinyint(1) NOT NULL default '0',
+  allow_get tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (id),
+  KEY itype (itype,pos)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `tools`
+--
+
+INSERT INTO tools VALUES (1,'Nothing','none','none',1,1,0,1),(3,'Description','if_alias','',4,2,1,1),(4,'Change Admin Status','if_admin','',4,3,1,1),(5,'Connections List','tcp_cnx','',2,1,1,1);
+
+--
+-- Table structure for table `trap_receivers`
+--
+
+DROP TABLE IF EXISTS trap_receivers;
+CREATE TABLE trap_receivers (
+  id int(10) NOT NULL auto_increment,
+  position int(4) NOT NULL default '0',
+  match_oid char(100) NOT NULL default '',
+  description char(60) NOT NULL default '',
+  command char(60) NOT NULL default '',
+  parameters char(250) NOT NULL default '',
+  backend int(10) NOT NULL default '1',
+  interface_type int(10) NOT NULL default '1',
+  stop_if_matches tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `trap_receivers`
+--
+
+INSERT INTO trap_receivers VALUES (1,99,'.*','Default Trap Receiver','unknown','',2,1,1),(2,10,'.1.3.6.1.6.3.1.1.5.4','Link Up','static','up,interfacenumber,1',12,4,1),(3,10,'.1.3.6.1.6.3.1.1.5.3','Link Down','static','down,interfacenumber,1',12,4,1);
+
+--
+-- Table structure for table `traps`
+--
+
+DROP TABLE IF EXISTS traps;
+CREATE TABLE traps (
+  id int(10) NOT NULL auto_increment,
+  ip char(20) NOT NULL default '',
+  trap_oid char(250) NOT NULL default '',
+  analized tinyint(1) NOT NULL default '0',
+  date int(10) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id),
+  KEY analized (analized)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `traps`
+--
+
+
+--
+-- Table structure for table `traps_varbinds`
+--
+
+DROP TABLE IF EXISTS traps_varbinds;
+CREATE TABLE traps_varbinds (
+  id int(10) NOT NULL auto_increment,
+  trapid int(10) NOT NULL default '0',
+  trap_oid varchar(250) default NULL,
+  value varchar(250) NOT NULL default '',
+  oidid int(10) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  KEY trapid (trapid)
+) TYPE=MyISAM COMMENT='Trap Variable Bindings';
+
+--
+-- Dumping data for table `traps_varbinds`
+--
+
+
+--
+-- Table structure for table `triggers`
+--
+
+DROP TABLE IF EXISTS triggers;
+CREATE TABLE triggers (
+  id int(10) NOT NULL auto_increment,
+  description char(40) NOT NULL default '',
+  type char(20) NOT NULL default 'alarm',
+  PRIMARY KEY  (id)
+) TYPE=MyISAM COMMENT='Triggers to be check';
+
+--
+-- Dumping data for table `triggers`
+--
+
+INSERT INTO triggers VALUES (1,'No Trigger','alarm'),(2,'Interface Status Change','alarm');
+
+--
+-- Table structure for table `triggers_rules`
+--
+
+DROP TABLE IF EXISTS triggers_rules;
+CREATE TABLE triggers_rules (
+  id int(10) NOT NULL auto_increment,
+  trigger_id int(10) NOT NULL default '1',
+  pos int(4) NOT NULL default '10',
+  field char(40) NOT NULL default '',
+  operator char(20) NOT NULL default '',
+  value char(100) NOT NULL default '',
+  action_id int(10) NOT NULL default '1',
+  action_parameters char(250) NOT NULL default '',
+  stop tinyint(1) NOT NULL default '1',
+  and_or tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (id),
+  KEY trigger_id (trigger_id,pos)
+) TYPE=MyISAM COMMENT='Trigger Rules';
+
+--
+-- Dumping data for table `triggers_rules`
+--
+
+INSERT INTO triggers_rules VALUES (1,1,10,'none','=','',1,'',1,1),(2,2,10,'type','!IN','12,25',2,'from:,subject:<interface-client_shortname> <interface-interface> <interface-description> <alarm-type_description> <alarm-state_description>,comment:Default Trigger',0,1);
+
+--
+-- Table structure for table `triggers_users`
+--
+
+DROP TABLE IF EXISTS triggers_users;
+CREATE TABLE triggers_users (
+  id int(10) NOT NULL auto_increment,
+  user_id int(10) NOT NULL default '1',
+  trigger_id int(10) NOT NULL default '1',
+  active tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  KEY user_id (user_id)
+) TYPE=MyISAM COMMENT='Multiple triggers per user Relationship';
+
+--
+-- Dumping data for table `triggers_users`
+--
+
+INSERT INTO triggers_users VALUES (1,1,1,0);
+
+--
+-- Table structure for table `types`
+--
+
+DROP TABLE IF EXISTS types;
+CREATE TABLE types (
+  id int(10) NOT NULL auto_increment,
+  description char(30) NOT NULL default '',
+  severity int(10) NOT NULL default '1',
+  text char(250) NOT NULL default '',
+  generate_alarm tinyint(1) NOT NULL default '0',
+  alarm_up int(10) NOT NULL default '1',
+  alarm_duration int(5) NOT NULL default '0',
+  show_default tinyint(1) NOT NULL default '1',
+  show_host tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id),
+  KEY severity (severity),
+  KEY description (description),
+  KEY generate_alarm (generate_alarm)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `types`
+--
+
+INSERT INTO types VALUES (1,'Unknown',2,'<interface> <user> <state> <info>',0,1,0,1,1),(2,'Configuration',2,'<user>: Changed Configuration from <info> <interface>',0,1,0,1,1),(3,'Interface Protocol',3,'Interface <interface> Protocol <state> <info> (<client> <interface-description>)',1,1,0,1,1),(4,'Interface Link',4,'Interface <interface> Link <state> <info> (<client> <interface-description>)',0,1,0,1,1),(5,'Controller Status',4,'Controller  <info> <interface> <state>',0,1,0,1,1),(6,'BGP Status',5,'BGP Neighbor <interface> <state> <info> (<client> <interface-description>)',1,1,0,1,1),(7,'Interface Shutdown',4,'Interface <interface> <info> <state> (<client> <interface-description>)',0,4,0,1,1),(8,'Command',2,'<user>: <info>',0,1,0,1,1),(9,'RShell Attempt',14,'RShell attempt from <info> <state>',0,1,0,1,1),(12,'SLA',14,'<interface> <info> (<client> <interface-description>)',1,1,1800,1,1),(17,'Clear Counters',14,'<user> Cleared Counters of <interface>  (<client> <interface-description>)',0,1,0,1,1),(22,'TCP/UDP Service',18,'TCP/UDP Service <interface> <state> (<client> <interface-description>) <info>',1,1,0,1,1),(25,'Administrative',13,'<interface> <info>',1,1,1800,1,1),(26,'Environmental',5,'<interface> <state> <info>',1,1,0,1,1),(28,'PIX Event',14,'<info>',0,1,0,1,1),(29,'PIX Port',2,'<state> <info> packet from <user> to <interface>',0,1,0,1,1),(34,'Duplex Mismatch',2,'Duplex Mismatch, <interface> is not full duplex and <user> <info> is full duplex',0,1,0,1,1),(35,'ACL',14,'ACL <interface> <state> <info> packets from <user>',0,1,0,1,1),(36,'BGP Notification',14,'Notification <state> <interface> <info>',0,1,0,1,1),(37,'Excess Collitions',2,'Excess Collitions on Interface <interface>',0,1,0,1,1),(38,'Application',5,'Application <interface> is <state> <info> (<client> <interface-description>)',1,1,0,1,1),(39,'TCP Content',18,'Content Response on <interface> is <state> (<client> <interface-description>) <info>',1,1,0,1,1),(40,'Reachability',5,'Host is <state> with <info>',1,1,0,1,1),(41,'NTP',14,'<interface> is <state> <info>',1,1,0,1,1),(42,'Tool Action',5,'<interface> <info> changed to <state> by <user> (<client> <interface-description>)',0,1,0,1,1),(43,'Internal',14,'<user> <interface> <state> <info>',0,1,0,1,0),(44,'Syslog',14,'<interface>: <info>',0,1,0,1,1),(45,'Hide this Event',14,'<interface> <user> <state> <info>',0,1,0,0,1),(46,'Win Info',14,'<interface>: <info> (ID:<state>)',0,1,0,2,1),(47,'Win Warning',2,'<interface>: <info> (ID:<state>)',0,1,0,1,1),(48,'Win Error',3,'<interface>: <info> (ID:<state>)',0,1,0,1,1),(49,'Win Security',3,'<info> (ID:<state>)',0,1,0,1,1),(50,'SQL',3,'SQL <interface> is <state> <info>',1,1,0,1,1),(60,'APC Status',5,'<interface> is <state> <info>',1,1,0,1,1),(61,'PIX Debug',13,'<info> (ID:<interface>)',0,1,0,2,1),(62,'PIX Info',14,'<info> (ID:<interface>)',0,1,0,2,1),(63,'PIX Notif',2,'<info> (ID:<interface>)',0,1,0,2,1),(64,'PIX Warn',18,'<info> (ID:<interface>)',0,1,0,2,1),(65,'PIX Error',3,'<info> (ID:<interface>)',0,1,0,2,1),(66,'PIX Crit',4,'<info> (ID:<interface>)',1,1,0,1,1),(67,'PIX Alert',5,'<info> (ID:<interface>)',1,1,0,1,1),(68,'Alteon RServer',3,'Real Server <interface> is <state>',1,1,0,1,1),(69,'Alteon Service',3,'Real Service <interface> is <state> <info>',1,1,0,1,1),(70,'Alteon VServer',3,'Virtual Server <interface> is <state> <info>',0,1,0,1,1),(71,'Brocade FC Port',3,'<interface> <state> (<info>)',1,1,0,1,1),(72,'ISDN',14,'<interface> <state> <info>',1,1,0,1,1);
+
+--
+-- Table structure for table `zones`
+--
+
+DROP TABLE IF EXISTS zones;
+CREATE TABLE zones (
+  id int(10) NOT NULL auto_increment,
+  zone char(60) NOT NULL default '',
+  shortname char(10) NOT NULL default '',
+  image char(30) NOT NULL default '',
+  seeds char(250) NOT NULL default '',
+  max_deep tinyint(1) NOT NULL default '2',
+  communities char(250) NOT NULL default '',
+  refresh int(6) NOT NULL default '86400',
+  admin_status tinyint(1) NOT NULL default '0',
+  show_zone tinyint(1) NOT NULL default '1',
+  allow_private tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  UNIQUE KEY id (id),
+  KEY id_2 (id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `zones`
+--
+
+INSERT INTO zones VALUES (1,'Unknown','UNK','unknown.png','',1,'',86400,0,1,0),(2,'New Zone','NewZone','unknown.png','',1,'',86400,0,1,1);
+
+ALTER TABLE interface_types AUTO_INCREMENT = 10001;
+ALTER TABLE interface_types_fields AUTO_INCREMENT = 10001;
+ALTER TABLE interface_types_field_types AUTO_INCREMENT = 10001;
+ALTER TABLE graph_types AUTO_INCREMENT = 10001;
+ALTER TABLE alarm_states AUTO_INCREMENT = 10001;
+ALTER TABLE severity AUTO_INCREMENT = 10001;
+ALTER TABLE syslog_types AUTO_INCREMENT = 10001;
+ALTER TABLE trap_receivers AUTO_INCREMENT = 10001;
+ALTER TABLE types AUTO_INCREMENT = 10001;
+ALTER TABLE slas AUTO_INCREMENT = 10001;
+ALTER TABLE slas_cond AUTO_INCREMENT = 10001;
+ALTER TABLE slas_sla_cond AUTO_INCREMENT = 10001;
+ALTER TABLE filters AUTO_INCREMENT = 10001;
+ALTER TABLE filters_fields AUTO_INCREMENT = 10001;
+ALTER TABLE filters_cond AUTO_INCREMENT = 10001;
+ALTER TABLE pollers AUTO_INCREMENT = 10001;
+ALTER TABLE pollers_groups AUTO_INCREMENT = 10001;
+ALTER TABLE pollers_backend AUTO_INCREMENT = 10001;
+ALTER TABLE pollers_poller_groups AUTO_INCREMENT = 10001;
+ALTER TABLE autodiscovery AUTO_INCREMENT = 10001;
+ALTER TABLE hosts_config_types AUTO_INCREMENT = 10001;
+ALTER TABLE tools AUTO_INCREMENT = 10001;
+ALTER TABLE profiles_options AUTO_INCREMENT = 10001;
+ALTER TABLE actions AUTO_INCREMENT = 10001;
+ALTER TABLE profiles_values AUTO_INCREMENT = 300;

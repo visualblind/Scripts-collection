@@ -1,0 +1,31 @@
+csvde -d "OU=Users,OU=OrgUnit,DC=Domain-Name,DC=org" -r objectCategory=person -l UserAccountControl,logonHours,description,name,SAMAccountName -f Server1.csv
+
+csvde -d "OU=Users,OU=OrgUnit,DC=Domain-Name,DC=org" -r "(&(objectCategory=person)(!UserAccountControl=66050)(!UserAccountControl=514))" -l UserAccountControl,logonHours,description,name,SAMAccountName -f Server1-Test.csv
+
+
+csvde -d "OU=OrgUnit,OU=Domain-Name2,DC=Domain-Name2,DC=org" -r "(&(objectCategory=person)(!UserAccountControl=66050)(!UserAccountControl=514))" -l UserAccountControl,logonHours,description,name,SAMAccountName -f Server2.csv
+
+
+# Collect Server1 Hosted Client users for Quarterly Audit
+csvde -d "OU=Users,OU=OrgUnit,DC=Domain-Name,DC=org" -r "(&(objectCategory=person)(!UserAccountControl=66050)(!UserAccountControl=514))" -l SAMAccountName,name,description,UserAccountControl,logonHours -f "13 - April Server1.csv"
+
+# Collect Server2 Hosted Client users for Quarterly Audit
+csvde -d "OU=OrgUnit,OU=Domain-Name2,DC=Domain-Name2,DC=org" -r "(&(objectCategory=person)(!UserAccountControl=66050)(!UserAccountControl=514))" -l SAMAccountName,name,description,UserAccountControl,logonHours -f "12 - Dec Server2.csv"
+
+#Client Emails Server2
+csvde -d "OU=OrgUnit,OU=Domain-Name2,DC=Domain-Name2,DC=org" -r "(&(objectCategory=person)(!UserAccountControl=66050)(!UserAccountControl=514))" -p OneLevel -l SAMAccountName,mail -f "Server2-Server2client-email.csv"
+
+#Client Emails Server1
+csvde -d "OU=Users,OU=OrgUnit,DC=Domain-Name,DC=org" -r "(&(objectCategory=person)(objectClass=user)(!UserAccountControl=66050)(!UserAccountControl=514)(memberOf="CN=CitrixGroup,OU=Security,OU=Groups,OU=OrgUnit,DC=Domain-Name,DC=org"))" -p OneLevel -l mail -f "CitrixGroup.csv" && csvde -d "OU=Users,OU=OrgUnit,DC=Domain-Name,DC=org" -r "(&(objectCategory=person)(objectClass=user)(!UserAccountControl=66050)(!UserAccountControl=514)(memberOf="CN=Citrix,OU=Security,OU=Groups,OU=OrgUnit,DC=Domain-Name,DC=org"))" -p OneLevel -l mail -f "citrix.csv" && copy /b CitrixGroup.csv+citrix.csv srv1clients.csv
+
+
+
+(memberOf="CN=CitrixGroup,OU=Security,OU=Groups,OU=OrgUnit,DC=Domain-Name,DC=org")
+
+
+csvde -d "OU=Users,OU=OrgUnit,DC=Domain-Name,DC=org" -r "(&(objectCategory=person)(objectClass=user)(!UserAccountControl=66050)(!UserAccountControl=514)(memberOf="CN=CitrixGroup,OU=Security,OU=Groups,OU=OrgUnit,DC=Domain-Name,DC=org")(memberOf="CN=Citrix,OU=Security,OU=Groups,OU=OrgUnit,DC=Domain-Name,DC=org"))" -p OneLevel -l mail -f "srv1_client_mail.csv" 
+
+
+
+
+&& csvde -d "OU=Users,OU=OrgUnit,DC=Domain-Name,DC=org" -r "(&(objectCategory=person)(objectClass=user)(!UserAccountControl=66050)(!UserAccountControl=514)(memberOf="CN=Citrix,OU=Security,OU=Groups,OU=OrgUnit,DC=Domain-Name,DC=org"))" -p OneLevel -l mail -f "citrix.csv" && copy /b CitrixGroup.csv+citrix.csv srv1clients.csv

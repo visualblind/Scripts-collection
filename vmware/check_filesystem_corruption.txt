@@ -1,0 +1,8 @@
+#check VMFS5 file system for corruption
+voma -m vmfs -f check -d /vmfs/devices/disks/t10.ATA_____WDC_WD5001FYYZ2D13J9DB0_______________________WD2DWXP1DA3A0151:1
+#fix VMFS5 file system for corruption
+voma -m vmfs -f fix -d /vmfs/devices/disks/t10.ATA_____WDC_WD5001FYYZ2D13J9DB0_______________________WD2DWXP1DA3A0151:1
+
+#check VM virtual disks for errors (.vmdk files)
+vmkfstools --fix check /vmfs/volumes/58093c16-85813352-22c3-50465da1f8a3/vcsa67.ipconfig.io/vcsa67.ipconfig.io.vmdk
+vmkfstools --fix check /vmfs/volumes/58093c16-85813352-22c3-50465da1f8a3/vcsa67.ipconfig.io/vcsa67.ipconfig.io_1.vmdk (and so on)

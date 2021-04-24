@@ -1,0 +1,52 @@
+<html><head><title>New-SpbmStoragePolicy - PowerCLI System.Collections.Hashtable.ModuleName Help Reference</title><meta name="description" content=" New-SpbmStoragePolicy" /><meta name="keywords" content="PowerCLI System.Collections.Hashtable.ModuleName Help Reference, New-SpbmStoragePolicy, New, SpbmStoragePolicy" /><link href="doc-style.css" type="text/css" rel="StyleSheet"></head><body><h2 class="title"><a class="title" href='index.html' target="_top">PowerCLI Reference</a></h2><h1>New-SpbmStoragePolicy</h1><h2>Synopsis</h2>This cmdlet creates a requirement storage policy in an SPBM server.<p class="table-title">Syntax</p>New-SpbmStoragePolicy [-Name] &lt;String&gt; [-Description &lt;String&gt;] [-AnyOfRuleSets &lt;SpbmRuleSet[]&gt;] [-CommonRule &lt;SpbmRule[]&gt;] [-Server &lt;VIServer&gt;] [-WhatIf] [-Confirm] [&lt;CommonParameters&gt;]<p class="table-title">Related Commands</p><a href='http://www.vmware.com/support/developer/PowerCLI/PowerCLI651/html/New-SpbmStoragePolicy.html'>Online version</a><br><a href='Export-SpbmStoragePolicy.html'>Export-SpbmStoragePolicy</a><br><a href='Get-SpbmStoragePolicy.html'>Get-SpbmStoragePolicy</a><br><a href='Import-SpbmStoragePolicy.html'>Import-SpbmStoragePolicy</a><br><a href='Remove-SpbmStoragePolicy.html'>Remove-SpbmStoragePolicy</a><br><a href='Set-SpbmStoragePolicy.html'>Set-SpbmStoragePolicy</a><br><p class="table-title">Detailed Description</p>This cmdlet creates a requirement storage policy in an SPBM server. A requirement policy contains requirements that are derived from tag-defined capabilities or from VMware VSAN capabilities.
+<br/>A policy is a collection of rule sets. A rule set references storage capabilities and defines requirements based on those capabilities.
+<br/>Rules from the VAIOFilter namespace are only accepted as value by the CommonRule parameter. These rules apply to all rule sets as common requirements.
+<br/>
+<br/>You can use the following styles when creating a new policy.
+<br/>
+<br/># Style 1:
+<br/>      New-SpbmStoragePolicy
+<br/>      -Name ...
+<br/>      -RuleSet (
+<br/>      New-SpbmRuleSet (
+<br/>      (New-SpbmRule EmcStorage.Latency.MaxValue 45),
+<br/>      (New-SpbmRule EmcStorage.MulPropCap.Property (Range 2 14)),
+<br/>      ),
+<br/>      New-SpbmRuleSet (
+<br/>      (New-SpbmRule SpbmCore.Throughput 5),
+<br/>      (New-SpbmRule -Tag $supportsThinProvisioning)
+<br/>      )
+<br/>      )
+<br/>      -CommonRule
+<br/>      ((New-SpbmRule IOFilters.EMCCache.MaxValue 1000),
+<br/>      (New-SpbmRule IOFilters.EMCCache.OtherRange (Range 2 14)))
+<br/>      
+<br/># Style 2:
+<br/>      $r1 = New-SpbmRule -Capability namespace1.capability1.property1 -Value ...
+<br/>      $rs1 = New-SpbmRuleSet -Rule $r1
+<br/>      $ca1 = Get-SPBMCapability -Name EMCStorage.Latency.*
+<br/>      $r2 = New-SpbmRule -Capability $ca1[0] -Value ...
+<br/>      $r3 = New-SpbmRule -Capability EMCStorage.Latency.MaxValue -Value ...
+<br/>      $rs2 = New-SpbmRuleSet -Rule ($r2,$r3)
+<br/>      $r4 = New-SpbmRule -Capability IOfilters.Replication.Someprop -Value ...
+<br/>      $ca2 = Get-SPBMCapability -Name IOFilters.*
+<br/>      $r5 = New-SpbmRule -Capability $ca2[0] -Value ...
+<br/>      $sp = New-SpbmStoragePolicy -RuleSet ($rs1,$rs2) -CommonRule ($r4,$r5)
+<br/>      
+<br/># Style 3: Creating a storage policy with only VAIOFilter-based common rules 
+<br/>      $ca1 = Get-SPBMCapability -Name IOFilters.*
+<br/>      $r1 = New-SpbmRule -Capability $ca1[0] -Value ...
+<br/>      $sp1 = New-SpbmStoragePolicy -CommonRule ($r1)
+<br/>      
+<br/>#Style 4: Creating a storage policy without VAIOFilter-based common rules 
+<br/>      $ca1 = Get-SPBMCapability -Name EMCStorage.Latency.*
+<br/>      $r1= New-SpbmRule -Capability $ca1[0] -Value ...
+<br/>      $r2 = New-SpbmRule -Capability EMCStorage.Latency.MaxValue -Value ...
+<br/>      $rs1 = New-SpbmRuleSet -Rule ($r1,$r2)
+<br/>      $sp1= New-SpbmStoragePolicy -RuleSet ($rs1)<p class="table-title">Parameters</p><table cellspacing="0"><tr><th>Name</th><th>Type</th><th>Description</th><th>Required?</td><th>Pipeline Input</th><th>Default Value</th></tr><tr class="r1"><td><a id="Name" name="Name"></a><strong>Name</strong></td><td>String</td><td>Specifies the name of the capability-based policy to be created. The maximum length of the name is 80 characters.</td><td>true</td><td>false</td><tr class="r0"><td><a id="AnyOfRuleSets" name="AnyOfRuleSets"></a><strong>AnyOfRuleSets</strong></td><td><a href="SpbmRuleSet.html">SpbmRuleSet</a>[]</td><td>Specifies an array of rule sets that define the storage requirements. An SPBM rule with the VAIOFilter namespace cannot be added in any of these rule sets.</td><td>false</td><td>true (ByValue)</td><tr class="r1"><td><a id="CommonRule" name="CommonRule"></a><strong>CommonRule</strong></td><td><a href="SpbmRule.html">SpbmRule</a>[]</td><td>Specifies the SPBM rules from the VAIOFilter namespace only. These rules are considered with all the SPBM rule sets as common requirements.</td><td>false</td><td>false</td><tr class="r0"><td><a id="Confirm" name="Confirm"></a><strong>Confirm</strong></td><td>SwitchParameter</td><td>If the value is $true, indicates that the cmdlet asks for confirmation before running. If the value is $false, the cmdlet runs without asking for user confirmation.</td><td>false</td><td>false</td><tr class="r1"><td><a id="Description" name="Description"></a><strong>Description</strong></td><td>String</td><td>Specifies the text description associated with the policy.</td><td>false</td><td>false</td><tr class="r0"><td><a id="Server" name="Server"></a><strong>Server</strong></td><td>VIServer</td><td>Specifies the vCenter Server systems on which you want to run the cmdlet. If no value is given to this parameter, the command runs on the default servers. For more information about default servers, see the description of Connect-VIServer.</td><td>false</td><td>true (ByValue)</td><tr class="r1"><td><a id="WhatIf" name="WhatIf"></a><strong>WhatIf</strong></td><td>SwitchParameter</td><td>Indicates that the cmdlet is run only to display the changes that would be made and actually no objects are modified.</td><td>false</td><td>false</td></table><p class="table-title">Return Type</p>The newly created <a href="SpbmStoragePolicy.html">SpbmStoragePolicy</a> object
+<p class="table-title">Notes</p>Works only with vCenter Server 5.5 or later.
+    
+    For more information, see the VMware Storage Policy API Reference:
+    https://pubs.vmware.com/vsphere-60/index.jsp#com.vmware.vspsdk.apiref.doc/right-pane.html<p class="table-title">Examples</p><div class="example"><p class="example-title">--------------  Example 1 --------------</p><pre class="programlisting">New-SpbmStoragePolicy -Name &quot;MyPolicy&quot; -Description &quot;MyPolicyDescription&quot; -AnyOfRuleSets $ruleset1, $ruleset2, $ruleset3</pre><p>Creates a new storage policy named &quot;MyPolicy&quot;, with description &quot;MyPolicyDescription&quot; and with rule set objects $ruleset1, $ruleset2 and $ruleset3.</p><p class="example-title">--------------  Example 2 --------------</p><pre class="programlisting">New-SpbmStoragePolicy -Name &quot;MyPolicy&quot; -AnyOfRuleSets (New-SpbmRuleSet -AllOfRules $rule1, $rule2, $rule3)</pre><p>Creates a new storage policy named &quot;MyPolicy&quot; with a rule set containing rule objects $rule1, $rule2, and $rule3.</p><p class="example-title">--------------  Example 3 --------------</p><pre class="programlisting">$c = Get-SpbmCapability ?Name IOFILTERS*
+$cr = New-SpbmRule ?Capability $c[0] ?Value 10
+$p = New-SpbmStoragePolicy -Name policy1 -AnyOfRuleSets (New-SpbmRuleSet -Name ruleset1 -AllOfRules @($rule1, $rule2)) -CommonRule ($cr)</pre><p>Creates a storage policy with one rule set and one VAIOFilter common rule.</p></div><hr>Copyright &copy; VMware, Inc.&nbsp;All rights reserved.</body></html>

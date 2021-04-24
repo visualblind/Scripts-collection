@@ -1,0 +1,30 @@
+<ComponentDescriptor>
+  <Name>VMware.VimAutomation.Security.Commands</Name>
+  <Assembly>VMware.VimAutomation.Security.Commands</Assembly>
+  <ImplementingType>VMware.VimAutomation.Security.Commands.SecurityCommandsComponentImpl</ImplementingType>
+  <IsSnapin>true</IsSnapin>
+  <ProvidedServiceList>
+  </ProvidedServiceList>
+  <RequiredServiceList>
+    <ServiceDescriptor>
+      <Name>StorageCoreService</Name>
+      <Version>1.0</Version>
+    </ServiceDescriptor>
+    <ServiceDescriptor>
+      <Name>SecurityCoreService</Name>
+      <Version>1.0</Version>
+    </ServiceDescriptor>
+  </RequiredServiceList>
+  <ExtendedServiceList>
+  </ExtendedServiceList>
+  <Version>
+    <Major>11</Major>
+    <Minor>0</Minor>
+    <Revision>0</Revision>
+    <Build>10380515</Build>
+    <Company>VMware Inc.</Company>
+    <Copyright>Copyright 2018</Copyright>
+    <UserFriendlyVersion>VMware VimAutomation Security PowerCLI Component PowerCLI Component 11.0 build 10380515</UserFriendlyVersion>
+    <Description>Provides cmdlets for managing Security feature of VMware vSphere</Description>
+  </Version>
+</ComponentDescriptor>

@@ -1,0 +1,182 @@
+#!/usr/bin/perl
+#
+# this script imports a logfile into the traceroute database
+
+# vars for the database
+
+$DB_HOST=               "localhost";
+$DB_USER=               "root";
+$DB_PASS=               "";
+$DB_NAME=               "traceroute";
+$DB_DRIVER=             "mysql";
+
+
+###########################################################
+# DO NOT CHANGE ANYTHING BELOW, IT'S ON YOUR OWN RISK !!! #
+###########################################################
+
+use DBI;
+
+# subroutines
+
+# screen always on top of screen
+sub screen()
+{
+ system("clear");
+ print "------------------------\n";
+ print "| MTR Logfile importer |\n";
+ print "------------------------\n\n";
+}
+
+
+# give in the site/domain that was traced
+sub site()
+{
+ screen();
+ print "Name of traced site : ";
+ $site = <stdin>;
+ chomp($site); 
+}
+
+# give the name from where you've traced
+sub traceplace()
+{
+ screen();
+ if (!$site){
+   print "You must fill in a site !";
+   site();
+   traceplace();
+ }
+ else{
+   print "Site : ".$site."\n";
+   print "Fill in from where you have traced : ";
+   $where = <stdin>;
+   chomp($where);
+ }
+}
+
+# give the filename to import
+sub filename()
+{
+  screen();
+  if (!$where){
+    print "You must fill in from where you have traced !";
+    traceplace();
+    filename();
+  }
+  else{
+    print "Site : ".$site."\n";
+    print "Traceplace : ".$where."\n";
+    print "Which file do I have to import : ";
+    $filename = <stdin>;
+    chomp($filename);
+  }
+}
+
+#import the file and vars in database
+sub importlogfile()
+{
+    if (!$filename){
+       filename();
+       importlogfile();
+    }
+    else{
+        open("logfile","$filename") || die "Can't find file";
+
+	# connect to database, exit if fail  
+	my $db = DBI->connect("DBI:mysql:database=$DB_NAME;host=$DB_HOST",
+                                     $DB_USER, $DB_PASS,
+                                     {'RaiseError' => 1});
+
+
+	# check if site is already in database
+	$querysite = "SELECT sid,naam from site WHERE naam='$site'";
+  	$siteq = $db->prepare($querysite);
+	$siteq->execute();
+	if ($siteq->rows == 0)
+  		{
+		    print "Site is not in database, inserted as new!\n";
+		    $querysinsert = "INSERT into site values('','$site')";			
+		    $sitein = $db->prepare($querysinsert);
+		    $sitein->execute();
+		    $siteid = $sitein->{mysql_insertid};
+		    $sitein->finish();
+	}
+	else {
+		print "Site already in database, fetched id!\n";
+		@row = $siteq->fetchrow_array();
+		$siteid = $row[0];
+	} 
+	$siteq->finish();
+
+	# check if traceplace is already in database
+	$querytrace = "SELECT vid,plaats from van where plaats='$where'";
+	$trace = $db->prepare($querytrace);
+	$trace->execute();
+	if ($trace->rows == 0)
+		{
+		    print "Traceplace not in database, inserted as new!\n";
+		    $querytinsert = "INSERT into van values('','$where')";
+		    $tracein = $db->prepare($querytinsert);
+		    $tracein->execute();
+		    $traceid = $tracein->{mysql_insertid};
+		    $tracein->finish()
+	}
+	else {
+		print "Traceplace already in database, fetched id!\n";
+		@row = $trace->fetchrow_array();
+		$traceid = $row[0];
+	}
+	$trace->finish();
+	
+	# insert into vanxsite-table
+	use Time::localtime;
+	$tm = localtime;
+	$jaar = $tm->year+1900;
+	$mon = $tm->mon+1;
+	$dag =  $tm->mday;
+	$uur = $tm->hour;
+	$minuut = $tm->min;
+	$sec = $tm->sec;
+	$datum = $jaar."-".$mon."-".$dag." ".$uur.":".$minuut.":".$sec;
+	$vanxinsert = "INSERT into vanxsite values('','$traceid','$siteid','$datum')";
+	$vanx = $db->prepare($vanxinsert);
+	$vanx->execute();
+	$vanxsiteid = $vanx->{mysql_insertid};
+	print "Inserting into vanxsite-table .. fetched id!\n";
+	$vanx->finish();
+
+	# now parse the logfile
+
+        $i = 0;
+        while (<logfile>){
+           $_ =~ s/     / /ig;
+	   $_ =~ s/    / /g,
+           $_ =~ s/   / /g;
+	   $_ =~ s/  / /g;
+	   $_ =~ s/ /|/g;
+           
+	   # now put all shit in database :)
+	   if ($i != "0"){
+	     $line = $i.".|".$_;
+	     $ins = "INSERT into info values ('','$vanxsiteid','$traceid','$siteid','$line')";
+	     $insinfo = $db->prepare($ins);
+	     $insinfo->execute();
+	     $insinfo->finish();
+	   }
+           $i++;
+        }
+    	# close connection
+    	$db->disconnect;
+     }
+   $i--;
+   print $i." lines inserted into database\n";
+}
+
+###################
+# start the program
+screen();
+site();
+traceplace();
+filename();
+importlogfile();

@@ -1,0 +1,1 @@
+﻿cmd /C "ping -n 5 10.5.18.1 & ping -n 10 10.4.4.197 & ping -n 10 10.4.5.74 & ping -n 10 google.com & ping -n 10 8.8.8.8 & ping ipinfo.io"

@@ -1,0 +1,17 @@
+---
+version: "2.1"
+services:
+  pwndrop:
+    image: ghcr.io/linuxserver/pwndrop:latest
+    container_name: pwndrop
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+      - SECRET_PATH=/pwndrop #optional
+    volumes:
+      - /var/docker/pwndrop/config:/config
+    ports:
+      - 8082:8080
+#    restart: unless-stopped
+    restart: always

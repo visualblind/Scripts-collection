@@ -1,0 +1,9 @@
+remove:
+xfce4-goodies
+xserver-xorg
+tightvncserver
+
+Add:
+emacs24-nox
+htop
+

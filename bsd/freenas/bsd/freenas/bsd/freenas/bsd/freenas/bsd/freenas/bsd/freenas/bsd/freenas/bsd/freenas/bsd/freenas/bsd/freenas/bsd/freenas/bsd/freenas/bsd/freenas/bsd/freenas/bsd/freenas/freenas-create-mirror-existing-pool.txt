@@ -1,0 +1,13 @@
+gpart create -s gpt /dev/adaX
+gpart add -b 128 -t freebsd-swap -s 2G /dev/adaX
+gpart add -t freebsd-zfs /dev/adaX
+Run zpool status and note the gptid of the existing disk
+Run gpart list and find the gptid of the newly created partition. It is the rawuuid field. In this example it would be rawuuid of adaXp2
+zpool attach MyPoolName /dev/gptid/[gptid_of_the_existing_disk] /dev/gptid/[gptid_of_the_new_partition]
+
+
+Example:
+
+gptid/5d49162a-05c2-11eb-b3cc-005056b4f12a (da2 existing pool1)
+gptid/9d49fcee-a4ec-11eb-84f7-005056819ffd (da1 new disk)
+zpool attach pool1 /dev/gptid/5d49162a-05c2-11eb-b3cc-005056b4f12a /dev/gptid/9d49fcee-a4ec-11eb-84f7-005056819ffd

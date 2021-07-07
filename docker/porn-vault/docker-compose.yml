@@ -1,0 +1,32 @@
+version: "3"
+services:
+  porn-vault:
+    image: porn-vault
+    container_name: porn-vault
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/porn_vault_config:/config"
+      - "/my_videos:/videos"
+      - "/my_images:/images"
+    ports:
+      - "3000:3000"
+    devices: # Only for vaapi users
+      - /dev/dri/renderD128:/dev/dri/renderD128
+    restart: unless-stopped
+    networks: # When you run Elasticsearch with Docker
+      - porn-vault-net
+  elasticsearch:
+    image: 'docker.elastic.co/elasticsearch/elasticsearch:7.13.1'
+    environment:
+        - discovery.type=single-node
+    ports:
+        - '9200:9200'
+        - '9300:9300'
+    networks:
+      - porn-vault-net
+networks:
+  porn-vault-net:
+    driver: bridge

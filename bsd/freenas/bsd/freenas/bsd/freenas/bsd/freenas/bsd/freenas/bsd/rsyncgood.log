@@ -1,0 +1,104 @@
+2019/06/28 04:53:05 [24534] building file list
+2019/06/28 04:53:05 [24534] rsync: failed to set times on "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/.": Operation not permitted (1)
+2019/06/28 04:53:05 [24534] .d..t...... ./
+2019/06/28 04:53:05 [24534] >f+++++++++ rsyncgood.log
+2019/06/28 04:53:05 [24534] rsync: recv_generator: mkdir "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/docker" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] *** Skipping any contents from this failed directory ***
+2019/06/28 04:53:05 [24534] rsync: failed to set times on "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/freebsd": Operation not permitted (1)
+2019/06/28 04:53:05 [24534] rsync: failed to set times on "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/linux": Operation not permitted (1)
+2019/06/28 04:53:05 [24534] rsync: recv_generator: mkdir "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/mysql" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] *** Skipping any contents from this failed directory ***
+2019/06/28 04:53:05 [24534] rsync: failed to set times on "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/wintel": Operation not permitted (1)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/.rsyncgood.log.HCo36w" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] cd+++++++++ docker/
+2019/06/28 04:53:05 [24534] .d..t...... freebsd/
+2019/06/28 04:53:05 [24534] >f+++++++++ freebsd/fnjailup.sh
+2019/06/28 04:53:05 [24534] >f+++++++++ freebsd/fnjailup.zip
+2019/06/28 04:53:05 [24534] >f+++++++++ freebsd/rclone-install.sh
+2019/06/28 04:53:05 [24534] >f+++++++++ freebsd/rclone-screen-gdrive-team.sh
+2019/06/28 04:53:05 [24534] >f+++++++++ freebsd/rclone-uploadcloud.sh
+2019/06/28 04:53:05 [24534] >fc........ freebsd/zfs-delete-snapshots.sh
+2019/06/28 04:53:05 [24534] .d..t...... linux/
+2019/06/28 04:53:05 [24534] >fc........ linux/blocklist-parse.sh
+2019/06/28 04:53:05 [24534] >f+++++++++ linux/cleanup-task.sh
+2019/06/28 04:53:05 [24534] >f+++++++++ linux/command-output-redirection
+2019/06/28 04:53:05 [24534] >f+++++++++ linux/exitcode.sh
+2019/06/28 04:53:05 [24534] >fc........ linux/find-largefiles.sh
+2019/06/28 04:53:05 [24534] >fc........ linux/rsync-move-remove-source.sh
+2019/06/28 04:53:05 [24534] >fc........ linux/snap-remove-old.sh
+2019/06/28 04:53:05 [24534] >fc........ linux/snap-remove-old_1.sh
+2019/06/28 04:53:05 [24534] >fc........ linux/systemd-count-active-services.sh
+2019/06/28 04:53:05 [24534] >fc........ linux/systemd-resolved-fix.sh
+2019/06/28 04:53:05 [24534] cd+++++++++ mysql/
+2019/06/28 04:53:05 [24534] .d..t...... wintel/
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/freebsd/.fnjailup.sh.T4prGs" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/freebsd/.fnjailup.zip.R000fo" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/freebsd/.rclone-install.sh.EU0JPj" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/freebsd/.rclone-screen-gdrive-team.sh.LDdBpf" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/freebsd/.rclone-uploadcloud.sh.5x7AZa" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/freebsd/.zfs-delete-snapshots.sh.M4NJz6" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/linux/.blocklist-parse.sh.lho191" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/linux/.cleanup-task.sh.F6nsKX" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/linux/.command-output-redirection.nkK2kT" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/linux/.exitcode.sh.TfiMVO" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/linux/.find-largefiles.sh.CglEwK" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/linux/.rsync-move-remove-source.sh.11cF7F" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/linux/.snap-remove-old.sh.qbZOIB" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/linux/.snap-remove-old_1.sh.8AC7jx" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/linux/.systemd-count-active-services.sh.p46zVs" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] rsync: mkstemp "/home/visualblind/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts/linux/.systemd-resolved-fix.sh.4Ztcxo" failed: Permission denied (13)
+2019/06/28 04:53:05 [24534] Number of files: 34 (reg: 28, dir: 6)
+2019/06/28 04:53:05 [24534] Number of created files: 11 (reg: 9, dir: 2)
+2019/06/28 04:53:05 [24534] Number of deleted files: 0
+2019/06/28 04:53:05 [24534] Number of regular files transferred: 17
+2019/06/28 04:53:05 [24534] Total file size: 18.35K bytes
+2019/06/28 04:53:05 [24534] Total transferred file size: 13.13K bytes
+2019/06/28 04:53:05 [24534] Literal data: 13.33K bytes
+2019/06/28 04:53:05 [24534] Matched data: 0 bytes
+2019/06/28 04:53:05 [24534] File list size: 0
+2019/06/28 04:53:05 [24534] File list generation time: 0.001 seconds
+2019/06/28 04:53:05 [24534] File list transfer time: 0.000 seconds
+2019/06/28 04:53:05 [24534] Total bytes sent: 8.84K
+2019/06/28 04:53:05 [24534] Total bytes received: 3.94K
+2019/06/28 04:53:05 [24534] sent 8.84K bytes  received 3.94K bytes  25.55K bytes/sec
+2019/06/28 04:53:05 [24534] total size is 18.35K  speedup is 1.44
+2019/06/28 04:53:05 [24534] rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1196) [sender=3.1.2]
+2019/06/28 05:07:16 [25892] building file list
+2019/06/28 05:07:16 [25892] rsync: mkdir "/root/mnt/pool0/p0ds0smb/visualblind/Documents/Scripts" failed: No such file or directory (2)
+2019/06/28 05:07:16 [25892] rsync error: error in file IO (code 11) at main.c(675) [Receiver=3.1.2]
+2019/06/28 05:08:15 [25967] building file list
+2019/06/28 05:08:15 [25967] >f+++++++++ rsyncgood.log
+2019/06/28 05:08:16 [25967] cd+++++++++ docker/
+2019/06/28 05:08:16 [25967] >f+++++++++ docker/docker-compose.yml
+2019/06/28 05:08:16 [25967] .d..t...... freebsd/
+2019/06/28 05:08:16 [25967] >f+++++++++ freebsd/fnjailup.sh
+2019/06/28 05:08:16 [25967] >f+++++++++ freebsd/fnjailup.zip
+2019/06/28 05:08:16 [25967] >f+++++++++ freebsd/rclone-install.sh
+2019/06/28 05:08:16 [25967] >f+++++++++ freebsd/rclone-screen-gdrive-team.sh
+2019/06/28 05:08:16 [25967] >f+++++++++ freebsd/rclone-uploadcloud.sh
+2019/06/28 05:08:16 [25967] .d..t...... linux/
+2019/06/28 05:08:16 [25967] >f+++++++++ linux/cleanup-task.sh
+2019/06/28 05:08:16 [25967] >f+++++++++ linux/command-output-redirection
+2019/06/28 05:08:16 [25967] >f+++++++++ linux/exitcode.sh
+2019/06/28 05:08:16 [25967] cd+++++++++ mysql/
+2019/06/28 05:08:16 [25967] >f+++++++++ mysql/convert-lowercase.sql
+2019/06/28 05:08:16 [25967] >f+++++++++ mysql/convert-lowercase2.sql
+2019/06/28 05:08:16 [25967] >f+++++++++ mysql/mysql-find-replace.sh
+2019/06/28 05:08:16 [25967] >f+++++++++ mysql/search-tables.sql
+2019/06/28 05:08:16 [25967] >f+++++++++ mysql/search-tables2.sql
+2019/06/28 05:08:16 [25967] .d..t...... wintel/
+2019/06/28 05:08:16 [25967] Number of files: 33 (reg: 28, dir: 5)
+2019/06/28 05:08:16 [25967] Number of created files: 17 (reg: 15, dir: 2)
+2019/06/28 05:08:16 [25967] Number of deleted files: 0
+2019/06/28 05:08:16 [25967] Number of regular files transferred: 15
+2019/06/28 05:08:16 [25967] Total file size: 25.35K bytes
+2019/06/28 05:08:16 [25967] Total transferred file size: 21.46K bytes
+2019/06/28 05:08:16 [25967] Literal data: 21.46K bytes
+2019/06/28 05:08:16 [25967] Matched data: 0 bytes
+2019/06/28 05:08:16 [25967] File list size: 0
+2019/06/28 05:08:16 [25967] File list generation time: 0.001 seconds
+2019/06/28 05:08:16 [25967] File list transfer time: 0.000 seconds
+2019/06/28 05:08:16 [25967] Total bytes sent: 10.29K
+2019/06/28 05:08:16 [25967] Total bytes received: 329
+2019/06/28 05:08:16 [25967] sent 10.29K bytes  received 329 bytes  7.08K bytes/sec
+2019/06/28 05:08:16 [25967] total size is 25.35K  speedup is 2.39

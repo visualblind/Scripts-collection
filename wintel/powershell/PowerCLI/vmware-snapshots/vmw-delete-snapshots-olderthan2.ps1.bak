@@ -51,9 +51,9 @@
 		[switch]$whatif
 	)
 
-	#$servername = "TSTBPVVC02"
-	#$username = "octfcu\trunyard"
-	#$password = "DrewGe*f7"
+	#$servername = "server"
+	#$username = "domain\user"
+	#$password = "password"
 	#Get-VM | Get-Snapshot -VM *
     
 

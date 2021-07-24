@@ -7,9 +7,9 @@
 $browser.addHeader('User-Agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36');
 $browser.get("https://travisflix.com/web/index.html#!/login.html?serverid=46ea2802a29842669dac695996e2c2ac").then(function(){
 
-return $browser.findElement($driver.By.id("txtManualName")).sendKeys("testuser");
+return $browser.findElement($driver.By.id("txtManualName")).sendKeys("user");
 }).then(function(){
-return $browser.findElement($driver.By.id("txtManualPassword")).sendKeys("DrewGe*f9");
+return $browser.findElement($driver.By.id("txtManualPassword")).sendKeys("password");
 }).then(function(){
 return $browser.findElement($driver.By.xpath("/html/body/div[5]/div/div/form/button")).click();
 }).then(function(){

@@ -14,30 +14,30 @@ return $browser.findElement($driver.By.id("txtManualPassword")).sendKeys("testpa
 return $browser.findElement($driver.By.xpath("/html/body/div[5]/div/div/form/button")).click();
 }).then(function(){
     //Call the wait function to wait until the Movies link appears.
-    return $browser.waitForAndFindElement($driver.By.xpath("/html/body/div[5]/div/div[1]/div/div[1]/div[2]/div/div[1]/div/div[2]/button"), 20000).then(function(moviesPage){
+    return $browser.waitForAndFindElement($driver.By.xpath("/html/body/div[5]/div/div[1]/div/div[1]/div[2]/div/div[1]/div/div[2]/button"), 7000).then(function(moviesPage){
         return moviesPage.click();
     })
 }).then(function(){
     //Call the wait function to wait until the next page arrow button appears.
-    return $browser.waitForAndFindElement($driver.By.className("btnNextPage autoSize paper-icon-button-light"), 20000).then(function(nextPage){
+    return $browser.waitForAndFindElement($driver.By.className("btnNextPage autoSize paper-icon-button-light"), 7000).then(function(nextPage){
         return nextPage.click();
         //If the condition isnt satisfied within 20000 milliseconds (20 seconds), proceed anyway.
 });
     }).then(function(){
     //Call the wait function to wait until the next page arrow button appears.
-    return $browser.waitForAndFindElement($driver.By.className("btnNextPage autoSize paper-icon-button-light"), 20000).then(function(nextPage){
+    return $browser.waitForAndFindElement($driver.By.className("btnNextPage autoSize paper-icon-button-light"), 7000).then(function(nextPage){
         return nextPage.click();
         //If the condition isnt satisfied within 20000 milliseconds (20 seconds), proceed anyway.
 });
     }).then(function(){
     //Call the wait function to wait until the next page arrow button appears.
-    return $browser.waitForAndFindElement($driver.By.className("btnNextPage autoSize paper-icon-button-light"), 20000).then(function(nextPage){
+    return $browser.waitForAndFindElement($driver.By.className("btnNextPage autoSize paper-icon-button-light"), 7000).then(function(nextPage){
         return nextPage.click();
         //If the condition isnt satisfied within 20000 milliseconds (20 seconds), proceed anyway.
 });
     }).then(function(){
     //Call the wait function to wait until the next page arrow button appears.
-    return $browser.waitForAndFindElement($driver.By.className("btnNextPage autoSize paper-icon-button-light"), 20000).then(function(nextPage){
+    return $browser.waitForAndFindElement($driver.By.className("btnNextPage autoSize paper-icon-button-light"), 7000).then(function(nextPage){
         return nextPage.click();
         //If the condition isnt satisfied within 5000 milliseconds (5 seconds), proceed anyway.
 });

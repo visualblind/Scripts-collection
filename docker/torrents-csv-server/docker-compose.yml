@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  torrents-csv:
+    container_name: torrents-csv-server
+    image: dessalines/torrents-csv-server:v0.0.25
+    restart: always
+    ports:
+      - "8902:8902"
+    environment:
+      TORRENTS_CSV_DB_FILE: /app/torrents.db 
+      TORRENTS_CSV_FRONT_END_DIR: /app/dist

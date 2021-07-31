@@ -12,4 +12,4 @@ services:
 #      - ./config.js:/app/config.js
     environment:
       - TZ=America/Los_Angeles
-      - PSITRANSFER_ADMIN_PASS=1cecream
+      - PSITRANSFER_ADMIN_PASS=secret

@@ -7,12 +7,40 @@ Scripts-collection
 │   ├── iocage-plugin-emby-master
 │   └── zip
 ├── docker
+│   ├── bitnami_wordpress_mariadb
 │   ├── bitwarden
+│   ├── bookstack
+│   ├── BookStack
+│   ├── droppy
+│   │   ├── config
+│   │   └── data
+│   ├── example_networks
 │   ├── filebrowser
+│   ├── heimdall
+│   ├── henrywhitaker3_speedtest
 │   ├── kim-python-argument
 │   ├── linuxserver.io
 │   │   └── nginx
-│   └── travisflix.com
+│   ├── linuxserver-mariadb
+│   ├── nginx-regex-tester
+│   │   └── regextester
+│   ├── porn-vault
+│   ├── portainer
+│   │   └── data
+│   │       ├── bin
+│   │       ├── compose
+│   │       └── tls
+│   ├── privatebin
+│   ├── psitransfer
+│   ├── pwndrop
+│   ├── rstacruz-cheatsheet
+│   ├── shadowsocks-libev
+│   ├── shadowsocks-rust
+│   ├── SWAG
+│   ├── syncthing
+│   ├── torrents-csv-server
+│   ├── travisflix.com
+│   └── youtransfer
 ├── html
 │   ├── html5-boilerplate_v7.3.0
 │   │   ├── css
@@ -20,43 +48,45 @@ Scripts-collection
 │   │   ├── img
 │   │   └── js
 │   │       └── vendor
-│   └── maintenance_pages
-│       ├── basic-maintenance-page
-│       │   ├── dist
-│       │   └── src
-│       ├── bu-informational-message
-│       │   ├── dist
-│       │   └── src
-│       ├── CodePen_Export_MXdGYw
-│       │   ├── dist
-│       │   └── src
-│       ├── CodePen_Export_NYRdKr
-│       │   ├── dist
-│       │   └── src
-│       ├── errorpages
-│       ├── maintenance
-│       │   ├── dist
-│       │   └── src
-│       ├── maintenance_gradient
-│       ├── maintenance_simple
-│       ├── outage-card
-│       │   ├── dist
-│       │   └── src
-│       ├── outline-svg
-│       │   ├── dist
-│       │   └── src
-│       ├── safetyculture-maintenance-annoucement
-│       │   ├── dist
-│       │   └── src
-│       ├── scheduled-maintenance-banner
-│       │   ├── dist
-│       │   └── src
-│       ├── snopes-maintenance-page
-│       │   ├── dist
-│       │   └── src
-│       └── website-under-maintenance
-│           ├── dist
-│           └── src
+│   ├── maintenance_pages
+│   │   ├── basic-maintenance-page
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── bu-informational-message
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── CodePen_Export_MXdGYw
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── CodePen_Export_NYRdKr
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── errorpages
+│   │   ├── maintenance
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── maintenance_gradient
+│   │   ├── maintenance_simple
+│   │   ├── outage-card
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── outline-svg
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── safetyculture-maintenance-annoucement
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── scheduled-maintenance-banner
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── snopes-maintenance-page
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── website-under-maintenance
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   └── zip
+│   └── zip
 ├── info
 ├── js
 │   ├── jquery
@@ -78,6 +108,7 @@ Scripts-collection
 │   │   └── freenas-iocage-nextcloud
 │   │       └── configs
 │   ├── udemy-shell-scripting
+│   ├── uguush
 │   ├── unifi-controller
 │   │   ├── unifi-5.10.17
 │   │   │   ├── debian8
@@ -109,10 +140,12 @@ Scripts-collection
 │   │       ├── ubuntu-16.04
 │   │       └── ubuntu-18.04
 │   └── zip
+├── macosx
 ├── mysql
 │   └── search-and-replace
 │       └── search-replace-db-master
 │           └── srdb-tests
+├── newrelic
 ├── perl
 ├── php
 │   ├── 1.0.2
@@ -289,6 +322,8 @@ Scripts-collection
 │   ├── 2091961_linux_backup_restore
 │   ├── 2091961_windows_backup_restore
 │   └── g933-battery-information-for-linux-master
+├── temp
+│   └── tinder
 ├── vmware
 └── wintel
     ├── bat
@@ -297,6 +332,222 @@ Scripts-collection
     │   ├── jre
     │   ├── test
     │   └── zip
+    ├── docs
+    │   └── Windows-ITPro-Docs-Public
+    │       ├── bcs
+    │       │   └── breadcrumb
+    │       ├── browsers
+    │       │   ├── edge
+    │       │   │   ├── breadcrumb
+    │       │   │   ├── group-policies
+    │       │   │   ├── images
+    │       │   │   ├── includes
+    │       │   │   └── shortdesc
+    │       │   ├── enterprise-mode
+    │       │   │   └── images
+    │       │   ├── includes
+    │       │   └── internet-explorer
+    │       │       ├── breadcrumb
+    │       │       ├── ie11-deploy-guide
+    │       │       │   └── images
+    │       │       ├── ie11-faq
+    │       │       ├── ie11-ieak
+    │       │       │   └── images
+    │       │       └── images
+    │       ├── devices
+    │       │   ├── hololens
+    │       │   │   ├── breadcrumb
+    │       │   │   └── images
+    │       │   ├── surface
+    │       │   │   ├── breadcrumb
+    │       │   │   ├── documentation
+    │       │   │   └── images
+    │       │   └── surface-hub
+    │       │       ├── breadcrumb
+    │       │       ├── downloads
+    │       │       └── images
+    │       ├── education
+    │       │   ├── breadcrumb
+    │       │   ├── images
+    │       │   ├── trial-in-a-box
+    │       │   │   └── images
+    │       │   └── windows
+    │       │       └── images
+    │       ├── gdpr
+    │       ├── images
+    │       ├── mdop
+    │       │   ├── agpm
+    │       │   │   └── images
+    │       │   ├── appv-v4
+    │       │   │   └── images
+    │       │   ├── appv-v5
+    │       │   │   └── images
+    │       │   ├── breadcrumb
+    │       │   ├── dart-v10
+    │       │   │   └── images
+    │       │   ├── dart-v7
+    │       │   │   └── images
+    │       │   ├── dart-v8
+    │       │   │   └── images
+    │       │   ├── mbam-v1
+    │       │   │   └── images
+    │       │   ├── mbam-v2
+    │       │   │   └── images
+    │       │   ├── mbam-v25
+    │       │   │   └── images
+    │       │   ├── medv-v1
+    │       │   │   └── images
+    │       │   ├── medv-v2
+    │       │   │   └── images
+    │       │   ├── solutions
+    │       │   │   └── images
+    │       │   ├── uev-v1
+    │       │   │   └── images
+    │       │   └── uev-v2
+    │       │       └── images
+    │       ├── smb
+    │       │   ├── breadcrumb
+    │       │   └── images
+    │       ├── store-for-business
+    │       │   ├── breadcrumb
+    │       │   ├── education
+    │       │   └── images
+    │       ├── windows
+    │       │   ├── access-protection
+    │       │   ├── application-management
+    │       │   │   ├── app-v
+    │       │   │   │   └── images
+    │       │   │   ├── images
+    │       │   │   └── media
+    │       │   ├── client-management
+    │       │   │   ├── images
+    │       │   │   └── mdm
+    │       │   │       └── images
+    │       │   ├── configuration
+    │       │   │   ├── cortana-at-work
+    │       │   │   │   └── images
+    │       │   │   ├── images
+    │       │   │   ├── mobile-devices
+    │       │   │   │   └── images
+    │       │   │   ├── provisioning-packages
+    │       │   │   ├── ue-v
+    │       │   │   │   └── images
+    │       │   │   └── wcd
+    │       │   ├── configure
+    │       │   │   └── images
+    │       │   ├── deploy
+    │       │   ├── deployment
+    │       │   │   ├── deploy-windows-mdt
+    │       │   │   ├── deploy-windows-sccm
+    │       │   │   ├── images
+    │       │   │   ├── planning
+    │       │   │   │   └── images
+    │       │   │   ├── update
+    │       │   │   │   ├── images
+    │       │   │   │   └── olympia
+    │       │   │   │       └── images
+    │       │   │   ├── upgrade
+    │       │   │   ├── usmt
+    │       │   │   │   └── images
+    │       │   │   ├── volume-activation
+    │       │   │   │   └── images
+    │       │   │   └── windows-autopilot
+    │       │   │       └── images
+    │       │   ├── device-security
+    │       │   ├── eulas
+    │       │   │   └── breadcrumb
+    │       │   ├── hub
+    │       │   │   ├── breadcrumb
+    │       │   │   └── images
+    │       │   │       └── old
+    │       │   ├── keep-secure
+    │       │   ├── known-issues
+    │       │   ├── manage
+    │       │   ├── media
+    │       │   │   └── ModernSecureDeployment
+    │       │   ├── plan
+    │       │   ├── privacy
+    │       │   │   └── images
+    │       │   ├── release-information
+    │       │   │   └── breadcrumb
+    │       │   ├── security
+    │       │   │   ├── identity-protection
+    │       │   │   │   ├── access-control
+    │       │   │   │   │   └── images
+    │       │   │   │   ├── credential-guard
+    │       │   │   │   │   └── images
+    │       │   │   │   ├── hello-for-business
+    │       │   │   │   │   ├── images
+    │       │   │   │   │   │   ├── aadj
+    │       │   │   │   │   │   ├── aadjCert
+    │       │   │   │   │   │   ├── howitworks
+    │       │   │   │   │   │   ├── hybridct
+    │       │   │   │   │   │   ├── multifactorUnlock
+    │       │   │   │   │   │   ├── passwordless
+    │       │   │   │   │   │   ├── pinreset
+    │       │   │   │   │   │   ├── plan
+    │       │   │   │   │   │   └── rdpbio
+    │       │   │   │   │   └── retired
+    │       │   │   │   ├── images
+    │       │   │   │   ├── smart-cards
+    │       │   │   │   │   └── images
+    │       │   │   │   ├── user-account-control
+    │       │   │   │   │   └── images
+    │       │   │   │   ├── virtual-smart-cards
+    │       │   │   │   │   └── images
+    │       │   │   │   └── vpn
+    │       │   │   │       └── images
+    │       │   │   ├── images
+    │       │   │   ├── information-protection
+    │       │   │   │   ├── bitlocker
+    │       │   │   │   │   └── images
+    │       │   │   │   ├── images
+    │       │   │   │   ├── tpm
+    │       │   │   │   │   └── images
+    │       │   │   │   └── windows-information-protection
+    │       │   │   │       └── images
+    │       │   │   └── threat-protection
+    │       │   │       ├── auditing
+    │       │   │       │   └── images
+    │       │   │       ├── device-control
+    │       │   │       │   └── images
+    │       │   │       ├── device-guard
+    │       │   │       │   └── images
+    │       │   │       ├── images
+    │       │   │       │   └── svg
+    │       │   │       ├── intelligence
+    │       │   │       │   └── images
+    │       │   │       ├── microsoft-defender-atp
+    │       │   │       │   └── images
+    │       │   │       ├── security-policy-settings
+    │       │   │       │   ├── images
+    │       │   │       │   └── includes
+    │       │   │       ├── windows-defender-antivirus
+    │       │   │       │   └── images
+    │       │   │       │       ├── defender
+    │       │   │       │       └── svg
+    │       │   │       ├── windows-defender-application-control
+    │       │   │       │   ├── applocker
+    │       │   │       │   │   └── images
+    │       │   │       │   └── images
+    │       │   │       ├── windows-defender-application-guard
+    │       │   │       │   └── images
+    │       │   │       ├── windows-defender-security-center
+    │       │   │       │   └── images
+    │       │   │       ├── windows-defender-smartscreen
+    │       │   │       │   └── images
+    │       │   │       ├── windows-defender-system-guard
+    │       │   │       │   └── images
+    │       │   │       ├── windows-firewall
+    │       │   │       │   └── images
+    │       │   │       └── windows-security-configuration-framework
+    │       │   │           └── images
+    │       │   ├── threat-protection
+    │       │   ├── update
+    │       │   └── whats-new
+    │       │       ├── images
+    │       │       └── ltsc
+    │       └── zip
     ├── iis
     ├── powershell
     │   ├── Active Directory
@@ -526,6 +777,9 @@ Scripts-collection
     │   ├── Wireless
     │   └── zip_files
     │       └── NetSPI
+    ├── quest-activeroles
+    │   ├── quest_activerolesmanagementshellforactivedirectoryx64_151
+    │   └── quest_activerolesmanagementshellforactivedirectoryx86_151
     ├── reg
     │   ├── forcecloseshutdown
     │   └── Registry-Tweaks-Collection-to-Make-Windows-Faster

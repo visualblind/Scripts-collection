@@ -1,5 +1,11 @@
 *.zip
 
+*./.vscode/
+
+*.bak
+
+*.mp4
+
 wintel/powershell/zip_files/windows-itpro-docs-public.zip
 
 wintel/sql/50400a-20171027t025015z-001.zip

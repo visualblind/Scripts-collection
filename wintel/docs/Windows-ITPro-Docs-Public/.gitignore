@@ -1,0 +1,19 @@
+log/
+xhtml/
+packages/
+obj/
+_site/
+Tools/NuGet/
+.optemp/
+Thumbs.db
+.DS_Store
+
+.openpublishing.build.mdproj
+.openpublishing.buildcore.ps1
+packages.config
+
+# User-specific files
+.vs/
+wdav-pm-sln.csproj
+wdav-pm-sln.csproj.user
+wdav-pm-sln.sln

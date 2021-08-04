@@ -1,5 +1,0 @@
-<VirtualHost *>
-    ServerAdmin you@yournet.com
-    DocumentRoot /opt/jffnms/htdocs
-    ServerName nms.yournet.com
-</VirtualHost>

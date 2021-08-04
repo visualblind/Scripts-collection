@@ -1,1 +1,0 @@
-sqlsafecmd restore Millennium D:\init-full\m3-full.safe -Move Millennium d:\Millennium.mdf -Move Millennium_log e:\Millennium_log.ldf -RecoveryMode NoRecovery 

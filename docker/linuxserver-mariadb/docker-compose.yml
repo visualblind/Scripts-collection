@@ -1,0 +1,20 @@
+---
+version: "2"
+services:
+  mariadb:
+    image: linuxserver/mariadb:version-110.4.20mariabionic
+    container_name: mariadb
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/London # Specify a timezone to use EG Europe/London.
+      - REMOTE_SQL=http://URL1/your.sql,https://URL2/your.sql # Set this to ingest sql files from an http/https endpoint (comma seperated array).
+      - PUID=1000 # for UserID
+      - PGID=1000 # for GroupID
+      - MYSQL_USER=MYSQL_USER # This user will have superuser access to the database specified by MYSQL_DATABASE (do not use root here).
+      - MYSQL_ROOT_PASSWORD=ROOT_ACCESS_PASSWORD # Set this to root password for installation (minimum 4 characters).
+      - MYSQL_PASSWORD=DATABASE_PASSWORD # Set this to the password you want to use for you MYSQL_USER (minimum 4 characters).
+      - MYSQL_DATABASE=USER_DB_NAME # Specify the name of a database to be created on image startup.
+    volumes:
+      - /host/path/to/config:/config # Contains the db itself and all assorted settings.
+    ports:
+      - 3306:3306/tcp # Mariadb listens on this port.

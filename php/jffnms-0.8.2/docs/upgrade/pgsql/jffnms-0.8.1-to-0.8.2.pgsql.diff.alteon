@@ -1,4 +1,0 @@
-UPDATE pollers_poller_groups SET backend = 37 WHERE id = 177;
-UPDATE syslog_types SET type = 70 WHERE id = 56;
-UPDATE syslog_types SET state = 'up' WHERE id = 57;
-

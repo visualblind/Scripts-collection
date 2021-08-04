@@ -4,7 +4,7 @@
 logfile="/tmp/zpool_report.tmp"
 email="travisrunyard@gmail.com"
 subject="ZPool Status Report for FreeNAS"
-pools="pool0 pool1 pool2"
+pools="pool0 pool1 pool3"
 usedWarn=75
 usedCrit=90
 scrubAgeWarn=30
@@ -121,4 +121,4 @@ echo "</pre>" >> "$logfile"
 
 ### Send report ###
 sendmail -t < "$logfile"
-rm "$logfile"
+#rm "$logfile"

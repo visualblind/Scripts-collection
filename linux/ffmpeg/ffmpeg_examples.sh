@@ -144,14 +144,41 @@ ffmpeg -y -i input.mkv -codec copy -metadata comment="Matroska muxer also accept
 # Add Matroska Title metadata to the container while removing Title metadata from all of its streams (video, audio, subtitle)
 ffmpeg -y -i input.mkv -f srt -i input.en.srt -map 0:v -map 0:a:1 -map 1:0 -movflags +faststart -metadata:s:v:0 language= -metadata:s:s:0 language=eng -metadata:s:v:0 Title= -metadata:s:a:0 Title= -metadata:s:s:0 Title= -metadata Title="Who Am I (1998)" -disposition 0 -disposition:s:1 default -c:v copy -c:a copy -c:s srt output.mkv
 
-########## Methods of Reducing file size with FFmpeg ##########
+# Transcode avi files into standard mp4 containers
+for f in **/*.avi; do ffmpeg -i "$f" -map 0:v:0 -map 0:a -dn -map_chapters -1 \
+-movflags faststart -profile:v high -pix_fmt yuv420p -metadata:s:a:0 language=eng \
+-metadata:s:v:0 title= -metadata:s:a:0 title= -c:v libx264 -c:a aac \
+"../.working/${f/.avi/.mp4}"; done
+
+
+#################### Methods of Reducing file size with FFmpeg ####################
 # https://trac.ffmpeg.org/wiki/EncodingForStreamingSites
+
 ##### Modify the bitrate, using:
 ffmpeg -i $infile -b $bitrate $newoutfile
+
 ##### Vary the Constant Rate Factor, using:
 ffmpeg -i $infile -vcodec libx264 -crf 23 $outfile
-##### Change the video screen-size (for example to half its pixel size), using:
+
+##### Change/scale the video screen-size (for example to 1080p or half its pixel size):
+
 ffmpeg -i $infile -vf "scale=iw/2:ih/2" $outfile
+
+# This method takes care of error: (libx264) "height not divisible by 2"
+# https://stackoverflow.com/questions/20847674/ffmpeg-libx264-height-not-divisible-by-2
+# https://superuser.com/questions/624563/how-to-resize-a-video-to-make-it-smaller-with-ffmpeg
+ffmpeg -y -i "input.mp4" \
+-map 0:v -map 0:a -dn -map_chapters -1 -filter:v scale="1920:trunc(ow/a/2)*2" \
+-movflags faststart -profile:v high -pix_fmt yuv420p -metadata:s:a:0 language=eng \
+-c:v libx264 -c:a copy "output.mp4"
+
+# Another one but different
+ffmpeg -y -i "input.mp4" -map 0:v -map 0:a \
+-dn -map_chapters -1 -metadata:s:v:0 handler_name= -metadata:s:a:0 handler_name= \
+-vf pad=ceil(iw/2)*2:ceil(ih/2)*2 -movflags faststart -profile:v high -pix_fmt yuv420p \
+-metadata:s:a:0 language=eng -c:v libx264 -c:a copy "output.mp4"
+
+
 ##### Change the H.264 profile to "baseline", using:
 ffmpeg -i $infile -profile:v baseline $outfile
 Use the default ffmpeg processing, using:
@@ -166,7 +193,7 @@ ffmpeg -i input.mp4 -b 800k output.mp4
 #
 # example 2:
 #
-#########################################################
+###################################################################################
 
 # Concatenation https://trac.ffmpeg.org/wiki/Concatenate
 for f in ./*.mkv; do echo "file '$f'" >> mylist.txt; done

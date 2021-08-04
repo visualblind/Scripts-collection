@@ -5,8 +5,6 @@ select outputDirSpecific from Application-Name.dbo.Rproperty WHERE outputDirSpec
 select outputDirSpecific, outputFilenameSpecific from Application-Name.dbo.Rproperty WHERE outputDirSpecific LIKE '%Domain.org%' ORDER BY outputDirSpecific
 
 
-\\Domain.org\DFS\Clients
-
 /** Start audited changes **/
 
 /** Reports **/

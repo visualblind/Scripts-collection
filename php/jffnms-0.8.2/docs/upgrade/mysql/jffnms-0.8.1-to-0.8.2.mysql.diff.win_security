@@ -1,2 +1,0 @@
-UPDATE syslog_types SET match_text = '^security\\[failure\\] (\\d*) (.*)', interface = '', state = '1', info = '2' WHERE id = 43;
-UPDATE types SET text = '<info> (ID:<state>)' WHERE id = 49;

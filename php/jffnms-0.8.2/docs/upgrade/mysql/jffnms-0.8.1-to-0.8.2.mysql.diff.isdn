@@ -1,9 +1,0 @@
-DELETE FROM syslog_types where id = 59;
-INSERT INTO syslog_types (id,  match_text,  interface,  username,  state,  info,  type,  pos) VALUES (59, '%ISDN-6-CONNECT: Interface (\\S+) is now (\\S+) (.+)$', '1', '', '2', '3', 72, 1);
-
-DELETE FROM syslog_types where id = 60;
-INSERT INTO syslog_types (id,  match_text,  interface,  username,  state,  info,  type,  pos) VALUES (60, '%ISDN-6-DISCONNECT: Interface (\\S+) (\\S+) (.+)$', '1', '', '2', '3', 72, 1);
-
-DELETE FROM types where id = 72;
-INSERT INTO types (id,  description,  severity,  text,  generate_alarm,  alarm_up,  alarm_duration,  show_default,  show_host) VALUES (72, 'ISDN', 14, '<interface> <state> <info>', 1, 1, 0, 1, 1);
-

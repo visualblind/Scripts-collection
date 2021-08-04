@@ -1,3 +1,0 @@
-DELETE FROM interface_types_fields where id = 343; 
-INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (343, 'Show in Celcius', 'show_in_celcius', 30, 26, 5, 2, 1, 0, '1');
-

@@ -1,0 +1,15 @@
+---
+version: "3.4"
+
+services:
+  psitransfer:
+    image: psitrax/psitransfer
+    container_name: psitransfer
+    ports:
+      - 0.0.0.0:3000:3000
+    volumes:
+      - /var/docker/psitransfer/data:/data
+#      - ./config.js:/app/config.js
+    environment:
+      - TZ=America/Los_Angeles
+      - PSITRANSFER_ADMIN_PASS=secret

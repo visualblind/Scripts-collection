@@ -36,4 +36,4 @@ while [ "$1" != "" ]; do
     shift
 done
 
-screen -dmS $SCREEN_NAME bash -c 'rclone sync --bwlimit "$BANDWIDTH"M --progress --checksum --transfers 6 --tpslimit 4 --tpslimit-burst 4 --update --filter-from $HOME/.config/rclone/filter-p0ds0smb.txt --drive-acknowledge-abuse --drive-use-trash=true --log-level INFO --delete-during --log-file $HOME/.config/rclone/log/upload-gcrypt-usmba-p0ds0smb.log /mnt/pool0/p0ds0smb gcrypt-usmba:backup 2>&1 | tee $HOME/.config/rclone/log/gcrypt-usmba-p0ds0smb.log'
+screen -dmS $SCREEN_NAME bash -c 'rclone sync --bwlimit "$BANDWIDTH"M --progress --size-only --transfers 6 --tpslimit 4 --tpslimit-burst 4 --update --filter-from $HOME/.config/rclone/filter-p0ds0smb.txt --drive-acknowledge-abuse --drive-use-trash=true --log-level INFO --delete-during --log-file $HOME/.config/rclone/log/upload-gcrypt-usmba-p0ds0smb.log /mnt/pool0/p0ds0smb gcrypt-usmba:backup 2>&1 | tee $HOME/.config/rclone/log/gcrypt-usmba-p0ds0smb.log'

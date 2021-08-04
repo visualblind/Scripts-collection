@@ -1,4 +1,3 @@
-```
 Scripts-collection
 ├── bsd
 │   ├── freenas
@@ -7,12 +6,39 @@ Scripts-collection
 │   ├── iocage-plugin-emby-master
 │   └── zip
 ├── docker
+│   ├── bitnami_wordpress_mariadb
 │   ├── bitwarden
+│   ├── bookstack
+│   ├── droppy
+│   │   ├── config
+│   │   └── data
+│   ├── example_networks
 │   ├── filebrowser
+│   ├── heimdall
+│   ├── henrywhitaker3_speedtest
 │   ├── kim-python-argument
 │   ├── linuxserver.io
 │   │   └── nginx
-│   └── travisflix.com
+│   ├── linuxserver-mariadb
+│   ├── nginx-regex-tester
+│   │   └── regextester
+│   ├── porn-vault
+│   ├── portainer
+│   │   └── data
+│   │       ├── bin
+│   │       ├── compose
+│   │       └── tls
+│   ├── privatebin
+│   ├── psitransfer
+│   ├── pwndrop
+│   ├── rstacruz-cheatsheet
+│   ├── shadowsocks-libev
+│   ├── shadowsocks-rust
+│   ├── SWAG
+│   ├── syncthing
+│   ├── torrents-csv-server
+│   ├── travisflix.com
+│   └── youtransfer
 ├── html
 │   ├── html5-boilerplate_v7.3.0
 │   │   ├── css
@@ -20,44 +46,45 @@ Scripts-collection
 │   │   ├── img
 │   │   └── js
 │   │       └── vendor
-│   └── maintenance_pages
-│       ├── basic-maintenance-page
-│       │   ├── dist
-│       │   └── src
-│       ├── bu-informational-message
-│       │   ├── dist
-│       │   └── src
-│       ├── CodePen_Export_MXdGYw
-│       │   ├── dist
-│       │   └── src
-│       ├── CodePen_Export_NYRdKr
-│       │   ├── dist
-│       │   └── src
-│       ├── errorpages
-│       ├── maintenance
-│       │   ├── dist
-│       │   └── src
-│       ├── maintenance_gradient
-│       ├── maintenance_simple
-│       ├── outage-card
-│       │   ├── dist
-│       │   └── src
-│       ├── outline-svg
-│       │   ├── dist
-│       │   └── src
-│       ├── safetyculture-maintenance-annoucement
-│       │   ├── dist
-│       │   └── src
-│       ├── scheduled-maintenance-banner
-│       │   ├── dist
-│       │   └── src
-│       ├── snopes-maintenance-page
-│       │   ├── dist
-│       │   └── src
-│       └── website-under-maintenance
-│           ├── dist
-│           └── src
-├── info
+│   ├── maintenance_pages
+│   │   ├── basic-maintenance-page
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── bu-informational-message
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── CodePen_Export_MXdGYw
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── CodePen_Export_NYRdKr
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── errorpages
+│   │   ├── maintenance
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── maintenance_gradient
+│   │   ├── maintenance_simple
+│   │   ├── outage-card
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── outline-svg
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── safetyculture-maintenance-annoucement
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── scheduled-maintenance-banner
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── snopes-maintenance-page
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   ├── website-under-maintenance
+│   │   │   ├── dist
+│   │   │   └── src
+│   │   └── zip
+│   └── zip
 ├── js
 │   ├── jquery
 │   └── particles.js-master
@@ -78,6 +105,7 @@ Scripts-collection
 │   │   └── freenas-iocage-nextcloud
 │   │       └── configs
 │   ├── udemy-shell-scripting
+│   ├── uguush
 │   ├── unifi-controller
 │   │   ├── unifi-5.10.17
 │   │   │   ├── debian8
@@ -109,15 +137,16 @@ Scripts-collection
 │   │       ├── ubuntu-16.04
 │   │       └── ubuntu-18.04
 │   └── zip
+├── macosx
 ├── mysql
 │   └── search-and-replace
 │       └── search-replace-db-master
 │           └── srdb-tests
+├── newrelic
 ├── perl
 ├── php
 │   ├── 1.0.2
 │   │   └── complete
-│   │       ├── docs
 │   │       ├── includes
 │   │       ├── install
 │   │       │   └── upgrade
@@ -155,7 +184,6 @@ Scripts-collection
 │   │       │   ├── contrib
 │   │       │   ├── cute_icons_for_site
 │   │       │   ├── datadict
-│   │       │   ├── docs
 │   │       │   ├── drivers
 │   │       │   ├── lang
 │   │       │   ├── pear
@@ -210,14 +238,6 @@ Scripts-collection
 │   ├── ip_to_country
 │   ├── jffnms-0.8.2
 │   │   ├── conf
-│   │   ├── docs
-│   │   │   ├── unix
-│   │   │   ├── upgrade
-│   │   │   │   ├── mysql
-│   │   │   │   └── pgsql
-│   │   │   ├── utils
-│   │   │   │   └── jffnms-snmp
-│   │   │   └── windows
 │   │   ├── engine
 │   │   │   ├── actions
 │   │   │   ├── analyzers
@@ -289,6 +309,8 @@ Scripts-collection
 │   ├── 2091961_linux_backup_restore
 │   ├── 2091961_windows_backup_restore
 │   └── g933-battery-information-for-linux-master
+├── temp
+│   └── tinder
 ├── vmware
 └── wintel
     ├── bat
@@ -470,48 +492,14 @@ Scripts-collection
     │   │   ├── VS2013_Dark
     │   │   ├── Wombat
     │   │   └── Zenburn
-    │   ├── PowerSploit-master
-    │   │   ├── AntivirusBypass
-    │   │   ├── CodeExecution
-    │   │   │   └── Invoke-ReflectivePEInjection_Resources
-    │   │   │       ├── DemoDLL
-    │   │   │       │   └── DemoDLL
-    │   │   │       ├── DemoDLL_RemoteProcess
-    │   │   │       │   └── DemoDLL_RemoteProcess
-    │   │   │       ├── DemoExe
-    │   │   │       │   ├── DemoExe_MD
-    │   │   │       │   └── DemoExe_MDd
-    │   │   │       ├── ExeToInjectInTo
-    │   │   │       │   └── ExeToInjectInTo
-    │   │   │       └── Shellcode
-    │   │   │           ├── x64
-    │   │   │           └── x86
-    │   │   ├── Exfiltration
-    │   │   │   ├── LogonUser
-    │   │   │   │   └── LogonUser
-    │   │   │   │       ├── logon
-    │   │   │   │       └── LogonUser
-    │   │   │   └── NTFSParser
-    │   │   │       ├── NTFSParser
-    │   │   │       └── NTFSParserDLL
-    │   │   ├── Mayhem
-    │   │   ├── Persistence
-    │   │   ├── Privesc
-    │   │   ├── Recon
-    │   │   │   └── Dictionaries
-    │   │   ├── ScriptModification
-    │   │   └── Tests
     │   ├── PS2EXE-GUI
     │   │   ├── Examples
     │   │   └── Original
-    │   ├── RandomPS-Scripts-master
-    │   │   └── JScriptShell
     │   ├── RemoveLocalUserProfiles
     │   │   └── documentation_files
     │   ├── RoboPowerCopy
     │   │   ├── BuildProcessTemplates
     │   │   ├── downloadWiki
-    │   │   │   ├── docs
     │   │   │   └── raw
     │   │   ├── releases0_FILES
     │   │   └── releases1_FILES
@@ -526,6 +514,9 @@ Scripts-collection
     │   ├── Wireless
     │   └── zip_files
     │       └── NetSPI
+    ├── quest-activeroles
+    │   ├── quest_activerolesmanagementshellforactivedirectoryx64_151
+    │   └── quest_activerolesmanagementshellforactivedirectoryx86_151
     ├── reg
     │   ├── forcecloseshutdown
     │   └── Registry-Tweaks-Collection-to-Make-Windows-Faster
@@ -535,4 +526,3 @@ Scripts-collection
     │       └── 50400a
     ├── txt
     └── vbscript
-```

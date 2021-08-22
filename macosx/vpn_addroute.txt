@@ -1,1 +1,0 @@
-sudo /sbin/route add -net 10.10.0.0 -netmask 255.255.255.0 -gateway 10.11.0.1

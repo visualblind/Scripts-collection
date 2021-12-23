@@ -1,0 +1,20 @@
+---
+version: "2.1"
+services:
+  ombi:
+    depends_on:
+      - nginx_proxy
+    image: lscr.io/linuxserver/ombi
+    container_name: ombi
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+      - BASE_URL=/ #optional
+    volumes:
+      - /usr/local/ombi/appdata/config:/config
+    networks:
+      - linuxserver-nginx_default
+    ports:
+      - 3579:3579
+    restart: unless-stopped

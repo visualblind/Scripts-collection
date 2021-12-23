@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Responsive Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    
+</head>
+<body>
+    <!-- Modal Starts -->
+
+    <div class="modal fade" id="myModal" tabindex="-1"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title" id="myModalLabel">Book Your Holiday</h5>
+                <button type="button" class="btn-close"
+                data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="fullname" class="form-label"
+                        aria-describedby="fullnameHelp">Fullname</label>
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label"
+                        aria-describedby="emailHelp">Email</label>
+                        <input type="email" class="form-control">
+                        <div class="form-text" id="infoHelp">
+                            We'll never share your email with anyone else.  
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <select class="form-select"
+                        aria-label="Select Menu">
+                    <option selected>Select your holiday packet!</option>
+                    <option value="h1">Holiday Packet 1</option>
+                    <option value="h2">Holiday Packet 2</option>
+                    <option value="h3">Holiday Packet 3</option>
+                    
+                    
+                    </select>
+
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="checkbox">
+                        <label for="checkbox" class="form-check-label">
+                            I agree to the terms and conditions.
+                        </label>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" type="button"
+                data-bs-dismiss="modal">Close</button>
+
+                <button class="btn btn-info" type="button">Book Now</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    </div>
+
+    <!-- Modal Ends     -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark py-0">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">
+                <img src="images/logo.png" alt="" width="60px" height="60px">
+            </a>
+            <button class="navbar-toggler" type="button" 
+            data-bs-toggle="collapse" data-bs-target="#navbarToggler"
+            aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="tickets_offers.html" class="nav-link">Tickets & offers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="things_to_do.html" class="nav-link">Things to do</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="accommodation.html" class="nav-link">Accommodation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="traveller_information.html" class="nav-link">Traveller information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact_us.html" class="nav-link">Contact Us</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar me-0 mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="#" class="btn btn-warning"
+                        data-bs-toggle="modal" data-bs-target="#myModal"
+                        >Book it!</a>
+                    </li>
+                </ul>
+    
+            </div>
+    
+    
+    
+        </div>
+    
+    
+    </nav>
+
+<!-- Banner starts -->
+<div class="carousel slide w-100 h-25 carousel-fade" 
+id="carouselCaptions" data-ride="carousel">
+
+<ol class="carousel-indicators">
+    <li class="active" data-target="#carouselCaptions"
+    data-slide-to="0"></li>
+
+    <li  data-target="#carouselCaptions"
+    data-slide-to="1"></li>
+
+    <li data-target="#carouselCaptions"
+    data-slide-to="2"></li>
+
+</ol>
+
+<div class="carousel-inner" style="margin-top: 65px;">
+    <div class="carousel-item active">
+        <img src="images/banner1.jpg" alt="" class="d-block w-100">
+    </div>
+
+    <div class="carousel-item">
+        <img src="images/banner2.jpg" alt="" class="d-block w-100">
+    </div>
+
+    <div class="carousel-item">
+        <img src="images/banner3.jpg" alt="" class="d-block w-100">
+    </div>
+
+</div>
+
+<a href="#carouselCaptions" role="button" data-slide="prev"
+class="carousel-control-prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Previous</span>
+
+</a>
+
+<a href="#carouselCaptions" role="button" data-slide="next"
+class="carousel-control-next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Next</span>
+
+</a>
+
+
+
+</div>
+
+
+
+<!-- Banner Ends -->
+
+<!-- Middle area starts  -->
+
+<div class="container mt-5">
+<div class="row" align="center">
+<div class="col-lg-4">
+    <img src="images/circle1.jpg" alt="" 
+    class="rounded-circle z-depth-2 rounded" 
+    style="height: 250px; width: 250px;" data-holder-rendered="true">
+    <h2>How to cycle in London</h2>
+    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+    <p><a href="#" class="btn btn-secondary" role="button">View details &raquo;</a></p>
+</div>
+
+<div class="col-lg-4">
+    <img src="images/circle2.jpg" alt="" 
+    class="rounded-circle z-depth-2 rounded" 
+    style="height: 250px; width: 250px;" data-holder-rendered="true">
+    <h2>101 things to do in London</h2>
+    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+    <p><a href="#" class="btn btn-secondary" role="button">View details &raquo;</a></p>
+
+</div>
+
+
+<div class="col-lg-4">
+    <img src="images/circle3.jpg" alt="" 
+    class="rounded-circle z-depth-2 rounded" 
+    style="height: 250px; width: 250px;" data-holder-rendered="true">
+    <h2>Best museums and galleries</h2>
+    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+    <p><a href="#" class="btn btn-secondary" role="button">View details &raquo;</a></p>
+
+</div>
+
+
+</div>
+
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="col-md-7">
+        <h2 class="featurette-heading">Best London Walks</h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-5">
+        <img src="images/banner1.jpg" alt=""
+        class="bd-placeholder-img bd-placeholder-img-lg
+        featurette-image img-fluid mx-auto rounded-circle"
+        width="500" height="500">
+    </div>
+
+</div>
+
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="col-md-5">
+        <img src="images/banner2.jpg" alt=""
+        class="bd-placeholder-img bd-placeholder-img-lg
+        featurette-image img-fluid mx-auto rounded"
+        width="500" height="500">
+    </div>
+
+    <div class="col-md-7">
+        <h2 class="featurette-heading">Classic London <span class="text-muted">Deserve to see.</span></h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    
+
+</div>
+
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="col-md-7">
+        <h2 class="featurette-heading">Top 10 attractions</h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-5">
+        <img src="images/banner3.jpg" alt=""
+        class="bd-placeholder-img bd-placeholder-img-lg
+        featurette-image img-fluid mx-auto rounded-pill"
+        width="500" height="500">
+    </div>
+
+</div>
+
+<hr class="featurette-divider">
+
+
+<!-- Container area ends -->
+</div>
+
+
+
+
+<!-- Middle area ends -->
+
+
+<footer>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid text-white text-decoration-none">
+            <p>&copy; 2017-2021 Company, Inc. &middot;
+            <a href="#" class="text-decoration-none 
+            text-white">Privacy</a>    
+            &middot;<a href="#" class="text-decoration-none text-white">Terms</a>
+        </p>
+
+        <p><a href="#" class="text-decoration-none text-white">Back to top</a></p>
+        
+        <div class="footer-social">
+            <span>Follow us on:</span>
+            <a href="#" class="text-warning">
+                <i class="fab fa-facebook fa-1x"></i></a>
+            
+
+            <a href="#" class="text-warning">
+                <i class="fab fa-twitter fa-1x"></i></a>
+            
+
+            <a href="#" class="text-warning">
+                <i class="fab fa-instagram-square fa-1x"></i></a>
+        
+
+
+            <a href="#" class="text-warning">
+                <i class="fab fa-youtube-squar fa-1x"></i></a>
+            
+
+            <a href="#" class="text-warning">
+                <i class="fab fa-tiktok fa-1x"></i></a>
+            
+        </div>
+    
+    
+    </div>
+    </nav>
+
+
+</footer>
+
+
+</body>
+</html>

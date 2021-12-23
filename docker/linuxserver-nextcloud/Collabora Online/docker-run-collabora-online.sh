@@ -1,0 +1,1 @@
+docker run -t -d -p 9980:9980 -e "domain=cloud.4kib.com" --name collabora --cap-add MKNOD collabora/code

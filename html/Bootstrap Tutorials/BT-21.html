@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <title>Bootstrap</title>
+</head>
+<body>
+    
+    <div class="mb-3">
+        
+        <label for="">Email Address</label>
+        <input type="email" class="form-control" placeholder="email@email.com">
+
+    </div>
+
+    <div class="mb-3">
+        <label for="">Textarea:</label>
+        <textarea class="form-control" cols="10" rows="5"></textarea>
+    </div>
+    
+    <hr>
+
+    <input type="text" class="form-control form-control-lg bg-primary">
+    <input type="text" class="form-control bg-warning">
+    <input type="text" class="form-control form-control-sm bg-info">
+
+    <hr>
+
+    <input type="text" class="form-control form-control-sm" value="disabled" disabled>
+
+    <input type="text" class="form-control form-control-sm" value="readonly" readonly>
+
+<hr>
+
+<form class="row g-3">
+    <div class="col-auto">
+        <label for=""  class="visually-hidden">Email</label>
+        <input type="text" readonly class="form-control-plaintext" value="email@email.com">
+    </div>
+
+    <div class="col-auto">
+        <label for=""  class="visually-hidden">Password</label>
+        <input type="password"  class="form-control" placeholder="Password">
+    </div>
+
+    <div class="col-auto">
+        <button type="submit" class="btn btn-info mb-3"> Confirm</button>
+    </div>
+
+
+</form>
+
+    
+<hr>
+
+<div class="mb-3">
+
+    <label for="">File Input</label>
+    <input type="file" class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+    <label for="">Multiple File Input</label>
+    <input type="file" class="form-control" multiple>
+
+</div>
+
+<hr>
+
+
+<div class="mb-3">
+
+    <label for="">Multiple File Input</label>
+    <input type="file" class="form-control form-control-sm" multiple>
+
+</div>
+
+<hr>
+
+<label for="color" class="form-label">Color Picker</label>
+<input type="color" class="form-control form-control-color" id="color" value="#595959" title="Choose your color">
+  
+<hr>
+<div class="mb-5">
+<label for="DataList" class="form-label">DataList</label>
+<input list="datalistOptions" class="form-control" id="DataList" placeholder="Type to seach...">
+
+<datalist id="datalistOptions">
+    <option value="San Franscisco"></option>
+    <option value="London"></option>
+    <option value="Los Angeles"></option>
+    <option value="New York"></option>
+
+</datalist>
+</div>
+
+</body>
+</html>

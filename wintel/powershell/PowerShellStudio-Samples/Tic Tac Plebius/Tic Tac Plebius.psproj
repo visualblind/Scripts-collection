@@ -1,0 +1,13 @@
+﻿<Project>
+  <Version>1</Version>
+  <FileID>255781fa-ca53-48ec-a637-91fda75eb9f3</FileID>
+  <ProjectType>0</ProjectType>
+  <Files>
+    <File ReferenceName="" Build="0">Startup.pss</File>
+    <File ReferenceName="Call-MainForm_psf" Build="0">MainForm.psf</File>
+    <File ReferenceName="Call-Global_ps1" Build="0" CommandExtension="True">Globals.ps1</File>
+    <File ReferenceName="Call-AboutBox_psf" Build="0">AboutBox.psf</File>
+    <File ReferenceName="Call-Plebius_wav" Build="2">Plebius.wav</File>
+    <File ReferenceName="Call-SAPIEN_wav" Build="2">SAPIEN.wav</File>
+  </Files>
+</Project>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winner</title>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="scss/style.css">
+    <link rel="stylesheet" href="scss/bootstrap.css">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+</head>
+<body id="home" data-spy="scroll" data-target="#main-nav">
+   <nav class="navbar navbar-expand-sm navbar-light 
+   bg-light fixed-top mb-5" id="main-nav">
+   <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+        <img src="img/logo.png" alt="" width="60" height="60">
+        <h3 class="d-inline align-middle">Winner</h3>
+    </a>
+    <button class="navbar-toggler" type="button" 
+    data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+    aria-controls="navbarMenu" aria-expanded="false" 
+    aria-label="Naviation Bar">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a href="#home" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#ourMotto" class="nav-link">Motto</a>
+            </li>
+            <li class="nav-item">
+                <a href="#activities" class="nav-link">Activities</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link"
+                data-bs-toggle="modal" data-bs-target="#contactModal"
+                >Contact</a>
+            </li>
+        </ul>
+    </div>
+
+   </div>
+
+
+   </nav> 
+
+   <!-- Contact Us Modal Starts -->
+
+   <div class="modal fade" id="contactModal" tabindex="-1"
+   aria-labelledby="ModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+       <div class="modal-content">
+           <div class="modal-header bg-warning">
+            <h5 class="modal-title">
+                Contact Us
+            </h5>
+            <button class="btn-close" type="button"
+            data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           <div class="modal-body">
+               <form>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <input type="text" class="form-control"
+                    placeholder="Fullname" aria-label="fullname"
+                    aria-describedby="fullname">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">
+                        <i class="fas fa-envelope-open"></i>
+                    </span>
+                    <input type="email" class="form-control"
+                    placeholder="Email" aria-label="email"
+                    aria-describedby="email">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">
+                        <i class="fas fa-pencil-alt"></i>
+                    </span>
+                    <textarea type="text" class="form-control"
+                    placeholder="Message" aria-label="message"
+                    aria-describedby="message" 
+                    style="height: auto;" rows="5"></textarea>
+                </div>
+
+               </form>
+           </div>
+           <div class="d-grid">
+               <button type="button" class="btn btn-warning fw-bold">
+                <i class="fas fa-envelope me-3"></i> Submit
+               </button>
+           </div>
+       </div>
+   </div>
+
+   </div>
+
+
+   <!-- Contact Us Modal Ends -->
+
+   <section class="py-5" id="bannerArea">
+    <div class="primary-overlay text-white">
+        <div class="container">
+            <div class="row pt-5">
+                <div class="col-lg-6 text-center pt-5">
+                    <h1 class="display-2 mt-5 pt-5 ps-5 fw-bold">
+                        Just Do It To 
+                        Reach Your Goal!
+                    </h1>
+                    <p class="lead">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam, eligendi!
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="img/banner-img.png" alt=""
+                    class="img-fluid d-none d-lg-block">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+   </section>
+
+   <section id="newsletter" class="bg-dark text-white py-5">
+       <div class="container">
+           <div class="row">
+               <div class="info-header mb-5">
+                <h1 class="text-primary pb-3 ps-5 text-center">
+                    Want to get weekly letter?
+                </h1>
+               </div>
+           </div>
+           <div class="row">
+               <div class="col-md-4 mb-1">
+                   <input type="text" class="form-control
+                   form-control-lg mb-resp" placeholder="Fullname">
+               </div>
+
+               <div class="col-md-4 mb-1">
+                <input type="email" class="form-control
+                form-control-lg mb-resp" placeholder="Email">
+            </div>
+            <div class="col-md-4 d-grid mb-1">
+                <button class="btn btn-primary btn-block fw-bold">
+                 <i class="fas fa-sign-in-alt me-3"></i>   Register
+                </button>
+            </div>
+           </div>
+       </div>
+
+
+
+   </section>
+
+   <section id="boxes" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card text-center border-primary mb-resp
+                border-warning border-2">
+                <div class="card-body">
+                    <h3 class="text-primary">Think Different.</h3>
+                    <p class="text-muted">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, inventore!
+                    </p>
+                    <a href="#" class="btn btn-primary btn-sm text-white
+                    fw-bold fs-5"><i class="fas fa-arrow-right me-2"></i> Read More</a>
+                </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card text-center border-primary mb-resp
+                border-primary border-2 bg-warning text-white">
+                <div class="card-body">
+                    <h3>Open Happiness.</h3>
+                    <p class="text-muted">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, inventore!
+                    </p>
+                    <a href="#" class="btn btn-outline-secondary btn-sm text-white
+                    fw-bold fs-5"><i class="fas fa-arrow-right me-2"></i> Read More</a>
+                </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card text-center border-primary mb-resp
+                border-warning border-2">
+                <div class="card-body">
+                    <h3 class="text-primary">You Worth It.</h3>
+                    <p class="text-muted">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, inventore!
+                    </p>
+                    <a href="#" class="btn btn-primary btn-sm text-white
+                    fw-bold fs-5"><i class="fas fa-arrow-right me-2"></i> Read More</a>
+                </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card text-center border-primary mb-resp
+                border-primary border-2 bg-warning text-white">
+                <div class="card-body">
+                    <h3>Just Do It.</h3>
+                    <p class="text-muted">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, inventore!
+                    </p>
+                    <a href="#" class="btn btn-outline-secondary btn-sm text-white
+                    fw-bold fs-5"><i class="fas fa-arrow-right me-2"></i> Read More</a>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+   </section>
+
+   <section id="ourMotto" class="py-5 text-center bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="info-header mb-5 mt-5">
+                    <h1 class="text-dark pb-3 fw-bold">
+                        Your Only Limit Is Your Mind! 
+                    </h1>
+                    <p class="lead pb-3">
+                        <h2 class="text-light fs-1">
+                            "Never let your memories be greater than your dreams."
+                        </h2>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   </section>
+
+   <section id="activities" class="my-5 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col bg-secondary rounded mb-4 pt-5">
+                <div class="info-header mb-5 mt-5">
+                    <h1 class="text-primary pb-3 fw-bold">
+                        Activities
+                    </h1>
+                    <p class="lead text-white">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos vero ad enim, minus et debitis nulla dolorum autem repellendus ullam.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-3 col-md-6">
+            <div class="card border-warning shadow p-3 mb-5 bg-white rounded">
+                <div class="card-body">
+                  <img src="img/person1.jpg" alt="" class="img-fluid
+                  rounded-circle w-50 mb-3">  
+                  <h3>Running</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, corporis?
+                  </p>
+                  <div class="d-flex justify-content-center">
+                    <div class="p-4">
+                        <a href="#">
+                            <i class="fab fa-facebook fa-2x text-primary"></i>
+                        </a>
+                    </div>
+
+                    <div class="p-4">
+                        <a href="#">
+                            <i class="fab fa-twitter fa-2x text-info"></i>
+                        </a>
+                    </div>
+
+                    <div class="p-4">
+                        <a href="#">
+                            <i class="fab fa-instagram fa-2x text-warning"></i>
+                        </a>
+                    </div>
+
+                  </div>
+                </div>
+            </div>    
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-primary shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-body">
+                      <img src="img/person2.png" alt="" class="img-fluid
+                      rounded-circle w-50 mb-3">  
+                      <h3>Yoga</h3>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, corporis?
+                      </p>
+                      <div class="d-flex justify-content-center">
+                        <div class="p-4">
+                            <a href="#">
+                                <i class="fab fa-facebook fa-2x text-primary"></i>
+                            </a>
+                        </div>
+    
+                        <div class="p-4">
+                            <a href="#">
+                                <i class="fab fa-twitter fa-2x text-info"></i>
+                            </a>
+                        </div>
+    
+                        <div class="p-4">
+                            <a href="#">
+                                <i class="fab fa-instagram fa-2x text-warning"></i>
+                            </a>
+                        </div>
+    
+                      </div>
+                    </div>
+                </div>    
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card border-warning shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-body">
+                          <img src="img/person3.png" alt="" class="img-fluid
+                          rounded-circle w-50 mb-3">  
+                          <h3>Football</h3>
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, corporis?
+                          </p>
+                          <div class="d-flex justify-content-center">
+                            <div class="p-4">
+                                <a href="#">
+                                    <i class="fab fa-facebook fa-2x text-primary"></i>
+                                </a>
+                            </div>
+        
+                            <div class="p-4">
+                                <a href="#">
+                                    <i class="fab fa-twitter fa-2x text-info"></i>
+                                </a>
+                            </div>
+        
+                            <div class="p-4">
+                                <a href="#">
+                                    <i class="fab fa-instagram fa-2x text-warning"></i>
+                                </a>
+                            </div>
+        
+                          </div>
+                        </div>
+                    </div>    
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card border-primary shadow p-3 mb-5 bg-white rounded">
+                            <div class="card-body">
+                              <img src="img/person4.png" alt="" class="img-fluid
+                              rounded-cricle w-50 mb-3">  
+                              <h3>Cycling</h3>
+                              <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, corporis?
+                              </p>
+                              <div class="d-flex justify-content-center">
+                                <div class="p-4">
+                                    <a href="#">
+                                        <i class="fab fa-facebook fa-2x text-primary"></i>
+                                    </a>
+                                </div>
+            
+                                <div class="p-4">
+                                    <a href="#">
+                                        <i class="fab fa-twitter fa-2x text-info"></i>
+                                    </a>
+                                </div>
+            
+                                <div class="p-4">
+                                    <a href="#">
+                                        <i class="fab fa-instagram fa-2x text-warning"></i>
+                                    </a>
+                                </div>
+            
+                              </div>
+                            </div>
+                        </div>    
+                        </div>
+
+                    
+
+        </div>
+
+        
+
+    </div>
+   </section>
+
+   <footer>
+       <p class="copyright">© Copyright 
+           <span id="year"></span>
+       </p>
+   </footer>
+   <script>
+       $('#year').text(new Date().getFullYear());
+
+       
+   </script>
+</body>
+</html>

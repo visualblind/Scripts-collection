@@ -1,0 +1,4 @@
+@ECHO OFF
+start "gcrypt-usmba" /MIN rclone mount gcrypt-usmba: c:\rclone\mounts\gcrypt-usmba --vfs-cache-mode off --dir-cache-time 30m --log-level ERROR --log-file %USERPROFILE%\rclone-mount.log
+start "gcrypt-gdrive01dvecs" /MIN rclone mount gcrypt-gdrive01dvecs: c:\rclone\mounts\gcrypt-gdrive01dvecs --vfs-cache-mode off --dir-cache-time 30m --log-level ERROR --log-file %USERPROFILE%\rclone-mount-gcrypt-gdrive01dvecs.log
+REM start "gcrypt-gdrive02dvecs" /MIN rclone mount gcrypt-gdrive02dvecs: c:\rclone\mounts\gcrypt-gdrive02dvecs --vfs-cache-mode off --dir-cache-time 30m --log-level ERROR --log-file %USERPROFILE%\rclone-mount-gcrypt-gdrive02dvecs.log

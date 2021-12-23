@@ -1,0 +1,293 @@
+<?xml version="1.0" ?>
+<package>
+	<comment>
+	**************************************************************************
+
+	Copyright (c) SAPIEN Technologies, Inc. All rights reserved
+   	This file is part of the PrimalScript 2011 Code Samples.
+
+	File:  MailboxReport.WSF
+
+	Comments:
+
+   	Disclaimer: This source code is intended only as a supplement to 
+				SAPIEN Development Tools and/or on-line documentation.  
+				See these other materials for detailed information 
+				regarding SAPIEN code samples.
+
+	THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
+	KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+	IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+	PARTICULAR PURPOSE.
+
+	**************************************************************************
+
+	</comment>
+	<job>
+		<runtime>
+		<description>
+v1.0
+Query the specified Exchange 2003 server for information
+about all mailboxes on that server using WMI. Output is to a user
+specified CSV file.  All attributes will be queried. WMI DateTime
+values will be converted into a more user-friendly format.
+
+The specified server will be pinged to verify server is available
+before querying.
+
+This script requires Windows XP or later.
+		</description>
+			<named helpstring="The name of the Exchange 2003 server to query" _
+			name="Server" required="true" type="string"/>
+			<named helpstring="Name and path for the exported CSV file" name="file" required="true"_
+			type="string"/>
+			<named helpstring="The user for alternate credentials" 
+			name="user" required="false" type="string"/>
+			<named helpstring="Alternate credentials pass." name="password"_
+			required="false" type="string"/>
+<example>
+Examples:
+cscript MailBoxReport.wsf /server:EXCH01 /file:report.csv	
+cscript MailBoxReport.wsf /server:EXCH01 /file:mbreport.csv /user:Admin /password:P@ssw0rd
+cscript MailBoxReport.wsf /server:EXCH01 /file:report.csv /user:* /password:*
+cscript MailBoxReport.wsf /?
+
+If you use * for /server, /user or /password, you will be prompted
+You cannot use alternate credentials for local systems.
+Existing file files with the name will be overwritten.
+</example>
+		</runtime>
+		<object id="objFSO" progid="Scripting.FileSystemObject" reference="true"/>
+		<object id="objShell" progid="WScript.Shell"/>
+		<object id="objNetwork" progid="WScript.Network"/>
+		<object id="objLocator" progid="WbemScripting.SWbemLocator" reference="true"/>
+		<script language="VBScript">
+<![CDATA[
+On Error Resume Next
+
+If WScript.Arguments.Count<2 Then 
+	wscript.Arguments.ShowUsage
+	WScript.Quit
+End If
+
+strTitle="Mailbox Report"
+strNamespace="root\MicrosoftExchangeV2"
+
+'verify user is running Windows XP
+If InStr(GetOS,"XP Professional")=False Then
+	objShell.Popup "This script requires Windows XP Professional",10,_
+	strTitle,vbOKOnly+vbExclamation
+	WScript.Quit
+End If
+
+strQuery="Select * FROM Exchange_Mailbox"
+
+'validate required parameters
+if WScript.Arguments.Named.exists("Server") then
+	strSrv=wscript.arguments.named("Server")
+Else
+	wscript.echo "No SERVER parameter specified!"
+	wscript.arguments.showusage
+	wscript.quit
+end If
+
+if WScript.Arguments.Named.exists("file") Then 
+	strFile=WScript.Arguments.Named("file")
+Else 
+	wscript.echo "No FILE parameter specified!"
+	wscript.arguments.showusage
+	wscript.quit
+End if
+
+if WScript.Arguments.Named.exists("user") then strUser=WScript.Arguments.Named("user")
+if WScript.Arguments.Named.exists("password") then strPass=WScript.Arguments.Named("password")
+
+If strSrv="*" Then
+	strSrv=InputBox("What Exchange 2003 server do do you want to query?",strTitle,_
+	objNetwork.ComputerName)
+	If strSrv="" Then WScript.Quit
+End If
+
+'skip getting alternate credentials if Server is local system
+If UCase(strSrv)<>UCase(objNetwork.Computername) Then
+	If strUser="*" Then
+	 strUSer=InputBox("Enter alternate credentials, or leave " &_
+	 "blank to use the current credentials.",strTitle,"")
+	End If
+	
+	If strPass="*" Then
+		strPass=GetIEpassword()
+	End If
+End If
+
+'if  local system, then set any alternate credentials to blank
+If UCase(strSrv)=UCase(objNetwork.ComputerName) Then
+ 	strUSer=""
+	strPass=""
+End If
+
+'if computer is accessible then get information
+If TestPing(strSrv) Then
+
+'create csv file
+Set objFile=objFSO.CreateTextFile(strFile,True)
+
+'connect to server
+Set objWMIService = objLocator.ConnectServer(strSrv,strNamespace,strUser,strPass)
+
+'Get Property names And Set as first line
+Set objRef=objWMIservice.Get("Exchange_Mailbox")
+
+For Each prop In objRef.Properties_
+	strHeader= strHeader & "," & prop.name
+Next
+
+'strip out leading ,
+If Left(strHeader,1)="," Then strHeader=Mid(strHeader,2)
+
+objFile.Writeline strHeader
+
+'create an Array from header so we can Get the Right values For Each Property
+arrProperties=Split(strHeader,",")
+
+'Run main query
+Set colItems = objWMIService.ExecQuery(strQuery,"WQL",wbemForwardOnly+_
+wbemFlagReturnImmediately)
+
+'iterate through results And write To text file.
+For Each mailbox In colItems
+	For i=0 To UBound(arrProperties)
+		For Each item In mailbox.Properties_
+			If Ucase(item.Name) = Ucase(arrProperties(i)) Then 
+				If IsNull(item.Value) Then
+					strValue="N/A"
+				Else
+					'if value is CIMDateTime, convert to user-friendly format
+					If item.CIMType=101 Then 
+						strValue=ConvWMITime(item.Value)
+					else
+						strValue=item.value
+					End If
+				End if
+			strEntry=strEntry & "," & CHR(34) & strValue & Chr(34)
+			End if
+		Next
+	Next
+'strip out any leading ,
+If Left(strEntry,1)="," Then strEntry=Mid(strEntry,2)
+objFile.Writeline strEntry
+strEntry=""
+Next
+
+'close the Log file
+objFile.Close
+
+'Report results
+strInfo="Mailbox query for " & UCase(strSrv) & " is complete." &_ 
+VbCrLf & "See " & strFile & " for results."
+objShell.Popup strInfo,15,strTitle,vbOKOnly+vbInformation
+
+Else
+'Report Error
+strMsg="Failed to ping " & UCase(strSrv) & "."
+objShell.Popup strMsg,10,strTitle,vbOKOnly+vbExclamation
+
+End If
+
+Wscript.quit
+'End of main script
+
+'///////////////////////////////////
+'Use IE Password prompt
+'to securely get a password
+'//////////////////////////////////
+Function GetIEPassword()
+Dim ie
+On Error Resume Next
+set ie=Wscript.CreateObject("InternetExplorer.Application")
+ie.width=400
+ie.height=150
+ie.statusbar=True
+ie.menubar=False
+ie.toolbar=False
+
+ie.navigate ("About:blank")
+ie.visible=True
+ie.document.title="Password prompt"
+
+strHTML=strHTML & "<Font color=RED><B>Enter password: <br><input id=pass type=Password></B></Font> &nbsp"
+strHTML=strHTML & "<input type=checkbox id=Clicked size=1>click box when finished"
+
+ie.document.body.innerhtml=strHTML
+
+Do While ie.busy<>False
+	wscript.sleep 100
+Loop
+
+'loop until box is checked
+ Do While ie.Document.all.clicked.checked=False
+	WScript.Sleep 250
+Loop
+
+GetIEPassword=ie.Document.body.all.pass.value
+
+ie.Quit
+set ie=Nothing
+End Function
+
+'///////////////////////////////////////////
+'returns values like:
+'Microsoft Windows XP Professional
+'///////////////////////////////////////////
+Function GetOS()
+On Error Resume Next
+Dim objWMI
+
+Set objWMI=GetObject("winmgmts://.\root\cimv2").InstancesOf("win32_operatingsystem")
+
+For Each OS In objWMI
+  GetOS=OS.Caption
+Next
+
+End Function
+
+'///////////////////////////////////////////
+'Ping target system using WMI. Requires XP
+' or Windows 2003 locally
+'//////////////////////////////////////////
+Function TestPing(strName)
+On Error Resume Next
+'this function requires Windows XP or 2003
+Dim cPingResults, oPingResult
+strPingQuery="SELECT * FROM Win32_PingStatus WHERE Address = '" &_
+ strName & "'"
+
+Set cPingResults = GetObject("winmgmts://./root/cimv2").ExecQuery(strPingQuery)
+For Each oPingResult In cPingResults
+	If oPingResult.StatusCode = 0 Then
+		TestPing = True
+	Else
+		TestPing = False
+	End If
+Next
+End Function
+
+'////////////////////////////////////
+'Convert WMI Time stamp
+'///////////////////////////////////
+Function ConvWMITime(wmiTime)
+On Error Resume Next
+
+yr = left(wmiTime,4)
+mo = mid(wmiTime,5,2)
+dy = mid(wmiTime,7,2)
+tm = mid(wmiTime,9,6)
+
+ConvWMITime = mo&"/"&dy&"/"&yr & " " & FormatDateTime(left(tm,2) & _
+":" & Mid(tm,3,2) & ":" & Right(tm,2),3)
+End Function
+
+]]>
+		</script>
+	</job>
+</package>

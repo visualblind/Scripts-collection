@@ -1,0 +1,8 @@
+location = /myurl {
+    access_by_lua_block  {
+        local process = io.popen("curl -fsSL http://mydomain.com/file-which-contains-an-URL.txt", "r")
+        local output = process:read('*a')
+        process:close()
+        ngx.redirect(output) #By default this redirects using the status code 302, if you want 301 use (output, 301)
+    }
+}

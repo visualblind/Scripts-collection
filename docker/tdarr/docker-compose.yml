@@ -1,0 +1,59 @@
+version: "3.4"
+services:
+  tdarr:
+    container_name: tdarr
+    image: haveagitgat/tdarr:latest
+    restart: unless-stopped
+    network_mode: bridge
+    ports:
+      - 8265:8265 # webUI port
+      - 8266:8266 # server port
+      - 8267:8267 # node port. It should be mapped on this container because
+                  # the node container use the network from the main container
+    environment:
+      - TZ=America/Los_Angeles
+      - PUID=1000
+      - PGID=1000
+      - UMASK_SET=002
+      - serverIP=0.0.0.0
+      - serverPort=8266
+      - webUIPort=8265
+    volumes:
+      - /docker/tdarr/server:/app/server
+      - /docker/tdarr/configs:/app/configs
+      - /docker/tdarr/logs:/app/logs
+      - /docker/tdarr/transcode_cache:/temp
+      - /docker/tdarr/media:/media
+
+  tdarr-node:
+    container_name: tdarr-node
+    image: haveagitgat/tdarr_node:latest
+    restart: unless-stopped
+    network_mode: service:tdarr
+    devices: 
+      - /dev/dri:/dev/dri
+    environment:
+      - TZ=America/Los_Angeles
+      - PUID=1000
+      - PGID=1000
+      - UMASK_SET=002
+      - nodeID=MainNode
+      - nodeIP=0.0.0.0
+      - nodePort=8267
+      - serverIP=0.0.0.0
+      - serverPort=8266
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_VISIBLE_DEVICES=all
+#    runtime: nvidia
+    volumes:
+      - /docker/tdarr/configs:/app/configs
+      - /docker/tdarr/logs:/app/logs
+      - /docker/tdarr/transcode_cache:/temp
+      - /docker/tdarr/media:/media
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['0']
+            capabilities: [gpu]

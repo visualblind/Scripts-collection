@@ -1,0 +1,184 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.customdivforicons{
+    display: flex;
+    flex-direction: row;
+}
+
+.badge-notify{
+    background: red;
+    position: relative;
+    top: -25px;
+    left: -25px;
+}
+
+.customsize{
+    margin-top: -10px;
+    margin-right: -8px;
+}
+
+.customsizelogo{
+    margin-top: -30px;
+}
+
+.navbar{
+    background: #f5f5f5;
+    height: 60px;
+}
+
+.sidebar{
+    background: #293042;
+    margin-top: 50px;
+    padding-top: 30px;
+    position: fixed;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    transition: .5s;
+    transition-property: left;
+    overflow: scroll;
+}
+
+.sidebar a{
+    color: white;
+    display: block;
+    width: 100%;
+    line-height: 60px;
+    text-decoration: none;
+    padding-left: 40px;
+    box-sizing: border-box;
+    transition: .5s;
+    transition-property: background;
+}
+
+.sidebar a:hover{
+    background:#19B3D3 ;
+    color: white;
+    font-weight: bolder;
+}
+
+.sidebar i{
+    padding-right: 10px;
+}
+
+#check:checked ~ .sidebar label i{
+    z-index: 1;
+    color: white;
+    position: fixed;
+    cursor: pointer;
+    left: 20px;
+    margin: 5px 0;
+    transition: .5s ease-in;
+    transition-property: color;
+}
+#check{
+    display: none;
+}
+
+.sidebar label #btn, label #cancel{
+    position: absolute;
+    cursor: pointer;
+    background: #293042;
+    border-radius: 3px;
+}
+
+.sidebar label #btn{
+    left: -205px;
+    top: 20px;
+    font-size: 30px;
+    color: white;
+}
+#check:checked ~ .sidebar label #cancel{
+    display: none;
+}
+
+#check:checked ~ .sidebar{
+    left: 0;
+}
+
+#check:checked ~ label #btn{
+    left:250px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#check:checked ~ .sidebar{
+    left: -190px;
+}
+
+
+#check:checked ~ .sidebar a span{
+    display: none;
+}
+
+#check:checked ~ .sidebar a{
+    font-size: 20px;
+    margin-left: 170px;
+    width: 80px;
+}
+
+#check:checked ~ .sidebar label #btn{
+    left: 20px;
+    top: 85px;
+    font-size: 30px;
+    color: white;
+}
+
+.sidebar label #cancel{
+    left: 210px;
+    top: 20px;
+    font-size: 30px;
+    color: white;
+}
+
+.content{
+    margin-left: 250px;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    transition: .5s;
+    padding-top: 40px;
+    color: white;
+    font-weight: bold;
+}
+
+#check:checked ~ .content{
+    margin-left: 60px;
+}
+
+.content span{
+    padding-left: 40px;
+}
+
+
+@media (pointer:coarse){
+    .sidebar{
+        overflow-y: auto;
+        height: 100vh;
+        max-height: 90%;
+        /* border: 1px solid black; */
+        width: 250px;
+    }
+
+    #check:checked ~ .content .card{
+        margin-top: -15px;
+    }
+
+    .content .card{
+        margin-top: -15px;
+    }
+    
+
+
+    
+}
+
+@media (max-width:417px){
+    .sidebar{
+        overflow-y: auto;
+        height: 100vh;
+        max-height: 95%;
+    }
+}

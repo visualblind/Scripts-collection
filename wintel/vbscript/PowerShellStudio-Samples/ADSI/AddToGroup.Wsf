@@ -1,0 +1,122 @@
+<package>
+<comment>
+**************************************************************************
+
+	Copyright (c) SAPIEN Technologies, Inc. All rights reserved
+  This file is part of the PrimalScript 2011 Code Samples.
+
+	File: AddtoGroup.wsf 
+
+	Comments:
+
+  Disclaimer: This source code is intended only as a supplement to 
+				SAPIEN Development Tools and/or on-line documentation.  
+				See these other materials for detailed information 
+				regarding SAPIEN code samples.
+
+	THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
+	KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+	IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+	PARTICULAR PURPOSE.
+
+**************************************************************************
+</comment>
+<job>
+<runtime>
+
+<description>
+AddtoGroup.wsf
+*****************************************************************************
+USAGE: Cscript AddtoGroup.wsf /S:server /G:Localgroup /A:GrouptoAdd
+This script will add the specified user or group to the specified local group
+on a remote PC.  It is assumed you already have administrator rights on the 
+remote system.  You can use this script to remotely add other users or groups
+to the local Administrators group, or any other group for that matter.  The 
+group must already exist.
+
+If you are specifying a domain user or group you must use the format 
+domainname/accountname and if the group has spaces, it must be contained with
+ quotes "".
+
+cscript AddtoGroup.wsf /? will display this help message.
+</description>
+
+<example>
+Examples:
+cscript AddtoGroup.wsf /S:server /G:Localgroup /A:NewGroupToAdd
+cscript AddtoGroup.wsf /S:XPPC01 /G:Administrators /A:"mydom/domain admins"
+</example>
+
+<named
+name="S"
+helpstring="Enter the name of the remote computer."
+type="string"
+required="true"
+/>
+
+<named
+name="A"
+helpstring="Enter the name of group or person to add to the specified local group."
+type="string"
+required="true"
+/>
+
+<named
+name="G"
+helpstring="Enter the name of the local group on the remote computer."
+type="string"
+required="true"
+/>
+
+</runtime>
+
+<object ID="wshell" progId="wscript.shell" reference/>
+<object ID="wnet" progId="wscript.network" reference/>
+
+<script language="VBScript">
+On Error Resume Next
+If InStr(WScript.Arguments.Item(0),"?") Then 
+WScript.Arguments.ShowUsage
+WScript.Quit()
+End if
+
+If WScript.Arguments.count<3 Then
+WScript.Arguments.ShowUsage
+WScript.Quit()
+End If
+
+dim oGrp
+
+strPC=WScript.Arguments.named("S")
+strGrp=WScript.Arguments.named("G")
+strGrpAdd=WScript.Arguments.named("A")
+
+set oGrp=GetObject("WinNT://" & strPC & "/" & strGrp)
+'uncomment for debugging
+' set Members=oGrp.Members
+' for each member in Members
+' wscript.echo member.Name
+' next
+
+if oGrp.IsMember("WinNT://" & strGrpAdd) then
+	wscript.echo strGrpAdd & " is already a member of the " & strGrp & " group on " & UCase(strPC)
+	wscript.quit
+else
+	wscript.echo "Adding " & strGrpAdd & " to the " & strGrp & " group on " & UCase(strPC)
+	oGrp.Add("WinNT://" & strGrpAdd)
+	oGrp.SetInfo
+	if err.number<>0 then
+		wscript.Echo "There was an error adding " & strGrpAdd & " to the " & strGrp &_
+" group on " & UCase(strPC) & vbcrlf & "Remeber that domain format must be domainname/user" &_
+vbcrlf & "Error #" & err.number & " " & err.Description
+	else
+		wscript.Echo "Successfully added " &  strGrpAdd & " tothe  " & strGrp & " group on " & UCase(strPC)
+	end if
+end if
+
+Set oGrp=Nothing
+
+</script>
+
+</job>
+</package>

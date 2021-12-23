@@ -1,0 +1,16 @@
+---
+version: "2"
+services:
+  sonarr:
+    image: linuxserver/sonarr:version-3.0.6.1265
+    container_name: sonarr
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/London # Specify a timezone to use
+      - PUID=1000 # User ID to run as
+      - PGID=1000 # Group ID to run as
+    volumes:
+      - /host/path/to/data:/data # Location of all your media
+      - /host/path/to/config:/config # Contains all relevant configuration files.
+    ports:
+      - 8989:8989/tcp # Web UI

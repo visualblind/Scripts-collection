@@ -1,0 +1,9 @@
+# Force files in /scripts to download instead of display!
+location ~ ^/scripts/(?P<request_basename>[^/]+)$ {
+    add_header Content-Disposition "attachment; filename=$request_basename";
+}
+
+location ~ ^.*/(?P<request_basename>[^/]+\.(mp3))$ {
+    root /path/to/mp3/
+    add_header Content-Disposition 'attachment; filename="$request_basename"';
+}

@@ -1,0 +1,11 @@
+Install npm
+
+Install electron 9.0.0 (Later version of electron 9 may work): npm i -D electron@9.0.0
+
+Download Authy Windows installer from website.
+
+Extract authy-1.8.3-full.nupkg from exe.
+
+Extract lib/net45/resources/app.asar from .nupkg file.
+
+Run ~/node_modules/.bin/electron /<where you saved it>/app.asar to launch Authy.

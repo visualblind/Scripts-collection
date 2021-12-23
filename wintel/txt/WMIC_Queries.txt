@@ -1,0 +1,168 @@
+Examples of WMIC commands for Windows .NET SERVER Family 
+
+                                        July 2002
+
+ 
+
+1.0             Method execution:
+
+ 
+
+NICCONFIG (Win32_NetworkAdapterConfiguration)
+
+WMIC NICCONFIG WHERE Index=1 CALL EnableStatic ("10.0.0.2"),("255.0.0.0")
+
+WMIC NICCONFIG WHERE Index=1 CALL SetGateways ("10.0.0.8","10.0.0.9"),(1,2)
+
+WMIC NICCONFIG WHERE Index=1 CALL EnableDHCP
+
+ 
+
+Service (Win32_Service)
+
+WMIC SERVICE WHERE Caption="SSDP Discovery Service" CALL ChangeStartMode "Disabled"
+WMIC SERVICE WHERE Name="WebrootCommAgentService" CALL startservice
+
+ 
+
+Datafile (CIM_DataFile)
+
+WMIC DATAFILE WHERE "path='\\windows\\system32\\wbem\\' AND Extension='mof' or path='\\windows\\system32\\wbem\\' AND Extension='pdb'" CALL "Compress"
+
+ 
+
+OS (Win32_OperatingSystem)
+
+WMIC /NODE:@"c:\MyServerList.txt" OS WHERE (Primary="TRUE" AND Locale!="0411" AND Organization!="Organization1") CALL Win32ShutDown 6
+
+WMIC OS WHERE Primary=1 CALL Shutdown
+
+ 
+
+PROCESS (Win32_Process)
+
+WMIC PROCESS CALL Create "calc.exe"
+
+WMIC PROCESS WHERE Name="calc.exe" CALL Terminate
+
+WMIC PROCESS WHERE Name="explorer.exe" call SetPriority 64
+
+Identical to: 
+
+WMIC PATH Win32_Process WHERE Name="explorer.exe" call SetPriority 64
+
+ 
+
+RDTOGGLE (Remote Desktop)
+
+RDTOGGLE WHERE ServerName="computer1.microsoft.com" call SetAllowTSConnections 0
+
+ 
+
+1.0             Data collection:
+
+ 
+
+WMIC logicaldisk WHERE drivetype=3 GET name,freespace,SystemName,FileSystem,Size,VolumeSerialNumber
+
+WMIC PATH CIM_DataFile WHERE "Path='\\windows\\system32\\wbem\\' AND FileSize>1784088"
+
+WMIC NTEVENT WHERE SourceName="winmgmt" GET Message,EvenTtype /FORMAT:HTABLE > c:\winmgmtevents.htm
+
+WMIC NTEVENT WHERE "EventType<3 AND LogFile!='System' AND LogFile!='Security'" GET LogFile,SourceName,EventType,Message,TimeGenerated /FORMAT:"htable.xsl":"datatype=number":"sortby=EventType" > c:\appevent.htm
+
+WMIC /NAMESPACE:\\root\directory\ldap PATH ds_user WHERE GET ds_displayName,DS_UserPrincipalName,ds_cn,ds_name,ds_whenCreated /VALUE
+
+WMIC PATH CIM_Controller GET Name,Status,SystemName,ProtocolSupported
+
+ 
+
+2.0             Data display:
+
+ 
+
+WMIC PROCESS WHERE "name like '%HOST%'"
+
+WMIC PATH Win32_Process WHERE "name like '%HOST%'"
+
+WMIC PROCESS WHERE “Name=svchost.exe” LIST Statistics
+
+WMIC PROCESS WHERE “Name=svchost.exe” LIST BrieF
+
+WMIC PROCESS WHERE (Name='svchost.exe') GET name, processid
+
+WMIC PROCESS WHERE “Name=svchost.exe” GET name,processid /VALUE
+
+WMIC PROCESS GET /FORMAT:htable
+
+WMIC PROCESS GET /FORMAT:”c:\windows\system32\wbem\htable.xsl” 
+
+WMIC PROCESS GET /FORMAT:hform 
+
+WMIC PROCESS GET /FORMAT:csv
+
+ 
+
+4.0      Data output:
+
+ 
+
+WMIC BIOS > mydata.txt
+
+WMIC OS >> mydata.txt
+
+WMIC /APPEND:mydata.txt PAGEFILE
+
+WMIC /OUTPUT:output.txt OS
+
+WMIC /OUTPUT:CLIPBOARD BIOS
+
+ 
+
+3.0             Data creation:
+
+ 
+
+WMIC /NAMESPACE:\\root\default PATH __Namespace CREATE Name=test
+
+ 
+
+4.0             Data deletion:
+
+ 
+
+WMIC /NAMESPACE:\\root\default PATH __Namespace WHERE Name="test" DELETE
+
+WMIC /NAMESPACE:\\root\subscription PATH __EventFilter WHERE __CLASS="__EventFilter" DELETE
+
+ 
+
+5.0             Security and connection:
+
+ 
+
+Delegate authority
+
+WMIC /node:"computer1" /IMPLEVEL:Delegate /AUTHORITY:"Kerberos:domain\computer1" OS
+
+ 
+
+WMIC /NODE:"computer1.domainofcomputer1.org" /AUTHLEVEL:Pktprivacy BIOS
+
+ 
+
+ 
+
+6.0             Batch scripting:
+
+ 
+
+WMIC.EXE /OUTPUT:WMICLASSES.txt /NAMESPACE:\\root\wmi PATH WDMClassesOfDriver GET Classname
+
+for /f "usebackq skip=1" %%I in (`type WMICLASSES.txt`) DO WMIC.exe /namespace:\\root\wmi PATH %%I
+
+ 
+
+WMIC PROCESS GET /FORMAT:"%windir%\system32\wbem\csv.xsl" >> c:\1.csv
+
+ 

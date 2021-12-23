@@ -1,0 +1,14 @@
+﻿<Project>
+  <Version>1</Version>
+  <FileID>ae130934-c451-4b12-82dc-56ffd72f6fe3</FileID>
+  <ProjectType>0</ProjectType>
+  <Files>
+    <File ReferenceName="" Build="0">Startup.pss</File>
+    <File ReferenceName="Call-MainForm_psf" Build="0">MainForm.psf</File>
+    <File ReferenceName="Call-ADUserForm_psf" Build="0">ADUserForm.psf</File>
+    <File ReferenceName="Call-ComputerPrompt_psf" Build="0">ComputerPrompt.psf</File>
+    <File ReferenceName="Call-SystemInformation_psf" Build="0">SystemInformation.psf</File>
+    <File ReferenceName="Call-TopProcesses_psf" Build="0">TopProcesses.psf</File>
+    <File ReferenceName="Call-Globals_ps1" Build="0" CommandExtension="True">Globals.ps1</File>
+  </Files>
+</Project>

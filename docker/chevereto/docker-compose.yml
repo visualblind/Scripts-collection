@@ -1,0 +1,34 @@
+---
+version: "2"
+services:
+  chevereto:
+    image: ghcr.io/linuxserver/chevereto
+    container_name: chevereto
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - /path/to/config:/config
+      - /path/to/data:/data
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
+    depends_on:
+      - chevereto-db
+
+  chevereto-db:
+    image: ghcr.io/linuxserver/mariadb
+    container_name: chevereto-db
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - MYSQL_ROOT_PASSWORD=<yourrootpass>
+      - MYSQL_DATABASE=chevereto
+      - MYSQL_USER=chevereto
+      - MYSQL_PASSWORD=<yourdbpass>
+    volumes:
+      - /path/to/config:/config
+    restart: unless-stopped

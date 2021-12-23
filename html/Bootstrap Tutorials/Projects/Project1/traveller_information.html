@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Responsive Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    
+</head>
+<body  style="height:100vh;">
+    <!-- Modal Starts -->
+
+    <div class="modal fade" id="myModal" tabindex="-1"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title" id="myModalLabel">Book Your Holiday</h5>
+                <button type="button" class="btn-close"
+                data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="fullname" class="form-label"
+                        aria-describedby="fullnameHelp">Fullname</label>
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label"
+                        aria-describedby="emailHelp">Email</label>
+                        <input type="email" class="form-control">
+                        <div class="form-text" id="infoHelp">
+                            We'll never share your email with anyone else.  
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <select class="form-select"
+                        aria-label="Select Menu">
+                    <option selected>Select your holiday packet!</option>
+                    <option value="h1">Holiday Packet 1</option>
+                    <option value="h2">Holiday Packet 2</option>
+                    <option value="h3">Holiday Packet 3</option>
+                    
+                    
+                    </select>
+
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="checkbox">
+                        <label for="checkbox" class="form-check-label">
+                            I agree to the terms and conditions.
+                        </label>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" type="button"
+                data-bs-dismiss="modal">Close</button>
+
+                <button class="btn btn-info" type="button">Book Now</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    </div>
+
+    <!-- Modal Ends     -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark py-0">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">
+                <img src="images/logo.png" alt="" width="60px" height="60px">
+            </a>
+            <button class="navbar-toggler" type="button" 
+            data-bs-toggle="collapse" data-bs-target="#navbarToggler"
+            aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="tickets_offers.html" class="nav-link">Tickets & offers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="things_to_do.html" class="nav-link">Things to do</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="accommodation.html" class="nav-link">Accommodation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="traveller_information.html" class="nav-link active">Traveller information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact_us.html" class="nav-link">Contact Us</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar me-0 mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="#" class="btn btn-warning"
+                        data-bs-toggle="modal" data-bs-target="#myModal"
+                        >Book it!</a>
+                    </li>
+                </ul>
+    
+            </div>
+    
+    
+    
+        </div>
+    
+    
+    </nav>
+
+    <section class="container mt-5">
+        <div class="pricing-header px-3 py-3 pt-md-5 
+        pb-md-4 mx-auto text-center">
+        <h1 class="display-4 text-info fw-bold">Travel in London</h1>
+        <p class="lead">
+            Whatever your budget, find and book accommodation in London. Our guide covers London hotels, B&Bs, self-catering, camping and more.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit vero est cumque magni expedita numquam quia aperiam at, molestiae accusantium deserunt aut nisi quos ratione eum eligendi officia soluta? Similique, necessitatibus architecto quibusdam perferendis quidem voluptatem illum recusandae explicabo soluta maxime quasi voluptatibus, vel et sit aliquid aut ad quam? Accusantium doloremque temporibus dolorem alias laborum consequuntur earum, molestias expedita repellat, cum odit, enim esse quae? Iure voluptas, natus illum numquam maiores explicabo aspernatur reiciendis nemo eum dolores suscipit rem asperiores tenetur ullam animi deleniti iste unde ipsam facilis debitis facere corporis doloribus consectetur. Distinctio esse cum debitis repudiandae incidunt deleniti error, magni sunt sequi optio obcaecati, quidem dolor dignissimos nisi ex non, et a culpa aliquam temporibus itaque facere nam fuga. Magnam ea mollitia, aliquid totam accusamus id minima, obcaecati iusto vel illum, explicabo similique nulla amet voluptatibus distinctio ipsum pariatur officiis! Provident nihil voluptate sapiente, voluptatum maiores facilis reprehenderit facere nemo adipisci tempora aliquid eius cumque laborum non hic neque quisquam iusto quibusdam. Dicta facilis ipsum doloribus laudantium, veritatis commodi necessitatibus cupiditate maiores molestiae ullam, pariatur animi numquam recusandae quibusdam, modi exercitationem nihil eum sed voluptatibus repellendus? Repellat incidunt cumque cupiditate quas enim rerum necessitatibus odio eius alias.
+          
+        </p>    
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+            <div class="card mb-4 shadow-sm bg-danger">
+                <img src="images/travel1.jpg" class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-title text-warning fw-bold">
+                      Oyster and travelcards</h5> 
+                      <p class="card-text text-white">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni odio error doloribus iure labore atque vero. Maiores accusamus obcaecati ea!
+          
+                      </p> 
+                </div> 
+            </div>  
+
+        </div>
+
+        <div class="col">
+            <div class="card mb-4 shadow-sm bg-danger">
+                <img src="images/travel2.jpg" class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-title text-warning fw-bold">
+                    Free travel maps</h5> 
+                      <p class="card-text text-white">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni odio error doloribus iure labore atque vero. Maiores accusamus obcaecati ea!
+          
+                      </p> 
+                </div> 
+            </div>  
+
+        </div>
+
+
+        <div class="col">
+            <div class="card mb-4 shadow-sm bg-danger">
+                <img src="images/travel3.jpg" class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-title text-warning fw-bold">
+                    London Underground</h5> 
+                      <p class="card-text text-white">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni odio error doloribus iure labore atque vero. Maiores accusamus obcaecati ea!
+          
+                      </p> 
+                </div> 
+            </div>  
+
+        </div>
+
+    </div>
+
+
+    </section>
+
+
+<footer>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid text-white text-decoration-none">
+            <p>&copy; 2017-2021 Company, Inc. &middot;
+            <a href="#" class="text-decoration-none 
+            text-white">Privacy</a>    
+            &middot;<a href="#" class="text-decoration-none text-white">Terms</a>
+        </p>
+
+        <p><a href="#" class="text-decoration-none text-white">Back to top</a></p>
+        
+        <div class="footer-social">
+            <span>Follow us on:</span>
+            <a href="#" class="text-warning">
+                <i class="fab fa-facebook fa-1x"></i></a>
+            
+
+            <a href="#" class="text-warning">
+                <i class="fab fa-twitter fa-1x"></i></a>
+            
+
+            <a href="#" class="text-warning">
+                <i class="fab fa-instagram-square fa-1x"></i></a>
+        
+
+
+            <a href="#" class="text-warning">
+                <i class="fab fa-youtube-squar fa-1x"></i></a>
+            
+
+            <a href="#" class="text-warning">
+                <i class="fab fa-tiktok fa-1x"></i></a>
+            
+        </div>
+    
+    
+    </div>
+    </nav>
+
+
+</footer>
+
+
+</body>
+</html>

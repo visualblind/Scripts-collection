@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
-#	By: Travis Runyard
-#	Date: 04/15/2019
-#	Site: sysinfo.io
+# Author: Travis Runyard
+# Date: 04/15/2019
+# URL: 4kib.com
 
 whois $(dig whoami.akamai.net +short) | grep -i 'Organization:'
 DNS=$(dig whoami.ds.akahelp.net +short TXT | awk '{print $2} ');whois $(sed -e 's/^"//' -e 's/"$//' <<<"$DNS") | grep -i 'organization'

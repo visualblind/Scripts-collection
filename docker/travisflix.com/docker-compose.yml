@@ -1,38 +1,66 @@
 ---
 version: "3"
-services:
-  nginx:
-    image: ghcr.io/linuxserver/nginx
-    container_name: nginx-proxy
-    environment:
+services: 
+  jellyfin: 
+    container_name: jellyfin
+    depends_on: 
+      - nginx_proxy
+    devices: 
+      - "/dev/dri:/dev/dri"
+    environment: 
+      - "JELLYFIN_PublishedServerUrl=\"http://deb-usca-03.travisflix.com\""
+    image: "jellyfin/jellyfin:latest"
+    network_mode: host
+    restart: unless-stopped
+    volumes: 
+      - "/usr/local/jellyfin/config:/config"
+      - "/usr/local/jellyfin/media:/media:ro"
+      - "/usr/local/jellyfin/cache:/cache"
+      - "/usr/local/jellyfin/jellyfin-web:/jellyfin/jellyfin-web/src"
+  nginx_proxy: 
+    container_name: nginx
+    environment: 
       - PUID=0
       - PGID=0
       - TZ=America/Los_Angeles
-    volumes:
-      - /usr/local/nginx-proxy/config:/config
-    ports:
-      - 80:80
-      - 443:443
+    image: "ghcr.io/linuxserver/nginx:latest"
+    networks: 
+      - linuxserver-nginx_default
+    ports: 
+      - "80:80"
+      - "443:443"
     restart: always
-  jellyfin:
-    image: jellyfin/jellyfin:10.5.4
-    user: 0:0
-    container_name: jellyfin-10.5.4
-    network_mode: "host"
+    volumes: 
+      - "/usr/local/linuxserver-nginx/config:/config"
+      - "/run/nginx-cache:/config/nginx-cache"
+  librespeed:
+    depends_on:
+      - nginx_proxy
+    container_name: librespeed
+    image: "adolfintel/speedtest:latest" # or ghcr.io/linuxserver/librespeed
     environment:
-      #- PUID=0
-      #- PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Los_Angeles
-      - UMASK_SET=022 #optional
-      - JELLYFIN_PublishedServerUrl=https://travisflix.com
+      - PASSWORD="1cecream"
+      - MODE=standalone
+      - ENABLE_ID_OBFUSCATION=true
+      - TELEMETRY=true
+        #- WEBPORT=6689
+        #- DB_TYPE=sqlite
+        #- DB_NAME=DB_NAME
+        #- DB_HOSTNAME=DB_HOSTNAME
+        #- DB_USERNAME=DB_USERNAME
+        #- DB_PASSWORD=DB_PASSWORD
     volumes:
-      - /usr/local/jellyfin/config:/config
-      - /usr/local/jellyfin/media:/media:ro
-      - /usr/local/jellyfin/cache:/cache
-      - /usr/local/jellyfin/jellyfin-web:/jellyfin/jellyfin-web/src
+      - /usr/local/librespeed/servers.json:/servers.json
+    networks:
+      - linuxserver-nginx_default
     ports:
-      - 8096:8096
-      - 8920:8920
-    devices:
-      - /dev/dri:/dev/dri #optional
-    restart: always
+      - "6689:80"
+    restart: unless-stopped
+
+networks: 
+  linuxserver-nginx_default:
+    external: true
+    name: linuxserver-nginx_default

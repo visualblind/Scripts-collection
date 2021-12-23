@@ -41,8 +41,6 @@ whois whoami.akamai.net
 dig whoami.akamai.net
 dig whoami.akamai.net +short
 whois $(dig whoami.akamai.net +short)
-whois $(dig whoami.akamai.net +short)ping 1.0.0.1
-whois $(dig whoami.akamai.net +short)ping 1.0.0.2
 history|grep whoami
 dig whoami.akamai.net +short
 history|grep whoami | awk -F"] " '{ if (NR <=47) print $2 }' > /home/visualblind/Documents/scripts/linux/dns_upstream.sh

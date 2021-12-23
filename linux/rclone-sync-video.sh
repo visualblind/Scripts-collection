@@ -37,10 +37,11 @@ while [ "$1" != "" ]; do
 done
 
 screen -dmS $SCREEN_NAME -L -Logfile $HOME/.config/rclone/log/gcrypt-usmba.log \
-bash -c "rclone sync --bwlimit "$BANDWIDTH"M --progress --size-only --transfers 8 \
---checkers 8 --tpslimit 8 --tpslimit-burst 8 --update --filter-from \
+bash -c "rclone sync --bwlimit "$BANDWIDTH"M --progress --size-only --transfers 5 \
+--checkers 4 --tpslimit 4 --tpslimit-burst 4 --update --filter-from \
 $HOME/.config/rclone/filter-file-video.txt --drive-acknowledge-abuse --drive-use-trash=true \
 --log-level INFO --delete-during --log-file $HOME/.config/rclone/log/upload-gcrypt-usmba.log \
+--drive-stop-on-upload-limit \
 /mnt/pool0/p0ds0smb/media gcrypt-usmba:/p0ds0smb"
 
 screen -S $SCREEN_NAME -X colon "logfile flush 0^M"

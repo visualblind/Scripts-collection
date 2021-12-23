@@ -1,1 +1,0 @@
-ipconfig /all | findstr -iv "ipv6 bluetooth Description DHCP Autoconfiguration Netbios routing wins node Connection-specific obtained expires disconnected"

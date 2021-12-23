@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-############################ [ FFmpeg Documentation Tips ] ############################
+############################ FFmpeg Documentation Tips ############################
 
 
 -metadata[:metadata_specifier] key=value (output,per-metadata)
@@ -34,7 +34,7 @@ The film industry generally chooses 24 FPS in film capturing and production.
 
 
 
-############################ [/ffmpeg Documentation] ############################
+############################ FFmpeg real-world examples ############################
 
 #for i in *.flv; do ffmpeg -i "$i" -movflags faststart -c:a aac -c:v libx264 -b:a 128k "${i%.flv}.mp4"; done
 for f in $(find . -type f -name '*265.mkv'); do ffmpeg -i "$f" -map 0:v:0 -map 0:a:0 -map 0:s:0 -movflags faststart -c:v libx264 -c:a copy -c:s copy -crf 23 "${f/%265.mkv/264.mkv}"; done
@@ -43,62 +43,152 @@ for f in *.mp4; do ffmpeg -i "$f" -movflags faststart -c:v libx264 -c:a copy -c:
 for f in *.mp4; do ffmpeg -i "$f" -map 0:v -map 0:a -map 0:s -movflags faststart -c:v libx264 -c:a copy -c:s copy -crf 23 "${f/(x265)/(x264)}"; done
 for f in *.mkv; do ffmpeg -i "$f" -map 0 -movflags faststart -c:v libx264 -c:a copy -c:s copy -crf 23 "${f/x265/x264}"; done
 for f in *.mkv; do ffmpeg -i "$f" -map 0 -movflags faststart -c:v libx264 -c:a copy -c:s copy -crf 23 "${f/.mkv/.x264.mkv}"; done
-# Strip all subtitle streams from input file:
+##### Strip all subtitle streams from input file:
 for f in *.mkv; do ffmpeg -i "$f" -map 0:v -map 0:a -c:v copy -c:a copy ./working/"${f/.mkv/.x264.mkv}"; done
 
-# Convert audio stream to AAC and insert subtitles stream from external srt file:
+##### Convert audio stream to AAC and insert subtitles stream from external srt file:
 for f in *.mkv; do ffmpeg -i "$f" -f srt -i "${f/.mkv/.srt}" -map 0:v -map 0:a -map 1:0 -c:v copy -c:a aac -c:s srt ./working/"${f/.mkv/.x264.mkv}"; done
 for f in *.mkv; do ffmpeg -i "$f" -f srt -i "${f/.en.mkv/.srt}" -map 0:v -map 0:a -map 1:0 -c:v copy -c:a aac -c:s srt ./working/"${f/.mkv/.x264.mkv}"; done
 for f in *.mkv; do ffmpeg -i "$f" -f srt -i "${f/.en.mkv/.srt}" -map 0:0 -map 0:1 -map 1:0 -c:v copy -c:a aac -c:s srt ./working/"${f/.mkv/.x264.mkv}"; done
 
-# Convert 10/8bit HEVC/H.265 to 8bit AVC/H.264 MKV high profile slow preset, insert external SRT subtitle file and not-DEFAULT with eng lang
+##### Convert 10/8bit HEVC/H.265 to 8bit AVC/H.264 MKV high profile slow preset, insert external SRT subtitle file and not-DEFAULT with eng lang
 for f in *.mkv; do ffmpeg -y -i "$f" -f srt -i "${f/mkv/srt}" -map 0:v:0 -map 0:a:0 -map 1:0 -movflags faststart -profile:v high -pix_fmt yuv420p -preset slow -disposition:s:0 0 -metadata:s:s:0 language=eng -codec:v libx264 -codec:a copy -codec:s srt "../.working/${f/find/replace}"; done
-# Convert 10/8bit HEVC/H.265 to 8bit AVC/H.264 MKV high profile slow preset, stream-copy original subtitles (if present) and DEFAULT with eng lang
+##### Convert 10/8bit HEVC/H.265 to 8bit AVC/H.264 MKV high profile slow preset, stream-copy original subtitles (if present) and DEFAULT with eng lang
 for f in *.mkv; do ffmpeg -y -i "$f" -map 0:v:0 -map 0:a:0 -map 0:s? -movflags faststart -profile:v high -pix_fmt yuv420p -preset slow -disposition:s:0 default -metadata:s:s:0 language=eng -codec:v libx264 -codec:a copy -codec:s copy "../.working/${f/find/replace}"; done
 
-# One off:
+##### One off:
 ffmpeg -i 'The.Big.Bang.Theory.S05E01.720p.HDTV.mkv' -f srt -i 'The.Big.Bang.Theory.S05E01.720p.HDTV.srt' -map 0:v -map 0:a -map 1:0 -c:v copy -c:a aac -c:s srt './working/The.Big.Bang.Theory.S05E01.720p.HDTV.mkv'
 
-# Convert audio stream to AAC and do not add subtitles:
+##### Convert audio stream to AAC and do not add subtitles:
 for f in *.mkv; do ffmpeg -i "$f" -map 0:v:0 -map 0:a:0 -c:v copy -c:a aac ./working/"${f/.old.ext/.new.mkv}"; done
-
-# Or
+# or
 for f in *.mkv; do ffmpeg -i "$f" -map 0:v -map 0:a:0 -c:v copy -c:a aac ./working/"${f/.old.ext/.new.mkv}"; done
 
 ffmpeg -i 'Ip Man (2008) - 1080p H265.mkv' -map 0:v -map 0:a -map 0:s -movflags faststart -c:v libx264 -crf 23 -c:a aac -af "volume=10dB" -c:s srt 'Ip Man (2008) - 1080p x264.mkv'
 
+##### Rearrange audio streams, English audio stream default, Spanish secondary
+ffmpeg -i file1.mkv -map 0:v -map 0:a:1 -map 0:a:0 -map 0:s -map_chapters -1 -dn -metadata:s:a:1 language=spa -metadata:s:a:1 title= -metadata:s:s:0 title=English -metadata:s:s:4 title=Spanish -disposition:s 0 -disposition:a 0 -disposition:a:0 default -codec copy file1_2.mkv
 
-########### NVIDIA ###########
-# NVIDIA hardware accelerated convert H.265 > H.264
-find . -mount -depth -maxdepth 1 -name '*.mkv' -type f -exec bash -c 'ffmpeg -y -loglevel verbose -vsync 0 -hwaccel cuvid -hwaccel_output_format cuda -i "$0" -f srt -i "${0/.mkv/.en.srt}" -map 0:v:0 -map 0:a:0 -map 1:0 -movflags faststart -c:v h264_nvenc -preset slow -metadata:s:a:0 language=eng -c:a copy -metadata:s:s:0 language=eng -disposition:s:0 default -c:s:0 srt "./working/${0/x265/x264}"' {} \;
+
+###########                                                       ###########
+########### NVIDIA HARDWARE ACCELERATED TRANSCODING H.265 > H.264 ###########
+###########                                                       ###########
+
+#Resources:
+https://docs.nvidia.com/video-technologies/video-codec-sdk/ffmpeg-with-nvidia-gpu/
+https://trac.ffmpeg.org/wiki/HWAccelIntro#CUDANVENCNVDEC
+https://developer.nvidia.com/nvidia-video-codec-sdk
+
+
+#use -vsync 0 option with decode to prevent FFmpeg from creating output YUV with duplicate and extra frames.
+ffmpeg -vsync 0 -hwaccel nvdec -i <in file> -c:v h264_nvenc -c:a copy <out file>
+ffmpeg -vsync 0 -hwaccel cuda -hwaccel_output_format cuda -i <in file> -c:v h264_nvenc -c:a copy <out file>
+ffmpeg -vsync 0 -hwaccel cuda -i <in file> -c:v h264_nvenc -c:a copy <out file>
+
+#this one outputs data into special cuda format
+ffmpeg -vsync 0 -hwaccel cuda -hwaccel_output_format cuda -i <in file> -map 0 -preset slow -c:v h264_nvenc -c:a copy <out file>
+
+### DECODE from .mp4 to .yuv
+#The FFmpeg video decoder is straightforward to use. To decode an input bitstream from input.mp4, use the following command.
+#This generates the output file in NV12 format (output.yuv).
+ffmpeg -y -vsync 0 -c:v h264_cuvid -i input.mp4 output.yuv
+
+ffmpeg -vsync 0 -hwaccel nvdec -y -i "input.mkv" -f srt -i "subtitle.srt" -default_mode infer_no_subs -map 0:v -map 0:a:2 -map 0:a:4 -map 0:a:5 -map 0:a:6 -map 0:a:0 -map 0:a:1 -map 0:a:3 -map 1:0 -profile:v high -pix_fmt yuv420p -preset slow -disposition:a:0 default -disposition:v:0 default -metadata:s:s:0 language=eng -dn -map_chapters -1 -c:v h264_nvenc -c:a copy -c:s srt "output.mkv"
+ffmpeg -vsync 0 -hwaccel cuda -y -i "input.mkv" -f srt -i "subtitle.srt" -default_mode infer_no_subs -map 0:v -map 0:a:2 -map 0:a:4 -map 0:a:5 -map 0:a:6 -map 0:a:0 -map 0:a:1 -map 0:a:3 -map 1:0 -profile:v high -pix_fmt yuv420p -preset slow -disposition:a:0 default -disposition:v:0 default -metadata:s:s:0 language=eng -dn -map_chapters -1 -c:v h264_nvenc -c:a copy -c:s srt "output.mkv"
+
+#Command Line for Latency-Tolerant High-Quality Transcoding
+1. Slow preset
+ffmpeg -y -vsync 0 -hwaccel cuda -hwaccel_output_format cuda -i input.mp4 -c:a copy -c:v h264_nvenc -preset p6 -tune hq -b:v 5M -bufsize 5M -maxrate 10M -qmin 0 -g 250 -bf 3 -b_ref_mode middle -temporal-aq 1 -rc-lookahead 20 -i_qfactor 0.75 -b_qfactor 1.1 output.mp4
+
+2. Medium preset
+Use -preset p4 instead of -preset p6 in the above command line.
+
+3. Fast preset
+Use -preset p2 instead of -preset p6 in the above command line.
+
+#Command Line for Low Latency Transcoding
+ffmpeg -y -vsync 0 -hwaccel cuda -hwaccel_output_format cuda -i input.mp4 -c:a copy -c:v h264_nvenc -preset p6 -tune ll -b:v 5M -bufsize 5M -maxrate 10M -qmin 0 -g 250 -bf 3 -b_ref_mode middle -temporal-aq 1 -rc-lookahead 20 -i_qfactor 0.75 -b_qfactor 1.1 output.mp4
+
+#NVIDIA hardware accelerated convert H.265 > H.264
+find . -mount -depth -maxdepth 1 -name '*.mkv' -type f -exec bash -c 'ffmpeg -y -loglevel verbose -vsync 0 -hwaccel cuda -hwaccel_output_format cuda -i "$0" -f srt -i "${0/.mkv/.en.srt}" -map 0:v:0 -map 0:a:0 -map 1:0 -movflags faststart -c:v h264_nvenc -preset slow -metadata:s:a:0 language=eng -c:a copy -metadata:s:s:0 language=eng -disposition:s:0 default -c:s:0 srt "./working/${0/x265/x264}"' {} \;
 ffmpeg -hwaccel nvdec -i "$f" -movflags faststart -c:v h264_nvenc -c:a copy -c:s copy -crf 23 "${f/(265)/(264)}"
-##############################
 
 
-# Convert H.265 > H.264 and convert 6CH AC3 audio to AAC and copy only the first subtitle stream
+1:1 HWACCEL Transcode without Scaling
+The following command reads file input.mp4 and transcodes it to output.mp4 with H.264 video at the same resolution and with the same audio codec.
+
+ffmpeg -y -vsync 0 -hwaccel cuda -hwaccel_output_format cuda -i input.mp4 -c:a copy -c:v h264_nvenc -b:v 5M output.mp4
+1:1 HWACCEL Transcode with Scaling
+The following command reads file input.mp4 and transcodes it to output.mp4 with H.264 video at 720p resolution and with the same audio codec. The following command uses the built in resizer in cuvid decoder.
+
+ffmpeg -y -vsync 0 -hwaccel cuda -hwaccel_output_format cuda –resize 1280x720 -i input.mp4 -c:a copy -c:v h264_nvenc -b:v 5M output.mp4
+There is a built-in cropper in cuvid decoder as well. The following command illustrates the use of cropping. (-crop (top)x(bottom)x(left)x(right))
+
+ffmpeg -y -vsync 0 -hwaccel cuda -hwaccel_output_format cuda –crop 16x16x32x32 -i input.mp4 -c:a copy -c:v h264_nvenc -b:v 5M output.mp4
+Alternately scale_cuda or scale_npp resize filters could be used as shown below
+
+ffmpeg -y -vsync 0 -hwaccel cuda -hwaccel_output_format cuda -i input.mp4 -vf scale_cuda=1280:720 -c:a copy -c:v h264_nvenc -b:v 5M output.mp4
+ffmpeg -y -vsync 0 -hwaccel cuda -hwaccel_output_format cuda -i input.mp4 -vf scale_npp=1280:720 -c:a copy -c:v h264_nvenc -b:v 5M output.mp4
+
+#Use -vsync 0 option with decode to prevent FFmpeg from creating output YUV with duplicate and extra frames.
+ffmpeg -vsync 0 -hwaccel nvdec -i <in file> -map 0 -preset slow -metadata:s:a:0 language=eng -c:v h264_nvenc -c:a copy <out file>
+ffmpeg -vsync 0 -hwaccel cuda -i <in file> -map 0 -preset slow -metadata:s:a:0 language=eng -c:v h264_nvenc -c:a copy <out file>
+#This one outputs data into special cuda format
+ffmpeg -vsync 0 -hwaccel cuda -hwaccel_output_format cuda -i <in file> -map 0 -preset slow -metadata:s:a:0 language=eng -c:v h264_nvenc -c:a copy <out file>
+
+ffmpeg -vsync 0 -hwaccel nvdec -y -i <in file> -f srt -i <subtitle.srt> -default_mode infer_no_subs -map 0:v -map 0:a:2 -map 0:a:4 -map 0:a:5 -map 0:a:6 -map 0:a:0 -map 0:a:1 -map 0:a:3 -map 1:0 -profile:v high -pix_fmt yuv420p -preset slow -disposition:a:0 default -disposition:v:0 default -metadata:s:s:0 language=eng -dn -map_chapters -1 -c:v h264_nvenc -c:a copy -c:s srt <out file>
+
+#!!!!! Cuvid is DEPRECATED
+ffmpeg -vsync 0 -hwaccel cuvid -y -i <in file> -f srt -i <subtitle.srt> -default_mode infer_no_subs -map 0:v -map 0:a:2 -map 0:a:4 -map 0:a:5 -map 0:a:6 -map 0:a:0 -map 0:a:1 -map 0:a:3 -map 1:0 -profile:v high -pix_fmt yuv420p -preset slow -disposition:a:0 default -disposition:v:0 default -metadata:s:s:0 language=eng -dn -map_chapters -1 -c:v h264_cuvid -c:a copy -c:s srt <out file>
+
+#Command Line for Latency-Tolerant High-Quality Transcoding
+1. Slow preset
+ffmpeg -y -vsync 0 -hwaccel cuda -hwaccel_output_format cuda -i <in file> -c:a copy -c:v h264_nvenc -preset p6 -tune hq -b:v 5M -bufsize 5M -maxrate 10M -qmin 0 -g 250 -bf 3 -b_ref_mode middle -temporal-aq 1 -rc-lookahead 20 -i_qfactor 0.75 -b_qfactor 1.1 <out file>
+
+2. Medium preset
+Use -preset p4 instead of -preset p6 in the above command line.
+
+3. Fast preset
+Use -preset p2 instead of -preset p6 in the above command line.
+
+#Command Line for Low Latency Transcoding
+ffmpeg -y -vsync 0 -hwaccel cuda -hwaccel_output_format cuda -i <in file> -c:a copy -c:v h264_nvenc -preset p6 -tune ll -b:v 5M -bufsize 5M -maxrate 10M -qmin 0 -g 250 -bf 3 -b_ref_mode middle -temporal-aq 1 -rc-lookahead 20 -i_qfactor 0.75 -b_qfactor 1.1 <out file>
+
+ffmpeg -y -vsync 0 -hwaccel cuda -hwaccel_output_format cuda -i "Formula1 2021 - Round 03 - Portugal Race (1080p SkyF1HD HEVC AAC x265).mkv" -c:a copy -c:v h264_nvenc -preset p6 -tune hq -b:v 5M -bufsize 5M -maxrate 10M -extra_hw_frames 2 -qmin 0 -g 250 -bf 3 -b_ref_mode middle -temporal-aq 1 -rc-lookahead 20 -i_qfactor 0.75 -b_qfactor 1.1 "Formula1 2021 - Round 03 - Portugal Race (1080p SkyF1HD AVC x264).mkv"
+
+#works
+ffmpeg -y -vsync 0 -hwaccel cuda -i "Formula1 2021 - Round 03 - Portugal Race (1080p SkyF1HD HEVC AAC x265).mkv" -c:a copy -c:v h264_nvenc "Formula1 2021 - Round 03 - Portugal Race (1080p SkyF1HD AVC x264).mkv"
+ffmpeg -y -vsync 0 -hwaccel cuda -i "Formula1 2021 - Round 03 - Portugal Race (1080p SkyF1HD HEVC AAC x265).mkv" -c:a copy -c:v h264_nvenc -preset p6 -tune hq -b:v 5M -bufsize 5M -maxrate 10M -extra_hw_frames 2 -qmin 0 -g 250 -bf 3 -b_ref_mode middle -temporal-aq 1 -rc-lookahead 20 -i_qfactor 0.75 -b_qfactor 1.1 "Formula1 2021 - Round 03 - Portugal Race (1080p SkyF1HD AVC x264)_2.mkv"
+
+###########                                                       ###########
+###########                      NVIDIA END                       ###########
+###########                                                       ###########
+
+
+##### Convert H.265 > H.264 and convert 6CH AC3 audio to AAC and copy only the first subtitle stream
 find . -depth -name '*.mkv' -type f -exec bash -c 'ffmpeg -i "$0" -map 0:v:0 -map 0:a:0 -map 0:s:0? -movflags faststart -c:v libx264 -ac 6 -ar 48000 -b:a 768k -c:a aac -c:s copy -crf 23 "${0/x265/x264}"' {} \;
 find . -depth -name '*.mkv' -type f -exec bash -c 'ffmpeg -i "$0" -map 0:v:0 -map 0:a:0 -map 0:s:0? -movflags faststart -c:v libx264 -ac 6 -ar 48000 -b:a 768k -c:a aac -c:s copy -crf 23 "${0/x265/x264}"' {} \;; find . -name '*x265*' -type f -delete
 find . -depth -name '*x265*.mkv' -type f -exec bash -c 'ffmpeg -i "$0" -map 0:v:0 -map 0:a:0 -map 0:s:0? -movflags faststart -c:v libx264 -c:a copy -c:s copy -crf 23 "${0/x265/x264}"' {} \;; find . -name '*x265*' -type f -delete
 
-# Convert H.265 > H.264 and convert 6CH AC3 audio to AAC and copy all subtitle streams
+##### Convert H.265 > H.264 and convert 6CH AC3 audio to AAC and copy all subtitle streams
 find . -depth -name '*x265*.mkv' -type f -exec bash -c 'ffmpeg -i "$0" -map 0:v:0 -map 0:a:0 -map 0:s? -movflags faststart -c:v libx264 -ac 6 -ar 48000 -b:a 768k -c:a aac -c:s copy -crf 23 "${0/x265/x264}"' {} \;; find . -name '*x265*' -type f -delete
 
-# Convert H.265 > H.264 and retain original audio and all subtitles:
+##### Convert H.265 > H.264 and retain original audio and all subtitles:
 find . -depth -name '*x265*.mkv' -type f -exec bash -c 'ffmpeg -i "$0" -map 0:v:0 -map 0:a:0 -map 0:s? -movflags faststart -c:v libx264 -preset slow -c:a copy -c:s copy -crf 23 "${0/x265/x264}"' {} \;; find . -name '*x265*' -type f -delete
 
-# Copy original video stream and convert 6CH AC3 audio to AAC and copy all subtitle streams:
+##### Copy original video stream and convert 6CH AC3 audio to AAC and copy all subtitle streams:
 find . -depth -name '*x265*.mkv' -type f -exec bash -c 'ffmpeg -i "$0" -map 0:v:0 -map 0:a:0 -map 0:s? -c:v copy -ac 6 -ar 48000 -b:a 384k -c:a aac -c:s copy "${0/x265/x264}"' {} \;; find . -name '*x265*' -type f -delete
 
-# Copy original video stream and convert 2CH AC3 audio to AAC and copy all subtitle streams:
+##### Copy original video stream and convert 2CH AC3 audio to AAC and copy all subtitle streams:
 find . -depth -name '*x265*.mkv' -type f -exec bash -c 'ffmpeg -i "$0" -map 0:v:0 -map 0:a:0 -map 0:s? -c:v copy -ar 48000 -b:a 384k -c:a aac -c:s copy "${0/x265/x264}"' {} \;; find . -name '*x265*' -type f -delete
 
-# Just strip all subtitles:
+##### Just strip all subtitles:
 find . -depth -name '*.mkv' -type f -exec bash -c 'ffmpeg -i "$0" -map 0:v:0 -map 0:a:0 -c:v copy -c:a copy "${0/ (2000)/}"' {} \;; find . -name '*(2000)*' -type f -delete
 
-# Futurama Season 7 custom, 2-3 AC3 audio streams with the first having 6-channel and between 1-2 AC3 2-channel commentary tracks, a non-standard hdmv_pgs_subtitle subtitle track ususally at stream 0:3 requiring dropping and replacement with external .srt file
+##### Futurama Season 7 custom, 2-3 AC3 audio streams with the first having 6-channel and between 1-2 AC3 2-channel commentary tracks, a non-standard hdmv_pgs_subtitle subtitle track ususally at stream 0:3 requiring dropping and replacement with external .srt file
 find . -depth -name '*.mkv' -type f -exec bash -c 'ffmpeg -i "$0" -f srt -i "${0/mkv/en.srt}" -map 0:v:0 -map 0:a:0 -map 0:a:1 -map 0:a:2? -map 1:0 -c:v copy -ac:0 6 -ac:1 2 -ac:2 2 -ar 48000 -c:a:0 aac -c:a:1 aac -c:a:2 aac -c:s srt ./working/"${0/DD5.1/AAC5.1}"' {} \;
 
-# Increase volume to 150% of original media
+##### Increase volume to 150% of original media
 for f in *.mkv; do ffmpeg -i "$f" -map 0 -filter:a "volume=1.5" -c:v copy -c:a aac -c:s copy "../working/$f"; done
 
 for f in /path/to/directory/*.mkv; do ffmpeg -i "$f" \
@@ -107,44 +197,47 @@ for f in /path/to/directory/*.mkv; do ffmpeg -i "$f" \
 
 ffmpeg -i input.mp4 -map 0 -filter:a "volume=1.5" -c:v copy -c:a aac -c:s copy output.mp4
 
-# Remove data stream from MP4 container
+##### Remove data stream from MP4 container
 1a) ffmpeg -i in.mp4 -c copy -dn -map_metadata:c -1 out.mp4
 1b) for f in *.mp4; do ffmpeg -i "$f" -c copy -dn -map_metadata:c -1 "$f"; done
 
-# Remove chapters from the container
+##### Remove chapters from the container
 1a) ffmpeg -i input.mp4 -map 0:v -map 0:a -c:v copy -c:a copy -map_chapters -1 output.mp4
 1b) for f in *.mp4; do ffmpeg -i "$f" -map 0:v -map 0:a -map 0:s? -c:v copy -c:a copy -c:s copy -map_chapters -1 "$f"; done
 
-## Remove closed captions (CC)
+##### Remove closed captions (CC)
 1a) ffmpeg -y -i input.mkv -map 0 -c copy -bsf:v "filter_units=remove_types=6" output.mkv
 1b) for f in *.mkv; do ffmpeg -y -i "$f" -default_mode infer_no_subs -map 0:v -map 0:a -map 0:s? -c:v copy -c:a copy -c:s copy -bsf:v "filter_units=remove_types=6" "./.working/${f}"; done
 
-# Insert srt subtitle to mp4
+##### Insert srt subtitle to mp4
 ffmpeg -i 'I Am Legend (2007) - ALTERNATE ENDING 1080p BrRip x264.mp4' -i 'I Am Legend (2007) - ALTERNATE ENDING 1080p BrRip x264.en.srt' -metadata:s:s:0 language=eng -c:v copy -c:a copy -c:s mov_text 'I Am Legend (2007) - ALTERNATE ENDING 1080p BrRip x264_2.mp4'
 
-# Exports clean Subrip/srt subtitle file without annoying <font-face=blah; font-size=18px;> HTML tagging - Extract subtitle from mp4 (and mkv, maybe?) file in Subrip/srt format (Subtitle codec name "text" instead of srt/mov_text)
+##### Exports clean Subrip/srt subtitle file without annoying <font-face=blah; font-size=18px;> HTML tagging - Extract subtitle from mp4 (and mkv, maybe?) file in Subrip/srt format (Subtitle codec name "text" instead of srt/mov_text)
 for f in *.mp4; do ffmpeg -y -i "$f" -map 0:s? -c:s text "${f/.mp4/.en.srt}"; done
 
-# Find directories with more than one media file
+##### Find directories with more than one media file
 find . -regextype posix-extended -regex ".*mkv$|.*mp4$" -type f -printf '%h\n' | sort | uniq -d
 
-# Convert interlaced to progressive
+##### Convert interlaced to progressive (1080i -> 1080p)
 ffmpeg -i '/media/file1.mkv' -vf yadif -c:v libx264 -preset slow -crf 19 -c:a aac -b:a 192k -c:s srt -max_muxing_queue_size 400 /media/file2.mkv
+ffmpeg -i "interlaced.mkv" -vf yadif=1 -movflags +faststart -y -preset fast -profile:v high -crf 20 -ac 2 -b:a 192k -strict experimental -c:v libx264 -c:a aac "progressive.mkv"
+# yadif=0 is normally the preferred option when deinterlacing video as yadif=1 will double the frame-rate of the output video
+ffmpeg -i "interlaced.mkv" -vf yadif=0 -y -preset fast -profile:v high -crf 20 -ac 2 -b:a 192k -strict experimental -c:v libx264 -c:a aac "progressive.mkv"
 
-# Increase max muxing queue size
+##### Increase max muxing queue size
 ffmpeg -i 'input.mkv' -max_muxing_queue_size 400 'output.mkv'
 
-# Remove subtitle and audio description/title and add english metadata
+##### Remove subtitle and audio description/title and add english metadata
 for f in *.mkv; do ffmpeg -y -i "$f" -codec copy -metadata:s:a:0 language=eng -metadata:s:a:0 title= -metadata:s:s:0 language=eng -metadata:s:s:0 title= ./working/"${f}"; done
 
-# Add text metadata to various sections of file
+##### Add text metadata to various sections of file
 for f in *.mkv; do ffmpeg -y -i "$f" -codec copy -metadata comment="Matroska muxer also accepts free-form key/value metadata pairs" -metadata foo="bar" -metadata description="Matroska muxer description" -metadata:s:v:0 title="Video stream title/description" -metadata:s:a:0 title="Audio stream title/description" -metadata:s:s:0 language=eng -metadata:s:s:0 title="Subtitle stream title/description" ./working/"${f}"; done
 ffmpeg -y -i input.mkv -codec copy -metadata comment="Matroska muxer also accepts free-form key/value metadata pairs" -metadata foo="bar" -metadata description="Matroska muxer description" -metadata:s:v:0 title="Video stream title/description" -metadata:s:a:0 title="Audio stream title/description" -metadata:s:s:0 language=eng -metadata:s:s:0 title="Subtitle stream title/description" output.mkv
 
-# Add Matroska Title metadata to the container while removing Title metadata from all of its streams (video, audio, subtitle)
+##### Add Matroska Title metadata to the container while removing Title metadata from all of its streams (video, audio, subtitle)
 ffmpeg -y -i input.mkv -f srt -i input.en.srt -map 0:v -map 0:a:1 -map 1:0 -movflags +faststart -metadata:s:v:0 language= -metadata:s:s:0 language=eng -metadata:s:v:0 Title= -metadata:s:a:0 Title= -metadata:s:s:0 Title= -metadata Title="Who Am I (1998)" -disposition 0 -disposition:s:1 default -c:v copy -c:a copy -c:s srt output.mkv
 
-# Transcode avi files into standard mp4 containers
+##### Transcode avi files into standard mp4 containers
 for f in **/*.avi; do ffmpeg -i "$f" -map 0:v:0 -map 0:a -dn -map_chapters -1 \
 -movflags faststart -profile:v high -pix_fmt yuv420p -metadata:s:a:0 language=eng \
 -metadata:s:v:0 title= -metadata:s:a:0 title= -c:v libx264 -c:a aac \
@@ -172,7 +265,7 @@ ffmpeg -y -i "input.mp4" \
 -movflags faststart -profile:v high -pix_fmt yuv420p -metadata:s:a:0 language=eng \
 -c:v libx264 -c:a copy "output.mp4"
 
-# Another one but different
+##### Another one but different
 ffmpeg -y -i "input.mp4" -map 0:v -map 0:a \
 -dn -map_chapters -1 -metadata:s:v:0 handler_name= -metadata:s:a:0 handler_name= \
 -vf pad=ceil(iw/2)*2:ceil(ih/2)*2 -movflags faststart -profile:v high -pix_fmt yuv420p \
@@ -183,32 +276,31 @@ ffmpeg -y -i "input.mp4" -map 0:v -map 0:a \
 ffmpeg -i $infile -profile:v baseline $outfile
 Use the default ffmpeg processing, using:
 ffmpeg -i $infile $outfile
-# Bitrate Guidelines:
+
+##### Bitrate Guidelines:
 # Calculate the bitrate you need by dividing your target size (in bits) by the video length (in seconds). For example for a target size of 1 GB (one giga<em>byte</em>, which is 8 giga<em>bits</em>) and 10,000 seconds of video (2 h 46 min 40 s), use a bitrate of 800 000 bit/s (800 kbit/s):
 ffmpeg -i input.mp4 -b 800k output.mp4
 
-# example 1:
+##### example 1:
 # ffmpeg -i input.mkv -c:v libx264 -preset medium -b:v 3000k -maxrate 3000k -bufsize 6000k \
 # -vf "scale=1280:-1,format=yuv420p" -g 50 -c:a aac -b:a 128k -ac 2 -ar 44100 file.flv
 #
-# example 2:
-#
 ###################################################################################
 
-# Concatenation https://trac.ffmpeg.org/wiki/Concatenate
+##### Concatenation https://trac.ffmpeg.org/wiki/Concatenate
 for f in ./*.mkv; do echo "file '$f'" >> mylist.txt; done
 
-# Note that these can be either relative or absolute paths. Then you can stream copy or re-encode your files:
+##### Note that these can be either relative or absolute paths. Then you can stream copy or re-encode your files:
 ffmpeg -f concat -safe 0 -i "mylist.txt" "output.mkv"
 
-# Concatenate multiple media files
+##### Concatenate multiple media files
 for f in ./*.mkv; do echo "file '$f'" >> mylist.txt; done
 ffmpeg -f concat -safe 0 -i "mylist.txt" -b 4292k -c copy "Top.Gear.Patagonia.Special.1080p.mkv"
 
-# Map only English audio stream and English subtitle streams if it exists
+##### Map only English audio stream and English subtitle streams if it exists
 for f in *.mkv; do ffmpeg -y -i "$f" -map 0:v:0 -map 0:a:m:language:eng -map 0:s:m:language:eng? -codec:v copy -codec:a copy -codec:s srt "../../../../temp/ffmpeg-vcodec/.working/${f/x265/x264}"; done
 
-# Dont set any subtitle streams as default or forced
+##### Dont set any subtitle streams as default or forced
 for f in *.mkv; do ffmpeg -y -i "$f" -default_mode infer_no_subs -map 0:v:0 -map 0:a:0 -map 0:s:m:language:eng? -disposition:s 0 -codec copy "$f"; done
 
 -default_mode
@@ -220,10 +312,10 @@ This mode is the same as infer except that if no subtitle track with disposition
 'passthrough'
 In this mode the FlagDefault is set if and only if the AV_DISPOSITION_DEFAULT flag is set in the disposition of the corresponding stream.
 
-#Outputs filenames along with its audio codec(s)
+##### Outputs filenames along with its audio codecs
 find . -depth -maxdepth 1 -regextype posix-extended -regex '.*mkv$|.*mp4$' -type f -exec bash -c 'echo "{}" $(ffprobe2 -loglevel error -select_streams a -show_entries stream=codec_name,channels -of default=nw=1:nk=1 "{}")' \; | sort
 
-# Sync multiple audios streams
+##### Sync multiple audios streams
 for f in *.mkv; do ffmpeg -y -i "${f}" -i "${f/.mkv/.m4a}" \
 -c:v copy -b:a:0 128k -filter_complex "[a:0]aresample=async=1000[a:0]" -movflags faststart -c:a:0 aac -c:a:1 copy -c:s copy \
 -map 0:v:0 -map 1:0 -map 0:a:0 $(i=1; while [ $i -lt 28 ]; do echo -n "-map 0:s:$((i++)) "; done) \
@@ -432,7 +524,7 @@ if ! [ "${AUDIOFORMAT[0]}" = "aac" ]; then
 fi
 done
 
-# MKV
+##### MKV
 # Remember to include trailing slash in TEMPDIR
 TEMPDIR='/mnt/pool0/p0ds0smb/temp/ffmpeg/working/'
 shopt -s globstar
@@ -446,7 +538,7 @@ if ! [ "${AUDIOFORMAT[0]}" = "aac" ]; then
 fi
 done
 
-# MP4
+##### MP4
 # Remember to include trailing slash in TEMPDIR
 TEMPDIR='/mnt/pool0/p0ds0smb/temp/ffmpeg/working/'
 shopt -s globstar
@@ -460,7 +552,7 @@ if ! [ "${AUDIOFORMAT[0]}" = "aac" ]; then
 fi
 done
 
-# MP4 in current dir
+##### MP4 in current dir
 TEMPDIR='/mnt/pool0/p0ds0smb/temp/ffmpeg/working/'
 shopt -s globstar
 for f in *.mp4; do
@@ -473,7 +565,7 @@ if ! [ "${AUDIOFORMAT[0]}" = "aac" ]; then
 fi
 done
 
-# MKV and MP4
+##### MKV and MP4
 # Remember to include trailing slash in TEMPDIR
 TEMPDIR='/mnt/pool0/p0ds0smb/temp/ffmpeg/working/'
 shopt -s globstar
@@ -487,7 +579,7 @@ if ! [ "${AUDIOFORMAT[0]}" = "aac" ]; then
 fi
 done
 
-# Nvidia hardware acceleration
+##### Nvidia hardware acceleration
 TEMPDIR='/media/visualblind/p0ds0smb/temp/ffmpeg/working/'
 shopt -s globstar
 for f in *.mkv; do
@@ -502,7 +594,7 @@ if ! [ "${AUDIOFORMAT[0]}" = "aac" ]; then
 fi
 done
 
-# H.264/AAC/SRT
+##### H.264/AAC/SRT
 TEMPDIR='/mnt/pool0/p0ds0smb/temp/ffmpeg/working/'
 shopt -s globstar
 for f in *.mkv; do

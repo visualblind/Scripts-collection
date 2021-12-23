@@ -1,1 +1,1 @@
-for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @echo %s
+for /f "tokens=2" %%s in ('sc query state^= all ^| findstr "SERVICE_NAME"') do @echo %%s

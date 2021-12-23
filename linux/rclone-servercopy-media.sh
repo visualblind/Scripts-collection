@@ -47,12 +47,13 @@ bash -c "rclone sync --drive-server-side-across-configs \
 --drive-stop-on-upload-limit --tpslimit 4 --tpslimit-burst 4 --progress --verbose \
 --delete-during --log-file $HOME/.config/rclone/log/upload-gdrive-servercopy.log \
 gdrive-usmba:gcrypt/cu3lt3mmlcrmqh9i9rmf3b8530 \
-gdrive-gdrive01dvecs:gcrypt/cu3lt3mmlcrmqh9i9rmf3b8530; \
-rclone sync --drive-server-side-across-configs \
---drive-stop-on-upload-limit --tpslimit 4 --tpslimit-burst 4 --progress --verbose \
---delete-during --log-file $HOME/.config/rclone/log/upload-gdrive-servercopy.log \
-gdrive-usmba:gcrypt/cu3lt3mmlcrmqh9i9rmf3b8530 \
-gdrive-gdrive02dvecs:gcrypt/cu3lt3mmlcrmqh9i9rmf3b8530"
+gdrive-gdrive01dvecs:gcrypt/cu3lt3mmlcrmqh9i9rmf3b8530"
+
+#rclone sync --drive-server-side-across-configs \
+#--drive-stop-on-upload-limit --tpslimit 4 --tpslimit-burst 4 --progress --verbose \
+#--delete-during --log-file $HOME/.config/rclone/log/upload-gdrive-servercopy.log \
+#gdrive-usmba:gcrypt/cu3lt3mmlcrmqh9i9rmf3b8530 \
+#gdrive-gdrive02dvecs:gcrypt/cu3lt3mmlcrmqh9i9rmf3b8530
 
 screen -S $SCREEN_NAME -X colon "logfile flush 0^M"
 

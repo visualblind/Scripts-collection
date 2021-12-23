@@ -5,13 +5,13 @@ services:
     image: ghcr.io/linuxserver/pwndrop:latest
     container_name: pwndrop
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - TZ=America/Los_Angeles
-      - SECRET_PATH=/pwndrop #optional
+      - SECRET_PATH=/pwndrop
     volumes:
-      - /var/docker/pwndrop/config:/config
+      - /usr/local/pwndrop/config:/config
     ports:
-      - 8082:8080
-#    restart: unless-stopped
-    restart: always
+      - 8080:8080
+    restart: unless-stopped
+#    restart: always

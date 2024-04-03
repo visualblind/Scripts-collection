@@ -1,21 +1,7 @@
 Scripts-collection
 |-- bsd
 |   |-- freenas-iocage-nextcloud
-|   |   |-- configs
-|   |   `-- .git
-|   |       |-- hooks
-|   |       |-- info
-|   |       |-- logs
-|   |       |   `-- refs
-|   |       |       |-- heads
-|   |       |       `-- remotes
-|   |       |           `-- origin
-|   |       |-- objects
-|   |       |   `-- pack
-|   |       `-- refs
-|   |           |-- heads
-|   |           `-- remotes
-|   |               `-- origin
+|   |   `-- configs
 |   |-- freenas-truenas
 |   |-- iocage-plugin-emby-master
 |   `-- zip
@@ -64,8 +50,6 @@ Scripts-collection
 |   |   |   `-- app
 |   |   |-- flask-redis
 |   |   |-- gitea-postgres
-|   |   |-- .github
-|   |   |   `-- workflows
 |   |   |-- minecraft
 |   |   |   `-- screenshots
 |   |   |-- nextcloud-postgres
@@ -146,7 +130,6 @@ Scripts-collection
 |   |   |       |-- public
 |   |   |       `-- src
 |   |   |-- react-nginx
-|   |   |   |-- .nginx
 |   |   |   |-- public
 |   |   |   `-- src
 |   |   |-- react-rust-postgres
@@ -957,8 +940,6 @@ Scripts-collection
 |               |   |       `-- Loop
 |               |   |           `-- Internal
 |               |   `-- byte-stream
-|               |       |-- .github
-|               |       |   `-- workflows
 |               |       `-- lib
 |               |           `-- Base64
 |               |-- asm89
@@ -969,9 +950,6 @@ Scripts-collection
 |               |   |   |-- crt
 |               |   |   |   `-- aws-crt-ffi
 |               |   |   |-- ext
-|               |   |   |-- .github
-|               |   |   |   |-- ISSUE_TEMPLATE
-|               |   |   |   `-- workflows
 |               |   |   |-- src
 |               |   |   |   `-- AWS
 |               |   |   |       `-- CRT
@@ -2293,8 +2271,6 @@ Scripts-collection
 |               |       |   |-- debugging
 |               |       |   |-- faq
 |               |       |   `-- getting-started
-|               |       |-- .github
-|               |       |   `-- workflows
 |               |       |-- resources
 |               |       |   `-- views
 |               |       `-- src
@@ -2347,8 +2323,6 @@ Scripts-collection
 |               |               `-- Calculator
 |               |-- cboden
 |               |   `-- ratchet
-|               |       |-- .github
-|               |       |   `-- workflows
 |               |       |-- src
 |               |       |   `-- Ratchet
 |               |       |       |-- Http
@@ -2451,8 +2425,6 @@ Scripts-collection
 |               |   |   `-- src
 |               |   |       `-- Constraint
 |               |   |-- spdx-licenses
-|               |   |   |-- .github
-|               |   |   |   `-- workflows
 |               |   |   |-- res
 |               |   |   `-- src
 |               |   `-- xdebug-handler
@@ -2543,8 +2515,6 @@ Scripts-collection
 |               |   |               |       `-- Helper
 |               |   |               `-- Types
 |               |   |-- deprecations
-|               |   |   |-- .github
-|               |   |   |   `-- workflows
 |               |   |   |-- lib
 |               |   |   |   `-- Doctrine
 |               |   |   |       `-- Deprecations
@@ -2612,8 +2582,6 @@ Scripts-collection
 |               |               `-- Tests
 |               |-- facade
 |               |   `-- ignition-contracts
-|               |       |-- .github
-|               |       |   `-- workflows
 |               |       `-- src
 |               |-- fakerphp
 |               |   `-- faker
@@ -2708,8 +2676,6 @@ Scripts-collection
 |               |                   `-- zh_TW
 |               |-- felixfbecker
 |               |   |-- advanced-json-rpc
-|               |   |   |-- .github
-|               |   |   |   `-- workflows
 |               |   |   `-- lib
 |               |   `-- language-server-protocol
 |               |       `-- src
@@ -2718,8 +2684,6 @@ Scripts-collection
 |               |       `-- src
 |               |-- filp
 |               |   `-- whoops
-|               |       |-- .github
-|               |       |   `-- workflows
 |               |       `-- src
 |               |           `-- Whoops
 |               |               |-- Exception
@@ -2816,8 +2780,6 @@ Scripts-collection
 |               |   `-- hamcrest-php
 |               |       |-- generator
 |               |       |   `-- parts
-|               |       |-- .github
-|               |       |   `-- workflows
 |               |       |-- hamcrest
 |               |       |   `-- Hamcrest
 |               |       |       |-- Arrays
@@ -2839,7 +2801,6 @@ Scripts-collection
 |               |               `-- Xml
 |               |-- intervention
 |               |   `-- image
-|               |       |-- .github
 |               |       `-- src
 |               |           |-- config
 |               |           `-- Intervention
@@ -2856,8 +2817,6 @@ Scripts-collection
 |               |                       `-- Shapes
 |               |-- jaybizzle
 |               |   |-- crawler-detect
-|               |   |   |-- .github
-|               |   |   |   `-- workflows
 |               |   |   |-- raw
 |               |   |   `-- src
 |               |   |       `-- Fixtures
@@ -2882,8 +2841,6 @@ Scripts-collection
 |               |                   `-- Retrievers
 |               |-- kyslik
 |               |   `-- column-sortable
-|               |       |-- .github
-|               |       |   `-- workflows
 |               |       |-- src
 |               |       |   |-- ColumnSortable
 |               |       |   |   `-- Exceptions
@@ -3261,7 +3218,6 @@ Scripts-collection
 |               |           `-- stubs
 |               |-- maennchen
 |               |   `-- zipstream-php
-|               |       |-- .github
 |               |       |-- src
 |               |       |   |-- Exception
 |               |       |   `-- Option
@@ -3379,8 +3335,6 @@ Scripts-collection
 |               |       `-- src
 |               |-- myclabs
 |               |   |-- deep-copy
-|               |   |   |-- .github
-|               |   |   |   `-- workflows
 |               |   |   `-- src
 |               |   |       `-- DeepCopy
 |               |   |           |-- Exception
@@ -3452,18 +3406,17 @@ Scripts-collection
 |               |               `-- PrettyPrinter
 |               |-- nunomaduro
 |               |   |-- collision
-|               |   |   |-- src
-|               |   |   |   |-- Adapters
-|               |   |   |   |   |-- Laravel
-|               |   |   |   |   |   |-- Commands
-|               |   |   |   |   |   `-- Exceptions
-|               |   |   |   |   `-- Phpunit
-|               |   |   |   |-- Contracts
-|               |   |   |   |   `-- Adapters
-|               |   |   |   |       `-- Phpunit
-|               |   |   |   |-- Exceptions
-|               |   |   |   `-- SolutionsRepositories
-|               |   |   `-- .temp
+|               |   |   `-- src
+|               |   |       |-- Adapters
+|               |   |       |   |-- Laravel
+|               |   |       |   |   |-- Commands
+|               |   |       |   |   `-- Exceptions
+|               |   |       |   `-- Phpunit
+|               |   |       |-- Contracts
+|               |   |       |   `-- Adapters
+|               |   |       |       `-- Phpunit
+|               |   |       |-- Exceptions
+|               |   |       `-- SolutionsRepositories
 |               |   `-- larastan
 |               |       |-- src
 |               |       |   |-- Analyser
@@ -3500,8 +3453,6 @@ Scripts-collection
 |               |   |   `-- other
 |               |   `-- sodium_compat
 |               |       |-- dist
-|               |       |-- .github
-|               |       |   `-- workflows
 |               |       |-- lib
 |               |       |-- namespaced
 |               |       |   `-- Core
@@ -3541,8 +3492,6 @@ Scripts-collection
 |               |           `-- Output
 |               |-- phpdocumentor
 |               |   |-- reflection-common
-|               |   |   |-- .github
-|               |   |   |   `-- workflows
 |               |   |   `-- src
 |               |   |-- reflection-docblock
 |               |   |   `-- src
@@ -3602,17 +3551,14 @@ Scripts-collection
 |               |   |       |-- StaticAnalysis
 |               |   |       `-- Util
 |               |   |-- php-file-iterator
-|               |   |   |-- .psalm
 |               |   |   `-- src
 |               |   |-- php-invoker
 |               |   |   `-- src
 |               |   |       `-- exceptions
 |               |   |-- php-text-template
-|               |   |   |-- .psalm
 |               |   |   `-- src
 |               |   |       `-- exceptions
 |               |   |-- php-timer
-|               |   |   |-- .psalm
 |               |   |   `-- src
 |               |   |       `-- exceptions
 |               |   `-- phpunit
@@ -3748,8 +3694,6 @@ Scripts-collection
 |               |           `-- Validator
 |               |-- ratchet
 |               |   `-- rfc6455
-|               |       |-- .github
-|               |       |   `-- workflows
 |               |       |-- src
 |               |       |   |-- Handshake
 |               |       |   `-- Messaging
@@ -3798,7 +3742,6 @@ Scripts-collection
 |               |   |   `-- src
 |               |   |       `-- exceptions
 |               |   |-- code-unit
-|               |   |   |-- .psalm
 |               |   |   `-- src
 |               |   |       `-- exceptions
 |               |   |-- code-unit-reverse-lookup
@@ -3807,7 +3750,6 @@ Scripts-collection
 |               |   |   `-- src
 |               |   |       `-- exceptions
 |               |   |-- complexity
-|               |   |   |-- .psalm
 |               |   |   `-- src
 |               |   |       |-- Complexity
 |               |   |       |-- Exception
@@ -3824,17 +3766,13 @@ Scripts-collection
 |               |   |   `-- src
 |               |   |       `-- exceptions
 |               |   |-- lines-of-code
-|               |   |   |-- .psalm
 |               |   |   `-- src
 |               |   |       `-- Exception
 |               |   |-- object-enumerator
-|               |   |   |-- .psalm
 |               |   |   `-- src
 |               |   |-- object-reflector
-|               |   |   |-- .psalm
 |               |   |   `-- src
 |               |   |-- recursion-context
-|               |   |   |-- .psalm
 |               |   |   `-- src
 |               |   |-- resource-operations
 |               |   |   |-- build
@@ -3857,8 +3795,6 @@ Scripts-collection
 |               |   |-- backtrace
 |               |   |   `-- src
 |               |   |-- data-transfer-object
-|               |   |   |-- .github
-|               |   |   |   `-- workflows
 |               |   |   `-- src
 |               |   |       |-- Attributes
 |               |   |       |-- Casters
@@ -3975,9 +3911,6 @@ Scripts-collection
 |               |   |   |-- docs
 |               |   |   |   |-- advanced-usage
 |               |   |   |   `-- features
-|               |   |   |-- .github
-|               |   |   |   |-- ISSUE_TEMPLATE
-|               |   |   |   `-- workflows
 |               |   |   `-- src
 |               |   |       |-- Concerns
 |               |   |       |-- Enums
@@ -3987,8 +3920,6 @@ Scripts-collection
 |               |   |       `-- Sorts
 |               |   |-- laravel-queueable-action
 |               |   |   |-- config
-|               |   |   |-- .github
-|               |   |   |   `-- workflows
 |               |   |   `-- src
 |               |   |       |-- Exceptions
 |               |   |       |-- stubs
@@ -3999,13 +3930,9 @@ Scripts-collection
 |               |   |       `-- Facades
 |               |   |-- laravel-tail
 |               |   |   |-- config
-|               |   |   |-- .github
-|               |   |   |   `-- workflows
 |               |   |   |-- src
 |               |   |   `-- tests
 |               |   |-- ssh
-|               |   |   |-- .github
-|               |   |   |   `-- workflows
 |               |   |   `-- src
 |               |   `-- temporary-directory
 |               |       `-- src
@@ -4212,8 +4139,6 @@ Scripts-collection
 |               |   |   |-- ArgumentValueResolver
 |               |   |   |-- EventListener
 |               |   |   |-- Factory
-|               |   |   |-- .github
-|               |   |   |   `-- workflows
 |               |   |   `-- Tests
 |               |   |       |-- ArgumentValueResolver
 |               |   |       |-- EventListener
@@ -4284,14 +4209,12 @@ Scripts-collection
 |               |       `-- Test
 |               |-- teamtnt
 |               |   |-- laravel-scout-tntsearch-driver
-|               |   |   |-- .github
 |               |   |   |-- src
 |               |   |   |   |-- Console
 |               |   |   |   |-- Engines
 |               |   |   |   `-- Events
 |               |   |   `-- tests
 |               |   `-- tntsearch
-|               |       |-- .github
 |               |       |-- helper
 |               |       |-- src
 |               |       |   |-- Classifier
@@ -4320,8 +4243,6 @@ Scripts-collection
 |               |       `-- src
 |               |-- tijsverkoyen
 |               |   `-- css-to-inline-styles
-|               |       |-- .github
-|               |       |   `-- workflows
 |               |       `-- src
 |               |           `-- Css
 |               |               |-- Property
@@ -4420,8 +4341,6 @@ Scripts-collection
 |               |                   `-- data
 |               `-- webmozart
 |                   |-- assert
-|                   |   |-- .github
-|                   |   |   `-- workflows
 |                   |   `-- src
 |                   `-- path-util
 |                       |-- docs
@@ -4430,83 +4349,14 @@ Scripts-collection
 |-- linux
 |   |-- bashrc
 |   |-- bash-wallpaper-downloader
-|   |   |-- .git
-|   |   |   |-- branches
-|   |   |   |-- hooks
-|   |   |   |-- info
-|   |   |   |-- logs
-|   |   |   |   `-- refs
-|   |   |   |       |-- heads
-|   |   |   |       `-- remotes
-|   |   |   |           `-- origin
-|   |   |   |-- objects
-|   |   |   |   |-- info
-|   |   |   |   `-- pack
-|   |   |   `-- refs
-|   |   |       |-- heads
-|   |   |       |-- remotes
-|   |   |       |   `-- origin
-|   |   |       `-- tags
-|   |   |-- .github
-|   |   |   `-- ISSUE_TEMPLATE
 |   |   `-- screenshots
 |   |-- benchmark
 |   |-- desktop-files
 |   |-- ffmpeg
 |   |-- from-rclone-iocage
-|   |   `-- .config
-|   |       |-- htop
-|   |       `-- rclone
-|   |           |-- filters
-|   |           `-- log
 |   |-- git2
 |   |-- jellyfin-stuff
 |   |   |-- docker-compose
-|   |   |-- .git
-|   |   |   |-- branches
-|   |   |   |-- hooks
-|   |   |   |-- info
-|   |   |   |-- logs
-|   |   |   |   `-- refs
-|   |   |   |       |-- heads
-|   |   |   |       `-- remotes
-|   |   |   |           `-- origin
-|   |   |   |-- objects
-|   |   |   |   |-- 01
-|   |   |   |   |-- 06
-|   |   |   |   |-- 07
-|   |   |   |   |-- 0d
-|   |   |   |   |-- 1e
-|   |   |   |   |-- 22
-|   |   |   |   |-- 2c
-|   |   |   |   |-- 36
-|   |   |   |   |-- 38
-|   |   |   |   |-- 40
-|   |   |   |   |-- 62
-|   |   |   |   |-- 69
-|   |   |   |   |-- 82
-|   |   |   |   |-- 89
-|   |   |   |   |-- 91
-|   |   |   |   |-- 97
-|   |   |   |   |-- 9c
-|   |   |   |   |-- 9d
-|   |   |   |   |-- 9f
-|   |   |   |   |-- aa
-|   |   |   |   |-- ae
-|   |   |   |   |-- b1
-|   |   |   |   |-- b5
-|   |   |   |   |-- c9
-|   |   |   |   |-- d9
-|   |   |   |   |-- dc
-|   |   |   |   |-- e2
-|   |   |   |   |-- ee
-|   |   |   |   |-- info
-|   |   |   |   `-- pack
-|   |   |   `-- refs
-|   |   |       |-- heads
-|   |   |       |-- remotes
-|   |   |       |   `-- origin
-|   |   |       `-- tags
 |   |   |-- iptv-livetv
 |   |   |-- jellyfin-css
 |   |   |-- misc
@@ -4571,7 +4421,6 @@ Scripts-collection
 |   |-- uguucho-master
 |   |   `-- uguucho
 |   |-- uguush
-|   |   `-- .obsidian
 |   |-- unifi-controller
 |   |   |-- unifi-5.10.17
 |   |   |   |-- debian8
@@ -4602,7 +4451,6 @@ Scripts-collection
 |   |   `-- unifi-5.9.29
 |   |       |-- ubuntu-16.04
 |   |       `-- ubuntu-18.04
-|   |-- .vscode
 |   `-- zip
 |-- macosx
 |-- mysql
@@ -4611,12 +4459,6 @@ Scripts-collection
 |           `-- srdb-tests
 |-- newrelic
 |-- nginx
-|-- .nginxy
-|   |-- css
-|   |-- images
-|   |   |-- icons
-|   |   `-- img
-|   `-- js
 |-- perl
 |-- php
 |   |-- 1.0.2
@@ -4800,9 +4642,7 @@ Scripts-collection
 |   |   |-- procreader
 |   |   |-- rootproxy
 |   |   |-- ui
-|   |   |-- utils
-|   |   `-- .vscode
-|   |       `-- .ropeproject
+|   |   `-- utils
 |   `-- web2py
 |       |-- applications
 |       |   |-- admin
@@ -4976,8 +4816,7 @@ Scripts-collection
     |       |   `-- internet-explorer
     |       |       |-- breadcrumb
     |       |       |-- ie11-deploy-guide
-    |       |       |   |-- images
-    |       |       |   `-- .vscode
+    |       |       |   `-- images
     |       |       |-- ie11-faq
     |       |       |-- ie11-ieak
     |       |       |   `-- images
@@ -5040,7 +4879,6 @@ Scripts-collection
     |       |   |-- breadcrumb
     |       |   |-- education
     |       |   `-- images
-    |       |-- .vscode
     |       |-- windows
     |       |   |-- access-protection
     |       |   |-- application-management
@@ -5675,3 +5513,5 @@ Scripts-collection
         `-- printing
             `-- checkifnetworkprinterisconnected
                 `-- Documentation_files
+
+5514 directories

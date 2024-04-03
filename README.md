@@ -1,4 +1,4 @@
-```bash
+```
 Scripts-collection/
 ├── bsd
 │   ├── freenas-iocage-nextcloud

@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: "nginx-proxy-manager"
+    restart: unless-stopped
+    ports:
+      - '8880:80'
+      - '81:81'
+      - '8443:443'
+    volumes:
+      - /docker/nginx-proxy-manager/data:/data
+      - /docker/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+    #network_mode: host
+    networks:
+      - linuxserver-nginx_default
+    environment:
+      DISABLE_IPV6: 'true'
+
+networks:
+  linuxserver-nginx_default:
+    external: true
+    name: linuxserver-nginx_default

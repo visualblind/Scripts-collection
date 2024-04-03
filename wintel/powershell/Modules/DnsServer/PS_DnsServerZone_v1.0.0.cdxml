@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/Microsoft/Windows/DNS/PS_DnsServerZone" ClassVersion="1.0.0">
+    <Version>1.0.0</Version>
+    <DefaultNoun>DnsServerZone</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Export" ConfirmImpact="Medium" />
+        <Method MethodName="Export">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="FileName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ZoneName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerZone" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" />
+        <Method MethodName="Get">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="ZoneName" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="VirtualizationInstance">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerZone" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="Medium" />
+        <Method MethodName="Remove">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ZoneName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="VirtualizationInstance">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerZone" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Resume" ConfirmImpact="Medium" />
+        <Method MethodName="Resume">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ZoneName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerZone" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Suspend" ConfirmImpact="Medium" />
+        <Method MethodName="Suspend">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ZoneName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerZone" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Sync" ConfirmImpact="Medium" />
+        <Method MethodName="Sync">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ZoneName" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerZone" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

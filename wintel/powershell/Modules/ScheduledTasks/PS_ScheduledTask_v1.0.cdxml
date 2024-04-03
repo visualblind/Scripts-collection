@@ -1,0 +1,1348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="Root/Microsoft/Windows/TaskScheduler/PS_ScheduledTask" ClassVersion="1.0">
+    <Version>1.0</Version>
+    <DefaultNoun>ScheduledTask</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Disable" />
+        <Method MethodName="DisableByName" CmdletParameterSet="Name">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="TaskName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="DisableByObject" CmdletParameterSet="Object">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Enable" />
+        <Method MethodName="EnableByName" CmdletParameterSet="Name">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="TaskName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="EnableByObject" CmdletParameterSet="Object">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Export" />
+        <Method MethodName="ExportByName" CmdletParameterSet="Name">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="TaskName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="System.String" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="ExportByObject" CmdletParameterSet="Object">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="System.String" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" Noun="ScheduledTaskInfo" />
+        <Method MethodName="GetInfoByName" CmdletParameterSet="Name">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="TaskName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskDynamicInfo" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="GetInfoByObject" CmdletParameterSet="Object">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskDynamicInfo" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" />
+        <Method MethodName="New">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Action">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskAction" />
+              <CmdletParameterMetadata Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="4">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Principal">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskPrincipal" />
+              <CmdletParameterMetadata Position="3">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Settings">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskSettings" />
+              <CmdletParameterMetadata Position="2">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Trigger">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskTrigger" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" Noun="ScheduledTaskAction" />
+        <Method MethodName="NewActionByExec" CmdletParameterSet="Exec">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Id">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Execute">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Argument">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="WorkingDirectory">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="2">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskAction" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" Noun="ScheduledTaskPrincipal" DefaultCmdletParameterSet="User" />
+        <Method MethodName="NewPrincipalByGroup" CmdletParameterSet="Group">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="GroupId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Id">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="4">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RunLevel">
+              <Type PSType="Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.RunLevelEnum" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ProcessTokenSidType">
+              <Type PSType="Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.ProcessTokenSidTypeEnum" />
+              <CmdletParameterMetadata Position="2">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RequiredPrivilege">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Position="3">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskPrincipal" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="NewPrincipalByUser" CmdletParameterSet="User">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="UserId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="LogonType">
+              <Type PSType="Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.LogonTypeEnum" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Id">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="5">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ProcessTokenSidType">
+              <Type PSType="Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.ProcessTokenSidTypeEnum" />
+              <CmdletParameterMetadata Position="3">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RequiredPrivilege">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Position="4">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RunLevel">
+              <Type PSType="Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.RunLevelEnum" />
+              <CmdletParameterMetadata Position="2">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskPrincipal" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" Noun="ScheduledTaskSettingsSet" />
+        <Method MethodName="NewSettings">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="DisallowDemandStart">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DisallowHardTerminate">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Compatibility">
+              <Type PSType="Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.CompatibilityEnum" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DeleteExpiredTaskAfter">
+              <Type PSType="System.TimeSpan" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AllowStartIfOnBatteries">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Disable">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MaintenanceExclusive">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Hidden">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RunOnlyIfIdle">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IdleWaitTimeout">
+              <Type PSType="System.TimeSpan" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NetworkId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NetworkName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DisallowStartOnRemoteAppSession">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MaintenancePeriod">
+              <Type PSType="System.TimeSpan" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MaintenanceDeadline">
+              <Type PSType="System.TimeSpan" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="StartWhenAvailable">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DontStopIfGoingOnBatteries">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="WakeToRun">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IdleDuration">
+              <Type PSType="System.TimeSpan" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RestartOnIdle">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DontStopOnIdleEnd">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ExecutionTimeLimit">
+              <Type PSType="System.TimeSpan" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MultipleInstances">
+              <Type PSType="Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.MultipleInstancesEnum" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Priority">
+              <Type PSType="System.Int32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RestartCount">
+              <Type PSType="System.Int32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RestartInterval">
+              <Type PSType="System.TimeSpan" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RunOnlyIfNetworkAvailable">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskSettings" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" Noun="ScheduledTaskTrigger" DefaultCmdletParameterSet="Once" />
+        <Method MethodName="NewTriggerByDaily" CmdletParameterSet="Daily">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Daily">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DaysInterval">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RandomDelay">
+              <Type PSType="System.TimeSpan" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="At">
+              <Type PSType="System.DateTime" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskTrigger" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="NewTriggerByLogon" CmdletParameterSet="Logon">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="RandomDelay">
+              <Type PSType="System.TimeSpan" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AtLogOn">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="User">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskTrigger" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="NewTriggerByOnce" CmdletParameterSet="Once">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="RandomDelay">
+              <Type PSType="System.TimeSpan" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="At">
+              <Type PSType="System.DateTime" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Once">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RepetitionDuration">
+              <Type PSType="System.TimeSpan" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RepetitionInterval">
+              <Type PSType="System.TimeSpan" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskTrigger" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="NewTriggerByStartup" CmdletParameterSet="Startup">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="RandomDelay">
+              <Type PSType="System.TimeSpan" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AtStartup">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskTrigger" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="NewTriggerByWeekly" CmdletParameterSet="Weekly">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="RandomDelay">
+              <Type PSType="System.TimeSpan" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DaysOfWeek">
+              <Type PSType="System.DayOfWeek[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Weekly">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="WeeksInterval">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="At">
+              <Type PSType="System.DateTime" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskTrigger" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Register" DefaultCmdletParameterSet="User" />
+        <Method MethodName="RegisterByObject" CmdletParameterSet="Object">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Password">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="4">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="User">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="3">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="RegisterByPrincipal" CmdletParameterSet="Principal">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Principal">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskPrincipal" />
+              <CmdletParameterMetadata Position="5">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Action">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskAction" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="6">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Settings">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskSettings" />
+              <CmdletParameterMetadata Position="4">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Trigger">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskTrigger" />
+              <CmdletParameterMetadata Position="3">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="RegisterByUser" CmdletParameterSet="User">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Trigger">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskTrigger" />
+              <CmdletParameterMetadata Position="3">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Settings">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskSettings" />
+              <CmdletParameterMetadata Position="4">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="8">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="User">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="5">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Password">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="6">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Action">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskAction" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RunLevel">
+              <Type PSType="Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.RunLevelEnum" />
+              <CmdletParameterMetadata Position="7">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="RegisterByXml" CmdletParameterSet="Xml">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Xml">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Password">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="4">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="User">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="3">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" DefaultCmdletParameterSet="User" />
+        <Method MethodName="SetByObject" CmdletParameterSet="Object">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Password">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="User">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="2">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByPrincipal" CmdletParameterSet="Principal">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Principal">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskPrincipal" />
+              <CmdletParameterMetadata Position="5">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Action">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskAction" />
+              <CmdletParameterMetadata Position="2">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Settings">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskSettings" />
+              <CmdletParameterMetadata Position="4">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Trigger">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskTrigger" />
+              <CmdletParameterMetadata Position="3">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByUser" CmdletParameterSet="User">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Action">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskAction" />
+              <CmdletParameterMetadata Position="2">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Settings">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskSettings" />
+              <CmdletParameterMetadata Position="4">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Trigger">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskTrigger" />
+              <CmdletParameterMetadata Position="3">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Password">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="6">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="User">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="5">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Start" DefaultCmdletParameterSet="Path" />
+        <Method MethodName="StartByObject" CmdletParameterSet="Object">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="StartByPath" CmdletParameterSet="Path">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="TaskPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Stop" DefaultCmdletParameterSet="Path" />
+        <Method MethodName="StopByObject" CmdletParameterSet="Object">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="StopByPath" CmdletParameterSet="Path">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="TaskPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TaskName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

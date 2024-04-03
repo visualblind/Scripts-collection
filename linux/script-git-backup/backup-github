@@ -1,0 +1,31 @@
+#!/bin/sh
+
+GITHUB_USER="$1"
+PREFIX="$2"
+EXCLUDE_REPOS="$3"
+if test "x${GITHUB_USER}" = "x"
+then
+	echo "Usage: $0 GITHUB_USER LOCAL_PATH_PREFIX [EXCLUDE_REPOS]"
+	exit 2
+fi
+
+GITHUB_URL="https://github.com/"
+
+REPOS="$(curl -s -f "https://api.github.com/users/${GITHUB_USER}/repos" | php -r 'echo join("\n",array_map(function($a){return $a["full_name"];},json_decode(file_get_contents("php://stdin"),1)))."\n";')"
+
+for r in $REPOS
+do
+	ignore=0
+	if test "x${EXCLUDE_REPOS}" != "x"; then
+		echo "${r}" | grep -E "${EXCLUDE_REPOS}" >/dev/null
+		if test "x$?" = "x0"; then
+			echo "# ignore repo: ${r}"
+			ignore=1
+		fi
+	fi
+
+	if test "x${ignore}" != "x1"; then
+		backup-git-repo "${GITHUB_URL}${r}.git" "${PREFIX}${r}"
+	fi
+done
+

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <!--
+
+    //
+    // StorageBusDisk
+    //
+
+    -->
+    <View>
+      <Name>DiskTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>StorageBusDisk</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Guid</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Number</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsCache</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BusType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Guid</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Number</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsCache</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BusType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>DiskListView</Name>
+      <ViewSelectedBy>
+        <TypeName>StorageBusDisk</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Guid</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Number</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsCache</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>BusType</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>
+

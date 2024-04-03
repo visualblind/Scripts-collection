@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  
+  <Class ClassName="ROOT/Microsoft/Windows/SMB/MSFT_SmbMultichannelConstraint">   
+    <Version>1.0</Version>   
+       
+    <DefaultNoun>SmbMultichannelConstraint</DefaultNoun>   
+    <InstanceCmdlets>
+      
+      <!--
+
+      //
+      // Get-SmbMultichannelConstraint
+      // 
+
+      -->   
+      <GetCmdletParameters>
+        <QueryableProperties>   
+          <Property PropertyName="ServerName">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" Position="1" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+      </GetCmdletParameters>
+
+      <GetCmdlet>
+        <CmdletMetadata Verb="Get" HelpUri="http://go.microsoft.com/fwlink/p/?LinkId=244223" Aliases="gsmbt"/>
+      </GetCmdlet>
+
+
+      <!--
+
+      //
+      // Remove-SmbMultichannelConstraint
+      //
+
+      -->
+        <Cmdlet>
+            <CmdletMetadata Verb="Remove" ConfirmImpact="High" HelpUri="http://go.microsoft.com/fwlink/p/?LinkId=244224" Aliases="rsmbt"/>
+            <Method MethodName="cim:DeleteInstance">
+                <Parameters>
+                    <Parameter ParameterName="cim:operationOption:Force">
+                        <Type PSType="System.Management.Automation.SwitchParameter" />
+                        <CmdletParameterMetadata PSName="Force">
+                        </CmdletParameterMetadata>
+                    </Parameter>
+                </Parameters>
+            </Method>
+            <GetCmdletParameters  DefaultCmdletParameterSet="ByInterfaceIndex">
+                <QueryableProperties>
+                    <Property PropertyName="ServerName">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="false">
+                            <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="InterfaceIndex">
+                        <Type PSType="uint32" />
+                        <RegularQuery AllowGlobbing="false">
+                            <CmdletParameterMetadata IsMandatory="false" Position="2" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByInterfaceIndex">
+                                <AllowNull />
+                            </CmdletParameterMetadata>
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="InterfaceAlias">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="false">
+                            <CmdletParameterMetadata IsMandatory="false" Position="2" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByInterfaceAlias">
+                                <AllowNull />
+                            </CmdletParameterMetadata>
+                        </RegularQuery>
+                    </Property>
+                </QueryableProperties>
+            </GetCmdletParameters>
+        </Cmdlet>
+
+
+
+    </InstanceCmdlets>
+
+    <StaticCmdlets>
+
+      <!--
+
+      //
+      // New-SmbMultichannelConstraint
+      //
+
+      -->
+
+
+        <Cmdlet>
+            <CmdletMetadata Verb="New" ConfirmImpact="High" HelpUri="http://go.microsoft.com/fwlink/p/?LinkId=244226" Aliases="nsmbt" DefaultCmdletParameterSet="ByInterfaceIndex" />
+            <Method MethodName="CreateConstraint" CmdletParameterSet="ByInterfaceIndex">
+                <ReturnValue>
+                    <Type PSType="uint32" />
+                    <CmdletOutputMetadata>
+                        <ErrorCode />
+                    </CmdletOutputMetadata>
+                </ReturnValue>
+                <Parameters>
+                    <Parameter ParameterName="ServerName">
+                        <Type PSType="string" />
+                        <CmdletParameterMetadata IsMandatory="true" Position="1">
+                            <ValidateNotNull />
+                            <ValidateNotNullOrEmpty />
+                        </CmdletParameterMetadata>
+                    </Parameter>
+                    <Parameter ParameterName="InterfaceIndex">
+                        <Type PSType="uint32[]" />
+                        <CmdletParameterMetadata IsMandatory="true" Position="2">
+                            <ValidateNotNull />
+                            <ValidateNotNullOrEmpty />
+                        </CmdletParameterMetadata>
+                    </Parameter>
+                    <Parameter ParameterName="cim:operationOption:Force">
+                        <Type PSType="System.Management.Automation.SwitchParameter" />
+                        <CmdletParameterMetadata PSName="Force">
+                        </CmdletParameterMetadata>
+                    </Parameter>
+                    <Parameter ParameterName="Output">
+                        <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+                        <CmdletOutputMetadata />
+                    </Parameter>
+                </Parameters>
+            </Method>
+            <Method MethodName="CreateConstraint" CmdletParameterSet="ByInterfaceAlias">
+                <ReturnValue>
+                    <Type PSType="uint32" />
+                    <CmdletOutputMetadata>
+                        <ErrorCode />
+                    </CmdletOutputMetadata>
+                </ReturnValue>
+                <Parameters>
+                    <Parameter ParameterName="ServerName">
+                        <Type PSType="string" />
+                        <CmdletParameterMetadata IsMandatory="true" Position="1">
+                            <ValidateNotNull />
+                            <ValidateNotNullOrEmpty />
+                        </CmdletParameterMetadata>
+                    </Parameter>
+                    <Parameter ParameterName="InterfaceAlias">
+                        <Type PSType="string[]" />
+                        <CmdletParameterMetadata IsMandatory="true" Position="2">
+                            <ValidateNotNull />
+                            <ValidateNotNullOrEmpty />
+                        </CmdletParameterMetadata>
+                    </Parameter>
+                    <Parameter ParameterName="cim:operationOption:Force">
+                        <Type PSType="System.Management.Automation.SwitchParameter" />
+                        <CmdletParameterMetadata PSName="Force">
+                        </CmdletParameterMetadata>
+                    </Parameter>
+                    <Parameter ParameterName="Output">
+                        <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+                        <CmdletOutputMetadata />
+                    </Parameter>
+                </Parameters>
+            </Method>
+        </Cmdlet>
+        </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

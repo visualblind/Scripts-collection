@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+
+  <!-- Types Related To HostedCacheServerSettingData.AuthenticationMode -->
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheHostedCacheServerSettingData</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>ClientAuthenticationMode</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.HostedCacheServerSettingData.ClientAuthenticationMode]($this.PSBase.CimInstanceProperties['ClientAuthenticationMode'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheHostedCacheServerSettingData</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>ClientAuthenticationMode</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.HostedCacheServerSettingData.ClientAuthenticationMode]($this.PSBase.CimInstanceProperties['ClientAuthenticationMode'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+
+  <!-- Types Related To ClientSettingData -->
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheClientSettingData</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>CurrentClientMode</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ClientSettingData.CurrentClientMode]($this.PSBase.CimInstanceProperties['CurrentClientMode'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>PreferredContentInformationVersion</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ClientSettingData.PreferredContentInformationVersion]($this.PSBase.CimInstanceProperties['PreferredContentInformationVersion'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>HostedCacheVersion</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ClientSettingData.HostedCacheVersion]($this.PSBase.CimInstanceProperties['HostedCacheVersion'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheClientSettingData</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>CurrentClientMode</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ClientSettingData.CurrentClientMode]($this.PSBase.CimInstanceProperties['CurrentClientMode'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>PreferredContentInformationVersion</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ClientSettingData.PreferredContentInformationVersion]($this.PSBase.CimInstanceProperties['PreferredContentInformationVersion'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>HostedCacheVersion</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ClientSettingData.HostedCacheVersion]($this.PSBase.CimInstanceProperties['HostedCacheVersion'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+
+  <!-- Types Related To BranchCache Service -->
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheStatus</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>BranchCacheServiceStatus</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.BranchCacheStatus.BranchCacheServiceStatus]($this.PSBase.CimInstanceProperties['BranchCacheServiceStatus'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>BranchCacheServiceStartType</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.BranchCacheStatus.BranchCacheServiceStartType]($this.PSBase.CimInstanceProperties['BranchCacheServiceStartType'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheStatus</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>BranchCacheServiceStatus</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.BranchCacheStatus.BranchCacheServiceStatus]($this.PSBase.CimInstanceProperties['BranchCacheServiceStatus'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>BranchCacheServiceStartType</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.BranchCacheStatus.BranchCacheServiceStartType]($this.PSBase.CimInstanceProperties['BranchCacheServiceStartType'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+
+</Types>

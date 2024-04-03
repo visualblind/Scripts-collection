@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Configuration>
+  <ViewDefinitions>  
+    <View>
+      <Name>Formatting For MSFT_PrintJob (Table View)</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_PrintJob</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_PrintJob</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>   <!-- ID -->
+            <Width>5</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Computer Name -->
+            <Width>15</Width>   
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Printer Name -->
+            <Width>15</Width>   
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Document -->
+            <Width>20</Width>   
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Submitted -->
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- JobStatus -->
+            <Width>15</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Id</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ComputerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrinterName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DocumentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubmittedTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>JobStatus</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>    
+    <View>
+      <Name>Formatting For MSFT_PrintJob (List View)</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_PrintJob</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_PrintJob</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ComputerName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PrinterName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>UserName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>DocumentName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Datatype</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Priority</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Position</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>SubmittedTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Size</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>JobTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PagesPrinted</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>TotalPages</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>JobStatus</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

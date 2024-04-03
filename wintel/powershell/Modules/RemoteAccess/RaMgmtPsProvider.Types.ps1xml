@@ -1,0 +1,3226 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- *******************************************************************
+These sample files contain formatting information used by the Windows 
+PowerShell engine. Do not edit or change the contents of this file 
+directly. Please see the Windows PowerShell documentation or type 
+Get-Help Update-TypeData for more information.
+
+Copyright (c) Microsoft Corporation.  All rights reserved.
+ 
+THIS SAMPLE CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY 
+OF ANY KIND,WHETHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO 
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
+PURPOSE. IF THIS CODE AND INFORMATION IS MODIFIED, THE ENTIRE RISK OF USE
+OR RESULTS IN CONNECTION WITH THE USE OF THIS CODE AND INFORMATION 
+REMAINS WITH THE USER.
+******************************************************************** -->
+<Types>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DAAppServer</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ConnectionType</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['ConnectionType'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['ConnectionType'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>TrafficProtection</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['TrafficProtection'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['TrafficProtection'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DAClient</Name>
+        <Members>
+            <AliasProperty>
+                <Name>SGList</Name>
+                <ReferencedMemberName>SecurityGroupNameList</ReferencedMemberName>
+            </AliasProperty>
+            <ScriptProperty>
+                <Name>OnlyRemoteComputers</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['OnlyRemoteComputers'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['OnlyRemoteComputers'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>Downlevel</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['Downlevel'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['Downlevel'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ForceTunnel</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['ForceTunnel'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['ForceTunnel'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ForceTunnelingNrptSuffix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['ForceTunnelingNrptEntry'].value.CimInstanceProperties['Namespace'].value[0])
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EntrypointName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['EntrypointName'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['ForceTunnel'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DownlevelSecurityGroupNameList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelSecurityGroupNameList'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelSecurityGroupNameList'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DownlevelGpoName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelGpoName'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelGpoName'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DAClientDnsConfiguration</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>DnsSuffix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $output = @()
+                    foreach ($nrpt in $this.PSBase.CimInstanceProperties['NrptEntry'].value)
+                    {
+                        $output += $nrpt.PSBase.CimInstanceProperties['Namespace'].Value[0]
+                    }
+                    if ($output.Count -gt 0)
+                    {,(@($output))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EnableDAForAllNetworks</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['EnableDAForAllNetworks'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['EnableDAForAllNetworks'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>SecureNameQueryFallback</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['SecureNameQueryFallback'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['SecureNameQueryFallback'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>QueryPolicy</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['QueryPolicy'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['QueryPolicy'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DAClientSettings</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ForceTunnelingNrptSuffix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ForceTunnelingNrptEntry'].value.CimInstanceProperties['Namespace'].value[0])
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DANetworkLocationServer</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Url</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Uri])]
+                    param()
+                    [System.Uri]($this.PSBase.CimInstanceProperties['Url'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Uri]$value)
+                    $this.PSBase.CimInstanceProperties['Url'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>Certificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]($this.PSBase.CimInstanceProperties['Certificate'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['Certificate'].Value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DAServer</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SslCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]($this.PSBase.CimInstanceProperties['SslCertificate'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['SslCertificate'].Value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>CompCertAuth</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ComputerCertAuthentication'].value)
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DAInstallType</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['DAInstallType'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['DAInstallType'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ConnectToAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ConnectToAddress'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ConnectToAddress'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>GpoName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['GpoName'].value)
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>InternalIPv6Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['InternalIPv6Prefix'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['InternalIPv6Prefix'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientIPv6Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ClientIPv6Prefix'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ClientIPv6Prefix'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>UserAuthentication</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['UserAuthentication'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['UserAuthentication'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ComputerCertAuthentication</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ComputerCertAuthentication'].value)
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPsecRootCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]($this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IPsecRootCertificate'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IPsecRootCertificate'].value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IntermediateRootCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]($this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IntermediateRootCertificate'].value)
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>TeredoState</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['TeredoState'].value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['TeredoState'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IsSingleNic</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]($this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IsSingleNic'].value)
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IsNatDeployed</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]($this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IsNatDeployed'].value)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DAServerConfiguration</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>IPsecRootCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]($this.PSBase.CimInstanceProperties['IPsecRootCertificate'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['IPsecRootCertificate'].Value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <AliasProperty>
+                <Name>AuthType</Name>
+                <ReferencedMemberName>UserAuthentication</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>CompCertAuth</Name>
+                <ReferencedMemberName>ComputerCertAuthentication</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>IntermediateRootCert</Name>
+                <ReferencedMemberName>IntermediateRootCertificate</ReferencedMemberName>
+            </AliasProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DirectAccessConfiguration</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>AppServerSecurityGroupNameList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['SecurityGroupNameList'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['SecurityGroupNameList'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>AppServerGpoName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['GpoName'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['GpoName'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ConnectionType</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['ConnectionType'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['ConnectionType'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>TrafficProtection</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['TrafficProtection'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['TrafficProtection'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientSecurityGroupNameList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['SecurityGroupNameList'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['SecurityGroupNameList'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientGpoName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['GpoName'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}                    
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['GpoName'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>Downlevel</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['Downlevel'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['Downlevel'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>OnlyRemoteComputers</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['OnlyRemoteComputers'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['OnlyRemoteComputers'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ForceTunnel</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['ForceTunnel'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['ForceTunnel'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ForceTunnelingNrptSuffix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['ForceTunnelingNrptEntry'].value.CimInstanceProperties['Namespace'].value[0]
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EntrypointName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['EntrypointName'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['EntrypointName'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DownlevelSecurityGroupNameList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelSecurityGroupNameList'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelSecurityGroupNameList'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DownlevelGpoName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelGpoName'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelGpoName'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DnsSuffix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $output = @()
+                    foreach($nrpt in $this.PSBase.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptEntry'].value)
+                    {
+                        $output += [System.String]$nrpt.CimInstanceProperties['Namespace'].value[0]
+                    }
+                    if ($output.Count -gt 0)
+                    {,(@($output))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EnableDAForAllNetworks</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['EnableDAForAllNetworks'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['EnableDAForAllNetworks'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>              
+                <Name>SecureNameQueryFallback</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['SecureNameQueryFallback'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['SecureNameQueryFallback'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>QueryPolicy</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['QueryPolicy'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['QueryPolicy'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ServerGpoName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['GpoName'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DAInstallType</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['DAInstallType'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['DAInstallType'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>InternalIPv6Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['InternalIPv6Prefix'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['InternalIPv6Prefix'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientIPv6Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ClientIPv6Prefix'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ClientIPv6Prefix'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>UserAuthentication</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['UserAuthentication'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['UserAuthentication'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ComputerCertAuthentication</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ComputerCertAuthentication'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPsecRootCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]$this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IPsecRootCertificate'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IPsecRootCertificate'].value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IntermediateRootCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]$this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IntermediateRootCertificate'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ConnectToAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ConnectToAddress'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ConnectToAddress'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>TeredoState</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['TeredoState'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['TeredoState'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IsSingleNic</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]$this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IsSingleNic'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IsNatDeployed</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]$this.PSBase.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IsNatDeployed'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>NlsLocation</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['NlsLocation'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>NlsUrl</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Uri])]
+                    param()
+                    [System.Uri]$this.PSBase.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Url'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Uri]$value)
+                    $this.PSBase.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Url'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>NlsCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]$this.PSBase.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Certificate'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Certificate'].value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>NlsReachability</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]$this.PSBase.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Reachability'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccessConnection</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ClientIPv4Address</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ClientIPv4Address'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ClientIPv4Address'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientIPv6Address</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ClientIPv6Address'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ClientIPv6Address'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientExternalAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ClientExternalAddress'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ClientExternalAddress'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientIPAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress[]])]
+                    param()
+                    $a = [System.Net.IPAddress]$this.PSBase.CimInstanceProperties['ClientIPv4Address'].value;
+                    $b = [System.Net.IPAddress]$this.PSBase.CimInstanceProperties['ClientIPv6Address'].value;
+                    if ($a -ne $null)
+                    {
+                        if ($a.ToString().Equals("0.0.0.0") -eq $false)
+                        {
+                            $a
+                        }
+                    }
+                    if ($b -ne $null)
+                    {
+                        if ($b.ToString().Equals("::") -eq $false)
+                        {
+                            $b
+                        }
+                    }
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccessMonitoringConnection</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ClientIPv4Address</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ClientIPv4Address'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ClientIPv4Address'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientIPv6Address</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ClientIPv6Address'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ClientIPv6Address'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientExternalAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ClientExternalAddress'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ClientExternalAddress'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientIPAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress[]])]
+                    param()
+                    $a = [System.Net.IPAddress]$this.PSBase.CimInstanceProperties['ClientIPv4Address'].value;
+                    $b = [System.Net.IPAddress]$this.PSBase.CimInstanceProperties['ClientIPv6Address'].value;
+                    if ($a -ne $null)
+                    {
+                        if ($a.ToString().Equals("0.0.0.0") -eq $false)
+                        {
+                            $a
+                        }
+                    }
+                    if ($b -ne $null)
+                    {
+                        if ($b.ToString().Equals("::") -eq $false)
+                        {
+                            $b
+                        }
+                    }
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccessAccountingConnection</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ClientIPv4Address</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ClientIPv4Address'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ClientIPv4Address'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientIPv6Address</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ClientIPv6Address'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ClientIPv6Address'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientExternalAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ClientExternalAddress'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ClientExternalAddress'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientIPAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress[]])]
+                    param()
+                    $a = [System.Net.IPAddress]$this.PSBase.CimInstanceProperties['ClientIPv4Address'].value;
+                    $b = [System.Net.IPAddress]$this.PSBase.CimInstanceProperties['ClientIPv6Address'].value;
+                    if ($a -ne $null)
+                    {
+                        if ($a.ToString().Equals("0.0.0.0") -eq $false)
+                        {
+                            $a
+                        }
+                    }
+                    if ($b -ne $null)
+                    {
+                        if ($b.ToString().Equals("::") -eq $false)
+                        {
+                            $b
+                        }
+                    }
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccessRadiusServer</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ServerName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ServerPurpose'].Value.CimInstanceProperties['ServerName'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ServerPurpose'].Value.CimInstanceProperties['ServerName'].Value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>Purpose</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]($this.PSBase.CimInstanceProperties['ServerPurpose'].Value.CimInstanceProperties['Purpose'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['ServerPurpose'].Value.CimInstanceProperties['Purpose'].Value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccessHealthMonitor</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Id</Name>
+                <GetScriptBlock>
+                    [OutputType([System.UInt32[]])]
+                    param()
+                    foreach($Heuristic in $this.PSBase.CimInstanceProperties['Heuristics'].Value)
+                    {
+                        $Heuristic.CimInstanceProperties['Id'].Value
+                    }
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>OperationStatus</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $output = @()
+                    foreach($Heuristic in $this.PSBase.CimInstanceProperties['Heuristics'].Value)
+                    {
+                        $output += $Heuristic.CimInstanceProperties['OperationStatus'].Value
+                    }
+                    if ($output.Count -gt 0)
+                    {,(@($output))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccessLoadBalancerNode</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>IPAddressRange</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $output = @()
+                    foreach($range in $this.PSBase.CimInstanceProperties['VpnIPAddressAssignmentSetting'].Value.CimInstanceProperties['IPAddressRange'].value)
+                    {
+                        $output += $range.CimInstanceProperties['StartIPAddress'].Value + " - " + $range.PSBase.CimInstanceProperties['EndIPAddress'].Value
+                    }
+                    if ($output.Count -gt 0)
+                    {,(@($output))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPv6Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['VpnIPAddressAssignmentSetting'].value.CimInstanceProperties['IPv6Prefix'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['VpnIPAddressAssignmentSetting'].value.CimInstanceProperties['IPv6Prefix'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccessUserActivity</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ServerIPAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ServerIPAddress'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccessHealthHeuristic</Name>
+        <Members>
+            <AliasProperty>
+                <Name>ErrorDescription</Name>
+                <ReferencedMemberName>ErrorDesc</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>ErrorResolution</Name>
+                <ReferencedMemberName>ErrorResoln</ReferencedMemberName>
+            </AliasProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccessCore</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SslCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]($this.PSBase.CimInstanceProperties['SslCertificate'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['SslCertificate'].Value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccessCommon</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SslCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]($this.PSBase.CimInstanceProperties['SslCertificate'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['SslCertificate'].Value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccess</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SslCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]($this.PSBase.CimInstanceProperties['SslCertificate'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['SslCertificate'].Value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>AppServerSecurityGroupNameList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['SecurityGroupNameList'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['SecurityGroupNameList'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>AppServerGpoName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['GpoName'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['GpoName'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ConnectionType</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['ConnectionType'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['ConnectionType'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>TrafficProtection</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['TrafficProtection'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['TrafficProtection'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientSecurityGroupNameList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['SecurityGroupNameList'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['SecurityGroupNameList'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientGpoName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['GpoName'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['GpoName'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>Downlevel</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['Downlevel'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['Downlevel'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>OnlyRemoteComputers</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['OnlyRemoteComputers'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['OnlyRemoteComputers'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ForceTunnel</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['ForceTunnel'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['ForceTunnel'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ForceTunnelingNrptSuffix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['ForceTunnelingNrptEntry'].value.CimInstanceProperties['Namespace'].value[0]
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+              <Name>EntrypointName</Name>
+              <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['EntrypointName'].value
+              </GetScriptBlock>
+              <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['EntrypointName'].value = $value
+              </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DownlevelSecurityGroupNameList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelSecurityGroupNameList'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelSecurityGroupNameList'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DownlevelGpoName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelGpoName'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelGpoName'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DnsSuffix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $output = @()
+                    foreach($nrpt in $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptEntry'].value)
+                    {
+                        $output += [System.String]$nrpt.CimInstanceProperties['Namespace'].value[0]
+                    }
+                    if ($output.Count -gt 0)
+                    {,(@($output))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EnableDAForAllNetworks</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['EnableDAForAllNetworks'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['EnableDAForAllNetworks'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>SecureNameQueryFallback</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['SecureNameQueryFallback'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['SecureNameQueryFallback'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>QueryPolicy</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['QueryPolicy'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['QueryPolicy'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ServerGpoName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['GpoName'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DAInstallType</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['DAInstallType'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['DAInstallType'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>InternalIPv6Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['InternalIPv6Prefix'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['InternalIPv6Prefix'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientIPv6Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ClientIPv6Prefix'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ClientIPv6Prefix'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>UserAuthentication</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['UserAuthentication'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['UserAuthentication'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ComputerCertAuthentication</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ComputerCertAuthentication'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPsecRootCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IPsecRootCertificate'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IPsecRootCertificate'].value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IntermediateRootCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IntermediateRootCertificate'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ConnectToAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ConnectToAddress'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ConnectToAddress'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>TeredoState</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['TeredoState'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['TeredoState'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IsSingleNic</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IsSingleNic'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IsNatDeployed</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IsNatDeployed'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>NlsLocation</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['NlsLocation'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>NlsUrl</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Uri])]
+                    param()
+                    [System.Uri]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Url'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Uri]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Url'].value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>NlsCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Certificate'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Certificate'].value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>NlsReachability</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Reachability'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPAssignmentMethod</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPAssignmentMethod'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPAssignmentMethod'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPAddressRangeList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $output = @()
+                    foreach($range in $this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPAddressRange'].value)
+                    {
+                        $output += $range.PSBase.CimInstanceProperties['StartIPAddress'].value + " - " + $range.PSBase.CimInstanceProperties['EndIPAddress'].value
+                    }
+                    if ($output.Count -gt 0)
+                    {,(@($output))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPv6Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPv6Prefix'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPv6Prefix'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>AuthenticationType</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['Type'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['Type'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>RadiusServerList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['RadiusServerList'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['RadiusServerList'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>MgmtServer</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['MgmtServer'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['MgmtServer'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccessDA</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SslCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]($this.PSBase.CimInstanceProperties['SslCertificate'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['SslCertificate'].Value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DAInstallType</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['DAInstallType'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['DAInstallType'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>AppServerSecurityGroupNameList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['SecurityGroupNameList'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['SecurityGroupNameList'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>AppServerGpoName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['GpoName'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['GpoName'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ConnectionType</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['ConnectionType'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['ConnectionType'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>TrafficProtection</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['TrafficProtection'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['AppServerPolicy'].value.CimInstanceProperties['AppServerConnection'].value.CimInstanceProperties['TrafficProtection'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientSecurityGroupNameList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['SecurityGroupNameList'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['SecurityGroupNameList'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientGpoName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['GpoName'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['GpoName'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>Downlevel</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['Downlevel'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['Downlevel'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>OnlyRemoteComputers</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['OnlyRemoteComputers'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['OnlyRemoteComputers'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ForceTunnel</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['ForceTunnel'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['ForceTunnel'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ForceTunnelingNrptSuffix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientSettings'].value.CimInstanceProperties['ForceTunnelingNrptEntry'].value.CimInstanceProperties['Namespace'].value[0]
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EntrypointName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['EntrypointName'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['EntrypointName'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DownlevelSecurityGroupNameList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelSecurityGroupNameList'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelSecurityGroupNameList'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DownlevelGpoName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelGpoName'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientPolicy'].value.CimInstanceProperties['ClientEntrypoint'].value.CimInstanceProperties['DownlevelGpoName'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DnsSuffix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $output = @()
+                    foreach($nrpt in $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptEntry'].value)
+                    {
+                        $output += [System.String]$nrpt.CimInstanceProperties['Namespace'].value[0]
+                    }
+                    if ($output.Count -gt 0)
+                    {,(@($output))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EnableDAForAllNetworks</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['EnableDAForAllNetworks'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['EnableDAForAllNetworks'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>SecureNameQueryFallback</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['SecureNameQueryFallback'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['SecureNameQueryFallback'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>QueryPolicy</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['QueryPolicy'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ClientDnsConfiguration'].value.CimInstanceProperties['NrptGlobalSettings'].value.CimInstanceProperties['QueryPolicy'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ServerGpoName</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['GpoName'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>InternalIPv6Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['InternalIPv6Prefix'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['InternalIPv6Prefix'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientIPv6Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ClientIPv6Prefix'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ClientIPv6Prefix'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>UserAuthentication</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['UserAuthentication'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['UserAuthentication'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ComputerCertAuthentication</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ComputerCertAuthentication'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPsecRootCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IPsecRootCertificate'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IPsecRootCertificate'].value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IntermediateRootCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IntermediateRootCertificate'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ConnectToAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ConnectToAddress'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['ConnectToAddress'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>TeredoState</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['TeredoState'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['TeredoState'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IsSingleNic</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IsSingleNic'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IsNatDeployed</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['ServerConfiguration'].value.CimInstanceProperties['IsNatDeployed'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>NlsLocation</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['NlsLocation'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>NlsUrl</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Uri])]
+                    param()
+                    [System.Uri]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Url'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Uri]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Url'].value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>NlsCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Certificate'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Certificate'].value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>NlsReachability</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Boolean])]
+                    param()
+                    [System.Boolean]$this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['NetworkLocationServerPolicy'].value.CimInstanceProperties['Reachability'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>MgmtServer</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['MgmtServer'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['DAConfiguration'].value.CimInstanceProperties['MgmtServer'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccessAccounting</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>RadiusAccountingStatus</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['RadiusAccounting'].value.CimInstanceProperties['RadiusAccountingStatus'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>RemoteRadiusServerList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $output = @()
+                    foreach($radius in $this.PSBase.CimInstanceProperties['RadiusAccounting'].value.CimInstanceProperties['RemoteServerList'].value)
+                    {
+                        $output += [System.String]$radius.PSBase.CimInstanceProperties['ServerPurpose'].value.CimInstanceProperties['ServerName'].value
+                    }
+                    if ($output.Count -gt 0)
+                    {,(@($output))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>InboxAccountingStatus</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['InboxAccounting'].value.CimInstanceProperties['InboxAccountingStatus'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>InboxStoreLimit</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['InboxAccounting'].value.CimInstanceProperties['StoreLimit'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>InboxStoreUsedBytes</Name>
+                <GetScriptBlock>
+                    [OutputType([System.UInt64])]
+                    param()
+                    [System.UInt64]$this.PSBase.CimInstanceProperties['InboxAccounting'].value.CimInstanceProperties['StoreUsedBytes'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>InboxStoreFreeBytes</Name>
+                <GetScriptBlock>
+                    [OutputType([System.UInt64])]
+                    param()
+                    [System.UInt64]$this.PSBase.CimInstanceProperties['InboxAccounting'].value.CimInstanceProperties['StoreFreeBytes'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>InboxStoreUsedBytesInPercentage</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Double])]
+                    param()
+                    [System.Double]$this.PSBase.CimInstanceProperties['InboxAccounting'].value.CimInstanceProperties['StoreUsedBytesInPercentage'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>InboxStoreFreeBytesInPercentage</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Double])]
+                    param()
+                    [System.Double]$this.PSBase.CimInstanceProperties['InboxAccounting'].value.CimInstanceProperties['StoreFreeBytesInPercentage'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>InboxStoreFirstRecordDate</Name>
+                <GetScriptBlock>
+                    [OutputType([Nullable[System.DateTime]])]
+                    param()
+                    [Nullable[System.DateTime]]$this.PSBase.CimInstanceProperties['InboxAccounting'].value.CimInstanceProperties['StoreFirstRecordDate'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>InboxStoreLastRecordDate</Name>
+                <GetScriptBlock>
+                    [OutputType([Nullable[System.DateTime]])]
+                    param()
+                    [Nullable[System.DateTime]]$this.PSBase.CimInstanceProperties['InboxAccounting'].value.CimInstanceProperties['StoreLastRecordDate'].value
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccessInboxAccounting</Name>
+        <Members>
+            <AliasProperty>
+                <Name>Status</Name>
+                <ReferencedMemberName>InboxAccountingStatus</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>UsedBytesPercentage</Name>
+                <ReferencedMemberName>StoreUsedBytesInPercentage</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>FreeBytesPercentage</Name>
+                <ReferencedMemberName>StoreFreeBytesInPercentage</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>FirstRecordDate</Name>
+                <ReferencedMemberName>StoreFirstRecordDate</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>LastRecordDate</Name>
+                <ReferencedMemberName>StoreLastRecordDate</ReferencedMemberName>
+            </AliasProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RemoteAccessVPN</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SslCertificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]($this.PSBase.CimInstanceProperties['SslCertificate'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['SslCertificate'].Value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPAssignmentMethod</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPAssignmentMethod'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPAssignmentMethod'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPAddressRangeList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $output = @()
+                    foreach ($range in $this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPAddressRange'].value)
+                    {
+                        $output += $range.PSBase.CimInstanceProperties['StartIPAddress'].value + " - " + $range.PSBase.CimInstanceProperties['EndIPAddress'].value
+                    }
+                    if ($output.Count -gt 0)
+                    {,(@($output))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPv6Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPv6Prefix'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPv6Prefix'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>AuthenticationType</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['Type'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['Type'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>RadiusServerList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['RadiusServerList'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['VpnConfiguration'].value.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['RadiusServerList'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#VirtualPrivateNetworkConfiguration</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>IPAssignmentMethod</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPAssignmentMethod'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPAssignmentMethod'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPAddressRangeList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $output = @()
+                    foreach ($range in $this.PSBase.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPAddressRange'].value)
+                    {
+                        $output += $range.PSBase.CimInstanceProperties['StartIPAddress'].value + " - " + $range.PSBase.CimInstanceProperties['EndIPAddress'].value
+                    }
+                    if ($output.Count -gt 0)
+                    {,(@($output))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPv6Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPv6Prefix'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['IPAddressAssignmentPolicy'].value.CimInstanceProperties['IPv6Prefix'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>AuthenticationType</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['Type'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['Type'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>RadiusServerList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['RadiusServerList'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['RadiusServerList'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#VpnIPAddressAssignment</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>IPAddressRangeList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $output = @()
+                    foreach ($range in $this.PSBase.CimInstanceProperties['IPAddressRange'].value)
+                    {
+                        $output += $range.PSBase.CimInstanceProperties['StartIPAddress'].value + " - " + $range.PSBase.CimInstanceProperties['EndIPAddress'].value
+                    }
+                    if ($output.Count -gt 0)
+                    {,(@($output))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#VpnIPAddressRange</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>StartIPAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['StartIPAddress'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EndIPAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['EndIPAddress'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#VpnS2SInterface</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>IPv4TriggerFilterAction</Name>
+                <GetScriptBlock>
+                    [OutputType([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.Action]])]
+                    param()
+                    [Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.Action]]($this.PSBase.CimInstanceProperties['IPv4TriggerFilterAction'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.Action]]$value)
+                    $this.PSBase.CimInstanceProperties['IPv4TriggerFilterAction'].Value = [Nullable[System.Uint32]]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPv6TriggerFilterAction</Name>
+                <GetScriptBlock>
+                    [OutputType([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.Action]])]
+                    param()
+                    [Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.Action]]($this.PSBase.CimInstanceProperties['IPv6TriggerFilterAction'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.Action]]$value)
+                    $this.PSBase.CimInstanceProperties['IPv6TriggerFilterAction'].Value = [Nullable[System.Uint32]]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#VpnS2SCustomInterface</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Certificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]($this.PSBase.CimInstanceProperties['Certificate'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['Certificate'].Value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>AuthenticationTransformConstants</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.AuthenticationTransformConstants])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.AuthenticationTransformConstants]($this.PSBase.CimInstanceProperties['AuthenticationTransformConstants'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.AuthenticationTransformConstants]$value)
+                    $this.PSBase.CimInstanceProperties['AuthenticationTransformConstants'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>CipherTransformConstants</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.CipherTransformConstants])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.CipherTransformConstants]($this.PSBase.CimInstanceProperties['CipherTransformConstants'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.CipherTransformConstants]$value)
+                    $this.PSBase.CimInstanceProperties['CipherTransformConstants'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DHGroup</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.DHGroup])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.DHGroup]($this.PSBase.CimInstanceProperties['DHGroup'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.DHGroup]$value)
+                    $this.PSBase.CimInstanceProperties['DHGroup'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EncryptionMethod</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.EncryptionMethod])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.EncryptionMethod]($this.PSBase.CimInstanceProperties['EncryptionMethod'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.EncryptionMethod]$value)
+                    $this.PSBase.CimInstanceProperties['EncryptionMethod'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IntegrityCheckMethod</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.IntegrityCheckMethod])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.IntegrityCheckMethod]($this.PSBase.CimInstanceProperties['IntegrityCheckMethod'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.IntegrityCheckMethod]$value)
+                    $this.PSBase.CimInstanceProperties['IntegrityCheckMethod'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>PfsGroup</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.PfsGroup])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.PfsGroup]($this.PSBase.CimInstanceProperties['PfsGroup'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.PfsGroup]$value)
+                    $this.PSBase.CimInstanceProperties['PfsGroup'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EnableQoS</Name>
+                <GetScriptBlock>
+                    [OutputType([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.EnableQoS]])]
+                    param()
+                    [Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.EnableQoS]]($this.PSBase.CimInstanceProperties['EnableQoS'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                  param([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.EnableQoS]]$value)
+                  $this.PSBase.CimInstanceProperties['EnableQoS'].Value = [Nullable[System.Uint32]]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#VpnS2SDefaultInterface</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Certificate</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]($this.PSBase.CimInstanceProperties['Certificate'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['Certificate'].Value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EnableQoS</Name>
+                <GetScriptBlock>
+                    [OutputType([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.EnableQoS]])]
+                    param()
+                    [Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.EnableQoS]]($this.PSBase.CimInstanceProperties['EnableQoS'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.EnableQoS]]$value)
+                    $this.PSBase.CimInstanceProperties['EnableQoS'].Value = [Nullable[System.Uint32]]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#GRES2SInterface</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>EnableQoS</Name>
+                <GetScriptBlock>
+                    [OutputType([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.EnableQoS]])]
+                    param()
+                    [Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.EnableQoS]]($this.PSBase.CimInstanceProperties['EnableQoS'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnS2SInterface.EnableQoS]]$value)
+                    $this.PSBase.CimInstanceProperties['EnableQoS'].Value = [Nullable[System.Uint32]]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#VpnServerIPsecCustomConfiguration</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>AuthenticationTransformConstants</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.AuthenticationTransformConstants])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.AuthenticationTransformConstants]($this.PSBase.CimInstanceProperties['AuthenticationTransformConstants'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.AuthenticationTransformConstants]$value)
+                    $this.PSBase.CimInstanceProperties['AuthenticationTransformConstants'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>CipherTransformConstants</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.CipherTransformConstants])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.CipherTransformConstants]($this.PSBase.CimInstanceProperties['CipherTransformConstants'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.CipherTransformConstants]$value)
+                    $this.PSBase.CimInstanceProperties['CipherTransformConstants'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DHGroup</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.DHGroup])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.DHGroup]($this.PSBase.CimInstanceProperties['DHGroup'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.DHGroup]$value)
+                    $this.PSBase.CimInstanceProperties['DHGroup'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EncryptionMethod</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.EncryptionMethod])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.EncryptionMethod]($this.PSBase.CimInstanceProperties['EncryptionMethod'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.EncryptionMethod]$value)
+                    $this.PSBase.CimInstanceProperties['EncryptionMethod'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IntegrityCheckMethod</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.IntegrityCheckMethod])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.IntegrityCheckMethod]($this.PSBase.CimInstanceProperties['IntegrityCheckMethod'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.IntegrityCheckMethod]$value)
+                    $this.PSBase.CimInstanceProperties['IntegrityCheckMethod'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>PFSgroup</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.PfsGroup])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.PfsGroup]($this.PSBase.CimInstanceProperties['PfsGroup'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.PfsGroup]$value)
+                    $this.PSBase.CimInstanceProperties['PfsGroup'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>TunnelType</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.TunnelType])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.TunnelType]($this.PSBase.CimInstanceProperties['TunnelType'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.TunnelType]$value)
+                    $this.PSBase.CimInstanceProperties['TunnelType'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#VpnServerIPsecDefaultConfiguration</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>TunnelType</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.TunnelType])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.TunnelType]($this.PSBase.CimInstanceProperties['TunnelType'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnServerIPsecConfiguration.TunnelType]$value)
+                    $this.PSBase.CimInstanceProperties['TunnelType'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#VpnAuthProtocol</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>RootCertificateNameToAccept</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]($this.PSBase.CimInstanceProperties['RootCertificateNameToAccept'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['RootCertificateNameToAccept'].Value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>CertificateAdvertised</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+                    param()
+                    [System.Security.Cryptography.X509Certificates.X509Certificate2]($this.PSBase.CimInstanceProperties['CertificateAdvertised'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+                    $this.PSBase.CimInstanceProperties['CertificateAdvertised'].Value = $value.RawData
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>CertificateEKUsToAccept</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $output = @()
+                    foreach ($range in $this.PSBase.CimInstanceProperties['CertificateEKUsToAccept'].value)
+                    {
+                        $output += $range
+                    }
+                    if ($output.Count -gt 0)
+                    {,(@($output))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#RoutingDomainConfiguration</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>VpnStatus</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.State])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.State]($this.PSBase.CimInstanceProperties['VpnStatus'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.State]$value)
+                    $this.PSBase.CimInstanceProperties['VpnStatus'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>VpnS2SStatus</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.State])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.State]($this.PSBase.CimInstanceProperties['VpnS2SStatus'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.State]$value)
+                    $this.PSBase.CimInstanceProperties['VpnS2SStatus'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+             <ScriptProperty>
+                <Name>RoutingStatus</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.State])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.State]($this.PSBase.CimInstanceProperties['RoutingStatus'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.State]$value)
+                    $this.PSBase.CimInstanceProperties['RoutingStatus'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#VpnRoutingDomainConfig</Name>
+        <Members>
+          <ScriptProperty>
+            <Name>IPRange</Name>
+            <GetScriptBlock>
+              [OutputType([System.String[]])]
+              param()
+              $output = @()
+              $temp = ""
+              $flag = 1
+              foreach ($range in $this.PSBase.CimInstanceProperties['IPAddressRange'].value)
+              {
+              if($flag -eq 1)
+              {
+              $temp += $range
+              $flag = 0
+              }
+              else
+              {
+              $temp += " - " + $range
+              $output += $temp
+              $temp = ""
+              $flag = 1
+              }
+              }
+              if($output.Count -gt 0)
+              {,(@($output))}
+              else
+              {$null}
+            </GetScriptBlock>
+          </ScriptProperty>
+            <ScriptProperty>
+                <Name>EnableQoS</Name>
+                <GetScriptBlock>
+                    [OutputType([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.EnableQoS]])]
+                    param()
+                    [Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.EnableQoS]]($this.PSBase.CimInstanceProperties['EnableQoS'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.EnableQoS]]$value)
+                    $this.PSBase.CimInstanceProperties['EnableQoS'].Value = [Nullable[System.Uint32]]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#VpnRoutingDomainCustomConfig</Name>
+        <Members>
+          <ScriptProperty>
+            <Name>IPRange</Name>
+            <GetScriptBlock>
+              [OutputType([System.String[]])]
+              param()
+              $output = @()
+              $temp = ""
+              $flag = 1
+              foreach ($range in $this.PSBase.CimInstanceProperties['IPAddressRange'].value)
+              {
+              if($flag -eq 1)
+              {
+              $temp += $range
+              $flag = 0
+              }
+              else
+              {
+              $temp += " - " + $range
+              $output += $temp
+              $temp = ""
+              $flag = 1
+              }
+              }
+              if($output.Count -gt 0)
+              {,(@($output))}
+              else
+              {$null}
+            </GetScriptBlock>
+          </ScriptProperty>
+            <ScriptProperty>
+                <Name>AuthenticationTransformConstant</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.AuthenticationTransformConstant])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.AuthenticationTransformConstant]($this.PSBase.CimInstanceProperties['AuthenticationTransformConstant'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.AuthenticationTransformConstant]$value)
+                    $this.PSBase.CimInstanceProperties['AuthenticationTransformConstant'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>CipherTransformConstant</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.CipherTransformConstant])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.CipherTransformConstant]($this.PSBase.CimInstanceProperties['CipherTransformConstant'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.CipherTransformConstant]$value)
+                    $this.PSBase.CimInstanceProperties['CipherTransformConstant'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>DHGroup</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.DHGroup])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.DHGroup]($this.PSBase.CimInstanceProperties['DHGroup'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.DHGroup]$value)
+                    $this.PSBase.CimInstanceProperties['DHGroup'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EncryptionMethod</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.EncryptionMethod])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.EncryptionMethod]($this.PSBase.CimInstanceProperties['EncryptionMethod'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.EncryptionMethod]$value)
+                    $this.PSBase.CimInstanceProperties['EncryptionMethod'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IntegrityCheckMethod</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.IntegrityCheckMethod])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.IntegrityCheckMethod]($this.PSBase.CimInstanceProperties['IntegrityCheckMethod'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.IntegrityCheckMethod]$value)
+                    $this.PSBase.CimInstanceProperties['IntegrityCheckMethod'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>PFSgroup</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.PfsGroup])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.PfsGroup]($this.PSBase.CimInstanceProperties['PfsGroup'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessRoutingDomain.PfsGroup]$value)
+                    $this.PSBase.CimInstanceProperties['PfsGroup'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#InterfaceIpFilter</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Direction</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessIpFilter.Direction])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessIpFilter.Direction]($this.PSBase.CimInstanceProperties['Direction'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessIpFilter.Direction]$value)
+                    $this.PSBase.CimInstanceProperties['Direction'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>AddressFamily</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessIpFilter.AddressFamily])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessIpFilter.AddressFamily]($this.PSBase.CimInstanceProperties['AddressFamily'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessIpFilter.AddressFamily]$value)
+                    $this.PSBase.CimInstanceProperties['AddressFamily'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>Action</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessIpFilter.Action])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessIpFilter.Action]($this.PSBase.CimInstanceProperties['Action'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.RemoteAccessIpFilter.Action]$value)
+                    $this.PSBase.CimInstanceProperties['Action'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    
+    <!--Bgp cmdlets formatting -->
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#BgpRouteInfo</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Path</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    $output   = ""
+                    foreach ($asSegment in $this.PSBase.CimInstanceProperties['ASPath'].value)
+                    {
+                        $temp = @()
+                        foreach($asn in $asSegment.PSBase.CimInstanceProperties['ASN'].value)
+                        {
+                            $temp += $asn.ToString()
+                        }
+
+                        if($temp.Count -gt 0)
+                        {
+                            $temp2 = $temp -join ","
+                            if($asSegment.PSBase.CimInstanceProperties['PathType'].value.Equals("AS_SET") -eq $true)
+                            {
+                                $temp2 = "{" + $temp2 + "}"
+                            }
+                            if($output.Length -eq 0)
+                            {
+                                $output = $temp2
+                            }
+                            else
+                            {
+                                $output += " " + $temp2
+                            }
+                        }
+                    }
+                    $output
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#BgpPeerConfig</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>OperationMode</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.OperationMode])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.OperationMode]($this.PSBase.CimInstanceProperties['OperationMode'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.OperationMode]$value)
+                    $this.PSBase.CimInstanceProperties['OperationMode'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>PeeringMode</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.PeeringMode])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.PeeringMode]($this.PSBase.CimInstanceProperties['PeeringMode'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.PeeringMode]$value)
+                    $this.PSBase.CimInstanceProperties['PeeringMode'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ConnectivityStatus</Name>
+                <GetScriptBlock>
+                    [OutputType([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.ConnectivityStatus]])]
+                    param()
+                    [Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.ConnectivityStatus]]($this.PSBase.CimInstanceProperties['ConnectivityStatus'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.ConnectivityStatus]]$value)
+                    $this.PSBase.CimInstanceProperties['ConnectivityStatus'].Value = [Nullable[System.Uint32]]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#BgpRouterConfig</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>IPv6Routing</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.IPv6RoutingState])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.IPv6RoutingState]($this.PSBase.CimInstanceProperties['IPv6Routing'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.IPv6RoutingState]$value)
+                    $this.PSBase.CimInstanceProperties['IPv6Routing'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>TransitRouting</Name>
+                <GetScriptBlock>
+                    [OutputType([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.TransitRouting]])]
+                    param()
+                    [Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.TransitRouting]]($this.PSBase.CimInstanceProperties['TransitRouting'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.TransitRouting]]$value)
+                    $this.PSBase.CimInstanceProperties['TransitRouting'].Value = [Nullable[System.Uint32]]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>RouteReflector</Name>
+                <GetScriptBlock>
+                    [OutputType([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.RouteReflector]])]
+                    param()
+                    [Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.RouteReflector]]($this.PSBase.CimInstanceProperties['RouteReflector'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.RouteReflector]]$value)
+                    $this.PSBase.CimInstanceProperties['RouteReflector'].Value = [Nullable[System.Uint32]]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ClientToClientReflection</Name>
+                <GetScriptBlock>
+                    [OutputType([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.ClientToClientReflection]])]
+                    param()
+                    [Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.ClientToClientReflection]]($this.PSBase.CimInstanceProperties['ClientToClientReflection'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Nullable[Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.ClientToClientReflection]]$value)
+                    $this.PSBase.CimInstanceProperties['ClientToClientReflection'].Value = [Nullable[System.Uint32]]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#BgpRoutingPolicyConfig</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>PolicyType</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.PolicyType])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.PolicyType]($this.PSBase.CimInstanceProperties['PolicyType'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.PolicyType]$value)
+                    $this.PSBase.CimInstanceProperties['PolicyType'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#BgpRouteInfo</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>State</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.RouteState[]])]
+                    param()
+                    foreach($state in $this.PSBase.CimInstanceProperties['State'].Value)
+                    {
+                        [Microsoft.Powershell.Cmdletization.GeneratedTypes.Bgp.RouteState]($state)
+                    }
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#VPNMultiTenancy</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>AuthenticationType</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                    [System.String]$this.PSBase.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['Type'].value
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String]$value)
+                    $this.PSBase.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['Type'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>RadiusServerList</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String[]])]
+                    param()
+                    $obj = $this.PSBase.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['RadiusServerList'].value
+                    if ($obj -ne $null)
+                    {,(@($obj))}
+                    else
+                    {$null}
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.String[]]$value)
+                    $this.PSBase.CimInstanceProperties['AuthenticationPolicy'].value.CimInstanceProperties['RadiusServerList'].value = $value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#BgpRouteAggregateConfig</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SummaryOnly</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.BgpRouteAggregate.SummaryOnly])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.BgpRouteAggregate.SummaryOnly]($this.PSBase.CimInstanceProperties['SummaryOnly'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.BgpRouteAggregate.SummaryOnly]$value)
+                    $this.PSBase.CimInstanceProperties['SummaryOnly'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>PreserveASPath</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.BgpRouteAggregate.PreserveASPath])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.BgpRouteAggregate.PreserveASPath]($this.PSBase.CimInstanceProperties['PreserveASPath'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.BgpRouteAggregate.PreserveASPath]$value)
+                    $this.PSBase.CimInstanceProperties['PreserveASPath'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#VpnTrafficSelector</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Type</Name>
+                <GetScriptBlock>
+                    [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnTrafficSelector.Type])]
+                    param()
+                    [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnTrafficSelector.Type]($this.PSBase.CimInstanceProperties['Type'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnTrafficSelector.Type]$value)
+                    $this.PSBase.CimInstanceProperties['Type'].Value = [System.Uint32]$value
+                </SetScriptBlock>
+            </ScriptProperty>           
+        </Members>
+    </Type>
+    </Types>

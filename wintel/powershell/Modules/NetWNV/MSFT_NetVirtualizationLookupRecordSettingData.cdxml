@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+	<Class ClassName="Root/StandardCimV2/MSFT_NetVirtualizationLookupRecordSettingData" ClassVersion="1.0.0">
+		<Version>1.0.0.0</Version>
+		<DefaultNoun>NetVirtualizationLookupRecord</DefaultNoun>
+
+        <InstanceCmdlets>
+
+            <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+                <QueryableProperties>
+                    <Property PropertyName="CustomerAddress">
+                        <Type PSType="System.String" />
+                        <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="MACAddress">
+                        <Type PSType="System.String" />
+                        <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="VirtualSubnetID">
+                        <Type PSType="System.UInt32" />
+                        <RegularQuery AllowGlobbing="false">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="ProviderAddress">
+                        <Type PSType="System.String" />
+                        <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="CustomerID">
+                        <Type PSType="System.String" />
+                        <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="Context">
+                        <Type PSType="System.String" />
+                        <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="Rule">
+                        <Type PSType="NetVirtualizationLookupRecord.RuleType" />
+                        <RegularQuery AllowGlobbing="false">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="VMName">
+                        <Type PSType="System.String" />
+                        <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="UseVmMACAddress">
+                        <Type PSType="System.Boolean" />
+                        <RegularQuery AllowGlobbing="false">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="Type">
+                        <Type PSType="NetVirtualizationLookupRecord.Type" />
+                        <RegularQuery AllowGlobbing="false">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="Unusable">
+                        <Type PSType="System.Boolean" />
+                        <RegularQuery AllowGlobbing="false">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="Unsynchronized">
+                        <Type PSType="System.Boolean" />
+                        <RegularQuery AllowGlobbing="false">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                </QueryableProperties>
+            </GetCmdletParameters>
+
+            <Cmdlet>
+                <CmdletMetadata Verb="Set" />
+                <Method MethodName="cim:ModifyInstance" >
+                    <Parameters>
+                        <Parameter ParameterName="ProviderAddress">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="CustomerID">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="Context">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="Rule">
+                            <Type PSType="NetVirtualizationLookupRecord.RuleType" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="VMName">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="UseVmMACAddress">
+                            <Type PSType="System.Boolean" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                    </Parameters>
+                </Method>
+                <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+                    <QueryableProperties>
+                        <Property PropertyName="CustomerAddress">
+                            <Type PSType="System.String" />
+                            <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                            </RegularQuery>
+                        </Property>
+                        <Property PropertyName="VirtualSubnetID">
+                            <Type PSType="System.UInt32" />
+                            <RegularQuery>
+                            <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                            </RegularQuery>
+                        </Property>
+                        <Property PropertyName="MACAddress">
+                            <Type PSType="System.String" />
+                            <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                            </RegularQuery>
+                        </Property>
+                    </QueryableProperties>
+                </GetCmdletParameters>
+            </Cmdlet>
+
+            <Cmdlet>
+                <CmdletMetadata Verb="Remove" />
+                <Method MethodName="cim:DeleteInstance" />
+            </Cmdlet>
+
+        </InstanceCmdlets>
+
+        <StaticCmdlets>
+
+            <Cmdlet>
+                <CmdletMetadata Verb="New" />
+                <Method MethodName="cim:CreateInstance">
+                    <Parameters>
+                        <Parameter ParameterName="CustomerAddress">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="true" />
+                        </Parameter>
+                        <Parameter ParameterName="VirtualSubnetID">
+                            <Type PSType="System.UInt32" />
+                            <CmdletParameterMetadata IsMandatory="true" />
+                        </Parameter>
+                        <Parameter ParameterName="MACAddress">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="true" />
+                        </Parameter>
+                        <Parameter ParameterName="ProviderAddress">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="true" />
+                        </Parameter>
+                        <Parameter ParameterName="CustomerID">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="Context">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="Rule">
+                            <Type PSType="NetVirtualizationLookupRecord.RuleType" />
+                            <CmdletParameterMetadata IsMandatory="true" />
+                        </Parameter>
+                        <Parameter ParameterName="VMName">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="UseVmMACAddress">
+                            <Type PSType="System.Boolean" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="Type">
+                            <Type PSType="NetVirtualizationLookupRecord.Type" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                    </Parameters>
+                </Method>
+            </Cmdlet>
+
+        </StaticCmdlets>
+
+	</Class>
+
+        <Enums>
+            <Enum EnumName="NetVirtualizationLookupRecord.RuleType" UnderlyingType="System.Byte">
+                <Value Name="TranslationMethodNat" Value="0" />
+                <Value Name="TranslationMethodEncap" Value="1" />
+                <Value Name="TranslationMethodNone" Value="2" />
+            </Enum>
+            <Enum EnumName="NetVirtualizationLookupRecord.Type" UnderlyingType="System.Byte">
+                <Value Name="Static" Value="0" />
+                <Value Name="Dynamic" Value="1" />
+                <Value Name="GatewayWildcard" Value="2" />
+                <Value Name="L2Only" Value="3" />
+            </Enum>
+        </Enums>
+
+</PowerShellMetadata>

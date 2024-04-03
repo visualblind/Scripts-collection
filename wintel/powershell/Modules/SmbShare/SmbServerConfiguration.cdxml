@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+    <Class ClassName="ROOT/Microsoft/Windows/SMB/MSFT_SmbServerConfiguration">
+        <Version>1.0</Version>
+        
+        <DefaultNoun>SmbServerConfiguration</DefaultNoun>
+        <StaticCmdlets>
+            <!--
+
+            //
+            // Get-SmbServer
+            //
+
+            -->
+            <Cmdlet>
+                <CmdletMetadata Verb="Get" ConfirmImpact="Medium" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241950" Aliases="gsmbsc"/>
+                <Method MethodName="GetConfiguration">
+                    <ReturnValue>
+                        <Type PSType="uint32" />
+                        <CmdletOutputMetadata>
+                            <ErrorCode />
+                        </CmdletOutputMetadata>
+                    </ReturnValue>
+                    <Parameters>
+                        <Parameter ParameterName="Output">
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+                            <CmdletOutputMetadata />
+                        </Parameter>
+                    </Parameters>
+                </Method>
+            </Cmdlet>
+            
+            
+            <!--
+
+            //
+            // Set-SmbServer
+            //
+
+            -->
+
+            <Cmdlet>
+                <CmdletMetadata Verb="Set" ConfirmImpact="High" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241962" Aliases="ssmbsc"/>
+                <Method MethodName="SetConfiguration">
+                    <ReturnValue>
+                        <Type PSType="uint32" />
+                        <CmdletOutputMetadata>
+                            <ErrorCode />
+                        </CmdletOutputMetadata>
+                    </ReturnValue>
+                    <Parameters>
+                        <Parameter ParameterName="AnnounceComment">
+                            <Type PSType="string" />
+                            <CmdletParameterMetadata>
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="AnnounceServer">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="AsynchronousCredits">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="AuditSmb1Access">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="AutoDisconnectTimeout">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="AutoShareServer">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="AutoShareWorkstation">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="CachedOpenLimit">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="DurableHandleV2TimeoutInSeconds">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="EnableAuthenticateUserSharing">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="EnableDownlevelTimewarp">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="EnableForcedLogoff">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="EnableLeasing">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="EnableMultiChannel">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="EnableOplocks">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="EnableSecuritySignature">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="EnableSMB1Protocol">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="EnableSMB2Protocol">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="EnableStrictNameChecking">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="EncryptData">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="IrpStackSize">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="KeepAliveTime">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="MaxChannelPerSession">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="MaxMpxCount">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="MaxSessionPerConnection">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="MaxThreadsPerQueue">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="MaxWorkItems">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="NullSessionPipes">
+                            <Type PSType="string" />
+                            <CmdletParameterMetadata>
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="NullSessionShares">
+                            <Type PSType="string" />
+                            <CmdletParameterMetadata>
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="OplockBreakWait">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="PendingClientTimeoutInSeconds">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="RejectUnencryptedAccess">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="RequireSecuritySignature">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="ServerHidden">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="Smb2CreditsMax">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="Smb2CreditsMin">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="SmbServerNameHardeningLevel">
+                            <Type PSType="Uint32" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="TreatHostAsStableStorage">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="ValidateAliasNotCircular">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="ValidateShareScope">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="ValidateShareScopeNotAliased">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="ValidateTargetName">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="cim:operationOption:Force">
+                            <Type PSType="System.Management.Automation.SwitchParameter" />
+                            <CmdletParameterMetadata PSName="Force">
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                    </Parameters>
+                </Method>
+            </Cmdlet>
+        </StaticCmdlets>
+    </Class>
+</PowerShellMetadata>

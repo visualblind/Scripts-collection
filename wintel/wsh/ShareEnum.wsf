@@ -1,0 +1,723 @@
+<?xml version="1.0" ?>
+<package>
+	<comment>
+	ShareEnum.WSF, version 2.1.  
+	Alan dot Kaplan at VA dot gov.
+	This script generates a list of shares
+	</comment>
+	<job id="LaunchCscript" prompt="no">
+		<?job error="false" debug="false" ?>
+		<runtime>
+			<description>
+This job ensures that the script launches as CScript.
+			</description>
+			<usage>
+This script audits Windows shares and permissions. It does not get the NTFS security.
+You can double click the script to launch.  No arguments are required. 
+On a workstation with Excel installed, the log will be an Excel file.  Otherwise,
+it will be a tab delimited file.
+
+			</usage>
+		</runtime>
+		<script id="LaunchCscript" language="VBScript">
+<![CDATA[
+'Launch FrontEnd in Cscript 
+Dim wshShell, Command
+dim quote
+quote=chr(34)
+Set wshShell = WScript.CreateObject("WScript.Shell")
+command = "cmd.exe /c color 17&title " & WScript.ScriptName &" Status Messages& cscript.exe " & quote & wscript.ScriptFullName & quote & " //job:FrontEnd //nologo"
+wshShell.Run Command,1,False
+Wscript.Quit 
+]]>
+		</script>
+	</job>
+	<job id="FrontEnd" prompt="no">
+		<?job error="true" debug="true" ?>
+		<runtime>
+			<description>
+This job provides the menu choices, and get the source 
+computer names to pass to the main script.
+			</description>
+			<usage>
+This audits your shares. Please run from GUI by double clicking on it. 
+
+Alan Kaplan
+Alan dot Kaplan at va dot gov
+9-5-2012
+			</usage>
+		</runtime>
+		<script id="MenuChoices" language="VBScript">
+<![CDATA[
+'This is the job that gives you choices about how to call the working code 
+Option Explicit
+
+Dim message, batch
+dim logfile
+Dim scriptpath
+dim fso
+Dim appendout
+'setup log
+Const ForAppend = 8
+
+Set fso = CreateObject("Scripting.FileSystemObject")
+dim wshShell:Set wshShell = CreateObject("WScript.Shell")
+Dim quote:quote=chr(34)
+dim squote:squote=Chr(39)
+
+Dim Command, oScriptExec
+Dim strRetval
+Dim strScope
+
+Dim strComputer, strProg, strArgs
+Dim strMessage, strCL, strLogfile
+Dim oFile
+
+
+Dim oExcelApp 
+Dim strFilePath
+Dim bExcelInstalled:bExcelInstalled = False
+
+Dim d ' Create dictionary
+Set d = CreateObject("Scripting.Dictionary")
+Dim i, sADSPath
+Const ADS_SCOPE_ONELEVEL = 1
+Dim root
+Dim oConn, oCommand
+
+Dim strExt:strExt = ".txt" 	'set the log extension to .txt.  If Excel installed, will change to .xls
+
+If (Not IsCScript()) Then 		'If not CScript, re-run with cscript...
+	WshShell.Run "CScript.exe " & quote & WScript.ScriptFullName & quote, 1, True
+End If
+
+On Error Resume Next 
+Set oExcelApp = CreateObject("Excel.Application") 
+If Err =  0 Then bExcelInstalled = True
+Err.Clear
+On Error GoTo 0
+
+
+strComputer = ucase(wshShell.ExpandEnvironmentStrings("%COMPUTERNAME%"))
+strMessage = "This script is an alternative to SysInternals' ShareEnum program.  It enumerates shares and share permissions on computer(s). " & _
+"You can check a single machine, a list from a text file, or from computers found in Active Directory.  It uses WMI to query security, so you must have admin rights to do this. " & _
+VbCrLf & VbCrLf & "When checking multiple computers the results are logged to an Excel file or a tab delimited text file where Excel is not installed, so " & _ 
+"running this from an administrator's workstation with Excel will give you a better user experience. " 
+
+strRetval = MsgBox(strMessage,vbOKCancel,"ShareEnum script, Alan Kaplan")
+If strRetval = vbCancel Then WScript.Quit
+
+strMessage = "The script excludes windows admin shares such as C$.  Do you want to also exclude print spooler shares (print$)?"
+strRetval = msgbox(strMessage,vbYesNoCancel + vbQuestion,"Filter out Print$?")
+If strRetval = vbCancel Then WScript.Quit
+dim bExcludePrinters: bExcludePrinters= False
+if strRetVal = vbYes then bExcludePrinters = True
+
+strMessage = "1) Check a single computer (includes this one)" & VbCrLf & _
+			 "2) Check a list of computers in text file" & VbCrLf & _
+			 "3) Check computers from Active Directory" & VbCrLf & _
+			 "4) Check a list of systems I type in" & VbCrLf & VbCrLf & _
+			 "0) Quit"
+strMessage = strMessage & VbCrLf & VbCrLf & "[You're logged on as " & ucase(wshShell.ExpandEnvironmentStrings("%USERNAME%]"))	 
+strRetval = InputBox(strMessage,"Enter Choice, then click OK")
+
+Select Case strRetval
+	Case 1 	'single
+		Command = "wscript.exe " & quote & wscript.ScriptFullName & quote & " //job:MainScript //nologo"
+		batch = False
+		strArgs = " /UseExcel:" & bExcelInstalled &  " /NoPrinters:" & bExcludePrinters
+		WshShell.Run Command & strArgs ,1,False
+		WScript.quit(0)
+	Case 2 'list from file
+		LogSetup
+		If bExcelInstalled Then 
+			strFilePath = ExcelOpenDialog("Choose text file with list of computers", "Text Files (*.txt),*.txt" ) 
+			If strFilePath = vbNullString then  WScript.Quit
+		Else
+			strFilePath = InputBox("Enter path to text file with list of computers","Path")
+		End If 
+		On Error GoTo 0 
+		FromFile
+	Case 3 'From AD
+		LogSetup
+		EnumOU
+	Case 4  'From typed list
+		LogSetup
+		UserList
+	Case Else
+		 WScript.Quit(100) 'Something bad happened.
+End Select
+
+WScript.Quit(0)
+
+
+' ========= Functions and Sub ===============
+Function PingReply(strComputer)
+	If UCase(strComputer) = wshShell.ExpandEnvironmentStrings("%COMPUTERNAME%") Then
+		PingReply = True 'don't use WMI to ping local host (it fails)
+		Exit Function 
+	End If 
+	Wscript.echo VbCrLf & "Pinging " & strComputer & " ... "
+    On Error Resume Next
+    Dim objWMI, colPings, objPing
+    PingReply = False
+    Set objWMI = GetObject("winmgmts:\\.\root\cimv2")
+    Set colPings = objWMI.ExecQuery("SELECT * FROM Win32_PingStatus WHERE Address = '" & strComputer & "'")
+      
+    For Each objPing in colPings
+        If objPing.StatusCode = 0 Then 
+	        PingReply = True 
+	        Exit For
+        End If 
+    Next
+    On Error Goto 0
+End Function
+
+
+Sub UserList()
+	dim strPCList, arrComputers
+	On Error Resume Next
+    strPCList = InputBox("Run script on this list of computers, separated by commas:","Enter List") 
+    arrComputers = split(strPCList,",")
+    For i = 0 To ubound(arrComputers)
+    	If Len(arrComputers(i)) > 1 Then PingFirst arrComputers(i)
+    Next
+    
+ 	On Error GoTo 0
+ 	If bExcelInstalled Then 
+ 		SaveAsExcel()
+ 	Else
+ 		strRetval = MsgBox("Script complete.  The logfile is " & logfile & ".", vbInformation + vbOKOnly,"Done")
+ 	End If 
+End Sub 
+
+Function ExcelOpenDialog( sPrompt, sFilter ) 
+	'Based on code by Michael Hardt 
+   	'http://www.softimage.com/community/xsi/discuss/archives/xsi.archive.0111/msg00066.htm
+   	Dim sFile 
+   	sFile = oExcelApp.GetOpenFilename( sFilter, , sPrompt ) 
+   	Set oExcelApp = Nothing 
+   
+   	'Cancel or no file name? 
+   	If sFile <> False Then 
+      	ExcelOpenDialog = sFile 
+   	Else 
+     	 ExcelOpenDialog = vbNullString 
+   	End If 
+End Function 
+
+Sub FromFile()	
+	'read names from file
+	If Not FSO.FileExists(strFilePath) Then
+	   	MsgBox   strFilePath & " not found.",vbCritical + vbOKOnly,"Error"
+		WScript.Quit
+	End If 
+	
+	Wscript.echo "Reading names from file " & strFilePath
+	On Error Resume Next
+	Set oFile = fso.OpenTextFile(strFilePath)
+	
+	If Err <> 0 Then
+	   MsgBox  "Error opening " & strFilePath & Space(1) & Err.Description,vbCritical + vbOKOnly,"Error"
+	   WScript.Quit
+	End If
+	
+	Do Until oFile.AtEndOfStream
+	    PingFirst oFile.ReadLine
+	Loop
+	
+	oFile.Close
+	On Error GoTo 0
+	If bExcelInstalled Then SaveAsExcel()
+End Sub
+
+
+Sub EnumOU()
+	'Get the default ADsPath for the domain to search. 
+	Set root = GetObject("LDAP://rootDSE")
+	sADSPath = root.Get("defaultNamingContext")
+	
+	'Connect to Active directory and search setup
+	Set oConn = CreateObject("ADODB.Connection")
+	Set oCommand =   CreateObject("ADODB.Command")
+	oConn.Provider = "ADsDSOObject"
+	oConn.Open "Active Directory Provider"
+	Set oCommand.ActiveConnection = oConn
+	oCommand.Properties("Page Size") = 1000
+	oCommand.Properties("Searchscope") = ADS_SCOPE_ONELEVEL
+	
+	strMessage = "You will be presented with a menu with which you will select a starting point in AD." & _
+		  "The directory query returns all selected computer objects at that OU and below. Do you want to check share permissions on:" & VbCrLf & _
+				"1) All Systems" & VbCrLf & _
+				"2) Servers Only" & VbCrLf & _
+				"3) Workstations Only" & VbCrLf & _
+				"0) Quit"
+	strRetval = InputBox(strMessage, "Scope",1)
+	
+	Select Case strRetval
+		Case 1
+			strScope = ""
+		Case 2	'contains the word server
+			strScope = " and OperatingSystem='*Server*'"
+		Case 3 'does not contain the word server
+			strScope = " and Not OperatingSystem ='*Server*'"
+	End Select
+	
+	
+	strMessage = "Start OU navigation where?"
+	sADSPath = InputBox(strMessage,"Starting ADS Path",sADSPath)
+	If sADSPath = "" Then
+		MsgBox  "You failed to provide required information.",vbCritical + vbOKOnly,"No OU Selected"
+		Exit Sub 
+	End If 
+	
+	SearchDom sADSPath
+End Sub	
+
+
+sub SearchDom(sADSPath)
+	Dim oRS
+	Dim iChoice, logfile
+	i = 1
+
+	oCommand.CommandText = _
+	    "SELECT Name, distinguishedname FROM 'LDAP://"& sADSPath &"' WHERE objectClass='organizationalUnit'"  
+	Set oRS = oCommand.Execute
+	
+	If oRS.EOF = True Then	'no more OUs under.  Exit
+		GetADNames
+		Exit Sub
+	End If 
+	
+	oRS.MoveFirst
+	Do Until oRS.EOF
+		'Add the name and the dn -- here ADSPath to dictionary.
+	    d.Add i &") " &  oRS.Fields("Name").Value, oRS.Fields("distinguishedname").Value
+	    oRS.MoveNext
+	    i = i + 1 
+	Loop
+	
+	iChoice = d.Keys              ' Get the keys.
+	
+	strMessage =""		'Build the menu
+	
+	For i = 0 To d.Count -1 ' Iterate the names 
+	    strMessage = strMessage &   iChoice(i) & vbcrlf
+	Next
+	
+	strMessage = strMessage & _
+		"      --- Current Path ---- " & vbcrlf & _
+	 "0) " & sADSPath & VbCrLf  
+	
+	iChoice = InputBox(strMessage,"Enter Choice",0)
+	If iChoice = "" Then Exit Sub
+	If iChoice = 0 Then 
+		GetADNames 
+		Exit Sub
+	End If 
+	
+	'okay.  This is a kludge. You could do this with a multidimensional array
+	'or even a recordset. But it was fast and easy!
+	
+	Dim a,b
+	a = d.Items
+	b = d.Keys	'Cleaning up from menu stuff to get logfile
+
+	If (iChoice-1) <= UBound(a) Then  
+		sADSPath = a(iChoice-1)
+	End If 
+	
+	d.RemoveAll		'Clear the dictionary
+	searchDom sADSPath
+End Sub
+
+Sub GetADNames
+	On Error Resume Next 
+	Dim oRS
+	oCommand.Properties("SearchScope") =2
+	oCommand.Properties("Sort On") = "Name"
+	'using SQL syntax.  Would need to switch to LDAP syntax if you want to exclude disabled objects
+	oCommand.CommandText = "SELECT Name, distinguishedname FROM 'LDAP://"& sADSPath &"' WHERE objectCategory='Computer'" & strScope 
+	WScript.Echo "Getting list, please wait..."
+	'WScript.Echo oCommand.CommandText
+	Set oRS = oCommand.Execute
+	If oRS.EOF = True Then	'no more OUs under.  Exit
+		Exit Sub
+	End If 
+	
+	oRS.MoveFirst
+	Do Until oRS.EOF
+		PingFirst oRS.Fields("Name").Value
+		oRS.MoveNext
+	Loop
+	On Error GoTo 0
+	
+	If bExcelInstalled Then SaveAsExcel()
+End Sub 
+
+
+Sub PingFirst(strComputer)
+	StrComputer = ucase(Trim(strComputer))
+	If PingReply(strComputer) = True Then
+		Wscript.echo strComputer & " replied to ping." 
+		RunScript strComputer
+    Else
+		'Wscript.echo strComputer & " failed to reply to ping."   	
+		'Optional - log ping failures
+		EchoAndLog strComputer & String(6,vbTab) & "Failed to ping"
+	End If 
+End Sub
+
+
+Sub RunScript(strcomputer)
+	WScript.Echo "Checking " & strComputer
+	strArgs = strComputer & Space(1) & quote & logfile & quote & " /UseExcel:" & bExcelInstalled &  " /NoPrinters:" & bExcludePrinters
+	Command = "cscript.exe " & quote & wscript.ScriptFullName & quote & " //T:120 //job:MainScript " & strArgs
+	wshShell.Run Command,7,True 
+	WScript.Sleep 500
+End Sub
+
+Function IsCScript()
+    If (InStr(UCase(WScript.FullName), "CSCRIPT") <> 0) Then
+        IsCScript = True
+    Else
+        IsCScript = False
+    End If
+End Function
+
+Sub LogSetup()
+	'create a suggest log file name.
+	If bExcelInstalled Then strExt = ".xls"
+	scriptpath = Left(Wscript.ScriptFullName, InStrRev(Wscript.ScriptFullName, "\"))
+	logfile = scriptpath & left(WScript.ScriptName,Len(WScript.ScriptName)-4)& "_Log" &  strExt
+	logfile = InputBox ("Log file","Log",logfile)
+	If fso.FileExists(logfile) Then 
+		MsgBox logfile & " exists, please use a different name",vbOKOnly,"File Exists"
+		LogSetup
+	End If
+	
+	'no XLSX
+	strExt = lcase(Mid(logfile, InStr(logfile,".")))
+	If Len(strExt) > 4 And InStr(strExt,"xls") Then 
+		retval = MsgBox("Changing file type to supported type, .xls.",vbOKCancel + vbInformation,"Unsupported Log Filetype")
+		If retval = vbCancel Then WScript.Quit
+		strExt = ".xls"
+	End If 
+	
+	'Allow user to force text file where Excel is installed.
+	If bExcelInstalled And strExt = ".txt" Then
+		strRetval = MsgBox ("Excel is installed.  Are you sure you want to save log as tab delmited text?",vbyesnocancel,"Log Filetype", _
+		vbyesnocancel,"Force Text Type?") 
+		If strRetval = vbCancel Then WScript.Quit
+		If strRetval = vbYes Then bExcelInstalled = False
+	End If 
+End Sub 
+
+Sub EchoAndLog(message)	'only used when ping fails.  Open and close Log
+	Dim addheader:addheader = True 
+	If fso.FileExists(logfile) Then AddHeader = False
+	Set appendout = fso.OpenTextFile(logfile, ForAppend, True)
+	If AddHeader = True Then appendout.WriteLine "Computer Name	Share Name	Local Path	Trustee	Permissions	UNC Path	Errors"
+	'Echo output and write to log
+	Wscript.Echo message
+	AppendOut.WriteLine message
+	appendout.Close
+End Sub 
+
+
+Sub SaveAsExcel()
+	If isobject(appendout) Then Set appendout = Nothing 'should close if required
+	Dim strFileName: strFileName = LCase(logfile)
+	WScript.Sleep 3000
+	
+	Const xlnormal = -4143
+	Const xlAscending = 1
+	Const xlDescending = 2
+	Const xlYes = 1
+	const xlSortValues = 1
+    Const xlCellTypeLastCell = 11
+	Const xlDown = -4121
+	Const xlSolid  = 1
+	Dim oXL, objRange, objRange2
+	Dim Selection, xCell
+	
+	'This should not happen
+	If Not fso.FileExists(strFileName) Then 
+		MsgBox strFileName & " not found!",vbCritical + vbOKOnly,"No Log found"
+		WScript.Quit
+	End If 
+	
+	On Error Resume Next
+	Set oXL = CreateObject("Excel.Application")
+	
+	oXL.Visible = False
+	oXL.DisplayAlerts=False ' don't display overwrite prompt.
+	oXL.Workbooks.Open(strFileName)
+	Set objRange = oXL.Worksheets(1).UsedRange
+	'Sort by name
+	Set objRange2 = oXL.Range("A2")
+	objRange.Sort objRange2, xlAscending,,,,,, xlYes
+	objRange.EntireColumn.Autofit()
+
+	'This code makes creates hyperlinks for the UNC paths
+	Dim oWS: Set oWS = oXL.ActiveSheet
+	
+ 	' adaption of VBA code found on web
+	Set Selection = oXL.Range("F2:F" & OXL.ActiveSheet.Cells.SpecialCells(xlCellTypeLastCell).Row)
+	For Each xCell In Selection
+		If Len(xCell.formula) > 0 Then  oXL.ActiveSheet.Hyperlinks.Add xCell, xCell.Formula
+    Next
+
+	Set Selection = Nothing
+	
+ 	' Change color of header row to white letters with blue blackground
+ 	' adaption of VBA code found on web
+	Set Selection = oXL.Range("A1:G1")	
+	With OWS.Cells(Selection.Row, Selection.Column).Resize(, Selection.Columns.Count)
+	    With .Interior
+	       		.ColorIndex = 49
+	       		.Pattern = xlSolid
+	    End With
+	    
+	    With .Font
+	        	.ColorIndex = 2
+	    End With
+	End With
+    
+	oWS.Activate
+	oWS.Name = "Shares Info"
+	oXL.ActiveWorkBook.SaveAs strFileName,xlnormal,,,,,,,True 'overwrite existing
+
+	strMessage = "Script complete.  The logfile is " & logfile & _
+	 ".  It contains only the names of systems with shares or error messages. Open log now?"
+	strRetval = MsgBox(strMessage,vbInformation+ vbYesNo,"Finished")
+	If strRetval = vbYes Then 
+		oXL.Visible = True
+	Else
+		oXL.ActiveWorkBook.Close
+		oXL.Quit
+	End If 
+End Sub 
+
+
+]]>
+		</script>
+	</job>
+	<job id="MainScript" prompt="no">
+		<?job error="false" debug="false" ?>
+		<runtime>
+			<description>
+This is the part of the script that collect ths share information.  It is called by the frontend job.
+			</description>
+		</runtime>
+		<script id="MainScript" language="VBScript">
+<![CDATA[
+' ******** Script to embed begins here
+'Alan Kaplan 3-23-2007, 9/5/12
+'All the interesting parts of the WMI security coding was written by Chris Wolf
+'at redmondmag.com
+
+Option Explicit
+Dim batch, strcomputer
+Dim oWMI, colitems,  message, strTime, strFullTime, strDisplay
+Dim fso, i,appendout
+Dim quote: quote=chr(34)
+Dim WshShell: Set WshShell = WScript.CreateObject("WScript.Shell")
+Dim colShares, objShare
+Dim retval, oTrustee, Trustee
+Dim DACL, wmiShareSec, wmiSecurityDescriptor, wmiACE
+Dim AceType, PermType, SharePerm
+Dim logfile 
+Dim bExcelInstalled
+Dim bExcludePrinters
+bExcelInstalled = CBool(WScript.Arguments.Named("UseExcel"))
+bExcludePrinters = CBool(WScript.Arguments.Named("NoPrinters"))
+
+If WScript.Arguments.unnamed.Count >0 Then
+	strComputer = WScript.Arguments(0)
+	batch = True 
+	Const ForAppend = 8
+	Set fso = CreateObject("Scripting.FileSystemObject")
+	logfile = WScript.Arguments(1)
+
+	Dim AddHeader: AddHeader = True
+	If fso.FileExists(logfile) Then AddHeader = False
+	Set appendout = fso.OpenTextFile(logfile, ForAppend, True)
+	If AddHeader = True Then appendout.WriteLine "Computer Name	Share Name	Local Path	Trustee	Permissions	UNC Path	Errors"
+Else
+	batch = False
+	strComputer = wshShell.ExpandEnvironmentStrings("%COMPUTERNAME%")
+	strComputer = InputBox("Check Shares on what PC","Computer Name",strComputer)
+End If 
+
+If strcomputer = "" Then WScript.Quit
+strComputer = UCase(strComputer)
+
+' connect to computer 
+On Error Resume Next
+Set oWMI = GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+If Err <> 0 Then
+	errhandler "Could not get information " & Err.Description
+	Err.Clear
+Else 
+	' enumerate normal shares
+	Set colShares = oWMI.ExecQuery ("SELECT * FROM Win32_Share where type = 0")
+
+	' display ACE
+	For Each objShare In colShares
+		Err.Clear
+
+		Set wmiShareSec = oWMI.Get ("Win32_LogicalShareSecuritySetting.Name='" & objShare.Name & "'")
+		RetVal = wmiShareSec.GetSecurityDescriptor(wmiSecurityDescriptor)
+		DACL = wmiSecurityDescriptor.DACL
+		For Each wmiACE In DACL
+			Set oTrustee = wmiACE.trustee
+			
+			If Len (oTrustee.Domain) > 0 Then 
+				Trustee = oTrustee.Domain & "\" & oTrustee.Name
+			Else
+				Trustee = oTrustee.Name
+			End If 
+			
+			If Len(Trustee) = 0 Then Trustee = "Could not determine"
+			
+			Set ACEType = wmiACE.AceType
+	
+			Select Case int(wmiACE.AceType)
+				Case 0 PermType = "Allow"
+				Case 1 PermType = "Deny"
+			End Select
+				   
+			Select Case Int(wmiACE.AccessMask)
+				Case 1179817 SharePerm = "Read"
+				Case 1245631 SharePerm = "Change"
+				Case 2032127 SharePerm = "Full Control"
+				Case Else SharePerm = "Access Mask " &  wmiACE.AccessMask 
+			End Select
+			
+			Dim strShareName, strUNC
+			strShareName = objShare.Name
+			strUNC = "\\" & strcomputer & "\" & strShareName
+			
+			'Don't write data if you printers excluded
+			If (bExcludePrinters = False) Or _
+			(bExcludePrinters And InStr(1,strShareName,"print",1)= 0)  Then 
+				If batch Then 
+					EchoAndLog strComputer & vbTab & strShareName & vbtab & objShare.Path & vbtab & _
+					Trustee & vbTab &  PermType & ": " & SharePerm & vbTab & strUNC
+				Else
+					message = message & VbCrLf & strShareName & vbTab & objShare.Path & vbtab & _
+					Trustee & vbTab &  PermType & ": " & SharePerm & vbTab & strUNC
+				End If 
+			End If 
+			
+			Next 
+	Next
+On Error GoTo 0
+End If
+		
+If batch Then 
+	appendout.close
+Else
+	If Len(message) > 3 Then 
+		message = "Share	Local Path	Trustee	Permissions	UNC Path" & VbCrLf & message
+	Else
+		message = "No shares found"
+	End If  
+	DisplayIE message 
+End If 
+
+'============ Subs ============
+Sub EchoAndLog (message)
+	'Echo output and write to log
+	Wscript.Echo message
+	AppendOut.WriteLine message
+End Sub  
+
+Sub errhandler(emsg)
+	Err.Clear
+	If batch = True Then
+		EchoAndLog strComputer & String(6,vbTab) & "Failed. " & emsg
+		WScript.Quit
+	Else
+		'MsgBox "Fatal Error. " & emsg,vbCritical + vbOKOnly,strComputer
+		DisplayIE emsg
+	End If	
+End Sub
+
+Sub DisplayIE(strText)
+	'Based somewhat on script by Bob Kelly,
+	'http://mcpmag.com/columns/article.asp?editorialsid=1678
+	'On Error GoTo 0
+	Dim oIE, oDoc
+	Dim x, tArray1
+	Set oIE = CreateObject("InternetExplorer.Application")
+	
+	With oIE
+		.AddressBar = False
+		.Menubar = True
+		.Toolbar = True
+		.Resizable = True
+		.Height = 600
+		.Width = 1000
+		.Visible =False 
+		.Navigate("about:blank")
+	End With 
+	
+	While oIE.Busy
+	   WScript.Sleep 100
+	Wend
+	
+	Set oDoc = oIE.Document
+	oDoc.Open
+	oDoc.Write("<TITLE>Shares and Permissions on " & strComputer & "</TITLE>")& VbCrLf  
+	
+	With oDoc
+			.writeLn ("<!doctype html public>") 
+			.writeLn ("<body style='text-align: Left'>")
+			.writeLn ("<style>")
+			.writeLn ("BODY {")
+			.writeLn ("		background-color : #000080;")
+			.writeLn ("		color : #ffffff;")
+			.writeLn ("		font-family : Arial;")
+			.writeLn ("	}")
+			.writeLn ("	TD {")
+			.writeLn ("		font-weight: bold;")
+			.writeLn ("		font-size: 14px;	")	
+			.writeLn ("	}")
+			.writeLn ("	</style>")
+	End With
+	
+	oDoc.Write("<Center><Font size = +3>Shares and Permissions on " & strComputer & "</font></center><br>")& VbCrLf  
+	oDoc.Write("<table border = " & quote & "1" & quote & " cellpadding=" & quote & "3" & quote & ">") & VbCrLf
+	Dim tArray: tArray = Split(strText,VbCrLf)
+	For i = 0 To UBound (tArray)
+		If instr(tArray(i),vbTab) Then 
+			oDoc.Write "<tr>"
+			tArray1 = Split(tArray(i),vbTab)
+				For x = 0 To UBound(tArray1)
+					oDoc.Write "<td>" & tArray1(x) & "</td>"
+				Next
+			oDoc.Write "</tr>" & VbCrLf 
+		Else
+			oDoc.Write tArray(i)& VbCrLf 
+		End If 
+	Next
+	
+	
+ 	oDoc.Write("</table></FONT>")
+ 	oDoc.Write("(Note: You must copy and paste UNC Path to view.  IE security model does not permit links to file system)")
+ 	oDoc.Write("</Body></html>")
+ 	oIE.Visible = True
+ 	WScript.Quit
+End Sub 
+
+
+
+
+'****** End embedded script
+
+]]>
+		</script>
+	</job>
+</package>

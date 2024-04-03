@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <!--
+
+  //
+  // MSFT_FSRMClassificationRule
+  //
+
+  -->
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_FSRMClassificationRule</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>ReevaluateProperty</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.RuleReevaluatePropertyEnum]($this.PSBase.CimInstanceProperties['ReevaluateProperty'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Flags</Name>
+        <GetScriptBlock>
+          $integerArray = $this.PSBase.CimInstanceProperties['Flags'].Value
+	  $enumArray = New-Object Microsoft.PowerShell.Cmdletization.GeneratedTypes.RuleFlagsEnum[] ($integerArray.Length)
+	  for ($i = 0; $i -lt $integerArray.Length; $i++)
+	  {
+		$enumArray[$i] = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.RuleFlagsEnum]($integerArray[$i])
+	  }
+	  return $enumArray
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT\Microsoft\Windows\Defender\MSFT_MpSignature" ClassVersion="1.0">
+    <Version>1.0</Version>
+    <DefaultNoun>MpSignature</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Update" />
+        <Method MethodName="Update">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="UpdateSource">
+              <Type PSType="MpSignature.UpdateSource" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+                <AllowNull />
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateSet>
+                  <AllowedValue>InternalDefinitionUpdateServer</AllowedValue>
+                  <AllowedValue>MicrosoftUpdateServer</AllowedValue>
+                  <AllowedValue>MMPC</AllowedValue>
+                  <AllowedValue>FileShares</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+    <Enums>
+        <Enum EnumName="MpSignature.UpdateSource" UnderlyingType="System.Byte">
+            <Value Name="InternalDefinitionUpdateServer" Value="0" />
+            <Value Name="MicrosoftUpdateServer" Value="1" />
+            <Value Name="MMPC" Value="2" />
+            <Value Name="FileShares" Value="3" />
+        </Enum>        
+    </Enums>
+</PowerShellMetadata>

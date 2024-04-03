@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/Microsoft/Windows/DNS/PS_DnsServerStubZone" ClassVersion="1.0.0">
+    <Version>1.0.0</Version>
+    <DefaultNoun>DnsServerStubZone</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Add" DefaultCmdletParameterSet="FileForwardLookupZone" ConfirmImpact="Medium" />
+        <Method MethodName="AddByADForwardLookupZone" CmdletParameterSet="ADForwardLookupZone">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="LoadExisting">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MasterServers">
+              <Type PSType="System.Net.IPAddress[]" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReplicationScope">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="3" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateSet>
+                  <AllowedValue>Forest</AllowedValue>
+                  <AllowedValue>Domain</AllowedValue>
+                  <AllowedValue>Legacy</AllowedValue>
+                  <AllowedValue>Custom</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ZoneName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DirectoryPartitionName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="4" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerStubZone" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="AddByADReverseLookupZone" CmdletParameterSet="ADReverseLookupZone">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="LoadExisting">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MasterServers">
+              <Type PSType="System.Net.IPAddress[]" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NetworkId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReplicationScope">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="3" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateSet>
+                  <AllowedValue>Forest</AllowedValue>
+                  <AllowedValue>Domain</AllowedValue>
+                  <AllowedValue>Legacy</AllowedValue>
+                  <AllowedValue>Custom</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DirectoryPartitionName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="4" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerStubZone" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="AddByFileForwardLookupZone" CmdletParameterSet="FileForwardLookupZone">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="LoadExisting">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MasterServers">
+              <Type PSType="System.Net.IPAddress[]" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ZoneName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ZoneFile">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerStubZone" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="AddByFileReverseLookupZone" CmdletParameterSet="FileReverseLookupZone">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="LoadExisting">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MasterServers">
+              <Type PSType="System.Net.IPAddress[]" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NetworkId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ZoneFile">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerStubZone" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" DefaultCmdletParameterSet="Parameter" ConfirmImpact="Medium" />
+        <Method MethodName="SetByADZone" CmdletParameterSet="ADZone">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ZoneName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DirectoryPartitionName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReplicationScope">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateSet>
+                  <AllowedValue>Forest</AllowedValue>
+                  <AllowedValue>Domain</AllowedValue>
+                  <AllowedValue>Legacy</AllowedValue>
+                  <AllowedValue>Custom</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerStubZone" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByParameter" CmdletParameterSet="Parameter">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ZoneName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MasterServers">
+              <Type PSType="System.Net.IPAddress[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="LocalMasters">
+              <Type PSType="System.Net.IPAddress[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerStubZone" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

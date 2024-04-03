@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <!--
+
+  //
+  // MSFT_FSRMClassificationPropertyDefinition
+  //
+
+  -->
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_FSRMClassificationPropertyDefinition</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Type</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.PropertyDefinitionTypeEnum]($this.PSBase.CimInstanceProperties['Type'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Flags</Name>
+        <GetScriptBlock>
+	  $integerArray = $this.PSBase.CimInstanceProperties['Flags'].Value
+	  $enumArray = New-Object Microsoft.PowerShell.Cmdletization.GeneratedTypes.PropertyDefinitionFlagsEnum[] ($integerArray.Length)
+	  for ($i = 0; $i -lt $integerArray.Length; $i++)
+	  {
+		$enumArray[$i] = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.PropertyDefinitionFlagsEnum]($integerArray[$i])
+	  }
+	  return $enumArray
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>AppliesTo</Name>
+        <GetScriptBlock>
+          $integerArray = $this.PSBase.CimInstanceProperties['AppliesTo'].Value
+	  $enumArray = New-Object Microsoft.PowerShell.Cmdletization.GeneratedTypes.PropertyDefinitionAppliesToEnum[] ($integerArray.Length)
+	  for ($i = 0; $i -lt $integerArray.Length; $i++)
+	  {
+		$enumArray[$i] = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.PropertyDefinitionAppliesToEnum]($integerArray[$i])
+	  }
+	  return $enumArray
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>

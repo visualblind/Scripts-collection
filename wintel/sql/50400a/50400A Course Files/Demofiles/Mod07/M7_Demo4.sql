@@ -1,0 +1,4 @@
+-- Enables TDE 
+ALTER DATABASE QuantamCorp
+SET ENCRYPTION ON
+GO

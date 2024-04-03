@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/Microsoft/Windows/DNS/PS_DnsServerKeyStorageProvider" ClassVersion="1.0.0">
+    <Version>1.0.0</Version>
+    <DefaultNoun>DnsServerKeyStorageProvider</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Show" />
+        <Method MethodName="Show">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="System.String[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

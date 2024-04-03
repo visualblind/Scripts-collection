@@ -1,0 +1,65 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_TargetPortal">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>TargetPortal</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-TargetPortal
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByUniqueId">
+        <QueryableProperties>
+          <!-- UniqueId -->
+          <Property PropertyName="UniqueId">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </RegularQuery>
+          </Property>
+          <!-- IPv4Address -->
+          <Property PropertyName="IPv4Address">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByIPv4Address">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </RegularQuery>
+          </Property>
+          <!-- IPv6Address -->
+          <Property PropertyName="IPv6Address">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByIPv6Address">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <!-- TargetPort -->
+          <Association Association="MSFT_TargetPortToTargetPortal" SourceRole="TargetPort" ResultRole="TargetPortal">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TargetPort" />
+              <CmdletParameterMetadata PSName="TargetPort" ValueFromPipeline="true" CmdletParameterSets="ByTargetPort" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- StorageSubsystem -->
+          <Association Association="MSFT_StorageSubSystemToTargetPortal" SourceRole="StorageSubSystem" ResultRole="TargetPortal">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubSystem" />
+              <CmdletParameterMetadata PSName="StorageSubsystem" ValueFromPipeline="true" CmdletParameterSets="BySubsystem" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+        </QueryableAssociations>
+      </GetCmdletParameters>
+    </InstanceCmdlets>
+  </Class>
+</PowerShellMetadata>

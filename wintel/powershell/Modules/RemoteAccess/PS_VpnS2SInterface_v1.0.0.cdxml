@@ -1,0 +1,1804 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/Microsoft/Windows/RemoteAccess/PS_VpnS2SInterface" ClassVersion="1.0.0">
+    <Version>1.0.0</Version>
+    <DefaultNoun>VpnS2SInterface</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Add" DefaultCmdletParameterSet="EncryptionType" ConfirmImpact="Medium" />
+        <Method MethodName="AddByCustomPolicy" CmdletParameterSet="CustomPolicy">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ElementName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Protocol">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="KeyModule" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateSet>
+                  <AllowedValue>L2TP</AllowedValue>
+                  <AllowedValue>IKEv2</AllowedValue>
+                  <AllowedValue>Automatic</AllowedValue>
+                  <AllowedValue>SSTP</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Destination">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="RemoteTunnelEndpoint RemoteTunnelHostname RemoteAddress" IsMandatory="true" Position="2" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AdminStatus">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PromoteAlternate">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AuthenticationMethod">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+                <ValidateSet>
+                  <AllowedValue>EAP</AllowedValue>
+                  <AllowedValue>MachineCertificates</AllowedValue>
+                  <AllowedValue>PSKOnly</AllowedValue>
+                  <AllowedValue>MSCHAPv2</AllowedValue>
+                  <AllowedValue></AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PostConnectionIPv4Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="PostConnectionIPv6Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="InitiateConfigPayload">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RadiusAttributeClass">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableQoS">
+              <Type PSType="Nullable[VpnS2SInterface.EnableQoS]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv4TriggerFilter">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="IPv6TriggerFilter">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="Persistent">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AutoConnectEnabled">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv4TriggerFilterAction">
+              <Type PSType="Nullable[VpnS2SInterface.Action]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv6TriggerFilterAction">
+              <Type PSType="Nullable[VpnS2SInterface.Action]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SADataSizeForRenegotiationKilobytes">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="SaRenegotiationDataSizeKB LifeTimeKiloBytes" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1024" Max="2147483647" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv4Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="IPv4TriggerSubnet" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv6Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="IPv6TriggerSubnet" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ResponderAuthenticationMethod">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+                <ValidateSet>
+                  <AllowedValue>MachineCertificates</AllowedValue>
+                  <AllowedValue>PSKOnly</AllowedValue>
+                  <AllowedValue></AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" Position="3" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="256" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Certificate">
+              <Type PSType="System.Security.Cryptography.X509Certificates.X509Certificate2" />
+              <CmdletParameterMetadata Aliases="Cert">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SharedSecret">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NetworkOutageTimeSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="NetworkOutageTimeSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="3" Max="900" />
+                <ValidateSet>
+                  <AllowedValue>3</AllowedValue>
+                  <AllowedValue>6</AllowedValue>
+                  <AllowedValue>9</AllowedValue>
+                  <AllowedValue>12</AllowedValue>
+                  <AllowedValue>15</AllowedValue>
+                  <AllowedValue>30</AllowedValue>
+                  <AllowedValue>60</AllowedValue>
+                  <AllowedValue>120</AllowedValue>
+                  <AllowedValue>240</AllowedValue>
+                  <AllowedValue>360</AllowedValue>
+                  <AllowedValue>720</AllowedValue>
+                  <AllowedValue>900</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NumberOfTries">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="100" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RetryIntervalSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="RetryIntervalSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SALifeTimeSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="SaLifeTimeSec LifeTimeSeconds QMSALifeTimeSeconds" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="300" Max="172799" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MMSALifeTimeSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="MMSaLifeTimeSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="300" Max="172799" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EapMethod">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+                <AllowNull />
+                <ValidateSet>
+                  <AllowedValue>EAP-TLS</AllowedValue>
+                  <AllowedValue>EAP-PEAP</AllowedValue>
+                  <AllowedValue>EAP-MSCHAPv2</AllowedValue>
+                  <AllowedValue></AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InternalIPv4">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InternalIPv6">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IdleDisconnectSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="IdleDurationSeconds IdleDisconnectSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="UserName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="User" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Password">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CustomPolicy">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EncryptionMethod">
+              <Type PSType="VpnS2SInterface.EncryptionMethod" />
+              <CmdletParameterMetadata Aliases="Encryption" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IntegrityCheckMethod">
+              <Type PSType="VpnS2SInterface.IntegrityCheckMethod" />
+              <CmdletParameterMetadata Aliases="OtherHashAlgorithm FirstIntegrityAlgorithm" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CipherTransformConstants">
+              <Type PSType="VpnS2SInterface.CipherTransformConstants" />
+              <CmdletParameterMetadata Aliases="OtherCipherAlgorithm FirstCipherAlgorithm CipherTransformConstant" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AuthenticationTransformConstants">
+              <Type PSType="VpnS2SInterface.AuthenticationTransformConstants" />
+              <CmdletParameterMetadata Aliases="FirstTransformType AuthenticationTransformConstant" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PfsGroup">
+              <Type PSType="VpnS2SInterface.PfsGroup" />
+              <CmdletParameterMetadata Aliases="PfsGroupId" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DHGroup">
+              <Type PSType="VpnS2SInterface.DHGroup" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SourceIpAddress">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="LocalVpnTrafficSelector">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnTrafficSelector" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RemoteVpnTrafficSelector">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnTrafficSelector" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnS2SInterface" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="AddByEncryptionType" CmdletParameterSet="EncryptionType">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ElementName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Protocol">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="KeyModule" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateSet>
+                  <AllowedValue>L2TP</AllowedValue>
+                  <AllowedValue>IKEv2</AllowedValue>
+                  <AllowedValue>Automatic</AllowedValue>
+                  <AllowedValue>SSTP</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Destination">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="RemoteTunnelEndpoint RemoteTunnelHostname RemoteAddress" IsMandatory="true" Position="2" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AdminStatus">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PromoteAlternate">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AuthenticationMethod">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+                <ValidateSet>
+                  <AllowedValue>EAP</AllowedValue>
+                  <AllowedValue>MachineCertificates</AllowedValue>
+                  <AllowedValue>PSKOnly</AllowedValue>
+                  <AllowedValue>MSCHAPv2</AllowedValue>
+                  <AllowedValue></AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PostConnectionIPv4Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="PostConnectionIPv6Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="InitiateConfigPayload">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RadiusAttributeClass">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableQoS">
+              <Type PSType="Nullable[VpnS2SInterface.EnableQoS]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>            
+            <Parameter ParameterName="IPv4TriggerFilter">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="IPv6TriggerFilter">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="Persistent">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AutoConnectEnabled">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv4TriggerFilterAction">
+              <Type PSType="Nullable[VpnS2SInterface.Action]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv6TriggerFilterAction">
+              <Type PSType="Nullable[VpnS2SInterface.Action]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SADataSizeForRenegotiationKilobytes">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="LifeTimeKiloBytes SaRenegotiationDataSizeKB" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1024" Max="2147483647" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv4Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="IPv4TriggerSubnet" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv6Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="IPv6TriggerSubnet" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ResponderAuthenticationMethod">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+                <ValidateSet>
+                  <AllowedValue>MachineCertificates</AllowedValue>
+                  <AllowedValue>PSKOnly</AllowedValue>
+                  <AllowedValue></AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" Position="3" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="256" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Certificate">
+              <Type PSType="System.Security.Cryptography.X509Certificates.X509Certificate2" />
+              <CmdletParameterMetadata Aliases="Cert">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SharedSecret">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NetworkOutageTimeSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="NetworkOutageTimeSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="3" Max="900" />
+                <ValidateSet>
+                  <AllowedValue>3</AllowedValue>
+                  <AllowedValue>6</AllowedValue>
+                  <AllowedValue>9</AllowedValue>
+                  <AllowedValue>12</AllowedValue>
+                  <AllowedValue>15</AllowedValue>
+                  <AllowedValue>30</AllowedValue>
+                  <AllowedValue>60</AllowedValue>
+                  <AllowedValue>120</AllowedValue>
+                  <AllowedValue>240</AllowedValue>
+                  <AllowedValue>360</AllowedValue>
+                  <AllowedValue>720</AllowedValue>
+                  <AllowedValue>900</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NumberOfTries">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="100" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RetryIntervalSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="RetryIntervalSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SALifeTimeSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="SaLifeTimeSec LifeTimeSeconds QMSALifeTimeSeconds" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="300" Max="172799" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MMSALifeTimeSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="MMSaLifeTimeSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="300" Max="172799" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EapMethod">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+                <AllowNull />
+                <ValidateSet>
+                  <AllowedValue>EAP-TLS</AllowedValue>
+                  <AllowedValue>EAP-PEAP</AllowedValue>
+                  <AllowedValue>EAP-MSCHAPv2</AllowedValue>
+                  <AllowedValue></AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InternalIPv4">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InternalIPv6">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IdleDisconnectSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="IdleDurationSeconds IdleDisconnectSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="UserName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="User" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Password">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EncryptionType">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateSet>
+                  <AllowedValue>NoEncryption</AllowedValue>
+                  <AllowedValue>RequireEncryption</AllowedValue>
+                  <AllowedValue>OptionalEncryption</AllowedValue>
+                  <AllowedValue>MaximumEncryption</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SourceIpAddress">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="LocalVpnTrafficSelector">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnTrafficSelector" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+             <Parameter ParameterName="RemoteVpnTrafficSelector">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnTrafficSelector" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnS2SInterface" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="AddGreInterface" CmdletParameterSet="GreInterface">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ElementName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="GreKey">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata Position="4" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="GreTunnel">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Destination">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="RemoteTunnelEndpoint RemoteTunnelHostname RemoteAddress" IsMandatory="true" Position="2" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AdminStatus">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableQoS">
+              <Type PSType="Nullable[VpnS2SInterface.EnableQoS]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>            
+            <Parameter ParameterName="IPv4Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv6Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" Position="3" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="256" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InternalIPv4">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InternalIPv6">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv4Address">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv6Address">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SourceIpAddress">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+               <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnS2SInterface" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Connect" ConfirmImpact="Medium" />
+        <Method MethodName="Connect">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ElementName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnS2SInterface" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Disconnect" ConfirmImpact="Medium" />
+        <Method MethodName="Disconnect">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ElementName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnS2SInterface" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" />
+        <Method MethodName="Get">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ElementName" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" Position="2" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="256" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnS2SInterface" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="Medium" />
+        <Method MethodName="Remove">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="ElementName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnS2SInterface" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" DefaultCmdletParameterSet="EncryptionType" ConfirmImpact="Medium" />
+        <Method MethodName="SetByCustomPolicy" CmdletParameterSet="CustomPolicy">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Destination">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="RemoteTunnelEndpoint RemoteTunnelHostname RemoteAddress" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AdminStatus">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PromoteAlternate">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AuthenticationMethod">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+                <ValidateSet>
+                  <AllowedValue>EAP</AllowedValue>
+                  <AllowedValue>MachineCertificates</AllowedValue>
+                  <AllowedValue>PSKOnly</AllowedValue>
+                  <AllowedValue>MSCHAPv2</AllowedValue>
+                  <AllowedValue></AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EapMethod">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+                <ValidateSet>
+                  <AllowedValue>EAP-TLS</AllowedValue>
+                  <AllowedValue>EAP-PEAP</AllowedValue>
+                  <AllowedValue>EAP-MSCHAPv2</AllowedValue>
+                  <AllowedValue></AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InternalIPv4">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PostConnectionIPv4Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" >
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv4TriggerFilter">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="IPv4TriggerFilterAction">
+              <Type PSType="Nullable[VpnS2SInterface.Action]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PostConnectionIPv6Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" >
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv6TriggerFilter">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="IPv6TriggerFilterAction">
+              <Type PSType="Nullable[VpnS2SInterface.Action]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv4Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="IPv4TriggerSubnet" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ElementName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ResponderAuthenticationMethod">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+                <ValidateSet>
+                  <AllowedValue>MachineCertificates</AllowedValue>
+                  <AllowedValue>PSKOnly</AllowedValue>
+                  <AllowedValue></AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Persistent">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AutoConnectEnabled">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InitiateConfigPayload">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RadiusAttributeClass">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableQoS">
+              <Type PSType="Nullable[VpnS2SInterface.EnableQoS]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>            
+            <Parameter ParameterName="NetworkOutageTimeSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="NetworkOutageTimeSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="3" Max="900" />
+                <ValidateSet>
+                  <AllowedValue>3</AllowedValue>
+                  <AllowedValue>6</AllowedValue>
+                  <AllowedValue>9</AllowedValue>
+                  <AllowedValue>12</AllowedValue>
+                  <AllowedValue>15</AllowedValue>
+                  <AllowedValue>30</AllowedValue>
+                  <AllowedValue>60</AllowedValue>
+                  <AllowedValue>120</AllowedValue>
+                  <AllowedValue>240</AllowedValue>
+                  <AllowedValue>360</AllowedValue>
+                  <AllowedValue>720</AllowedValue>
+                  <AllowedValue>900</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NumberOfTries">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="100" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RetryIntervalSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="RetryIntervalSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SADataSizeForRenegotiationKilobytes">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="SARenegotiationDataSizeKB LifeTimeKiloBytes" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1024" Max="2147483647" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SALifeTimeSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="SaLifeTimeSec LifeTimeSeconds QMSALifeTimeSeconds" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="300" Max="172799" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MMSALifeTimeSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="MMSaLifeTimeSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="300" Max="172799" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv6Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="IPv6TriggerSubnet" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InternalIPv6">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IdleDisconnectSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="IdleDurationSeconds IdleDisconnectSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="UserName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="User" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Password">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Certificate">
+              <Type PSType="System.Security.Cryptography.X509Certificates.X509Certificate2" />
+              <CmdletParameterMetadata Aliases="Cert">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SharedSecret">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EncryptionMethod">
+              <Type PSType="VpnS2SInterface.EncryptionMethod"  />
+              <CmdletParameterMetadata Aliases="Encryption" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IntegrityCheckMethod">
+              <Type PSType="VpnS2SInterface.IntegrityCheckMethod" />
+              <CmdletParameterMetadata Aliases="FirstIntegrityAlgorithm OtherHashAlgorithm" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CipherTransformConstants">
+              <Type PSType="VpnS2SInterface.CipherTransformConstants" />
+              <CmdletParameterMetadata Aliases="OtherCipherAlgorithm FirstCipherAlgorithm CipherTransformConstant" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DHGroup">
+              <Type PSType="VpnS2SInterface.DHGroup" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AuthenticationTransformConstants">
+              <Type PSType="VpnS2SInterface.AuthenticationTransformConstants" />
+              <CmdletParameterMetadata Aliases="FirstTransformType AuthenticationTransformConstant" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PfsGroup">
+              <Type PSType="VpnS2SInterface.PfsGroup" />
+              <CmdletParameterMetadata Aliases="PfsGroupId" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CustomPolicy">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SourceIpAddress">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+           <Parameter ParameterName="LocalVpnTrafficSelector">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnTrafficSelector" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RemoteVpnTrafficSelector">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnTrafficSelector" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnS2SInterface" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByEncryptionType" CmdletParameterSet="EncryptionType">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Destination">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="RemoteTunnelEndpoint RemoteTunnelHostname RemoteAddress" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AdminStatus">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PromoteAlternate">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AuthenticationMethod">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+                <ValidateSet>
+                  <AllowedValue>EAP</AllowedValue>
+                  <AllowedValue>MachineCertificates</AllowedValue>
+                  <AllowedValue>PSKOnly</AllowedValue>
+                  <AllowedValue>MSCHAPv2</AllowedValue>
+                  <AllowedValue></AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EapMethod">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+                <ValidateSet>
+                  <AllowedValue>EAP-TLS</AllowedValue>
+                  <AllowedValue>EAP-PEAP</AllowedValue>
+                  <AllowedValue>EAP-MSCHAPv2</AllowedValue>
+                  <AllowedValue></AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InternalIPv4">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PostConnectionIPv4Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" >
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv4TriggerFilter">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="IPv4TriggerFilterAction">
+              <Type PSType="Nullable[VpnS2SInterface.Action]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PostConnectionIPv6Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" >
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv6TriggerFilter">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="IPv6TriggerFilterAction">
+              <Type PSType="Nullable[VpnS2SInterface.Action]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv4Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="IPv4TriggerSubnet" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ElementName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ResponderAuthenticationMethod">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+                <ValidateSet>
+                  <AllowedValue>MachineCertificates</AllowedValue>
+                  <AllowedValue>PSKOnly</AllowedValue>
+                  <AllowedValue></AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Persistent">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AutoConnectEnabled">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InitiateConfigPayload">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RadiusAttributeClass">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableQoS">
+              <Type PSType="Nullable[VpnS2SInterface.EnableQoS]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NetworkOutageTimeSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="NetworkOutageTimeSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="3" Max="900" />
+                <ValidateSet>
+                  <AllowedValue>3</AllowedValue>
+                  <AllowedValue>6</AllowedValue>
+                  <AllowedValue>9</AllowedValue>
+                  <AllowedValue>12</AllowedValue>
+                  <AllowedValue>15</AllowedValue>
+                  <AllowedValue>30</AllowedValue>
+                  <AllowedValue>60</AllowedValue>
+                  <AllowedValue>120</AllowedValue>
+                  <AllowedValue>240</AllowedValue>
+                  <AllowedValue>360</AllowedValue>
+                  <AllowedValue>720</AllowedValue>
+                  <AllowedValue>900</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NumberOfTries">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="100" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RetryIntervalSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="RetryIntervalSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SADataSizeForRenegotiationKilobytes">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="SaRenegotiationDataSizeKB LifeTimeKiloBytes" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1024" Max="2147483647" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SALifeTimeSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="SaLifeTimeSec LifeTimeSeconds QMSALifeTimeSeconds" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="300" Max="172799" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MMSALifeTimeSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="MMSaLifeTimeSec" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="300" Max="172799" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv6Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="IPv6TriggerSubnet" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InternalIPv6">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IdleDisconnectSeconds">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="IdleDisconnectSec IdleDurationSeconds" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="UserName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="User" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Password">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Certificate">
+              <Type PSType="System.Security.Cryptography.X509Certificates.X509Certificate2" />
+              <CmdletParameterMetadata Aliases="Cert">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SharedSecret">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EncryptionType">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateSet>
+                  <AllowedValue>NoEncryption</AllowedValue>
+                  <AllowedValue>RequireEncryption</AllowedValue>
+                  <AllowedValue>OptionalEncryption</AllowedValue>
+                  <AllowedValue>MaximumEncryption</AllowedValue>
+                  <AllowedValue>CustomEncryption</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SourceIpAddress">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+           <Parameter ParameterName="LocalVpnTrafficSelector">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnTrafficSelector" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RemoteVpnTrafficSelector">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnTrafficSelector" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnS2SInterface" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetGreInterface" CmdletParameterSet="GreInterface">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="ElementName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="GreKey">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata Position="3" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="GreTunnel">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Destination">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="RemoteTunnelEndpoint RemoteTunnelHostname RemoteAddress" Position="2" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AdminStatus">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableQoS">
+              <Type PSType="Nullable[VpnS2SInterface.EnableQoS]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>            
+            <Parameter ParameterName="IPv4Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv6Subnet">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InternalIPv4">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InternalIPv6">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv4Address">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv6Address">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SourceIpAddress">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              	<ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnS2SInterface" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+<Enums>
+  <Enum EnumName="VpnS2SInterface.AuthenticationTransformConstants" UnderlyingType="System.UInt32">  
+	<Value Name="MD596" Value="0" />  
+	<Value Name="SHA196" Value="1" />  
+	<Value Name="SHA256128" Value="2" />  
+	<Value Name="GCMAES128" Value="3" />  
+	<Value Name="GCMAES192" Value="4" />
+	<Value Name="GCMAES256" Value="5" />
+       <Value Name="None" Value="4294967295" />
+  </Enum>
+  <Enum EnumName="VpnS2SInterface.CipherTransformConstants" UnderlyingType="System.UInt32">  
+	<Value Name="DES" Value="1" />  
+	<Value Name="DES3" Value="2" />  
+	<Value Name="AES128" Value="3" />  
+	<Value Name="AES192" Value="4" />
+	<Value Name="AES256" Value="5" />
+	<Value Name="GCMAES128" Value="6" />
+	<Value Name="GCMAES192" Value="7" />
+	<Value Name="GCMAES256" Value="8" />
+       <Value Name="None" Value="4294967295" />
+  </Enum>
+  <Enum EnumName="VpnS2SInterface.DHGroup" UnderlyingType="System.UInt32">  
+	<Value Name="None" Value="0" />  
+	<Value Name="Group1" Value="1" />  
+	<Value Name="Group2" Value="2" />  
+	<Value Name="Group14" Value="3" />  
+	<Value Name="ECP256" Value="4" />  
+	<Value Name="ECP384" Value="5" />  
+	<Value Name="Group24" Value="6" />
+  </Enum>
+  <Enum EnumName="VpnS2SInterface.EncryptionMethod" UnderlyingType="System.UInt32">    
+	<Value Name="DES" Value="0" />  
+	<Value Name="DES3" Value="1" />  
+	<Value Name="AES128" Value="2" />  
+	<Value Name="AES192" Value="3" />
+	<Value Name="AES256" Value="4" />
+  </Enum>  
+  <Enum EnumName="VpnS2SInterface.IntegrityCheckMethod" UnderlyingType="System.UInt32">  
+	<Value Name="MD5" Value="0" />  
+	<Value Name="SHA1" Value="1" />  
+	<Value Name="SHA256" Value="2" />  
+	<Value Name="SHA384" Value="3" />
+  </Enum>  
+  <Enum EnumName="VpnS2SInterface.PfsGroup" UnderlyingType="System.UInt32">  
+	<Value Name="None" Value="0" />  
+	<Value Name="PFS1" Value="1" />  
+	<Value Name="PFS2" Value="2" />  
+	<Value Name="PFS2048" Value="3" />  
+	<Value Name="ECP256" Value="4" />  
+	<Value Name="ECP384" Value="5" />  
+	<Value Name="PFSMM" Value="6" />
+	<Value Name="PFS24" Value="7" />
+  </Enum>
+  <Enum EnumName="VpnS2SInterface.EnableQoS" UnderlyingType="System.UInt32">  
+	<Value Name="Disabled" Value="0" />  
+	<Value Name="Enabled" Value="1" />  
+  </Enum>
+  <Enum EnumName="VpnS2SInterface.Action" UnderlyingType="System.UInt32">
+    <Value Name="Allow" Value="0" />
+    <Value Name="Deny" Value="1" />
+  </Enum>
+</Enums> 
+</PowerShellMetadata>

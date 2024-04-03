@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+    <Class ClassName="Root/StandardCimV2/MSFT_NetVirtualizationCustomerRouteSettingData" ClassVersion="1.0.0">
+        <Version>1.0.0.0</Version>
+        <DefaultNoun>NetVirtualizationCustomerRoute</DefaultNoun>
+
+        <InstanceCmdlets>
+            <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+                <QueryableProperties>
+                    <Property PropertyName="RoutingDomainID">
+                        <Type PSType="System.String" />
+                        <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="VirtualSubnetID">
+                        <Type PSType="System.UInt32" />
+                        <RegularQuery>
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="DestinationPrefix">
+                        <Type PSType="System.String" />
+                        <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="NextHop">
+                        <Type PSType="System.String" />
+                        <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="Metric">
+                        <Type PSType="System.UInt32" />
+                        <RegularQuery AllowGlobbing="false">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                </QueryableProperties>
+            </GetCmdletParameters>
+
+            <Cmdlet>
+                <CmdletMetadata Verb="Set" />
+                <Method MethodName="cim:ModifyInstance" >
+                    <Parameters>
+                        <Parameter ParameterName="Metric">
+                            <Type PSType="System.UInt32" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                    </Parameters>
+                </Method>
+                <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+                    <QueryableProperties>
+                        <Property PropertyName="RoutingDomainID">
+                            <Type PSType="System.String" />
+                            <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                            </RegularQuery>
+                        </Property>
+                        <Property PropertyName="VirtualSubnetID">
+                            <Type PSType="System.UInt32" />
+                            <RegularQuery>
+                            <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                            </RegularQuery>
+                        </Property>
+                        <Property PropertyName="DestinationPrefix">
+                            <Type PSType="System.String" />
+                            <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                            </RegularQuery>
+                        </Property>
+                        <Property PropertyName="NextHop">
+                            <Type PSType="System.String" />
+                            <RegularQuery AllowGlobbing="false">
+                            <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                            </RegularQuery>
+                        </Property>
+                    </QueryableProperties>
+                </GetCmdletParameters>
+            </Cmdlet>
+
+            <Cmdlet>
+                <CmdletMetadata Verb="Remove" />
+                <Method MethodName="cim:DeleteInstance" />
+            </Cmdlet>
+
+        </InstanceCmdlets>
+
+        <StaticCmdlets>
+
+            <Cmdlet>
+                <CmdletMetadata Verb="New" />
+                <Method MethodName="cim:CreateInstance">
+                    <Parameters>
+                        <Parameter ParameterName="RoutingDomainID">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="true" />
+                        </Parameter>
+                        <Parameter ParameterName="VirtualSubnetID">
+                            <Type PSType="System.UInt32" />
+                            <CmdletParameterMetadata IsMandatory="true" />
+                        </Parameter>
+                        <Parameter ParameterName="DestinationPrefix">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="true" />
+                        </Parameter>
+                        <Parameter ParameterName="NextHop">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="true" />
+                        </Parameter>
+                        <Parameter ParameterName="Metric">
+                            <Type PSType="System.UInt32" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                    </Parameters>
+                </Method>
+            </Cmdlet>
+
+        </StaticCmdlets>
+    </Class>
+
+</PowerShellMetadata>

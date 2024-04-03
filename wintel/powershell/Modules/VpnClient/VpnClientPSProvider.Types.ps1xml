@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- *******************************************************************
+These sample files contain formatting information used by the Windows 
+PowerShell engine. Do not edit or change the contents of this file 
+directly. Please see the Windows PowerShell documentation or type 
+Get-Help Update-TypeData for more information.
+
+Copyright (c) Microsoft Corporation.  All rights reserved.
+ 
+THIS SAMPLE CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY 
+OF ANY KIND,WHETHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO 
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
+PURPOSE. IF THIS CODE AND INFORMATION IS MODIFIED, THE ENTIRE RISK OF USE
+OR RESULTS IN CONNECTION WITH THE USE OF THIS CODE AND INFORMATION 
+REMAINS WITH THE USER.
+******************************************************************** -->
+<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#VpnConnection</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>EapConfigXmlStream</Name>
+        <GetScriptBlock>
+          [OutputType([System.Xml.XmlDocument])]
+          param()
+          [System.Xml.XmlDocument]($this.PSBase.CimInstanceProperties['EapConfigXmlStream'].value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.Xml.XmlDocument]$value)
+          $this.PSBase.CimInstanceProperties['EapConfigXmlStream'].value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>VpnConfigurationXml</Name>
+        <GetScriptBlock>
+          [OutputType([System.Xml.XmlDocument])]
+          param()
+          [System.Xml.XmlDocument]($this.PSBase.CimInstanceProperties['VpnConfigurationXml'].value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.Xml.XmlDocument]$value)
+          $this.PSBase.CimInstanceProperties['VpnConfigurationXml'].value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IPSecCustomPolicy</Name>
+        <GetScriptBlock>
+          [OutputType([System.String[]])]
+          param()
+          $output = @()
+          foreach ($range in $this.PSBase.CimInstanceProperties['IPSecCustomPolicy'].value)
+          {
+          $output += $range
+          }
+          if ($output.Count -gt 0)
+          {,(@($output))}
+          else
+          {$null}
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>MachineCertificateIssuerFilter</Name>
+        <GetScriptBlock>
+          [OutputType([System.Security.Cryptography.X509Certificates.X509Certificate2])]
+          param()
+          [System.Security.Cryptography.X509Certificates.X509Certificate2]($this.PSBase.CimInstanceProperties['MachineCertificateIssuerFilter'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.Security.Cryptography.X509Certificates.X509Certificate2]$value)
+          $this.PSBase.CimInstanceProperties['MachineCertificateIssuerFilter'].Value = $value.RawData
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>MachineCertificateEKUFilter</Name>
+        <GetScriptBlock>
+          [OutputType([System.String[]])]
+          param()
+          $output = @()
+          foreach ($range in $this.PSBase.CimInstanceProperties['MachineCertificateEKUFilter'].value)
+          {
+          $output += $range
+          }
+          if ($output.Count -gt 0)
+          {,(@($output))}
+          else
+          {$null}
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ThirdPartyVpnConnection</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>CustomConfiguration</Name>
+        <GetScriptBlock>
+          [OutputType([System.Xml.XmlDocument])]
+          param()
+          [System.Xml.XmlDocument]($this.PSBase.CimInstanceProperties['CustomConfiguration'].value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.Xml.XmlDocument]$value)
+          $this.PSBase.CimInstanceProperties['CustomConfiguration'].value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>VpnConfigurationXml</Name>
+        <GetScriptBlock>
+          [OutputType([System.Xml.XmlDocument])]
+          param()
+          [System.Xml.XmlDocument]($this.PSBase.CimInstanceProperties['VpnConfigurationXml'].value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.Xml.XmlDocument]$value)
+          $this.PSBase.CimInstanceProperties['VpnConfigurationXml'].value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#EapConfiguration</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>EapConfigXmlStream</Name>
+        <GetScriptBlock>
+          [OutputType([System.Xml.XmlDocument])]
+          param()
+          [System.Xml.XmlDocument]($this.PSBase.CimInstanceProperties['EapConfigXmlStream'].value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.Xml.XmlDocument]$value)
+          $this.PSBase.CimInstanceProperties['EapConfigXmlStream'].value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionIPsecConfiguration</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>AuthenticationTransformConstants</Name>
+        <GetScriptBlock>
+          [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.AuthenticationTransformConstants])]
+          param()
+          [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.AuthenticationTransformConstants]($this.PSBase.CimInstanceProperties['AuthenticationTransformConstants'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.AuthenticationTransformConstants]$value)
+          $this.PSBase.CimInstanceProperties['AuthenticationTransformConstants'].Value = [System.Uint32]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>CipherTransformConstants</Name>
+        <GetScriptBlock>
+          [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.CipherTransformConstants])]
+          param()
+          [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.CipherTransformConstants]($this.PSBase.CimInstanceProperties['CipherTransformConstants'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.CipherTransformConstants]$value)
+          $this.PSBase.CimInstanceProperties['CipherTransformConstants'].Value = [System.Uint32]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>DHGroup</Name>
+        <GetScriptBlock>
+          [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.DHGroup])]
+          param()
+          [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.DHGroup]($this.PSBase.CimInstanceProperties['DHGroup'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.DHGroup]$value)
+          $this.PSBase.CimInstanceProperties['DHGroup'].Value = [System.Uint32]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>EncryptionMethod</Name>
+        <GetScriptBlock>
+          [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.EncryptionMethod])]
+          param()
+          [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.EncryptionMethod]($this.PSBase.CimInstanceProperties['EncryptionMethod'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.EncryptionMethod]$value)
+          $this.PSBase.CimInstanceProperties['EncryptionMethod'].Value = [System.Uint32]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IntegrityCheckMethod</Name>
+        <GetScriptBlock>
+          [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.IntegrityCheckMethod])]
+          param()
+          [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.IntegrityCheckMethod]($this.PSBase.CimInstanceProperties['IntegrityCheckMethod'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.IntegrityCheckMethod]$value)
+          $this.PSBase.CimInstanceProperties['IntegrityCheckMethod'].Value = [System.Uint32]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>PfsGroup</Name>
+        <GetScriptBlock>
+          [OutputType([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.PfsGroup])]
+          param()
+          [Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.PfsGroup]($this.PSBase.CimInstanceProperties['PfsGroup'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([Microsoft.Powershell.Cmdletization.GeneratedTypes.VpnConnectionIPsecConfiguration.PfsGroup]$value)
+          $this.PSBase.CimInstanceProperties['PfsGroup'].Value = [System.Uint32]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>  
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionTriggerApplication</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>ApplicationID</Name>
+        <GetScriptBlock>
+          [OutputType([System.String])]
+          param()
+          $output = @()
+          foreach($range in $this.PSBase.CimInstanceProperties['ApplicationID'].Value)
+          {
+          $output += $range
+          }
+          if ($output.Count -gt 0)
+          {,(@($output))}
+          else
+          {$null}
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionTriggerDnsConfiguration</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>DnsIPAddress</Name>
+        <GetScriptBlock>
+          [OutputType([System.String])]
+          param()
+          $output = @()
+          foreach($range in $this.PSBase.CimInstanceProperties['DnsIPAddress'].Value)
+          {
+          $output += $range
+          }
+          if ($output.Count -gt 0)
+          {,(@($output))}
+          else
+          {$null}
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#root/Microsoft/Windows/RemoteAccess/Client/MSFT_NetRoute</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>AddressFamily</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetRoute.AddressFamily]($this.PSBase.CimInstanceProperties['AddressFamily'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['AddressFamily'].Value = [System.UInt16][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetRoute.AddressFamily]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>
+

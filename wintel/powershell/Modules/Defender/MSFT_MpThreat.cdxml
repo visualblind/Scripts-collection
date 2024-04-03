@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+    <Class ClassName="ROOT\Microsoft\Windows\Defender\MSFT_MpThreat" ClassVersion="1.0">
+        <Version>1.0</Version>
+        <DefaultNoun>MpThreat</DefaultNoun>
+        <InstanceCmdlets>
+            <GetCmdletParameters DefaultCmdletParameterSet="DefaultSet">
+                <QueryableProperties>
+                    <Property PropertyName="ThreatID">
+                        <Type PSType="int64" />
+                        <RegularQuery>
+                            <CmdletParameterMetadata IsMandatory="false" Aliases="ID"
+                               CmdletParameterSets="ById" />
+                        </RegularQuery>
+                    </Property>
+                </QueryableProperties>
+            </GetCmdletParameters>
+        </InstanceCmdlets>
+        <StaticCmdlets>
+            <Cmdlet>
+                <CmdletMetadata Verb="Remove" />
+                <Method MethodName="Remove">
+                    <ReturnValue>
+                        <Type PSType="System.Int32" />
+                        <CmdletOutputMetadata>
+                            <ErrorCode />
+                        </CmdletOutputMetadata>
+                    </ReturnValue>
+                </Method>
+            </Cmdlet>
+        </StaticCmdlets>
+    </Class>
+</PowerShellMetadata>

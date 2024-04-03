@@ -1,11 +1,3 @@
-{{
-import os
-from gluon.contrib.generics import pdf_from_html
-filename = '%s/%s.html' % (request.controller,request.function)
-if os.path.exists(os.path.join(request.folder,'views',filename)):
-   html=response.render(filename)
-else:
-   html=BODY(BEAUTIFY(response._vars))
-pass
-=pdf_from_html(html)
-}}
+version https://git-lfs.github.com/spec/v1
+oid sha256:711938a3a08d4ba67ff769dc7be36fd529688ead6184de9d1758721a99e6d0d0
+size 300

@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{ margin: 0; padding: 30px; font-family: 'Poppins', sans-serif; display: flex; align-items: center; height: 100vh; width: 100%; text-align: center; box-sizing: border-box; background-image: url('https://bstatic.com/xdata/w/hotel/840x460_watermarked_standard_bluecom/Ul18dTXS31b-MpVtgDPK5FqZZ296lTYGQ0O4D_3mtqpx4J4zgKjDcvdaX8su7TDV_FiQA_9mHbeBcBf2JowmAhnIdqga_1_N_I_rp8_nJa_nZU661gD3xbzjqv6T-fo.jpg'); background-repeat: no-repeat; background-size: cover; background-position:center center; position: relative; color: #fff; z-index: 1; }
+body:before{ position: absolute; height: 100%; width: 100%; left: 0; top: 0; content: ""; background-color: #000; opacity: 0.3; z-index: -1; }
+.social ul { list-style: none; }
+.social ul li { display: inline-block; vertical-align: middle; margin: 0 10px; font-size: 24px; }
+h1 { font-size: 48px }

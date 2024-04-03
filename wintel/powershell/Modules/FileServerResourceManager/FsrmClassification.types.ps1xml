@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <!--
+
+  //
+  // MSFT_FSRMClassification
+  //
+
+  -->
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_FSRMClassification</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Status</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.RunningStatusEnum]($this.PSBase.CimInstanceProperties['Status'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>

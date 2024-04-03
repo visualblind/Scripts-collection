@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/MsDtc/MSFT_DtcClusterTMMappingTask" ClassVersion="1.0">
+    <Version>1.0</Version>
+    <DefaultNoun>DtcClusterTMMapping</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Add" />
+        <Method MethodName="AddByComPlusSet" CmdletParameterSet="ComPlusSet">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ClusterResourceName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComPlusAppId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Local">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="AddByExeSet" CmdletParameterSet="ExeSet">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ClusterResourceName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ExecutablePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Local">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="AddByServiceSet" CmdletParameterSet="ServiceSet">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ClusterResourceName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Service">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Local">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" />
+        <Method MethodName="Get">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" />
+        <Method MethodName="RemoveByAllParameterSet" CmdletParameterSet="AllParameterSet">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="All">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="RemoveByMappingNameParameterSet" CmdletParameterSet="MappingNameParameterSet">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" />
+        <Method MethodName="SetByComPlusSet" CmdletParameterSet="ComPlusSet">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComPlusAppId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ClusterResourceName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Local">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByExeSet" CmdletParameterSet="ExeSet">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ExecutablePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ClusterResourceName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Local">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByLocalSet" CmdletParameterSet="LocalSet">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Local">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata IsMandatory="true" />
+            </Parameter>
+            <Parameter ParameterName="ClusterResourceName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByResourceNameSet" CmdletParameterSet="ResourceNameSet">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ClusterResourceName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Local">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByServiceSet" CmdletParameterSet="ServiceSet">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Service">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ClusterResourceName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Local">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

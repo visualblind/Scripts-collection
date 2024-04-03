@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- *******************************************************************
+These sample files contain formatting information used by the NetNat WMIv2 provider.
+
+Author - Madhusudhan Ravi (maravi) 12/06/2012
+
+Copyright (c) Microsoft Corporation.  All rights reserved.
+ 
+******************************************************************** -->
+
+<Types>
+
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_NetNat</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Store</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNat.PolicyStore]($this.PSBase.CimInstanceProperties['Store'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['Store'].Value = [System.Byte][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNat.PolicyStore]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>TcpFilteringBehavior</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNat.FilteringBehaviorType]($this.PSBase.CimInstanceProperties['TcpFilteringBehavior'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['TcpFilteringBehavior'].Value = [System.Byte][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNat.FilteringBehaviorType]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>UdpFilteringBehavior</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNat.FilteringBehaviorType]($this.PSBase.CimInstanceProperties['UdpFilteringBehavior'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['UdpFilteringBehavior'].Value = [System.Byte][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNat.FilteringBehaviorType]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>UdpInboundRefresh</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNat.Boolean]($this.PSBase.CimInstanceProperties['UdpInboundRefresh'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['UdpInboundRefresh'].Value = [System.Byte][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNat.Boolean]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Active</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNat.Boolean]($this.PSBase.CimInstanceProperties['Active'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['Active'].Value = [System.Byte][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNat.Boolean]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_NetNatStaticMapping</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Protocol</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNatStaticMapping.Protocol]($this.PSBase.CimInstanceProperties['Protocol'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['Protocol'].Value = [System.UInt32][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNatStaticMapping.Protocol]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Active</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNat.Boolean]($this.PSBase.CimInstanceProperties['Active'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['Active'].Value = [System.Byte][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNat.Boolean]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_NetNatExternalAddress</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Active</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNat.Boolean]($this.PSBase.CimInstanceProperties['Active'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['Active'].Value = [System.Byte][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNat.Boolean]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_NetNatGlobal</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>InterRoutingDomainHairpinningMode</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNatGlobal.InterRoutingDomainHairpinningMode]($this.PSBase.CimInstanceProperties['InterRoutingDomainHairpinningMode'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['InterRoutingDomainHairpinningMode'].Value = [System.Byte][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNatGlobal.InterRoutingDomainHairpinningMode]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>

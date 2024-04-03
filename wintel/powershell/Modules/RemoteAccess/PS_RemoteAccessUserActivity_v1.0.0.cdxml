@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/Microsoft/Windows/RemoteAccess/PS_RemoteAccessUserActivity" ClassVersion="1.0.0">
+    <Version>1.0.0</Version>
+    <DefaultNoun>RemoteAccessUserActivity</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" DefaultCmdletParameterSet="UserName" />
+        <Method MethodName="GetByHostIP" CmdletParameterSet="HostIP">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="HostIPAddress">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EndDateTime">
+              <Type PSType="System.DateTime" />
+              <CmdletParameterMetadata ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="StartDateTime">
+              <Type PSType="System.DateTime" />
+              <CmdletParameterMetadata ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#RemoteAccessUserActivity" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="GetBySessionId" CmdletParameterSet="SessionId">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SessionId">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#RemoteAccessUserActivity" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="GetByUserName" CmdletParameterSet="UserName">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="UserName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EndDateTime">
+              <Type PSType="System.DateTime" />
+              <CmdletParameterMetadata ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="StartDateTime">
+              <Type PSType="System.DateTime" />
+              <CmdletParameterMetadata ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#RemoteAccessUserActivity" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

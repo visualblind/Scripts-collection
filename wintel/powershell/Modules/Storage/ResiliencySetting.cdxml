@@ -1,0 +1,123 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_ResiliencySetting">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>ResiliencySetting</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-ResiliencySetting
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+        <QueryableProperties>
+          <!-- UniqueId -->
+          <Property PropertyName="UniqueId">
+            <Type PSType="System.String" />
+            <RegularQuery>
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+            </RegularQuery>
+          </Property>
+          <!-- Name -->
+          <Property PropertyName="Name">
+            <Type PSType="System.String" />
+            <RegularQuery>
+              <CmdletParameterMetadata CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+         </QueryableProperties>
+        <QueryableAssociations>
+          <!-- StoragePool -->
+          <Association Association="MSFT_StoragePoolToResiliencySetting" SourceRole="StoragePool" ResultRole="ResiliencySetting">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StoragePool" />
+              <CmdletParameterMetadata PSName="StoragePool" ValueFromPipeline="true" CmdletParameterSets="ByName" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+        </QueryableAssociations>
+      </GetCmdletParameters>
+      <!--
+
+      //
+      // Set-ResiliencySetting
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" />
+        <Method MethodName="SetDefaults">
+          <Parameters>
+            <!-- NumberOfDataCopiesDefault -->
+            <Parameter ParameterName="NumberOfDataCopiesDefault">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- PhysicalDiskRedundancyDefault -->
+            <Parameter ParameterName="PhysicalDiskRedundancyDefault">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- NumberOfColumnsDefault -->
+            <Parameter ParameterName="NumberOfColumnsDefault">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- AutoNumberOfColumns -->
+            <Parameter ParameterName="AutoNumberOfColumns">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- InterleaveDefault -->
+            <Parameter ParameterName="InterleaveDefault">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- NumberOfGroupsDefault -->
+            <Parameter ParameterName="NumberOfGroupsDefault">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+            <!-- Name -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByName" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryableAssociations>
+            <!-- StoragePool -->
+            <Association Association="MSFT_StoragePoolToResiliencySetting" SourceRole="StoragePool" ResultRole="ResiliencySetting">
+              <AssociatedInstance>
+                <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StoragePool" />
+                <CmdletParameterMetadata IsMandatory="true" PSName="StoragePool" ValueFromPipeline="true" CmdletParameterSets="ByName" />
+              </AssociatedInstance>
+            </Association>
+          </QueryableAssociations>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="ResiliencySetting.ParityLayout" UnderlyingType="System.UInt16">
+      <Value Name="NonRotatedParity" Value="1" />
+      <Value Name="RotatedParity" Value="2" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

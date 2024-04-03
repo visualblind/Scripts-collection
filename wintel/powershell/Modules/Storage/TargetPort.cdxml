@@ -1,0 +1,167 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_TargetPort">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>TargetPort</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-TargetPort
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+        <QueryableProperties>
+          <!-- UniqueId -->
+          <Property PropertyName="UniqueId">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </RegularQuery>
+          </Property>
+          <!-- FriendlyName -->
+          <Property PropertyName="FriendlyName">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </RegularQuery>
+          </Property>
+          <!-- PortAddress -->
+          <Property PropertyName="PortAddress">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByAddress">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </RegularQuery>
+          </Property>
+          <!-- ConnectionType -->
+          <Property PropertyName="ConnectionType">
+            <Type PSType="TargetPort.ConnectionType" />
+            <RegularQuery>
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName ByAddress" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+            <!-- StorageSubsystem -->
+            <Association Association="MSFT_StorageSubSystemToTargetPort" SourceRole="StorageSubSystem" ResultRole="TargetPort">
+                <AssociatedInstance>
+                    <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubSystem" />
+                    <CmdletParameterMetadata PSName="StorageSubSystem" ValueFromPipeline="true" CmdletParameterSets="ByStorageSubSystem" ErrorOnNoMatch="false" />
+                </AssociatedInstance>
+            </Association>        
+            <!-- MaskingSet -->
+            <Association Association="MSFT_MaskingSetToTargetPort" SourceRole="MaskingSet" ResultRole="TargetPort">
+                <AssociatedInstance>
+                    <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_MaskingSet" />
+                    <CmdletParameterMetadata PSName="MaskingSet" ValueFromPipeline="true" CmdletParameterSets="ByMaskingSet" ErrorOnNoMatch="false" />
+                </AssociatedInstance>
+            </Association>            
+            <!-- TargetPortal -->
+            <Association Association="MSFT_TargetPortToTargetPortal" SourceRole="TargetPortal" ResultRole="TargetPort">
+                <AssociatedInstance>
+                    <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TargetPortal" />
+                    <CmdletParameterMetadata PSName="TargetPortal" ValueFromPipeline="true" CmdletParameterSets="ByTargetPortal" ErrorOnNoMatch="false" />
+                </AssociatedInstance>
+            </Association>
+            <!-- VirtualDisk -->
+            <Association Association="MSFT_TargetPortToVirtualDisk" SourceRole="VirtualDisk" ResultRole="TargetPort">
+                <AssociatedInstance>
+                    <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_VirtualDisk" />
+                    <CmdletParameterMetadata PSName="VirtualDisk" ValueFromPipeline="true" CmdletParameterSets="ByVirtualDisk" ErrorOnNoMatch="false" />
+                </AssociatedInstance>
+            </Association>
+        </QueryableAssociations>
+      </GetCmdletParameters>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="TargetPort.ConnectionType" UnderlyingType="System.UInt16">
+      <Value Name="Other" Value="1" />
+      <Value Name="FibreChannel" Value="2" />
+      <Value Name="ParallelSCSI" Value="3" />
+      <Value Name="SSA" Value="4" />
+      <Value Name="IEEE1394" Value="5" />
+      <Value Name="RDMA" Value="6" />
+      <Value Name="iSCSI" Value="7" />
+      <Value Name="SAS" Value="8" />
+      <Value Name="ADT" Value="9"/>
+    </Enum>
+    <Enum EnumName="TargetPort.Role" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Initiator" Value="1" />
+      <Value Name="Target" Value="2" />
+      <Value Name="BothInitiatorAndTarget" Value="3" />
+    </Enum>
+    <Enum EnumName="TargetPort.OperationalStatus" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Other" Value="1" />
+      <Value Name="OK" Value="2" />
+      <Value Name="Degraded" Value="3" />
+      <Value Name="Stressed" Value="4" />
+      <Value Name="PredictiveFailure" Value="5" />
+      <Value Name="Error" Value="6" />
+      <Value Name="NonRecoverableError" Value="7" />
+      <Value Name="Starting" Value="8" />
+      <Value Name="Stopping" Value="9" />
+      <Value Name="Stopped" Value="10" />
+      <Value Name="InService" Value="11" />
+      <Value Name="NoContact" Value="12" />
+      <Value Name="LostCommunication" Value="13" />
+      <Value Name="Aborted" Value="14" />
+      <Value Name="Dormant" Value="15" />
+      <Value Name="SupportingEntityInError" Value="16" />
+      <Value Name="Completed" Value="17" />
+      <Value Name="PowerMode" Value="18" />
+    </Enum>
+    <Enum EnumName="TargetPort.HealthStatus" UnderlyingType="System.UInt16">
+      <Value Name="Healthy" Value="0" />
+      <Value Name="Warning" Value="1" />
+      <Value Name="Unhealthy" Value="2" />
+    </Enum>
+    <Enum EnumName="TargetPort.LinkTechnology" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Other" Value="1" />
+      <Value Name="Ethernet" Value="2" />
+      <Value Name="IB" Value="3" />
+      <Value Name="FC" Value="4" />
+      <Value Name="FDDI" Value="5" />
+      <Value Name="ATM" Value="6" />
+      <Value Name="TokenRing" Value="7" />
+      <Value Name="FrameRelay" Value="8" />
+      <Value Name="Infrared" Value="9" />
+      <Value Name="Bluetooth" Value="10" />
+      <Value Name="WirelessLAN" Value="11" />
+    </Enum>
+    <Enum EnumName="TargetPort.PortType" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Other" Value="1" />
+      <!-- 10 Fiber Channel -->
+      <Value Name="N" Value="10" />
+      <Value Name="NL" Value="11" />
+      <Value Name="FNL" Value="12" />
+      <Value Name="Nx" Value="13" />
+      <Value Name="E" Value="14" />
+      <Value Name="F" Value="15" />
+      <Value Name="FL" Value="16" />
+      <Value Name="B" Value="17" />
+      <Value Name="G" Value="18" />
+      <!-- 50 Copper Ethernet -->
+      <!-- FIXME: Can't have enum values that start with numbers -->
+    </Enum>
+    <Enum EnumName="TargetPort.UsageRestriction" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="FrontEndOnly" Value="2" />
+      <Value Name="BackEndOnly" Value="3" />
+      <Value Name="NotRestricted" Value="4" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

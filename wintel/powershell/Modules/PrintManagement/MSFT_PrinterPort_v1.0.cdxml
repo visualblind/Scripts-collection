@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/StandardCimv2/MSFT_PrinterPort">
+    <Version>1.0</Version>
+    <DefaultNoun>PrinterPort</DefaultNoun>
+    <InstanceCmdlets>
+      <!-- get-printerport -->
+      <GetCmdletParameters>
+        <QueryableProperties>
+          <Property PropertyName="Name">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata Position="0" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryOptions>
+          <Option OptionName="ComputerName">
+            <Type PSType="System.String" />
+            <CmdletParameterMetadata PSName="ComputerName" Aliases="CN">
+              <ValidateNotNull />
+              <ValidateNotNullOrEmpty />
+            </CmdletParameterMetadata>
+          </Option>
+        </QueryOptions>
+      </GetCmdletParameters>
+      <Cmdlet>
+        <!-- remove-printerport -->
+        <CmdletMetadata Verb="Remove" ConfirmImpact="Medium" />
+        <Method MethodName="cim:DeleteInstance">
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryOptions>
+            <Option OptionName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="ComputerName" Aliases="CN">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+</PowerShellMetadata>

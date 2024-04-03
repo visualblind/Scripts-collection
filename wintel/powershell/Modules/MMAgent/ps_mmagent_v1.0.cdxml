@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="Root\Microsoft\Windows\PS_MMAgent\PS_MMAgent" ClassVersion="1.0">
+    <Version>1.0</Version>
+    <DefaultNoun>MMAgent</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Debug" Noun="MMAppPrelaunch" />
+        <Method MethodName="Debug">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="PackageFullName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="pfn" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DisableDebugMode">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata Aliases="ddm" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PackageRelativeAppId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="praid" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Disable" />
+        <Method MethodName="Disable">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ApplicationLaunchPrefetching">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata Aliases="alp" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ApplicationPreLaunch">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata Aliases="apl" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="OperationAPI">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata Aliases="oa" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PageCombining">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata Aliases="pc" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MemoryCompression">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata Aliases="mc" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Enable" />
+        <Method MethodName="Enable">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ApplicationLaunchPrefetching">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata Aliases="alp" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="OperationAPI">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata Aliases="oa" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PageCombining">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata Aliases="pc" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ApplicationPreLaunch">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata Aliases="apl" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MemoryCompression">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata Aliases="mc" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" />
+        <Method MethodName="Get">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MMAgentComponents" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" />
+        <Method MethodName="Set">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="MaxOperationAPIFiles">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata Aliases="moaf" IsMandatory="true">
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="8192" />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

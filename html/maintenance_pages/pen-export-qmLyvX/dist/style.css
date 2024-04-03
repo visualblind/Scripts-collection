@@ -1,0 +1,73 @@
+html, body, .block {
+  height: 100%;
+  font-size: 0.9rem;
+}
+
+.block {
+  display: table;
+  width: 100%;
+  text-align: center;
+}
+.block:before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
+.center {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+body {
+  font-family: "Raleway";
+  line-height: 1.3;
+  background: #222;
+}
+
+h1 {
+  font-weight: 100;
+  color: #fff;
+  margin-top: 4rem;
+}
+
+.center {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 30rem;
+  padding: 2rem;
+  margin: 1rem;
+}
+
+.logo {
+  font-weight: 100;
+  font-size: 2.4rem;
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.text-yellow {
+  color: #fedd31;
+}
+.text-gray {
+  color: rgba(255, 255, 255, 0.3);
+}
+.text-sm {
+  font-size: 0.86rem;
+}
+
+@media screen and (min-width: 769px) {
+  .block-md {
+    display: block;
+  }
+}
+@media screen and (max-width: 480px) {
+  .block-xs {
+    display: block;
+  }
+}

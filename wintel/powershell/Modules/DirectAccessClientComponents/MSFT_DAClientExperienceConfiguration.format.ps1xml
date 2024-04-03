@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+    <ViewDefinitions>
+        <View>
+          <Name>MSFT_DAClientExperienceConfiguration</Name>
+          <ViewSelectedBy>
+            <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_DAClientExperienceConfiguration</TypeName>
+          </ViewSelectedBy>
+          <ListControl>
+            <ListEntries>
+              <ListEntry>
+                <ListItems>
+                  <ListItem>
+                    <PropertyName>Description</PropertyName>
+                  </ListItem>
+                  <ListItem>
+                    <PropertyName>CorporateResources</PropertyName>
+                  </ListItem>
+                  <ListItem>
+                    <PropertyName>IPsecTunnelEndpoints</PropertyName>
+                  </ListItem>
+                  <ListItem>
+                    <PropertyName>CustomCommands</PropertyName>
+                  </ListItem>                  
+                  <ListItem>
+                    <PropertyName>PreferLocalNamesAllowed</PropertyName>
+                  </ListItem>
+                  <ListItem>
+                    <PropertyName>UserInterface</PropertyName>
+                  </ListItem>
+                  <ListItem>
+                    <PropertyName>PassiveMode</PropertyName>
+                  </ListItem>                                    
+                  <ListItem>
+                    <PropertyName>SupportEmail</PropertyName>
+                  </ListItem>              
+                  <ListItem>
+                    <PropertyName>FriendlyName</PropertyName>
+                  </ListItem>
+                  <ListItem>
+                    <PropertyName>ManualEntryPointSelectionAllowed</PropertyName>
+                  </ListItem>
+                  <ListItem>
+                    <PropertyName>GslbFqdn</PropertyName>
+                  </ListItem>
+                  <ListItem>
+                    <PropertyName>ForceTunneling</PropertyName>
+                  </ListItem>    
+                </ListItems>
+              </ListEntry>
+            </ListEntries>
+          </ListControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>
+

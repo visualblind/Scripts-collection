@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+* {
+  font-family: 'Roboto', 'Ubuntu', sans-serif;
+  font-size: 1.5em;
+}
+
+body, html {
+  height: 100%;
+  width: auto;
+  overflow: hidden;
+  background: #f2f8ff;
+}
+
+.container {
+  width: 50%;
+  height: 50%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+svg {
+  width: 450px;
+  height: 300px;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  display:block;
+  z-index:100;
+}
+
+h2 {
+  text-align: center;
+  width: 100%;
+  font-size: 1em;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  background:#f2f8ff;
+  z-index:50;
+}
+
+h4 {
+  font-size: 0.4em;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  z-index:10;
+}
+
+.cog{
+  fill:#303030;
+}
+
+/*svg:hover .cog{
+  animation-duration:2.5s;
+  -webkit-animation-duration:2.5s;
+}*/
+
+.bigCog {
+  fill:#303030;
+  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  animation: spinLarge 10s infinite linear;
+  -webkit-animation: spinLarge 10s infinite linear;
+}
+
+.medCog {
+  fill:#404040;
+  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  animation: spinMed 10s infinite linear;
+  -webkit-animation: spinMed 10s infinite linear;
+}
+
+.smallCog {
+  fill:#202020;
+  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  animation: spinSmall 10s infinite linear;
+  -webkit-animation: spinSmall 10s infinite linear;
+}
+
+@keyframes spinLarge {
+  from {
+    transform: rotate(0deg) scale(0.25);
+  }
+  to {
+    transform: rotate(359deg) scale(0.25);
+  }
+}
+@-webkit-keyframes spinLarge {
+  from {
+    transform: rotate(0deg) scale(0.25);
+  }
+  to {
+    transform: rotate(359deg) scale(0.25);
+  }
+}
+
+@keyframes spinMed {
+  from {
+    transform: rotate(0deg) scale(0.2);
+  }
+  to {
+    transform: rotate(-359deg)scale(0.2);
+  }
+}
+@-webkit-keyframes spinMed {
+  from {
+    transform: rotate(0deg) scale(0.2);
+  }
+  to {
+    transform: rotate(-359deg)scale(0.2);
+  }
+}
+
+@keyframes spinSmall {
+  from {
+    transform: rotate(0deg) scale(0.15);
+  }
+  to {
+    transform: rotate(359deg) scale(0.15);
+  }
+}
+@-webkit-keyframes spinSmall {
+  from {
+    transform: rotate(0deg) scale(0.15);
+  }
+  to {
+    transform: rotate(359deg) scale(0.15);
+  }
+}
+
+@media screen and (max-width: 620px) {
+  h2 {
+    font-size: 0.5em;
+    transition: 0.5s;
+  }
+  h4 {
+    font-size: 0.3em;
+    transition: 0.5s;
+  }
+  svg {
+    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    display: inline-block;
+    transform-origin: -50% 0%;
+    -webkit-transform-origin: -50% 0%;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+  }
+}

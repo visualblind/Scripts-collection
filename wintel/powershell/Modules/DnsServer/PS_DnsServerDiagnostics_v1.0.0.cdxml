@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/Microsoft/Windows/DNS/PS_DnsServerDiagnostics" ClassVersion="1.0.0">
+    <Version>1.0.0</Version>
+    <DefaultNoun>DnsServerDiagnostics</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" />
+        <Method MethodName="Get">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerDiagnostics" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" DefaultCmdletParameterSet="Parameters" ConfirmImpact="Medium" />
+        <Method MethodName="SetByAll" CmdletParameterSet="All">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="All">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerDiagnostics" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByLogLevel" CmdletParameterSet="LogLevel">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DebugLogging">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="OperationLogLevel2">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="OperationLogLevel1">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerDiagnostics" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByParameters" CmdletParameterSet="Parameters">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Cn">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Answers">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EventLogLevel">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="FullPackets">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPFilterList">
+              <Type PSType="System.Net.IPAddress[]" />
+              <CmdletParameterMetadata Aliases="FilterIPAddressList" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="LogFilePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="MaxMBFileSize">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableLoggingForRemoteServerEvent">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableLoggingForPluginDllEvent">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="UseSystemEventLog">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableLogFileRollover">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableLoggingForZoneLoadingEvent">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableLoggingForLocalLookupEvent">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableLoggingToFile">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableLoggingForZoneDataWriteEvent">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableLoggingForTombstoneEvent">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableLoggingForRecursiveLookupEvent">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="UdpPackets">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="UnmatchedResponse">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Updates">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="WriteThrough">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SaveLogsToPersistentStorage">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableLoggingForServerStartStopEvent">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Notifications">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Queries">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="QuestionTransactions">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReceivePackets">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SendPackets">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TcpPackets">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#DnsServerDiagnostics" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+   <Class ClassName="root/StandardCimv2/MSFT_NetIPHttpsConfiguration" ClassVersion="1.0.0">
+      <Version>1.0</Version>
+      <DefaultNoun>NetIPHttpsConfiguration</DefaultNoun>
+      <InstanceCmdlets>
+
+         <GetCmdletParameters DefaultCmdletParameterSet="ByPolicyStore">
+            <QueryableProperties>
+               <Property PropertyName="Profile">
+                  <Type PSType="System.String"/>
+                  <RegularQuery AllowGlobbing="false">
+                     <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByPolicyStore ByGpoSession" ValueFromPipelineByPropertyName="true" Aliases="IPHttpsProfile"/>
+                  </RegularQuery>
+               </Property>
+               <Property PropertyName="ProfileActivated">
+                  <Type PSType="System.Boolean"/>
+                  <RegularQuery AllowGlobbing="false">
+                     <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByPolicyStore ByGpoSession" ValueFromPipelineByPropertyName="true"/>
+                  </RegularQuery>
+               </Property>
+            </QueryableProperties>
+            <QueryOptions>
+               <Option OptionName="PolicyStore">
+                  <Type PSType="System.String"/>
+                  <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByPolicyStore" ValueFromPipelineByPropertyName="true"/>
+               </Option>
+               <Option OptionName="GPOSession">
+                  <Type PSType="System.String"/>
+                  <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByGpoSession" ValueFromPipelineByPropertyName="true"/>
+               </Option>
+            </QueryOptions>
+         </GetCmdletParameters>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Set" ConfirmImpact="Medium"/>
+            <Method MethodName="cim:ModifyInstance">
+               <Parameters>
+                  <Parameter ParameterName="State">
+                     <Type PSType="NetIPHttpsConfiguration.State"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="Type">
+                     <Type PSType="NetIPHttpsConfiguration.Type"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="AuthMode">
+                     <Type PSType="NetIPHttpsConfiguration.AuthMode"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="StrongCRLRequired">
+                     <Type PSType="System.Boolean"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="ServerURL">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Remove" ConfirmImpact="Medium"/>
+            <Method MethodName="cim:DeleteInstance"/>
+            <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+               <QueryableProperties>
+                  <Property PropertyName="Profile">
+                     <Type PSType="System.String"/>
+                     <RegularQuery AllowGlobbing="false">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" ValueFromPipelineByPropertyName="true" Aliases="IPHttpsProfile"/>
+                     </RegularQuery>
+                  </Property>
+               </QueryableProperties>
+               <QueryOptions>
+                  <Option OptionName="PolicyStore">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true"/>
+                  </Option>
+               <Option OptionName="GPOSession">
+                 <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true"/>     
+                 </Option>                   
+               </QueryOptions>
+            </GetCmdletParameters>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Reset" ConfirmImpact="Medium"/>
+            <Method MethodName="Reset">
+               <Parameters>
+                  <Parameter ParameterName="State">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="AuthMode">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="StrongCRLRequired">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="PassThru">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="OutputObject">
+                     <Type PSType="Microsoft.Management.Infrastructure.CimInstance"/>
+                     <CmdletOutputMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Rename" ConfirmImpact="Medium"/>
+            <Method MethodName="Rename">
+               <Parameters>
+                  <Parameter ParameterName="NewName">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="PassThru">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="OutputObject">
+                     <Type PSType="Microsoft.Management.Infrastructure.CimInstance"/>
+                     <CmdletOutputMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+
+      </InstanceCmdlets>
+
+      <StaticCmdlets>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="New" ConfirmImpact="Medium" DefaultCmdletParameterSet="ByPolicyStore"/>
+            <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByPolicyStore">
+               <ReturnValue>
+                  <Type PSType="System.Uint32"/>
+                  <CmdletOutputMetadata>
+                     <ErrorCode/>
+                  </CmdletOutputMetadata>
+               </ReturnValue>
+               <Parameters>
+                  <Parameter ParameterName="PolicyStore">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true" Position="1"/>
+                  </Parameter>
+                  <Parameter ParameterName="Profile">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata Aliases="IPHttpsProfile"/>
+                  </Parameter>
+                  <Parameter ParameterName="Type">
+                     <Type PSType="NetIPHttpsConfiguration.Type"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="ServerURL">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="State" DefaultValue="0">
+                     <Type PSType="NetIPHttpsConfiguration.State"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="AuthMode">
+                     <Type PSType="NetIPHttpsConfiguration.AuthMode"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="StrongCRLRequired">
+                     <Type PSType="System.Boolean"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+            <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByGpoSession">
+               <ReturnValue>
+                  <Type PSType="System.Uint32"/>
+                  <CmdletOutputMetadata>
+                     <ErrorCode/>
+                  </CmdletOutputMetadata>
+               </ReturnValue>
+               <Parameters>
+                  <Parameter ParameterName="cim:OperationOption:GPOSession">
+                     <Type PSType="System.String" />
+                     <CmdletParameterMetadata IsMandatory="true" PSName="GPOSession" Position="1"/>
+                  </Parameter>
+                  <Parameter ParameterName="Profile">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata Aliases="IPHttpsProfile"/>
+                  </Parameter>
+                  <Parameter ParameterName="Type">
+                     <Type PSType="NetIPHttpsConfiguration.Type"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="ServerURL">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="State" DefaultValue="0">
+                     <Type PSType="NetIPHttpsConfiguration.State"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="AuthMode">
+                     <Type PSType="NetIPHttpsConfiguration.AuthMode"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="StrongCRLRequired">
+                     <Type PSType="System.Boolean"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>                 
+               </Parameters>
+            </Method>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Add" Noun="NetIPHttpsCertBinding" ConfirmImpact="Medium"/>
+            <Method MethodName="AddCertBinding">
+               <ReturnValue>
+                  <Type PSType="System.Uint32"/>
+                  <CmdletOutputMetadata>
+                     <ErrorCode/>
+                  </CmdletOutputMetadata>
+               </ReturnValue>
+               <Parameters>
+                  <Parameter ParameterName="CertificateHash">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="ApplicationId">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="IpPort">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="CertificateStoreName">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="NullEncryption">
+                     <Type PSType="System.Boolean"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Remove" Noun="NetIPHttpsCertBinding" ConfirmImpact="Medium"/>
+            <Method MethodName="RemoveCertBinding">
+               <ReturnValue>
+                  <Type PSType="System.Uint32"/>
+                  <CmdletOutputMetadata>
+                     <ErrorCode/>
+                  </CmdletOutputMetadata>
+               </ReturnValue>
+            </Method>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Enable" Noun="NetIPHttpsProfile" ConfirmImpact="Medium"/>
+            <Method MethodName="EnableProfile">
+               <ReturnValue>
+                  <Type PSType="System.Uint32"/>
+                  <CmdletOutputMetadata>
+                     <ErrorCode/>
+                  </CmdletOutputMetadata>
+               </ReturnValue>
+               <Parameters>
+                  <Parameter ParameterName="Profile">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Aliases="IPHttpsProfile"/>
+                  </Parameter>
+               </Parameters>
+            </Method>     
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Disable" Noun="NetIPHttpsProfile" ConfirmImpact="Medium"/>
+            <Method MethodName="DisableProfile">
+               <ReturnValue>
+                  <Type PSType="System.Uint32"/>
+                  <CmdletOutputMetadata>
+                     <ErrorCode/>
+                  </CmdletOutputMetadata>
+               </ReturnValue>
+            </Method>
+         </Cmdlet>
+         
+      </StaticCmdlets>
+   </Class>
+   <Enums>
+      <Enum EnumName="NetIPHttpsConfiguration.Type" UnderlyingType="System.Uint32">
+         <Value Name="Client" Value="0"/>
+         <Value Name="Server" Value="1"/>
+      </Enum>
+      <Enum EnumName="NetIPHttpsConfiguration.State" UnderlyingType="System.Uint32">
+         <Value Name="Default" Value="0"/>
+         <Value Name="Enabled" Value="2"/>
+         <Value Name="Disabled" Value="3"/>
+         <Value Name="OutsideEnabled" Value="4"/>
+      </Enum>
+      <Enum EnumName="NetIPHttpsConfiguration.AuthMode" UnderlyingType="System.Uint32">
+         <Value Name="None" Value="0"/>
+         <Value Name="Certificates" Value="1"/>
+      </Enum>
+      <Enum EnumName="NetIPHttpsConfiguration.ConfigurationType" UnderlyingType="System.Uint32">
+         <Value Name="Local" Value="0"/>
+         <Value Name="GroupPolicy" Value="1"/>
+         <Value Name="ProfileGP" Value="2"/>
+      </Enum>
+   </Enums>
+</PowerShellMetadata>
+
+

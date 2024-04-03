@@ -1,0 +1,92 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_FileIntegrity">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>FileIntegrity</DefaultNoun>
+    <StaticCmdlets>
+      <!--
+
+      //
+      // Get-FileIntegrity
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" ConfirmImpact="None" />
+        <Method MethodName="Get">
+          <Parameters>
+            <!-- FileName -->
+            <Parameter ParameterName="FileName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" PSName="FileName" Position="0" Aliases="FullName" />
+            </Parameter>
+            <!-- FileIntegrity -->
+            <Parameter ParameterName="FileIntegrity">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_FileIntegrity" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Set-FileIntegrity
+      //
+    
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+        <Method MethodName="Set">
+          <Parameters>
+            <!-- FileName -->
+            <Parameter ParameterName="FileName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" PSName="FileName" Position="0" Aliases="FullName" />
+            </Parameter>
+            <!-- Enable -->
+            <Parameter ParameterName="Enable">
+            <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata PSName="Enable" Position="1" />
+            </Parameter>
+            <!-- Enforce -->
+            <Parameter ParameterName="Enforce">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Repair-FileIntegrity
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Repair" ConfirmImpact="Medium" />
+        <Method MethodName="Repair">
+          <Parameters>
+            <!-- FileName -->
+            <Parameter ParameterName="FileName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" PSName="FileName" Position="0" Aliases="FullName" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

@@ -1,0 +1,38 @@
+#!/bin/sh
+# Simon Walz, 2015
+
+GITOLITE_HOST="$1"
+if test "x${GITOLITE_HOST}" = "x"
+then
+	echo "Usage: $0 GITOLITE_HOST LOCAL_PATH_PREFIX [EXCLUDE_REPOS]"
+	exit 2
+fi
+PREFIX="$2"
+EXCLUDE_REPOS="$3"
+
+
+# get repos:
+REPOS=`ssh "${GITOLITE_HOST}" info |grep -E "^ " | sed -e 's/^ [ #][ C] [ #][ R][ _] [ #][ W][ _]//g' | tr -d '\r'`
+
+for r in $REPOS
+do
+	rl=`echo "${r}" | sed -e 's/\//_/g'`
+	ignore=0
+	if test "x${EXCLUDE_REPOS}" != "x"; then
+		echo "${r}" | grep -E "${EXCLUDE_REPOS}" >/dev/null
+		if test "x$?" = "x0"; then
+			echo "# ignore repo: ${r}"
+			ignore=1
+		fi
+	fi
+
+	# ignore wild card repo entry
+	if echo "${r}" | grep -E "\[|@" >/dev/null
+	then
+		ignore=1
+	fi	
+
+	if test "x$ignore" != "x1"; then
+		backup-git-repo "${GITOLITE_HOST}:${r}" "${PREFIX}${rl}"
+	fi
+done

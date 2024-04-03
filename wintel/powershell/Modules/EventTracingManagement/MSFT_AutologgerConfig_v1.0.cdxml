@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT\Microsoft\Windows\EventTracingManagement\MSFT_AutologgerConfig" ClassVersion="1.1.0.0">
+    <Version>1.1.0.0</Version>
+    <DefaultNoun>AutologgerConfig</DefaultNoun>
+    <InstanceCmdlets>
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+        <QueryableProperties>
+          <Property PropertyName="Name">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" Position="0" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName"/>
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+      </GetCmdletParameters>
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Update" ConfirmImpact="Medium" Aliases="Set-AutologgerConfig"/>
+        <Method MethodName="cim:ModifyInstance">
+          <Parameters>
+            <Parameter ParameterName="BufferSize">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="ClockType">
+              <Type PSType="AutologgerConfig.ClockType" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="DisableRealtimePersistence">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="LocalFilePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+             <Parameter ParameterName="FileMax">
+              <Type PSType="System.UInt32" />
+               <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="FlushTimer">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Guid">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="LogFileMode">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="MaximumFileSize">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="MaximumBuffers">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="MinimumBuffers">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="Start">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="InitStatus">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+          <QueryableProperties>
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName"/>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="Medium" />
+        <Method MethodName="cim:DeleteInstance"/>
+        <GetCmdletParameters>
+          <QueryableProperties>
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true"/>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+    
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" ConfirmImpact="Medium" />
+        <Method MethodName="cim:CreateInstance">
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipeline="true">
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Use a large default to ensure even the largest event will fit -->
+            <Parameter ParameterName="BufferSize" DefaultValue="64">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="ClockType">
+              <Type PSType="AutologgerConfig.ClockType" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="DisableRealtimePersistence">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="FileCount">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="LocalFilePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+             <Parameter ParameterName="FileMax">
+              <Type PSType="System.UInt32" />
+               <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="FlushTimer">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <!-- GUID_NULL will be turned into a real GUID at create -->
+            <Parameter ParameterName="Guid" DefaultValue="{00000000-0000-0000-0000-000000000000}">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <!-- EVENT_TRACE_INDEPENDENT_SESSION_MODE | EVENT_TRACE_BUFFERING_MODE -->
+            <Parameter ParameterName="LogFileMode" DefaultValue="0x8000400">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="MaximumFileSize">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="MaximumBuffers">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="MinimumBuffers">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="Start" DefaultValue="Enabled">
+              <Type PSType="AutologgerConfig.Enabled" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+   <Enums>
+    <Enum EnumName="AutologgerConfig.ClockType" UnderlyingType="System.UInt32">
+      <Value Name="Performance" Value="1" />
+      <Value Name="System" Value="2" />
+      <Value Name="Cycle" Value="3" />
+    </Enum>
+    <Enum EnumName="AutologgerConfig.Enabled" UnderlyingType="System.UInt32">
+      <Value Name="Disabled" Value="0" />
+      <Value Name="Enabled" Value="1" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

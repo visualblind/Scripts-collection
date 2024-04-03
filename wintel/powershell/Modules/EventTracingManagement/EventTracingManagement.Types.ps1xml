@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/EventTracingManagement/MSFT_EtwTraceProvider</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Level</Name>
+        <GetScriptBlock>
+          $this.PSBase.CimInstanceProperties['Level'].Value
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>LevelName</Name>
+        <GetScriptBlock>
+          $constants = @{
+            0 = "WINEVENT_LEVEL_LOG_ALWAYS";
+            1 = "WINEVENT_LEVEL_CRITICAL";
+            2 = "WINEVENT_LEVEL_ERROR";
+            3 = "WINEVENT_LEVEL_WARNING";
+            4 = "WINEVENT_LEVEL_INFO";
+            5 = "WINEVENT_LEVEL_VERBOSE";}
+          
+          $level = $this.PSBase.CimInstanceProperties['Level'].Value
+
+          $namedLevel = $constants[[Convert]::ToInt32($level)]
+
+          if ($namedLevel)
+          {
+            "{0} ({1})" -f $level, $namedLevel
+          }
+          else
+          {
+            $level.ToString()
+          }
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>MatchAnyKeyword</Name>
+        <GetScriptBlock>
+          "0x{0:X0}" -f $this.PSBase.CimInstanceProperties['MatchAnyKeyword'].Value
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>MatchAllKeyword</Name>
+        <GetScriptBlock>
+            "0x{0:X0}" -f $this.PSBase.CimInstanceProperties['MatchAllKeyword'].Value
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Property</Name>
+        <GetScriptBlock>
+          $this.PSBase.CimInstanceProperties['Property'].Value
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>EnableProperty</Name>
+        <GetScriptBlock>
+          $constants = @{
+            0x00000001 = "EVENT_ENABLE_PROPERTY_SID";
+            0x00000002 = "EVENT_ENABLE_PROPERTY_TS_ID";
+            0x00000004 = "EVENT_ENABLE_PROPERTY_STACK_TRACE";
+            0x00000008 = "EVENT_ENABLE_PROPERTY_PSM_KEY";
+            0x00000010 = "EVENT_ENABLE_PROPERTY_IGNORE_KEYWORD_0";
+            0x00000020 = "EVENT_ENABLE_PROPERTY_PROVIDER_GROUP";
+            0x00000040 = "EVENT_ENABLE_PROPERTY_ENABLE_KEYWORD_0";
+            0x00000080 = "EVENT_ENABLE_PROPERTY_PROCESS_START_KEY";
+            0x00000100 = "EVENT_ENABLE_PROPERTY_EVENT_KEY";
+            0x00000200 = "EVENT_ENABLE_PROPERTY_EXCLUDE_INPRIVATE";}
+
+          $enableProperty = $this.PSBase.CimInstanceProperties['Property'].Value
+
+          $constants.Keys | where { $_ -band $enableProperty } | foreach { $constants.Get_Item($_) }
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/EventTracingManagement/MSFT_EtwTraceSession</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>LogFileMode</Name>
+        <GetScriptBlock>
+           "0x{0:X0}" -f $this.PSBase.CimInstanceProperties['LogFileMode'].Value
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>LoggingModeNames</Name>
+        <GetScriptBlock>
+          $constants = @{
+            0x00000000 = "EVENT_TRACE_FILE_MODE_NONE";
+            0x00000001 = "EVENT_TRACE_FILE_MODE_SEQUENTIAL";
+            0x00000002 = "EVENT_TRACE_FILE_MODE_CIRCULAR";
+            0x00000004 = "EVENT_TRACE_FILE_MODE_APPEND";
+            0x00000100 = "EVENT_TRACE_REAL_TIME_MODE";
+            0x00000200 = "EVENT_TRACE_DELAY_OPEN_FILE_MODE";
+            0x00000400 = "EVENT_TRACE_BUFFERING_MODE";
+            0x00000800 = "EVENT_TRACE_PRIVATE_LOGGER_MODE";
+            0x00001000 = "EVENT_TRACE_ADD_HEADER_MODE";
+            0x00004000 = "EVENT_TRACE_USE_GLOBAL_SEQUENCE";
+            0x00008000 = "EVENT_TRACE_USE_LOCAL_SEQUENCE";
+            0x00010000 = "EVENT_TRACE_RELOG_MODE";
+            0x01000000 = "EVENT_TRACE_USE_PAGED_MEMORY";
+            0x00000008 = "EVENT_TRACE_FILE_MODE_NEWFILE";
+            0x00000020 = "EVENT_TRACE_FILE_MODE_PREALLOCATE";
+            0x00000040 = "EVENT_TRACE_NONSTOPPABLE_MODE";
+            0x00000080 = "EVENT_TRACE_SECURE_MODE";
+            0x00002000 = "EVENT_TRACE_USE_KBYTES_FOR_SIZE";
+            0x00020000 = "EVENT_TRACE_PRIVATE_IN_PROC";
+            0x00100000 = "EVENT_TRACE_MODE_RESERVED";
+            0x10000000 = "EVENT_TRACE_NO_PER_PROCESSOR_BUFFERING";
+            0x02000000 = "EVENT_TRACE_SYSTEM_LOGGER_MODE";
+            0x80000000 = "EVENT_TRACE_ADDTO_TRIAGE_DUMP";
+            0x00400000 = "EVENT_TRACE_STOP_ON_HYBRID_SHUTDOWN";
+            0x00800000 = "EVENT_TRACE_PERSIST_ON_HYBRID_SHUTDOWN";
+            0x08000000 = "EVENT_TRACE_INDEPENDENT_SESSION_MODE";
+            0x04000000 = "EVENT_TRACE_COMPRESSED_MODE"}
+
+            $logfilemode = $this.PSBase.CimInstanceProperties['LogFileMode'].Value
+
+            $constants.Keys | where { $_ -band $logfilemode } | foreach { $constants.Get_Item($_) }
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>ClockType</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.EtwTraceSession.ClockType]($this.PSBase.CimInstanceProperties['ClockType'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/EventTracingManagement/MSFT_AutologgerConfig</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>LogFileMode</Name>
+        <GetScriptBlock>
+           "0x{0:X0}" -f $this.PSBase.CimInstanceProperties['LogFileMode'].Value
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>LoggingModeNames</Name>
+        <GetScriptBlock>
+          $constants = @{
+            0x00000000 = "EVENT_TRACE_FILE_MODE_NONE";
+            0x00000001 = "EVENT_TRACE_FILE_MODE_SEQUENTIAL";
+            0x00000002 = "EVENT_TRACE_FILE_MODE_CIRCULAR";
+            0x00000004 = "EVENT_TRACE_FILE_MODE_APPEND";
+            0x00000100 = "EVENT_TRACE_REAL_TIME_MODE";
+            0x00000200 = "EVENT_TRACE_DELAY_OPEN_FILE_MODE";
+            0x00000400 = "EVENT_TRACE_BUFFERING_MODE";
+            0x00000800 = "EVENT_TRACE_PRIVATE_LOGGER_MODE";
+            0x00001000 = "EVENT_TRACE_ADD_HEADER_MODE";
+            0x00004000 = "EVENT_TRACE_USE_GLOBAL_SEQUENCE";
+            0x00008000 = "EVENT_TRACE_USE_LOCAL_SEQUENCE";
+            0x00010000 = "EVENT_TRACE_RELOG_MODE";
+            0x01000000 = "EVENT_TRACE_USE_PAGED_MEMORY";
+            0x00000008 = "EVENT_TRACE_FILE_MODE_NEWFILE";
+            0x00000020 = "EVENT_TRACE_FILE_MODE_PREALLOCATE";
+            0x00000040 = "EVENT_TRACE_NONSTOPPABLE_MODE";
+            0x00000080 = "EVENT_TRACE_SECURE_MODE";
+            0x00002000 = "EVENT_TRACE_USE_KBYTES_FOR_SIZE";
+            0x00020000 = "EVENT_TRACE_PRIVATE_IN_PROC";
+            0x00100000 = "EVENT_TRACE_MODE_RESERVED";
+            0x10000000 = "EVENT_TRACE_NO_PER_PROCESSOR_BUFFERING";
+            0x02000000 = "EVENT_TRACE_SYSTEM_LOGGER_MODE";
+            0x80000000 = "EVENT_TRACE_ADDTO_TRIAGE_DUMP";
+            0x00400000 = "EVENT_TRACE_STOP_ON_HYBRID_SHUTDOWN";
+            0x00800000 = "EVENT_TRACE_PERSIST_ON_HYBRID_SHUTDOWN";
+            0x08000000 = "EVENT_TRACE_INDEPENDENT_SESSION_MODE";
+            0x04000000 = "EVENT_TRACE_COMPRESSED_MODE"}
+
+            $logfilemode = $this.PSBase.CimInstanceProperties['LogFileMode'].Value
+
+            $constants.Keys | where { $_ -band $logfilemode } | foreach { $constants.Get_Item($_) }
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>ClockType</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.AutologgerConfig.ClockType]($this.PSBase.CimInstanceProperties['ClockType'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>

@@ -1,0 +1,152 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_InitiatorPort">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>InitiatorPort</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-InitiatorPort
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByNodeAddress">
+        <QueryableProperties>
+          <!-- ID -->
+          <Property PropertyName="ObjectId">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByObjectId" Aliases="Id" />
+            </RegularQuery>
+          </Property>
+          <!-- NodeAddress -->
+          <Property PropertyName="NodeAddress">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNodeAddress" Position="0" />
+            </RegularQuery>
+          </Property>
+          <!-- InstanceName -->
+          <Property PropertyName="InstanceName">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+               <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByInstanceName" />
+            </RegularQuery>
+          </Property>
+          <!-- ConnectionType -->
+          <Property PropertyName="ConnectionType">
+            <Type PSType="InitiatorPort.ConnectionType" />
+            <RegularQuery>
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNodeAddress ByInstanceName" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <!-- VirtualDisk -->
+          <Association Association="MSFT_VirtualDiskToInitiatorPort" SourceRole="VirtualDisk" ResultRole="InitiatorPort">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_VirtualDisk" />
+              <CmdletParameterMetadata PSName="VirtualDisk" ValueFromPipeline="true" CmdletParameterSets="ByVirtualDisk" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- iSCSISession -->
+          <Association Association="MSFT_InitiatorPortToiSCSISession" SourceRole="iSCSISession" ResultRole="InitiatorPort">
+              <AssociatedInstance>
+                  <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSISession" />
+                  <CmdletParameterMetadata PSName="iSCSISession" ValueFromPipeline="true" CmdletParameterSets="ByiSCSISession" ErrorOnNoMatch="false" />
+              </AssociatedInstance>
+          </Association>
+          <!-- iSCSIConnection -->
+          <Association Association="MSFT_InitiatorPortToiSCSIConnection" SourceRole="iSCSIConnection" ResultRole="InitiatorPort">
+              <AssociatedInstance>
+                  <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSIConnection" />
+                  <CmdletParameterMetadata PSName="iSCSIConnection" ValueFromPipeline="true" CmdletParameterSets="ByiSCSIConnection" ErrorOnNoMatch="false" />
+              </AssociatedInstance>
+          </Association>
+          <!-- iSCSITarget -->
+          <Association Association="MSFT_InitiatorPortToiSCSITarget" SourceRole="iSCSITarget" ResultRole="InitiatorPort">
+              <AssociatedInstance>
+                  <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSITarget" />
+                  <CmdletParameterMetadata PSName="iSCSITarget" ValueFromPipeline="true" CmdletParameterSets="ByiSCSITarget" ErrorOnNoMatch="false" />
+              </AssociatedInstance>
+          </Association>
+         </QueryableAssociations>
+      </GetCmdletParameters>
+      <!--
+
+      //
+      // Set-InitiatorPort
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+        <Method MethodName="SetNodeAddress">
+          <Parameters>
+            <!-- NewNodeAddress -->
+            <Parameter ParameterName="NodeAddress">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" PSName="NewNodeAddress">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByNodeAddress">
+          <QueryableProperties>
+            <!-- ID -->
+            <Property PropertyName="ObjectId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByObjectId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+            <!-- NodeAddress -->
+            <Property PropertyName="NodeAddress">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNodeAddress" Position="0" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="InitiatorPort.PortType" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="1" />
+      <Value Name="Other" Value="2" />
+      <Value Name="NotPresent" Value="3" />
+      <Value Name="Fabric" Value="5" />
+      <Value Name="PublicLoop" Value="6" />
+      <Value Name="FLPort" Value="7" />
+      <Value Name="FabricPort" Value="8" />
+      <Value Name="FabricExpansionPort" Value="9" />
+      <Value Name="GenericFabricPort" Value="10" />
+      <Value Name="PrivateLoop" Value="20" />
+      <Value Name="PointToPoint" Value="21" />
+    </Enum>
+    <Enum EnumName="InitiatorPort.ConnectionType" UnderlyingType="System.UInt16">
+      <Value Name="Other" Value="0" />
+      <Value Name="FibreChannel" Value="1"/>
+      <Value Name="iSCSI" Value="2" />
+      <Value Name="SAS" Value="3" />
+    </Enum>
+    <Enum EnumName="InitiatorPort.OperationalStatus" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="1" />
+      <Value Name="Operational" Value="2" />
+      <Value Name="UserOffline" Value="3" />
+      <Value Name="Bypassed" Value="4" />
+      <Value Name="InDiagnosticsMode" Value="5" />
+      <Value Name="LinkDown" Value="6" />
+      <Value Name="PortError" Value="7" />
+      <Value Name="Loopback" Value="8" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

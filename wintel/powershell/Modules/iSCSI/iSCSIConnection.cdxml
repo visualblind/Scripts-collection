@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_iSCSIConnection">
+    <Version>1.0</Version>
+    <DefaultNoun>IscsiConnection</DefaultNoun>
+    <!--
+
+      //
+      // Get-IscsiConnection
+      //
+
+    -->
+    <InstanceCmdlets>
+            <GetCmdletParameters DefaultCmdletParameterSet="ByConnectionIdentifier">
+                <QueryableProperties>
+                    <Property PropertyName="ConnectionIdentifier">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByConnectionIdentifier" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="InitiatorSideIdentifier">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByInitiatorSideIdentifier" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="TargetSideIdentifier">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTargetSideIdentifier" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="InitiatorPortalAddress">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByInitiatorPortalAddress" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="InitiatorPortalPortNumber">
+                        <Type PSType="uint16" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="InititorIPAdressListNumber">
+                        <Type PSType="uint16" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+                        </RegularQuery>
+                    </Property>
+                 </QueryableProperties>
+                <QueryableAssociations>
+                    <!-- Disk -->
+                    <Association Association="MSFT_iSCSIConnectionToDisk" SourceRole="Disk" ResultRole="iSCSIConnection">
+                        <AssociatedInstance>
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Disk" />
+                            <CmdletParameterMetadata PSName="Disk" ValueFromPipeline="true" CmdletParameterSets="ByDisk" />
+                        </AssociatedInstance>
+                    </Association>
+                    <!-- iSCSITargetPortal -->
+                    <Association Association="MSFT_iSCSIConnectionToiSCSITargetPortal" SourceRole="iSCSITargetPortal" ResultRole="iSCSIConnection">
+                        <AssociatedInstance>
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSITargetPortal" />
+                            <CmdletParameterMetadata PSName="iSCSITargetPortal" ValueFromPipeline="true" CmdletParameterSets="ByiSCSITargetPortal" />
+                        </AssociatedInstance>
+                    </Association>
+                    <!-- iSCSISession -->
+                    <Association Association="MSFT_iSCSISessionToiSCSIConnection" SourceRole="iSCSISession" ResultRole="iSCSIConnection">
+                        <AssociatedInstance>
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSISession" />
+                            <CmdletParameterMetadata PSName="IscsiSession" ValueFromPipeline="true" CmdletParameterSets="ByiSCSISession" />
+                        </AssociatedInstance>
+                    </Association>
+                    <!-- InitiatorPort -->
+                    <Association Association="MSFT_InitiatorPortToiSCSIConnection" SourceRole="InitiatorPort" ResultRole="iSCSIConnection">
+                        <AssociatedInstance>
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_InitiatorPort" />
+                            <CmdletParameterMetadata PSName="InitiatorPort" ValueFromPipeline="true" CmdletParameterSets="ByInitiatorPort" />
+                        </AssociatedInstance>
+                    </Association>
+                    <!-- iSCSITarget -->
+                    <Association Association="MSFT_iSCSITargetToiSCSIConnection" SourceRole="iSCSITarget" ResultRole="iSCSIConnection">
+                        <AssociatedInstance>
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSITarget" />
+                            <CmdletParameterMetadata PSName="IscsiTarget" ValueFromPipeline="true" CmdletParameterSets="ByiSCSITarget" />
+                        </AssociatedInstance>
+                    </Association>
+                </QueryableAssociations>
+            </GetCmdletParameters>
+    </InstanceCmdlets>
+  </Class>
+</PowerShellMetadata>

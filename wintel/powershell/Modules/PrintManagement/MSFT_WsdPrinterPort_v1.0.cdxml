@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/StandardCimv2/MSFT_WsdPrinterPort">
+    <Version>1.0</Version>
+    <DefaultNoun>PrinterPort</DefaultNoun>
+  </Class>
+  <Enums>
+    <Enum EnumName="WSDPrinterPort.DiscoveryMethodEnum" UnderlyingType="UInt32">
+      <Value Name="Multicast" Value="0" />
+      <Value Name="Directed" Value="1" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

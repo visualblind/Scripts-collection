@@ -1,0 +1,15 @@
+﻿<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_WsdPrinterPort</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>DiscoveryMethod</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.WSDPrinterPort.DiscoveryMethodEnum]($this.PSBase.CimInstanceProperties['DiscoveryMethod'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>
+
+

@@ -1,0 +1,113 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_StorageNode">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>StorageNode</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-StorageNode
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+        <QueryableProperties>
+          <!-- UniqueId -->
+          <Property PropertyName="UniqueId">
+            <Type PSType="System.String" />
+            <RegularQuery>
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+            </RegularQuery>
+          </Property>
+          <!-- ObjectId -->
+          <Property PropertyName="ObjectId">
+            <Type PSType="System.String" />
+            <RegularQuery>
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByObjectId" Aliases="StorageNodeObjectId" />
+            </RegularQuery>
+          </Property>
+          <!-- Name -->
+          <Property PropertyName="Name">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" Position="0" />
+            </RegularQuery>
+          </Property>
+          <!-- OperationalStatus -->
+          <Property PropertyName="OperationalStatus">
+            <Type PSType="StorageNode.OperationalStatus" />
+            <RegularQuery>
+              <CmdletParameterMetadata/>
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <!-- Disk -->
+          <Association Association="MSFT_StorageNodeToDisk" SourceRole="Disk" ResultRole="StorageNode">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Disk" />
+              <CmdletParameterMetadata PSName="Disk" ValueFromPipeline="true" CmdletParameterSets="ByDisk" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- StorageSubSystem -->
+          <Association Association="MSFT_StorageSubSystemToStorageNode" SourceRole="StorageSubSystem" ResultRole="StorageNode">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubSystem" />
+              <CmdletParameterMetadata PSName="StorageSubSystem" ValueFromPipeline="true" CmdletParameterSets="ByStorageSubSystem" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- StorageEnclosure -->
+          <Association Association="MSFT_StorageNodeToStorageEnclosure" SourceRole="StorageEnclosure" ResultRole="StorageNode">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageEnclosure" />
+              <CmdletParameterMetadata PSName="StorageEnclosure" ValueFromPipeline="true" CmdletParameterSets="ByStorageEnclosure" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- StoragePool -->
+          <Association Association="MSFT_StorageNodeToStoragePool" SourceRole="StoragePool" ResultRole="StorageNode">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StoragePool" />
+              <CmdletParameterMetadata PSName="StoragePool" ValueFromPipeline="true" CmdletParameterSets="ByStoragePool" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- PhysicalDisk -->
+          <Association Association="MSFT_StorageNodeToPhysicalDisk" SourceRole="PhysicalDisk" ResultRole="StorageNode">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata PSName="PhysicalDisk" ValueFromPipeline="true" CmdletParameterSets="ByPhysicalDisk" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- VirtualDisk-->
+          <Association Association="MSFT_StorageNodeToVirtualDisk" SourceRole="VirtualDisk" ResultRole="StorageNode">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_VirtualDisk" />
+              <CmdletParameterMetadata PSName="VirtualDisk" ValueFromPipeline="true" CmdletParameterSets="ByVirtualDisk" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- Volume -->
+          <Association Association="MSFT_StorageNodeToVolume" SourceRole="Volume" ResultRole="StorageNode">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Volume" />
+              <CmdletParameterMetadata PSName="Volume" ValueFromPipeline="true" CmdletParameterSets="ByVolume" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+        </QueryableAssociations>
+        <QueryOptions>
+          <Option OptionName="PhysicallyConnected">
+            <Type PSType="System.Management.Automation.SwitchParameter" />
+            <CmdletParameterMetadata PSName="PhysicallyConnected" CmdletParameterSets="ByStorageEnclosure ByPhysicalDisk" />
+          </Option>
+        </QueryOptions>
+      </GetCmdletParameters>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="StorageNode.OperationalStatus" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Up" Value="2" />
+      <Value Name="Down" Value="6" />
+      <Value Name="Joining" Value="8" />
+      <Value Name="Paused" Value="10" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

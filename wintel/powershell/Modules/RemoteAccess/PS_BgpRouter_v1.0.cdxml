@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+    <Class ClassName="root/Microsoft/Windows/RemoteAccess/PS_BgpRouter" ClassVersion="1.0">
+        <Version>1.0</Version>
+        <DefaultNoun>BgpRouter</DefaultNoun>
+        <StaticCmdlets>
+            <Cmdlet>
+                <CmdletMetadata Verb="Add" />
+                <Method MethodName="Add">
+                    <ReturnValue>
+                        <Type PSType="System.Int32" />
+                        <CmdletOutputMetadata>
+                            <ErrorCode />
+                        </CmdletOutputMetadata>
+                    </ReturnValue>
+                    <Parameters>
+                        <Parameter ParameterName="BgpIdentifier">
+                            <Type PSType="System.Net.IPAddress" />
+                            <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="LocalASN">
+                            <Type PSType="System.UInt32" />
+                            <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                                <ValidateRange Min="1" Max="65534" />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="IPv6Routing">
+                            <Type PSType="Bgp.IPv6RoutingState" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="CompareMEDAcrossASN">
+                            <Type PSType="System.Boolean" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="DefaultGatewayRouting">
+                            <Type PSType="System.Boolean" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="PassThru">
+                            <Type PSType="System.Management.Automation.SwitchParameter" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="Force">
+                            <Type PSType="System.Management.Automation.SwitchParameter" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="RoutingDomain">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+                        </Parameter>
+                        <Parameter ParameterName="LocalIPv6Address">
+                            <Type PSType="System.Net.IPAddress" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+                        </Parameter>
+                        <Parameter ParameterName="TransitRouting">
+                            <Type PSType="Nullable[Bgp.TransitRouting]" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="RouteReflector">
+                            <Type PSType="Nullable[Bgp.RouteReflector]" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="ClusterId">
+                            <Type PSType="Nullable[System.UInt32]" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="ClientToClientReflection">
+                            <Type PSType="Nullable[Bgp.ClientToClientReflection]" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="CmdletOutput">
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#BgpRouterConfig" />
+                            <CmdletOutputMetadata />
+                        </Parameter>
+                    </Parameters>
+                </Method>
+            </Cmdlet>
+            <Cmdlet>
+                <CmdletMetadata Verb="Get" />
+                <Method MethodName="Get">
+                    <ReturnValue>
+                        <Type PSType="System.Int32" />
+                        <CmdletOutputMetadata>
+                            <ErrorCode />
+                        </CmdletOutputMetadata>
+                    </ReturnValue>
+                    <Parameters>
+                        <Parameter ParameterName="RoutingDomain">
+                            <Type PSType="System.String[]" />
+                            <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+                        </Parameter>
+                        <Parameter ParameterName="CmdletOutput">
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#BgpRouterConfig" />
+                            <CmdletOutputMetadata />
+                        </Parameter>
+                    </Parameters>
+                </Method>
+            </Cmdlet>
+            <Cmdlet>
+                <CmdletMetadata Verb="Remove" ConfirmImpact="Medium" />
+                <Method MethodName="Remove">
+                    <ReturnValue>
+                        <Type PSType="System.Int32" />
+                        <CmdletOutputMetadata>
+                            <ErrorCode />
+                        </CmdletOutputMetadata>
+                    </ReturnValue>
+                    <Parameters>
+                        <Parameter ParameterName="RoutingDomain">
+                            <Type PSType="System.String[]" />
+                            <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+                        </Parameter>
+                        <Parameter ParameterName="Force">
+                            <Type PSType="System.Management.Automation.SwitchParameter" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                    </Parameters>
+                </Method>
+            </Cmdlet>
+            <Cmdlet>
+                <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+                <Method MethodName="Set">
+                    <ReturnValue>
+                        <Type PSType="System.Int32" />
+                        <CmdletOutputMetadata>
+                            <ErrorCode />
+                        </CmdletOutputMetadata>
+                    </ReturnValue>
+                    <Parameters>
+                        <Parameter ParameterName="BgpIdentifier">
+                            <Type PSType="System.Net.IPAddress" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="LocalASN">
+                            <Type PSType="System.UInt32" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                                <ValidateRange Min="1" Max="65534" />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="CompareMEDAcrossASN">
+                            <Type PSType="System.Boolean" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="DefaultGatewayRouting">
+                            <Type PSType="System.Boolean" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="IPv6Routing">
+                            <Type PSType="Bgp.IPv6RoutingState" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="RoutingDomain">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+                        </Parameter>
+                        <Parameter ParameterName="PassThru">
+                            <Type PSType="System.Management.Automation.SwitchParameter" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="Force">
+                            <Type PSType="System.Management.Automation.SwitchParameter" />
+                            <CmdletParameterMetadata>
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="LocalIPv6Address">
+                            <Type PSType="System.Net.IPAddress" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+                        </Parameter>
+                        <Parameter ParameterName="TransitRouting">
+                            <Type PSType="Nullable[Bgp.TransitRouting]" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="RouteReflector">
+                            <Type PSType="Nullable[Bgp.RouteReflector]" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="ClusterId">
+                            <Type PSType="Nullable[System.UInt32]" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="ClientToClientReflection">
+                            <Type PSType="Nullable[Bgp.ClientToClientReflection]" />
+                            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="CmdletOutput">
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#BgpRouterConfig" />
+                            <CmdletOutputMetadata />
+                        </Parameter>
+                    </Parameters>
+                </Method>
+            </Cmdlet>
+        </StaticCmdlets>
+    </Class>
+    <Enums>
+        <Enum EnumName="Bgp.IPv6RoutingState" UnderlyingType="System.UInt32">
+            <Value Name="Disabled" Value="0" />
+            <Value Name="Enabled" Value="1" />
+        </Enum>
+        <Enum EnumName = "Bgp.TransitRouting" UnderlyingType="System.UInt32">
+            <Value Name ="Disabled" Value = "0" />
+            <Value Name ="Enabled" Value = "1" />
+        </Enum>
+        <Enum EnumName = "Bgp.RouteReflector" UnderlyingType="System.UInt32">
+            <Value Name ="Disabled" Value = "0" />
+            <Value Name ="Enabled" Value = "1" />
+        </Enum>
+        <Enum EnumName = "Bgp.ClientToClientReflection" UnderlyingType="System.UInt32">
+            <Value Name ="Disabled" Value = "0" />
+            <Value Name ="Enabled" Value = "1" />
+        </Enum>
+    </Enums>
+</PowerShellMetadata>

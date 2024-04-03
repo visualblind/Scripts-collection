@@ -1,0 +1,109 @@
+An Example of Creating a new SLA:
+---------------------------------
+	by Christian Zimmerman
+
+
+Problem: We need to create a new SLA because the default SLA's aren't going to meet our needs. 
+We want to monitor disk space on the server and be notified when : disk space used is > 99% of the total disk space. 
+
+Things we need to do:
+
+1. Create a new Event Type
+2. Create a new SLA Conditions Individual Definition
+3. Create a new SLA group
+4. Associate the newly created condition with the new SLA Group
+5. Create a new Trigger (allows for notification if needed)
+6. Add a rule for the trigger
+
+
+Step One:
+=========
+Goto Administration > Internal Configuration > Event Analyzer > Event Types
+
+You should see a list of all event types. Click the ADD link to create a new Event. 
+Now we need to input a description, severity, and event text. Enter the following:
+
+Description -> Disk Full-SLA
+Severity    -> select Critical
+Event Text  -> Disk <interface>: <info>
+
+Next put a check in the next two boxes: Show in Event Viewer? and  Event Generates an Alarm?
+Once this is completed click the submit button and now you should see this new event in the list with all the other events.
+
+Step Two:
+=========
+Goto Administration > Internal Configuration > SLA definitions > SLA Conditions Individual Definition
+
+Again we will need to add the condition that we will want to test for so lets create a new condition. 
+Click the ADD link to begin creating a new condition. 
+You will need to fill in the following fields Description, Show Info, Condition, Show Expression, and Show Unit. 
+Here are the values:
+
+Description 	-> Used Storage > 99%
+Show Info	-> Used > 99%
+Condition	-> ( <storage_used_blocks> > ((<storage_block_count>*99)/100))
+Show Expression	-> ((<storage_used_blocks> * 100)/<storage_block_count>)
+Show Unit	-> %
+
+Once you've entered the information in, click submit and your new condition is created.
+
+Steps Three and Four:
+=====================
+Goto Administration > Internal Configuration > SLA definitions > SLA Conditions Groups
+
+Here we will need to create a new SLA group. Click the ADD button and lets create a new group. 
+Here is a list of fields that we need to fill in: Description, Interface Type, Event Type, 
+Alarm State, Event Text, Threshold % (for Reports). Here's the values:
+
+Description	-> Storage Full
+Interface Type	-> Storage
+Event Type	-> Disk Full-SLA
+Alarm State	-> Alert
+Event Text	-> Storage
+Threshold %	-> 100
+
+Notice the value for the Event type is the one we created. 
+This is where we link the Event Type to the SLA. 
+When the SLA is met or not met depending on how you setup the triggers, an event will be generated. 
+Click submit and your new SLA group is created. 
+You should see your new event group now with a view link right next to it. 
+This view link is where we associate the condition to check for, if the condition is met an event is generated. 
+So click the view button and a second frame opens up right below the SLA groups. 
+Click the ADD link and a new box appears. Under the "Condition" option select -> Used Storage > 99% and then click the SHOW option. 
+Click submit. We have now created a new SLA option on which will test whether or 
+not our Server disk space usage is above 99% ( meaning its full or almost full). 
+If the SLA is met then an event type will be generated.
+
+Step Five:
+==========
+Goto Administration > Internal Configuration >Triggers & Filters > Triggers Configuration
+
+Now that our SLA is setup we need to setup a trigger for notification. 
+(Note: You don't have to setup a trigger, but you might as well as you can turn them off later if needed without any hassle.) 
+Click the ADD link and fill in the Description and Type fields:
+
+Description	-> Disk Full
+Type		-> Match Events
+
+Click submit and your done.
+
+Step Six:
+=========
+The trigger has been created, but we haven't told the trigger what action to perform to lets do this now.
+Click on View Rules for the Trigger "Disk Full". A Triggers Rules Administration window shows below the Triggers. 
+Click the ADD link. We need to edit these options: Field, Operator, Value, Action, Action Parameters. 
+Set them to this:
+
+Field	-> Type
+Operator-> IN
+Value	-> Disk Full-SLA
+Action	-> Send Mail
+
+Action Parameters
+
+subject	-> Disk <interface-interface>
+comment	-> <alarm-type_description> <interface-description>
+
+
+Click submit and your done. This trigger will now send an email to the email configured in your profile when the SLA has been met. 
+You should also see an event as well.

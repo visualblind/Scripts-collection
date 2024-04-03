@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_DAConnectionStatus</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Status</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.DAConnectionStatus.Status]($this.PSBase.CimInstanceProperties['Status'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          $this.PSBase.CimInstanceProperties['Status'].Value = [System.UInt32]$_
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Substatus</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.DAConnectionStatus.Substatus]($this.PSBase.CimInstanceProperties['Substatus'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          $this.PSBase.CimInstanceProperties['Substatus'].Value = [System.UInt32]$_
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>

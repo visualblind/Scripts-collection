@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetConnectionProfile</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>NetworkCategory</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetConnectionProfile.NetworkCategory]($this.PSBase.CimInstanceProperties['NetworkCategory'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['NetworkCategory'].Value = [System.UInt32][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetConnectionProfile.NetworkCategory]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IPv4Connectivity</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetConnectionProfile.IPv4Connectivity]($this.PSBase.CimInstanceProperties['IPv4Connectivity'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['IPv4Connectivity'].Value = [System.UInt32][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetConnectionProfile.IPv4Connectivity]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IPv6Connectivity</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetConnectionProfile.IPv6Connectivity]($this.PSBase.CimInstanceProperties['IPv6Connectivity'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['IPv6Connectivity'].Value = [System.UInt32][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetConnectionProfile.IPv6Connectivity]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>

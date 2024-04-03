@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+    <Class ClassName="root/StandardCimv2/MSFT_NetLbfoTeamNic" ClassVersion="1.0.0">
+    <Version>1.0</Version>
+    <DefaultNoun>NetLbfoTeamNic</DefaultNoun>
+    <InstanceCmdlets>
+      <GetCmdletParameters DefaultCmdletParameterSet="ByNameOrTeam">
+        <QueryableProperties>
+          <Property PropertyName="Name">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" Position="0" Aliases="ifAlias InterfaceAlias" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNameOrTeam"/>
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="Team">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata  IsMandatory="false" Position="1" ValueFromPipelineByPropertyName="false" CmdletParameterSets="ByNameOrTeam"/>
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <Association Association="MSFT_NetLbfoTeam_TeamNic" ResultRole="PartComponent" SourceRole="GroupComponent">
+            <AssociatedInstance>
+            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#root/standardcimv2/MSFT_NetLbfoTeam" />
+            <CmdletParameterMetadata PSName="TeamOfTheTeamNic" ValueFromPipeline = "true" CmdletParameterSets="ByTeamOfTheTeamNic" /> 
+            </AssociatedInstance>
+          </Association> 
+        </QueryableAssociations>
+      </GetCmdletParameters>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium"/>
+        <Method MethodName="cim:ModifyInstance">
+          <Parameters>
+            <Parameter ParameterName="cim:OperationOption:VlanID">
+              <Type PSType="Uint32" />
+              <CmdletParameterMetadata PSName = "VlanID" IsMandatory="false">
+                <ValidateRange Min="0" Max="4094" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="cim:OperationOption:Default">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata PSName = "Default" IsMandatory="false" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>    
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" />
+        <Method MethodName="cim:DeleteInstance" />
+        <GetCmdletParameters>
+          <QueryableProperties>
+            <Property PropertyName="Team">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTeamAndVlanID"/>
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="VlanID">
+              <Type PSType="System.Uint32" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTeamAndVlanID">
+                  <ValidateRange Min="0" Max="4095" />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>    
+
+    <StaticCmdlets>
+     <Cmdlet>
+        <CmdletMetadata Verb="Add" Noun="NetLbfoTeamNic" ConfirmImpact="High"/>
+        <Method MethodName="cim:CreateInstance">
+          <Parameters>
+            <Parameter ParameterName="Team">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0"> 
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="VlanID">
+              <Type PSType="System.Uint32" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateRange Min="0" Max="4094" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="false" Position="2" Aliases="ifAlias InterfaceAlias"> 
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+    </Method>
+     </Cmdlet>
+   </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

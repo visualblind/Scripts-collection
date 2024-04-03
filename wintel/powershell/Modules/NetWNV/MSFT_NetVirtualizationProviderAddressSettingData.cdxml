@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+	<Class ClassName="Root/StandardCimV2/MSFT_NetVirtualizationProviderAddressSettingData" ClassVersion="1.0.0">
+		<Version>1.0.0.0</Version>
+		<DefaultNoun>NetVirtualizationProviderAddress</DefaultNoun>
+
+        <InstanceCmdlets>
+            <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+                <QueryableProperties>
+                    <Property PropertyName="ProviderAddress">
+                        <Type PSType="System.String" />
+                        <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="InterfaceIndex">
+                        <Type PSType="System.UInt32" />
+                        <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="PrefixLength">
+                        <Type PSType="System.Byte" />
+                        <RegularQuery AllowGlobbing="false">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="VlanID">
+                        <Type PSType="System.UInt16" />
+                        <RegularQuery AllowGlobbing="false">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="AddressState">
+                        <Type PSType="NetVirtualizationProviderAddress.AddressState" />
+                        <RegularQuery AllowGlobbing="false">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="MACAddress">
+                        <Type PSType="System.String" />
+                        <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="ManagedByCluster">
+                        <Type PSType="System.Boolean" />
+                        <RegularQuery AllowGlobbing="false">
+                        <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                        </RegularQuery>
+                    </Property>
+                </QueryableProperties>
+            </GetCmdletParameters>
+
+            <Cmdlet>
+                <CmdletMetadata Verb="Set" />
+                <Method MethodName="cim:ModifyInstance">
+                    <Parameters>
+                        <Parameter ParameterName="VlanID">
+                            <Type PSType="System.UInt16" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="PrefixLength">
+                            <Type PSType="System.Byte" />
+                            <CmdletParameterMetadata IsMandatory="false" /> 
+                        </Parameter>
+                        <Parameter ParameterName="MACAddress">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="false" /> 
+                        </Parameter>
+                    </Parameters>
+                </Method>
+                <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+                    <QueryableProperties>
+                        <Property PropertyName="ProviderAddress">
+                            <Type PSType="System.String" />
+                            <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                            </RegularQuery>
+                        </Property>
+                        <Property PropertyName="InterfaceIndex">
+                            <Type PSType="System.UInt32" />
+                            <RegularQuery>
+                            <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                            </RegularQuery>
+                        </Property>
+                        <Property PropertyName="AddressState">
+                            <Type PSType="NetVirtualizationProviderAddress.AddressState" />
+                            <RegularQuery AllowGlobbing="false">
+                            <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" />
+                            </RegularQuery>
+                        </Property>
+                    </QueryableProperties>
+                </GetCmdletParameters>
+            </Cmdlet>
+
+            <Cmdlet>
+                <CmdletMetadata Verb="Remove" />
+                <Method MethodName="cim:DeleteInstance" />
+            </Cmdlet>
+
+        </InstanceCmdlets>
+
+        <StaticCmdlets>
+
+            <Cmdlet>
+                <CmdletMetadata Verb="New" />
+                <Method MethodName="cim:CreateInstance">
+                    <Parameters>
+                        <Parameter ParameterName="ProviderAddress">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="true" />
+                        </Parameter>
+                        <Parameter ParameterName="InterfaceIndex">
+                            <Type PSType="System.UInt32" />
+                            <CmdletParameterMetadata IsMandatory="true" />
+                        </Parameter>
+                        <Parameter ParameterName="PrefixLength">
+                            <Type PSType="System.Byte" />
+                            <CmdletParameterMetadata IsMandatory="true" />
+                        </Parameter>
+                        <Parameter ParameterName="VlanID">
+                            <Type PSType="System.UInt16" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="MACAddress">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                    </Parameters>
+                </Method>
+            </Cmdlet>
+
+        </StaticCmdlets>
+    </Class>
+
+
+    <Enums>
+        <Enum EnumName="NetVirtualizationProviderAddress.AddressState" UnderlyingType="System.UInt16">
+            <Value Name="Invalid" Value="0" />
+            <Value Name="Tentative" Value="1" />
+            <Value Name="Duplicate" Value="2" />
+            <Value Name="Deprecated" Value="3" />
+            <Value Name="Preferred" Value="4" />
+        </Enum>
+    </Enums>
+
+</PowerShellMetadata>

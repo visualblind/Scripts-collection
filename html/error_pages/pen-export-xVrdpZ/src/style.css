@@ -1,0 +1,560 @@
+html {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*:before {
+  -moz-box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+@font-face {
+  font-family: 'spectrum';
+  /* http://damieng.com/blog/2011/02/20/typography-in-8-bits-system-fonts */
+  /* http://fontstruct.com/fontstructions/show/118432 */
+  src: url(data:application/x-font-woff;charset=utf-8;base64,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) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  width: 100vw;
+  height: 100vH;
+  overflow: hidden;
+}
+.borderBox {
+  position: absolute;
+  background-size: 10px 10px;
+  height: 100%;
+  padding: 7% 10%;
+  width: 100%;
+  overflow: hidden
+}
+
+.content {
+  position: relative;
+  height: 100%;
+  box-shadow: -2px 1px 4px #e7e7e7;
+  background: linear-gradient(to right, #dfdfdf, #dfdfdf 50%, #dedede 50%, #dedede);
+  background-size: 40px 100%;
+  -webkit-animation: content 5s 3 linear;
+  animation: content 5s 3 linear;
+}
+
+.bootup .content {
+  background-color: #000;
+  background: linear-gradient(to right, #151515, #000 50%, #0E0E0E 50%, #090909);
+  background-size: 20% 100%;
+  -webkit-animation: bootup .5s 1 linear;
+  animation: bootup .5s 1 linear;
+}
+
+p {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: .5rem 0
+}
+
+.prog {
+  bottom: auto;
+  left: 4px
+}
+
+pre {
+  display: block;
+  margin: 0
+}
+
+.text_copy .copy,
+.text_load1 .load1,
+.text_load2 .load2,
+.text_load3 .load3,
+.text_rtape .rtape,
+.text_prog .prog {
+  display: block
+}
+
+.init_load {
+  background-color: cyan;
+  -webkit-animation: init_load 3s 1 linear;
+  animation: init_load 3s 1 linear;
+}
+
+.start_load {
+  background: -webkit-linear-gradient(top, cyan, cyan 50%, #c00 50%, #c00);
+  background: linear-gradient(to bottom, cyan, cyan 50%, #c00 50%, #c00);
+  background-size: 100% 40px;
+  -webkit-animation: start_load 1s 2 linear;
+  animation: start_load 1s 2 linear;
+}
+
+.start_blip {
+  background: -webkit-linear-gradient(top, cyan, cyan 10px, #c00 15px, #c00 25px);
+  background: linear-gradient(to bottom, cyan, cyan 10px, #c00 15px, #c00 25px);
+  background-size: 100% 26px;
+  -webkit-animation: start_blip .5s 2 ease;
+  animation: start_blip .5s 2 ease;
+}
+
+.loading {
+  background: -webkit-linear-gradient(top, yellow, yellow 5px, blue 9px, blue 14px, yellow 16px);
+  background: linear-gradient(to bottom, yellow, yellow 5px, blue 9px, blue 14px, yellow 16px);
+  background-size: 100% 12px;
+  -webkit-animation: start_blip 1s infinite ease;
+  animation: start_blip 1s infinite ease;
+}
+
+.cursor {
+  -webkit-animation: cursor 1s infinite linear;
+  animation: cursor 1s infinite linear;
+}
+
+@keyframes bootup {
+  00% {
+    background-position: 0 0
+  }
+  99% {
+    background-position: 2% 0
+  }
+  100% {
+    background-position: 0 0
+  }
+}
+
+@-webkit-keyframes bootup {
+  00% {
+    background-position: 0 0
+  }
+  99% {
+    background-position: 2% 0
+  }
+  100% {
+    background-position: 0 0
+  }
+}
+
+@keyframes content {
+  00% {
+    background-position: 0 0
+  }
+  99% {
+    background-position: 5% 0
+  }
+  100% {
+    background-position: 0 0
+  }
+}
+
+@-webkit-keyframes content {
+  00% {
+    background-position: 0 0
+  }
+  99% {
+    background-position: 5% 0
+  }
+  100% {
+    background-position: 0 0
+  }
+}
+
+@-webkit-keyframes cursor {
+  00% {
+    background: #000;
+    color: #fff
+  }
+  49% {
+    background: #000;
+    color: #fff
+  }
+  50% {
+    background: #ddd;
+    color: #000
+  }
+  100% {
+    background: #ddd;
+    color: #000
+  }
+}
+
+@keyframes cursor {
+  00% {
+    background: #000;
+    color: #fff
+  }
+  49% {
+    background: #000;
+    color: #fff
+  }
+  50% {
+    background: #ddd;
+    color: #000
+  }
+  100% {
+    background: #ddd;
+    color: #000
+  }
+}
+
+@-webkit-keyframes init_load {
+  00% {
+    background: #c00
+  }
+  39% {
+    background: #c00
+  }
+  40% {
+    background: cyan
+  }
+  79% {
+    background: cyan
+  }
+  80% {
+    background: #c00
+  }
+  89% {
+    background: #c00
+  }
+  90% {
+    background: cyan
+  }
+  100% {
+    background: cyan
+  }
+}
+
+@keyframes init_load {
+  00% {
+    background: #c00
+  }
+  39% {
+    background: #c00
+  }
+  40% {
+    background: cyan
+  }
+  79% {
+    background: cyan
+  }
+  80% {
+    background: #c00
+  }
+  89% {
+    background: #c00
+  }
+  90% {
+    background: cyan
+  }
+  100% {
+    background: cyan
+  }
+}
+
+@-webkit-keyframes start_load {
+  0% {
+    background-position: 0 0
+  }
+  100% {
+    background-position: 0 80px
+  }
+}
+
+@keyframes start_load {
+  0% {
+    background-position: 0 0
+  }
+  100% {
+    background-position: 0 80px
+  }
+}
+
+@-webkit-keyframes start_blip {
+  0% {
+    background-position: 0 0
+  }
+  100% {
+    background-position: 0 80px
+  }
+}
+
+@keyframes start_blip {
+  0% {
+    background-position: 0 0
+  }
+  100% {
+    background-position: 0 80px
+  }
+}
+
+.tv {
+  position: absolute;
+  width: calc(100% + 10px);
+  z-index: 2
+}
+
+.tv-top {
+  top:-5px;
+  left:-5px;
+}
+
+.tv-bottom {
+  bottom: -5px;
+  left:-5px;
+}
+
+.tv-left {
+  height: 100%
+}
+
+.tv-right {
+  right: 0;
+  height: 100%
+}
+
+
+/* Flex used for responsive layout */
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-content: space-around
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: calc(100% - 24px);
+  padding: 32px 0px;
+  align-content: center;
+  XXXbox-shadow: 1px 0 2px rgba(0, 0, 0, .035)
+}
+
+
+/* 404 Line at a time animation */
+
+pre {
+  visibility: hidden
+}
+
+.e1ON .e1,
+.e2ON .e2,
+.e3ON .e3,
+.e4ON .e4,
+.e5ON .e5,
+.e6ON .e6,
+.e7ON .e7,
+.e8ON .e8,
+.e9ON .e9,
+.e10ON .e10,
+.e11ON .e11,
+.e12ON .e12 {
+  visibility: visible
+}
+
+.show404 pre {
+  visibility: visible
+}
+
+.hide {
+  position: absolute;
+  left: -500rem;
+  top: -500rem
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+}
+
+.popup.ON {
+  display: block;
+}
+
+.popup-content {
+  margin: 0 auto;
+  max-width: 38rem;
+}
+
+.popup-h {
+  position: absolute;
+  left: -200rem;
+  font-weight: normal;
+}
+
+.popup-p {
+  flex: 1 1 0;
+  position: relative;
+  display: inline-block;
+}
+
+.popup-p a,
+.popup-p a:visited {
+  color: #236ECE
+}
+
+.popup-p a:hover,
+.popup-p a:focus {
+  color: #014cac
+}
+
+.search-fieldset {
+  border: 0 solid;
+  padding: 0;
+  margin: 0;
+}
+
+.search-fieldset .flex {
+  padding: 0;
+}
+
+.search-input {
+  color: #3B2D4A;
+  flex: 1 1 0;
+  padding: .62rem 1rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.search-btn {
+  padding: 0;
+  display: block;
+  border: 0 solid;
+  background-color: #3B2D4A;
+  cursor: pointer;
+}
+
+.search-btn svg {
+  width: 2.3rem;
+  height: 100%;
+}
+
+.search-btn svg path {
+  stroke: #ddd;
+}
+
+.search-btn:hover path,
+.search-btn:focus path {
+  stroke: #fff;
+}
+
+.search-btn span {
+  position: absolute;
+  left: -200rem;
+}
+
+
+/* 320x480 */
+
+.borderBox {
+  padding: 8vh 10%;
+}
+
+.content {
+  box-shadow: -2px 1px 4px #e7e7e7, 1px 0 2px rgba(0, 0, 0, .035)
+}
+
+.words {
+  padding: 0;
+  text-align: center;
+  height: calc(100% - 60px);
+}
+
+.popup-content {
+  max-width: 30rem;
+  text-align: center;
+}
+
+.search-container {
+  width: 100%;
+  padding: 0;
+  position: relative;
+  display: block;
+  border: 1px solid #3B2D4A;
+}
+
+.search-input {
+  background-color: transparent;
+  border: 0 solid;
+}
+
+.search-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+
+
+/*  */
+
+html {
+  font-size: 11px;
+}
+
+@media (min-width:340px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (min-width:400px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media (min-width:650px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width:800px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+  background: #ddd;
+  color: #333;
+}
+
+body,
+.search-input {
+  font-family: spectrum, Courier, monospace;
+  font-weight: bold;
+  text-shadow: -4px 0 2px #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+}
+
+pre {
+  font-size: calc(1vmin * 2.2)
+}
+
+.word {
+  margin: .5rem
+}
+
+.flex {
+  align-content: center;
+}
+
+@media (orientation: landscape) {
+  .flex {
+    align-content: flex-start;
+  }
+}

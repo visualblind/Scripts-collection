@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>Formatting For MSFT_PrinterPort (Table View for ALL subclasses.)</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_PrinterPort</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_LocalPrinterPort</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_TcpIpPrinterPort</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_WsdPrinterPort</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_LprPrinterPort</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>   <!-- Name -->
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- ComputerName -->
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Description -->
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Monitor -->
+            <Width>20</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ComputerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PortMonitor</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>    
+   </ViewDefinitions>
+</Configuration>

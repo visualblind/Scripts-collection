@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Configuration>
+  <ViewDefinitions>  
+    <View>
+      <Name>Formatting For MSFT_PrinterConfiguration (Table View)</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_PrinterConfiguration</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_PrinterConfiguration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>   <!-- Printer Name -->
+            <Width>15</Width>   
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Computer Name -->
+            <Width>15</Width>   
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Collate -->
+            <Width>10</Width>   
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Color -->
+            <Width>10</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Duplex -->
+            <Width>20</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrinterName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ComputerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Collate</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Color</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DuplexingMode</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>    
+    <View>
+      <Name>Formatting For MSFT_PrinterConfiguration (List View)</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_PrinterConfiguration</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_PrinterConfiguration</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>PrinterName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ComputerName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Collate</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Color</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>DuplexingMode</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PaperSize</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

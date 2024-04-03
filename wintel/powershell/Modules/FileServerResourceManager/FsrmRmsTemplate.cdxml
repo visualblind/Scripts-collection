@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">   
+  <Class ClassName="Root/Microsoft/Windows/FSRM/MSFT_FSRMFmjAction">   
+    <Version>1.0</Version>      
+    <DefaultNoun>FsrmRmsTemplate</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" ConfirmImpact="Medium" />
+        <Method MethodName="EnumRmsTemplates">
+          <Parameters>  
+            <Parameter ParameterName="TemplateName">
+              <Type PSType="string[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>   

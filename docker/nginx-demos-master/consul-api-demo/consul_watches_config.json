@@ -1,0 +1,12 @@
+{
+  "node_name": "consul",
+  "server": true,
+  "log_level": "DEBUG",
+  "watches": [
+    {
+      "type": "service",
+      "service": "http",
+      "handler": "/tmp/script.sh"
+    }
+  ]
+}

@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/Microsoft/Windows/RemoteAccess/PS_RemoteAccessRoutingDomain" ClassVersion="1.0">
+    <Version>1.0</Version>
+    <DefaultNoun>RemoteAccessRoutingDomain</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Disable" ConfirmImpact="Medium" />
+        <Method MethodName="Disable">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName RoutingDomain" IsMandatory="true" Position="1" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Type">
+              <Type PSType="RemoteAccessRoutingDomain.DisableType" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#RoutingDomainConfiguration" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Enable" ConfirmImpact="Medium" />
+        <Method MethodName="Enable">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName RoutingDomain" IsMandatory="true" Position="1" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Type">
+              <Type PSType="RemoteAccessRoutingDomain.EnableType" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#RoutingDomainConfiguration" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" />
+        <Method MethodName="Get">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName RoutingDomain" Position="1" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+                <ValidateLength Min="1" Max="256" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnRoutingDomainConfig" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" DefaultCmdletParameterSet="EncryptionType" />
+        <Method MethodName="SetByCustomPolicy" CmdletParameterSet="CustomPolicy">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName RoutingDomain" IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+                <ValidateLength Min="1" Max="256" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IdleDisconnectSec">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+                <ValidateRange Min="300" Max="172799" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InterimAccountingPeriodSec">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+                <ValidateRange Min="0" Max="2147483647" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPAddressRange">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv6Prefix">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SaLifeTimeSec">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata Aliases="QMSaLifeTimeSec" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+                <ValidateRange Min="300" Max="172799" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MMSaLifeTimeSec">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+                <ValidateRange Min="300" Max="172799" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NetBiosIPAddress">
+              <Type PSType="System.Net.IPAddress[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MaximumVpnConnections">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TenantName">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableQoS">
+              <Type PSType="Nullable[RemoteAccessRoutingDomain.EnableQoS]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DnsIPAddress">
+              <Type PSType="System.Net.IPAddress[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CustomPolicy">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AuthenticationTransformConstant">
+              <Type PSType="RemoteAccessRoutingDomain.AuthenticationTransformConstant" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+                <ValidateSet>
+                  <AllowedValue>MD596</AllowedValue>
+                  <AllowedValue>SHA196</AllowedValue>
+                  <AllowedValue>SHA256128</AllowedValue>
+                  <AllowedValue>GCMAES128</AllowedValue>
+                  <AllowedValue>GCMAES192</AllowedValue>
+                  <AllowedValue>GCMAES256</AllowedValue>
+                  <AllowedValue>None</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CipherTransformConstant">
+              <Type PSType="RemoteAccessRoutingDomain.CipherTransformConstant" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+                <ValidateSet>
+                  <AllowedValue>DES</AllowedValue>
+                  <AllowedValue>DES3</AllowedValue>
+                  <AllowedValue>AES128</AllowedValue>
+                  <AllowedValue>AES192</AllowedValue>
+                  <AllowedValue>AES256</AllowedValue>
+                  <AllowedValue>GCMAES128</AllowedValue>
+                  <AllowedValue>GCMAES192</AllowedValue>
+                  <AllowedValue>GCMAES256</AllowedValue>
+                  <AllowedValue>None</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EncryptionMethod">
+              <Type PSType="RemoteAccessRoutingDomain.EncryptionMethod" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IntegrityCheckMethod">
+              <Type PSType="RemoteAccessRoutingDomain.IntegrityCheckMethod" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PfsGroup">
+              <Type PSType="RemoteAccessRoutingDomain.PfsGroup" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SaRenegotiationDataSizeKB">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1024" Max="2147483647" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DHGroup">
+              <Type PSType="RemoteAccessRoutingDomain.DHGroup" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateSet>
+                  <AllowedValue>None</AllowedValue>
+                  <AllowedValue>Group1</AllowedValue>
+                  <AllowedValue>Group2</AllowedValue>
+                  <AllowedValue>Group14</AllowedValue>
+                  <AllowedValue>ECP256</AllowedValue>
+                  <AllowedValue>ECP384</AllowedValue>
+                  <AllowedValue>Group24</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnRoutingDomainConfig" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByEncryptionType" CmdletParameterSet="EncryptionType">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName RoutingDomain" IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+                <ValidateLength Min="1" Max="256" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InterimAccountingPeriodSec">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+                <ValidateRange Min="0" Max="2147483647" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPAddressRange">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IPv6Prefix">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NetBiosIPAddress">
+              <Type PSType="System.Net.IPAddress[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MaximumVpnConnections">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TenantName">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EnableQoS">
+              <Type PSType="Nullable[RemoteAccessRoutingDomain.EnableQoS]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RxBandwidthKbps">
+              <Type PSType="Nullable[System.UInt64]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DnsIPAddress">
+              <Type PSType="System.Net.IPAddress[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EncryptionType">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateSet>
+                  <AllowedValue>NoEncryption</AllowedValue>
+                  <AllowedValue>RequireEncryption</AllowedValue>
+                  <AllowedValue>OptionalEncryption</AllowedValue>
+                  <AllowedValue>MaximumEncryption</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnRoutingDomainConfig" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+     <Enum EnumName="RemoteAccessRoutingDomain.AuthenticationTransformConstant" UnderlyingType="System.UInt32">  
+	<Value Name="MD596" Value="0" />  
+	<Value Name="SHA196" Value="1" />  
+	<Value Name="SHA256128" Value="2" />  
+	<Value Name="GCMAES128" Value="3" />  
+	<Value Name="GCMAES192" Value="4" />
+	<Value Name="GCMAES256" Value="5" />
+       <Value Name="None" Value="4294967295" />
+     </Enum>
+     <Enum EnumName="RemoteAccessRoutingDomain.CipherTransformConstant" UnderlyingType="System.UInt32">  
+	<Value Name="DES" Value="1" />  
+	<Value Name="DES3" Value="2" />  
+	<Value Name="AES128" Value="3" />  
+	<Value Name="AES192" Value="4" />
+	<Value Name="AES256" Value="5" />
+	<Value Name="GCMAES128" Value="6" />
+	<Value Name="GCMAES192" Value="7" />
+	<Value Name="GCMAES256" Value="8" />
+       <Value Name="None" Value="4294967295" />
+     </Enum>
+     <Enum EnumName="RemoteAccessRoutingDomain.DHGroup" UnderlyingType="System.UInt32">  
+	<Value Name="None" Value="0" />  
+	<Value Name="Group1" Value="1" />  
+	<Value Name="Group2" Value="2" />  
+	<Value Name="Group14" Value="3" />  
+	<Value Name="ECP256" Value="4" />  
+	<Value Name="ECP384" Value="5" />  
+	<Value Name="Group24" Value="6" />
+     </Enum>
+     <Enum EnumName="RemoteAccessRoutingDomain.EncryptionMethod" UnderlyingType="System.UInt32">    
+	<Value Name="DES" Value="0" />  
+	<Value Name="DES3" Value="1" />  
+	<Value Name="AES128" Value="2" />  
+	<Value Name="AES192" Value="3" />
+	<Value Name="AES256" Value="4" />
+     </Enum>  
+     <Enum EnumName="RemoteAccessRoutingDomain.IntegrityCheckMethod" UnderlyingType="System.UInt32">  
+	<Value Name="MD5" Value="0" />  
+	<Value Name="SHA1" Value="1" />  
+	<Value Name="SHA256" Value="2" />  
+	<Value Name="SHA384" Value="3" />
+     </Enum>  
+     <Enum EnumName="RemoteAccessRoutingDomain.PfsGroup" UnderlyingType="System.UInt32">  
+	<Value Name="None" Value="0" />  
+	<Value Name="PFS1" Value="1" />  
+	<Value Name="PFS2" Value="2" />  
+	<Value Name="PFS2048" Value="3" />  
+	<Value Name="ECP256" Value="4" />  
+	<Value Name="ECP384" Value="5" />  
+	<Value Name="PFSMM" Value="6" />
+	<Value Name="PFS24" Value="7" />
+     </Enum>  
+     <Enum EnumName="RemoteAccessRoutingDomain.State" UnderlyingType="System.UInt32">  
+	<Value Name="Disabled" Value="0" />  
+	<Value Name="Enabled" Value="1" />  
+     </Enum>
+     <Enum EnumName="RemoteAccessRoutingDomain.EnableQoS" UnderlyingType="System.UInt32">  
+	<Value Name="Disabled" Value="0" />  
+	<Value Name="Enabled" Value="1" />  
+     </Enum>    
+     <Enum EnumName="RemoteAccessRoutingDomain.EnableType" UnderlyingType="System.UInt32">  
+	<Value Name="Vpn" Value="1" />  
+	<Value Name="VpnS2S" Value="2" />  
+  <Value Name="RoutingOnly" Value="4" />        
+  <Value Name="All" Value="4294967295" />  
+     </Enum>  
+     <Enum EnumName="RemoteAccessRoutingDomain.DisableType" UnderlyingType="System.UInt32">  
+	<Value Name="Vpn" Value="1" />  
+	<Value Name="VpnS2S" Value="2" /> 
+  <Value Name="RoutingOnly" Value="4" />        
+	<Value Name="All" Value="4294967295" />  
+     </Enum>  
+  </Enums></PowerShellMetadata>

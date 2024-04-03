@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+   <Class ClassName="root/StandardCimv2/MSFT_NetDnsTransitionConfiguration" ClassVersion="1.0.0">
+      <Version>1.0</Version>
+      <DefaultNoun>NetDnsTransitionConfiguration</DefaultNoun>
+      <InstanceCmdlets>
+         <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+            <QueryableAssociations>
+               <Association Association="MSFT_NetDnsTransitionInterfaceAssociation" ResultRole="SettingData" SourceRole="ManagedElement">
+                  <AssociatedInstance>
+                     <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetAdapter"/>
+                     <CmdletParameterMetadata PSName="Adapter" ValueFromPipeline="true" CmdletParameterSets="ByName"/>
+                  </AssociatedInstance>
+               </Association>
+            </QueryableAssociations>
+         </GetCmdletParameters>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Enable" ConfirmImpact="Medium"/>
+            <Method MethodName="Enable">
+               <Parameters>
+                  <Parameter ParameterName="PassThru">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="OutputObject">
+                     <Type PSType="Microsoft.Management.Infrastructure.CimInstance"/>
+                     <CmdletOutputMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Disable" ConfirmImpact="Medium"/>
+            <Method MethodName="Disable">
+               <Parameters>
+                  <Parameter ParameterName="PassThru">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="OutputObject">
+                     <Type PSType="Microsoft.Management.Infrastructure.CimInstance"/>
+                     <CmdletOutputMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+
+        <Cmdlet>
+            <CmdletMetadata Verb="Reset" ConfirmImpact="Medium"/>
+            <Method MethodName="Reset">
+               <Parameters>
+                  <Parameter ParameterName="State">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="OnlySendAQuery">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="Latency">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata PSName="LatencyMilliseconds" Aliases="Latency"/>
+                  </Parameter>
+                  <Parameter ParameterName="AlwaysSynthesize">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="AcceptInterface">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="SendInterface">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="ExclusionList">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="PrefixMapping">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="PassThru">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="OutputObject">
+                     <Type PSType="Microsoft.Management.Infrastructure.CimInstance"/>
+                     <CmdletOutputMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Set" ConfirmImpact="Medium"/>
+            <Method MethodName="cim:ModifyInstance">
+               <Parameters>
+                  <Parameter ParameterName="State">
+                     <Type PSType="NetDnsTransitionConfiguration.State"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="OnlySendAQuery">
+                     <Type PSType="System.Boolean"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="Latency">
+                     <Type PSType="System.Uint32"/>
+                     <CmdletParameterMetadata PSName="LatencyMilliseconds" Aliases="Latency"/>
+                  </Parameter>
+                  <Parameter ParameterName="AlwaysSynthesize">
+                     <Type PSType="System.Boolean"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="AcceptInterface">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="SendInterface">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="ExclusionList">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="PrefixMapping">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+      </InstanceCmdlets>
+   </Class>
+   <Enums>
+      <Enum EnumName="NetDnsTransitionConfiguration.State" UnderlyingType="System.Uint32">
+         <Value Name="Disabled" Value="0"/>
+         <Value Name="Enabled" Value="1"/>
+      </Enum>
+   </Enums>
+</PowerShellMetadata>

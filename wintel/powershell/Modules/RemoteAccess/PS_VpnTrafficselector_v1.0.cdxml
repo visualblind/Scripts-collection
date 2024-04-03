@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/Microsoft/Windows/RemoteAccess/PS_VpnTrafficSelector" ClassVersion="1.0">
+    <Version>1.0</Version>
+    <DefaultNoun>VpnTrafficSelector</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" />
+        <Method MethodName="New">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="IPAddressRange">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata  Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PortRange">
+              <Type PSType="System.UInt32[]" />
+              <CmdletParameterMetadata Position="2" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ProtocolId">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+           <Parameter ParameterName="Type">
+              <Type PSType="VpnTrafficSelector.Type" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          <Parameter ParameterName="TsPayloadId">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>           
+          <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnTrafficSelector" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>     
+      <Enum EnumName="VpnTrafficSelector.Type" UnderlyingType="System.UInt32">
+          <Value Name="IPv4" Value="0" />
+          <Value Name="IPv6" Value="1" />
+      </Enum>
+  </Enums>
+</PowerShellMetadata>

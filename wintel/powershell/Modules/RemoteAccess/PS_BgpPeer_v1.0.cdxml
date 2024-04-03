@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/Microsoft/Windows/RemoteAccess/PS_BgpPeer" ClassVersion="1.0">
+    <Version>1.0</Version>
+    <DefaultNoun>BgpPeer</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Add" />
+        <Method MethodName="Add">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="PeerName PeerId" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="75" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="LocalIPAddress">
+              <Type PSType="System.Net.IPAddress" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PeerIPAddress">
+              <Type PSType="System.Net.IPAddress" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="LocalASN">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PeerASN">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="65534" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="OperationMode">
+              <Type PSType="Bgp.OperationMode" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PeeringMode">
+              <Type PSType="Bgp.PeeringMode" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="HoldTimeSec">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IdleHoldTimeSec">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="65535" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MaxAllowedPrefix">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="Weight">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+              <Parameter ParameterName="RouteReflectorClient">
+                  <Type PSType="Nullable[System.Boolean]" />
+                  <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                  </CmdletParameterMetadata>
+              </Parameter>
+              <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#BgpPeerConfig" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" />
+        <Method MethodName="Get" CmdletParameterSet="RoutingDomain">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="PeerList PeerId PeerName" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="75" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#BgpPeerConfig" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="GetForAllRoutingDomains" CmdletParameterSet="AllRoutingDomains">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="AllRoutingDomains">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#BgpPeerConfig" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="Medium" />
+        <Method MethodName="Remove">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="PeerList PeerId PeerName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="75" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+        <Method MethodName="Set">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="PeerId PeerName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="75" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="LocalIPAddress">
+              <Type PSType="System.Net.IPAddress" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PeerIPAddress">
+              <Type PSType="System.Net.IPAddress" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="LocalASN">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>              
+            <Parameter ParameterName="PeerASN">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="65534" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="OperationMode">
+              <Type PSType="Bgp.OperationMode" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PeeringMode">
+              <Type PSType="Bgp.PeeringMode" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="HoldTimeSec">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IdleHoldTimeSec">
+                <Type PSType="System.UInt16" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                    <ValidateNotNull />
+                    <ValidateNotNullOrEmpty />
+                    <ValidateRange Min="1" Max="65535" />
+                </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MaxAllowedPrefix">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ClearPrefixLimit">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Weight">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+              <Parameter ParameterName="RouteReflectorClient">
+                  <Type PSType="Nullable[System.Boolean]" />
+                  <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                  </CmdletParameterMetadata>
+              </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#BgpPeerConfig" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Start" />
+        <Method MethodName="Start">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="PeerList PeerId PeerName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Stop" ConfirmImpact="Medium" />
+        <Method MethodName="Stop">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="PeerList PeerId PeerName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="Bgp.OperationMode" UnderlyingType="System.UInt32">  
+      <Value Name="Mixed" Value="0" />  
+      <Value Name="Server" Value="1" />  
+    </Enum>
+    <Enum EnumName="Bgp.PeeringMode" UnderlyingType="System.UInt32">  
+      <Value Name="Automatic" Value="0" />  
+      <Value Name="Manual" Value="1" />  
+    </Enum>
+    <Enum EnumName="Bgp.ConnectivityStatus" UnderlyingType="System.UInt32">
+        <Value Name="Idle" Value="1" />
+        <Value Name="Connecting" Value="2" />
+        <Value Name="Connected" Value="3" />
+        <Value Name="Stopped" Value="4" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

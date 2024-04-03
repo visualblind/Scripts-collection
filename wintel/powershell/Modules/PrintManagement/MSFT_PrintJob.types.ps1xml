@@ -1,0 +1,26 @@
+﻿<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_PrintJob</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>JobStatus</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.PrintJob.JobStatus]($this.PSBase.CimInstanceProperties['JobStatus'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_PrintJob</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>JobStatus</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.PrintJob.JobStatus]($this.PSBase.CimInstanceProperties['JobStatus'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>
+
+

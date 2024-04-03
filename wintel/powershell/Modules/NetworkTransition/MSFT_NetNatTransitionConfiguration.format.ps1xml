@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+   <ViewDefinitions>
+      <View>
+         <Name>MSFT_NetNatTransitionConfiguration</Name>
+         <ViewSelectedBy>
+            <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetNatTransitionConfiguration</TypeName>
+            <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetNatTransitionConfiguration</TypeName>
+         </ViewSelectedBy>
+         <ListControl>
+            <ListEntries>
+               <ListEntry>
+                  <ListItems>
+                     <ListItem>
+                        <PropertyName>InstanceName</PropertyName>
+                     </ListItem>
+                     <ListItem>
+                        <PropertyName>PolicyStore</PropertyName>
+                     </ListItem>
+                     <ListItem>
+                        <PropertyName>State</PropertyName>
+                     </ListItem>
+                     <ListItem>
+                        <PropertyName>TcpMappingTimeout</PropertyName>
+                     </ListItem>
+                     <ListItem>
+                        <PropertyName>InboundInterface</PropertyName>
+                     </ListItem>
+                     <ListItem>
+                        <PropertyName>OutboundInterface</PropertyName>
+                     </ListItem>
+                     <ListItem>
+                        <PropertyName>PrefixMapping</PropertyName>
+                     </ListItem>
+                     <ListItem>
+                        <PropertyName>IPv4AddressPortPool</PropertyName>
+                     </ListItem>
+                  </ListItems>
+               </ListEntry>
+            </ListEntries>
+         </ListControl>
+      </View>
+   </ViewDefinitions>
+</Configuration>
+

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema
+targetNamespace="http://schemas.microsoft.com/mbca/models/NPAS/2009/11"
+  xmlns:tns="http://schemas.microsoft.com/mbca/models/NPAS/2009/11"
+  elementFormDefault="qualified"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="NPAS" type="tns:NPAS" />
+
+  <xs:complexType name="NPAS">
+    <xs:sequence>
+      <xs:element name="ScanTime" type="tns:TimeType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NPSSERVER" type="tns:NPSSERVERType" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+   <xs:complexType name="NPSSERVERType">
+    <xs:sequence>
+      <xs:element name="NpsServiceStatus" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NpsCrpEnabled" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NpsNetworkPolicyEnabled" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NpsAuthentication" type="tns:NpsAuthenticationType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NasRunningLocally" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="NpsAuthenticationType">
+    <xs:sequence>
+        <xs:element name="Supported" type="xs:string"/>
+        <xs:element name="CRPPolicyNames" type="xs:string"/>
+        <xs:element name="NPPolicyNames"  type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+ 
+  <xs:complexType name="TimeType">
+    <xs:simpleContent>
+		<xs:extension base="xs:string">
+			<xs:attribute name="ticks" type="xs:decimal" />
+		</xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+</xs:schema>

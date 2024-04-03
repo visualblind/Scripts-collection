@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+
+	<Class ClassName="root/StandardCimv2/MSFT_NetTeredoConfiguration" ClassVersion="1.0.0">
+		<Version>1.0</Version>
+		<DefaultNoun>NetTeredoConfiguration</DefaultNoun>
+		
+	    <InstanceCmdlets>
+    
+    		<GetCmdletParameters DefaultCmdletParameterSet="ByName">
+	        <QueryableAssociations>
+	          <Association Association="MSFT_NetTeredoState" ResultRole="SettingData" SourceRole="ManagedElement">
+	            <AssociatedInstance>
+	              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetIPInterface" />
+	              <CmdletParameterMetadata PSName="IPInterface" ValueFromPipeline="true" CmdletParameterSets="ByName" />
+	            </AssociatedInstance>
+	          </Association>
+	        </QueryableAssociations>    		
+    	     <QueryOptions>
+                 <Option OptionName="PolicyStore">
+                 <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName"/>     
+                 </Option> 
+                 <Option OptionName="GPOSession">
+                 <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName"/>     
+                 </Option> 
+             </QueryOptions>    		
+    		</GetCmdletParameters>
+
+			<Cmdlet>
+		        <CmdletMetadata Verb="Set"  ConfirmImpact="Medium"/>
+		        <Method MethodName="cim:ModifyInstance">
+			        <Parameters>
+
+			            <Parameter ParameterName="Type">
+			              <Type PSType="NetTeredoConfiguration.Type" />
+			              <CmdletParameterMetadata Position="1">
+    			            <ValidateNotNull />
+                			<ValidateNotNullOrEmpty />
+			              </CmdletParameterMetadata>
+			            </Parameter>
+
+			            <Parameter ParameterName="ServerName">
+			              <Type PSType="System.String" />
+			              <CmdletParameterMetadata Position="2">
+    			            <ValidateNotNull />
+			              </CmdletParameterMetadata>
+			            </Parameter>
+
+			            <Parameter ParameterName="RefreshInterval">
+			              <Type PSType="System.UInt32" />
+			              <CmdletParameterMetadata Position="3" PSName="RefreshIntervalSeconds" Aliases="RefreshInterval">
+    			            <ValidateNotNull />
+                			<ValidateNotNullOrEmpty />
+			              </CmdletParameterMetadata>
+			            </Parameter>
+
+			            <Parameter ParameterName="ClientPort">
+			              <Type PSType="System.UInt32" />
+			              <CmdletParameterMetadata Position="4">
+    			            <ValidateNotNull />
+                			<ValidateNotNullOrEmpty />
+			              </CmdletParameterMetadata>
+			            </Parameter>
+
+			            <Parameter ParameterName="ServerVirtualIP">
+			              <Type PSType="System.String" />
+			              <CmdletParameterMetadata Position="5">
+    			            <ValidateNotNull />
+			              </CmdletParameterMetadata>
+			            </Parameter>
+			            
+			            <Parameter ParameterName="DefaultQualified">
+			              <Type PSType="System.Boolean" />
+			              <CmdletParameterMetadata Position="6">
+    			            <ValidateNotNull />
+                			<ValidateNotNullOrEmpty />
+			              </CmdletParameterMetadata>
+			            </Parameter>
+
+			            <Parameter ParameterName="ServerShunt">
+			              <Type PSType="System.Boolean" />
+			              <CmdletParameterMetadata Position="7">
+    			            <ValidateNotNull />
+                			<ValidateNotNullOrEmpty />
+			              </CmdletParameterMetadata>
+			            </Parameter>
+			            
+		          </Parameters>
+		        </Method>
+			</Cmdlet>
+
+			<Cmdlet>
+		        <CmdletMetadata Verb="Reset" ConfirmImpact="Medium"/>
+		        <Method MethodName="Reset">
+			        <Parameters>
+
+			            <Parameter ParameterName="Type">
+			              <Type PSType="System.Management.Automation.SwitchParameter" />
+			              <CmdletParameterMetadata IsMandatory="false" />
+			            </Parameter>
+
+			            <Parameter ParameterName="ServerName">
+			              <Type PSType="System.Management.Automation.SwitchParameter" />
+			              <CmdletParameterMetadata IsMandatory="false" />
+			            </Parameter>
+			            
+			            <Parameter ParameterName="RefreshInterval">
+			              <Type PSType="System.Management.Automation.SwitchParameter"/>
+			              <CmdletParameterMetadata IsMandatory="false" PSName="RefreshIntervalSeconds" Aliases="RefreshInterval"/>
+			            </Parameter>
+
+			            <Parameter ParameterName="ClientPort">
+			              <Type PSType="System.Management.Automation.SwitchParameter" />
+			              <CmdletParameterMetadata IsMandatory="false" />
+			            </Parameter>
+
+			            <Parameter ParameterName="ServerVirtualIP">
+			              <Type PSType="System.Management.Automation.SwitchParameter" />
+			              <CmdletParameterMetadata IsMandatory="false" />
+			            </Parameter>
+
+			            <Parameter ParameterName="DefaultQualified">
+			              <Type PSType="System.Management.Automation.SwitchParameter" />
+			              <CmdletParameterMetadata IsMandatory="false" />
+			            </Parameter>
+
+			            <Parameter ParameterName="ServerShunt">
+			              <Type PSType="System.Management.Automation.SwitchParameter" />
+			              <CmdletParameterMetadata IsMandatory="false" />
+			            </Parameter>
+
+		                  <Parameter ParameterName="PassThru">
+		                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+		                     <CmdletParameterMetadata/>
+		                  </Parameter>
+		                  <Parameter ParameterName="OutputObject">
+		                     <Type PSType="Microsoft.Management.Infrastructure.CimInstance"/>
+		                     <CmdletOutputMetadata/>
+		                  </Parameter>			            
+			            
+		          </Parameters>
+		        </Method>
+			</Cmdlet>
+			
+      
+	    </InstanceCmdlets>
+	    
+	</Class>
+
+    <Enums>
+        <Enum EnumName="NetTeredoConfiguration.Type" UnderlyingType="System.UInt32">
+            <Value Name="Default" Value="0" />
+            <Value Name="Relay" Value="1" />
+            <Value Name="Client" Value="2" />            
+            <Value Name="Server" Value="3" />            
+      	    <Value Name="Disabled" Value="4" />      
+      	    <Value Name="Automatic" Value="5" />
+      	    <Value Name="Enterpriseclient" Value="6" /> 
+      	    <Value Name="Natawareclient" Value="7" />
+        </Enum>
+    </Enums>  	
+	
+</PowerShellMetadata>
+

@@ -1,0 +1,82 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_StorageSetting">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>StorageSetting</DefaultNoun>
+    <!--
+
+        //
+        // Get-StorageSetting
+        //
+
+        -->
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" />
+        <Method MethodName="Get">
+          <Parameters>
+            <!-- CMDLET OUTPUT -->
+            <Parameter ParameterName="StorageSetting">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+        //
+        // Set-StorageSetting
+        //
+
+        -->
+            <Cmdlet>
+                <CmdletMetadata Verb="Set" />
+                <Method MethodName="Set">
+                    <Parameters>
+                        <!-- NewDiskPolicy -->
+                        <Parameter ParameterName="NewDiskPolicy">
+                            <Type PSType="StorageSetting.NewDiskPolicy"/>
+                            <CmdletParameterMetadata PSName="NewDiskPolicy">
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <!-- ScrubPolicy -->
+                        <Parameter ParameterName="ScrubPolicy">
+                            <Type PSType="StorageSetting.ScrubPolicy"/>
+                            <CmdletParameterMetadata PSName="ScrubPolicy">
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                  </Parameters>
+                </Method>
+            </Cmdlet>
+        <!--
+
+         //
+         // Update-HostStorageCache
+         //
+
+         -->
+          <Cmdlet>
+              <CmdletMetadata Verb="Update" Noun="HostStorageCache" />
+              <Method MethodName="UpdateHostStorageCache" />
+           </Cmdlet>
+      </StaticCmdlets>
+    </Class>
+    <Enums>
+        <Enum EnumName="StorageSetting.NewDiskPolicy" UnderlyingType="System.UInt16">
+            <Value Name="Unknown" Value="0" />
+            <Value Name="OnlineAll" Value="1" />
+            <Value Name="OfflineShared" Value="2" />
+            <Value Name="OfflineAll" Value="3" />
+            <Value Name="OfflineInternal" Value="4" />
+        </Enum>
+        <Enum EnumName="StorageSetting.ScrubPolicy" UnderlyingType="System.UInt32">
+          <Value Name="Off" Value="0" />
+          <Value Name="IntegrityStreams" Value="1" />
+          <Value Name="All" Value="2" />
+        </Enum>
+    </Enums>
+</PowerShellMetadata>

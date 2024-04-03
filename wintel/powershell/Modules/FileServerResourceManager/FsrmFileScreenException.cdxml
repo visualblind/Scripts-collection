@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">   
+  <Class ClassName="Root/Microsoft/Windows/FSRM/MSFT_FsrmFileScreenException">   
+    <Version>1.0</Version>   
+    <DefaultNoun>FsrmFileScreenException</DefaultNoun>   
+    <InstanceCmdlets>   
+      <GetCmdletParameters>
+        <QueryOptions>
+          <Option OptionName="Path">
+            <Type PSType="string" />
+            <CmdletParameterMetadata IsMandatory="false" Position="1" ValueFromPipelineByPropertyName="true" />
+          </Option>
+        </QueryOptions>
+      </GetCmdletParameters>
+      <GetCmdlet>
+        <CmdletMetadata Verb="Get" />
+      </GetCmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" />
+        <Method MethodName="cim:DeleteInstance">
+        </Method>
+        <GetCmdletParameters>
+          <QueryOptions>
+            <Option OptionName="Path">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true" />
+            </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+        <Method MethodName="cim:ModifyInstance">
+          <Parameters>
+            <Parameter ParameterName="Description">
+              <Type PSType="string" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IncludeGroup">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters>
+          <QueryOptions>
+            <Option OptionName="Path">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true" />
+            </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" ConfirmImpact="Medium" />
+        <Method MethodName="cim:CreateInstance">
+          <Parameters> 
+            <Parameter ParameterName="Path">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Description">
+              <Type PSType="string" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IncludeGroup">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>   

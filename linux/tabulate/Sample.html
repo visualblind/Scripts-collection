@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="ISO-8859-1">
+<title>HTML Features</title>
+<script>
+function myFunction(){
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who do not match the search query
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td") ; 
+    for(j=0 ; j<td.length ; j++)
+    {
+      var tdata = td[j] ;
+      if (tdata) {
+        if (tdata.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+          break ; 
+        } else {
+          tr[i].style.display = "none";
+        }
+      } 
+    }
+  }
+}
+</script>
+
+<style type="text/css">
+
+table, th, td {
+border: 1px solid black;  // changing-colors
+// word-wrap: break-word;
+}
+
+tr:first-child {
+  font-weight: bold;
+}
+
+tr:nth-child(even) {background: #eef}  // changing-colors
+tr:nth-child(odd) {background: #fee}   // changing-colors
+
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url("search.png");
+  background-position: left center;
+  background-repeat: no-repeat;
+  width: 94%;
+  font-size: 16px;
+  padding: 8px 20px 8px 40px;
+  border:2px solid Tomato;  // changing-colors
+  margin-bottom: 18px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  border: 1px solid #ddd;  // changing-colors
+  width: 100%;
+  margin-top: 18px;
+  // Remove the // in front of the below two lines, to get fixed-width
+  // table-layout: fixed;
+  // word-wrap: break-word;
+  // font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;  // changing-colors
+}
+
+#myTable tr:first-child:hover, #myTable tr:hover {
+  background-color: DarkKhaki;    // changing-colors
+}
+
+#myTable tr:first-child {
+  background-color: DarkKhaki;    // changing-colors
+  font-weight: bold;
+}
+
+</style>
+</head>
+<body>
+<h2 style="text-align:center;background-color:DodgerBlue;color:White;">HTML Features</h2>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search in all Fields...." title="Type in a Search String" autofocus="autofocus">
+<table id="myTable">
+	<tr>
+		<th>Name</th>
+		<th>Profile Download</th>
+		<th>Toll Free Number</th>
+		<th>Toll Free Number Linked</th>
+		<th>Web Address</th>
+		<th>Web Address Linked</th>
+		<th>Photo / Image</th>
+		<th>Photo / Image Embed</th>
+		<th>Photo / Image Embed and Linked</th>
+		<th>Email</th>
+		<th>Email Linked</th>
+	</tr>
+	<tr>
+		<td>Paul Job</td>
+		<td><a href='./images/Paul Job.pdf' target='_blank' rel='noopener noreferrer'>Profile Download</a></td>
+		<td>8007686040</td>
+		<td><a href='tel:8007686040' target='_blank' rel='noopener noreferrer'>8007686040</a></td>
+		<td>good-sam.com</td>
+		<td><a href='http://good-sam.com' target='_blank' rel='noopener noreferrer'>Home Page</a></td>
+		<td>team1.jpg</td>
+		<td><img src='./images/team1.jpg' alt='./images/team1.jpg' width='50' height='50' style='border:5px solid black'></td>
+		<td><a href='./images/team1.jpg' alt='./images/team1.jpg' target='_blank'> <img src='./images/team1.jpg' alt='./images/team1.jpg' width='50' height='50' style='border:5px solid black'></a></td>
+		<td>test@test.com</td>
+		<td><a href='mailto:test@test.com' target='_blank' rel='noopener noreferrer'>Send email</a></td>
+	</tr>
+	<tr>
+		<td>Michelle Erpenbach</td>
+		<td><a href='./images/Michelle Erpenbach.pdf' target='_blank' rel='noopener noreferrer'>Profile Download</a></td>
+		<td>8002428721</td>
+		<td><a href='tel:8002428721' target='_blank' rel='noopener noreferrer'>8002428721</a></td>
+		<td>marioninstitute.org</td>
+		<td><a href='http://marioninstitute.org' target='_blank' rel='noopener noreferrer'>Home Page</a></td>
+		<td>team2.jpg</td>
+		<td><img src='./images/team2.jpg' alt='./images/team2.jpg' width='50' height='50' style='border:5px solid black'></td>
+		<td><a href='./images/team2.jpg' alt='./images/team2.jpg' target='_blank'> <img src='./images/team2.jpg' alt='./images/team2.jpg' width='50' height='50' style='border:5px solid black'></a></td>
+		<td>test@test.com</td>
+		<td><a href='mailto:test@test.com' target='_blank' rel='noopener noreferrer'>Send email</a></td>
+	</tr>
+	<tr>
+		<td>Lucas Ribeiro</td>
+		<td><a href='./images/Lucas Ribeiro.pdf' target='_blank' rel='noopener noreferrer'>Profile Download</a></td>
+		<td>8003486258</td>
+		<td><a href='tel:8003486258' target='_blank' rel='noopener noreferrer'>8003486258</a></td>
+		<td>icmorris.org</td>
+		<td><a href='http://icmorris.org' target='_blank' rel='noopener noreferrer'>Home Page</a></td>
+		<td>team3.jpg</td>
+		<td><img src='./images/team3.jpg' alt='./images/team3.jpg' width='50' height='50' style='border:5px solid black'></td>
+		<td><a href='./images/team3.jpg' alt='./images/team3.jpg' target='_blank'> <img src='./images/team3.jpg' alt='./images/team3.jpg' width='50' height='50' style='border:5px solid black'></a></td>
+		<td>test@test.com</td>
+		<td><a href='mailto:test@test.com' target='_blank' rel='noopener noreferrer'>Send email</a></td>
+	</tr>
+	<tr>
+		<td>Yona Willis</td>
+		<td><a href='./images/Yona Willis.pdf' target='_blank' rel='noopener noreferrer'>Profile Download</a></td>
+		<td>8002428721</td>
+		<td><a href='tel:8002428721' target='_blank' rel='noopener noreferrer'>8002428721</a></td>
+		<td>vaumc.org</td>
+		<td><a href='http://vaumc.org' target='_blank' rel='noopener noreferrer'>Home Page</a></td>
+		<td>team4.jpg</td>
+		<td><img src='./images/team4.jpg' alt='./images/team4.jpg' width='50' height='50' style='border:5px solid black'></td>
+		<td><a href='./images/team4.jpg' alt='./images/team4.jpg' target='_blank'> <img src='./images/team4.jpg' alt='./images/team4.jpg' width='50' height='50' style='border:5px solid black'></a></td>
+		<td>test@test.com</td>
+		<td><a href='mailto:test@test.com' target='_blank' rel='noopener noreferrer'>Send email</a></td>
+	</tr>
+</table></body></html>

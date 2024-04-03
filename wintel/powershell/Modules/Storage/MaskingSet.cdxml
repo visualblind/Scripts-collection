@@ -1,0 +1,524 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_MaskingSet">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>MaskingSet</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-MaskingSet
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+        <QueryableProperties>
+          <!-- UniqueId -->
+          <Property PropertyName="UniqueId">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </RegularQuery>
+          </Property>
+          <!-- FriendlyName -->
+          <Property PropertyName="FriendlyName">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </RegularQuery>
+          </Property>
+          <!-- HostType -->
+          <Property PropertyName="HostType">
+            <Type PSType="MaskingSet.HostType" />
+            <RegularQuery>
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <!-- TargetPort -->
+          <Association Association="MSFT_MaskingSetToTargetPort" SourceRole="TargetPort" ResultRole="MaskingSet">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TargetPort" />
+              <CmdletParameterMetadata PSName="TargetPort" ValueFromPipeline="true" CmdletParameterSets="ByTargetPort" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- InitiatorId -->
+          <Association Association="MSFT_MaskingSetToInitiatorId" SourceRole="InitiatorId" ResultRole="MaskingSet">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_InitiatorId" />
+              <CmdletParameterMetadata PSName="InitiatorId" ValueFromPipeline="true" CmdletParameterSets="ByInitiatorId" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- StorageSubSystem -->
+          <Association Association="MSFT_StorageSubSystemToMaskingSet" SourceRole="StorageSubSystem" ResultRole="MaskingSet">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubSystem" />
+              <CmdletParameterMetadata PSName="StorageSubSystem" ValueFromPipeline="true" CmdletParameterSets="ByStorageSubSystem" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- VirtualDisk -->
+          <Association Association="MSFT_MaskingSetToVirtualDisk" SourceRole="VirtualDisk" ResultRole="MaskingSet">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_VirtualDisk" />
+              <CmdletParameterMetadata PSName="VirtualDisk" ValueFromPipeline="true" CmdletParameterSets="ByVirtualDisk" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+        </QueryableAssociations>
+      </GetCmdletParameters>
+      <!--
+
+      //
+      // Remove-MaskingSet
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" />
+        <Method MethodName="DeleteObject">
+          <Parameters>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <!-- FriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Rename-MaskingSet
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Rename" ConfirmImpact="Low" />
+        <Method MethodName="SetFriendlyName">
+          <Parameters>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="NewFriendlyName" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <!-- FriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Add-InitatorIdToMaskingSet
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Add" Noun="InitiatorIdToMaskingSet" ConfirmImpact="Low" />
+        <Method MethodName="AddInitiatorId">
+          <Parameters>
+            <!-- InitiatorIds -->
+            <Parameter ParameterName="InitiatorIds">
+              <Type PSType="System.String[]"/>
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- HostType -->
+            <Parameter ParameterName="HostType">
+                <Type PSType="MaskingSet.HostType"/>
+                <CmdletParameterMetadata>
+                    <ValidateNotNull />
+                    <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- MaskingSetUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="MaskingSetUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <!-- MaskingSetFriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="MaskingSetFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Remove-InitiatorIdFromMaskingSet
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" Noun="InitiatorIdFromMaskingSet" ConfirmImpact="Medium" />
+        <Method MethodName="RemoveInitiatorId">
+          <Parameters>
+            <!-- InitiatorIds -->
+            <Parameter ParameterName="InitiatorIds">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- MaskingSetUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="MaskingSetUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <!-- MaskingSetFriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="MaskingSetFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Add-TargetPortToMaskingSet
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Add" Noun="TargetPortToMaskingSet" ConfirmImpact="Low" />
+        <Method MethodName="AddTargetPort">
+          <Parameters>
+            <!-- TargetPortAddresses -->
+            <Parameter ParameterName="TargetPortAddresses">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- MaskingSetUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="MaskingSetUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <!-- MaskingSetFriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="MaskingSetFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Remove-TargetPortFromMaskingSet
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" Noun="TargetPortFromMaskingSet" ConfirmImpact="Medium" />
+        <Method MethodName="RemoveTargetPort">
+          <Parameters>
+            <!-- TargetPortAddresses -->
+            <Parameter ParameterName="TargetPortAddresses">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- MaskingSetUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="MaskingSetUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <!-- MaskingSetFriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="MaskingSetFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Add-VirtualDiskToMaskingSet
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Add" Noun="VirtualDiskToMaskingSet" ConfirmImpact="Low" />
+        <Method MethodName="AddVirtualDisk">
+          <Parameters>
+            <!-- VirtualDiskNames -->
+            <Parameter ParameterName="VirtualDisknames">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- DeviceNumbers -->
+            <Parameter ParameterName="DeviceNumbers">
+              <Type PSType="System.UInt16[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- DeviceAccesses -->
+            <Parameter ParameterName="DeviceAccesses">
+              <Type PSType="MaskingSet.AddVirtualDisk.DeviceAccess[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- MaskingSetUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="MaskingSetUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <!-- MaskingSetFriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="MaskingSetFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Remove-VirtualDiskFromMaskingSet
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" Noun="VirtualDiskFromMaskingSet" ConfirmImpact="Medium" />
+        <Method MethodName="RemoveVirtualDisk">
+          <Parameters>
+            <!-- VirtualDiskNames -->
+            <Parameter ParameterName="VirtualDiskNames">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- MaskingSetUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="MaskingSetUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <!-- MaskingSetFriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="MaskingSetFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="MaskingSet.HostType" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Other" Value="1" />
+      <Value Name="Standard" Value="2" />
+      <Value Name="Solaris" Value="3" />
+      <Value Name="HPUX" Value="4" />
+      <Value Name="OpenVMS" Value="5" />
+      <Value Name="Tru64" Value="6" />
+      <Value Name="Netware" Value="7" />
+      <Value Name="Sequent" Value="8" />
+      <Value Name="AIX" Value="9" />
+      <Value Name="DGUX" Value="10" />
+      <Value Name="Dynix" Value="11" />
+      <Value Name="Irix" Value="12" />
+      <Value Name="CiscoISCSIStorageRouter" Value="13" />
+      <Value Name="Linux" Value="14" />
+      <Value Name="MicrosoftWindows" Value="15" />
+      <Value Name="OS400" Value="16" />
+      <Value Name="TRESPASS" Value="17" />
+      <Value Name="HIUX" Value="18" />
+      <Value Name="VMwareESXi" Value="19" />
+      <Value Name="MicrosoftWindowsServer2008" Value="20" />
+      <Value Name="MicrosoftWindowsServer2003" Value="21" />
+    </Enum>
+    <Enum EnumName="MaskingSet.AddVirtualDisk.DeviceAccess" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="ReadWrite" Value="2" />
+      <Value Name="ReadOnly" Value="3" />
+      <Value Name="NoAccess" Value="4" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

@@ -1,0 +1,31 @@
+h1{
+  font-size: 2.5rem;
+  line-height: 3.5rem;
+  color: white;
+}
+
+p{
+  line-height: 2.25rem;
+  color: #f1f1f1;
+}
+
+.montserrat{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
+
+.imageWidth{
+  width: 125px;
+  position: relative;
+  bottom: 30px;
+}
+
+.backgroundStyle {
+  height: 100vh !important;
+  background-color: #2f4050 !important;
+  background: url('https://i.imgur.com/LKF3M5i.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

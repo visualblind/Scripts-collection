@@ -1,0 +1,31 @@
+﻿<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_PrinterConfiguration</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>DuplexingMode</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.PrinterConfiguration.DuplexingModeEnum]($this.PSBase.CimInstanceProperties['DuplexingMode'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($value)
+          $this.PSBase.CimInstanceProperties['DuplexingMode'].Value =
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.PrinterConfiguration.DuplexingModeEnum]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>PaperSize</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.PrinterConfiguration.PaperSizeEnum]($this.PSBase.CimInstanceProperties['PaperSize'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($value)
+          $this.PSBase.CimInstanceProperties['PaperSize'].Value =
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.PrinterConfiguration.PaperSizeEnum]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>
+
+

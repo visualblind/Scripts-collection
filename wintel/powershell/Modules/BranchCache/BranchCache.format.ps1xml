@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Configuration>
+  <ViewDefinitions>
+
+    <!-- View for displaying the MSFT_NetBranchCache object -->
+    <View>
+      <Name>MSFT_NetBranchCache_View</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheStatus</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheStatus</TypeName>
+      </ViewSelectedBy>
+
+      <!-- Custom control definitions used to display embedded objects -->
+      <Controls>
+
+        <!-- Control for displaying the ClientConfiguration property (an embedded MSFT_NetBranchCacheClientSettingData object) -->
+        <Control>
+          <Name>ClientConfigurationControl</Name>
+          <CustomControl>
+            <CustomEntries>
+              <CustomEntry>
+                <CustomItem>
+                  <Text>CurrentClientMode           : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>CurrentClientMode</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                  <Text>HostedCacheServerList       : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>HostedCacheServerList</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                  <Text>HostedCacheDiscoveryEnabled : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>HostedCacheDiscoveryEnabled</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                </CustomItem>
+              </CustomEntry>
+            </CustomEntries>
+          </CustomControl>
+        </Control>
+
+        <!-- Control for displaying the ContentServerConfiguration property (an embedded MSFT_NetBranchCacheContentServerSettingData object) -->
+        <Control>
+          <Name>ContentServerConfigurationControl</Name>
+          <CustomControl>
+            <CustomEntries>
+              <CustomEntry>
+                <CustomItem>
+                  <Text>ContentServerIsEnabled : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>ContentServerIsEnabled</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                </CustomItem>
+              </CustomEntry>
+            </CustomEntries>
+          </CustomControl>
+        </Control>
+
+        <!-- Control for displaying the HostedCacheServerConfiguration property (an embedded MSFT_NetBranchCacheHostedCacheServerSettingData object) -->
+        <Control>
+          <Name>HostedCacheServerConfigurationControl</Name>
+          <CustomControl>
+            <CustomEntries>
+              <CustomEntry>
+                <CustomItem>
+                  <Text>HostedCacheServerIsEnabled        : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>HostedCacheServerIsEnabled</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                  <Text>ClientAuthenticationMode          : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>ClientAuthenticationMode</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                  <Text>HostedCacheScpRegistrationEnabled : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>HostedCacheScpRegistrationEnabled</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                </CustomItem>
+              </CustomEntry>
+            </CustomEntries>
+          </CustomControl>
+        </Control>
+
+        <!-- Control for displaying the NetworkConfiguration property (an embedded MSFT_NetBranchCacheNetworkSettingData object) -->
+        <Control>
+          <Name>NetworkConfigurationControl</Name>
+          <CustomControl>
+            <CustomEntries>
+              <CustomEntry>
+                <CustomItem>
+                  <Text>ContentRetrievalUrlReservationEnabled : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>ContentRetrievalUrlReservationEnabled</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                  <Text>HostedCacheHttpUrlReservationEnabled  : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>HostedCacheHttpUrlReservationEnabled</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                  <Text>HostedCacheHttpsUrlReservationEnabled : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>HostedCacheHttpsUrlReservationEnabled</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                  <Text>ContentRetrievalFirewallRulesEnabled  : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>ContentRetrievalFirewallRulesEnabled</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                  <Text>PeerDiscoveryFirewallRulesEnabled     : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>PeerDiscoveryFirewallRulesEnabled</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                  <Text>HostedCacheServerFirewallRulesEnabled : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>HostedCacheServerFirewallRulesEnabled</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                  <Text>HostedCacheClientFirewallRulesEnabled : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>HostedCacheClientFirewallRulesEnabled</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                </CustomItem>
+              </CustomEntry>
+            </CustomEntries>
+          </CustomControl>
+        </Control>
+
+        <!-- Control for displaying an embedded MSFT_NetBranchCacheCache object.  Used by other controls. -->
+        <Control>
+          <Name>CacheControl</Name>
+          <CustomControl>
+            <CustomEntries>
+              <CustomEntry>
+                <CustomItem>
+                  <Text>CacheFileDirectoryPath               : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>CacheFileDirectoryPath</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                  <Text>MaxCacheSizeAsPercentageOfDiskVolume : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>MaxCacheSizeAsPercentageOfDiskVolume</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                  <Text>MaxCacheSizeAsNumberOfBytes          : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>MaxCacheSizeAsNumberOfBytes</PropertyName>
+                  </ExpressionBinding>
+                  <NewLine/>
+                  <Text>CurrentSizeOnDiskAsNumberOfBytes     : </Text>
+                  <ExpressionBinding>
+                    <PropertyName>CurrentSizeOnDiskAsNumberOfBytes</PropertyName>
+                  </ExpressionBinding>
+                </CustomItem>
+              </CustomEntry>
+            </CustomEntries>
+          </CustomControl>
+        </Control>
+
+        <!-- Control for displaying an embedded MSFT_NetBranchPrimaryCache object.  Used by other controls. -->
+        <Control>
+          <Name>PrimaryCacheControl</Name>
+          <CustomControl>
+            <CustomEntries>
+              <CustomEntry>
+                <CustomItem>
+                  <Frame>
+                    <CustomItem>
+                      <ExpressionBinding>
+                        <ScriptBlock>$_</ScriptBlock>
+                        <CustomControlName>CacheControl</CustomControlName> 
+                      </ExpressionBinding>
+                    </CustomItem>
+                  </Frame>
+                  <Frame>
+                    <CustomItem>
+                      <NewLine/>
+                      <Text>CurrentActiveCacheSize               : </Text>
+                      <ExpressionBinding>
+                        <PropertyName>CurrentActiveCacheSize</PropertyName>
+                      </ExpressionBinding>
+                    </CustomItem>
+                  </Frame>
+                </CustomItem>
+              </CustomEntry>
+            </CustomEntries>
+          </CustomControl>
+        </Control>
+
+        <!-- Control for displaying an embedded MSFT_NetBranchCacheDataCacheExtension object.  Used by other controls. -->
+        <Control>
+          <Name>DataCacheExtensionControl</Name>
+          <CustomControl>
+            <CustomEntries>
+              <CustomEntry>
+                <CustomItem>
+                  <Frame>
+                    <CustomItem>
+                      <ExpressionBinding>
+                        <ScriptBlock>$_</ScriptBlock>
+                        <CustomControlName>CacheControl</CustomControlName> 
+                      </ExpressionBinding>
+                    </CustomItem>
+                  </Frame>
+                  <NewLine/>
+                  <NewLine/>
+                </CustomItem>
+              </CustomEntry>
+            </CustomEntries>
+          </CustomControl>
+        </Control>
+
+        <!-- Control for displaying a list of MSFT_NetBranchCacheDataCacheExtension objects.  Used by other controls. -->
+        <Control>
+          <Name>DataCacheExtensionListControl</Name>
+          <CustomControl>
+            <CustomEntries>
+              <CustomEntry>
+                <CustomItem>
+                  <NewLine/>
+                  <Text>DataCacheExtensions:</Text>
+                  <NewLine/>
+                  <NewLine/>
+                  <Frame>
+                    <LeftIndent>4</LeftIndent>
+                    <CustomItem>
+                      <ExpressionBinding>
+                        <PropertyName>DataCacheExtensions</PropertyName>
+                        <EnumerateCollection/>
+                        <CustomControlName>DataCacheExtensionControl</CustomControlName>
+                      </ExpressionBinding>
+                    </CustomItem>
+                  </Frame>
+                </CustomItem>
+              </CustomEntry>
+            </CustomEntries>
+          </CustomControl>
+        </Control>
+
+        <!-- Control for displaying the HashCache property (an embedded MSFT_NetBranchCacheHashCache object) -->
+        <Control>
+          <Name>HashCacheControl</Name>
+          <CustomControl>
+            <CustomEntries>
+              <CustomEntry>
+                <CustomItem>
+                  <Frame>
+                    <CustomItem>
+                      <ExpressionBinding>
+                        <ScriptBlock>$_</ScriptBlock>
+                        <CustomControlName>PrimaryCacheControl</CustomControlName> 
+                      </ExpressionBinding>
+                    </CustomItem>
+                  </Frame>
+                  <NewLine/>
+                </CustomItem>
+              </CustomEntry>
+            </CustomEntries>
+          </CustomControl>
+        </Control>
+
+        <!-- Control for displaying the DataCache property (an embedded MSFT_NetBranchCacheDataCache object) -->
+        <Control>
+          <Name>DataCacheControl</Name>
+          <CustomControl>
+            <CustomEntries>
+              <CustomEntry>
+                <CustomItem>
+                  <Frame>
+                    <CustomItem>
+                      <ExpressionBinding>
+                        <ScriptBlock>$_</ScriptBlock>
+                        <CustomControlName>PrimaryCacheControl</CustomControlName> 
+                      </ExpressionBinding>
+                    </CustomItem>
+                  </Frame>
+                  <NewLine/>
+
+                  <!-- Display the DataCacheExtensions property-->
+                  <Frame>
+                    <CustomItem>
+                      <ExpressionBinding>
+                        <!-- Omit the display if there are no stores -->
+                        <ItemSelectionCondition>
+                          <ScriptBlock>$_.DataCacheExtensions.Length -ne  $()</ScriptBlock>
+                        </ItemSelectionCondition>
+                        <ScriptBlock>$_</ScriptBlock>
+                        <CustomControlName>DataCacheExtensionListControl</CustomControlName>
+                      </ExpressionBinding>
+                    </CustomItem>
+                  </Frame>
+                </CustomItem>
+              </CustomEntry>
+            </CustomEntries>
+          </CustomControl>
+        </Control>
+      </Controls>
+
+      <!-- Main display for MSFT_NetBranchCache -->
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+
+            <!-- Display properties from the MSFT_NetBranchCache Object -->
+            <CustomItem>
+              <Text>BranchCacheIsEnabled        : </Text>
+              <ExpressionBinding>
+                <PropertyName>BranchCacheIsEnabled</PropertyName>
+              </ExpressionBinding>
+              <NewLine/>
+              <Text>BranchCacheServiceStatus    : </Text>
+              <ExpressionBinding>
+                <PropertyName>BranchCacheServiceStatus</PropertyName>
+              </ExpressionBinding>
+              <NewLine/>
+              <Text>BranchCacheServiceStartType : </Text>
+              <ExpressionBinding>
+                <PropertyName>BranchCacheServiceStartType</PropertyName>
+              </ExpressionBinding>
+              <NewLine/>
+
+            <!-- Display the ClientConfiguration property (an embedded MSFT_NetBranchCacheClientSettingData object) -->
+              <NewLine/>
+              <NewLine/>
+              <Text>ClientConfiguration:</Text>
+              <NewLine/>
+              <NewLine/>
+              <Frame>
+                <LeftIndent>4</LeftIndent>
+                <CustomItem>
+                  <ExpressionBinding>
+                    <PropertyName>ClientConfiguration</PropertyName>
+                    <CustomControlName>ClientConfigurationControl</CustomControlName>
+                  </ExpressionBinding>
+                </CustomItem>
+              </Frame>
+
+            <!-- Display the ContentServerConfiguration property (an embedded MSFT_NetBranchCacheContentServerSettingData object) -->
+              <NewLine/>
+              <NewLine/>
+              <Text>ContentServerConfiguration:</Text>
+              <NewLine/>
+              <NewLine/>
+              <Frame>
+                <LeftIndent>4</LeftIndent>
+                <CustomItem>
+                  <ExpressionBinding>
+                    <PropertyName>ContentServerConfiguration</PropertyName>
+                    <CustomControlName>ContentServerConfigurationControl</CustomControlName>
+                  </ExpressionBinding>
+                </CustomItem>
+              </Frame>
+
+            <!-- Display the HostedCacheServerConfiguration property (an embedded MSFT_NetBranchCacheHostedCacheServerSettingData object) -->
+              <NewLine/>
+              <NewLine/>
+              <Text>HostedCacheServerConfiguration:</Text>
+              <NewLine/>
+              <NewLine/>
+              <Frame>
+                <LeftIndent>4</LeftIndent>
+                <CustomItem>
+                  <ExpressionBinding>
+                    <PropertyName>HostedCacheServerConfiguration</PropertyName>
+                    <CustomControlName>HostedCacheServerConfigurationControl</CustomControlName>
+                  </ExpressionBinding>
+                </CustomItem>
+              </Frame>
+
+            <!-- Display the NetworkConfiguration property (an embedded MSFT_NetBranchCacheNetworkSettingData object) -->
+              <NewLine/>
+              <NewLine/>
+              <Text>NetworkConfiguration:</Text>
+              <NewLine/>
+              <NewLine/>
+              <Frame>
+                <LeftIndent>4</LeftIndent>
+                <CustomItem>
+                  <ExpressionBinding>
+                    <PropertyName>NetworkConfiguration</PropertyName>
+                    <CustomControlName>NetworkConfigurationControl</CustomControlName>
+                  </ExpressionBinding>
+                </CustomItem>
+              </Frame>
+
+            <!-- Display the PublicationCacheFile property (an embedded MSFT_NetBranchCacheHashCache object) -->
+              <NewLine/>
+              <NewLine/>
+              <Text>HashCache:</Text>
+              <NewLine/>
+              <NewLine/>
+              <Frame>
+                <LeftIndent>4</LeftIndent>
+                <CustomItem>
+                  <ExpressionBinding>
+                    <PropertyName>HashCache</PropertyName>
+                    <CustomControlName>HashCacheControl</CustomControlName>
+                  </ExpressionBinding>
+                </CustomItem>
+              </Frame>
+
+            <!-- Display the DataCache property (an embedded MSFT_NetBranchCacheDataCache object) -->
+              <NewLine/>
+              <NewLine/>
+              <Text>DataCache:</Text>
+              <NewLine/>
+              <NewLine/>
+              <Frame>
+                <LeftIndent>4</LeftIndent>
+                <CustomItem>
+                  <ExpressionBinding>
+                    <PropertyName>DataCache</PropertyName>
+                    <CustomControlName>DataCacheControl</CustomControlName>
+                  </ExpressionBinding>
+                </CustomItem>
+              </Frame>
+
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+
+    <!-- View for displaying the MSFT_NetBranchCacheSettingData objects -->
+    <View>
+      <Name>MSFT_NetBranchCacheSettingData_View</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheClientSettingData</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheClientSettingData</TypeName>
+
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheContentServerSettingData</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheContentServerSettingData</TypeName>
+
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheHostedCacheServerSettingData</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheHostedCacheServerSettingData</TypeName>
+
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheNetworkSettingData</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheNetworkSettingData</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+
+        <!-- ListEntry for displaying the MSFT_NetBranchCacheClientSettingData object -->
+        <ListEntries>
+          <ListEntry>
+            <EntrySelectedBy>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheClientSettingData</TypeName>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheClientSettingData</TypeName>
+            </EntrySelectedBy>
+            <ListItems>
+              <ListItem>
+                <PropertyName>CurrentClientMode</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>HostedCacheServerList</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>HostedCacheDiscoveryEnabled</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+
+          <!-- ListEntry for displaying the MSFT_NetBranchCacheContentServerSettingData object -->
+          <ListEntry>
+            <EntrySelectedBy>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheContentServerSettingData</TypeName>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheContentServerSettingData</TypeName>
+            </EntrySelectedBy>
+            <ListItems>
+              <ListItem>
+                <PropertyName>ContentServerIsEnabled</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+
+          <!-- ListEntry for displaying the MSFT_NetBranchCacheHostedCacheServerSettingData object -->
+          <ListEntry>
+            <EntrySelectedBy>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheHostedCacheServerSettingData</TypeName>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheHostedCacheServerSettingData</TypeName>
+            </EntrySelectedBy>
+            <ListItems>
+              <ListItem>
+                <PropertyName>HostedCacheServerIsEnabled</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ClientAuthenticationMode</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>HostedCacheScpRegistrationEnabled</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+
+          <!-- ListEntry for displaying the MSFT_NetBranchCacheNetworkSettingData object -->
+          <ListEntry>
+            <EntrySelectedBy>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheNetworkSettingData</TypeName>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheNetworkSettingData</TypeName>
+            </EntrySelectedBy>
+            <ListItems>
+              <ListItem>
+                <PropertyName>ContentRetrievalUrlReservationEnabled</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>HostedCacheHttpUrlReservationEnabled</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>HostedCacheHttpsUrlReservationEnabled</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ContentRetrievalFirewallRulesEnabled</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PeerDiscoveryFirewallRulesEnabled</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>HostedCacheServerFirewallRulesEnabled</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>HostedCacheClientFirewallRulesEnabled</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+
+          <ListEntry>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+
+    <!-- View for displaying the MSFT_NetBranchCacheFile objects -->
+    <View>
+      <Name>MSFT_NetBranchCacheFile_View</Name>
+      <ViewSelectedBy>
+
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheHashCache</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheHashCache</TypeName>
+
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheDataCache</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheDataCache</TypeName>
+
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheDataCacheExtension</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheDataCacheExtension</TypeName>
+
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+
+          <!-- ListEntry for displaying the MSFT_NetBranchCacheHashCache object -->
+          <ListEntry>
+            <EntrySelectedBy>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheHashCache</TypeName>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheHashCache</TypeName>
+            </EntrySelectedBy>
+            <ListItems>
+              <ListItem>
+                <PropertyName>CacheFileDirectoryPath</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>MaxCacheSizeAsPercentageOfDiskVolume</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>MaxCacheSizeAsNumberOfBytes</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>CurrentSizeOnDiskAsNumberOfBytes</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>CurrentActiveCacheSize</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+
+          <!-- ListEntry for displaying the MSFT_NetBranchCacheDataCache object -->
+          <ListEntry>
+            <EntrySelectedBy>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheDataCache</TypeName>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheDataCache</TypeName>
+            </EntrySelectedBy>
+            <ListItems>
+              <ListItem>
+                <PropertyName>CacheFileDirectoryPath</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>MaxCacheSizeAsPercentageOfDiskVolume</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>MaxCacheSizeAsNumberOfBytes</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>CurrentSizeOnDiskAsNumberOfBytes</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>CurrentActiveCacheSize</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+
+          <!-- ListEntry for displaying the MSFT_NetBranchCacheDataCacheExtension object -->
+          <ListEntry>
+            <EntrySelectedBy>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetBranchCacheDataCacheExtension</TypeName>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetBranchCacheDataCacheExtension</TypeName>
+            </EntrySelectedBy>
+            <ListItems>
+              <ListItem>
+                <PropertyName>CacheFileDirectoryPath</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>MaxCacheSizeAsPercentageOfDiskVolume</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>MaxCacheSizeAsNumberOfBytes</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>CurrentSizeOnDiskAsNumberOfBytes</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+
+          <ListEntry>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

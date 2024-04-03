@@ -1,0 +1,72 @@
+@import 'variables';
+@import 'mixins';
+
+.auth-logo-text {
+  @include font-size(22);
+  font-weight: 800;
+  margin-bottom: 40px;
+  display: block;
+}
+
+.auth-form {
+
+  .additional-link {
+
+    a {
+      font-weight: 700;
+      text-decoration: none;
+    }
+  }
+
+  .user-avatar {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(25, 54, 60, 0.2);
+  }
+
+  .block-form {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (min-width: 690px) and (max-width: 960px) {
+
+  .auth-form {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+}
+
+@media only screen and (max-width: 690px) {
+
+  .auth-form {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 490px) {
+
+  .auth-form {
+
+    input {
+      min-width: initial;
+    }
+
+    .additional-link {
+      @include font-size(15);
+    }
+  }
+}
+
+.dark {
+  .auth-form {
+
+    h1, h2, .additional-link {
+      color: $dark_mode_text_primary;
+    }
+  }
+}

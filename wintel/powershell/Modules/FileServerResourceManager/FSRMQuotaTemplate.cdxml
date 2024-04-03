@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">   
+  <Class ClassName="Root/Microsoft/Windows/FSRM/MSFT_FSRMQuotaTemplate">   
+    <Version>1.0</Version>      
+    <DefaultNoun>FsrmQuotaTemplate</DefaultNoun>   
+    <InstanceCmdlets>   
+      <GetCmdletParameters>
+        <QueryableProperties>   
+          <Property PropertyName="Name">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" Position="1" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+      </GetCmdletParameters>
+      <GetCmdlet>
+        <CmdletMetadata Verb="Get" />
+      </GetCmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" />
+        <Method MethodName="cim:DeleteInstance">
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+        <Method MethodName="cim:ModifyInstance">
+          <Parameters>
+            <Parameter ParameterName="Description">
+              <Type PSType="string" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Size">
+              <Type PSType="Uint64" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SoftLimit">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="UpdateDerived">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="UpdateDerivedMatching">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Threshold">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" ConfirmImpact="Medium" />
+        <Method MethodName="cim:CreateInstance">
+          <Parameters> 
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Description">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Size">
+              <Type PSType="Uint64" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SoftLimit">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Threshold">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>   

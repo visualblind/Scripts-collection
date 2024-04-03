@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/StandardCimv2/MSFT_PrinterPortTasks">
+    <Version>1.0</Version>
+    <DefaultNoun>PrinterPort</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata ConfirmImpact="Medium" Verb="Add" DefaultCmdletParameterSet="local"/>
+        <!-- add-printerport (local) -->
+        <Method MethodName="AddByLocalPort" CmdletParameterSet="local">
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="CN">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <!-- add-printerport (lpr) -->
+        <Method MethodName="AddByLprPort" CmdletParameterSet="lpr">
+          <Parameters>
+            <Parameter ParameterName="HostName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="CN">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <!-- add-printerport (tcp) -->
+        <Method MethodName="AddByTcpPort" CmdletParameterSet="tcp">
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterHostAddress">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PortNumber">
+              <Type PSType="System.Uint32"/>
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SNMP">
+              <Type PSType="System.Uint32"/>
+              <CmdletParameterMetadata Aliases="SNMPIndex">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SNMPCommunity">
+              <Type PSType="System.String"/>
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata  Aliases="CN">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <!-- add-printerport (tcp, lpr mode) -->
+        <Method MethodName="AddByTcpPortLprMode" CmdletParameterSet="tcplpr">
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="LprHostAddress">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="LprQueueName">
+              <Type PSType="System.String"/>
+              <CmdletParameterMetadata IsMandatory="true" Position="2">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="LprByteCounting">
+              <Type PSType="System.Management.Automation.SwitchParameter"/>
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SNMP">
+              <Type PSType="System.Uint32"/>
+              <CmdletParameterMetadata Aliases="SNMPIndex">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SNMPCommunity">
+              <Type PSType="System.String"/>
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata  Aliases="CN">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

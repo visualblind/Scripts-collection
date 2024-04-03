@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+    <Class ClassName="Root/StandardCimV2/MSFT_NetVirtualizationNextHopLookup" ClassVersion="1.0.0">
+        <Version>1.0.0.0</Version>
+        <DefaultNoun>NetVirtualizationNextHop</DefaultNoun>
+        <StaticCmdlets>
+            <Cmdlet>
+                <CmdletMetadata Verb="Select" ConfirmImpact="Medium" />
+                <Method MethodName="Select">
+                    <ReturnValue>
+                        <Type PSType="System.UInt32" />
+                        <CmdletOutputMetadata>
+                            <ErrorCode />
+                        </CmdletOutputMetadata>
+                    </ReturnValue>
+                    <Parameters>
+                        <Parameter ParameterName="SourceCustomerAddress">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="false" Position="0" />
+                        </Parameter>
+                        <Parameter ParameterName="DestinationCustomerAddress">
+                            <Type PSType="System.String" />
+                            <CmdletParameterMetadata IsMandatory="true" Position="1" />
+                        </Parameter>
+                        <Parameter ParameterName="SourceVirtualSubnetID">
+                            <Type PSType="System.Uint32" />
+                            <CmdletParameterMetadata IsMandatory="true" Position="2" />
+                        </Parameter>
+                        <Parameter ParameterName="CmdletOutput">
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+                            <CmdletOutputMetadata />
+                        </Parameter>
+                    </Parameters>
+                </Method>
+            </Cmdlet>
+        </StaticCmdlets>
+
+    </Class>
+
+</PowerShellMetadata>

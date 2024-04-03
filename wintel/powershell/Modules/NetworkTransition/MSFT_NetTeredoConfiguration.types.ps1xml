@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetTeredoConfiguration</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Type</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetTeredoConfiguration.Type]($this.PSBase.CimInstanceProperties['Type'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          $this.PSBase.CimInstanceProperties['Type'].Value = [System.UInt32]$_
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetTeredoConfiguration</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Type</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetTeredoConfiguration.Type]($this.PSBase.CimInstanceProperties['Type'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          $this.PSBase.CimInstanceProperties['Type'].Value = [System.UInt32]$_
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>  
+</Types>

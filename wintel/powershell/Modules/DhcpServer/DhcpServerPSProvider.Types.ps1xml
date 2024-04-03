@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- *******************************************************************
+These sample files contain formatting information used by the Windows 
+PowerShell engine. Do not edit or change the contents of this file 
+directly. Please see the Windows PowerShell documentation or type 
+Get-Help Update-TypeData for more information.
+
+Copyright (c) Microsoft Corporation.  All rights reserved.
+ 
+THIS SAMPLE CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY 
+OF ANY KIND,WHETHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO 
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
+PURPOSE. IF THIS CODE AND INFORMATION IS MODIFIED, THE ENTIRE RISK OF USE
+OR RESULTS IN CONNECTION WITH THE USE OF THIS CODE AND INFORMATION 
+REMAINS WITH THE USER.
+******************************************************************** -->
+<Types>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerInDC</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>IPAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['IPAddress'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['IPAddress'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv4Binding</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>InterfaceGuid</Name>
+                <GetScriptBlock>
+                    [OutputType([System.GUID])]
+                    param()
+                    [System.GUID]($this.PSBase.CimInstanceProperties['InterfaceGuid'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.GUID]$value)
+                    $this.PSBase.CimInstanceProperties['InterfaceGuid'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['IPAddress'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['IPAddress'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>SubnetMask</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['SubnetMask'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['SubnetMask'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv4ExclusionRange</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ScopeId</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ScopeId'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ScopeId'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>StartRange</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['StartRange'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['StartRange'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EndRange</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['EndRange'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['EndRange'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv4Failover</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ScopeId</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress[]])]
+                    param()
+                    [System.Net.IPAddress[]]($this.PSBase.CimInstanceProperties['ScopeId'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress[]]$value)
+                    $this.PSBase.CimInstanceProperties['ScopeId'].Value = [System.String[]]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>PrimaryServerIP</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['PrimaryServerIP'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['IPAddress'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>SecondaryServerIP</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['SecondaryServerIP'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['IPAddress'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv4Lease</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>IPAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['IPAddress'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['IPAddress'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ScopeId</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ScopeId'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ScopeId'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>            
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv4Reservation</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>IPAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['IPAddress'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['IPAddress'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ScopeId</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ScopeId'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ScopeId'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv4Scope</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ScopeId</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ScopeId'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ScopeId'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>SubnetMask</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['SubnetMask'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['SubnetMask'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>StartRange</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['StartRange'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['StartRange'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EndRange</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['EndRange'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['EndRange'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv4ScopeStatistics</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ScopeId</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ScopeId'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ScopeId'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <AliasProperty>
+                <Name>Free</Name>
+                <ReferencedMemberName>AddressesFree</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>InUse</Name>
+                <ReferencedMemberName>AddressesInUse</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>Reserved</Name>
+                <ReferencedMemberName>ReservedAddress</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>Pending</Name>
+                <ReferencedMemberName>PendingOffers</ReferencedMemberName>
+            </AliasProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv4Superscope</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ScopeId</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress[]])]
+                    param()
+                    [System.Net.IPAddress[]]($this.PSBase.CimInstanceProperties['ScopeId'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress[]]$value)
+                    $this.PSBase.CimInstanceProperties['ScopeId'].Value = [System.String[]]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv6Binding</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>InterfaceGuid</Name>
+                <GetScriptBlock>
+                    [OutputType([System.GUID])]
+                    param()
+                    [System.GUID]($this.PSBase.CimInstanceProperties['InterfaceGuid'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.GUID]$value)
+                    $this.PSBase.CimInstanceProperties['InterfaceGuid'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>IPAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['IPAddress'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['IPAddress'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv6ExclusionRange</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['Prefix'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['Prefix'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>StartRange</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['StartRange'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['StartRange'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>EndRange</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['EndRange'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['EndRange'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv6Lease</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>IPAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['IPAddress'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['IPAddress'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['Prefix'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['Prefix'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv6Reservation</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>IPAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['IPAddress'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['IPAddress'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['Prefix'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['Prefix'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv6Scope</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['Prefix'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['Prefix'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv6ScopeStatistics</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['Prefix'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['Prefix'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+            <AliasProperty>
+                <Name>Free</Name>
+                <ReferencedMemberName>AddressesFree</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>InUse</Name>
+                <ReferencedMemberName>AddressesInUse</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>Reserved</Name>
+                <ReferencedMemberName>ReservedAddress</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>Pending</Name>
+                <ReferencedMemberName>PendingAdvertises</ReferencedMemberName>
+            </AliasProperty>            
+        </Members>
+    </Type>    
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv6StatelessStore</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['Prefix'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['Prefix'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>    
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv6StatelessStatistics</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Prefix</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['Prefix'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['Prefix'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>  
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv4Statistics</Name>
+        <Members>
+            <AliasProperty>
+                <Name>InUse</Name>
+                <ReferencedMemberName>AddressesInUse</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>Available</Name>
+                <ReferencedMemberName>AddressesAvailable</ReferencedMemberName>
+            </AliasProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv6Statistics</Name>
+        <Members>
+            <AliasProperty>
+                <Name>InUse</Name>
+                <ReferencedMemberName>AddressesInUse</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>Available</Name>
+                <ReferencedMemberName>AddressesAvailable</ReferencedMemberName>
+            </AliasProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerV4Class</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>AsciiData</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                        [bool]$IsPrintable = $false;
+                        $Data = $this.PSBase.CimInstanceProperties['Data'].Value;
+                        $AsciiStr = "";
+
+                        if(($Data.Length -gt 2) -and ($Data.Length % 2 -eq 0 ))
+                        {
+                            $IsPrintable = $true;
+                            if($Data.Substring(0,2) -ne "0x" -and $Data.Substring(0,2) -ne "0X")
+                            {
+                                $IsPrintable = $false;
+                            }
+                                                                        
+                            if($IsPrintable)
+                            {
+                                $Format =  [System.Globalization.NumberStyles]::AllowHexSpecifier;
+                                for($i = 1;$i -lt $Data.Length/2 ;  $i++)
+                                {
+                                    $c = [Byte]::Parse($Data.Substring(2*$i,2),$Format)
+                                    $IsPrintable = [Char]::IsLetter($c) -or [Char]::IsSeparator($c) -or [Char]::IsSymbol($c) -or [Char]::IsDigit($c) -or [Char]::IsPunctuation($c);
+                                            
+                                    if($IsPrintable -eq $true)
+                                    {
+                                        $AsciiStr = $AsciiStr + [char]$c;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }                                       
+                                }
+                            }
+                        }   
+                        if($IsPrintable)
+                        {
+                            $AsciiStr
+                        }
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerV6Class</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>AsciiData</Name>
+                <GetScriptBlock>
+                    [OutputType([System.String])]
+                    param()
+                        [bool]$IsPrintable = $false;
+                        $Data = $this.PSBase.CimInstanceProperties['Data'].Value;
+                        $AsciiStr = "";
+
+                        if(($Data.Length -gt 2) -and ($Data.Length % 2 -eq 0 ))
+                        {
+                            $IsPrintable = $true;
+                            if($Data.Substring(0,2) -ne "0x" -and $Data.Substring(0,2) -ne "0X")
+                            {
+                                $IsPrintable = $false;
+                            }
+                                                                        
+                            if($IsPrintable)
+                            {
+                                $Format =  [System.Globalization.NumberStyles]::AllowHexSpecifier;
+                                for($i = 1;$i -lt $Data.Length/2 ;  $i++)
+                                {
+                                    $c = [Byte]::Parse($Data.Substring(2*$i,2),$Format)
+                                    $IsPrintable = [Char]::IsLetter($c) -or [Char]::IsSeparator($c) -or [Char]::IsSymbol($c) -or [Char]::IsDigit($c) -or [Char]::IsPunctuation($c);
+                                            
+                                    if($IsPrintable -eq $true)
+                                    {
+                                        $AsciiStr = $AsciiStr + [char]$c;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }                                       
+                                }
+                            }
+                        }   
+                        if($IsPrintable)
+                        {
+                            $AsciiStr
+                        }
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv4IPRecords</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ScopeId</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress])]
+                    param()
+                    [System.Net.IPAddress]($this.PSBase.CimInstanceProperties['ScopeId'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress]$value)
+                    $this.PSBase.CimInstanceProperties['ScopeId'].Value = [System.String]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+	     <ScriptProperty>
+                <Name>IPAddress</Name>
+                <GetScriptBlock>
+                    [OutputType([System.Net.IPAddress[]])]
+                    param()
+                    [System.Net.IPAddress[]]($this.PSBase.CimInstanceProperties['IPAddress'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param([System.Net.IPAddress[]]$value)
+                    $this.PSBase.CimInstanceProperties['IPAddress'].Value = [System.String[]]$value
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#DhcpServerv4SuperscopeStatistics</Name>
+        <Members>
+            <AliasProperty>
+                <Name>Name</Name>
+                <ReferencedMemberName>SuperscopeName</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>Available</Name>
+                <ReferencedMemberName>AddressesFree</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>InUse</Name>
+                <ReferencedMemberName>AddressesInUse</ReferencedMemberName>
+            </AliasProperty>
+            <AliasProperty>
+                <Name>%InUse</Name>
+                <ReferencedMemberName>PercentageInUse</ReferencedMemberName>
+            </AliasProperty>
+        </Members>
+    </Type>
+</Types>    

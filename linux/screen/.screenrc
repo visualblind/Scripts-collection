@@ -1,0 +1,4 @@
+# Enable scrolling
+termcapinfo xterm* ti@:te@
+defscrollback 5000
+caption always "%{= kc}Screen session on %H (system load: %l)%-28=%{= .m}%D %d.%m.%Y %0c"

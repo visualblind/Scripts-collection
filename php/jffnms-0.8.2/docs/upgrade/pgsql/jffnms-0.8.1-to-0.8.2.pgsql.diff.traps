@@ -1,0 +1,25 @@
+DROP TABLE traps_types CASCADE;
+
+
+CREATE SEQUENCE trap_receivers_id_seq;
+CREATE TABLE trap_receivers (  id INT4 DEFAULT nextval('trap_receivers_id_seq'),  position INT4 NOT NULL default '0',  match_oid varchar(100) NOT NULL default '',  description varchar(60) NOT NULL default '',  command varchar(60) NOT NULL default '',  parameters varchar(250) NOT NULL default '',  backend INT4 NOT NULL default '1',  interface_type INT4 NOT NULL default '1',  stop_if_matches INT2 NOT NULL default '1',  PRIMARY KEY (id));
+
+UPDATE traps SET analized = 1;
+DELETE FROM traps;
+ALTER TABLE traps DROP COLUMN date;
+ALTER TABLE traps ADD COLUMN date int4;
+UPDATE traps SET date = '0';
+ALTER TABLE traps ALTER COLUMN date SET DEFAULT '0';
+
+
+DELETE FROM trap_receivers where id = 1;
+INSERT INTO trap_receivers (id,  position,  match_oid,  description,  command,  parameters,  backend,  interface_type,  stop_if_matches) VALUES (1, 99, '.*', 'Default Trap Receiver', 'unknown', '', 2, 1, 1);
+
+DELETE FROM trap_receivers where id = 2;
+INSERT INTO trap_receivers (id,  position,  match_oid,  description,  command,  parameters,  backend,  interface_type,  stop_if_matches) VALUES (2, 10, '.1.3.6.1.6.3.1.1.5.4', 'Link Up', 'static', 'up,interfacenumber,1', 12, 4, 1);
+
+DELETE FROM trap_receivers where id = 3;
+INSERT INTO trap_receivers (id,  position,  match_oid,  description,  command,  parameters,  backend,  interface_type,  stop_if_matches) VALUES (3, 10, '.1.3.6.1.6.3.1.1.5.3', 'Link Down', 'static', 'down,interfacenumber,1', 12, 4, 1);
+
+DELETE FROM pollers_backend where id = 2;
+INSERT INTO pollers_backend (id,  description,  command,  parameters,  type) VALUES (2, 'Unknown Event', 'event', '1', 0);

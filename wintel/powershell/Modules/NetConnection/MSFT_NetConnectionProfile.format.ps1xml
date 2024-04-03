@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+    <Name>MSFT_NetConnectionProfile</Name>
+    <ViewSelectedBy>
+      <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetConnectionProfile</TypeName>
+      <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetConnectionProfile</TypeName>
+    </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>InterfaceAlias</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>InterfaceIndex</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>NetworkCategory</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IPv4Connectivity</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IPv6Connectivity</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>
+

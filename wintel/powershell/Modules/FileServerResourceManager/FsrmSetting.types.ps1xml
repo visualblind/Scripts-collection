@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <!--
+
+  //
+  // MSFT_FSRMSettings
+  //
+
+  -->
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_FSRMSettings</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>ReportClassificationFormat</Name>
+        <GetScriptBlock>
+          $integerArray = $this.PSBase.CimInstanceProperties['ReportClassificationFormat'].Value
+	  $enumArray = New-Object Microsoft.PowerShell.Cmdletization.GeneratedTypes.FsrmReportClassificationFormatEnum[] ($integerArray.Length)
+	  for ($i = 0; $i -lt $integerArray.Length; $i++)
+	  {
+		$enumArray[$i] = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.FsrmReportClassificationFormatEnum]($integerArray[$i])
+	  }
+	  return $enumArray
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>ReportClassificationLog</Name>
+        <GetScriptBlock>
+          $integerArray = $this.PSBase.CimInstanceProperties['ReportClassificationLog'].Value
+	  $enumArray = New-Object Microsoft.PowerShell.Cmdletization.GeneratedTypes.FsrmReportClassificationLogEnum[] ($integerArray.Length)
+	  for ($i = 0; $i -lt $integerArray.Length; $i++)
+	  {
+		$enumArray[$i] = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.FsrmReportClassificationLogEnum]($integerArray[$i])
+	  }
+	  return $enumArray
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>

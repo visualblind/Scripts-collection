@@ -1,0 +1,31 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Setup Consul DNS Demo | Install curl and jq from apt
+      apt:
+        update_cache: yes
+        name:
+          - curl
+          - jq
+    - name: Setup Consul DNS Demo | Download docker.io install script
+      get_url:
+        url: https://get.docker.com
+        dest: /tmp/get-docker.sh
+        mode: +x
+    - name: Setup Consul DNS Demo | Install docker
+      shell: /tmp/get-docker.sh
+    - name: Setup Consul DNS Demo | Delete docker.io install script
+      file:
+        path: /tmp/get-docker.sh
+        state: absent
+    - name: Setup Consul DNS Demo | Download docker-compose
+      get_url:
+        url: https://github.com/docker/compose/releases/download/1.23.2/docker-compose-Linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        mode: +x
+    - name: Setup Consul DNS Demo | Copy docker-compose under /etc/bash_completion
+      get_url:
+        url: https://raw.githubusercontent.com/docker/compose/1.23.2/contrib/completion/bash/docker-compose
+        dest: /etc/bash_completion.d/docker-compose
+    - name: Setup Consul DNS Demo | Executing provision.sh (sets HOST_IP, builds the container images and starts them)
+      shell: /srv/NGINX-Demos/consul-dns-srv-demo/provision.sh

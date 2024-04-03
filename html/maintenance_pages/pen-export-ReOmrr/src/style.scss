@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Material+Icons|Roboto:300,400,500');
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+html,
+body {
+	font-family: 'Roboto', sans-serif;
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: #ddd;
+}
+
+.maintbox {
+	flex: 0 0 auto;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	padding: 3.5em 4.5em;
+	min-height: 40vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: #eee;
+	box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.1);
+	
+	.maintbox__title {
+		flex: 0 0 auto;
+		display: flex;
+		flex-direction: column;
+		flex: 0 0 auto;
+		align-items: center;
+		border-bottom: 1px solid #bbb;
+		padding-bottom: 1em;
+		width: 100%;
+		color: #555;
+		
+		.title__icon i {
+			font-size: 3em;
+		}
+		
+		.title__text {
+			font-weight: 500;
+			font-size: 1.5em;
+		}
+	}
+	
+	.maintbox__message {
+		flex: 0 0 auto;
+		margin-top: 2.5em;
+		text-align: center;
+		line-height: 1.38;
+		font-weight: 300;
+		font-size: 1.2em
+	}
+}

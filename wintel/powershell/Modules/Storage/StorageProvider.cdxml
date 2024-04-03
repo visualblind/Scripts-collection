@@ -1,0 +1,227 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_StorageProvider">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>StorageProvider</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-StorageProvider
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+        <QueryableProperties>
+          <Property PropertyName="UniqueId">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="Name">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" Position="0" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="Manufacturer">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByURI ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="URI">
+            <Type PSType="System.Uri" />
+            <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByURI" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+            <!-- StorageSubsystem -->
+            <Association Association="MSFT_StorageProviderToStorageSubSystem" SourceRole="StorageSubSystem" ResultRole="StorageProvider">
+                <AssociatedInstance>
+                    <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubSystem" />
+                    <CmdletParameterMetadata PSName="StorageSubSystem" ValueFromPipeline="true" CmdletParameterSets="ByStorageSubSystem" ErrorOnNoMatch="false" />
+                </AssociatedInstance>
+            </Association>
+        </QueryableAssociations>
+      </GetCmdletParameters>
+      <!--
+
+      //
+      // Update-StorageProviderCache
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Update" Noun="StorageProviderCache" />
+        <Method MethodName="Discover">
+          <Parameters>
+            <Parameter ParameterName="DiscoveryLevel">
+              <Type PSType="StorageProvider.DiscoveryLevel" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <Parameter ParameterName="RootObject">
+              <Type PSType="ref" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Register-StorageSubsystem
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Register" Noun="StorageSubsystem" />
+        <Method MethodName="RegisterSubsystem">
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="String" />
+              <CmdletParameterMetadata IsMandatory="true" Aliases="CN" />
+            </Parameter>
+            <Parameter ParameterName="Credential">
+              <Type PSType="PSCredential" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- CMDLET OUTPUT -->
+            <Parameter ParameterName="RegisteredSubsystem">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+          <QueryableProperties>
+            <!-- ProviderUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="ProviderUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="ProviderId" />
+              </RegularQuery>
+            </Property>
+            <!-- ProviderName -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="ProviderName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" Position="0" ErrorOnNoMatch="true" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+        //
+        // Unregister-StorageSubsystem
+        //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Unregister" Noun="StorageSubsystem" />
+        <Method MethodName="UnregisterSubsystem">
+          <Parameters>
+            <!-- StorageSubSystemUniqueId -->
+            <Parameter ParameterName="StorageSubSystemUniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" Aliases="UniqueId" />
+            </Parameter>
+            <!-- Force -->
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+          <QueryableProperties>
+            <!-- ProviderUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="ProviderUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="ProviderId" />
+              </RegularQuery>
+            </Property>
+            <!-- ProviderName -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="ProviderName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" Position="0" ErrorOnNoMatch="true" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+        //
+        // Set-StorageProvider
+        //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" Noun="StorageProvider" />
+        <Method MethodName="SetAttributes">
+          <Parameters>
+            <!-- RemoteSubsystemCacheMode -->
+            <Parameter ParameterName="RemoteSubsystemCacheMode">
+              <Type PSType="StorageProvider.RemoteSubsystemCacheMode" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+          <QueryableProperties>
+            <!-- ProviderUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="ProviderUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="ProviderId" />
+              </RegularQuery>
+            </Property>
+            <!-- ProviderName -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="ProviderName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" Position="0" ErrorOnNoMatch="true" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="StorageProvider.DiscoveryLevel" UnderlyingType="System.UInt16">
+      <Value Name="Level0" Value="0" />
+      <Value Name="Level1" Value="1" />
+      <Value Name="Level2" Value="2" />
+      <Value Name="Level3" Value="3" />
+      <Value Name="Full" Value="3"/>
+    </Enum>
+    <Enum EnumName="StorageProvider.RemoteSubsystemCacheMode" UnderlyingType="System.UInt16">
+      <Value Name="Disabled" Value="2" />
+      <Value Name="ManualDiscovery" Value="3" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

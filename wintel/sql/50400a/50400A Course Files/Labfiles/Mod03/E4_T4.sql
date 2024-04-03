@@ -1,0 +1,10 @@
+USE FILESTREAM_Test
+GO
+
+CREATE TABLE FILESTREAM_Test.dbo.Records
+(
+	[Id] [uniqueidentifier] ROWGUIDCOL NOT NULL UNIQUE, 
+	[SerialNumber] INTEGER UNIQUE,
+	[Chart] VARBINARY(MAX) FILESTREAM NULL
+)
+GO

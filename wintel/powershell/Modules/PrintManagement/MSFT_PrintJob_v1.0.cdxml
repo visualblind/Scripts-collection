@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/StandardCimv2/MSFT_PrintJob">
+    <Version>1.0</Version>
+    <DefaultNoun>PrintJob</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <!-- get-printjob -->
+        <CmdletMetadata Verb="Get" />
+        <Method MethodName="GetByName" CmdletParameterSet="name">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="CN computer" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ID">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="PN" IsMandatory="true" Position="0" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="GetByObject" CmdletParameterSet="object">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ID">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_Printer" />
+              <CmdletParameterMetadata Aliases="Printer" Position="0" IsMandatory="true" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <!-- remove-printjob -->
+        <CmdletMetadata Verb="Remove" ConfirmImpact="Medium" />
+        <Method MethodName="DeleteJobByObject" CmdletParameterSet="jobObject">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PrintJob" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="DeleteJobById" CmdletParameterSet="printerName">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="CN computer" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ID">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="PN" IsMandatory="true" Position="0" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="DeleteJobByPrinterObject" CmdletParameterSet="printer_object">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ID">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_Printer" />
+              <CmdletParameterMetadata Aliases="Printer" IsMandatory="true" Position="0" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <!-- restart-printjob -->
+        <CmdletMetadata Verb="Restart" ConfirmImpact="Medium" />
+        <Method MethodName="RestartJobByObject" CmdletParameterSet="jobObject">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PrintJob" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="RestartJobById" CmdletParameterSet="printerName">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="CN computer" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ID">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="PN" IsMandatory="true" Position="0" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="RestartJobByPrinterObject" CmdletParameterSet="printObject">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ID">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_Printer" />
+              <CmdletParameterMetadata Aliases="Printer" IsMandatory="true" Position="0" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <!-- resume-printjob -->
+        <CmdletMetadata Verb="Resume" ConfirmImpact="Medium" />
+        <Method MethodName="ResumeJobByObject" CmdletParameterSet="jobObject">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PrintJob" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="ResumeJobById" CmdletParameterSet="printerName">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="CN computer" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ID">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="PN" IsMandatory="true" Position="1" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="ResumeJobByPrinterObject" CmdletParameterSet="printer_object">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ID">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_Printer" />
+              <CmdletParameterMetadata Aliases="Printer" IsMandatory="true" Position="0" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <!-- suspend-printjob -->
+        <CmdletMetadata Verb="Suspend" ConfirmImpact="Medium" />
+        <Method MethodName="SuspendJobByObject" CmdletParameterSet="jobObject">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PrintJob" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SuspendJobById" CmdletParameterSet="printerName">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="CN computer" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ID">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="PN" IsMandatory="true" Position="0" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SuspendJobByPrinterObject" CmdletParameterSet="printerObject">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ID">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_Printer" />
+              <CmdletParameterMetadata Aliases="Printer" IsMandatory="true" Position="0" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="PrintJob.JobStatus" UnderlyingType="UInt32" BitwiseFlags="true">
+      <Value Name="Normal" Value="0" />
+      <Value Name="Paused" Value="1" />
+      <Value Name="Error"  Value="2" />
+      <Value Name="Deleting" Value="4" />
+      <Value Name="Spooling" Value="8" />
+      <Value Name="Printing" Value="16" />
+      <Value Name="Offline" Value="32" />
+      <Value Name="PaperOut" Value="64" />
+      <Value Name="Printed" Value="128" />
+      <Value Name="Deleted" Value="256" />
+      <Value Name="Blocked" Value="512" />
+      <Value Name="UserIntervention" Value="1024" />
+      <Value Name="Restarted" Value="2048" />
+      <Value Name="Complete" Value="4096" />
+      <Value Name="Retained" Value="8192" />
+      <Value Name="RenderingLocally" Value="16384" />
+    </Enum>
+  </Enums>
+
+</PowerShellMetadata>

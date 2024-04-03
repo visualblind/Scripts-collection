@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/StandardCimv2/MSFT_PrinterConfiguration">
+    <Version>1.0</Version>
+    <DefaultNoun>PrintConfiguration</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <!-- get-printconfiguration -->
+        <CmdletMetadata Verb="Get" />
+        <Method MethodName="GetByPrinterName" CmdletParameterSet="PrinterName">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Computer CN" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="PN" IsMandatory="true" Position="0" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="GetByPrinterObject" CmdletParameterSet="PrinterObject">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="PrinterObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_Printer" />
+              <CmdletParameterMetadata Aliases="Printer" Position="0" IsMandatory="true" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <!-- set-printconfiguration -->
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium"/>
+        <Method MethodName="SetByPrinterName" CmdletParameterSet="PrinterName">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Collate">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Color">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DuplexingMode">
+              <Type PSType="PrinterConfiguration.DuplexingModeEnum" />
+              <CmdletParameterMetadata Aliases="Duplex Duplexing">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PaperSize">
+              <Type PSType="PrinterConfiguration.PaperSizeEnum" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrintTicketXml">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="PrintTicket PT">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Computer CN" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="PN" Position="0" IsMandatory="true" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByPrinterObject" CmdletParameterSet="PrinterObject">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Collate">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Color">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DuplexingMode">
+              <Type PSType="PrinterConfiguration.DuplexingModeEnum" />
+              <CmdletParameterMetadata Aliases="Duplex Duplexing">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PaperSize">
+              <Type PSType="PrinterConfiguration.PaperSizeEnum" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrintTicketXml">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="PrintTicket PT">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_Printer" />
+              <CmdletParameterMetadata Aliases="Printer" Position="0" IsMandatory="true" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByPrintConfigObject" CmdletParameterSet="PrintConfigObject">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PrinterConfiguration" />
+              <CmdletParameterMetadata Aliases="ConfigObject" Position="0" IsMandatory="true" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  
+  <Enums>
+    <Enum EnumName="PrinterConfiguration.DuplexingModeEnum" UnderlyingType="UInt32">
+      <Value Name="OneSided" Value="0" />
+      <Value Name="TwoSidedLongEdge" Value="1" />
+      <Value Name="TwoSidedShortEdge" Value="2" />
+    </Enum>
+    <Enum EnumName="PrinterConfiguration.PaperSizeEnum" UnderlyingType="UInt32">
+      <Value Name="Custom" Value="0" />       <!-- User specified -->
+      <Value Name="Letter" Value="1" />       <!-- Letter 8 1/2 x 11 in               -->
+      <Value Name="LetterSmall" Value="2" />  <!-- Letter Small 8 1/2 x 11 in         -->
+      <Value Name="Tabloid" Value="3" />      <!-- Tabloid 11 x 17 in                 -->
+      <Value Name="Ledger" Value="4" />       <!-- Ledger 17 x 11 in                  -->
+      <Value Name="Legal" Value="5" />        <!-- Legal 8 1/2 x 14 in                -->
+      <Value Name="Statement" Value="6" />    <!-- Statement 5 1/2 x 8 1/2 in         -->
+      <Value Name="Executive" Value="7" />    <!-- Executive 7 1/4 x 10 1/2 in        -->
+      <Value Name="A3" Value="8" />           <!-- A3 297 x 420 mm                    -->
+      <Value Name="A4" Value="9" />           <!-- A4 210 x 297 mm                    -->
+      <Value Name="A4Small" Value="10" />     <!-- A4 Small 210 x 297 mm              -->
+      <Value Name="A5" Value="11" />          <!-- A5 148 x 210 mm                    -->
+      <Value Name="B4" Value="12" />          <!-- B4 (JIS) 250 x 354                 -->
+      <Value Name="B5" Value="13" />          <!-- B5 (JIS) 182 x 257 mm              -->
+      <Value Name="Folio" Value="14" />       <!-- Folio 8 1/2 x 13 in                -->
+      <Value Name="Quarto" Value="15" />      <!-- Quarto 215 x 275 mm                -->
+      <Value Name="Sheet10x14" Value="16" />  <!-- 10x14 in                           -->
+      <Value Name="Sheet11x17" Value="17" />  <!-- 11x17 in                           -->
+      <Value Name="Note" Value="18" />        <!-- Note 8 1/2 x 11 in                 -->
+      <Value Name="Envelope9" Value="19" />   <!-- Envelope #9 3 7/8 x 8 7/8          -->
+      <Value Name="Envelope10" Value="20" />  <!-- Envelope #10 4 1/8 x 9 1/2         -->
+      <Value Name="Envelope11" Value="21" />  <!-- Envelope #11 4 1/2 x 10 3/8        -->
+      <Value Name="Envelope12" Value="22" />  <!-- Envelope #12 4 \276 x 11           -->
+      <Value Name="Envelope14" Value="23" />  <!-- Envelope #14 5 x 11 1/2            -->
+      <Value Name="CSheet" Value="24" />      <!-- C size sheet                       -->
+      <Value Name="DSheet" Value="25" />      <!-- D size sheet                       -->
+      <Value Name="ESheet" Value="26" />      <!-- E size sheet                       -->
+      <Value Name="EnvelopeDL" Value="27" />  <!-- Envelope DL 110 x 220mm            -->
+      <Value Name="EnvelopeC5" Value="28" />  <!-- Envelope C5 162 x 229 mm           -->
+      <Value Name="EnvelopeC3" Value="29" />  <!-- Envelope C3  324 x 458 mm          -->
+      <Value Name="EnvelopeC4" Value="30" />  <!-- Envelope C4  229 x 324 mm          -->
+      <Value Name="EnvelopeC6" Value="31" />  <!-- Envelope C6  114 x 162 mm          -->
+      <Value Name="EnvelopeC65" Value="32" /> <!-- Envelope C65 114 x 229 mm          -->
+      <Value Name="EnvelopeB4" Value="33" />  <!-- Envelope B4  250 x 353 mm          -->
+      <Value Name="EnvelopeB5" Value="34" />  <!-- Envelope B5  176 x 250 mm          -->
+      <Value Name="EnvelopeB6" Value="35" />  <!-- Envelope B6  176 x 125 mm          -->
+      <Value Name="EnvelopeItaly" Value="36" /> <!-- Envelope 110 x 230 mm              -->
+      <Value Name="EnvelopeMonarch" Value="37" /> <!-- Envelope Monarch 3.875 x 7.5 in    -->
+      <Value Name="EnvelopePersonal" Value="38" /> <!-- 6 3/4 Envelope 3 5/8 x 6 1/2 in    -->
+      <Value Name="FanfoldUS" Value="39" />   <!-- US Std Fanfold 14 7/8 x 11 in      -->
+      <Value Name="FanfoldStandardGerman" Value="40" /> <!-- German Std Fanfold 8 1/2 x 12 in   -->
+      <Value Name="FanfoldLegalGerman" Value="41" /> <!-- German Legal Fanfold 8 1/2 x 13 in -->
+      <Value Name="ISOB4" Value="42" />       <!-- B4 (ISO) 250 x 353 mm              -->
+      <Value Name="JapanesePostcard" Value="43" /> <!-- Japanese Postcard 100 x 148 mm     -->
+      <Value Name="Sheet9x11" Value="44" />   <!-- 9 x 11 in                          -->
+      <Value Name="Sheet10x11" Value="45" />  <!-- 10 x 11 in                         -->
+      <Value Name="Sheet15x11" Value="46" />  <!-- 15 x 11 in                         -->
+      <Value Name="EnvelopeInvite" Value="47" /> <!-- Envelope Invite 220 x 220 mm       -->
+      <Value Name="Reserved48" Value="48" />  <!-- RESERVED, DO NOT USE               -->
+      <Value Name="Reserved49" Value="49" />  <!-- RESERVED, DO NOT USE               -->
+      <Value Name="LetterExtra" Value="50" /> <!-- Letter Extra 9 \275 x 12 in        -->
+      <Value Name="LegalExtra" Value="51" />  <!-- Legal Extra 9 \275 x 15 in         -->
+      <Value Name="TabloidExtra" Value="52" /> <!-- Tabloid Extra 11.69 x 18 in        -->
+      <Value Name="A4Extra" Value="53" />     <!-- A4 Extra 9.27 x 12.69 in           -->
+      <Value Name="LetterTransverse" Value="54" /> <!-- Letter Transverse 8 \275 x 11 in   -->
+      <Value Name="A4Transverse" Value="55" /> <!-- A4 Transverse 210 x 297 mm         -->
+      <Value Name="LetterExtraTransverse" Value="56" /> <!-- Letter Extra Transverse 9\275 x 12 in -->
+      <Value Name="APlus" Value="57" />       <!-- SuperA/SuperA/A4 227 x 356 mm      -->
+      <Value Name="BPlus" Value="58" />       <!-- SuperB/SuperB/A3 305 x 487 mm      -->
+      <Value Name="LetterPlus" Value="59" />  <!-- Letter Plus 8.5 x 12.69 in         -->
+      <Value Name="A4Plus" Value="60" />      <!-- A4 Plus 210 x 330 mm               -->
+      <Value Name="A5Transverse" Value="61" /> <!-- A5 Transverse 148 x 210 mm         -->
+      <Value Name="B5Transverse" Value="62" /> <!-- B5 (JIS) Transverse 182 x 257 mm   -->
+      <Value Name="A3Extra" Value="63" />     <!-- A3 Extra 322 x 445 mm              -->
+      <Value Name="A5Extra" Value="64" />     <!-- A5 Extra 174 x 235 mm              -->
+      <Value Name="B5Extra" Value="65" />     <!-- B5 (ISO) Extra 201 x 276 mm        -->
+      <Value Name="A2" Value="66" />          <!-- A2 420 x 594 mm                    -->
+      <Value Name="A3Transverse" Value="67" /> <!-- A3 Transverse 297 x 420 mm         -->
+      <Value Name="A3ExtraTransverse" Value="68" /> <!-- A3 Extra Transverse 322 x 445 mm   -->
+      <Value Name="JapaneseDoublePostcard" Value="69" /> <!-- Japanese Double Postcard 200 x 148 mm -->
+      <Value Name="A6" Value="70" />                    <!-- A6 105 x 148 mm                 -->
+      <Value Name="JapaneseEnvelopeKaku2" Value="71" /> <!-- Japanese Envelope Kaku #2       -->
+      <Value Name="JapaneseEnvelopeKaku3" Value="72" /> <!-- Japanese Envelope Kaku #3       -->
+      <Value Name="JapaneseEnvelopeChou3" Value="73" /> <!-- Japanese Envelope Chou #3       -->
+      <Value Name="JapaneseEnvelopeChou4" Value="74" /> <!-- Japanese Envelope Chou #4       -->
+      <Value Name="LetterRotated" Value="75" />         <!-- Letter Rotated 11 x 8 1/2 11 in -->
+      <Value Name="A3Rotated" Value="76" />             <!-- A3 Rotated 420 x 297 mm         -->
+      <Value Name="A4Rotated" Value="77" />             <!-- A4 Rotated 297 x 210 mm         -->
+      <Value Name="A5Rotated" Value="78" />             <!-- A5 Rotated 210 x 148 mm         -->
+      <Value Name="B4JISRotated" Value="79" />          <!-- B4 (JIS) Rotated 364 x 257 mm   -->
+      <Value Name="B5JISRotated" Value="80" />          <!-- B5 (JIS) Rotated 257 x 182 mm   -->
+      <Value Name="JapanesePostcardRotated" Value="81" /> <!-- Japanese Postcard Rotated 148 x 100 mm -->
+      <Value Name="JapaneseDoublePostcardRotated" Value="82" /> <!-- Double Japanese Postcard Rotated 148 x 200 mm -->
+      <Value Name="A6Rotated" Value="83" />             <!-- A6 Rotated 148 x 105 mm         -->
+      <Value Name="JapaneseEnvelopeKaku2Rotated" Value="84" /> <!-- Japanese Envelope Kaku #2 Rotated -->
+      <Value Name="JapaneseEnvelopeKaku3Rotated" Value="85" /> <!-- Japanese Envelope Kaku #3 Rotated -->
+      <Value Name="JapaneseEnvelopeChou3Rotated" Value="86" /> <!-- Japanese Envelope Chou #3 Rotated -->
+      <Value Name="JapaneseEnvelopeChou4Rotated" Value="87" /> <!-- Japanese Envelope Chou #4 Rotated -->
+      <Value Name="B6JIS" Value="88" />                 <!-- B6 (JIS) 128 x 182 mm           -->
+      <Value Name="B6JISRotated" Value="89" />          <!-- B6 (JIS) Rotated 182 x 128 mm   -->
+      <Value Name="Sheet12x11" Value="90" />            <!-- 12 x 11 in                      -->
+      <Value Name="JapaneseEnvelopeYou4" Value="91" />  <!-- Japanese Envelope You #4        -->
+      <Value Name="JapaneseEnvelopeYou4Rotated" Value="92" /> <!-- Japanese Envelope You #4 Rotated-->
+      <Value Name="PRC16K" Value="93" />                <!-- PRC 16K 146 x 215 mm            -->
+      <Value Name="PRC32K" Value="94" />                <!-- PRC 32K 97 x 151 mm             -->
+      <Value Name="PRC32KBig" Value="95" />             <!-- PRC 32K(Big) 97 x 151 mm        -->
+      <Value Name="PRCEnvelope1" Value="96" />          <!-- PRC Envelope #1 102 x 165 mm    -->
+      <Value Name="PRCEnvelope2" Value="97" />          <!-- PRC Envelope #2 102 x 176 mm    -->
+      <Value Name="PRCEnvelope3" Value="98" />          <!-- PRC Envelope #3 125 x 176 mm    -->
+      <Value Name="PRCEnvelope4" Value="99" />          <!-- PRC Envelope #4 110 x 208 mm    -->
+      <Value Name="PRCEnvelope5" Value="100" />         <!-- PRC Envelope #5 110 x 220 mm    -->
+      <Value Name="PRCEnvelope6" Value="101" />         <!-- PRC Envelope #6 120 x 230 mm    -->
+      <Value Name="PRCEnvelope7" Value="102" />         <!-- PRC Envelope #7 160 x 230 mm    -->
+      <Value Name="PRCEnvelope8" Value="103" />         <!-- PRC Envelope #8 120 x 309 mm    -->
+      <Value Name="PRCEnvelope9" Value="104" />         <!-- PRC Envelope #9 229 x 324 mm    -->
+      <Value Name="PRCEnvelope10" Value="105" />        <!-- PRC Envelope #10 324 x 458 mm   -->
+      <Value Name="PRC16KRotated" Value="106" />        <!-- PRC 16K Rotated                 -->
+      <Value Name="PRC32KRotated" Value="107" />        <!-- PRC 32K Rotated                 -->
+      <Value Name="PRC32KBigRotated" Value="108" />     <!-- PRC 32K(Big) Rotated            -->
+      <Value Name="PRCEnvelope1Rotated" Value="109" />  <!-- PRC Envelope #1 Rotated 165 x 102 mm -->
+      <Value Name="PRCEnvelope2Rotated" Value="110" />  <!-- PRC Envelope #2 Rotated 176 x 102 mm -->
+      <Value Name="PRCEnvelope3Rotated" Value="111" />  <!-- PRC Envelope #3 Rotated 176 x 125 mm -->
+      <Value Name="PRCEnvelope4Rotated" Value="112" />  <!-- PRC Envelope #4 Rotated 208 x 110 mm -->
+      <Value Name="PRCEnvelope5Rotated" Value="113" />  <!-- PRC Envelope #5 Rotated 220 x 110 mm -->
+      <Value Name="PRCEnvelope6Rotated" Value="114" />  <!-- PRC Envelope #6 Rotated 230 x 120 mm -->
+      <Value Name="PRCEnvelope7Rotated" Value="115" />  <!-- PRC Envelope #7 Rotated 230 x 160 mm -->
+      <Value Name="PRCEnvelope8Rotated" Value="116" />  <!-- PRC Envelope #8 Rotated 309 x 120 mm -->
+      <Value Name="PRCEnvelope9Rotated" Value="117" />  <!-- PRC Envelope #9 Rotated 324 x 229 mm -->
+      <Value Name="PRCEnvelope10Rotated" Value="118" /> <!-- PRC Envelope #10 Rotated 458 x 324 mm -->
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

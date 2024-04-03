@@ -1,0 +1,404 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_Partition">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>Partition</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-Partition
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByUniqueId">
+        <QueryableProperties>
+          <!-- UniqueId -->
+          <Property PropertyName="UniqueId">
+            <Type PSType="System.String" />
+            <RegularQuery>
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" />
+            </RegularQuery>
+          </Property>
+          <!-- DiskId (ById) -->
+          <Property PropertyName="DiskId">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ById" Aliases="DiskPath" />
+            </RegularQuery>
+          </Property>
+          <!-- Offset (ById) -->
+          <Property PropertyName="Offset">
+            <Type PSType="System.UInt64" />
+            <RegularQuery>
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ById" />
+            </RegularQuery>
+          </Property>
+          <!-- DiskNumber (ByNumber) -->
+          <Property PropertyName="DiskNumber">
+            <Type PSType="System.UInt32" />
+            <RegularQuery>
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNumber" Position="0" />
+            </RegularQuery>
+          </Property>
+          <!-- PartitionNumber (ByNumber) -->
+          <Property PropertyName="PartitionNumber">
+            <Type PSType="System.UInt32" />
+            <RegularQuery>
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="false" CmdletParameterSets="ByNumber" Aliases="Number" Position="1" />
+            </RegularQuery>
+          </Property>
+          <!-- DriveLetter -->
+          <Property PropertyName="DriveLetter">
+            <Type PSType="System.Char" />
+            <RegularQuery>
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByDriveLetter" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <!-- Disk -->
+          <Association Association="MSFT_DiskToPartition" SourceRole="Disk" ResultRole="Partition">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Disk" />
+              <CmdletParameterMetadata PSName="Disk" ValueFromPipeline="true" CmdletParameterSets="ByDisk" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- Volume -->
+          <Association Association="MSFT_PartitionToVolume" SourceRole="Volume" ResultRole="Partition">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Volume" />
+              <CmdletParameterMetadata PSName="Volume" ValueFromPipeline="true" CmdletParameterSets="ByVolume" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- StorageSubSystem -->
+          <Association Association="MSFT_StorageSubSystemToPartition" SourceRole="StorageSubSystem" ResultRole="Partition">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubSystem" />
+              <CmdletParameterMetadata PSName="StorageSubSystem" ValueFromPipeline="true" CmdletParameterSets="ByStorageSubSystem" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+        </QueryableAssociations>
+      </GetCmdletParameters>
+      <!--
+
+      //
+      // Remove-Partition
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" />
+        <Method MethodName="DeleteObject">
+          <Parameters>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByUniqueId">
+          <QueryableProperties>
+            <!-- DiskId (ById) -->
+            <Property PropertyName="DiskId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ById" />
+              </RegularQuery>
+            </Property>
+            <!-- Offset (ById) -->
+            <Property PropertyName="Offset">
+              <Type PSType="System.UInt64" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ById" />
+              </RegularQuery>
+            </Property>
+            <!-- DiskNumber (ByNumber) -->
+            <Property PropertyName="DiskNumber">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNumber" Position="0" />
+              </RegularQuery>
+            </Property>
+            <!-- PartitionNumber (ByNumber) -->
+            <Property PropertyName="PartitionNumber">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="false" CmdletParameterSets="ByNumber" Aliases="Number" Position="1" />
+              </RegularQuery>
+            </Property>
+            <!-- DriveLetter -->
+            <Property PropertyName="DriveLetter">
+              <Type PSType="System.Char" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByDriveLetter" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Resize-Partition
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Resize" ConfirmImpact="Low" />
+        <Method MethodName="Resize">
+          <Parameters>
+            <!-- Size -->
+            <Parameter ParameterName="Size">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByUniqueId">
+          <QueryableProperties>
+            <!-- DiskId (ById) -->
+            <Property PropertyName="DiskId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ById" />
+              </RegularQuery>
+            </Property>
+            <!-- Offset (ById) -->
+            <Property PropertyName="Offset">
+              <Type PSType="System.UInt64" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ById" />
+              </RegularQuery>
+            </Property>
+            <!-- DiskNumber (ByNumber) -->
+            <Property PropertyName="DiskNumber">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNumber" Position="0" />
+              </RegularQuery>
+            </Property>
+            <!-- PartitionNumber (ByNumber) -->
+            <Property PropertyName="PartitionNumber">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="false" CmdletParameterSets="ByNumber" Aliases="Number" Position="1" />
+              </RegularQuery>
+            </Property>
+            <!-- DriveLetter -->
+            <Property PropertyName="DriveLetter">
+              <Type PSType="System.Char" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByDriveLetter" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Get-PartitionSupportedSize
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" Noun="PartitionSupportedSize" ConfirmImpact="None" />
+        <Method MethodName="GetSupportedSize">
+          <Parameters>
+            <!-- OUTPUT: SizeMin -->
+            <Parameter ParameterName="SizeMin">
+              <Type PSType="System.UInt64" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- OUTPUT: SizeMax -->
+            <Parameter ParameterName="SizeMax">
+              <Type PSType="System.UInt64" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByUniqueId">
+          <QueryableProperties>
+            <!-- DiskId (ById) -->
+            <Property PropertyName="DiskId">
+              <Type PSType="System.String" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ById" />
+              </RegularQuery>
+            </Property>
+            <!-- Offset (ById) -->
+            <Property PropertyName="Offset">
+              <Type PSType="System.UInt64" />
+              <RegularQuery>
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ById" />
+              </RegularQuery>
+            </Property>
+            <!-- DiskNumber (ByNumber) -->
+            <Property PropertyName="DiskNumber">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNumber" Position="0" />
+              </RegularQuery>
+            </Property>
+            <!-- PartitionNumber (ByNumber) -->
+            <Property PropertyName="PartitionNumber">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="false" CmdletParameterSets="ByNumber" Aliases="Number" Position="1" />
+              </RegularQuery>
+            </Property>
+            <!-- DriveLetter -->
+            <Property PropertyName="DriveLetter">
+              <Type PSType="System.Char" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByDriveLetter" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Add-PartitionAccessPath
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Add" Noun="PartitionAccessPath" ConfirmImpact="Low" />
+        <Method MethodName="AddAccessPath">
+          <Parameters>
+            <!-- AccessPath -->
+            <Parameter ParameterName="AccessPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="2">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AssignDriveLetter">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByUniqueId">
+          <QueryableProperties>
+            <!-- DiskId (ById) -->
+            <Property PropertyName="DiskId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ById" />
+              </RegularQuery>
+            </Property>
+            <!-- Offset (ById) -->
+            <Property PropertyName="Offset">
+              <Type PSType="System.UInt64" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ById" />
+              </RegularQuery>
+            </Property>
+            <!-- DiskNumber (ByNumber) -->
+            <Property PropertyName="DiskNumber">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNumber" Position="0" />
+              </RegularQuery>
+            </Property>
+            <!-- PartitionNumber (ByNumber) -->
+            <Property PropertyName="PartitionNumber">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="false" CmdletParameterSets="ByNumber" Aliases="Number" Position="1" />
+              </RegularQuery>
+            </Property>
+            <!-- DriveLetter -->
+            <Property PropertyName="DriveLetter">
+              <Type PSType="System.Char" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByDriveLetter" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Remove-PartitionAccessPath
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" Noun="PartitionAccessPath" ConfirmImpact="Medium" />
+        <Method MethodName="RemoveAccessPath">
+          <Parameters>
+            <!-- AccessPath -->
+            <Parameter ParameterName="AccessPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="2">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByUniqueId">
+          <QueryableProperties>
+            <!-- DiskId (ById) -->
+            <Property PropertyName="DiskId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ById" />
+              </RegularQuery>
+            </Property>
+            <!-- Offset (ById) -->
+            <Property PropertyName="Offset">
+              <Type PSType="System.UInt64" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ById" />
+              </RegularQuery>
+            </Property>
+            <!-- DiskNumber (ByNumber) -->
+            <Property PropertyName="DiskNumber">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNumber" Position="0" />
+              </RegularQuery>
+            </Property>
+            <!-- PartitionNumber (ByNumber) -->
+            <Property PropertyName="PartitionNumber">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="false" CmdletParameterSets="ByNumber" Aliases="Number" Position="1" />
+              </RegularQuery>
+            </Property>
+            <!-- DriveLetter -->
+            <Property PropertyName="DriveLetter">
+              <Type PSType="System.Char" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByDriveLetter" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+</PowerShellMetadata>

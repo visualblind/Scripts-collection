@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>MSFT_NetSwitchTeam_ListView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT\StandardCimV2\MSFT_NetSwitchTeam</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetSwitchTeam</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <label>Name</label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>
+                  $members = Get-NetSwitchTeamMember * $_.Name
+                  $mnames= @()
+                  foreach($m in @($members)){$mnames += $m.Name}
+                  $mnames
+                </ScriptBlock>
+                <label>Members</label>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>MSFT_NetSwitchTeam_TableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT\StandardCimV2\MSFT_NetSwitchTeam</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetSwitchTeam</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Width>10</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Members</Label>
+            <Width>15</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  $members = $_ | Get-NetSwitchTeamMember 
+                  $mnames = @()
+                  foreach($m in @($members)){$mnames += $m.Name} 
+                  $mnames
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+         </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

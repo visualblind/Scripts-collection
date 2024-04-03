@@ -1,0 +1,6 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_PhysicalDisk">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>PhysicalDisk</DefaultNoun>
+  </Class>
+</PowerShellMetadata>

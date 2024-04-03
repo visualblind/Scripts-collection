@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_NetLbfoTeam</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Members</Name>
+        <GetScriptBlock>
+          $members = Get-NetLbfoTeamMember -TeamOfTheMember $this
+          $mnames= @()
+          foreach($m in @($members)){$mnames += $m.Name}
+          $mnames
+        </GetScriptBlock>
+      </ScriptProperty>
+
+      <ScriptProperty>
+        <Name>TeamNics</Name>
+        <GetScriptBlock>
+          $tnics =  Get-NetLbfoTeamNic -TeamOfTheTeamNic $this
+          $tnames= @()
+          foreach($t in @($tnics)){$tnames += $t.Name}
+          $tnames
+        </GetScriptBlock>
+      </ScriptProperty>
+
+      <ScriptProperty>
+        <Name>TeamingMode</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetLbfo.TeamingModes]($this.PSBase.CimInstanceProperties['TeamingMode'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetLbfo.TeamingModes]$value)
+          $this.PSBase.CimInstanceProperties['TeamingMode'].Value = [System.UInt32]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+
+      <ScriptProperty>
+        <Name>LoadBalancingAlgorithm</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetLbfo.LBAlgos]($this.PSBase.CimInstanceProperties['LoadBalancingAlgorithm'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetLbfo.LBAlgos]$value)
+          $this.PSBase.CimInstanceProperties['LoadBalancingAlgorithm'].Value = [System.UInt32]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+
+      <ScriptProperty>
+        <Name>LacpTimer</Name>
+        <GetScriptBlock>
+            $lacpTimer = $this.PSBase.CimInstanceProperties['LacpTimer'].Value
+            if($lacpTimer -ne $null)
+            {
+                [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetLbfo.LacpTimers]$lacpTimer
+            }
+            else
+            {
+                $null
+            }
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetLbfo.LacpTimers]$value)
+          $this.PSBase.CimInstanceProperties['LacpTimer'].Value = [System.UInt32]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+ 
+      <ScriptProperty>
+        <Name>Status</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetLbfo.TeamStatus]($this.PSBase.CimInstanceProperties['Status'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+
+      <AliasProperty>
+        <Name>tm</Name>
+        <ReferencedMemberName>TeamingMode</ReferencedMemberName>
+      </AliasProperty>
+
+      <AliasProperty>
+        <Name>lba</Name>
+        <ReferencedMemberName>LoadBalancingAlgorithm</ReferencedMemberName>
+      </AliasProperty>
+
+      <AliasProperty>
+        <Name>lt</Name>
+        <ReferencedMemberName>LacpTimer</ReferencedMemberName>
+      </AliasProperty>
+    </Members>
+  </Type>
+
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_NetLbfoTeamMember</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>AdministrativeMode</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetLbfo.AdminModes]($this.PSBase.CimInstanceProperties['AdministrativeMode'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetLbfo.AdminModes]$value)
+          $this.PSBase.CimInstanceProperties['AdministrativeMode'].Value = [System.UInt32]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+
+      <ScriptProperty>
+        <Name>OperationalStatus</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetLbfo.OperationalModes]($this.PSBase.CimInstanceProperties['OperationalMode'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+
+      <ScriptProperty>
+        <Name>FailureReason</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetLbfo.FailureReasons]($this.PSBase.CimInstanceProperties['FailureReason'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+
+      <ScriptProperty>
+        <Name>TransmitLinkSpeed</Name>
+        <GetScriptBlock>
+          Import-Module NetAdapter\NetAdapter.Format.Helper.psm1
+          Format-LinkSpeed $this.PSBase.CimInstanceProperties['TransmitLinkSpeed'].Value
+        </GetScriptBlock>
+      </ScriptProperty>
+
+      <ScriptProperty>
+        <Name>TransmitLinkSpeed(Mbps)</Name>
+        <GetScriptBlock>
+          Import-Module NetAdapter\NetAdapter.Format.Helper.psm1
+          $val = $this.PSBase.CimInstanceProperties['TransmitLinkSpeed'].Value / 1000000
+          Format-LinkSpeed $val 1 $false
+        </GetScriptBlock>
+      </ScriptProperty>
+
+      <ScriptProperty>
+        <Name>TransmitLinkSpeed(Gbps)</Name>
+        <GetScriptBlock>
+          Import-Module NetAdapter\NetAdapter.Format.Helper.psm1
+          $val = $this.PSBase.CimInstanceProperties['TransmitLinkSpeed'].Value / 1000000000
+          Format-LinkSpeed $val 1 $false
+        </GetScriptBlock>
+      </ScriptProperty>
+
+      <ScriptProperty>
+        <Name>ReceiveLinkSpeed</Name>
+        <GetScriptBlock>
+          Import-Module NetAdapter\NetAdapter.Format.Helper.psm1
+          Format-LinkSpeed $this.PSBase.CimInstanceProperties['ReceiveLinkSpeed'].Value
+        </GetScriptBlock>
+      </ScriptProperty>
+
+      <ScriptProperty>
+        <Name>ReceiveLinkSpeed(Mbps)</Name>
+        <GetScriptBlock>
+          Import-Module NetAdapter\NetAdapter.Format.Helper.psm1
+          $val = $this.PSBase.CimInstanceProperties['ReceiveLinkSpeed'].Value / 1000000
+          Format-LinkSpeed $val 1 $false
+        </GetScriptBlock>
+      </ScriptProperty>
+
+      <ScriptProperty>
+        <Name>ReceiveLinkSpeed(Gbps)</Name>
+        <GetScriptBlock>
+          Import-Module NetAdapter\NetAdapter.Format.Helper.psm1
+          $val = $this.PSBase.CimInstanceProperties['ReceiveLinkSpeed'].Value / 1000000000
+          Format-LinkSpeed $val 1 $false
+        </GetScriptBlock>
+      </ScriptProperty>
+
+      <AliasProperty>
+        <Name>am</Name>
+        <ReferencedMemberName>AdministrativeMode</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>ifAlias</Name>
+        <ReferencedMemberName>Name</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>InterfaceAlias</Name>
+        <ReferencedMemberName>Name</ReferencedMemberName>
+      </AliasProperty>
+    </Members>
+  </Type>
+
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_NetLbfoTeamNic</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>TransmitLinkSpeed</Name>
+        <GetScriptBlock>
+          Import-Module NetAdapter\NetAdapter.Format.Helper.psm1
+          Format-LinkSpeed $this.PSBase.CimInstanceProperties['TransmitLinkSpeed'].Value
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>TransmitLinkSpeed(Mbps)</Name>
+        <GetScriptBlock>
+          Import-Module NetAdapter\NetAdapter.Format.Helper.psm1
+          $val = $this.PSBase.CimInstanceProperties['TransmitLinkSpeed'].Value / 1000000
+          Format-LinkSpeed $val 1 $false
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>TransmitLinkSpeed(Gbps)</Name>
+        <GetScriptBlock>
+          Import-Module NetAdapter\NetAdapter.Format.Helper.psm1
+          $val = $this.PSBase.CimInstanceProperties['TransmitLinkSpeed'].Value / 1000000000
+          Format-LinkSpeed $val 1 $false
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>ReceiveLinkSpeed</Name>
+        <GetScriptBlock>
+          Import-Module NetAdapter\NetAdapter.Format.Helper.psm1
+          Format-LinkSpeed $this.PSBase.CimInstanceProperties['ReceiveLinkSpeed'].Value
+      </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>ReceiveLinkSpeed(Mbps)</Name>
+        <GetScriptBlock>
+          Import-Module NetAdapter\NetAdapter.Format.Helper.psm1
+          $val = $this.PSBase.CimInstanceProperties['ReceiveLinkSpeed'].Value / 1000000
+          Format-LinkSpeed $val 1 $false
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>ReceiveLinkSpeed(Gbps)</Name>
+        <GetScriptBlock>
+          Import-Module NetAdapter\NetAdapter.Format.Helper.psm1
+          $val = $this.PSBase.CimInstanceProperties['ReceiveLinkSpeed'].Value / 1000000000
+          Format-LinkSpeed $val 1 $false
+        </GetScriptBlock>
+      </ScriptProperty>
+
+      <AliasProperty>
+        <Name>ifAlias</Name>
+        <ReferencedMemberName>Name</ReferencedMemberName>
+      </AliasProperty>
+
+      <AliasProperty>
+        <Name>InterfaceAlias</Name>
+        <ReferencedMemberName>Name</ReferencedMemberName>
+      </AliasProperty>
+    </Members>
+  </Type>
+</Types>

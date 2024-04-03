@@ -1,0 +1,10 @@
+*{margin: 0; padding: 0; }
+		body, html {height: 100%; color: #333; font: 20px Helvetica, sans-serif; overflow: hidden;}
+		.bg-image { background-image: url(https://daptarru.files.wordpress.com/2018/03/pexels-photo-933054.jpeg?w=640); height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover; filter: blur(15px); transform: scale(1.2);}
+		article { display: block; text-align: left; max-width: 650px; margin: 0 auto; overflow: hidden;}
+		#head { font-size: 30px; color: orange; border-bottom: 1px solid #DBDBDB; padding: 20px 20px 10px 20px; }
+		.maincontent{ background-image: linear-gradient(to bottom, white, #DBDBDB); border: 5px solid #FFFFFF; border-radius: 10px; transition: all .2s ease; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+		.maincontent:hover{ background-color: white; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4); }
+		.special{ color: white ; background-color: #6F6FFF; padding: 0 5px 0 5px ; transition: all .2s ease; border: 1px solid #6F6FFF; border-radius: 5px; display: inline-block; }
+		article:hover .special{ font-weight: bold; padding: 0 10px 0 10px }
+		#content{padding: 10px 20px 20px 20px; }

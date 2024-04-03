@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <!--
+
+  //
+  // MSFT_FSRMAction
+  //
+
+  -->
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_FSRMAction</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Type</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ActionTypeEnum]($this.PSBase.CimInstanceProperties['Type'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>SecurityLevel</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ActionSecurityLevelEnum]($this.PSBase.CimInstanceProperties['SecurityLevel'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>EventType</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ActionEventTypeEnum]($this.PSBase.CimInstanceProperties['EventType'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>ReportTypes</Name>
+        <GetScriptBlock>
+          $integerArray = $this.PSBase.CimInstanceProperties['ReportTypes'].Value
+	  $enumArray = New-Object Microsoft.PowerShell.Cmdletization.GeneratedTypes.ActionReportTypeEnum[] ($integerArray.Length)
+	  for ($i = 0; $i -lt $integerArray.Length; $i++)
+	  {
+		$enumArray[$i] = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ActionReportTypeEnum]($integerArray[$i])
+	  }
+	  return $enumArray
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/StandardCimv2/MSFT_3DPrinter">
+    <Version>1.0</Version>
+    <DefaultNoun>Printer</DefaultNoun>
+  </Class>
+</PowerShellMetadata>

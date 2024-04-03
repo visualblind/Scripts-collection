@@ -1,0 +1,562 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_Disk">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>Disk</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-Disk
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByNumber">
+        <QueryableProperties>
+          <!-- UniqueId -->
+          <Property PropertyName="UniqueId">
+            <Type PSType="System.String" />
+            <RegularQuery>
+              <CmdletParameterMetadata CmdletParameterSets="ByUniqueId" Aliases="Id" />
+            </RegularQuery>
+          </Property>
+          <!-- FriendlyName -->
+          <Property PropertyName="FriendlyName">
+            <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                  <CmdletParameterMetadata CmdletParameterSets="ByName" />
+              </RegularQuery>
+          </Property>
+          <!-- SerialNumber -->
+          <Property PropertyName="SerialNumber">
+            <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata CmdletParameterSets="ByName" />
+              </RegularQuery>
+          </Property>
+          <!-- Path -->
+          <Property PropertyName="Path">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata  ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByPath" />
+            </RegularQuery>
+          </Property>
+          <!-- Number -->
+          <Property PropertyName="Number">
+            <Type PSType="System.UInt32" />
+            <RegularQuery>
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNumber" Position="0" Aliases="DeviceId" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <!-- Partition -->
+          <Association Association="MSFT_DiskToPartition" SourceRole="Partition" ResultRole="Disk">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Partition" />
+              <CmdletParameterMetadata PSName="Partition" ValueFromPipeline="true" CmdletParameterSets="ByPartition" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- VirtualDisk -->
+          <Association Association="MSFT_VirtualDiskToDisk" SourceRole="VirtualDisk" ResultRole="Disk">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_VirtualDisk" />
+              <CmdletParameterMetadata PSName="VirtualDisk" ValueFromPipeline="true" CmdletParameterSets="ByVirtualDisk" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- iSCSISession -->
+          <Association Association="MSFT_iSCSISessionToDisk" SourceRole="iSCSISession" ResultRole="Disk">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSISession" />
+              <CmdletParameterMetadata PSName="iSCSISession" ValueFromPipeline="true" CmdletParameterSets="ByiSCSISession" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- iSCSIConnection -->
+          <Association Association="MSFT_iSCSIConnectionToDisk" SourceRole="iSCSIConnection" ResultRole="Disk">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSIConnection" />
+              <CmdletParameterMetadata PSName="iSCSIConnection" ValueFromPipeline="true" CmdletParameterSets="ByiSCSIConnection" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- StorageSubSystem -->
+          <Association Association="MSFT_StorageSubSystemToDisk" SourceRole="StorageSubSystem" ResultRole="Disk">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubSystem" />
+              <CmdletParameterMetadata PSName="StorageSubSystem" ValueFromPipeline="true" CmdletParameterSets="ByStorageSubSystem" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- StorageNode -->
+          <Association Association="MSFT_StorageNodeToDisk" SourceRole="StorageNode" ResultRole="Disk">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageNode" />
+              <CmdletParameterMetadata PSName="StorageNode" ValueFromPipeline="true" CmdletParameterSets="ByStorageNode" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- StorageJob -->
+          <Association Association="MSFT_StorageJobToAffectedStorageObject" SourceRole="StorageJob" ResultRole="AffectedStorageObject">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageJob" />
+              <CmdletParameterMetadata PSName="StorageJob" ValueFromPipeline="true" CmdletParameterSets="ByStorageJob" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+        </QueryableAssociations>
+      </GetCmdletParameters>
+      <!--
+
+      //
+      // Initialize-Disk
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Initialize" ConfirmImpact="Medium" />
+        <Method MethodName="Initialize">
+          <Parameters>
+            <!-- PartitionStyle -->
+            <Parameter ParameterName="PartitionStyle">
+              <Type PSType="Disk.PartitionStyle" />
+              <CmdletParameterMetadata  />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByNumber">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+            <!-- FriendlyName -->
+            <Property PropertyName="FriendlyName">
+                <Type PSType="System.String" />
+                <RegularQuery AllowGlobbing="true">
+                    <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+                </RegularQuery>
+            </Property>
+            <!-- Path -->
+            <Property PropertyName="Path">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByPath" />
+              </RegularQuery>
+            </Property>
+            <!-- Number -->
+            <Property PropertyName="Number">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNumber" Position="0" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryableAssociations>
+            <!-- VirtualDisk -->
+            <Association Association="MSFT_VirtualDiskToDisk" SourceRole="VirtualDisk" ResultRole="Disk">
+              <AssociatedInstance>
+                <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_VirtualDisk" />
+                <CmdletParameterMetadata PSName="VirtualDisk" ValueFromPipeline="true" CmdletParameterSets="ByVirtualDisk" />
+              </AssociatedInstance>
+            </Association>
+          </QueryableAssociations>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Clear-Disk
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Clear" ConfirmImpact="High" />
+        <Method MethodName="Clear">
+          <Parameters>
+            <!-- RemoveData -->
+            <Parameter ParameterName="RemoveData">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- RemoveOEM -->
+            <Parameter ParameterName="RemoveOEM">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Sanitize -->
+              <Parameter ParameterName="Sanitize">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByNumber">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+            <!-- FriendlyName -->
+            <Property PropertyName="FriendlyName">
+                <Type PSType="System.String" />
+                <RegularQuery AllowGlobbing="true">
+                    <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+                </RegularQuery>
+            </Property>
+            <!-- Path -->
+            <Property PropertyName="Path">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByPath" />
+              </RegularQuery>
+            </Property>
+            <!-- Number -->
+            <Property PropertyName="Number">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNumber" Position="0" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // New-Partition
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="New" Noun="Partition" />
+        <Method MethodName="CreatePartition">
+          <Parameters>
+            <!-- Size -->
+            <Parameter ParameterName="Size">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- UseMaximumSize -->
+            <Parameter ParameterName="UseMaximumSize">
+                <Type PSType="System.Management.Automation.SwitchParameter" />
+                <CmdletParameterMetadata >
+                    <ValidateNotNull />
+                    <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Offset -->
+            <Parameter ParameterName="Offset">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Alignment -->
+            <Parameter ParameterName="Alignment">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- DriveLetter -->
+            <Parameter ParameterName="DriveLetter">
+              <Type PSType="System.Char" />
+              <CmdletParameterMetadata Aliases="NewDriveLetter" />
+            </Parameter>
+            <!-- AssignDriveLetter -->
+            <Parameter ParameterName="AssignDriveLetter">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MbrType -->
+            <Parameter ParameterName="MbrType">
+              <Type PSType="Disk.CreatePartition.MbrType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- GptType -->
+            <Parameter ParameterName="GptType">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- IsHidden -->
+            <Parameter ParameterName="IsHidden">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsActive -->
+            <Parameter ParameterName="IsActive">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- CMDLET OUTPUT -->
+            <Parameter ParameterName="CreatedPartition">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Partition" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByNumber">
+          <QueryableProperties>
+            <!-- DiskId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery>
+                <CmdletParameterMetadata PSName="DiskId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+            <!-- DiskPath -->
+            <Property PropertyName="Path">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="DiskPath" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByPath" />
+              </RegularQuery>
+            </Property>
+            <!-- DiskNumber -->
+            <Property PropertyName="Number">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata PSName="DiskNumber" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNumber" Position="0" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Update-Disk
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Update" />
+        <Method MethodName="Refresh">
+        <Parameters>
+          <!-- SourceCaller -->
+          <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+            <Type PSType="System.String" />
+          </Parameter>
+        </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByNumber">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+            <!-- FriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+              </RegularQuery>
+            </Property>
+            <!-- Path -->
+            <Property PropertyName="Path">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByPath" />
+              </RegularQuery>
+            </Property>
+            <!-- Number -->
+            <Property PropertyName="Number">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNumber" Position="0" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Enable-StorageHighAvailability
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Enable" Noun="StorageHighAvailability"/>
+        <Method MethodName="EnableHighAvailability">
+          <Parameters>
+            <!--ScaleOut-->
+            <Parameter ParameterName="ScaleOut">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata  />
+            </Parameter>
+            <!--SourceCaller-->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByDiskNumber">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery>
+                <CmdletParameterMetadata PSName="DiskUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByDiskUniqueId" Aliases="DiskId" />
+              </RegularQuery>
+            </Property>
+            <!-- FriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="DiskFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByDiskName" />
+              </RegularQuery>
+            </Property>
+            <!-- Path -->
+            <Property PropertyName="Path">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="DiskPath" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByDiskPath" />
+              </RegularQuery>
+            </Property>
+            <!-- Number -->
+            <Property PropertyName="Number">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata PSName="DiskNumber" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByDiskNumber" Position="0" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Disable-StorageHighAvailability
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Disable" Noun="StorageHighAvailability"/>
+        <Method MethodName="DisableHighAvailability">
+          <Parameters>
+            <!--SourceCaller-->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByDiskNumber">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery>
+                <CmdletParameterMetadata PSName="DiskUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByDiskUniqueId" Aliases="DiskId" />
+              </RegularQuery>
+            </Property>
+            <!-- FriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="DiskFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByDiskName" />
+              </RegularQuery>
+            </Property>
+            <!-- Path -->
+            <Property PropertyName="Path">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="DiskPath" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByDiskPath" />
+              </RegularQuery>
+            </Property>
+            <!-- Number -->
+            <Property PropertyName="Number">
+              <Type PSType="System.UInt32" />
+              <RegularQuery>
+                <CmdletParameterMetadata PSName="DiskNumber" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByDiskNumber" Position="0" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="Disk.OperationalStatus" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Other" Value="1" />
+      <Value Name="OK" Value="2" />
+      <Value Name="Degraded" Value="3" />
+      <Value Name="Stressed" Value="4" />
+      <Value Name="PredictiveFailure" Value="5" />
+      <Value Name="Error" Value="6" />
+      <Value Name="NonRecoverableError" Value="7" />
+      <Value Name="Starting" Value="8" />
+      <Value Name="Stopping" Value="9" />
+      <Value Name="Stopped" Value="10" />
+      <Value Name="InService" Value="11" />
+      <Value Name="NoContact" Value="12" />
+      <Value Name="LostCommunication" Value="13" />
+      <Value Name="Aborted" Value="14" />
+      <Value Name="Dormant" Value="15" />
+      <Value Name="SupportingEntityInError" Value="16" />
+      <Value Name="Completed" Value="17" />
+      <Value Name="PowerMode" Value="18" />
+      <Value Name="Relocating" Value="19" />
+      <Value Name="Online" Value="53264" />
+      <Value Name="NotReady" Value="53265" />
+      <Value Name="NoMedia" Value="53266" />
+      <Value Name="Offline" Value="53267" />
+      <Value Name="Failed" Value="53268" />
+    </Enum>
+    <Enum EnumName="Disk.HealthStatus" UnderlyingType="System.UInt16">
+      <Value Name="Healthy" Value="0" />
+      <Value Name="Warning" Value="1" />
+      <Value Name="Unhealthy" Value="2" />
+    </Enum>
+    <Enum EnumName="Disk.BusType" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="SCSI" Value="1" />
+      <Value Name="ATAPI" Value="2" />
+      <Value Name="ATA" Value="3" />
+      <Value Name="IEEE1394" Value="4"/>
+      <Value Name="SSA" Value="5" />
+      <Value Name="FibreChannel" Value="6" />
+      <Value Name="USB" Value="7" />
+      <Value Name="RAID" Value="8" />
+      <Value Name="iSCSI" Value="9" />
+      <Value Name="SAS" Value="10" />
+      <Value Name="SATA" Value="11" />
+      <Value Name="SD" Value="12" />
+      <Value Name="MMC" Value="13" />
+      <Value Name="Virtual" Value="14" />
+      <Value Name="FileBackedVirtual" Value="15" />
+      <Value Name="Spaces" Value="16" />
+      <Value Name="NVMe" Value="17" />
+      <Value Name="SCM" Value="18" />
+      <Value Name="UFS" Value="19" />
+    </Enum>
+    <Enum EnumName="Disk.PartitionStyle" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="MBR" Value="1" />
+      <Value Name="GPT" Value="2" />
+    </Enum>
+    <Enum EnumName="Disk.CreatePartition.MbrType" UnderlyingType="System.UInt16">
+      <Value Name="FAT12" Value="1" />
+      <Value Name="FAT16" Value="4" />
+      <Value Name="Extended" Value="5" />
+      <Value Name="Huge" Value="6" />
+      <Value Name="IFS" Value="7" />
+      <Value Name="FAT32" Value="12" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

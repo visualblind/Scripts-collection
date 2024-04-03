@@ -1,0 +1,386 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_FileShare">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>FileShare</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-FileShare
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByFileServer">
+        <QueryableProperties>
+          <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery>
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+          <!-- Name -->
+          <Property PropertyName="Name">
+            <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata CmdletParameterSets="ByFileServer BySubsystem ByVolume" />
+              </RegularQuery>
+          </Property>
+          <!-- Protocol -->
+          <Property PropertyName="FileSharingProtocol">
+            <Type PSType="FileShare.FileSharingProtocol" />
+              <RegularQuery>
+                <CmdletParameterMetadata PSName="Protocol" CmdletParameterSets="ByFileServer BySubsystem ByVolume" />
+              </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <!-- FileServer -->
+          <Association Association="MSFT_FileServerToFileShare" SourceRole="FileServer" ResultRole="FileShare">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_FileServer" />
+                <CmdletParameterMetadata PSName="FileServer" ValueFromPipeline="true" CmdletParameterSets="ByFileServer" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- Subsystem -->
+          <Association Association="MSFT_StorageSubsystemToFileShare" SourceRole="StorageSubsystem" ResultRole="FileShare">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubsystem" />
+                <CmdletParameterMetadata PSName="Subsystem" ValueFromPipeline="true" CmdletParameterSets="BySubsystem" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- Volume -->
+          <Association Association="MSFT_VolumeToFileShare" SourceRole="Volume" ResultRole="FileShare">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Volume" />
+                <CmdletParameterMetadata PSName="Volume" ValueFromPipeline="true" CmdletParameterSets="ByVolume" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+        </QueryableAssociations>
+      </GetCmdletParameters>
+      <!--
+
+      //
+      // Remove-FileShare
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High"/>
+        <Method MethodName="DeleteObject">
+          <Parameters>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+              <Property PropertyName="UniqueId">
+                <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+                </RegularQuery>
+              </Property>
+            <!-- Name -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByName" />
+                </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryableAssociations>
+            <!-- FileServer -->
+            <Association Association="MSFT_FileServerToFileShare" SourceRole="FileServer" ResultRole="FileShare">
+              <AssociatedInstance>
+                <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_FileServer" />
+                  <CmdletParameterMetadata PSName="FileServer" ValueFromPipeline="true" CmdletParameterSets="ByName" ErrorOnNoMatch="false" />
+              </AssociatedInstance>
+            </Association>
+          </QueryableAssociations>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Grant-FileShareAccess
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Grant" Noun="FileShareAccess" ConfirmImpact="Low"/>
+        <Method MethodName="GrantAccess">
+          <Parameters>
+            <!-- AccountNames -->
+            <Parameter ParameterName="AccountNames">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata PSName="AccountName" IsMandatory="true">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- AccessRight -->
+            <Parameter ParameterName="AccessRight">
+              <Type PSType="FileShare.AccessRight" />
+              <CmdletParameterMetadata  IsMandatory="true" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+              <Property PropertyName="UniqueId">
+                <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+                </RegularQuery>
+              </Property>
+            <!-- Name -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByName" />
+                </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryableAssociations>
+            <!-- FileServer -->
+            <Association Association="MSFT_FileServerToFileShare" SourceRole="FileServer" ResultRole="FileShare">
+              <AssociatedInstance>
+                <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_FileServer" />
+                  <CmdletParameterMetadata PSName="FileServer" ValueFromPipeline="true" CmdletParameterSets="ByName" ErrorOnNoMatch="false" />
+              </AssociatedInstance>
+            </Association>
+          </QueryableAssociations>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Block-FileShareAccess
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Block" Noun="FileShareAccess" ConfirmImpact="High"/>
+        <Method MethodName="BlockAccess">
+          <Parameters>
+            <!-- AccountNames -->
+            <Parameter ParameterName="AccountNames">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata PSName="AccountName" IsMandatory="true">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+              <Property PropertyName="UniqueId">
+                <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+                </RegularQuery>
+              </Property>
+            <!-- Name -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByName" />
+                </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryableAssociations>
+            <!-- FileServer -->
+            <Association Association="MSFT_FileServerToFileShare" SourceRole="FileServer" ResultRole="FileShare">
+              <AssociatedInstance>
+                <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_FileServer" />
+                  <CmdletParameterMetadata PSName="FileServer" ValueFromPipeline="true" CmdletParameterSets="ByName" ErrorOnNoMatch="false" />
+              </AssociatedInstance>
+            </Association>
+          </QueryableAssociations>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Revoke-FileShareAccess
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Revoke" Noun="FileShareAccess" ConfirmImpact="High"/>
+        <Method MethodName="RevokeAccess">
+          <Parameters>
+            <!-- AccountNames -->
+            <Parameter ParameterName="AccountNames">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata PSName="AccountName" IsMandatory="true">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+              <Property PropertyName="UniqueId">
+                <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+                </RegularQuery>
+              </Property>
+            <!-- Name -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByName" />
+                </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryableAssociations>
+            <!-- FileServer -->
+            <Association Association="MSFT_FileServerToFileShare" SourceRole="FileServer" ResultRole="FileShare">
+              <AssociatedInstance>
+                <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_FileServer" />
+                  <CmdletParameterMetadata PSName="FileServer" ValueFromPipeline="true" CmdletParameterSets="ByName" ErrorOnNoMatch="false" />
+              </AssociatedInstance>
+            </Association>
+          </QueryableAssociations>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Unblock-FileShareAccess
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Unblock" Noun="FileShareAccess" ConfirmImpact="Low"/>
+        <Method MethodName="UnblockAccess">
+          <Parameters>
+            <!-- AccountNames -->
+            <Parameter ParameterName="AccountNames">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata PSName="AccountName" IsMandatory="true">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+              <Property PropertyName="UniqueId">
+                <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+                </RegularQuery>
+              </Property>
+            <!-- Name -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByName" />
+                </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryableAssociations>
+            <!-- FileServer -->
+            <Association Association="MSFT_FileServerToFileShare" SourceRole="FileServer" ResultRole="FileShare">
+              <AssociatedInstance>
+                <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_FileServer" />
+                  <CmdletParameterMetadata PSName="FileServer" ValueFromPipeline="true" CmdletParameterSets="ByName" ErrorOnNoMatch="false" />
+              </AssociatedInstance>
+            </Association>
+          </QueryableAssociations>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!-- 
+
+      //
+      // Get-FileShareAccessControlEntry 
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" Noun="FileShareAccessControlEntry"/>
+        <Method MethodName="GetAccessControlEntries">
+          <Parameters>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+            <!-- CMDLET OUTPUT -->
+            <Parameter ParameterName="AccessControlEntries">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_FileShareAccessControlEntry[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+              <Property PropertyName="UniqueId">
+                <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+                </RegularQuery>
+              </Property>
+            <!-- Name -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByName" />
+                </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryableAssociations>
+            <!-- FileServer -->
+            <Association Association="MSFT_FileServerToFileShare" SourceRole="FileServer" ResultRole="FileShare">
+              <AssociatedInstance>
+                <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_FileServer" />
+                  <CmdletParameterMetadata PSName="FileServer" ValueFromPipeline="true" CmdletParameterSets="ByName" ErrorOnNoMatch="false" />
+              </AssociatedInstance>
+            </Association>
+          </QueryableAssociations>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+    <CmdletAdapterPrivateData>
+        <Data Name="ClientSideShouldProcess" />
+    </CmdletAdapterPrivateData>
+  </Class>
+  <Enums>
+    <Enum EnumName="FileShare.FileSharingProtocol" UnderlyingType="System.UInt16">
+      <Value Name="NFS" Value="2" />
+      <Value Name="SMB" Value="3" />
+    </Enum>
+    <Enum EnumName="FileShare.AccessRight" UnderlyingType="System.UInt32">
+      <Value Name="Full" Value="0" />
+      <Value Name="Modify" Value="1" />
+      <Value Name="Read" Value="2" />
+      <Value Name="Custom" Value="3" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

@@ -1,0 +1,172 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_StorageJob">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>StorageJob</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-StorageJob
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+        <QueryableProperties>
+          <!-- UniqueId -->
+          <Property PropertyName="UniqueId">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </RegularQuery>
+          </Property>
+          <!-- Name -->
+          <Property PropertyName="Name">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <!-- JobState -->
+          <Property PropertyName="JobState">
+            <Type PSType="StorageJob.JobState" />
+            <RegularQuery>
+              <CmdletParameterMetadata />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <!-- StorageSubsystem -->
+          <Association Association="MSFT_StorageJobToAffectedStorageObject" SourceRole="AffectedStorageObject" ResultRole="StorageJob">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubsystem" />
+              <CmdletParameterMetadata PSName="StorageSubsystem" ValueFromPipeline="true" CmdletParameterSets="ByStorageSubSystem" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- StoragePool -->
+          <Association Association="MSFT_StorageJobToAffectedStorageObject" SourceRole="AffectedStorageObject" ResultRole="StorageJob">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StoragePool" />
+              <CmdletParameterMetadata PSName="StoragePool" ValueFromPipeline="true" CmdletParameterSets="ByStoragePool" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- VirtualDisk -->
+          <Association Association="MSFT_StorageJobToAffectedStorageObject" SourceRole="AffectedStorageObject" ResultRole="StorageJob">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_VirtualDisk" />
+              <CmdletParameterMetadata PSName="VirtualDisk" ValueFromPipeline="true" CmdletParameterSets="ByVirtualDisk" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- Disk -->
+          <Association Association="MSFT_StorageJobToAffectedStorageObject" SourceRole="AffectedStorageObject" ResultRole="StorageJob">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Disk" />
+              <CmdletParameterMetadata PSName="Disk" ValueFromPipeline="true" CmdletParameterSets="ByDisk" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- Volume-->
+          <Association Association="MSFT_StorageJobToAffectedStorageObject" SourceRole="AffectedStorageObject" ResultRole="StorageJob">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Volume" />
+              <CmdletParameterMetadata PSName="Volume" ValueFromPipeline="true" CmdletParameterSets="ByVolume" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+        </QueryableAssociations>
+      </GetCmdletParameters>
+      <!--
+
+      //
+      // Stop-StorageJob
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Stop" ConfirmImpact="Medium" />
+        <Method MethodName="RequestStateChange">
+          <Parameters>
+            <!-- StopStorageJob -->
+            <Parameter ParameterName="RequestedState" DefaultValue="Terminate">
+              <Type PSType="StorageJob.StateChange" />
+            </Parameter>
+            <!-- FromPowerShell -->
+            <Parameter ParameterName="cim:operationOption:FromPowerShell" DefaultValue="true">
+              <Type PSType="System.Boolean" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+            <!-- Name -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="StorageJob.JobState" UnderlyingType="System.UInt16">
+      <Value Name="New" Value="2" />
+      <Value Name="Starting" Value="3" />
+      <Value Name="Running" Value="4" />
+      <Value Name="Suspended" Value="5" />
+      <Value Name="ShuttingDown" Value="6" />
+      <Value Name="Completed" Value="7" />
+      <Value Name="Terminated" Value="8" />
+      <Value Name="Killed" Value="9" />
+      <Value Name="Exception" Value="10" />
+      <Value Name="Service" Value="11" />
+      <Value Name="QueryPending" Value="12" />
+    </Enum>
+    <Enum EnumName="StorageJob.StateChange" UnderlyingType="System.UInt16">
+      <Value Name="Start" Value="2" />
+      <Value Name="Suspend" Value="3" />
+      <Value Name="Terminate" Value="4" />
+      <Value Name="Kill" Value="5" />
+      <Value Name="Service" Value="6" />
+    </Enum>
+    <Enum EnumName="StorageJob.OperationalStatus" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Other" Value="1" />
+      <Value Name="OK" Value="2" />
+      <Value Name="Degraded" Value="3" />
+      <Value Name="Stressed" Value="4" />
+      <Value Name="PredictiveFailure" Value="5" />
+      <Value Name="Error" Value="6" />
+      <Value Name="NonRecoverableError" Value="7" />
+      <Value Name="Starting" Value="8" />
+      <Value Name="Stopping" Value="9" />
+      <Value Name="Stopped" Value="10" />
+      <Value Name="InService" Value="11" />
+      <Value Name="NoContact" Value="12" />
+      <Value Name="LostCommunication" Value="13" />
+      <Value Name="Aborted" Value="14" />
+      <Value Name="Dormant" Value="15" />
+      <Value Name="SupportingEntityinError" Value="16" />
+      <Value Name="Completed" Value="17" />
+      <Value Name="PowerMode" Value="18" />
+    </Enum>
+    <Enum EnumName="StorageJob.RecoveryAction" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Other" Value="1" />
+      <Value Name="DoNotContinue" Value="2" />
+      <Value Name="ContinueWithNextJob" Value="3" />
+      <Value Name="RerunJob" Value="4" />
+      <Value Name="RunRecoveryJob" Value="5" />
+    </Enum>
+  </Enums>
+
+</PowerShellMetadata>

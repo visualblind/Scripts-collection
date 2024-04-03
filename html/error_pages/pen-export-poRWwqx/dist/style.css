@@ -1,0 +1,137 @@
+*,html{
+scroll-behavior: smooth;
+}
+*, *:after, *:before {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+:root{
+scrollbar-color: rgb(210,210,210) rgb(46,54,69) !important;
+scrollbar-width: thin !important;
+}
+::-webkit-scrollbar {
+height: 12px;
+width: 8px;
+background: #000;
+}
+::-webkit-scrollbar-thumb {
+background: gray;
+-webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+}
+::-webkit-scrollbar-corner {
+background: #000;
+}
+body{
+margin:0;
+overflow:hidden;
+font-family: 'Archivo', sans-serif;
+}
+
+
+
+
+/*ANIMATE*/
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+
+
+
+/*CONTAINER*/
+.error{
+width:100%;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.error video{
+pointer-events:none;
+}
+
+.error section{
+width:100%;
+height:100vh;
+font-family: 'Russo One', sans-serif;
+font-size:3em;
+font-weight:bold;
+background:url("https://i.ibb.co/cw74FZT/bg.png");
+background-size:100% 100%;
+position:absolute;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.fa-chevron-circle-left{
+position:absolute;
+left:10px;
+top:5px;
+z-index:1;
+color:#000;
+opacity:0;
+transition:0.5s;
+}
+
+.error:hover > .fa-chevron-circle-left{
+opacity:1;
+}
+
+.fa-chevron-circle-left:hover{
+color:#3399ff;
+}
+
+.error section span a{
+color:#000;
+font-size:0.5em;
+margin:0 10px;
+transition:0.5s;
+}
+
+.error section span a:nth-child(1):hover{
+color:#3b5998;
+}
+
+.error section span a:nth-child(2):hover{
+color:#d52972;
+}
+
+.error section span a:nth-child(3):hover{
+color:#3399ff;
+}
+
+.error section span:nth-child(1){
+position:relative;
+top:15vh;
+font-size:0.4em;
+color:gray;
+width:30%;
+text-align:center;
+}
+
+.error section span:nth-child(2){
+position:absolute;
+bottom:2px;
+right:10px;
+color:#000;
+}
+
+@media (max-width:800px){
+.error section span:nth-child(1){
+width:70%;
+}
+}

@@ -1,0 +1,35 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">   
+  <Class ClassName="Root/Microsoft/Windows/FSRM/MSFT_FSRMMacro">   
+    <Version>1.0</Version>    
+    <DefaultNoun>FsrmMacro</DefaultNoun>   
+    <InstanceCmdlets>   
+      <GetCmdletParameters>
+        <QueryableProperties>   
+          <Property PropertyName="Type">
+            <Type PSType="FsrmMacroTypeEnum" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property> 
+          <Property PropertyName="Name">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+      </GetCmdletParameters>
+      <GetCmdlet>
+        <CmdletMetadata Verb="Get" />
+      </GetCmdlet>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="FsrmMacroTypeEnum" UnderlyingType="UInt32">
+      <Value Name="Quota" Value="1" />
+      <Value Name="FileScreen" Value="2" />
+      <Value Name="FileManagementJob" Value="3" />
+      <Value Name="Adr" Value="4" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>   

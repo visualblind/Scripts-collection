@@ -1,0 +1,449 @@
+// Fonts
+@import './vuefilemanager/_variables';
+@import './vuefilemanager/_mixins';
+@import './vuefilemanager/_vuewind';
+
+#viewport {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  @include transition(200ms);
+  flex: 1;
+}
+
+#single-page {
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding-left: 25px;
+  padding-right: 25px;
+
+  #page-content {
+    margin: 0 auto;
+
+    &.full-width {
+      max-width: 100%;
+    }
+
+    &.medium-width {
+      max-width: 700px;
+    }
+
+    &.large-width {
+      max-width: 1190px;
+    }
+
+    &.small-width {
+      max-width: 690px;
+    }
+
+    &.center-page {
+      height: 100%;
+      padding-top: 20px;
+      margin-bottom: 50px;
+      display: grid;
+      width: 100%;
+
+      .content-page {
+        margin: auto;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.form-fixed-width {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group-label {
+  @include font-size(18);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  margin-bottom: 25px;
+  display: block;
+}
+
+.menu-list-wrapper {
+
+  &.vertical {
+    margin-bottom: 20px;
+
+    .menu-list-item {
+      display: block;
+      padding: 12px 15px 12px 25px;
+    }
+  }
+
+  &.horizontal {
+    display: flex;
+    border-bottom: 2px solid $light_mode_border;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    z-index: 9;
+    position: sticky;
+    background: white;
+    top: 40px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .menu-list-item {
+      display: inline-block;
+      padding: 15px 10px;
+      margin: 15px 10px 0;
+      border-bottom: 2px solid transparent;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .menu-list-item {
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+
+    &.link {
+      display: flex;
+      align-items: center;
+
+      &.is-active,
+      &.router-link-exact-active,
+      &:hover {
+
+        svg {
+          path, line, polyline, rect, circle, ellipse {
+            color: inherit;
+          }
+        }
+
+        .label {
+          color: inherit;
+        }
+      }
+
+      .icon {
+        margin-right: 12px;
+        line-height: 0;
+
+        path, line, polyline, rect, circle, ellipse {
+          color: inherit;
+        }
+      }
+
+      .text-label {
+        @include font-size(16);
+      }
+    }
+
+    &:hover,
+    &.is-active {
+
+      .delete-icon {
+        display: block;
+      }
+    }
+
+    .folder-icon {
+      line-height: 0;
+      width: 15px;
+      margin-right: 9px;
+      vertical-align: middle;
+      margin-top: -1px;
+
+      path {
+        color: inherit;
+      }
+    }
+
+    .delete-icon {
+      display: none;
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      @include transform(translateY(-50%));
+    }
+
+    .label {
+      @include font-size(13);
+      font-weight: 700;
+      vertical-align: middle;
+      white-space: nowrap;
+      max-width: 210px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+      color: $text;
+      line-height: 1;
+      padding-top: 2px;
+    }
+  }
+
+  &.favourites {
+
+    &.is-dragenter .menu-list {
+      border-radius: 8px;
+    }
+
+    .menu-list {
+      border: 2px dashed transparent;
+
+      .menu-list-item {
+        padding: 8px 23px;
+
+        .label {
+          max-width: 140px;
+        }
+
+        .icon {
+          margin-right: 5px;
+          width: 20px;
+
+          path, line, polyline, rect, circle, ellipse {
+            @include transition(150ms);
+          }
+        }
+
+        &:hover,
+        &.is-selected,
+        &.is-current {
+
+          .folder-icon {
+            path, line, polyline, rect, circle, ellipse {
+              color: inherit;
+            }
+          }
+
+          .label {
+            color: inherit;
+          }
+        }
+      }
+    }
+  }
+}
+
+.empty-note {
+  @include font-size(12);
+  color: $text-muted;
+  display: block;
+}
+
+.table {
+
+  .action-icons {
+    white-space: nowrap;
+
+    a, .icon, .icon-wrapper {
+      display: inline-block;
+      margin-left: 10px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    .icon {
+      cursor: pointer;
+
+      circle, path, line, polyline {
+        stroke: $text;
+      }
+
+      &.icon-trash {
+        circle, path, line, polyline {
+          stroke: $red;
+        }
+      }
+    }
+  }
+
+  .cell-item {
+    white-space: nowrap;
+    //color: $text;
+    font-weight: 700;
+  }
+}
+
+// Helpers
+.mt-70 {
+  margin-top: 70px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+@media only screen and (max-width: 1024px) {
+
+  #single-page {
+
+    #page-content {
+
+      &.full-width,
+      &.medium-width,
+      &.small-width {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  .menu-list-wrapper {
+
+    .menu-list-item {
+      padding: 12px 15px 12px 20px;
+    }
+
+    &.favourites {
+
+      .menu-list .menu-list-item {
+        padding: 8px 18px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 960px) {
+
+  #single-page {
+    padding-left: 30px;
+    padding-right: 30px;
+
+    #page-content {
+      padding-top: 0;
+
+      &.center-page {
+        padding-top: 0;
+      }
+    }
+  }
+
+  .menu-list-wrapper {
+    &.horizontal {
+      top: 30px;
+    }
+  }
+
+  .form-fixed-width {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 690px) {
+
+  #single-page {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.dark {
+
+  .empty-note {
+    color: $dark_mode_text_secondary;
+  }
+
+  .menu-list-wrapper {
+
+    &.horizontal {
+      border-bottom: 2px solid $dark_mode_border_color;
+      background: $dark_mode_background;
+    }
+
+    .menu-list-item {
+
+      &.link {
+
+        .icon {
+
+          path, line, polyline, rect, circle, ellipse {
+            color: inherit;
+          }
+        }
+      }
+
+      .label {
+        color: $dark_mode_text_primary;
+      }
+
+      .icon {
+
+        path, line, polyline, rect, circle, ellipse {
+          color: inherit;
+        }
+      }
+
+      &:hover {
+
+        .icon {
+
+          path, line, polyline, rect, circle, ellipse {
+            color: inherit;
+          }
+        }
+      }
+    }
+  }
+
+  .table {
+
+    .action-icons {
+
+      .icon {
+
+        circle, path, line, polyline {
+          stroke: $dark_mode_text_primary;
+        }
+      }
+    }
+  }
+
+}
+
+.info-box-wrapper {
+  margin: 0px 20px;
+}
+
+.windows {
+  
+  #content-sidebar {
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      border: 6px solid transparent;
+      background: #7f7f7f;
+      border-radius: 25px;
+      background-clip: padding-box ;
+  }
+}
+
+.dark {
+  .windows {
+    ::-webkit-scrollbar-thumb {
+      border: 6px solid transparent;
+      background: $dark_mode_foreground !important;
+      background-clip: padding-box !important ;
+    }
+  }
+}

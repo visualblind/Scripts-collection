@@ -1,0 +1,38 @@
+.maintenance-page {
+  padding: 120px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.maintenance-page img {
+  width: 140px;
+  margin: 0 0 20px 0;
+}
+.maintenance-page p.notice {
+  font-size: 28px;
+  font-weight: 600;
+  color: #666;
+}
+.maintenance-page p.contact {
+  font-size: 12px;
+  font-weight: 100;
+  color: #ccc;
+}
+.maintenance-page div.info-box {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 600px;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: #999;
+  font-size: 12px;
+  text-align: center;
+}
+.maintenance-page div.info-box p.message {
+  margin: 0;
+}
+.maintenance-page div.info-box p.admin-name {
+  font-size: 10px;
+  color: #ccc;
+  margin-bottom: 0;
+}

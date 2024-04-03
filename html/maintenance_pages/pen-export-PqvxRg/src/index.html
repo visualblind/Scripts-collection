@@ -1,0 +1,95 @@
+<html>
+<head>
+  <title>Scheduled Maintenance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/error/css/style-maintenance.css">
+</head>
+<body>
+  <div class="container">
+    <div class="inner-logo">
+      <a href="https://www.domo.com/"><img src="http://libero.uxinspired.com/files/domo-logo-16.png" width="80" height="80"></a>
+    </div>
+    <div class="inner">
+      <div class="row-3">
+      <h1>Maintenance Information</h1>
+      </div>
+      <div class="row">
+        <h2>Notice of System Maintenance</h2>
+        <p>Domo will be performing system maintenance on your production instance Friday, August 21st 2015 starting at 7:00 pm PDT and ending on Sunday, August 23rd 2015 12:00 pm PDT.  During this time access to the product will be intermittent while we apply necessary changes to our hosting environment.</p> 
+
+        <p>To facilitate the ongoing administration and maintenance of Domo, we will be consolidating the IP addresses that you need to whitelist from 40 down to 4.  Today, these 4 should already be in your list of 40.</p>
+      </div>
+      <div class="row">
+        <h2>What to Expect During this Time</h2>
+        <p>Access to the system will be blocked until the planned maintenance is completed.  Any user trying to access the system will not be able to login and instead will be presented with our maintenance page.  Once the maintenance is complete all data uploads and processing will resume.  Any jobs that were skipped due to this maintenance will be processed at the next available scheduled time.</p>
+      </div>
+      <div class="row">
+        <h2>What You Need to Do</h2>
+        <p>If you have enabled IP Whitelisting for any of your data connections <span style="font-weight: bold; text-decoration: underline">please make sure that each of the four IP Addresses below are included in that list.</span></p>
+        <p>
+        54.208.95.237<br>
+        54.208.87.122<br>
+        54.208.95.167<br>
+        54.208.94.194<br>
+        <p>If you have enabled IP Whitelisting and do not have the four IP addresses above, <span style="font-weight: bold; text-decoration: none;">you will need to add them in order for Domo to import your data.</span> Failure to include these four IP Addresses in your whitelist rules will lead to data failing to import.</p>
+      </div>
+      <div class="row-2">
+        <h2>Troubleshooting</h2>
+        <p>The IP Address that your instance points to will also be changing to point to a new IP Address.  The new IP Address will be 54.85.151.192.</p>
+
+        <p>If you’re having difficulties logging into the product then please double check that the IP Address reflects this change.</p>
+
+        <p>The list below shows all of the old IP Addresses that we are no longer using and it is safe for you to remove:</p>
+        <div style="width: 32%; display: inline-block" class="three-col">
+        <span style="font-size: 10px;">54.227.242.223<br>
+        54.227.246.162<br>
+        54.227.246.206<br>
+        54.227.247.136<br>
+        54.227.247.253<br>
+        54.227.247.254<br>
+        54.227.253.247<br>
+        54.227.254.43<br>
+        54.235.134.36<br>
+        54.235.150.155<br>
+        54.235.150.221<br>
+        54.235.151.225<br>
+        54.235.158.44<br>
+        </span>
+        </div>
+        <div style="width: 32%; display: inline-block; vertical-align: top;" class="three-col"> 
+        <span style="font-size: 10px;">  
+        54.235.161.206<br>  
+        54.235.162.6<br>
+        54.235.163.196<br>
+        54.235.167.15<br>
+        54.235.168.99<br>
+        54.235.169.10<br>
+        54.235.176.211<br>  
+        97.75.189.62<br>
+        54.204.16.107<br>
+        54.221.245.181<br>
+        54.225.165.185<br>
+        54.225.165.215<br>
+        54.225.167.147<br>
+        </span>
+        </div>
+        <div style="width: 32%; display: inline-block; vertical-align: top;" class="three-col"> 
+        <span style="font-size: 10px;">
+        54.225.168.188<br>
+        54.225.169.122<br>
+        54.225.169.151<br>
+        54.225.169.164<br>
+        54.225.172.177<br>
+        54.225.192.187<br>
+        54.225.196.24<br>
+        54.225.197.132<br>
+        54.225.197.136<br>
+        54.225.197.189<br>
+        54.225.197.214<br>  
+        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

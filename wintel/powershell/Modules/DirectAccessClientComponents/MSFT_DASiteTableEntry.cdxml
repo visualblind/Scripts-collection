@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+   <Class ClassName="root/StandardCimv2/MSFT_DASiteTableEntry" ClassVersion="1.0.0">
+      <Version>1.0</Version>
+      <DefaultNoun>DAEntryPointTableItem</DefaultNoun>     
+      <InstanceCmdlets>
+         <GetCmdletParameters DefaultCmdletParameterSet="ByPolicyStore">
+            <QueryableProperties>
+               <Property PropertyName="EntryPointName">
+                  <Type PSType="System.String"/>
+                  <RegularQuery AllowGlobbing="true">
+                     <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true"/>
+                  </RegularQuery>
+               </Property>
+               <Property PropertyName="State">
+                  <Type PSType="DASiteTableEntry.State"/>
+                  <RegularQuery AllowGlobbing="false">
+                     <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true"/>
+                  </RegularQuery>
+               </Property>
+            </QueryableProperties>
+            <QueryOptions>
+               <Option OptionName="PolicyStore">
+                  <Type PSType="System.String"/>
+                  <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByPolicyStore" ValueFromPipelineByPropertyName="true"/>
+               </Option>
+               <Option OptionName="GPOSession">
+                  <Type PSType="System.String"/>
+                  <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByGpoSession" ValueFromPipelineByPropertyName="true"/>
+               </Option>
+            </QueryOptions>
+         </GetCmdletParameters>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Set" ConfirmImpact="Medium"/>
+            <Method MethodName="cim:ModifyInstance">
+               <Parameters>
+                  <Parameter ParameterName="ADSite">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="EntryPointRange">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="TeredoServerIP">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="EntryPointIPAddress">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="GslbIP">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="IPHttpsProfile">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+            <GetCmdletParameters DefaultCmdletParameterSet="ByPolicyStore">
+               <QueryableProperties>
+                  <Property PropertyName="EntryPointName">
+                     <Type PSType="System.String"/>
+                     <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true"/>
+                     </RegularQuery>
+                  </Property>
+               </QueryableProperties>
+               <QueryOptions>
+                  <Option OptionName="PolicyStore">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByPolicyStore" ValueFromPipelineByPropertyName="true"/>
+                  </Option>
+                 <Option OptionName="GPOSession">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByGpoSession" ValueFromPipelineByPropertyName="true"/>
+                 </Option>
+               </QueryOptions>
+            </GetCmdletParameters>           
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Remove" ConfirmImpact="Medium"/>
+            <Method MethodName="cim:DeleteInstance"/>
+            <GetCmdletParameters DefaultCmdletParameterSet="ByPolicyStore">
+               <QueryableProperties>
+                  <Property PropertyName="EntryPointName">
+                     <Type PSType="System.String"/>
+                     <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true"/>
+                     </RegularQuery>
+                  </Property>
+               </QueryableProperties>
+               <QueryOptions>
+                  <Option OptionName="PolicyStore">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByPolicyStore" ValueFromPipelineByPropertyName="true"/>
+                  </Option>
+                 <Option OptionName="GPOSession">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByGpoSession" ValueFromPipelineByPropertyName="true"/>
+                 </Option>
+               </QueryOptions>
+            </GetCmdletParameters>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Reset" ConfirmImpact="Medium"/>
+            <Method MethodName="Reset">
+               <Parameters>
+                  <Parameter ParameterName="TeredoServerIP">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="IPHttpsProfile">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="GslbIP">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="PassThru">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="OutputObject">
+                     <Type PSType="Microsoft.Management.Infrastructure.CimInstance"/>
+                     <CmdletOutputMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+            <GetCmdletParameters DefaultCmdletParameterSet="ByPolicyStore">
+               <QueryableProperties>
+                  <Property PropertyName="EntryPointName">
+                     <Type PSType="System.String"/>
+                     <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true"/>
+                     </RegularQuery>
+                  </Property>
+               </QueryableProperties>
+               <QueryOptions>
+                  <Option OptionName="PolicyStore">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByPolicyStore" ValueFromPipelineByPropertyName="true"/>
+                  </Option>
+                  <Option OptionName="GPOSession">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByGpoSession" ValueFromPipelineByPropertyName="true"/>
+                  </Option>
+               </QueryOptions>
+            </GetCmdletParameters>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Rename" ConfirmImpact="Medium"/>
+            <Method MethodName="Rename">
+               <Parameters>
+                  <Parameter ParameterName="NewName">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="PassThru">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="OutputObject">
+                     <Type PSType="Microsoft.Management.Infrastructure.CimInstance"/>
+                     <CmdletOutputMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+            <GetCmdletParameters DefaultCmdletParameterSet="ByPolicyStore">
+               <QueryableProperties>
+                  <Property PropertyName="EntryPointName">
+                     <Type PSType="System.String"/>
+                     <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true"/>
+                     </RegularQuery>
+                  </Property>
+               </QueryableProperties>
+               <QueryOptions>
+                  <Option OptionName="PolicyStore">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByPolicyStore" ValueFromPipelineByPropertyName="true"/>
+                  </Option>
+                  <Option OptionName="GPOSession">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByGpoSession" ValueFromPipelineByPropertyName="true"/>
+                  </Option>
+               </QueryOptions>
+            </GetCmdletParameters>
+         </Cmdlet>
+         
+      </InstanceCmdlets>
+      
+      <StaticCmdlets>
+         <Cmdlet>
+            <CmdletMetadata Verb="New" ConfirmImpact="Medium" DefaultCmdletParameterSet="ByPolicyStore"/>
+            <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByPolicyStore">
+               <ReturnValue>
+                  <Type PSType="System.Uint32"/>
+                  <CmdletOutputMetadata>
+                     <ErrorCode/>
+                  </CmdletOutputMetadata>
+               </ReturnValue>
+               <Parameters>
+                  <Parameter ParameterName="PolicyStore">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true" Position="1"/>
+                  </Parameter>
+                  <Parameter ParameterName="EntryPointName">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="ADSite">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="EntryPointRange">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="TeredoServerIP">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="EntryPointIPAddress">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="GslbIP">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="IPHttpsProfile">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+            <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByGpoSession">
+               <ReturnValue>
+                  <Type PSType="System.Uint32"/>
+                  <CmdletOutputMetadata>
+                     <ErrorCode/>
+                  </CmdletOutputMetadata>
+               </ReturnValue>
+               <Parameters>
+                  <Parameter ParameterName="cim:OperationOption:GPOSession">
+                     <Type PSType="System.String" />
+                     <CmdletParameterMetadata IsMandatory="true" PSName="GPOSession" Position="1"/>
+                  </Parameter>
+                  <Parameter ParameterName="EntryPointName">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>                 
+                  <Parameter ParameterName="ADSite">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="EntryPointRange">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="TeredoServerIP">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="EntryPointIPAddress">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="GslbIP">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="IPHttpsProfile">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Enable" Noun="DAManualEntryPointSelection" ConfirmImpact="Medium"/>
+            <Method MethodName="Enable">
+               <ReturnValue>
+                  <Type PSType="System.Uint32"/>
+                  <CmdletOutputMetadata>
+                     <ErrorCode/>
+                  </CmdletOutputMetadata>
+               </ReturnValue>
+               <Parameters>
+                  <Parameter ParameterName="EntryPointName">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true"/>
+                  </Parameter>
+               </Parameters>         
+            </Method>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Disable" Noun="DAManualEntryPointSelection" ConfirmImpact="Medium"/>
+            <Method MethodName="Disable">
+               <ReturnValue>
+                  <Type PSType="System.Uint32"/>
+                  <CmdletOutputMetadata>
+                     <ErrorCode/>
+                  </CmdletOutputMetadata>
+               </ReturnValue>
+            </Method>
+         </Cmdlet>
+
+
+      </StaticCmdlets>
+      
+   </Class>
+
+   <Enums>
+      <Enum EnumName="DASiteTableEntry.State" UnderlyingType="System.Uint32">
+         <Value Name="NotSelected" Value="0"/>
+         <Value Name="AutomaticallySelected" Value="1"/>
+         <Value Name="ManuallySelected" Value="2"/>
+      </Enum>
+   </Enums>
+</PowerShellMetadata>
+

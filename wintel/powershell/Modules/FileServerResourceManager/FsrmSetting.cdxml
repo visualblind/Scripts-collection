@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">   
+  <Class ClassName="Root/Microsoft/Windows/FSRM/MSFT_FSRMSettings">   
+    <Version>1.0</Version>     
+    <DefaultNoun>FsrmSetting</DefaultNoun>   
+    <InstanceCmdlets>   
+      <GetCmdletParameters>
+      </GetCmdletParameters>
+      <GetCmdlet>
+        <CmdletMetadata Verb="Get" />
+      </GetCmdlet>   
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+        <Method MethodName="cim:ModifyInstance">
+          <Parameters>
+            <Parameter ParameterName="SmtpServer">
+              <Type PSType="String" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="FromEmailAddress">
+              <Type PSType="String" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AdminEmailAddress">
+              <Type PSType="String" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EmailNotificationLimit">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EventNotificationLimit">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CommandNotificationLimit">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportNotificationLimit">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLimitMaxFile">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLimitMaxFileGroup">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLimitMaxOwner">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLimitMaxFilesPerFileGroup">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLimitMaxFilesPerOwner">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLimitMaxFilesPerDuplicateGroup">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLimitMaxDuplicateGroup">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLimitMaxQuota">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLimitMaxFileScreenEvent">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLimitMaxPropertyValue">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLimitMaxFilesPerPropertyValue">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLocationIncident">
+              <Type PSType="String" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLocationScheduled">
+              <Type PSType="String" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLocationOnDemand">
+              <Type PSType="String" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportFileScreenAuditDaysSince">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportFileScreenAuditUser">
+              <Type PSType="String[]" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportFileGroupIncluded">
+              <Type PSType="String[]" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportFileOwnerUser">
+              <Type PSType="String[]" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportFileOwnerFilePattern">
+              <Type PSType="String" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportPropertyName">
+              <Type PSType="String" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportPropertyFilePattern">
+              <Type PSType="String" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLargeFileMinimum">
+              <Type PSType="UInt64" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLargeFilePattern">
+              <Type PSType="String" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLeastAccessedMinimum">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLeastAccessedFilePattern">
+              <Type PSType="String" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportMostAccessedMaximum">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportMostAccessedFilePattern">
+              <Type PSType="String" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportQuotaMinimumUsage">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportFileScreenAuditEnable">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportClassificationFormat">
+              <Type PSType="FsrmReportClassificationFormatEnum[]" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportClassificationMailTo">
+              <Type PSType="String" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportClassificationLog">
+              <Type PSType="FsrmReportClassificationLogEnum[]" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="FsrmReportClassificationLogEnum" UnderlyingType="UInt32">
+      <Value Name="ClassificationsInLogFile" Value="1" />
+      <Value Name="ErrorsInLogFile" Value="2" />
+      <Value Name="ClassificationsInSystemLog" Value="4" />
+      <Value Name="ErrorsInSystemLog" Value="8" />
+    </Enum>
+    <Enum EnumName="FsrmReportClassificationFormatEnum" UnderlyingType="UInt32">
+      <Value Name="DHtml" Value="1" />
+      <Value Name="Html" Value="2" />
+      <Value Name="Text" Value="3" />
+      <Value Name="Csv" Value="4" />
+      <Value Name="Xml" Value="5" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>   

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <!--
+
+  //
+  // MSFT_FSRMStorageReport
+  //
+
+  -->
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_FSRMStorageReport</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Status</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.StorageReportRunningStatusEnum]($this.PSBase.CimInstanceProperties['Status'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>ReportFormat</Name>
+        <GetScriptBlock>
+          $integerArray = $this.PSBase.CimInstanceProperties['ReportFormat'].Value
+	  $enumArray = New-Object Microsoft.PowerShell.Cmdletization.GeneratedTypes.StorageReportReportFormatsEnum[] ($integerArray.Length)
+	  for ($i = 0; $i -lt $integerArray.Length; $i++)
+	  {
+		$enumArray[$i] = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.StorageReportReportFormatsEnum]($integerArray[$i])
+	  }
+	  return $enumArray
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>ReportType</Name>
+        <GetScriptBlock>
+          $integerArray = $this.PSBase.CimInstanceProperties['ReportType'].Value
+	  $enumArray = New-Object Microsoft.PowerShell.Cmdletization.GeneratedTypes.StorageReportReportTypeEnum[] ($integerArray.Length)
+	  for ($i = 0; $i -lt $integerArray.Length; $i++)
+	  {
+		$enumArray[$i] = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.StorageReportReportTypeEnum]($integerArray[$i])
+	  }
+	  return $enumArray
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>

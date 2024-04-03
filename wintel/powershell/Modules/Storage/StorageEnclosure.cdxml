@@ -1,0 +1,339 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_StorageEnclosure">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>StorageEnclosure</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-StorageEnclosure
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByUniqueId">
+        <QueryableProperties>
+          <!-- UniqueId -->
+          <Property PropertyName="UniqueId">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+            </RegularQuery>
+          </Property>
+          <!-- FriendlyName -->
+          <Property PropertyName="FriendlyName">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0" />
+            </RegularQuery>
+          </Property>
+          <!-- SerialNumber -->
+          <Property PropertyName="SerialNumber">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="1" />
+            </RegularQuery>
+          </Property>
+          <!-- Manufacturer -->
+          <Property PropertyName="Manufacturer">
+            <Type PSType="System.String" />
+            <RegularQuery>
+              <CmdletParameterMetadata/>
+            </RegularQuery>
+          </Property>
+          <!-- Model -->
+          <Property PropertyName="Model">
+            <Type PSType="System.String" />
+            <RegularQuery>
+              <CmdletParameterMetadata/>
+            </RegularQuery>
+          </Property>
+          <!-- HealthStatus -->
+          <Property PropertyName="HealthStatus">
+            <Type PSType="StorageEnclosure.HealthStatus" />
+            <RegularQuery>
+              <CmdletParameterMetadata/>
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <!-- StorageSubSystem -->
+          <Association Association="MSFT_StorageSubSystemToStorageEnclosure" SourceRole="StorageSubSystem" ResultRole="StorageEnclosure">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubSystem" />
+              <CmdletParameterMetadata PSName="StorageSubSystem" ValueFromPipeline="true" CmdletParameterSets="ByStorageSubSystem" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- StorageNode -->
+          <Association Association="MSFT_StorageNodeToStorageEnclosure" SourceRole="StorageNode" ResultRole="StorageEnclosure">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageNode" />
+              <CmdletParameterMetadata PSName="StorageNode" ValueFromPipeline="true" CmdletParameterSets="ByStorageNode" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- PhysicalDisk -->
+          <Association Association="MSFT_StorageEnclosureToPhysicalDisk" SourceRole="PhysicalDisk" ResultRole="StorageEnclosure">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata PSName="PhysicalDisk" ValueFromPipeline="true" CmdletParameterSets="ByPhysicalDisk" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+        </QueryableAssociations>
+        <QueryOptions>
+          <Option OptionName="PhysicallyConnected">
+            <Type PSType="System.Management.Automation.SwitchParameter" />
+            <CmdletParameterMetadata PSName="PhysicallyConnected" CmdletParameterSets="ByStorageNode" />
+          </Option>
+        </QueryOptions>
+      </GetCmdletParameters>
+      <!--
+
+      //
+      // Enable-StorageEnclosureIdentification
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Enable" Noun="StorageEnclosureIdentification" />
+        <Method MethodName="IdentifyElement">
+          <Parameters>
+            <!-- Enable -->
+            <Parameter ParameterName="Enable" DefaultValue="true">
+              <Type PSType="System.Boolean" />
+            </Parameter>
+            <!-- SlotNumbers -->
+            <Parameter ParameterName="SlotNumbers">
+              <Type PSType="System.UInt32[]" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+            <!-- FriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Disable-StorageEnclosureIdentification
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Disable" Noun="StorageEnclosureIdentification" />
+        <Method MethodName="IdentifyElement">
+          <Parameters>
+            <!-- Enable -->
+            <Parameter ParameterName="Enable" DefaultValue="">
+              <Type PSType="System.Boolean" />
+            </Parameter>
+            <!-- SlotNumbers -->
+            <Parameter ParameterName="SlotNumbers">
+              <Type PSType="System.UInt32[]" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+            <!-- FriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Get-StorageEnclosureVendorData
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" Noun="StorageEnclosureVendorData" />
+        <Method MethodName="GetVendorData">
+          <Parameters>
+            <!-- PageNumber -->
+            <Parameter ParameterName="PageNumber">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- OUTPUT: VendorData -->
+            <Parameter ParameterName="VendorData">
+              <Type PSType="System.String" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+            <!-- FriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Enable-StorageEnclosurePower
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Enable" Noun="StorageEnclosurePower" />
+        <Method MethodName="PowerElement">
+          <Parameters>
+            <!-- Off -->
+            <Parameter ParameterName="Off" DefaultValue="">
+              <Type PSType="System.Boolean" />
+            </Parameter>
+            <!-- SlotNumbers -->
+            <Parameter ParameterName="SlotNumbers">
+              <Type PSType="System.UInt32[]" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+            <!-- FriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Disable-StorageEnclosurePower
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Disable" Noun="StorageEnclosurePower" />
+        <Method MethodName="PowerElement">
+          <Parameters>
+            <!-- Off -->
+            <Parameter ParameterName="Off" DefaultValue="true">
+              <Type PSType="System.Boolean" />
+            </Parameter>
+            <!-- SlotNumbers -->
+            <Parameter ParameterName="SlotNumbers">
+              <Type PSType="System.UInt32[]" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+            <!-- FriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="StorageEnclosure.HealthStatus" UnderlyingType="System.UInt16">
+      <Value Name="Healthy" Value="0" />
+      <Value Name="Warning" Value="1" />
+      <Value Name="Unhealthy" Value="2" />
+      <Value Name="Unknown" Value="5" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

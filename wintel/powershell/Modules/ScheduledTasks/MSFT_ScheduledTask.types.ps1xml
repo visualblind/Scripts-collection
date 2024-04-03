@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+    <!-- ScheduledTask -->
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_ScheduledTask</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>State</Name>
+                <GetScriptBlock>
+                   [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.StateEnum]($this.PSBase.CimInstanceProperties['State'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+    <!-- TaskSettings -->
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskSettings</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>MultipleInstances</Name>
+                <GetScriptBlock>
+                   [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.MultipleInstancesEnum]($this.PSBase.CimInstanceProperties['MultipleInstances'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    $this.PSBase.CimInstanceProperties['MultipleInstances'].Value = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.MultipleInstancesEnum]($args[0])
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>Compatibility</Name>
+                <GetScriptBlock>
+                   [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.CompatibilityEnum]($this.PSBase.CimInstanceProperties['Compatibility'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    $this.PSBase.CimInstanceProperties['Compatibility'].Value = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.CompatibilityEnum]($args[0])
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+    <!-- TaskSettings2 -->
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskSettings2</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>MultipleInstances</Name>
+                <GetScriptBlock>
+                   [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.MultipleInstancesEnum]($this.PSBase.CimInstanceProperties['MultipleInstances'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    $this.PSBase.CimInstanceProperties['MultipleInstances'].Value = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.MultipleInstancesEnum]($args[0])
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>Compatibility</Name>
+                <GetScriptBlock>
+                   [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.CompatibilityEnum]($this.PSBase.CimInstanceProperties['Compatibility'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    $this.PSBase.CimInstanceProperties['Compatibility'].Value = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.CompatibilityEnum]($args[0])
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+    <!-- TaskSettings3 -->
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskSettings3</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>MultipleInstances</Name>
+                <GetScriptBlock>
+                   [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.MultipleInstancesEnum]($this.PSBase.CimInstanceProperties['MultipleInstances'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    $this.PSBase.CimInstanceProperties['MultipleInstances'].Value = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.MultipleInstancesEnum]($args[0])
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>Compatibility</Name>
+                <GetScriptBlock>
+                   [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.CompatibilityEnum]($this.PSBase.CimInstanceProperties['Compatibility'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    $this.PSBase.CimInstanceProperties['Compatibility'].Value = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.CompatibilityEnum]($args[0])
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+    <!-- TaskPrincipal -->
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskPrincipal</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>RunLevel</Name>
+                <GetScriptBlock>
+                   [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.RunLevelEnum]($this.PSBase.CimInstanceProperties['RunLevel'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    $this.PSBase.CimInstanceProperties['RunLevel'].Value = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.RunLevelEnum]($args[0])
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskPrincipal</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>LogonType</Name>
+                <GetScriptBlock>
+                   [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.LogonTypeEnum]($this.PSBase.CimInstanceProperties['LogonType'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    $this.PSBase.CimInstanceProperties['LogonType'].Value = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.LogonTypeEnum]($args[0])
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+    <!-- TaskPrincipal2 -->
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskPrincipal2</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>RunLevel</Name>
+                <GetScriptBlock>
+                   [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.RunLevelEnum]($this.PSBase.CimInstanceProperties['RunLevel'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    $this.PSBase.CimInstanceProperties['RunLevel'].Value = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.RunLevelEnum]($args[0])
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskPrincipal2</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>LogonType</Name>
+                <GetScriptBlock>
+                   [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.LogonTypeEnum]($this.PSBase.CimInstanceProperties['LogonType'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    $this.PSBase.CimInstanceProperties['LogonType'].Value = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.LogonTypeEnum]($args[0])
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_TaskPrincipal2</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ProcessTokenSidType</Name>
+                <GetScriptBlock>
+                   [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.ProcessTokenSidTypeEnum]($this.PSBase.CimInstanceProperties['ProcessTokenSidType'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    $this.PSBase.CimInstanceProperties['ProcessTokenSidType'].Value = [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.ProcessTokenSidTypeEnum]($args[0])
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+    <!-- MSFT_ClusteredScheduledTask -->
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_ClusteredScheduledTask</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>TaskType</Name>
+                <GetScriptBlock>
+                   [Microsoft.PowerShell.Cmdletization.GeneratedTypes.ScheduledTask.ClusterTaskTypeEnum]($this.PSBase.CimInstanceProperties['TaskType'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+</Types>
+

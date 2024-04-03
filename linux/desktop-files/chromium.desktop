@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name[en_US]=Chromium
+Comment=Chromium Launcher
+Exec=/opt/chromium/run.sh
+Icon=chromium-browser
+Terminal=false
+Type=Application
+Categories=Application;

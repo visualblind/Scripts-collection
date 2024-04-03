@@ -1,0 +1,116 @@
+Instructions for Msyslog
+------------------------
+	By Christian Zimmerman
+
+Project homepage: http://sourceforge.net/projects/msyslog/
+
+JFFNMS version of msyslog: http://jffnms.sourceforge.net/
+
+Step 1 Untar:
+------------------------
+#gunzip  msyslog-v1.08a-jffnms-3.tar.gz
+#tar xvf msyslog-v1.08a-jffnms-3.tar
+
+then change directories:
+
+#cd msyslog-v1.xxx
+
+Step 2 Configure
+------------------------------------
+
+#./configure
+
+*************************************************
+for /usr/local installs, or for /usr (i.e. Solaris, BSDs)
+
+# ./configure -prefix=/usr
+
+or the following for / installs (i.e. Linux)
+
+# ./configure -prefix=/usr
+************************************************
+
+Now compile and install
+
+#make
+#make install
+
+
+Step3 Configuring Msyslog
+===============================
+
+I want to explain one thing first before we continue. The original docs for
+msyslog fail to explain the reasoning behind configuring conf files while running
+command line switches. Also when it installs, the syslogd dameon is the same name as
+the one that installs with Redhat by default, so make sure that you know which one is
+which or rename the one that Redhat installs to something else that way you don't get
+confused. Moving on....
+
+I come from a windows background where usually you would only need
+to configure a particular config file and let the program run in those parameters but
+this isn't necessarily the case with msyslog. First things first, the /etc/syslog.conf
+file is configured in regards to output and when you run the syslogd from commandline with 
+the -i switches you are configuring what the syslogd dameon is going to accept. Remember 
+that if doesn't accept, it can't log it, if doesn't log it, you can't put in the 
+database what doesn't exist!
+
+	/ETC/SYSLOG.CONF
+	--------------------------------------
+	If you want to log to a mysql database you need to edit the /etc/syslog.conf file. Just
+	add the following line to the bottom of the file substituting the correct parameters
+	like username and password, and so on...
+	
+	# Log to server localhost through MySQL
+	*.*	%mysql -s localhost -u user -p password -d Database_name -t DBtable_name
+
+	For JFFNMS its: -ujffnms -p jffnms -d jffnms -t syslog
+	If you are only going to record Syslog Messages from routers, then just put 
+	local6.* and configure the logging facility as local6	
+
+	
+	
+	SYSLOGD Commandline
+	---------------------------------------
+	-i udp =  Listen for incoming syslog messages via udp (default's to port 514)
+	-i tcp =  Listen for incoming syslog messages via tcp
+	
+	-i linux = used to log linux kernel messages
+	-i unix  = unix system logging, reads the log messages from a socket
+	
+	EX:  #/path/to/syslogd -i linux -i unix -i tcp -i udp
+	
+	The above are the commonly ones used. There are a couple other switches, if you need or want to use
+	them then read the man pages. Now that we have configured the syslog.conf file to log to a 
+	database and we know what commandline switches to use to start the syslogd service, we need
+	to stop the syslog service that Redhat installs by default.
+	
+	
+Step 4 Stopping the default Syslog service
+--------------------------------------------------
+
+The default syslogd service is probably already running by default. We
+need to stop these services so that we can start the msyslog service
+that we just installed. To see if its all ready running do this:
+
+#netstat -putan | grep syslogd
+
+This should list something if syslogd is currently running. If it running
+it should have what it is called a PID then a slash service_name :( Ex  8018/syslogd ).
+o kill this service issue the command:
+
+#kill 8018
+
+Then you will need to run the netstat command again to make sure it is
+really not running. Once confirmed that syslogd is stopped you'll need 
+to start msyslog from the commandline like this:
+
+#syslogd -i linux -i udp -i tcp
+
+Once you issue this command issue the netstat command and look to see that it is running.
+If so then you should be finished. You should start seeing entry's in syslog table for
+database JFFNMS assuming you set it up this way.
+
+
+In the msyslog documentation its explained how to use a Redhat-Style init.d script to start/stop the service.
+(ie, just modify your current sysklogd script to remove the kernel logger)
+

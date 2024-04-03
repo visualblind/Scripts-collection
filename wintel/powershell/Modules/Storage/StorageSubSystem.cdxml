@@ -1,0 +1,928 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_StorageSubSystem">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>StorageSubSystem</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-StorageSubSystem
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+        <QueryableProperties>
+          <!-- UniqueId -->
+          <Property PropertyName="UniqueId">
+            <Type PSType="System.String" />
+            <RegularQuery>
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+            </RegularQuery>
+          </Property>
+          <!-- FriendlyName -->
+          <Property PropertyName="FriendlyName">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0" />
+            </RegularQuery>
+          </Property>
+          <!-- Name -->
+          <Property PropertyName="Name">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <!-- HealthStatus -->
+          <Property PropertyName="HealthStatus">
+            <Type PSType="StorageSubSystem.HealthStatus" />
+            <RegularQuery>
+              <CmdletParameterMetadata/>
+            </RegularQuery>
+          </Property>
+          <!-- Manufacturer -->
+          <Property PropertyName="Manufacturer">
+            <Type PSType="System.String" />
+            <RegularQuery>
+              <CmdletParameterMetadata/>
+            </RegularQuery>
+          </Property>
+          <!-- Model -->
+          <Property PropertyName="Model">
+            <Type PSType="System.String" />
+            <RegularQuery>
+              <CmdletParameterMetadata/>
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <!-- StorageProvider -->
+          <Association Association="MSFT_StorageProviderToStorageSubSystem" SourceRole="StorageProvider" ResultRole="StorageSubSystem">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageProvider" />
+              <CmdletParameterMetadata PSName="StorageProvider" ValueFromPipeline="true" CmdletParameterSets="ByStorageProvider" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- StorageNode -->
+          <Association Association="MSFT_StorageSubSystemToStorageNode" SourceRole="StorageNode" ResultRole="StorageSubSystem">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageNode" />
+              <CmdletParameterMetadata PSName="StorageNode" ValueFromPipeline="true" CmdletParameterSets="ByStorageNode" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- StoragePool -->
+          <Association Association="MSFT_StorageSubSystemToStoragePool" SourceRole="StoragePool" ResultRole="StorageSubSystem">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StoragePool" />
+              <CmdletParameterMetadata PSName="StoragePool" ValueFromPipeline="true" CmdletParameterSets="ByStoragePool" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- VirtualDisk -->
+          <Association Association="MSFT_StorageSubSystemToVirtualDisk" SourceRole="VirtualDisk" ResultRole="StorageSubSystem">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_VirtualDisk" />
+              <CmdletParameterMetadata PSName="VirtualDisk" ValueFromPipeline="true" CmdletParameterSets="ByVirtualDisk" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- MaskingSet -->
+          <Association Association="MSFT_StorageSubSystemToMaskingSet" SourceRole="MaskingSet" ResultRole="StorageSubSystem">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_MaskingSet" />
+              <CmdletParameterMetadata PSName="MaskingSet" ValueFromPipeline="true" CmdletParameterSets="ByMaskingSet" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- TargetPort -->
+          <Association Association="MSFT_StorageSubSystemToTargetPort" SourceRole="TargetPort" ResultRole="StorageSubSystem">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TargetPort" />
+              <CmdletParameterMetadata PSName="TargetPort" ValueFromPipeline="true" CmdletParameterSets="ByTargetPort" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- TargetPortal -->
+          <Association Association="MSFT_StorageSubSystemToTargetPortal" SourceRole="TargetPortal" ResultRole="StorageSubSystem">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_TargetPortal" />
+              <CmdletParameterMetadata PSName="TargetPortal" ValueFromPipeline="true" CmdletParameterSets="ByTargetPortal" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- InitiatorId -->
+          <Association Association="MSFT_StorageSubSystemToInitiatorId" SourceRole="InitiatorId" ResultRole="StorageSubSystem">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_InitiatorId" />
+              <CmdletParameterMetadata PSName="InitiatorId" ValueFromPipeline="true" CmdletParameterSets="ByInitiatorId" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- OffloadDataTransferSetting -->
+          <Association Association="MSFT_StorageSubSystemToOffloadDataTransferSetting" SourceRole="OffloadDataTransferSetting" ResultRole="StorageSubSystem">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_OffloadDataTransferSetting" />
+              <CmdletParameterMetadata PSName="OffloadDataTransferSetting" ValueFromPipeline="true" CmdletParameterSets="ByOffloadDataTransferSetting" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- Disk -->
+          <Association Association="MSFT_StorageSubSystemToDisk" SourceRole="Disk" ResultRole="StorageSubSystem">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Disk" />
+              <CmdletParameterMetadata PSName="Disk" ValueFromPipeline="true" CmdletParameterSets="ByDisk" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- Partition -->
+          <Association Association="MSFT_StorageSubSystemToPartition" SourceRole="Partition" ResultRole="StorageSubSystem">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Partition" />
+              <CmdletParameterMetadata PSName="Partition" ValueFromPipeline="true" CmdletParameterSets="ByPartition" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- Volume -->
+          <Association Association="MSFT_StorageSubSystemToVolume" SourceRole="Volume" ResultRole="StorageSubSystem">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Volume" />
+              <CmdletParameterMetadata PSName="Volume" ValueFromPipeline="true" CmdletParameterSets="ByVolume" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- FileServer -->
+          <Association Association="MSFT_StorageSubSystemToFileServer" SourceRole="FileServer" ResultRole="StorageSubSystem">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_FileServer" />
+              <CmdletParameterMetadata PSName="FileServer" ValueFromPipeline="true" CmdletParameterSets="ByFileServer" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- StorageFaultDomain-->
+          <Association Association="MSFT_StorageSubSystemToStorageFaultDomain" SourceRole="StorageFaultDomain" ResultRole="StorageSubSystem">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageFaultDomain" />
+              <CmdletParameterMetadata PSName="StorageFaultDomain" ValueFromPipeline="true" CmdletParameterSets="ByStorageFaultDomain" ErrorOnNoMatch="false" Aliases="PhysicalDisk
+                                                                                                                                                                       StorageEnclosure
+                                                                                                                                                                       StorageScaleUnit
+                                                                                                                                                                       StorageChassis
+                                                                                                                                                                       StorageRack
+                                                                                                                                                                       StorageSite"/>
+            </AssociatedInstance>
+          </Association>
+        </QueryableAssociations>
+      </GetCmdletParameters>
+      <!--
+
+      //
+      // New-StoragePool
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="New" Noun="StoragePool" />
+        <Method MethodName="CreateStoragePool">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Aliases="StoragePoolFriendlyName">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="StorageSubSystem.CreateStoragePool.Usage" />
+              <CmdletParameterMetadata Aliases="StoragePoolUsage">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- OtherUsageDescription -->
+            <Parameter ParameterName="OtherUsageDescription">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="StoragePoolOtherUsageDescription">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- ProvisioningTypeDefault -->
+            <Parameter ParameterName="ProvisioningTypeDefault">
+              <Type PSType="StorageSubSystem.ProvisioningType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MediaTypeDefault -->
+            <Parameter ParameterName="MediaTypeDefault">
+              <Type PSType="StorageSubSystem.MediaType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- EnclosureAwareDefault -->
+            <Parameter ParameterName="EnclosureAwareDefault">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- FaultDomainAwarenessDefault -->
+            <Parameter ParameterName="FaultDomainAwarenessDefault">
+              <Type PSType="StorageSubSystem.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- ResiliencySettingNameDefault -->
+            <Parameter ParameterName="ResiliencySettingNameDefault">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- LogicalSectorSizeDefault -->
+            <Parameter ParameterName="LogicalSectorSizeDefault">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- WriteCacheSizeDefault -->
+            <Parameter ParameterName="WriteCacheSizeDefault">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- AutoWriteCacheSize -->
+            <Parameter ParameterName="AutoWriteCacheSize">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Version -->
+            <Parameter ParameterName="Version">
+              <Type PSType="StorageSubSystem.CreateStoragePool.Version" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- CMDLET OUTPUT -->
+            <Parameter ParameterName="CreatedStoragePool">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- StorageSubSystemUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="StorageSubSystemUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="StorageSubsystemId" />
+              </RegularQuery>
+            </Property>
+            <!-- StorageSubSystemFriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="StorageSubSystemFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0" ErrorOnNoMatch="true" />
+              </RegularQuery>
+            </Property>
+            <!-- StorageSubSystemName -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="StorageSubSystemName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // New-StorageSubsystemVirtualDisk
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="New" Noun="StorageSubsystemVirtualDisk" />
+        <Method MethodName="CreateVirtualDisk">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="VirtualDiskFriendlyName">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="StorageSubSystem.CreateVirtualDisk.Usage" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- OtherUsageDescription -->
+            <Parameter ParameterName="OtherUsageDescription">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Size -->
+            <Parameter ParameterName="Size">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- UseMaximumSize -->
+            <Parameter ParameterName="UseMaximumSize">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Interleave -->
+            <Parameter ParameterName="Interleave">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- NumberOfColumns -->
+            <Parameter ParameterName="NumberOfColumns">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- PhysicalDiskRedundancy -->
+            <Parameter ParameterName="PhysicalDiskRedundancy">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata Aliases="FaultDomainRedundancy" />
+            </Parameter>
+            <!-- NumberOfDataCopies -->
+            <Parameter ParameterName="NumberOfDataCopies">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- ParityLayout -->
+            <Parameter ParameterName="ParityLayout">
+              <Type PSType="StorageSubSystem.CreateVirtualDisk.ParityLayout" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- RequestNoSinglePointOfFailure -->
+            <Parameter ParameterName="RequestNoSinglePointOfFailure">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- ProvisioningType -->
+            <Parameter ParameterName="ProvisioningType">
+              <Type PSType="StorageSubSystem.ProvisioningType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsEnclosureAware -->
+            <Parameter ParameterName="IsEnclosureAware">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- FaultDomainAwareness -->
+            <Parameter ParameterName="FaultDomainAwareness">
+              <Type PSType="StorageSubSystem.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- CMDLET OUTPUT -->
+            <Parameter ParameterName="CreatedVirtualDisk">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- StorageSubSystemUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="StorageSubSystemUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="StorageSubsystemId" />
+              </RegularQuery>
+            </Property>
+            <!-- StorageSubSystemFriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="StorageSubSystemFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0" ErrorOnNoMatch="true" />
+              </RegularQuery>
+            </Property>
+            <!-- StorageSubSystemName -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="StorageSubSystemName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // New-MaskingSet
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="New" Noun="MaskingSet" />
+        <Method MethodName="CreateMaskingSet">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="MaskingSetFriendlyName">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- VirtualDiskNames -->
+            <Parameter ParameterName="VirtualDiskNames">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- InitiatorAddresses -->
+            <Parameter ParameterName="InitiatorAddresses">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- TargetPortAddresses -->
+            <Parameter ParameterName="TargetPortAddresses">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- DeviceNumbers -->
+            <Parameter ParameterName="DeviceNumbers">
+              <Type PSType="System.String[]"/>
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- DeviceAccesses -->
+            <Parameter ParameterName="DeviceAccesses">
+              <Type PSType="StorageSubSystem.CreateMaskingSet.DeviceAccess[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- HostMode -->
+            <Parameter ParameterName="HostType">
+              <Type PSType="StorageSubSystem.CreateMaskingSet.HostMode" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- CMDLET OUTPUT -->
+            <Parameter ParameterName="CreatedMaskingSet">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- StorageSubSystemUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="StorageSubSystemUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="StorageSubsystemId" />
+              </RegularQuery>
+            </Property>
+            <!-- StorageSubSystemFriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="StorageSubSystemFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0" ErrorOnNoMatch="true" />
+              </RegularQuery>
+            </Property>
+            <!-- StorageSubSystemName -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="StorageSubSystemName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // New-StorageFileServer
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="New" Noun="StorageFileServer" />
+        <Method MethodName="CreateFileServer">
+          <Parameters>
+            <Parameter ParameterName="HostNames">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="FileSharingProtocols">
+              <Type PSType="StorageSubSystem.CreateFileServer.FileSharingProtocol[]"/>
+              <CmdletParameterMetadata PSName="Protocols" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- CMDLET OUTPUT -->
+            <Parameter ParameterName="CreatedFileServer">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- StorageSubSystemUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery>
+                <CmdletParameterMetadata PSName="StorageSubSystemUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="StorageSubSystemId" />
+              </RegularQuery>
+            </Property>
+            <!-- StorageSubSystemFriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata  PSName="StorageSubSystemFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0" ErrorOnNoMatch="true" />
+              </RegularQuery>
+            </Property>
+            <!-- StorageSubSystemName -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata  PSName="StorageSubSystemName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Get-StorageDiagnosticInfo
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" Noun="StorageDiagnosticInfoInternal" />
+        <Method MethodName="GetDiagnosticInfo">
+          <Parameters>
+            <Parameter ParameterName="DestinationPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TimeSpan">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <Parameter ParameterName="ActivityId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <Parameter ParameterName="ExcludeOperationalLog">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <Parameter ParameterName="ExcludeDiagnosticLog">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <Parameter ParameterName="IncludeLiveDump">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByUniqueId">
+          <QueryableProperties>
+            <!-- StorageSubSystemUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="StorageSubSystemUniqueId" IsMandatory="true" CmdletParameterSets="ByUniqueId" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Clear-StorageDiagnosticInfo
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Clear" Noun="StorageDiagnosticInfo" />
+        <Method MethodName="ClearDiagnosticInfo">
+          <Parameters>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- StorageSubSystemUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="StorageSubSystemUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="StorageSubsystemId" />
+              </RegularQuery>
+            </Property>
+            <!-- StorageSubSystemFriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="StorageSubSystemFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0" ErrorOnNoMatch="true" />
+              </RegularQuery>
+            </Property>
+            <!-- StorageSubSystemName -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="StorageSubSystemName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Start-StorageDiagnosticLog
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Start" Noun="StorageDiagnosticLog" Aliases="Enable-StorageDiagnosticLog" />
+        <Method MethodName="StartDiagnosticLog">
+          <Parameters>
+            <Parameter ParameterName="Level" DefaultValue="Informational">
+              <Type PSType="StorageSubSystem.EnableDiagnosticLog.Level" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <Parameter ParameterName="MaxLogSize">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- StorageSubSystemUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="StorageSubSystemUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="StorageSubsystemId" />
+              </RegularQuery>
+            </Property>
+            <!-- StorageSubSystemFriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="StorageSubSystemFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0" ErrorOnNoMatch="true" />
+              </RegularQuery>
+            </Property>
+            <!-- StorageSubSystemName -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="StorageSubSystemName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Stop-StorageDiagnosticLog
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Stop" Noun="StorageDiagnosticLog" Aliases="Disable-StorageDiagnosticLog" />
+        <Method MethodName="StopDiagnosticLog">
+          <Parameters>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByFriendlyName">
+          <QueryableProperties>
+            <!-- StorageSubSystemUniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata PSName="StorageSubSystemUniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="StorageSubsystemId" />
+              </RegularQuery>
+            </Property>
+            <!-- StorageSubSystemFriendlyName -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="StorageSubSystemFriendlyName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByFriendlyName" Position="0" ErrorOnNoMatch="true" />
+              </RegularQuery>
+            </Property>
+            <!-- StorageSubSystemName -->
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata PSName="StorageSubSystemName" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="StorageSubSystem.EnableDiagnosticLog.Level" UnderlyingType="System.UInt16">
+      <Value Name="Critical" Value="1" />
+      <Value Name="Error" Value="2" />
+      <Value Name="Warning" Value="3" />
+      <Value Name="Informational" Value="4" />
+      <Value Name="Verbose" Value="5" />
+    </Enum>
+    <Enum EnumName="StorageSubSystem.NameFormat" UnderlyingType="System.UInt16">
+      <Value Name="Other" Value="1" />
+      <Value Name="IP" Value="2" />
+      <Value Name="Dial" Value="3" />
+      <Value Name="HID" Value="4" />
+      <Value Name="NWA" Value="5" />
+      <Value Name="HWA" Value="6" />
+      <Value Name="X25" Value="7" />
+      <Value Name="ISDN" Value="8" />
+      <Value Name="IPX" Value="9" />
+      <Value Name="DCC" Value="10" />
+      <Value Name="ICD" Value="11" />
+      <Value Name="E164" Value="12" />
+      <Value Name="SNA" Value="13" />
+      <Value Name="OID" Value="14" />
+      <Value Name="OSI" Value="14" />
+      <Value Name="WWN" Value="15" />
+      <Value Name="NAA" Value="16" />
+    </Enum>
+    <Enum EnumName="StorageSubSystem.HealthStatus" UnderlyingType="System.UInt16">
+      <Value Name="Healthy" Value="0" />
+      <Value Name="Warning" Value="1" />
+      <Value Name="Unhealthy" Value="2" />
+    </Enum>
+    <Enum EnumName="StorageSubSystem.OperationalStatus" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Other" Value="1" />
+      <Value Name="OK" Value="2" />
+      <Value Name="Degraded" Value="3" />
+      <Value Name="Stressed" Value="4" />
+      <Value Name="PredictiveFailure" Value="5" />
+      <Value Name="Error" Value="6" />
+      <Value Name="NonRecoverableError" Value="7" />
+      <Value Name="Starting" Value="8" />
+      <Value Name="Stopping" Value="9" />
+      <Value Name="Stopped" Value="10" />
+      <Value Name="InService" Value="11" />
+      <Value Name="NoContact" Value="12" />
+      <Value Name="LostCommunication" Value="13" />
+      <Value Name="Aborted" Value="14" />
+      <Value Name="Dormant" Value="15" />
+      <Value Name="SupportingEntityInError" Value="16" />
+      <Value Name="Completed" Value="17" />
+      <Value Name="PowerMode" Value="18" />
+    </Enum>
+    <Enum EnumName="StorageSubSystem.ProvisioningType" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Thin" Value="1" />
+      <Value Name="Fixed" Value="2" />
+    </Enum>
+    <Enum EnumName="StorageSubSystem.MediaType" UnderlyingType="System.UInt16">
+      <Value Name="HDD" Value="3" />
+      <Value Name="SSD" Value="4" />
+      <Value Name="SCM" Value="5" />
+    </Enum>
+    <Enum EnumName="StorageSubSystem.FaultDomainType" UnderlyingType="System.UInt16">
+      <Value Name="PhysicalDisk" Value="1" />
+      <Value Name="StorageEnclosure" Value="2" />
+      <Value Name="StorageScaleUnit" Value="3" />
+      <Value Name="StorageChassis" Value="4" />
+      <Value Name="StorageRack" Value="5" />
+    </Enum>
+    <Enum EnumName="StorageSubSystem.CreateStoragePool.Usage" UnderlyingType="System.UInt16">
+      <Value Name="Other" Value="1" />
+      <Value Name="Unrestricted" Value="2" />
+      <Value Name="ReservedForComputerSystem" Value="3" />
+      <Value Name="ReservedAsDeltaReplicaContainer" Value="4" />
+      <Value Name="ReservedForMigrationServices" Value="5" />
+      <Value Name="ReservedForLocalReplicationServices" Value="6" />
+      <Value Name="ReservedForRemoteReplicationServices" Value="7" />
+      <Value Name="ReservedForSparing" Value="8" />
+    </Enum>
+    <Enum EnumName="StorageSubSystem.CreateStoragePool.Version" UnderlyingType="System.UInt16">
+      <Value Name="WindowsServer2012" Value="1" />
+      <Value Name="WindowsServer2012R2" Value="7" />
+      <Value Name="WindowsServer2016" Value="19" />
+      <Value Name="WindowsServer2016RS3" Value="20" />
+      <Value Name="WindowsServer2019" Value="22" />
+    </Enum>
+    <Enum EnumName="StorageSubSystem.CreateVirtualDisk.Usage" UnderlyingType="System.UInt16">
+      <Value Name="Other" Value="1" />
+      <Value Name="Unrestricted" Value="2" />
+      <Value Name="ReservedForComputerSystem" Value="3" />
+      <Value Name="ReservedForReplicationServices" Value="4" />
+      <Value Name="ReservedForMigrationServices" Value="5" />
+      <Value Name="LocalReplicaSource" Value="6" />
+      <Value Name="RemoteReplicaSource" Value="7" />
+      <Value Name="LocalReplicaTarget" Value="8" />
+      <Value Name="RemoteReplicaTarget" Value="9" />
+      <Value Name="LocalReplicaSourceOrTarget" Value="10" />
+      <Value Name="RemoteReplicaSourceOrTarget" Value="11" />
+      <Value Name="DeltaReplicaTarget" Value="12" />
+      <Value Name="ElementComponent" Value="13" />
+      <Value Name="ReservedAsPoolContributer" Value="14" />
+      <Value Name="CompositeVolumeMember" Value="15" />
+      <Value Name="CompositeVirtualDiskMember" Value="16" />
+      <Value Name="ReservedForSparing" Value="17" />
+    </Enum>
+    <Enum EnumName="StorageSubSystem.CreateVirtualDisk.ParityLayout" UnderlyingType="System.UInt16">
+      <Value Name="NonRotatedParity" Value="1" />
+      <Value Name="RotatedParity" Value="2" />
+    </Enum>
+    <Enum EnumName="StorageSubSystem.CreateMaskingSet.DeviceAccess" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="ReadWrite" Value="2" />
+      <Value Name="ReadOnly" Value="3" />
+      <Value Name="NoAccess" Value="4" />
+    </Enum>
+    <Enum EnumName="StorageSubSystem.CreateMaskingSet.HostMode" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Other" Value="1" />
+      <Value Name="Standard" Value="2" />
+      <Value Name="Solaris" Value="3" />
+      <Value Name="HPUX" Value="4" />
+      <Value Name="OpenVMS" Value="5" />
+      <Value Name="Tru64" Value="6" />
+      <Value Name="Netware" Value="7" />
+      <Value Name="Sequent" Value="8" />
+      <Value Name="AIX" Value="9" />
+      <Value Name="DGUX" Value="10" />
+      <Value Name="Dynix" Value="11" />
+      <Value Name="Irix" Value="12" />
+      <Value Name="CiscoISCSIStorageRouter" Value="13" />
+      <Value Name="Linux" Value="14" />
+      <Value Name="MicrosoftWindows" Value="15" />
+      <Value Name="OS400" Value="16" />
+      <Value Name="TRESPASS" Value="17" />
+      <Value Name="HIUX" Value="18" />
+      <Value Name="VMwareESXi" Value="19" />
+      <Value Name="MicrosoftWindowsServer2008" Value="20" />
+      <Value Name="MicrosoftWindowsServer2003" Value="21" />
+    </Enum>
+    <Enum EnumName="StorageSubSystem.CreateFileServer.FileSharingProtocol" UnderlyingType="System.UInt16">
+      <Value Name="NFS" Value="2" />
+      <Value Name="SMB" Value="3" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

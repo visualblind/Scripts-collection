@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <Type>
+    <Name>Microsoft.Web.Administration.Site</Name>
+    <Members>
+      <MemberSet>
+      <Name>PsStandardMembers</Name>
+        <Members>
+          <PropertySet>
+            <Name>DefaultDisplayPropertySet</Name>
+            <ReferencedProperties>
+              <Name>Name</Name>
+              <Name>ID</Name>
+              <Name>State</Name>
+              <Name>PhysicalPath</Name>
+              <Name>Bindings</Name>
+            </ReferencedProperties>
+          </PropertySet>
+          <PropertySet>
+            <Name>DefaultKeyPropertySet</Name>
+            <ReferencedProperties>
+              <Name>Name</Name>
+            </ReferencedProperties>
+          </PropertySet>
+        </Members>
+      </MemberSet>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Web.Administration.Binding</Name>
+    <Members>
+      <MemberSet>
+        <Name>PsStandardMembers</Name>
+        <Members>
+          <PropertySet>
+            <Name>DefaultDisplayPropertySet</Name>
+            <ReferencedProperties>
+              <Name>protocol</Name>
+              <Name>bindingInformation</Name>
+              <Name>sslFlags</Name>
+            </ReferencedProperties>
+          </PropertySet>
+          <PropertySet>
+            <Name>DefaultKeyPropertySet</Name>
+            <ReferencedProperties>
+              <Name>protocol</Name>
+            </ReferencedProperties>
+          </PropertySet>
+        </Members>
+      </MemberSet>
+      <ScriptMethod>
+        <Name>ToString</Name>
+        <Script>
+          if( $this.Protocol -eq "https" )
+          {
+            return [string]::Format("{0} {1} sslFlags={2}", $this.Protocol,$this.BindingInformation,$this.sslFlags)
+          }
+          else
+          {
+            return [string]::Format("{0} {1}", $this.Protocol,$this.BindingInformation)
+          }
+        </Script>
+      </ScriptMethod>
+    </Members>
+  </Type>
+</Types>

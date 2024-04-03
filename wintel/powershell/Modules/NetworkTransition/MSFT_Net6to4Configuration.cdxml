@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+
+	<Class ClassName="root/StandardCimv2/MSFT_Net6to4Configuration" ClassVersion="1.0.0">
+		<Version>1.0</Version>
+		<DefaultNoun>Net6to4Configuration</DefaultNoun>
+		
+	    <InstanceCmdlets>
+    
+    		<GetCmdletParameters DefaultCmdletParameterSet="ByName">
+    		
+	        <QueryableAssociations>
+	          <Association Association="MSFT_Net6to4State" ResultRole="SettingData" SourceRole="ManagedElement">
+	            <AssociatedInstance>
+	              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetIPInterface" />
+	              <CmdletParameterMetadata PSName="IPInterface" ValueFromPipeline="true" CmdletParameterSets="ByName" />
+	            </AssociatedInstance>
+	          </Association>
+	        </QueryableAssociations>
+    	        <QueryOptions>
+                 <Option OptionName="PolicyStore">
+                 <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName"/>     
+                 </Option> 
+                 <Option OptionName="GPOSession">
+                 <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName"/>     
+                 </Option> 
+              </QueryOptions>    		
+    		</GetCmdletParameters>
+
+			<Cmdlet>
+		        <CmdletMetadata Verb="Set" ConfirmImpact="Medium"/>
+		        <Method MethodName="cim:ModifyInstance">
+			        <Parameters>
+
+			            <Parameter ParameterName="State">
+			              <Type PSType="Net6to4Configuration.State" />
+			              <CmdletParameterMetadata Position="1">
+    			            <ValidateNotNull />
+                			<ValidateNotNullOrEmpty />
+			              </CmdletParameterMetadata>
+			            </Parameter>
+
+			            <Parameter ParameterName="AutoSharing">
+			              <Type PSType="Net6to4Configuration.State" />
+			              <CmdletParameterMetadata Position="2">
+    			            <ValidateNotNull />
+                			<ValidateNotNullOrEmpty />
+			              </CmdletParameterMetadata>
+			            </Parameter>
+
+			            <Parameter ParameterName="RelayName">
+			              <Type PSType="System.String" />
+			              <CmdletParameterMetadata Position="3">
+    			            <ValidateNotNull />
+			              </CmdletParameterMetadata>
+			            </Parameter>
+			            
+			            <Parameter ParameterName="RelayState">
+			              <Type PSType="Net6to4Configuration.State" />
+			              <CmdletParameterMetadata Position="4">
+    			            <ValidateNotNull />
+                			<ValidateNotNullOrEmpty />
+			              </CmdletParameterMetadata>
+			            </Parameter>
+
+			            <Parameter ParameterName="ResolutionInterval">
+			              <Type PSType="System.UInt32" />
+			              <CmdletParameterMetadata Position="5" PSName="ResolutionIntervalSeconds" Aliases="ResolutionInterval">
+    			            <ValidateNotNull />
+                			<ValidateNotNullOrEmpty />
+			              </CmdletParameterMetadata>
+			            </Parameter>
+			            
+		          </Parameters>
+		        </Method>
+			</Cmdlet>
+
+			<Cmdlet>
+		        <CmdletMetadata Verb="Reset" ConfirmImpact="Medium"/>
+		        <Method MethodName="Reset">
+			        <Parameters>
+
+			            <Parameter ParameterName="State">
+			              <Type PSType="System.Management.Automation.SwitchParameter" />
+			              <CmdletParameterMetadata IsMandatory="false" />
+			            </Parameter>
+
+			            <Parameter ParameterName="AutoSharing">
+			              <Type PSType="System.Management.Automation.SwitchParameter" />
+			              <CmdletParameterMetadata IsMandatory="false" />
+			            </Parameter>
+
+			            <Parameter ParameterName="RelayName">
+			              <Type PSType="System.Management.Automation.SwitchParameter" />
+			              <CmdletParameterMetadata IsMandatory="false" />
+			            </Parameter>
+			            
+			            <Parameter ParameterName="RelayState">
+			              <Type PSType="System.Management.Automation.SwitchParameter" />
+			              <CmdletParameterMetadata IsMandatory="false" />
+			            </Parameter>
+
+			            <Parameter ParameterName="ResolutionInterval">
+			              <Type PSType="System.Management.Automation.SwitchParameter" />
+			              <CmdletParameterMetadata IsMandatory="false"  PSName="ResolutionIntervalSeconds" Aliases="ResolutionInterval"/>
+			            </Parameter>
+
+		                  <Parameter ParameterName="PassThru">
+		                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+		                     <CmdletParameterMetadata/>
+		                  </Parameter>
+		                  <Parameter ParameterName="OutputObject">
+		                     <Type PSType="Microsoft.Management.Infrastructure.CimInstance"/>
+		                     <CmdletOutputMetadata/>
+		                  </Parameter>
+			            			            
+		          </Parameters>
+		        </Method>
+			</Cmdlet>
+      
+	    </InstanceCmdlets>
+
+	</Class>
+
+    <Enums>
+        <Enum EnumName="Net6to4Configuration.State" UnderlyingType="System.UInt32">
+            <Value Name="Default" Value="0" />
+            <Value Name="Automatic" Value="1" />
+            <Value Name="Enabled" Value="2" />      
+            <Value Name="Disabled" Value="3" />      
+        </Enum>
+    </Enums>  	
+	
+</PowerShellMetadata>
+

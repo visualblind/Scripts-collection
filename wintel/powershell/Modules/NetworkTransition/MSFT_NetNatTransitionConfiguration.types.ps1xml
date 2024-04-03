@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Types>
+   <Type>
+      <Name>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetNatTransitionConfiguration</Name>
+      <Members>
+         <ScriptProperty>
+            <Name>State</Name>
+            <GetScriptBlock>
+               [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNatTransitionConfiguration.State]($this.PSBase.CimInstanceProperties['State'].Value)
+            </GetScriptBlock>
+            <SetScriptBlock>
+               $this.PSBase.CimInstanceProperties['State'].Value = [System.UInt32]$_
+            </SetScriptBlock>
+         </ScriptProperty>
+         <ScriptProperty>
+            <Name>PolicyStore</Name>
+            <GetScriptBlock>
+               [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNatTransitionConfiguration.PolicyStore]($this.PSBase.CimInstanceProperties['PolicyStore'].Value)
+            </GetScriptBlock>
+            <SetScriptBlock>
+               $this.PSBase.CimInstanceProperties['PolicyStore'].Value = [System.UInt32]$_
+            </SetScriptBlock>
+         </ScriptProperty>
+      </Members>
+   </Type>
+   <Type>
+      <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetNatTransitionConfiguration</Name>
+      <Members>
+         <ScriptProperty>
+            <Name>State</Name>
+            <GetScriptBlock>
+               [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNatTransitionConfiguration.State]($this.PSBase.CimInstanceProperties['State'].Value)
+            </GetScriptBlock>
+            <SetScriptBlock>
+               $this.PSBase.CimInstanceProperties['State'].Value = [System.UInt32]$_
+            </SetScriptBlock>
+         </ScriptProperty>
+         <ScriptProperty>
+            <Name>PolicyStore</Name>
+            <GetScriptBlock>
+               [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetNatTransitionConfiguration.PolicyStore]($this.PSBase.CimInstanceProperties['PolicyStore'].Value)
+            </GetScriptBlock>
+            <SetScriptBlock>
+               $this.PSBase.CimInstanceProperties['PolicyStore'].Value = [System.UInt32]$_
+            </SetScriptBlock>
+         </ScriptProperty>
+      </Members>
+   </Type>   
+</Types>
+

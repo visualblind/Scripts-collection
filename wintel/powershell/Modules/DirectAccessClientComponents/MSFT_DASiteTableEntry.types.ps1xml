@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Types>
+   <Type>
+      <Name>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_DASiteTableEntry</Name>
+      <Members>
+         <ScriptProperty>
+            <Name>State</Name>
+            <GetScriptBlock>
+               [Microsoft.PowerShell.Cmdletization.GeneratedTypes.DASiteTableEntry.State]($this.PSBase.CimInstanceProperties['State'].Value)
+            </GetScriptBlock>
+            <SetScriptBlock>
+               $this.PSBase.CimInstanceProperties['State'].Value = [System.UInt32]$_
+            </SetScriptBlock>
+         </ScriptProperty>
+      </Members>
+   </Type>
+   <Type>
+      <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_DASiteTableEntry</Name>
+      <Members>
+         <ScriptProperty>
+            <Name>State</Name>
+            <GetScriptBlock>
+               [Microsoft.PowerShell.Cmdletization.GeneratedTypes.DASiteTableEntry.State]($this.PSBase.CimInstanceProperties['State'].Value)
+            </GetScriptBlock>
+            <SetScriptBlock>
+               $this.PSBase.CimInstanceProperties['State'].Value = [System.UInt32]$_
+            </SetScriptBlock>
+         </ScriptProperty>
+      </Members>
+   </Type>
+</Types>
+

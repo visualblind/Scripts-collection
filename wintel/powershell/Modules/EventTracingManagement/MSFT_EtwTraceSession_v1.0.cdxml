@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT\Microsoft\Windows\EventTracingManagement\MSFT_EtwTraceSession" ClassVersion="1.1.0.0">
+    <Version>1.1.0.0</Version>
+    <DefaultNoun>EtwTraceSession</DefaultNoun>
+    <InstanceCmdlets>
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+        <QueryableProperties>
+          <Property PropertyName="Name">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName"/>
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+      </GetCmdletParameters>   
+      
+      <Cmdlet>
+        <CmdletMetadata Verb="Stop" ConfirmImpact="Medium" Aliases="Remove-EtwTraceSession"/>
+        <Method MethodName="cim:DeleteInstance" />
+      </Cmdlet>
+      
+      <Cmdlet>
+        <CmdletMetadata Verb="Update" ConfirmImpact="Medium" Aliases="Set-EtwTraceSession"/>
+        <Method MethodName="cim:ModifyInstance">
+          <Parameters>
+            <Parameter ParameterName="LogFileMode">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="LocalFilePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="MaximumFileSize">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="BufferSize">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="MaximumBuffers">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="FlushTimer">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="ClockType">
+              <Type PSType="EtwTraceSession.ClockType" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      
+      <Cmdlet>
+        <CmdletMetadata Verb="Send" ConfirmImpact="Medium" />
+        <Method MethodName="Send" >
+          <ReturnValue>
+            <Type PSType="EtwTraceSession.SendStatus" />
+            <CmdletOutputMetadata>
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="DestinationFolder">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Aliases="RemoteShare">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DeleteFile">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata PSName="DeleteAfterSend"/>
+            </Parameter>
+            <Parameter ParameterName="SourceFilePath">
+              <Type PSType="System.String" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <Parameter ParameterName="ErrorCode" >
+              <Type PSType="System.UInt32" />
+              <CmdletOutputMetadata/>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </InstanceCmdlets>
+     
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" ConfirmImpact="Medium" />
+        <Method MethodName="cim:CreateInstance">
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- EVENT_TRACE_INDEPENDENT_SESSION_MODE -->
+            <Parameter ParameterName="LogFileMode" DefaultValue="0x8000000">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <!-- Default file path matches the one used by XPerf -->
+            <Parameter ParameterName="LocalFilePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="MaximumFileSize">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <!-- Use a large default to ensure even the largest event will fit -->
+            <Parameter ParameterName="BufferSize" DefaultValue="64">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="MinimumBuffers">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="MaximumBuffers">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="FlushTimer">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="ClockType">
+              <Type PSType="EtwTraceSession.ClockType" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="EtwTraceSession.ClockType" UnderlyingType="System.UInt32">
+      <Value Name="Performance" Value="1" />
+      <Value Name="System" Value="2" />
+      <Value Name="Cycle" Value="3" />
+    </Enum>
+    <Enum EnumName="EtwTraceSession.SendStatus" UnderlyingType="System.UInt32">
+      <Value Name="Success" Value="0" />
+      <Value Name="CreateNewFileFailed" Value="1" />
+      <Value Name="CopyFileFailed" Value="2" />
+      <Value Name="DeleteOldFileFailed" Value="3" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=xfreerdp_windowshost
+Comment=XFreeRDP
+Exec=xfreerdp /network:auto /auto-reconnect /monitors:0 /bpp:32 /floatbar:sticky:on /floatbar:show:always +clipboard /cert-ignore /dynamic-resolution /f /u:"DOMAIN\username" /p:"password" /v:hostname.domain.ext
+Icon=gnome-remote-desktop
+Terminal=false
+Type=Application
+Categories=Application;
+Name[en_US]=xfreerdp_windowshost

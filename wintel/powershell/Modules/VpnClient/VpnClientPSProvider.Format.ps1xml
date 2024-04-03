@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- *******************************************************************
+These sample files contain formatting information used by the Windows 
+PowerShell engine. Do not edit or change the contents of this file 
+directly. Please see the Windows PowerShell documentation or type 
+Get-Help Update-FormatData for more information.
+
+Copyright (c) Microsoft Corporation.  All rights reserved.
+ 
+THIS SAMPLE CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY 
+OF ANY KIND,WHETHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO 
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
+PURPOSE. IF THIS CODE AND INFORMATION IS MODIFIED, THE ENTIRE RISK OF USE
+OR RESULTS IN CONNECTION WITH THE USE OF THIS CODE AND INFORMATION 
+REMAINS WITH THE USER.
+******************************************************************** -->
+<Configuration>
+    <ViewDefinitions>
+         <View>
+            <Name>VpnCommonConfig_Table</Name>
+            <ViewSelectedBy>
+                <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnCommonConfig</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader>
+                        <Width>15</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>15</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <PropertyName>Name</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>ServerAddress</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>ProfileType</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>ConnectionStatus</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>IsAutoTriggerEnabled</PropertyName>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+        <View>
+            <Name>VpnCommonConfig_Wide</Name>
+            <ViewSelectedBy>
+                <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnCommonConfig</TypeName>
+            </ViewSelectedBy>
+            <WideControl>
+                <WideEntries>
+                    <WideEntry>
+                        <WideItem>
+                            <PropertyName>Name</PropertyName>
+                        </WideItem>
+                    </WideEntry>
+                </WideEntries>
+            </WideControl>
+        </View>
+        <View>
+            <Name>VpnConnection_List</Name>
+            <ViewSelectedBy>
+                <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnConnection</TypeName>
+            </ViewSelectedBy>
+            <ListControl>
+                <ListEntries>
+                    <ListEntry>
+                        <ListItems>
+                            <ListItem>
+                                <PropertyName>Name</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>ServerAddress</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>AllUserConnection</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>Guid</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>TunnelType</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>AuthenticationMethod</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>EncryptionLevel</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>L2tpIPsecAuth</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>UseWinlogonCredential</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>EapConfigXmlStream</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>ConnectionStatus</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>RememberCredential</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>SplitTunneling</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>DnsSuffix</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>IdleDisconnectSeconds</PropertyName>
+                            </ListItem>
+                        </ListItems>
+                    </ListEntry>
+                </ListEntries>
+            </ListControl>
+        </View>
+        <View>
+            <Name>ThirdPartyVpnConnection_List</Name>
+            <ViewSelectedBy>
+                <TypeName>Microsoft.Management.Infrastructure.CimInstance#ThirdPartyVpnConnection</TypeName>
+            </ViewSelectedBy>
+            <ListControl>
+                <ListEntries>
+                    <ListEntry>
+                        <ListItems>
+                            <ListItem>
+                                <PropertyName>Name</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>ServerAddress</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>Guid</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>ConnectionStatus</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>RememberCredential</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>SplitTunneling</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>DnsSuffix</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>IdleDisconnectSeconds</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>PlugInApplicationID</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <PropertyName>CustomConfiguration</PropertyName>
+                            </ListItem>
+                        </ListItems>
+                    </ListEntry>
+                </ListEntries>
+            </ListControl>
+        </View>
+        <View>
+            <Name>EapConfiguration_List</Name>
+            <ViewSelectedBy>
+                <TypeName>Microsoft.Management.Infrastructure.CimInstance#EapConfiguration</TypeName>
+            </ViewSelectedBy>
+            <ListControl>
+                <ListEntries>
+                    <ListEntry>
+                        <ListItems>
+                            <ListItem>
+                                <PropertyName>EapConfigXmlStream</PropertyName>
+                            </ListItem>
+                        </ListItems>
+                    </ListEntry>
+                </ListEntries>
+            </ListControl>
+        </View>
+        <View>
+            <Name>EapConfiguration_Table</Name>
+            <ViewSelectedBy>
+                <TypeName>Microsoft.Management.Infrastructure.CimInstance#EapConfiguration</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader>
+                        <Width>80</Width>
+                    </TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <PropertyName>EapConfigXmlStream</PropertyName>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+        <View>
+            <Name>EapConfiguration_Wide</Name>
+            <ViewSelectedBy>
+                <TypeName>Microsoft.Management.Infrastructure.CimInstance#EapConfiguration</TypeName>
+            </ViewSelectedBy>
+            <WideControl>
+                <WideEntries>
+                    <WideEntry>
+                        <WideItem>
+                            <PropertyName>EapConfigXmlStream</PropertyName>
+                        </WideItem>
+                    </WideEntry>
+                </WideEntries>
+            </WideControl>
+        </View>
+   <View>
+        <Name>VpnServerAddress_List</Name>
+        <ViewSelectedBy>
+            <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnServerAddress</TypeName>
+        </ViewSelectedBy>
+        <ListControl>
+            <ListEntries>
+                <ListEntry>
+                    <ListItems>
+                        <ListItem>
+                            <PropertyName>ServerAddress</PropertyName>
+                        </ListItem>
+                        <ListItem>
+                            <PropertyName>FriendlyName</PropertyName>
+                        </ListItem>
+                    </ListItems>
+                </ListEntry>
+            </ListEntries>
+        </ListControl>
+    </View>       
+    <View>
+            <Name>VpnServerAddress_Table</Name>
+            <ViewSelectedBy>
+                <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnServerAddress</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <PropertyName>ServerAddress</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>FriendlyName</PropertyName>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+        <View>
+            <Name>VpnServerAddress_Wide</Name>
+            <ViewSelectedBy>
+                <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnServerAddress</TypeName>
+            </ViewSelectedBy>
+            <WideControl>
+                <WideEntries>
+                    <WideEntry>
+                        <WideItem>
+                            <PropertyName>FriendlyName</PropertyName>
+                        </WideItem>
+                    </WideEntry>
+                </WideEntries>
+            </WideControl>
+        </View>
+        <View>
+        <Name>VpnConnectionIPsecConfiguration_List</Name>
+        <ViewSelectedBy>
+            <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionIPsecConfiguration</TypeName>
+        </ViewSelectedBy>
+        <ListControl>
+            <ListEntries>
+                <ListEntry>
+                    <ListItems>
+                        <ListItem>
+                            <PropertyName>AuthenticationTransformConstants</PropertyName>
+                        </ListItem>
+                        <ListItem>
+                            <PropertyName>CipherTransformConstants</PropertyName>
+                        </ListItem>
+                        <ListItem>
+                            <PropertyName>DHGroup</PropertyName>
+                        </ListItem>
+                        <ListItem>
+                            <PropertyName>IntegrityCheckMethod</PropertyName>
+                        </ListItem>
+                        <ListItem>
+                            <PropertyName>PfsGroup</PropertyName>
+                        </ListItem>
+                        <ListItem>
+                            <PropertyName>EncryptionMethod</PropertyName>
+                        </ListItem>
+                    </ListItems>
+                </ListEntry>
+            </ListEntries>
+        </ListControl>
+    </View>     
+    <View>
+            <Name>VpnConnectionIPsecConfiguration_Table</Name>
+            <ViewSelectedBy>
+                <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionIPsecConfiguration</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <PropertyName>AuthenticationTransformConstants</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>CipherTransformConstants</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>DHGroup</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>IntegrityCheckMethod</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>PfsGroup</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>EncryptionMethod</PropertyName>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+        <View>
+        <Name>VpnConnectionTriggerApplication_List</Name>
+        <ViewSelectedBy>
+            <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionTriggerApplication</TypeName>
+        </ViewSelectedBy>
+        <ListControl>
+            <ListEntries>
+                <ListEntry>
+                    <ListItems>
+                        <ListItem>
+                            <PropertyName>ConnectionName</PropertyName>
+                        </ListItem>
+                        <ListItem>
+                            <PropertyName>ApplicationID</PropertyName>
+                        </ListItem>
+                    </ListItems>
+                </ListEntry>
+            </ListEntries>
+        </ListControl>
+    </View>       
+    <View>
+    <Name>VpnConnectionTriggerApplication_Table</Name>
+    <ViewSelectedBy>
+      <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionTriggerApplication</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <PropertyName>ConnectionName</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>ApplicationID</PropertyName>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+    <View>		
+        <Name>VpnConnectionTriggerApplication_List</Name>
+        <ViewSelectedBy>
+            <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionTriggerApplication</TypeName>
+        </ViewSelectedBy>
+        <ListControl>
+            <ListEntries>
+                <ListEntry>
+                    <ListItems>
+                        <ListItem>
+                            <PropertyName>ConnectionName</PropertyName>
+                        </ListItem>
+                        <ListItem>
+                            <PropertyName>ApplicationID</PropertyName>
+                        </ListItem>
+                    </ListItems>
+                </ListEntry>
+            </ListEntries>
+        </ListControl>
+    </View>   	
+	<View>
+        <Name>VpnConnectionTriggerTrustedNetwork_List</Name>
+        <ViewSelectedBy>
+            <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionTriggerTrustedNetwork</TypeName>
+        </ViewSelectedBy>
+        <ListControl>
+            <ListEntries>
+                <ListEntry>
+                    <ListItems>
+                        <ListItem>
+                            <PropertyName>ConnectionName</PropertyName>
+                        </ListItem>
+                        <ListItem>
+                            <PropertyName>DnsSuffix</PropertyName>
+                        </ListItem>
+                    </ListItems>
+                </ListEntry>
+            </ListEntries>
+        </ListControl>
+    </View>       
+    <View>
+    <Name>VpnConnectionTriggerTrustedNetwork_Table</Name>
+    <ViewSelectedBy>
+      <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionTriggerTrustedNetwork</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>40</Width>
+                    </TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <PropertyName>ConnectionName</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>DnsSuffix</PropertyName>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+    <View>		
+        <Name>VpnConnectionTriggerTrustedNetwork_Wide</Name>
+        <ViewSelectedBy>
+            <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionTriggerTrustedNetwork</TypeName>
+        </ViewSelectedBy>
+        <ListControl>
+            <ListEntries>
+                <ListEntry>
+                    <ListItems>
+                        <ListItem>
+                            <PropertyName>ConnectionName</PropertyName>
+                        </ListItem>
+                    </ListItems>
+                </ListEntry>
+            </ListEntries>
+        </ListControl>
+    </View>   
+    <View>
+    <Name>VpnConnectionTriggerDnsConfiguration_Table</Name>
+    <ViewSelectedBy>
+      <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionTriggerDnsConfiguration</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>40</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>40</Width>
+                    </TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <PropertyName>ConnectionName</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>DnsSuffix</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>DnsIPAddress</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>DnsSuffixSearchList</PropertyName>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+      </View>
+      <View>
+      <Name>MSFT_NetRoute_ListView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetRoute</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>DestinationPrefix</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>InterfaceIndex</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>InterfaceAlias</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>AddressFamily</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>NextHop</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Publish</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>RouteMetric</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PolicyStore</Label>
+                <PropertyName>Store</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+    <Name>VpnConnectionTrigger_Custom</Name>
+    <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionTrigger</TypeName>
+    </ViewSelectedBy>
+        <CustomControl>
+            <CustomEntries>
+                <CustomEntry>
+                    <CustomItem>
+                        <Frame>
+                            <CustomItem>
+                                <ExpressionBinding>
+                                    <ScriptBlock>
+                                        $outputStr = "";
+                                        $outputStr += "ConnectionName         : " + $_.ConnectionName + "`r`n";
+                                        
+                                        $appidlist = $null
+                                        foreach($appid in $_.ApplicationID)
+                                        {
+                                            if($appidlist -ne $null)
+                                           {
+                                               $appidlist += ", " ;
+                                           }
+                                           $appidlist += $appid;
+                                        }
+
+                                        if($appidlist -ne $null)
+                                        {
+                                            $outputStr += "ApplicationID          : {" + $appidlist + "} `r`n";
+                                        }
+
+                                        $trustednetworklist = $null
+                                        foreach($trustednetwork in $_.TrustedNetwork)
+                                        {
+                                            if($trustednetworklist -ne $null) 
+                                            {
+                                                $trustednetworklist += ", " ;    
+                                            }       
+                                            $trustednetworklist += $trustednetwork;                                          
+                                        }
+                                        if($trustednetworklist -ne $null)
+                                        {
+                                            $outputStr += "TrustedNetwork         : {" + $trustednetworklist + "} `r`n";
+                                        }
+                                        
+                                        $dnssuffixsearchlist = $null
+                                        foreach($dnssearchsuffix in $_.DnsSuffixSearchList)
+                                        {
+                                            if($dnssuffixsearchlist -ne $null)
+                                            {
+                                                $dnssuffixsearchlist += ", ";
+                                            }
+                                            $dnssuffixsearchlist += $dnssearchsuffix;
+                                        }
+                                        if($dnssuffixsearchlist -ne $null)
+                                        {
+                                            $outputStr += "Dns Suffix Search List : " + $dnssuffixsearchlist + "`r`n";
+                                        }
+
+                                        if($_.dnsConfig -ne $null)
+                                        {
+                                            $dnsSuffixColWidth = 50;
+                                            $dnsServerColWidth = 50;
+                                            $spaceBtwCols = 10;
+                                            
+                                            $outputStr += "`r`n";
+                                            $name = "Dns Suffix";
+                                            $outputStr += $name;
+                                            $temp = $dnsSuffixColWidth + $spaceBtwCols - $name.Length;
+                                            while($temp -gt 0)
+                                            {
+                                                $outputStr += " ";
+                                                $temp = $temp - 1;
+                                            }
+                                            $outputStr += "Dns Servers `r`n";
+
+                                            $temp = 0;
+                                            while($temp -lt $dnsSuffixColWidth)
+                                            {
+                                                $outputStr += "_ ";
+                                                $temp = $temp + 2;
+                                            }
+
+                                            $temp = 0;
+                                            while($temp -lt $spaceBtwCols)
+                                            {
+                                                $outputStr += " ";
+                                                $temp = $temp + 1;
+                                            }
+
+                                            $temp = 0;
+                                            while($temp -lt $dnsServerColWidth)
+                                            {
+                                                $outputStr += "_ ";
+                                                $temp = $temp + 2;
+                                            }
+                                            $outputStr += "`r`n";
+                                            
+                                            $dnsConfig = $null;
+                                            foreach($a in $_.dnsConfig)
+                                            {
+                                                $suffix = $a.DnsSuffix;
+                                                if($suffix.Length -gt 50)
+                                                {
+                                                    $suffix = $suffix.Substring(0, $dnsSuffixColWidth - 3);
+                                                    $suffix += "...";
+                                                }
+                                                $dnsConfig += $suffix;
+                                                
+                                                $temp = $dnsSuffixColWidth + $spaceBtwCols - $suffix.Length;
+                                                while($temp -gt 0)
+                                               {
+                                                   $dnsConfig += " ";
+                                                   $temp = $temp - 1;
+                                               }
+                                                
+                                                $ipaddrlist = $null;
+                                                foreach($ipaddr in $a.DnsIPAddress)
+                                               {
+                                                   if($ipaddrlist -ne $null)
+                                                   {
+                                                       $ipaddrlist += ", " ;
+                                                   }
+                                                   $ipaddrlist += $ipaddr;
+                                               }
+
+                                               if($ipaddrlist -ne $null)
+                                               {
+                                                   if($ipaddrlist.Length -gt $dnsServerColWidth)
+                                                   {
+                                                       $ipaddrlist = $ipaddrlist.Substring(0, $dnsServerColWidth - 3);
+                                                       $ipaddrlist += "...";
+                                                   }
+                                                   $dnsConfig += "{" + $ipaddrlist + "}";
+                                               }
+                                               $dnsConfig += "`r`n";
+                                               $outputStr += $dnsConfig;
+                                               $dnsConfig = $null;
+                                            }
+                                        }
+                                        $outputStr;
+                                    </ScriptBlock>
+                                </ExpressionBinding>
+                            </CustomItem>
+                        </Frame>
+                    </CustomItem>
+                </CustomEntry>
+            </CustomEntries>
+        </CustomControl>
+    </View>
+    <View>
+       <Name>VpnConnectionProxy_List</Name>
+        <ViewSelectedBy>
+            <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionProxy</TypeName>
+        </ViewSelectedBy>
+        <ListControl>
+            <ListEntries>
+                <ListEntry>
+                    <ListItems>
+                        <ListItem>
+                            <PropertyName>AutoDetect</PropertyName>
+                        </ListItem>
+                        <ListItem>
+                            <PropertyName>AutoConfigurationScript</PropertyName>
+                        </ListItem>
+                        <ListItem>
+                            <PropertyName>ProxyServer</PropertyName>
+                        </ListItem>
+                        <ListItem>
+                            <PropertyName>BypassProxyForLocal</PropertyName>
+                        </ListItem>
+                        <ListItem>
+                            <PropertyName>ExceptionPrefix</PropertyName>
+                        </ListItem>
+                    </ListItems>
+                </ListEntry>
+            </ListEntries>
+        </ListControl>
+    </View>       
+    <View>
+        <Name>VpnConnectionProxy_Table</Name>
+            <ViewSelectedBy>
+                <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionProxy</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>40</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>40</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>40</Width>
+                    </TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <PropertyName>AutoDetect</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>AutoConfigurationScript</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>ProxyServer</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>BypassProxyForLocal</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>ExceptionPrefix</PropertyName>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+        <View>
+            <Name>VpnConnectionProxy_Wide</Name>
+            <ViewSelectedBy>
+                <TypeName>Microsoft.Management.Infrastructure.CimInstance#VpnConnectionProxy</TypeName>
+            </ViewSelectedBy>
+            <WideControl>
+                <WideEntries>
+                    <WideEntry>
+                        <WideItem>
+                            <PropertyName>ProxyServer</PropertyName>
+                        </WideItem>
+                    </WideEntry>
+                </WideEntries>
+            </WideControl>
+        </View>
+
+    </ViewDefinitions>
+</Configuration>

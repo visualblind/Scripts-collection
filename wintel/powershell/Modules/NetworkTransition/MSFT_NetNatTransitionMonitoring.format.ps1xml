@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+   <ViewDefinitions>
+      <View>
+         <Name>MSFT_NetNatTransitionMonitoring</Name>
+         <ViewSelectedBy>
+            <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetNatTransitionMonitoring</TypeName>
+         </ViewSelectedBy>
+         <TableControl>
+            <TableHeaders>
+               <TableColumnHeader>
+                  <Label>Protocol</Label>
+                  <Width>8</Width>
+               </TableColumnHeader>
+               <TableColumnHeader>
+                  <Label>Inbound Address</Label>
+                  <Width>25</Width>
+               </TableColumnHeader>
+               <TableColumnHeader>
+                  <Label>Outbound Address</Label>
+                  <Width>25</Width>
+               </TableColumnHeader>
+               <TableColumnHeader>
+                  <Label>NAT Outbound Address</Label>
+               </TableColumnHeader>
+            </TableHeaders>
+            <TableRowEntries>
+               <TableRowEntry>
+                  <TableColumnItems>
+                     <TableColumnItem>
+                        <PropertyName>TransportProtocol</PropertyName>
+                     </TableColumnItem>
+                     <TableColumnItem>
+                        <PropertyName>InboundAddress</PropertyName>
+                     </TableColumnItem>
+                     <TableColumnItem>
+                        <PropertyName>OutboundAddress</PropertyName>
+                     </TableColumnItem>
+                     <TableColumnItem>
+                        <PropertyName>NatOutboundAddress</PropertyName>
+                     </TableColumnItem>
+                  </TableColumnItems>
+               </TableRowEntry>
+            </TableRowEntries>
+         </TableControl>
+      </View>
+   </ViewDefinitions>
+</Configuration>
+
+

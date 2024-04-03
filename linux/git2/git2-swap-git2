@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# require library functions
+SCRIPTPATH="$(readlink -f 2>/dev/null || perl -MCwd -e 'print Cwd::abs_path shift' $0)"
+source "$(dirname "${SCRIPTPATH}")/lib.sh"
+
+git2_search_base_dir
+
+
+echo "swapped git1 and git2"
+# git2 name:
+append=`echo "${GITTWO_DIRNAME}" | sed -e 's/\.//g'`
+
+# move to swap:
+move_files ".${append}" .gitswap
+move_files ".gitignore_${append}" ".gitignore_gitswap"
+move_files ".gitattributes_${append}" ".gitattributes_gitswap"
+
+# move git to git2:
+move_files ".git" ".${append}"
+move_files ".gitignore" ".gitignore_${append}"
+move_files ".gitattributes" ".gitattributes_${append}"
+
+# move swap to git:
+move_files .gitswap .git
+move_files ".gitignore_gitswap" ".gitignore"
+move_files ".gitattributes_gitswap" ".gitattributes"
+
+# remove info/exclude of git1
+echo >${GITTWO_BASE}.git/info/exclude
+git2 setup-exclude
+

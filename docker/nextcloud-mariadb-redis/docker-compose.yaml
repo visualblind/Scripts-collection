@@ -1,0 +1,51 @@
+version: '3.3'
+services:
+  nextcloud:
+    container_name: nextcloud
+    image: nextcloud
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=nextclouddb
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=nextcloud
+      - MYSQL_HOST=db
+      - NEXTCLOUD_ADMIN_USER=ncadmin
+      - 'NEXTCLOUD_ADMIN_PASSWORD=<password>'
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - 'REDIS_HOST_PASSWORD=nextcloud_redis_pass'
+    ports:
+      - '5080:80'
+    links:
+      - db
+      - redis
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - '/media/ncconfigs/data:/var/www/html'
+      - '/media/ncdata/external_data1:/mnt/data_main1'
+      - '/media/ncdata/external_data2:/mnt/data_main2'
+    
+  db:
+    container_name: ncdb
+    image: mariadb:latest
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=nextclouddb
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=nextcloud
+      - 'MYSQL_ROOT_PASSWORD=nextcloud_super_super_super_secure'
+    volumes:
+      - '/media/ncconfigs/mariadb:/var/lib/mysql'
+    
+  redis:
+    container_name: ncredis
+    image: redis
+    restart: unless-stopped
+    command: redis-server --requirepass nextcloud_redis_pass
+    
+networks:
+  default:
+    name: nextcloud
+    driver: bridge

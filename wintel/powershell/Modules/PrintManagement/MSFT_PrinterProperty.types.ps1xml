@@ -1,0 +1,15 @@
+﻿<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_PrinterProperty</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Type</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.PrinterProperty.PropertyTypeEnum]($this.PSBase.CimInstanceProperties['Type'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>
+
+

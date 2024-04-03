@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/StandardCimv2/MSFT_PrinterDriver">
+    <Version>1.0</Version>
+    <DefaultNoun>PrinterDriver</DefaultNoun>
+    <InstanceCmdlets>
+      <!-- get-printerdriver -->
+      <GetCmdletParameters>
+        <QueryableProperties>
+          <Property PropertyName="Name">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata Position="0" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="PrinterEnvironment">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata/>
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryOptions>
+          <Option OptionName="ComputerName">
+            <Type PSType="System.String" />
+            <CmdletParameterMetadata PSName="ComputerName" Aliases="CN">
+              <ValidateNotNull />
+              <ValidateNotNullOrEmpty />
+            </CmdletParameterMetadata>
+          </Option>
+        </QueryOptions>
+      </GetCmdletParameters>
+      <Cmdlet>
+        <!-- remove-printerdriver -->
+        <CmdletMetadata Verb="Remove" ConfirmImpact="Medium" />
+        <Method MethodName="cim:DeleteInstance">
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="PrinterEnvironment">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata Position="1" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryOptions>
+            <Option OptionName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="ComputerName" Aliases="CN">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Option>
+            <Option OptionName="RemoveFromDriverStore">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata PSName="RemoveFromDriverStore">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+    <StaticCmdlets>
+      <Cmdlet>
+        <!-- add-printerdriver -->
+        <CmdletMetadata ConfirmImpact="Medium" Verb="Add"/>
+        <Method MethodName="Add">
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InfPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrinterEnvironment">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

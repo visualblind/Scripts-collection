@@ -1,0 +1,1 @@
+UPDATE interface_types SET autodiscovery_validate = 1 WHERE id = 20;

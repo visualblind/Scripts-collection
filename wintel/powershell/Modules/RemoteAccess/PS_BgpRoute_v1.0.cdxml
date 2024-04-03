@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/Microsoft/Windows/RemoteAccess/PS_BgpRoute" ClassVersion="1.0">
+    <Version>1.0</Version>
+    <DefaultNoun>BgpRouteInformation</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" />
+        <Method MethodName="Get">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Network">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="DestinationNetwork" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="Type">
+              <Type PSType="Nullable[Bgp.RouteType]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#BgpRouteInfo" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+    <Enums>
+        <Enum EnumName="Bgp.RouteType" UnderlyingType="System.UInt32">
+            <Value Name="All" Value="0"/>
+            <Value Name="Best" Value="1" />
+            <Value Name="Damped" Value="2" />
+            <Value Name="Suppressed" Value="3" />
+        </Enum>
+        <Enum EnumName="Bgp.RouteState" UnderlyingType="System.UInt32">
+            <Value Name="Available" Value="0"/>
+            <Value Name="Best" Value="1" />
+            <Value Name="Damped" Value="2" />
+            <Value Name="Suppressed" Value="3" />
+            <Value Name="Unresolvable" Value="4" />
+        </Enum>
+    </Enums>
+</PowerShellMetadata>

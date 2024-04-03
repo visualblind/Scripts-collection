@@ -1,0 +1,3 @@
+DELETE FROM profiles_values where id = 66;
+INSERT INTO profiles_values (id,  profile_option,  description,  value) VALUES (66, 26, 'Alarmed Hosts & Events', 'alarmed-hosts-events');
+

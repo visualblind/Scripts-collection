@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+    <Class ClassName="ROOT/Microsoft/Windows/SMB/MSFT_SmbClientNetworkInterface">
+        <Version>1.0</Version>
+        
+        <DefaultNoun>SmbClientNetworkInterface</DefaultNoun>
+        <InstanceCmdlets>
+
+
+            <!--
+
+            //
+            // Get-SmbClientNetworkInterface
+            // 
+
+            -->
+            <GetCmdletParameters>
+            </GetCmdletParameters>
+
+            <GetCmdlet>
+                <CmdletMetadata Verb="Get" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241945" Aliases="gsmbcn"/>
+            </GetCmdlet>
+
+        </InstanceCmdlets>
+    </Class>
+</PowerShellMetadata>

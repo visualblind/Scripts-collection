@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.card {
+    @apply mb-5 rounded-xl bg-white p-4 dark:bg-dark-foreground sm:p-6 lg:mb-6;
+}
+
+.widget-card {
+    @apply rounded-xl bg-white p-4 dark:bg-dark-foreground lg:p-5;
+}
+
+.input-dark {
+    @apply w-full appearance-none rounded-lg border border-transparent bg-light-background py-3 px-4 text-sm font-bold dark:bg-2x-dark-foreground dark:placeholder:text-gray-600 sm:px-5 sm:text-base dark:disabled:text-gray-400;
+}
+
+.text-limit {
+    @apply block overflow-x-hidden text-ellipsis whitespace-nowrap;
+}
+
+.is-inactive {
+    @apply pointer-events-none opacity-40;
+}
+
+.grid-view {
+    @apply grid grid-cols-3 content-start sm:grid-cols-4 lg:gap-2 xl:grid-cols-6 xl:gap-4;
+}
+
+.grid-view-sidebar {
+    @apply grid grid-cols-3 content-start md:grid-cols-2 lg:grid-cols-3 lg:gap-2 xl:grid-cols-4 xl:gap-4 2xl:grid-cols-5;
+}
+
+.page-link {
+    @apply block flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg text-sm font-bold transition duration-200 hover:bg-light-background;
+}
+
+@layer utilities {
+    .overflow-initial {
+        overflow: initial;
+    }
+}

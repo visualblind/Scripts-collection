@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+   <Class ClassName="root/StandardCimv2/MSFT_NetNatTransitionMonitoring" ClassVersion="1.0.0">
+      <Version>1.0</Version>
+      <DefaultNoun>NetNatTransitionMonitoring</DefaultNoun>
+      <InstanceCmdlets>
+         
+         <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+            <QueryableProperties>
+               <Property PropertyName="TransportProtocol">
+                  <Type PSType="System.Uint32"/>
+                  <RegularQuery AllowGlobbing="false">
+                     <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName"/>
+                  </RegularQuery>
+               </Property>
+            </QueryableProperties>
+         </GetCmdletParameters>
+         
+      </InstanceCmdlets> 
+   </Class>
+</PowerShellMetadata>
+
+

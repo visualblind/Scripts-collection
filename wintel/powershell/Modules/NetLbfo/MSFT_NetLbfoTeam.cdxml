@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/StandardCimv2/MSFT_NetLbfoTeam" ClassVersion="1.0.0">
+    <Version>1.0</Version>
+    <DefaultNoun>NetLbfoTeam</DefaultNoun>
+    <InstanceCmdlets>
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+        <QueryableProperties>
+          <Property PropertyName="Name">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" Position="0" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName"/>
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <Association Association="MSFT_NetLbfoTeam_TeamMember" ResultRole="GroupComponent" SourceRole="PartComponent" >
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#root/standardcimv2/MSFT_NetLbfoTeamMember" />
+              <CmdletParameterMetadata PSName="MemberOfTheTeam" ValueFromPipeline = "true"  CmdletParameterSets="ByMemberOfTheTeam"/> 
+            </AssociatedInstance>
+          </Association> 
+          <Association Association="MSFT_NetLbfoTeam_TeamNic" ResultRole="GroupComponent" SourceRole="PartComponent">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#root/standardcimv2/MSFT_NetLbfoTeamNic" />
+              <CmdletParameterMetadata PSName="TeamNicForTheTeam" ValueFromPipeline = "true"  CmdletParameterSets="ByTeamNicForTheTeam"/> 
+            </AssociatedInstance>
+          </Association> 
+        </QueryableAssociations>
+      </GetCmdletParameters>
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" />
+        <Method MethodName="cim:DeleteInstance" />
+        <GetCmdletParameters>
+          <QueryableProperties>
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName"/>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+        <Method MethodName="cim:ModifyInstance">
+         <Parameters>
+              <Parameter ParameterName="TeamingMode">
+              <Type PSType="NetLbfo.TeamingModes" />
+              <CmdletParameterMetadata Aliases="tm" IsMandatory="false" />
+            </Parameter>
+        <Parameter ParameterName="LoadBalancingAlgorithm">
+              <Type PSType="NetLbfo.LBAlgos" />
+              <CmdletParameterMetadata Aliases="lba" IsMandatory="false" />
+            </Parameter>
+        <Parameter ParameterName="LacpTimer">
+              <Type PSType="NetLbfo.LacpTimers" />
+              <CmdletParameterMetadata Aliases="lt" IsMandatory="false" />
+            </Parameter>
+          </Parameters>  
+        </Method>
+      </Cmdlet>    
+    </InstanceCmdlets>    
+    <StaticCmdlets>
+        <Cmdlet>
+        <CmdletMetadata Verb="New" ConfirmImpact="High"/>
+        <Method MethodName="cim:CreateInstance">
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="cim:OperationOption:TeamMembers">
+              <Type PSType="System.Management.Automation.WildcardPattern[]" />
+              <CmdletParameterMetadata PSName="TeamMembers" IsMandatory="true" Position="1">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="cim:OperationOption:TeamNicName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="TeamNicName" IsMandatory="false" Position="2">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter> 
+            <Parameter ParameterName="TeamingMode" DefaultValue="SwitchIndependent">
+              <Type PSType="NetLbfo.TeamingModes" />
+              <CmdletParameterMetadata Aliases="tm" IsMandatory="false" Position="3">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="LoadBalancingAlgorithm">
+              <Type PSType="NetLbfo.LBAlgos" />
+              <CmdletParameterMetadata Aliases="lba" IsMandatory="false" Position="4">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="LacpTimer">
+              <Type PSType="NetLbfo.LacpTimers" />
+              <CmdletParameterMetadata Aliases="lt" IsMandatory="false" Position="5"/>
+            </Parameter>
+          </Parameters>
+    </Method>
+     </Cmdlet>
+     <Cmdlet>
+        <CmdletMetadata Verb="Rename" Noun="NetLbfoTeam" ConfirmImpact="Medium"/>
+        <Method MethodName="Rename">
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0"> 
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NewName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="cim:OperationOption:PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata PSName="PassThru" />
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+    </Method>
+     </Cmdlet>
+   </StaticCmdlets>
+    
+  </Class>
+  <Enums>
+    <Enum EnumName="NetLbfo.TeamingModes" UnderlyingType="UInt32">
+      <Value Name="Static"              Value="0" />
+      <Value Name="SwitchIndependent"   Value="1" />
+      <Value Name="Lacp"                Value="2" />
+    </Enum>
+    <Enum EnumName="NetLbfo.LBAlgos" UnderlyingType="UInt32">
+      <Value Name="TransportPorts"      Value="0" />
+      <Value Name="IPAddresses"         Value="2" />
+      <Value Name="MacAddresses"        Value="3" />
+      <Value Name="HyperVPort"          Value="4" />
+      <Value Name="Dynamic"             Value="5" />
+    </Enum>
+    <Enum EnumName="NetLbfo.TeamStatus" UnderlyingType="UInt32">
+      <Value Name="Up"                  Value="0" />
+      <Value Name="Down"                Value="1" />
+      <Value Name="Degraded"            Value="2" />
+    </Enum>
+    <Enum EnumName="NetLbfo.LacpTimers" UnderlyingType="UInt32">
+      <Value Name="Slow"                Value="0" />
+      <Value Name="Fast"                Value="1" />
+    </Enum>
+  </Enums>
+
+</PowerShellMetadata>

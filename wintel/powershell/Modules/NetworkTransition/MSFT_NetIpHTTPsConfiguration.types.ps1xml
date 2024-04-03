@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Types>
+   <Type>
+      <Name>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetIPHttpsConfiguration</Name>
+      <Members>
+         <ScriptProperty>
+            <Name>Type</Name>
+            <GetScriptBlock>
+               [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetIPHttpsConfiguration.Type]($this.PSBase.CimInstanceProperties['Type'].Value)
+            </GetScriptBlock>
+            <SetScriptBlock>
+               $this.PSBase.CimInstanceProperties['Type'].Value = [System.UInt32]$_
+            </SetScriptBlock>
+         </ScriptProperty>
+         <ScriptProperty>
+            <Name>State</Name>
+            <GetScriptBlock>
+               [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetIPHttpsConfiguration.State]($this.PSBase.CimInstanceProperties['State'].Value)
+            </GetScriptBlock>
+            <SetScriptBlock>
+               $this.PSBase.CimInstanceProperties['State'].Value = [System.UInt32]$_
+            </SetScriptBlock>
+         </ScriptProperty>
+         <ScriptProperty>
+            <Name>AuthMode</Name>
+            <GetScriptBlock>
+               [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetIPHttpsConfiguration.AuthMode]($this.PSBase.CimInstanceProperties['AuthMode'].Value)
+            </GetScriptBlock>
+            <SetScriptBlock>
+               $this.PSBase.CimInstanceProperties['AuthMode'].Value = [System.UInt32]$_
+            </SetScriptBlock>
+         </ScriptProperty>
+         <ScriptProperty>
+            <Name>ConfigurationType</Name>
+            <GetScriptBlock>
+               [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetIPHttpsConfiguration.ConfigurationType]($this.PSBase.CimInstanceProperties['ConfigurationType'].Value)
+            </GetScriptBlock>
+            <SetScriptBlock>
+               $this.PSBase.CimInstanceProperties['ConfigurationType'].Value = [System.UInt32]$_
+            </SetScriptBlock>
+         </ScriptProperty>
+      </Members>
+   </Type>
+   <Type>
+      <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetIPHttpsConfiguration</Name>
+      <Members>
+         <ScriptProperty>
+            <Name>Type</Name>
+            <GetScriptBlock>
+               [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetIPHttpsConfiguration.Type]($this.PSBase.CimInstanceProperties['Type'].Value)
+            </GetScriptBlock>
+            <SetScriptBlock>
+               $this.PSBase.CimInstanceProperties['Type'].Value = [System.UInt32]$_
+            </SetScriptBlock>
+         </ScriptProperty>
+         <ScriptProperty>
+            <Name>State</Name>
+            <GetScriptBlock>
+               [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetIPHttpsConfiguration.State]($this.PSBase.CimInstanceProperties['State'].Value)
+            </GetScriptBlock>
+            <SetScriptBlock>
+               $this.PSBase.CimInstanceProperties['State'].Value = [System.UInt32]$_
+            </SetScriptBlock>
+         </ScriptProperty>
+         <ScriptProperty>
+            <Name>AuthMode</Name>
+            <GetScriptBlock>
+               [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetIPHttpsConfiguration.AuthMode]($this.PSBase.CimInstanceProperties['AuthMode'].Value)
+            </GetScriptBlock>
+            <SetScriptBlock>
+               $this.PSBase.CimInstanceProperties['AuthMode'].Value = [System.UInt32]$_
+            </SetScriptBlock>
+         </ScriptProperty>
+         <ScriptProperty>
+            <Name>ConfigurationType</Name>
+            <GetScriptBlock>
+               [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetIPHttpsConfiguration.ConfigurationType]($this.PSBase.CimInstanceProperties['ConfigurationType'].Value)
+            </GetScriptBlock>
+            <SetScriptBlock>
+               $this.PSBase.CimInstanceProperties['ConfigurationType'].Value = [System.UInt32]$_
+            </SetScriptBlock>
+         </ScriptProperty>
+      </Members>
+   </Type>
+</Types>
+

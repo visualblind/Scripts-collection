@@ -1,0 +1,38 @@
+﻿<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_Printer</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>RenderingMode</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.Printer.RenderingModeEnum]($this.PSBase.CimInstanceProperties['RenderingMode'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($value)
+          $this.PSBase.CimInstanceProperties['RenderingMode'].Value =
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.Printer.RenderingModeEnum]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>PrinterStatus</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.Printer.PrinterStatus]($this.PSBase.CimInstanceProperties['PrinterStatus'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Type</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.Printer.TypeEnum]($this.PSBase.CimInstanceProperties['Type'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>DeviceType</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.Printer.DeviceTypeEnum]($this.PSBase.CimInstanceProperties['DeviceType'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>
+
+

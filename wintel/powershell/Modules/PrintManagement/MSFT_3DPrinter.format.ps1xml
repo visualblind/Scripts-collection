@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Configuration>
+  <ViewDefinitions>  
+    <View>
+      <Name>Formatting For MSFT_3DPrinter (Table View)</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_3DPrinter</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>   <!-- Name -->
+            <Width>30</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- ComputerName -->
+            <Width>15</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Type -->
+            <Width>12</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Driver -->
+            <Width>25</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Port -->
+            <Width>15</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Shared -->
+            <Width>8</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Published -->
+            <Width>10</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- DeviceType -->
+            <Width>15</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ComputerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DriverName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PortName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Shared</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Published</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DeviceType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>    
+    <View>
+      <Name>Formatting For MSFT_3DPrinter (List View)</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_3DPrinter</TypeName>
+      </ViewSelectedBy>
+        <ListControl>
+          <ListEntries>
+            <ListEntry>
+              <ListItems>
+                <ListItem>
+                  <PropertyName>Name</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>ComputerName</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>Type</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>ShareName</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>PortName</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>DriverName</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>Location</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>Comment</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>PrintProcessor</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>Datatype</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>Shared</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>Published</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>DeviceType</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>PermissionSDDL</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>Priority</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>DefaultJobPriority</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>StartTime</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>UntilTime</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>PrinterStatus</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>JobCount</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>DisableBranchOfficeLogging</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>BranchOfficeOfflineLogSizeMB</PropertyName>
+                </ListItem>
+              </ListItems>
+            </ListEntry>
+          </ListEntries>
+        </ListControl>
+      </View>
+   </ViewDefinitions>
+</Configuration>

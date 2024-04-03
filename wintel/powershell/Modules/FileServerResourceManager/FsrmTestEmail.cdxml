@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">   
+  <Class ClassName="Root/Microsoft/Windows/FSRM/MSFT_FSRMSettings">   
+    <Version>1.0</Version>      
+    <DefaultNoun>FsrmTestEmail</DefaultNoun>   
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Send"  ConfirmImpact="High" />
+        <Method MethodName="SendTestEmail">
+          <Parameters>
+            <Parameter ParameterName="ToEmailAddress">
+              <Type PSType="String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>   

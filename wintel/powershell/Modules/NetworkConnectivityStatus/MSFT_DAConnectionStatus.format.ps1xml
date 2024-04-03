@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+	<ViewDefinitions>
+		<View>
+		  <Name>MSFT_DAConnectionStatus</Name>
+		  <ViewSelectedBy>
+		    <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_DAConnectionStatus</TypeName>
+      		    <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_DAConnectionStatus</TypeName>
+		  </ViewSelectedBy>
+		  <ListControl>
+		    <ListEntries>
+		      <ListEntry>
+		        <ListItems>
+      		          <ListItem>
+		            <PropertyName>Status</PropertyName>
+		          </ListItem>
+		          <ListItem>
+		            <PropertyName>SubStatus</PropertyName>
+		          </ListItem>
+		        </ListItems>
+		      </ListEntry>
+		    </ListEntries>
+		  </ListControl>
+		</View>
+	</ViewDefinitions>
+</Configuration>
+

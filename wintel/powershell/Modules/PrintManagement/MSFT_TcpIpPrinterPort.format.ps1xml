@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>  
+    <View>
+      <Name>Formatting For MSFT_TcpIpPrinterPort (Table View)</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_TcpIpPrinterPort</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>   <!-- Name -->
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- ComputerName -->
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Description -->
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- HostAddress -->
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- PortNumber -->
+            <Width>20</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ComputerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrinterHostAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PortNumber</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>    
+    <View>
+      <Name>Formatting For MSFT_TcpIpPrinterPort (List View)</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_TcpIpPrinterPort</TypeName>
+      </ViewSelectedBy>
+        <ListControl>
+          <ListEntries>
+            <ListEntry>
+              <ListItems>
+                <ListItem>
+                  <PropertyName>Name</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>ComputerName</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>Description</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>Protocol</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>PrinterHostAddress</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>PrinterHostIP</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>PortNumber</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>SNMPIndex</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>SNMPCommunity</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>SNMPEnabled</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>LprQueueName</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>LprByteCounting</PropertyName>
+                </ListItem>
+              </ListItems>
+            </ListEntry>
+          </ListEntries>
+        </ListControl>
+      </View>
+   </ViewDefinitions>
+</Configuration>

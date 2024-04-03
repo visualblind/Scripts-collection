@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    padding: 0;
+ }
+ 
+ #background 
+{ 
+     left: 0px; 
+     top: 0px; 
+     position: relative; 
+     margin-left: auto; 
+     margin-right: auto; 
+     width: 1920px;
+     height: 1200px; 
+     overflow: hidden;
+     z-index:0;
+    } 
+
+ #Background 
+{ 
+     left: 0px; 
+     top: 0px; 
+     position: absolute; 
+     width: 1920px;
+     height: 1200px;
+     z-index:1;
+} 
+
+ #BtnBack 
+{ 
+     left: 854px; 
+     top: 1049px; 
+     position: absolute; 
+     width: 232px;
+     height: 52px;
+     z-index:2;
+} 
+
+ #Btn 
+{ 
+     left: 854px; 
+     top: 1041px; 
+     position: absolute; 
+     width: 232px;
+     height: 52px;
+     z-index:3;
+} 
+
+ #GOBACK 
+{ 
+     left: 918px; 
+     top: 1061px; 
+     position: absolute; 
+     width: 100px;
+     height: 14px;
+     z-index:4;
+} 
+
+ #layer_404 
+{ 
+     left: 476px; 
+     top: 389px; 
+     position: absolute; 
+     width: 915px;
+     height: 399px;
+     z-index:5;
+} 
+
+ #Illustration 
+{ 
+     left: 51px; 
+     top: 37px; 
+     position: absolute; 
+     width: 1850px;
+     height: 1059px;
+     z-index:6;
+}

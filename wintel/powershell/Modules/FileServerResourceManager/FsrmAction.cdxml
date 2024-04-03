@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">   
+  <Class ClassName="Root/Microsoft/Windows/FSRM/MSFT_FSRMAction">   
+    <Version>1.0</Version>    
+    <DefaultNoun>FsrmAction</DefaultNoun>   
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" ConfirmImpact="Medium" />
+        <Method MethodName="CreateAction">
+          <Parameters> 
+            <Parameter ParameterName="Type">
+              <Type PSType="ActionTypeEnum" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MailTo">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MailCC">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MailBCC">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Subject">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Body">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EventType">
+              <Type PSType="ActionEventTypeEnum" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Command">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="WorkingDirectory">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CommandParameters">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SecurityLevel">
+              <Type PSType="ActionSecurityLevelEnum" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="KillTimeOut">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ShouldLogError">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportTypes">
+              <Type PSType="ActionReportTypeEnum[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RunLimitInterval">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter> 
+            <Parameter ParameterName="Action">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="ActionTypeEnum" UnderlyingType="UInt32">
+      <Value Name="Event" Value="1" />
+      <Value Name="Email" Value="2" />
+      <Value Name="Command" Value="3" />
+      <Value Name="Report" Value="4" />
+    </Enum>
+    <Enum EnumName="ActionEventTypeEnum" UnderlyingType="UInt32">
+      <Value Name="None" Value="0" />
+      <Value Name="Information" Value="1" />
+      <Value Name="Warning" Value="2" />
+      <Value Name="Error" Value="3" />
+    </Enum>
+    <Enum EnumName="ActionSecurityLevelEnum" UnderlyingType="UInt32">
+      <Value Name="None" Value="0" />
+      <Value Name="NetworkService" Value="1" />
+      <Value Name="LocalService" Value="2" />
+      <Value Name="LocalSystem" Value="3" />
+    </Enum>
+    <Enum EnumName="ActionReportTypeEnum" UnderlyingType="UInt32">
+      <Value Name="LargeFiles" Value="1" />
+      <Value Name="FilesByFileGroup" Value="2" />
+      <Value Name="LeastRecentlyAccessed" Value="3" />
+      <Value Name="MostRecentlyAccessed" Value="4" />
+      <Value Name="QuotaUsage" Value="5" />
+      <Value Name="FilesByOwner" Value="6" />
+      <Value Name="DuplicateFiles" Value="8" />
+      <Value Name="FileScreenAuditFiles" Value="9" />
+      <Value Name="FilesByProperty" Value="10" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>   

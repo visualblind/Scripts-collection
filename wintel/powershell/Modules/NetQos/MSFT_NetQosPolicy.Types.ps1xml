@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_NetQosPolicySettingData</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>NetworkProfile</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetQosPolicy.NetworkProfile]($this.PSBase.CimInstanceProperties['NetworkProfile'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetQosPolicy.NetworkProfile]$value)
+          $this.PSBase.CimInstanceProperties['NetworkProfile'].Value = [System.UInt32]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>TemplateMatchCondition</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetQosPolicy.Template]($this.PSBase.CimInstanceProperties['TemplateMatchCondition'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetQosPolicy.Template]$value)
+          $this.PSBase.CimInstanceProperties['TemplateMatchCondition'].Value = [System.UInt32]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>UserMatchCondition</Name>
+        <GetScriptBlock>
+          $user = $this.PSBase.CimInstanceProperties['UserMatchCondition'].Value
+          if ($user -ne $null -and $user[0]) {
+            [System.Security.Principal.NTAccount]$user
+          } else {
+            $null
+          }
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.Security.Principal.NTAccount]$value)
+          $this.PSBase.CimInstanceProperties['UserMatchCondition'].Value = [System.String]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>AppPathNameMatchCondition</Name>
+        <GetScriptBlock>
+          [System.String]($this.PSBase.CimInstanceProperties['AppPathNameMatchCondition'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.String]$value)
+          $this.PSBase.CimInstanceProperties['AppPathNameMatchCondition'].Value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>JobObjectMatchCondition</Name>
+        <GetScriptBlock>
+          [System.String]($this.PSBase.CimInstanceProperties['JobObjectMatchCondition'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>NetDirectPortMatchCondition</Name>
+        <GetScriptBlock>
+          [System.UInt16]($this.PSBase.CimInstanceProperties['NetDirectPortMatchCondition'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.UInt16]$value)
+          $this.PSBase.CimInstanceProperties['NetDirectPortMatchCondition'].Value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IPProtocolMatchCondition</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetQosPolicy.Protocol]($this.PSBase.CimInstanceProperties['IPProtocolMatchCondition'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetQosPolicy.Protocol]$value)
+          $this.PSBase.CimInstanceProperties['IPProtocolMatchCondition'].Value = [System.UInt32]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IPPortMatchCondition</Name>
+        <GetScriptBlock>
+          [System.UInt16]($this.PSBase.CimInstanceProperties['IPPortMatchCondition'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.UInt16]$value)
+          $this.PSBase.CimInstanceProperties['IPPortMatchCondition'].Value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IPSrcPrefixMatchCondition</Name>
+        <GetScriptBlock>
+          [System.String]($this.PSBase.CimInstanceProperties['IPSrcPrefixMatchCondition'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.String]$value)
+          $this.PSBase.CimInstanceProperties['IPSrcPrefixMatchCondition'].Value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IPSrcPortStartMatchCondition</Name>
+        <GetScriptBlock>
+          [System.UInt16]($this.PSBase.CimInstanceProperties['IPSrcPortStartMatchCondition'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.UInt16]$value)
+          $this.PSBase.CimInstanceProperties['IPSrcPortStartMatchCondition'].Value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IPSrcPortEndMatchCondition</Name>
+        <GetScriptBlock>
+          [System.UInt16]($this.PSBase.CimInstanceProperties['IPSrcPortEndMatchCondition'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.UInt16]$value)
+          $this.PSBase.CimInstanceProperties['IPSrcPortEndMatchCondition'].Value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IPDstPrefixMatchCondition</Name>
+        <GetScriptBlock>
+          [System.String]($this.PSBase.CimInstanceProperties['IPDstPrefixMatchCondition'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.String]$value)
+          $this.PSBase.CimInstanceProperties['IPDstPrefixMatchCondition'].Value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IPDstPortStartMatchCondition</Name>
+        <GetScriptBlock>
+          [System.UInt16]($this.PSBase.CimInstanceProperties['IPDstPortStartMatchCondition'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.UInt16]$value)
+          $this.PSBase.CimInstanceProperties['IPDstPortStartMatchCondition'].Value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IPDstPortEndMatchCondition</Name>
+        <GetScriptBlock>
+          [System.UInt16]($this.PSBase.CimInstanceProperties['IPDstPortEndMatchCondition'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.UInt16]$value)
+          $this.PSBase.CimInstanceProperties['IPDstPortEndMatchCondition'].Value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>URIMatchCondition</Name>
+        <GetScriptBlock>
+          $uri = $this.PSBase.CimInstanceProperties['URIMatchCondition'].Value
+          if ($uri -ne $null -and $uri[0]) {
+            [System.Uri]$uri
+          } else {
+            $null
+          }
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.Uri]$value)
+          $this.PSBase.CimInstanceProperties['URIMatchCondition'].Value = [System.String]$value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>URIRecursiveMatchCondition</Name>
+        <GetScriptBlock>
+          [System.Boolean]($this.PSBase.CimInstanceProperties['URIRecursiveMatchCondition'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.Boolean]$value)
+          $this.PSBase.CimInstanceProperties['URIRecursiveMatchCondition'].Value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>PriorityValue8021Action</Name>
+        <GetScriptBlock>
+          [System.SByte]($this.PSBase.CimInstanceProperties['PriorityValue8021Action'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.SByte]$value)
+          $this.PSBase.CimInstanceProperties['PriorityValue8021Action'].Value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>DSCPAction</Name>
+        <GetScriptBlock>
+          [System.SByte]($this.PSBase.CimInstanceProperties['DSCPAction'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.SByte]$value)
+          $this.PSBase.CimInstanceProperties['DSCPAction'].Value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>MinBandwidthWeightAction</Name>
+        <GetScriptBlock>
+          [System.Byte]($this.PSBase.CimInstanceProperties['MinBandwidthWeightAction'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.Byte]$value)
+          $this.PSBase.CimInstanceProperties['MinBandwidthWeightAction'].Value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>ThrottleRateAction</Name>
+        <GetScriptBlock>
+          [System.UInt64]($this.PSBase.CimInstanceProperties['ThrottleRateAction'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param([System.UInt64]$value)
+          $this.PSBase.CimInstanceProperties['ThrottleRateAction'].Value = $value
+        </SetScriptBlock>
+      </ScriptProperty>
+      <AliasProperty>
+        <Name>User</Name>
+        <ReferencedMemberName>UserMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>AppPathName</Name>
+        <ReferencedMemberName>AppPathNameMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>Template</Name>
+        <ReferencedMemberName>TemplateMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>JobObject</Name>
+        <ReferencedMemberName>JobObjectMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>NetDirectPort</Name>
+        <ReferencedMemberName>NetDirectPortMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>IPProtocol</Name>
+        <ReferencedMemberName>IPProtocolMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>IPPort</Name>
+        <ReferencedMemberName>IPPortMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>IPSrcPrefix</Name>
+        <ReferencedMemberName>IPSrcPrefixMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>IPSrcPortStart</Name>
+        <ReferencedMemberName>IPSrcPortStartMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>IPSrcPortEnd</Name>
+        <ReferencedMemberName>IPSrcPortEndMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>IPDstPrefix</Name>
+        <ReferencedMemberName>IPDstPrefixMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>IPDstPortStart</Name>
+        <ReferencedMemberName>IPDstPortStartMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>IPDstPortEnd</Name>
+        <ReferencedMemberName>IPDstPortEndMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>URI</Name>
+        <ReferencedMemberName>URIMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>URIRecursive</Name>
+        <ReferencedMemberName>URIRecursiveMatchCondition</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>PriorityValue</Name>
+        <ReferencedMemberName>PriorityValue8021Action</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>DSCPValue</Name>
+        <ReferencedMemberName>DSCPAction</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>MinBandwidthWeight</Name>
+        <ReferencedMemberName>MinBandwidthWeightAction</ReferencedMemberName>
+      </AliasProperty>
+      <AliasProperty>
+        <Name>ThrottleRate</Name>
+        <ReferencedMemberName>ThrottleRateAction</ReferencedMemberName>
+      </AliasProperty>
+    </Members>
+  </Type>
+</Types>

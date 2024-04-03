@@ -1,0 +1,244 @@
+@-webkit-keyframes cursor-error {
+  0% {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  20%, 60% {
+    transform: rotate3d(0, 0, 1, 80deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  40%, 80% {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  90% {
+    transform: rotate3d(0, 0, 1, 70deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  to {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+}
+@-moz-keyframes cursor-error {
+  0% {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  20%, 60% {
+    transform: rotate3d(0, 0, 1, 80deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  40%, 80% {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  90% {
+    transform: rotate3d(0, 0, 1, 70deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  to {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+}
+@-ms-keyframes cursor-error {
+  0% {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  20%, 60% {
+    transform: rotate3d(0, 0, 1, 80deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  40%, 80% {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  90% {
+    transform: rotate3d(0, 0, 1, 70deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  to {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+}
+@-o-keyframes cursor-error {
+  0% {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  20%, 60% {
+    transform: rotate3d(0, 0, 1, 80deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  40%, 80% {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  90% {
+    transform: rotate3d(0, 0, 1, 70deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  to {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+}
+@keyframes cursor-error {
+  0% {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  20%, 60% {
+    transform: rotate3d(0, 0, 1, 80deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  40%, 80% {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  90% {
+    transform: rotate3d(0, 0, 1, 70deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+  to {
+    transform: rotate3d(0, 0, 1, 40deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+}
+body {
+  padding: 70px 0 0 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+  color: #545454;
+}
+
+.errors {
+  background: #eef5fa;
+}
+.errors .page--section {
+  padding: 0;
+}
+
+.error--section .error--message-holder {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: calc(100vh - 122px);
+}
+.error--section .error-logo {
+  margin-top: -50px;
+}
+.error--section .error-logo .hackrLogo {
+  width: 250px;
+  padding: 20px 40px;
+}
+.error--section .error-logo .hackrLogo .hackrLogoText .hackr-logo-text-path {
+  transform-origin: center;
+}
+.error--section .error-logo .hackrLogo .hackrLogoCursor .hackrLogoCursorPath {
+  -webkit-animation: cursor-error 3s infinite;
+  -moz-animation: cursor-error 3s infinite;
+  -ms-animation: cursor-error 3s infinite;
+  -o-animation: cursor-error 3s infinite;
+  animation: cursor-error 3s infinite;
+}
+@-moz-document url-prefix() {
+  .error--section .error-logo .hackrLogo {
+    padding: 0 40px;
+    height: 75px;
+  }
+  .error--section .error-logo .hackrLogo .hackrLogoCursor .hackrLogoCursorPath {
+    animation: none;
+  }
+  .error--section .error-logo .hackrLogo .hackrLogoText .hackrLogoText-H {
+    transform-origin: 100px;
+  }
+  .error--section .error-logo .hackrLogo .hackrLogoText .hackrLogoText-A {
+    transform-origin: 150px;
+  }
+  .error--section .error-logo .hackrLogo .hackrLogoText .hackrLogoText-C {
+    transform-origin: 200px;
+  }
+  .error--section .error-logo .hackrLogo .hackrLogoText .hackrLogoText-K {
+    transform-origin: 250px;
+  }
+  .error--section .error-logo .hackrLogo .hackrLogoText .hackrLogoText-R {
+    transform-origin: 275px;
+  }
+  .error--section .error-logo .hackrLogo .hackrLogoText .hackrLogoText-Dot {
+    transform-origin: 325px;
+  }
+  .error--section .error-logo .hackrLogo .hackrLogoText .hackrLogoText-I {
+    transform-origin: 315px;
+  }
+  .error--section .error-logo .hackrLogo .hackrLogoText .hackrLogoText-O {
+    transform-origin: 360px;
+  }
+  .error--section .error-logo .hackrLogo .hackrLogoCursor .hackrLogoCursorPath {
+    transform: rotate(40deg) translate(47px, 77px);
+    transform-origin: center;
+  }
+}
+.error--section .error-info {
+  box-shadow: 0 0 20px rgba(60, 125, 192, 0.4);
+  padding: 0 40px 40px 40px;
+  margin-top: -28px;
+  border-radius: 4px;
+}
+.error--section .error-info .title {
+  font-size: 120px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.error--section .error-info .message {
+  font-size: 18px;
+}
+
+.hackrLogo {
+  width: 130px;
+  margin-bottom: -3px;
+}
+.hackrLogo .hackrLogoText .hackr-logo-text-path {
+  fill: #545454;
+}
+.hackrLogo .hackrLogoCursorPath {
+  fill: #3C7DC0;
+}
+.hackrLogo .hackrLogoArrow .hackrLogoArrowPath {
+  fill: #3C7DC0;
+}
+
+.btn.btn-primary {
+  margin-top: 20px;
+  background: #3C7DC0;
+}

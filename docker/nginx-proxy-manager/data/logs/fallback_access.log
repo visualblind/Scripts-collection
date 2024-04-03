@@ -1,0 +1,7 @@
+[31/Jan/2024:03:29:00 +0000] 200 - GET http 10.10.10.31 "/" [Client 10.10.10.67] [Length 568] [Gzip 1.86] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" "-"
+[31/Jan/2024:03:29:06 +0000] 400 - GET http 10.10.10.31 "/" [Client 10.10.10.67] [Length 654] [Gzip -] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" "-"
+[31/Jan/2024:03:29:06 +0000] 400 - GET http 10.10.10.31 "/favicon.ico" [Client 10.10.10.67] [Length 654] [Gzip -] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" "http://10.10.10.31:4343/"
+[31/Jan/2024:03:29:41 +0000] 304 - GET http 10.10.10.31 "/" [Client 10.10.10.67] [Length 0] [Gzip -] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" "-"
+[31/Jan/2024:03:39:40 +0000] 200 - GET http 10.10.10.39 "/" [Client 10.10.10.67] [Length 568] [Gzip 1.86] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" "-"
+[31/Jan/2024:03:39:44 +0000] 400 - GET http 10.10.10.39 "/" [Client 10.10.10.67] [Length 654] [Gzip -] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" "-"
+[31/Jan/2024:03:39:44 +0000] 400 - GET http 10.10.10.39 "/favicon.ico" [Client 10.10.10.67] [Length 654] [Gzip -] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" "http://10.10.10.39:443/"

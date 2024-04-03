@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# require library functions
+SCRIPTPATH="$(readlink -f 2>/dev/null || perl -MCwd -e 'print Cwd::abs_path shift' $0)"
+source "$(dirname "${SCRIPTPATH}")/lib.sh"
+
+git2_search_base_dir
+
+remote_name="origin"
+branch_name="master"
+
+# parse git clone arguments:
+while test "x$1" != "x--" && test "x${1:0:1}" == "x-"; do
+	if test "x$1" = "x-o" || test "x$1" = "x--origin"; then
+		shift
+		remote_name="$1"
+	fi
+	if test "x$1" = "x-b" || test "x$1" = "x--branch"; then
+		shift
+		branch_name="$1"
+	fi
+	shift
+done
+test "x$1" = "x--" && shift
+
+REPO="$1"
+DIR="$2"
+
+if test "x${REPO}" = "x"
+then
+	echo "No Repository given"
+fi
+
+
+if test "x${DIR}" = "x"
+then
+	DIR="."
+fi
+
+git2 init "${DIR}" && \
+	git2 remote add "${remote_name}" "${REPO}" && \
+	git2 fetch && \
+	git2 branch --track "${branch_name}" "${remote_name}/${branch_name}" &&\
+	git2 reset -q && \
+	git2 checkout-index -a
+
+# git2 branch ... = checkout without overwriting existing files:
+# old: git2 checkout -b "${branch_name}" --track "${remote_name}/${branch_name}"
+# git2 checkout-index -a = creates deleted files
+

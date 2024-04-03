@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+   <Class ClassName="root/StandardCimv2/MSFT_NetNatStaticMapping" ClassVersion="1.0.0">
+      <Version>1.0</Version>
+      <DefaultNoun>NetNatStaticMapping</DefaultNoun>
+      <InstanceCmdlets>
+         
+         <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+            <QueryableProperties>
+               <Property PropertyName="NatName">
+                  <Type PSType="System.String"/>
+                  <RegularQuery AllowGlobbing="false">
+                     <CmdletParameterMetadata Position="0" IsMandatory="false" CmdletParameterSets="ByName" ValueFromPipelineByPropertyName="true"/>
+                  </RegularQuery>
+               </Property>
+            </QueryableProperties>
+         </GetCmdletParameters>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Remove" ConfirmImpact="High"/>
+            <Method MethodName="cim:DeleteInstance"/>
+            <GetCmdletParameters>
+               <QueryableProperties>
+                  <Property PropertyName="StaticMappingID">
+                     <Type PSType="System.UInt32" />
+                     <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+                     </RegularQuery>
+                  </Property>
+                  <Property PropertyName="NatName">
+                     <Type PSType="System.String" />
+                     <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata Position="0" IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+                     </RegularQuery>
+                  </Property>
+               </QueryableProperties>
+            </GetCmdletParameters>
+         </Cmdlet>
+         
+      </InstanceCmdlets>
+      
+      <StaticCmdlets>
+         
+         <Cmdlet>
+            <CmdletMetadata Verb="Add" ConfirmImpact="Medium"/>
+            <Method MethodName="cim:CreateInstance">
+               <ReturnValue>
+                  <Type PSType="System.Uint32"/>
+                  <CmdletOutputMetadata>
+                     <ErrorCode/>
+                  </CmdletOutputMetadata>
+               </ReturnValue>
+               <Parameters>
+                  <Parameter ParameterName="NatName">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true" Position="0"/>
+                  </Parameter>
+                  <Parameter ParameterName="Protocol">
+                     <Type PSType="NetNatStaticMapping.Protocol"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="RemoteExternalIPAddressPrefix">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="false"/>
+                  </Parameter>
+                  <Parameter ParameterName="ExternalIPAddress">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="ExternalPort">
+                     <Type PSType="System.Uint16"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="InternalIPAddress">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="InternalPort">
+                     <Type PSType="System.Uint16"/>
+                     <CmdletParameterMetadata IsMandatory="false"/>
+                  </Parameter>
+                  <Parameter ParameterName="InternalRoutingDomainId">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="false"/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+         
+      </StaticCmdlets>
+   </Class>
+   <Enums>
+      <Enum EnumName="NetNatStaticMapping.Protocol" UnderlyingType="System.UInt32">
+         <Value Name="TCP" Value="6"/>
+         <Value Name="UDP" Value="17"/>
+      </Enum>
+   </Enums>
+</PowerShellMetadata>
+

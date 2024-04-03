@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400,700');
+
+$font: "Comfortaa";
+$glow: rgba(200, 150, 250, .9);
+$h1-color: rgba(255,255,255, 1);
+$outline: rgba(255, 120, 250, 1);
+$off-color: rgba(50,50,50, .25);
+$bg: rgba(18,20,40, 1);
+
+%text{
+  font-family: $font;
+}
+
+@mixin off{
+  color: $off-color;
+  border: none;
+  text-shadow: none;
+}
+
+@mixin on{
+  color: $h1-color;
+  text-shadow: 
+    0 0 1px rgba($outline, .2),
+    0 0 2px $glow, 
+    0 0 70px rgba($glow, 1);
+}
+
+
+*{
+  box-sizing: border-box;
+}
+
+html { 
+  height:100vh;
+}
+
+body {
+  background: $bg;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height:100vh; 
+}
+
+.container{
+  align-items: center;
+  margin: auto;
+    
+}
+
+.row{
+  margin-top: 30vh;
+  height: 200px;
+  min-width: 300px;
+}
+
+.four0four{
+  @extend %text;
+  @include on;
+  color: $h1-color;
+  
+  margin-top: -67px;;
+  font-size: 15em;
+  text-align: right;
+  min-width: 450px;
+  z-index: 5;
+  &:before{
+    content: "404";
+    position: absolute;
+    color: rgba(255, 120, 250, 1);
+    mix-blend-mode: color-dodge;
+    z-index: 1;
+  }
+}
+
+.not-found {
+  @extend %text;
+  @include on;
+  line-height: 110%;
+  font-size: 3.75em;
+  &:before{
+    letter-spacing: .25px;
+    content: "Page not found";
+    position: absolute;
+    color: rgba(255, 120, 250, 1);
+    mix-blend-mode: color-dodge;
+    z-index: 1;
+  }
+}
+
+.flicker1{
+  animation: 5s linear 3.25s flickr infinite
+}
+
+.flicker2 {
+  animation: 5s linear 1.25s flickr infinite
+}
+
+.flicker3{
+  animation: 5s ease 1s flickr infinite;
+}
+
+.flicker4{
+  animation: 5s ease 2s flickr infinite;
+}
+
+
+
+.off{
+  @include off;
+}
+
+///LIGHT ANIMATIONS ///
+@keyframes flickr {
+  0%{
+    @include off;
+  }
+  1% {
+    @include on;
+  }
+  2% {
+    @include off;
+  }
+  8% {
+    @include off;
+  }
+
+  10% {
+    @include on;
+  }
+
+  11% {
+    @include off;
+  }
+
+  12% {
+    @include on;
+  }
+
+
+  13%{
+    @include off;
+  }
+
+  14%{
+    @include on;
+  }
+
+  53% {
+    @include on;
+  }
+  54% {
+    @include off;
+  }
+  58% {
+    @include off;
+  }
+
+  59% {
+    @include on;
+  }
+
+  60% {
+    @include off;
+  }
+
+  61% {
+    @include on;
+  }
+  100%{
+    @include on;
+  }
+}
+
+////FOG ELEMENTS ///
+
+%fog{
+  position: absolute;
+  border: none;
+  border-radius: 100%;
+  z-index: 400;
+}
+
+@mixin fog-size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin fog-glow($glow-size1, $glow-size2) {
+  box-shadow: inset 0 0 $glow-size1 rgba(255,255,255,.8), 0 0 $glow-size2 rgba(255,255,255,.5);
+}
+
+.fog1{
+  @extend %fog;
+  @include fog-size(100px, 100px);
+  animation: 75s linear float infinite;
+  @include fog-glow(50px, 50px);
+}
+
+.fog2{
+  @extend %fog;
+  @include fog-size(50px, 50px);
+  @include fog-glow(25px, 25px);
+  margin-top: -25%;
+  animation: 25s linear float2 infinite;
+}
+
+.fog3{
+  @extend %fog;
+  @include fog-size(80px, 80px);
+  @include fog-glow(40px, 40px);
+  margin-left: 25%;
+  animation: 40s ease float2 infinite;
+}
+
+.fog4{
+  @extend %fog;
+  @include fog-size(40px, 40px);
+  margin-left: 60%;
+  margin-top: -45%;
+  animation: 45s linear float infinite;
+  @include fog-glow(20px, 20px);
+}
+
+.fog5{
+  @extend %fog;
+  @include fog-size(60px, 60px);
+  margin-left: 50%;
+  margin-top: -30%;
+  animation: 30s ease float2 infinite;
+  @include fog-glow(30px, 30px);
+}
+
+.fog5{
+  @extend %fog;
+  @include fog-size(125px, 125px);
+  margin-left: 50%;
+  margin-top: 30%;
+  animation: 70s ease-out float3 infinite;
+  @include fog-glow(40px, 60px);
+}
+
+.fog6{
+  @extend %fog;
+  @include fog-size(20px, 20px);
+  margin-left: 50%;
+  margin-top: -10%;
+  animation: 20s linear float infinite;
+  @include fog-glow(2px, 2px);
+}
+
+.fog7{
+  @extend %fog;
+  @include fog-size(50px, 50px);
+  margin-left: 0%;
+  margin-top: 30%;
+  animation: 40s ease-out float3 infinite;
+  @include fog-glow(20px, 20px);
+}
+
+.fog8{
+  @extend %fog;
+  @include fog-size(80px, 80px);
+  margin-left: 60%;
+  margin-top: -20%;
+  animation: 40s ease-out float3 infinite;
+  @include fog-glow(20px, 20px);
+}
+
+@keyframes float{
+  0%{
+    top: 50%;
+    left: 10%;
+  }
+  25%{
+    top: 75%;
+    left: 25%;
+
+  }
+  50%{
+    top: 50%;
+    left: 35%;
+  }
+  75%{
+    top: 75%;
+    left: 25%;
+  }
+  100%{
+    top: 50%;
+    left: 10%;
+  }
+}
+@keyframes float2{
+  0%{
+    top: 50%;
+    left: 10%;
+  }
+  25%{
+    top: 25%;
+    left: 15%;
+
+  }
+  50%{
+    top: 50%;
+    left: 45%;
+  }
+  75%{
+    top: 25%;
+    left: 15%;
+  }
+  100%{
+    top: 50%;
+    left: 10%;
+  }
+}
+@keyframes float3{
+  0%{
+    top: 50%;
+    left: 25%;
+  }
+  25%{
+    top: 35%;
+    left: 0;
+
+  }
+  50%{
+    top: 10%;
+    left: 10%;
+  }
+  75%{
+    top: 35%;
+    left: 0%;
+  }
+  100%{
+    top: 50%;
+    left: 25%;
+  }
+}
+
+@media(max-width: 991px){
+  .container{
+    margin-top: 30vh;
+  }
+  .four0four{
+    text-align: center;
+    min-width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 200px;
+    font-size: 10em;
+  }
+  .not-found{
+    font-size: 1.75em;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    
+  }
+}

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>MSFT_NetQosPolicy ListView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetQosPolicySettingData</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Owner</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>NetworkProfile</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Precedence</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.UserMatchCondition -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>User</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.AppPathNameMatchCondition -ne $null) -and $_.AppPathNameMatchCondition[0]</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>AppPathName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.TemplateMatchCondition -ne $null) -and ($_.TemplateMatchCondition -ne 0)</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>Template</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.JobObjectMatchCondition -ne $null) -and ($_.JobObjectMatchCondition -ne 0)</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>JobObject</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.NetDirectPortMatchCondition -ne $null) -and ($_.NetDirectPortMatchCondition -ne 0)</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>NetDirectPort</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.IPProtocolMatchCondition -ne $null) -and ($_.IPProtocolMatchCondition -ne 0)</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>IPProtocol</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.IPPortMatchCondition -ne $null) -and ($_.IPPortMatchCondition -ne 0)</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>IPPort</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.IPSrcPrefixMatchCondition -ne $null) -and $_.IPSrcPrefixMatchCondition[0]</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>IPSrcPrefix</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.IPSrcPortStartMatchCondition -ne $null) -and ($_.IPSrcPortStartMatchCondition -ne 0)</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>IPSrcPortStart</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.IPSrcPortStartMatchCondition -ne $null) -and ($_.IPSrcPortStartMatchCondition -ne 0)</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>IPSrcPortEnd</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.IPDstPrefixMatchCondition -ne $null) -and $_.IPDstPrefixMatchCondition[0]</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>IPDstPrefix</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.IPDstPortStartMatchCondition -ne $null) -and ($_.IPDstPortStartMatchCondition -ne 0)</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>IPDstPortStart</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.IPDstPortStartMatchCondition -ne $null) -and ($_.IPDstPortStartMatchCondition -ne 0)</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>IPDstPortEnd</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.URIMatchCondition -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>URI</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.URIMatchCondition -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>URIRecursive</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.PriorityValue8021Action -ne $null) -and ($_.PriorityValue8021Action -ne -1)</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>PriorityValue</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.DSCPAction -ne $null) -and ($_.DSCPAction -ne -1)</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>DSCPValue</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.MinBandwidthWeightAction -ne $null) -and ($_.MinBandwidthWeightAction -ne 0)</ScriptBlock>
+                </ItemSelectionCondition>
+                <PropertyName>MinBandwidthWeight</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>($_.ThrottleRateAction -ne $null) -and ($_.ThrottleRateAction -ne 0)</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>ThrottleRate</Label>
+                <ScriptBlock>
+                  Import-Module NetQos\MSFT_NetQosPolicy.Format.Helper.psm1
+                  Format-NetQosPolicySpeed $_.ThrottleRateAction 3
+                </ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

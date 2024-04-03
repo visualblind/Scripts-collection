@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">   
+  <Class ClassName="Root/Microsoft/Windows/FSRM/MSFT_FSRMFMJAction">   
+    <Version>1.0</Version>    
+    <DefaultNoun>FsrmFmjAction</DefaultNoun>   
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" ConfirmImpact="Medium" />
+        <Method MethodName="CreateFmjAction">
+          <Parameters> 
+            <Parameter ParameterName="Type">
+              <Type PSType="FmjActionTypeEnum" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ExpirationFolder">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RmsFolderOwner">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RmsFullControlUser">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RmsReadUser">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RmsWriteUser">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RmsTemplate">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Command">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="WorkingDirectory">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CommandParameters">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SecurityLevel">
+              <Type PSType="FmjActionSecurityLevelEnum" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter> 
+            <Parameter ParameterName="Action">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="FmjActionTypeEnum" UnderlyingType="UInt32">
+      <Value Name="Expiration" Value="1" />
+      <Value Name="Custom" Value="2" />
+      <Value Name="Rms" Value="3" />
+    </Enum>
+    <Enum EnumName="FmjActionSecurityLevelEnum" UnderlyingType="UInt32">
+      <Value Name="None" Value="0" />
+      <Value Name="NetworkService" Value="1" />
+      <Value Name="LocalService" Value="2" />
+      <Value Name="LocalSystem" Value="3" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>   

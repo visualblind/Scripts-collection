@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+   <Class ClassName="root/StandardCimv2/MSFT_NetNatTransitionConfiguration" ClassVersion="1.0.0">
+      <Version>1.0</Version>
+      <DefaultNoun>NetNatTransitionConfiguration</DefaultNoun>
+      <InstanceCmdlets>
+         
+         <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+            <QueryableProperties>
+               <Property PropertyName="InstanceName">
+                  <Type PSType="System.String"/>
+                  <RegularQuery AllowGlobbing="false">
+                     <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" ValueFromPipelineByPropertyName="true"/>
+                  </RegularQuery>
+               </Property>
+               <Property PropertyName="PolicyStore">
+                  <Type PSType="NetNatTransitionConfiguration.PolicyStore"/>
+                  <RegularQuery AllowGlobbing="false">
+                     <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName" ValueFromPipelineByPropertyName="true" Aliases="Store"/>
+                  </RegularQuery>
+               </Property>
+            </QueryableProperties>
+            <QueryableAssociations>
+               <Association Association="MSFT_NetNatTransitionInterfaceAssociation" ResultRole="SettingData" SourceRole="ManagedElement">
+                  <AssociatedInstance>
+                     <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetAdapter"/>
+                     <CmdletParameterMetadata PSName="Adapter" ValueFromPipeline="true" CmdletParameterSets="ByName"/>
+                  </AssociatedInstance>
+               </Association>
+            </QueryableAssociations>
+         </GetCmdletParameters>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Set" ConfirmImpact="Medium"/>
+            <Method MethodName="cim:ModifyInstance">
+               <Parameters>
+                  <Parameter ParameterName="State">
+                     <Type PSType="NetNatTransitionConfiguration.State"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="InboundInterface">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="OutboundInterface">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="PrefixMapping">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="IPv4AddressPortPool">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="TcpMappingTimeout">
+                     <Type PSType="System.Uint32"/>
+                     <CmdletParameterMetadata PSName="TcpMappingTimeoutSeconds" Aliases="TcpMappingTimeout"/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Enable" ConfirmImpact="Medium"/>
+            <Method MethodName="Enable">
+               <Parameters>
+                  <Parameter ParameterName="PassThru">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="OutputObject">
+                     <Type PSType="Microsoft.Management.Infrastructure.CimInstance"/>
+                     <CmdletOutputMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Disable" ConfirmImpact="Medium"/>
+            <Method MethodName="Disable">
+               <Parameters>
+                  <Parameter ParameterName="PassThru">
+                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="OutputObject">
+                     <Type PSType="Microsoft.Management.Infrastructure.CimInstance"/>
+                     <CmdletOutputMetadata/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Remove" ConfirmImpact="Medium"/>
+            <Method MethodName="cim:DeleteInstance"/>
+         </Cmdlet>
+         
+      </InstanceCmdlets>
+      
+      <StaticCmdlets>
+         
+         <Cmdlet>
+            <CmdletMetadata Verb="New" ConfirmImpact="Medium"/>
+            <Method MethodName="cim:CreateInstance">
+               <ReturnValue>
+                  <Type PSType="System.Uint32"/>
+                  <CmdletOutputMetadata>
+                     <ErrorCode/>
+                  </CmdletOutputMetadata>
+               </ReturnValue>
+               <Parameters>
+                  <Parameter ParameterName="InstanceName">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="PolicyStore">
+                     <Type PSType="NetNatTransitionConfiguration.PolicyStore"/>
+                     <CmdletParameterMetadata Aliases="Store"/>
+                  </Parameter>
+                  <Parameter ParameterName="State">
+                     <Type PSType="NetNatTransitionConfiguration.State"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="InboundInterface">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="OutboundInterface">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="PrefixMapping">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="IPv4AddressPortPool">
+                     <Type PSType="System.String[]"/>
+                     <CmdletParameterMetadata/>
+                  </Parameter>
+                  <Parameter ParameterName="TcpMappingTimeout">
+                     <Type PSType="System.Uint32"/>
+                     <CmdletParameterMetadata PSName="TcpMappingTimeoutSeconds" Aliases="TcpMappingTimeout"/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+         
+      </StaticCmdlets>
+   </Class>
+   <Enums>
+      <Enum EnumName="NetNatTransitionConfiguration.State" UnderlyingType="System.Uint32">
+         <Value Name="Disabled" Value="0"/>
+         <Value Name="Enabled" Value="1"/>
+      </Enum>
+      <Enum EnumName="NetNatTransitionConfiguration.PolicyStore" UnderlyingType="System.Uint32">
+         <Value Name="PersistentStore" Value="0"/>
+         <Value Name="ActiveStore" Value="1"/>
+      </Enum>
+   </Enums>
+</PowerShellMetadata>
+

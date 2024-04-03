@@ -1,0 +1,3172 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/PS_StorageCmdlets">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>NoExport</DefaultNoun>
+    <StaticCmdlets>
+      <!--
+
+      //
+      // Set-Disk
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" Noun="Disk" DefaultCmdletParameterSet="ByNumberAttributes" />
+        <Method MethodName="SetDisk" CmdletParameterSet="ByObjectConvertStyle">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PartitionStyle -->
+            <Parameter ParameterName="PartitionStyle">
+              <Type PSType="SetDisk.PartitionStyle" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetDisk" CmdletParameterSet="ByIdConvertStyle">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- PartitionStyle -->
+            <Parameter ParameterName="PartitionStyle">
+              <Type PSType="SetDisk.PartitionStyle" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetDisk" CmdletParameterSet="ByPathConvertStyle">
+          <Parameters>
+            <!-- Path -->
+            <Parameter ParameterName="Path">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- PartitionStyle -->
+            <Parameter ParameterName="PartitionStyle">
+              <Type PSType="SetDisk.PartitionStyle" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetDisk" CmdletParameterSet="ByNumberConvertStyle">
+          <Parameters>
+            <!-- Number -->
+            <Parameter ParameterName="Number">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Position="0" />
+            </Parameter>
+            <!-- PartitionStyle -->
+            <Parameter ParameterName="PartitionStyle">
+              <Type PSType="SetDisk.PartitionStyle" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetDisk" CmdletParameterSet="ByObject">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- IsOffline -->
+            <Parameter ParameterName="IsOffline">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetDisk" CmdletParameterSet="ById">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- IsOffline -->
+            <Parameter ParameterName="IsOffline">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetDisk" CmdletParameterSet="ByPath">
+          <Parameters>
+            <!-- Path -->
+            <Parameter ParameterName="Path">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- IsOffline -->
+            <Parameter ParameterName="IsOffline">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetDisk" CmdletParameterSet="ByNumber">
+          <Parameters>
+            <!-- Number -->
+            <Parameter ParameterName="Number">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Position="0" />
+            </Parameter>
+            <!-- IsOffline -->
+            <Parameter ParameterName="IsOffline">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetDisk" CmdletParameterSet="ByObjectAttributes">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- IsReadOnly -->
+            <Parameter ParameterName="IsReadOnly">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Signature -->
+            <Parameter ParameterName="Signature">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Guid -->
+            <Parameter ParameterName="Guid">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetDisk" CmdletParameterSet="ByIdAttributes">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- IsReadOnly -->
+            <Parameter ParameterName="IsReadOnly">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Signature -->
+            <Parameter ParameterName="Signature">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Guid -->
+            <Parameter ParameterName="Guid">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetDisk" CmdletParameterSet="ByPathAttributes">
+          <Parameters>
+            <!-- Path -->
+            <Parameter ParameterName="Path">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- IsReadOnly -->
+            <Parameter ParameterName="IsReadOnly">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Signature -->
+            <Parameter ParameterName="Signature">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Guid -->
+            <Parameter ParameterName="Guid">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetDisk" CmdletParameterSet="ByNumberAttributes">
+          <Parameters>
+            <!-- Number -->
+            <Parameter ParameterName="Number">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Position="0" />
+            </Parameter>
+            <!-- IsReadOnly -->
+            <Parameter ParameterName="IsReadOnly">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Signature -->
+            <Parameter ParameterName="Signature">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Guid -->
+            <Parameter ParameterName="Guid">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Set-Volume
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" Noun="Volume" DefaultCmdletParameterSet="ByDriveLetterSetLabel" />
+        <Method MethodName="SetVolume" CmdletParameterSet="ByObjectSetLabel">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NewFileSystemLabel -->
+            <Parameter ParameterName="NewFileSystemLabel">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="NewFriendlyName" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVolume" CmdletParameterSet="ByUniqueIdSetLabel">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true" />
+            </Parameter>
+            <!-- NewFileSystemLabel -->
+            <Parameter ParameterName="NewFileSystemLabel">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="NewFriendlyName" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVolume" CmdletParameterSet="ByPathSetLabel">
+          <Parameters>
+            <!-- Path -->
+            <Parameter ParameterName="Path">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true" />
+            </Parameter>
+            <!-- NewFileSystemLabel -->
+            <Parameter ParameterName="NewFileSystemLabel">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="NewFriendlyName" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVolume" CmdletParameterSet="ByLabelSetLabel">
+          <Parameters>
+            <!-- FileSystemLabel -->
+            <Parameter ParameterName="FileSystemLabel">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true"  Aliases="FriendlyName" />
+            </Parameter>
+            <!-- NewFileSystemLabel -->
+            <Parameter ParameterName="NewFileSystemLabel">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="NewFriendlyName" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVolume" CmdletParameterSet="ByDriveLetterSetLabel">
+          <Parameters>
+            <!-- DriveLetter -->
+            <Parameter ParameterName="DriveLetter">
+              <Type PSType="System.Char" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true" />
+            </Parameter>
+            <!-- NewFileSystemLabel -->
+            <Parameter ParameterName="NewFileSystemLabel">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="NewFriendlyName" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVolume" CmdletParameterSet="ByObjectSetDedup">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- DedupMode -->
+            <Parameter ParameterName="DedupMode">
+              <Type PSType="SetVolume.DedupMode" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVolume" CmdletParameterSet="ByUniqueIdSetDedup">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true" />
+            </Parameter>
+            <!-- DedupMode -->
+            <Parameter ParameterName="DedupMode">
+              <Type PSType="SetVolume.DedupMode" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVolume" CmdletParameterSet="ByPathSetDedup">
+          <Parameters>
+            <!-- Path -->
+            <Parameter ParameterName="Path">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true" />
+            </Parameter>
+            <!-- DedupMode -->
+            <Parameter ParameterName="DedupMode">
+              <Type PSType="SetVolume.DedupMode" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVolume" CmdletParameterSet="ByLabelSetDedup">
+          <Parameters>
+            <!-- FileSystemLabel -->
+            <Parameter ParameterName="FileSystemLabel">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true" Aliases="FriendlyName" />
+            </Parameter>
+            <!-- DedupMode -->
+            <Parameter ParameterName="DedupMode">
+              <Type PSType="SetVolume.DedupMode" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVolume" CmdletParameterSet="ByDriveLetterSetDedup">
+          <Parameters>
+            <!-- DriveLetter -->
+            <Parameter ParameterName="DriveLetter">
+              <Type PSType="System.Char" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true" />
+            </Parameter>
+            <!-- DedupMode -->
+            <Parameter ParameterName="DedupMode">
+              <Type PSType="SetVolume.DedupMode" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Set-Partition
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" Noun="Partition" DefaultCmdletParameterSet="ByNumberAttributes" ConfirmImpact="High" />
+        <Method MethodName="SetPartition" CmdletParameterSet="ByObjectAttributes">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- IsReadOnly -->
+            <Parameter ParameterName="IsReadOnly">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- NoDefaultDriveLetter -->
+            <Parameter ParameterName="NoDefaultDriveLetter">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsActive -->
+            <Parameter ParameterName="IsActive">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsHidden -->
+            <Parameter ParameterName="IsHidden">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsShadowCopy -->
+            <Parameter ParameterName="IsShadowCopy">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsDAX -->
+            <Parameter ParameterName="IsDAX">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MbrType -->
+            <Parameter ParameterName="MbrType">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- GptType -->
+            <Parameter ParameterName="GptType">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetPartition" CmdletParameterSet="ByIdAttributes">
+          <Parameters>
+            <!-- DiskId -->
+            <Parameter ParameterName="DiskId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- Offset -->
+            <Parameter ParameterName="Offset">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- IsReadOnly -->
+            <Parameter ParameterName="IsReadOnly">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- NoDefaultDriveLetter -->
+            <Parameter ParameterName="NoDefaultDriveLetter">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsActive -->
+            <Parameter ParameterName="IsActive">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsHidden -->
+            <Parameter ParameterName="IsHidden">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsShadowCopy -->
+            <Parameter ParameterName="IsShadowCopy">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsDAX -->
+            <Parameter ParameterName="IsDAX">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MbrType -->
+            <Parameter ParameterName="MbrType">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- GptType -->
+            <Parameter ParameterName="GptType">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetPartition" CmdletParameterSet="ByDriveLetterAttributes">
+          <Parameters>
+            <!-- DriveLetter -->
+            <Parameter ParameterName="DriveLetter">
+              <Type PSType="System.Char" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- IsReadOnly -->
+            <Parameter ParameterName="IsReadOnly">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- NoDefaultDriveLetter -->
+            <Parameter ParameterName="NoDefaultDriveLetter">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsActive -->
+            <Parameter ParameterName="IsActive">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsHidden -->
+            <Parameter ParameterName="IsHidden">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsShadowCopy -->
+            <Parameter ParameterName="IsShadowCopy">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsDAX -->
+            <Parameter ParameterName="IsDAX">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MbrType -->
+            <Parameter ParameterName="MbrType">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- GptType -->
+            <Parameter ParameterName="GptType">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetPartition" CmdletParameterSet="ByNumberAttributes">
+          <Parameters>
+            <!-- DiskNumber -->
+            <Parameter ParameterName="DiskNumber">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Position="0" />
+            </Parameter>
+            <!-- PartitionNumber -->
+            <Parameter ParameterName="PartitionNumber">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="false" Aliases="Number" Position="1" />
+            </Parameter>
+            <!-- IsReadOnly -->
+            <Parameter ParameterName="IsReadOnly">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- NoDefaultDriveLetter -->
+            <Parameter ParameterName="NoDefaultDriveLetter">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsActive -->
+            <Parameter ParameterName="IsActive">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsHidden -->
+            <Parameter ParameterName="IsHidden">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsShadowCopy -->
+            <Parameter ParameterName="IsShadowCopy">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsDAX -->
+            <Parameter ParameterName="IsDAX">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MbrType -->
+            <Parameter ParameterName="MbrType">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- GptType -->
+            <Parameter ParameterName="GptType">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetPartition" CmdletParameterSet="ByObject">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- IsOffline -->
+            <Parameter ParameterName="IsOffline">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetPartition" CmdletParameterSet="ById">
+          <Parameters>
+            <!-- DiskId -->
+            <Parameter ParameterName="DiskId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- Offset -->
+            <Parameter ParameterName="Offset">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- IsOffline -->
+            <Parameter ParameterName="IsOffline">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetPartition" CmdletParameterSet="ByDriveLetter">
+          <Parameters>
+            <!-- DriveLetter -->
+            <Parameter ParameterName="DriveLetter">
+              <Type PSType="System.Char" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- IsOffline -->
+            <Parameter ParameterName="IsOffline">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetPartition" CmdletParameterSet="ByNumber">
+          <Parameters>
+            <!-- DiskNumber -->
+            <Parameter ParameterName="DiskNumber">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Position="0" />
+            </Parameter>
+            <!-- PartitionNumber -->
+            <Parameter ParameterName="PartitionNumber">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="false" Aliases="Number" Position="1" />
+            </Parameter>
+            <!-- IsOffline -->
+            <Parameter ParameterName="IsOffline">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetPartition" CmdletParameterSet="ByObjectAccessPath">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NewDriveLetter -->
+            <Parameter ParameterName="NewDriveLetter">
+              <Type PSType="System.Char" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetPartition" CmdletParameterSet="ByIdAccessPath">
+          <Parameters>
+            <!-- DiskId -->
+            <Parameter ParameterName="DiskId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- Offset -->
+            <Parameter ParameterName="Offset">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- NewDriveLetter -->
+            <Parameter ParameterName="NewDriveLetter">
+              <Type PSType="System.Char" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetPartition" CmdletParameterSet="ByDriveLetterAccessPath">
+          <Parameters>
+            <!-- DriveLetter -->
+            <Parameter ParameterName="DriveLetter">
+              <Type PSType="System.Char" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- NewDriveLetter -->
+            <Parameter ParameterName="NewDriveLetter">
+              <Type PSType="System.Char" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetPartition" CmdletParameterSet="ByNumberAccessPath">
+          <Parameters>
+            <!-- DiskNumber -->
+            <Parameter ParameterName="DiskNumber">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Position="0" />
+            </Parameter>
+            <!-- PartitionNumber -->
+            <Parameter ParameterName="PartitionNumber">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="false" Aliases="Number" Position="1" />
+            </Parameter>
+            <!-- NewDriveLetter -->
+            <Parameter ParameterName="NewDriveLetter">
+              <Type PSType="System.Char" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Set-PhysicalDisk
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" Noun="PhysicalDisk" DefaultCmdletParameterSet="ByUniqueId" />
+        <Method MethodName="SetPhysicalDisk" CmdletParameterSet="ByObject">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="NewFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Description -->
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="SetPhysicalDisk.Usage" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MediaType -->
+            <Parameter ParameterName="MediaType">
+              <Type PSType="SetPhysicalDisk.MediaType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- StorageEnclosureId -->
+            <Parameter ParameterName="StorageEnclosureId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- StorageScaleUnitId -->
+            <Parameter ParameterName="StorageScaleUnitId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetPhysicalDisk" CmdletParameterSet="ByUniqueId">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Aliases="Id" />
+            </Parameter>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="NewFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Description -->
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="SetPhysicalDisk.Usage" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MediaType -->
+            <Parameter ParameterName="MediaType">
+              <Type PSType="SetPhysicalDisk.MediaType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- StorageEnclosureId -->
+            <Parameter ParameterName="StorageEnclosureId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- StorageScaleUnitId -->
+            <Parameter ParameterName="StorageScaleUnitId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetPhysicalDisk" CmdletParameterSet="ByFriendlyName">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Position="0" />
+            </Parameter>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="NewFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Description -->
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="SetPhysicalDisk.Usage" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MediaType -->
+            <Parameter ParameterName="MediaType">
+              <Type PSType="SetPhysicalDisk.MediaType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- StorageEnclosureId -->
+            <Parameter ParameterName="StorageEnclosureId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- StorageScaleUnitId -->
+            <Parameter ParameterName="StorageScaleUnitId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Set-StoragePool
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" Noun="StoragePool" DefaultCmdletParameterSet="ByUniqueId" />
+        <!-- Attributes - ByObject -->
+        <Method MethodName="SetStoragePool" CmdletParameterSet="ByObject">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata Position="0" ValueFromPipeline="true" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="NewFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- ClearOnDeallocate -->
+            <Parameter ParameterName="ClearOnDeallocate">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsPowerProtected -->
+            <Parameter ParameterName="IsPowerProtected">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- RepairPolicy -->
+            <Parameter ParameterName="RepairPolicy">
+              <Type PSType="SetStoragePool.RepairPolicy" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- RetireMissingPhysicalDisks -->
+            <Parameter ParameterName="RetireMissingPhysicalDisks">
+              <Type PSType="SetStoragePool.RetireMissingPhysicalDisks" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="SetStoragePool.Usage" />
+              <CmdletParameterMetadata Aliases="NewUsage" />
+            </Parameter>
+            <!-- OtherUsageDescription -->
+            <Parameter ParameterName="OtherUsageDescription">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="NewOtherUsageDescription" />
+            </Parameter>
+            <!-- ThinProvisioningAlertThresholds -->
+            <Parameter ParameterName="ThinProvisioningAlertThresholds">
+              <Type PSType="System.UInt16[]" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <!-- Attributes - ByUniqueId -->
+        <Method MethodName="SetStoragePool" CmdletParameterSet="ByUniqueId">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Aliases="Id" />
+            </Parameter>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="NewFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- ClearOnDeallocate -->
+            <Parameter ParameterName="ClearOnDeallocate">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsPowerProtected -->
+            <Parameter ParameterName="IsPowerProtected">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- RepairPolicy -->
+            <Parameter ParameterName="RepairPolicy">
+              <Type PSType="SetStoragePool.RepairPolicy" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- RetireMissingPhysicalDisks -->
+            <Parameter ParameterName="RetireMissingPhysicalDisks">
+              <Type PSType="SetStoragePool.RetireMissingPhysicalDisks" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="SetStoragePool.Usage" />
+              <CmdletParameterMetadata Aliases="NewUsage" />
+            </Parameter>
+            <!-- OtherUsageDescription -->
+            <Parameter ParameterName="OtherUsageDescription">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="NewOtherUsageDescription" />
+            </Parameter>
+            <!-- ThinProvisioningAlertThresholds -->
+            <Parameter ParameterName="ThinProvisioningAlertThresholds">
+              <Type PSType="System.UInt16[]" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <!-- Attributes - ByName -->
+        <Method MethodName="SetStoragePool" CmdletParameterSet="ByName">
+          <Parameters>
+            <!-- Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="NewFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- ClearOnDeallocate -->
+            <Parameter ParameterName="ClearOnDeallocate">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsPowerProtected -->
+            <Parameter ParameterName="IsPowerProtected">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- RepairPolicy -->
+            <Parameter ParameterName="RepairPolicy">
+              <Type PSType="SetStoragePool.RepairPolicy" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- RetireMissingPhysicalDisks -->
+            <Parameter ParameterName="RetireMissingPhysicalDisks">
+              <Type PSType="SetStoragePool.RetireMissingPhysicalDisks" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="SetStoragePool.Usage" />
+              <CmdletParameterMetadata Aliases="NewUsage" />
+            </Parameter>
+            <!-- OtherUsageDescription -->
+            <Parameter ParameterName="OtherUsageDescription">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="NewOtherUsageDescription" />
+            </Parameter>
+            <!-- ThinProvisioningAlertThresholds -->
+            <Parameter ParameterName="ThinProvisioningAlertThresholds">
+              <Type PSType="System.UInt16[]" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <!-- Attributes - ByFriendlyName -->
+        <Method MethodName="SetStoragePool" CmdletParameterSet="ByFriendlyName">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Position="0" />
+            </Parameter>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="NewFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- ClearOnDeallocate -->
+            <Parameter ParameterName="ClearOnDeallocate">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- IsPowerProtected -->
+            <Parameter ParameterName="IsPowerProtected">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- RepairPolicy -->
+            <Parameter ParameterName="RepairPolicy">
+              <Type PSType="SetStoragePool.RepairPolicy" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- RetireMissingPhysicalDisks -->
+            <Parameter ParameterName="RetireMissingPhysicalDisks">
+              <Type PSType="SetStoragePool.RetireMissingPhysicalDisks" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="SetStoragePool.Usage" />
+              <CmdletParameterMetadata Aliases="NewUsage" />
+            </Parameter>
+            <!-- OtherUsageDescription -->
+            <Parameter ParameterName="OtherUsageDescription">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="NewOtherUsageDescription" />
+            </Parameter>
+            <!-- ThinProvisioningAlertThresholds -->
+            <Parameter ParameterName="ThinProvisioningAlertThresholds">
+              <Type PSType="System.UInt16[]" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <!-- Defaults - ByObject -->
+        <Method MethodName="SetStoragePool" CmdletParameterSet="ByObjectDefaults">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata Position="0" ValueFromPipeline="true" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- ProvisioningTypeDefault -->
+            <Parameter ParameterName="ProvisioningTypeDefault">
+              <Type PSType="SetStoragePool.ProvisioningType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MediaTypeDefault -->
+            <Parameter ParameterName="MediaTypeDefault">
+              <Type PSType="SetStoragePool.MediaType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- ResiliencySettingNameDefault -->
+            <Parameter ParameterName="ResiliencySettingNameDefault">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- EnclosureAwareDefault -->
+            <Parameter ParameterName="EnclosureAwareDefault">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- FaultDomainAwarenessDefault -->
+            <Parameter ParameterName="FaultDomainAwarenessDefault">
+              <Type PSType="Set.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- WriteCacheSizeDefault -->
+            <Parameter ParameterName="WriteCacheSizeDefault">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- AutoWriteCacheSize -->
+            <Parameter ParameterName="AutoWriteCacheSize">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <!-- Defaults - ByUniqueId -->
+        <Method MethodName="SetStoragePool" CmdletParameterSet="ByUniqueIdDefaults">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Aliases="Id" />
+            </Parameter>
+            <!-- ProvisioningTypeDefault -->
+            <Parameter ParameterName="ProvisioningTypeDefault">
+              <Type PSType="SetStoragePool.ProvisioningType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MediaTypeDefault -->
+            <Parameter ParameterName="MediaTypeDefault">
+              <Type PSType="SetStoragePool.MediaType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- ResiliencySettingNameDefault -->
+            <Parameter ParameterName="ResiliencySettingNameDefault">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- EnclosureAwareDefault -->
+            <Parameter ParameterName="EnclosureAwareDefault">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- FaultDomainAwarenessDefault -->
+            <Parameter ParameterName="FaultDomainAwarenessDefault">
+              <Type PSType="Set.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- WriteCacheSizeDefault -->
+            <Parameter ParameterName="WriteCacheSizeDefault">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- AutoWriteCacheSize -->
+            <Parameter ParameterName="AutoWriteCacheSize">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <!-- Defaults - ByName -->
+        <Method MethodName="SetStoragePool" CmdletParameterSet="ByNameDefaults">
+          <Parameters>
+            <!-- Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- ProvisioningTypeDefault -->
+            <Parameter ParameterName="ProvisioningTypeDefault">
+              <Type PSType="SetStoragePool.ProvisioningType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MediaTypeDefault -->
+            <Parameter ParameterName="MediaTypeDefault">
+              <Type PSType="SetStoragePool.MediaType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- ResiliencySettingNameDefault -->
+            <Parameter ParameterName="ResiliencySettingNameDefault">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- EnclosureAwareDefault -->
+            <Parameter ParameterName="EnclosureAwareDefault">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- FaultDomainAwarenessDefault -->
+            <Parameter ParameterName="FaultDomainAwarenessDefault">
+              <Type PSType="Set.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- WriteCacheSizeDefault -->
+            <Parameter ParameterName="WriteCacheSizeDefault">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- AutoWriteCacheSize -->
+            <Parameter ParameterName="AutoWriteCacheSize">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <!-- Defaults - ByFriendlyName -->
+        <Method MethodName="SetStoragePool" CmdletParameterSet="ByFriendlyNameDefaults">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Position="0" />
+            </Parameter>
+            <!-- ProvisioningTypeDefault -->
+            <Parameter ParameterName="ProvisioningTypeDefault">
+              <Type PSType="SetStoragePool.ProvisioningType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MediaTypeDefault -->
+            <Parameter ParameterName="MediaTypeDefault">
+              <Type PSType="SetStoragePool.MediaType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- ResiliencySettingNameDefault -->
+            <Parameter ParameterName="ResiliencySettingNameDefault">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- EnclosureAwareDefault -->
+            <Parameter ParameterName="EnclosureAwareDefault">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- FaultDomainAwarenessDefault -->
+            <Parameter ParameterName="FaultDomainAwarenessDefault">
+              <Type PSType="Set.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- WriteCacheSizeDefault -->
+            <Parameter ParameterName="WriteCacheSizeDefault">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- AutoWriteCacheSize -->
+            <Parameter ParameterName="AutoWriteCacheSize">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <!-- ReadOnly - ByObject -->
+        <Method MethodName="SetStoragePool" CmdletParameterSet="ByObjectAttributes">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata Position="0" ValueFromPipeline="true" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- IsReadOnly -->
+            <Parameter ParameterName="IsReadOnly">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <!-- ReadOnly - ByUniqueId -->
+        <Method MethodName="SetStoragePool" CmdletParameterSet="ByUniqueIdAttributes">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Aliases="Id" />
+            </Parameter>
+            <!-- IsReadOnly -->
+            <Parameter ParameterName="IsReadOnly">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <!-- ReadOnly - ByName -->
+        <Method MethodName="SetStoragePool" CmdletParameterSet="ByNameAttributes">
+          <Parameters>
+            <!-- Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true"/>
+            </Parameter>
+            <!-- IsReadOnly -->
+            <Parameter ParameterName="IsReadOnly">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <!-- ReadOnly - ByFriendlyName -->
+        <Method MethodName="SetStoragePool" CmdletParameterSet="ByFriendlyNameAttributes">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Position="0" />
+            </Parameter>
+            <!-- IsReadOnly -->
+            <Parameter ParameterName="IsReadOnly">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Set-VirtualDisk
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" Noun="VirtualDisk" DefaultCmdletParameterSet="ByUniqueId" />
+        <Method MethodName="SetVirtualDisk" CmdletParameterSet="ByObject">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="NewFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="SetVirtualDisk.Usage" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- OtherUsageDescription -->
+            <Parameter ParameterName="OtherUsageDescription">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVirtualDisk" CmdletParameterSet="ByUniqueId">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Aliases="Id" />
+            </Parameter>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="NewFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="SetVirtualDisk.Usage" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- OtherUsageDescription -->
+            <Parameter ParameterName="OtherUsageDescription">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVirtualDisk" CmdletParameterSet="ByFriendlyName">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="NewFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="SetVirtualDisk.Usage" />
+              <CmdletParameterMetadata Aliases="NewUsage" />
+            </Parameter>
+            <!-- OtherUsageDescription -->
+            <Parameter ParameterName="OtherUsageDescription">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="NewOtherUsageDescription" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVirtualDisk" CmdletParameterSet="ByName">
+          <Parameters>
+            <!-- Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="NewFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="SetVirtualDisk.Usage" />
+              <CmdletParameterMetadata Aliases="NewUsage" />
+            </Parameter>
+            <!-- OtherUsageDescription -->
+            <Parameter ParameterName="OtherUsageDescription">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="NewOtherUsageDescription" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVirtualDisk" CmdletParameterSet="ByObjectAttributes">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- IsManualAttach -->
+            <Parameter ParameterName="IsManualAttach">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- StorageNodeName -->
+              <Parameter ParameterName="StorageNodeName">
+                <Type PSType="System.String" />
+                <CmdletParameterMetadata />
+              </Parameter>
+            <!-- Access -->
+            <Parameter ParameterName="Access">
+              <Type PSType="SetVirtualDisk.Access" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVirtualDisk" CmdletParameterSet="ByUniqueIdAttributes">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Aliases="Id" />
+            </Parameter>
+            <!-- IsManualAttach -->
+            <Parameter ParameterName="IsManualAttach">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- StorageNodeName -->
+            <Parameter ParameterName="StorageNodeName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Access -->
+            <Parameter ParameterName="Access">
+              <Type PSType="SetVirtualDisk.Access" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVirtualDisk" CmdletParameterSet="ByFriendlyNameAttributes">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- IsManualAttach -->
+            <Parameter ParameterName="IsManualAttach">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- StorageNodeName -->
+            <Parameter ParameterName="StorageNodeName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Access -->
+            <Parameter ParameterName="Access">
+              <Type PSType="SetVirtualDisk.Access" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVirtualDisk" CmdletParameterSet="ByNameAttributes">
+          <Parameters>
+            <!-- Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- IsManualAttach -->
+            <Parameter ParameterName="IsManualAttach">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- StorageNodeName -->
+            <Parameter ParameterName="StorageNodeName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Access -->
+            <Parameter ParameterName="Access">
+              <Type PSType="SetVirtualDisk.Access" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVirtualDisk" CmdletParameterSet="ByObjectProperties">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- ProvisioningType -->
+            <Parameter ParameterName="ProvisioningType">
+              <Type PSType="Set.ProvisioningType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- PhysicalDiskRedundancy -->
+            <Parameter ParameterName="PhysicalDiskRedundancy">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata Aliases="FaultDomainRedundancy" />
+            </Parameter>
+            <!-- NumberOfDataCopies -->
+            <Parameter ParameterName="NumberOfDataCopies">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVirtualDisk" CmdletParameterSet="ByUniqueIdProperties">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Aliases="Id" />
+            </Parameter>
+            <!-- ProvisioningType -->
+            <Parameter ParameterName="ProvisioningType">
+              <Type PSType="Set.ProvisioningType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- PhysicalDiskRedundancy -->
+            <Parameter ParameterName="PhysicalDiskRedundancy">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata Aliases="FaultDomainRedundancy" />
+            </Parameter>
+            <!-- NumberOfDataCopies -->
+            <Parameter ParameterName="NumberOfDataCopies">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVirtualDisk" CmdletParameterSet="ByFriendlyNameProperties">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- ProvisioningType -->
+            <Parameter ParameterName="ProvisioningType">
+              <Type PSType="Set.ProvisioningType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- PhysicalDiskRedundancy -->
+            <Parameter ParameterName="PhysicalDiskRedundancy">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata Aliases="FaultDomainRedundancy" />
+            </Parameter>
+            <!-- NumberOfDataCopies -->
+            <Parameter ParameterName="NumberOfDataCopies">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetVirtualDisk" CmdletParameterSet="ByNameProperties">
+          <Parameters>
+            <!-- Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- ProvisioningType -->
+            <Parameter ParameterName="ProvisioningType">
+              <Type PSType="Set.ProvisioningType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- PhysicalDiskRedundancy -->
+            <Parameter ParameterName="PhysicalDiskRedundancy">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata Aliases="FaultDomainRedundancy" />
+            </Parameter>
+            <!-- NumberOfDataCopies -->
+            <Parameter ParameterName="NumberOfDataCopies">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Set-StorageTier
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" Noun="StorageTier" DefaultCmdletParameterSet="ByUniqueIdNewFriendlyName" />
+        <Method MethodName="SetStorageTier" CmdletParameterSet="ByObjectNewFriendlyName">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="NewFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageTier" CmdletParameterSet="ByObjectAttributes">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- ProvisioningType -->
+            <Parameter ParameterName="ProvisioningType">
+              <Type PSType="Set.ProvisioningType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- AllocationUnitSize -->
+            <Parameter ParameterName="AllocationUnitSize">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MediaType -->
+            <Parameter ParameterName="MediaType">
+              <Type PSType="SetStorageTier.MediaType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- FaultDomainAwareness -->
+            <Parameter ParameterName="FaultDomainAwareness">
+              <Type PSType="Set.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- ColumnIsolation -->
+            <Parameter ParameterName="ColumnIsolation">
+              <Type PSType="Set.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- ResiliencySettingName -->
+            <Parameter ParameterName="ResiliencySettingName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="Set.StorageTierUsage" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- PhysicalDiskRedundancy -->
+            <Parameter ParameterName="PhysicalDiskRedundancy">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata Aliases="FaultDomainRedundancy" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NumberOfDataCopies -->
+            <Parameter ParameterName="NumberOfDataCopies">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NumberOfGroups -->
+            <Parameter ParameterName="NumberOfGroups">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NumberOfColumns -->
+            <Parameter ParameterName="NumberOfColumns">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Interleave -->
+            <Parameter ParameterName="Interleave">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageTier" CmdletParameterSet="ByObjectDescription">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Description -->
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageTier" CmdletParameterSet="ByUniqueIdNewFriendlyName">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Aliases="Id" />
+            </Parameter>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="NewFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageTier" CmdletParameterSet="ByUniqueIdAttributes">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Aliases="Id" />
+            </Parameter>
+            <!-- ProvisioningType -->
+            <Parameter ParameterName="ProvisioningType">
+              <Type PSType="Set.ProvisioningType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- AllocationUnitSize -->
+            <Parameter ParameterName="AllocationUnitSize">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MediaType -->
+            <Parameter ParameterName="MediaType">
+              <Type PSType="SetStorageTier.MediaType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- FaultDomainAwareness -->
+            <Parameter ParameterName="FaultDomainAwareness">
+              <Type PSType="Set.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- ColumnIsolation -->
+            <Parameter ParameterName="ColumnIsolation">
+              <Type PSType="Set.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- ResiliencySettingName -->
+            <Parameter ParameterName="ResiliencySettingName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Usage">
+              <Type PSType="Set.StorageTierUsage" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- PhysicalDiskRedundancy -->
+            <Parameter ParameterName="PhysicalDiskRedundancy">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata Aliases="FaultDomainRedundancy" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NumberOfDataCopies -->
+            <Parameter ParameterName="NumberOfDataCopies">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NumberOfGroups -->
+            <Parameter ParameterName="NumberOfGroups">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NumberOfColumns -->
+            <Parameter ParameterName="NumberOfColumns">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Interleave -->
+            <Parameter ParameterName="Interleave">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageTier" CmdletParameterSet="ByUniqueIdDescription">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Aliases="Id" />
+            </Parameter>
+            <!-- Description -->
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageTier" CmdletParameterSet="ByFriendlyNameNewFriendlyName">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Position="0" />
+            </Parameter>
+            <!-- NewFriendlyName -->
+            <Parameter ParameterName="NewFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageTier" CmdletParameterSet="ByFriendlyNameAttributes">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Position="0" />
+            </Parameter>
+            <!-- ProvisioningType -->
+            <Parameter ParameterName="ProvisioningType">
+              <Type PSType="Set.ProvisioningType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- AllocationUnitSize -->
+            <Parameter ParameterName="AllocationUnitSize">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- MediaType -->
+            <Parameter ParameterName="MediaType">
+              <Type PSType="SetStorageTier.MediaType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- FaultDomainAwareness -->
+            <Parameter ParameterName="FaultDomainAwareness">
+              <Type PSType="Set.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- ColumnIsolation -->
+            <Parameter ParameterName="ColumnIsolation">
+              <Type PSType="Set.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- ResiliencySettingName -->
+            <Parameter ParameterName="ResiliencySettingName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Usage">
+              <Type PSType="Set.StorageTierUsage" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- PhysicalDiskRedundancy -->
+            <Parameter ParameterName="PhysicalDiskRedundancy">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata Aliases="FaultDomainRedundancy" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NumberOfDataCopies -->
+            <Parameter ParameterName="NumberOfDataCopies">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NumberOfGroups -->
+            <Parameter ParameterName="NumberOfGroups">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- NumberOfColumns -->
+            <Parameter ParameterName="NumberOfColumns">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Interleave -->
+            <Parameter ParameterName="Interleave">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageTier" CmdletParameterSet="ByFriendlyNameDescription">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Position="0" />
+            </Parameter>
+            <!-- Description -->
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Set-StorageSubSystem
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" Noun="StorageSubSystem" DefaultCmdletParameterSet="ByUniqueIdDescription" />
+        <Method MethodName="SetStorageSubSystem" CmdletParameterSet="ByObjectDescription">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Description -->
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageSubSystem" CmdletParameterSet="ByUniqueIdDescription">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Aliases="Id" />
+            </Parameter>
+            <!-- Description -->
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageSubSystem" CmdletParameterSet="ByFriendlyNameDescription">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- Description -->
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageSubSystem" CmdletParameterSet="ByNameDescription">
+          <Parameters>
+            <!-- Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- Description -->
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageSubSystem" CmdletParameterSet="ByObjectSetAttributes">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- AutomaticClusteringEnabled -->
+            <Parameter ParameterName="AutomaticClusteringEnabled">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- FaultDomainAwarenessDefault -->
+            <Parameter ParameterName="FaultDomainAwarenessDefault">
+              <Type PSType="Set.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageSubSystem" CmdletParameterSet="ByUniqueIdSetAttributes">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Aliases="Id" />
+            </Parameter>
+            <!-- AutomaticClusteringEnabled -->
+            <Parameter ParameterName="AutomaticClusteringEnabled">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- FaultDomainAwarenessDefault -->
+            <Parameter ParameterName="FaultDomainAwarenessDefault">
+              <Type PSType="Set.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageSubSystem" CmdletParameterSet="ByFriendlyNameSetAttributes">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- AutomaticClusteringEnabled -->
+            <Parameter ParameterName="AutomaticClusteringEnabled">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- FaultDomainAwarenessDefault -->
+            <Parameter ParameterName="FaultDomainAwarenessDefault">
+              <Type PSType="Set.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetStorageSubSystem" CmdletParameterSet="ByNameSetAttributes">
+          <Parameters>
+            <!-- Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- AutomaticClusteringEnabled -->
+            <Parameter ParameterName="AutomaticClusteringEnabled">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- FaultDomainAwarenessDefault -->
+            <Parameter ParameterName="FaultDomainAwarenessDefault">
+              <Type PSType="Set.FaultDomainType" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Add-PhysicalDisk
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Add" Noun="PhysicalDisk" ConfirmImpact="Low"/>
+        <Method MethodName="AddPhysicalDisk" CmdletParameterSet="ByStoragePool">
+          <Parameters>
+            <!-- StoragePool -->
+            <Parameter ParameterName="StoragePool">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StoragePool" />
+              <CmdletParameterMetadata PSName="StoragePool" IsMandatory="true" Position="0" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="AddPhysicalDisk.Usage" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="AddPhysicalDisk" CmdletParameterSet="ByStoragePoolFriendlyName">
+          <Parameters>
+            <!-- StoragePoolFriendlyName -->
+            <Parameter ParameterName="StoragePoolFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="StoragePoolFriendlyName" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="AddPhysicalDisk.Usage" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="AddPhysicalDisk" CmdletParameterSet="ByStoragePoolName">
+          <Parameters>
+            <!-- StoragePoolName -->
+            <Parameter ParameterName="StoragePoolName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="StoragePoolName" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="AddPhysicalDisk.Usage" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="AddPhysicalDisk" CmdletParameterSet="ByStoragePoolUniqueId">
+          <Parameters>
+            <!-- StoragePoolUniqueId -->
+            <Parameter ParameterName="StoragePoolUniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="StoragePoolUniqueId" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Usage -->
+            <Parameter ParameterName="Usage">
+              <Type PSType="AddPhysicalDisk.Usage" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="AddPhysicalDisk" CmdletParameterSet="ByVirtualDisk">
+          <Parameters>
+            <!-- VirtualDisk -->
+            <Parameter ParameterName="VirtualDisk">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_VirtualDisk" />
+              <CmdletParameterMetadata PSName="VirtualDisk" IsMandatory="true" Position="0" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="AddPhysicalDisk" CmdletParameterSet="ByVirtualDiskFriendlyName">
+          <Parameters>
+            <!-- VirtualDiskFriendlyName -->
+            <Parameter ParameterName="VirtualDiskFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="VirtualDiskFriendlyName" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="AddPhysicalDisk" CmdletParameterSet="ByVirtualDiskName">
+          <Parameters>
+            <!-- VirtualDiskName -->
+            <Parameter ParameterName="VirtualDiskName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="VirtualDiskName" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="AddPhysicalDisk" CmdletParameterSet="ByVirtualDiskUniqueId">
+          <Parameters>
+            <!-- VirtualDiskUniqueId -->
+            <Parameter ParameterName="VirtualDiskUniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="VirtualDiskUniqueId" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Remove-PhysicalDisk
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" Noun="PhysicalDisk" ConfirmImpact="High"/>
+        <Method MethodName="RemovePhysicalDisk" CmdletParameterSet="ByStoragePool">
+          <Parameters>
+            <!-- StoragePool -->
+            <Parameter ParameterName="StoragePool">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StoragePool" />
+              <CmdletParameterMetadata PSName="StoragePool" IsMandatory="true" Position="0" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="RemovePhysicalDisk" CmdletParameterSet="ByStoragePoolFriendlyName">
+          <Parameters>
+            <!-- StoragePoolFriendlyName -->
+            <Parameter ParameterName="StoragePoolFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="StoragePoolFriendlyName" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="RemovePhysicalDisk" CmdletParameterSet="ByStoragePoolName">
+          <Parameters>
+            <!-- StoragePoolName -->
+            <Parameter ParameterName="StoragePoolName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="StoragePoolName" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="RemovePhysicalDisk" CmdletParameterSet="ByStoragePoolUniqueId">
+          <Parameters>
+            <!-- StoragePoolUniqueId -->
+            <Parameter ParameterName="StoragePoolUniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="StoragePoolUniqueId" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="RemovePhysicalDisk" CmdletParameterSet="ByVirtualDisk">
+          <Parameters>
+            <!-- VirtualDisk -->
+            <Parameter ParameterName="VirtualDisk">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_VirtualDisk" />
+              <CmdletParameterMetadata PSName="VirtualDisk" IsMandatory="true" Position="0" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="RemovePhysicalDisk" CmdletParameterSet="ByVirtualDiskFriendlyName">
+          <Parameters>
+            <!-- VirtualDiskFriendlyName -->
+            <Parameter ParameterName="VirtualDiskFriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="VirtualDiskFriendlyName" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="RemovePhysicalDisk" CmdletParameterSet="ByVirtualDiskName">
+          <Parameters>
+            <!-- VirtualDiskName -->
+            <Parameter ParameterName="VirtualDiskName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="VirtualDiskName" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="RemovePhysicalDisk" CmdletParameterSet="ByVirtualDiskUniqueId">
+          <Parameters>
+            <!-- VirtualDiskUniqueId -->
+            <Parameter ParameterName="VirtualDiskUniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="VirtualDiskUniqueId" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- PhysicalDisks -->
+            <Parameter ParameterName="PhysicalDisks">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" >
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Set-FileShare
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" Noun="FileShare" DefaultCmdletParameterSet="ByUniqueId" ConfirmImpact="High"/>
+        <Method MethodName="SetFileShare" CmdletParameterSet="ByObject">
+          <Parameters>
+            <!-- InputObject -->
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Description -->
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- EncryptData -->
+            <Parameter ParameterName="EncryptData">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetFileShare" CmdletParameterSet="ByUniqueId">
+          <Parameters>
+            <!-- UniqueId -->
+            <Parameter ParameterName="UniqueId">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" Aliases="Id" />
+            </Parameter>
+            <!-- Description -->
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- EncryptData -->
+            <Parameter ParameterName="EncryptData">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetFileShare" CmdletParameterSet="ByName">
+          <Parameters>
+            <!-- Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- Description -->
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- EncryptData -->
+            <Parameter ParameterName="EncryptData">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Get-StorageReliabilityCounter
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" Noun="StorageReliabilityCounter"/>
+        <Method MethodName="GetStorageReliabilityCounter" CmdletParameterSet="ByPhysicalDisk">
+          <Parameters>
+            <!-- PhysicalDisk -->
+            <Parameter ParameterName="PhysicalDisk">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- StorageReliabilityCounter -->
+            <Parameter ParameterName="StorageReliabilityCounter">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageReliabilityCounter" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="GetStorageReliabilityCounter" CmdletParameterSet="ByDisk">
+          <Parameters>
+            <!-- Disk -->
+            <Parameter ParameterName="Disk">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Disk" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- StorageReliabilityCounter -->
+            <Parameter ParameterName="StorageReliabilityCounter">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageReliabilityCounter" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="SetDisk.PartitionStyle" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="MBR" Value="1" />
+      <Value Name="GPT" Value="2" />
+    </Enum>
+    <Enum EnumName="SetVolume.DedupMode" UnderlyingType="System.UInt32">
+      <Value Name="Disabled" Value="0" />
+      <Value Name="GeneralPurpose" Value="1" />
+      <Value Name="HyperV" Value="2" />
+      <Value Name="Backup" Value="3" />
+      <Value Name="NotAvailable" Value="4" />
+    </Enum>
+    <Enum EnumName="SetPhysicalDisk.Usage" UnderlyingType="System.UInt16">
+      <Value Name="AutoSelect" Value="1" />
+      <Value Name="ManualSelect" Value="2" />
+      <Value Name="HotSpare" Value="3" />
+      <Value Name="Retired" Value="4" />
+      <Value Name="Journal" Value="5" />
+    </Enum>
+    <Enum EnumName="SetPhysicalDisk.MediaType" UnderlyingType="System.UInt16">
+      <Value Name="HDD" Value="3" />
+      <Value Name="SSD" Value="4" />
+      <Value Name="SCM" Value="5" />
+    </Enum>
+    <Enum EnumName="SetStoragePool.ProvisioningType" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Thin" Value="1" />
+      <Value Name="Fixed" Value="2" />
+    </Enum>
+    <Enum EnumName="SetStoragePool.MediaType" UnderlyingType="System.UInt16">
+      <Value Name="Unspecified" Value="0" />
+      <Value Name="HDD" Value="3" />
+      <Value Name="SSD" Value="4" />
+      <Value Name="SCM" Value="5" />
+    </Enum>
+    <Enum EnumName="SetStoragePool.Usage" UnderlyingType="System.UInt16">
+      <Value Name="Other" Value="1" />
+      <Value Name="Unrestricted" Value="2" />
+      <Value Name="ReservedForComputerSystem" Value="3" />
+      <Value Name="ReservedAsDeltaReplicaContainer" Value="4" />
+      <Value Name="ReservedForMigrationServices" Value="5" />
+      <Value Name="ReservedForLocalReplicationServices" Value="6" />
+      <Value Name="ReservedForRemoteReplicationServices" Value="7" />
+      <Value Name="ReservedForSparing" Value="8" />
+    </Enum>
+    <Enum EnumName="SetStoragePool.RepairPolicy" UnderlyingType="System.UInt16">
+      <Value Name="Sequential" Value="2" />
+      <Value Name="Parallel" Value="3" />
+    </Enum>
+    <Enum EnumName="SetStoragePool.RetireMissingPhysicalDisks" UnderlyingType="System.UInt16">
+      <Value Name="Auto" Value="1" />
+      <Value Name="Always" Value="2" />
+      <Value Name="Never" Value="3" />
+    </Enum>
+    <Enum EnumName="SetVirtualDisk.Usage" UnderlyingType="System.UInt16">
+      <Value Name="Other" Value="1" />
+      <Value Name="Unrestricted" Value="2" />
+      <Value Name="ReservedForComputerSystem" Value="3" />
+      <Value Name="ReservedForReplicationServices" Value="4" />
+      <Value Name="ReservedForMigrationServices" Value="5" />
+      <Value Name="LocalReplicaSource" Value="6" />
+      <Value Name="RemoteReplicaSource" Value="7" />
+      <Value Name="LocalReplicaTarget" Value="8" />
+      <Value Name="RemoteReplicaTarget" Value="9" />
+      <Value Name="LocalReplicaSourceOrTarget" Value="10" />
+      <Value Name="RemoteReplicaSourceOrTarget" Value="11" />
+      <Value Name="DeltaReplicaTarget" Value="12" />
+      <Value Name="ElementComponent" Value="13" />
+      <Value Name="ReservedAsPoolContributer" Value="14" />
+      <Value Name="CompositeVolumeMember" Value="15" />
+      <Value Name="CompositeVirtualDiskMember" Value="16" />
+      <Value Name="ReservedForSparing" Value="17" />
+    </Enum>
+    <Enum EnumName="SetVirtualDisk.Access" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Readable" Value="1" />
+      <Value Name="Writeable" Value="2" />
+      <Value Name="ReadWrite" Value="3" />
+      <Value Name="WriteOnce" Value="4" />
+    </Enum>
+    <Enum EnumName="Set.ProvisioningType" UnderlyingType="System.UInt16">
+      <Value Name="Thin" Value="1" />
+      <Value Name="Fixed" Value="2" />
+    </Enum>
+    <Enum EnumName="SetStorageTier.MediaType" UnderlyingType="System.UInt16">
+      <Value Name="HDD" Value="3" />
+      <Value Name="SSD" Value="4" />
+      <Value Name="SCM" Value="5" />
+    </Enum>
+    <Enum EnumName="AddPhysicalDisk.Usage" UnderlyingType="System.UInt16">
+      <Value Name="AutoSelect" Value="1" />
+      <Value Name="ManualSelect" Value="2" />
+      <Value Name="HotSpare" Value="3" />
+      <Value Name="Retired" Value="4" />
+      <Value Name="Journal" Value="5" />
+    </Enum>
+    <Enum EnumName="Set.FaultDomainType" UnderlyingType="System.UInt16">
+      <Value Name="PhysicalDisk" Value="1" />
+      <Value Name="StorageEnclosure" Value="2" />
+      <Value Name="StorageScaleUnit" Value="3" />
+      <Value Name="StorageChassis" Value="4" />
+      <Value Name="StorageRack" Value="5" />
+    </Enum>
+    <Enum EnumName="Set.StorageTierUsage" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Data" Value="1" />
+      <Value Name="ReadCache" Value="2" />
+      <Value Name="WriteCache" Value="3" />
+      <Value Name="DirtyRegionTracking" Value="4" />
+      <Value Name="ValidDataTracking" Value="5" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">   
+  <Class ClassName="Root/Microsoft/Windows/FSRM/MSFT_FSRMScheduledTask">   
+    <Version>1.0</Version>      
+    <DefaultNoun>FsrmScheduledTask</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" ConfirmImpact="Medium" />
+        <Method MethodName="CreateScheduledTask">
+          <Parameters> 
+            <Parameter ParameterName="Time">
+              <Type PSType="DateTime" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RunDuration">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Weekly">
+              <Type PSType="FsrmScheduledTaskDaysEnum[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Monthly">
+              <Type PSType="Int32[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter> 
+            <Parameter ParameterName="ScheduledTask">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="FsrmScheduledTaskDaysEnum" UnderlyingType="Uint32">
+      <Value Name="Sunday" Value="0" />
+      <Value Name="Monday" Value="1" />
+      <Value Name="Tuesday" Value="2" />
+      <Value Name="Wednesday" Value="3" />
+      <Value Name="Thursday" Value="4" />
+      <Value Name="Friday" Value="5" />
+      <Value Name="Saturday" Value="6" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>   

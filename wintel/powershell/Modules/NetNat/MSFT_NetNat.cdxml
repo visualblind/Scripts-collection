@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+   <Class ClassName="root/StandardCimv2/MSFT_NetNat" ClassVersion="1.0.0">
+      <Version>1.0</Version>
+      <DefaultNoun>NetNat</DefaultNoun>
+      <InstanceCmdlets>
+         
+         <GetCmdletParameters>
+            <QueryableProperties>
+               <Property PropertyName="Name">
+                  <Type PSType="System.String"/>
+                  <RegularQuery AllowGlobbing="true">
+                     <CmdletParameterMetadata Position="0" IsMandatory="false" ValueFromPipelineByPropertyName="true"/>
+                  </RegularQuery>
+               </Property>
+            </QueryableProperties>
+         </GetCmdletParameters>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Set" ConfirmImpact="Medium"/>
+            <Method MethodName="cim:ModifyInstance">
+               <Parameters>
+                  <Parameter ParameterName="IcmpQueryTimeout">
+                     <Type PSType="System.Uint32"/>
+                     <CmdletParameterMetadata IsMandatory="false"/>
+                  </Parameter>
+                  <Parameter ParameterName="TcpEstablishedConnectionTimeout">
+                     <Type PSType="System.Uint32"/>
+                     <CmdletParameterMetadata IsMandatory="false"/>
+                  </Parameter>
+                  <Parameter ParameterName="TcpTransientConnectionTimeout">
+                     <Type PSType="System.Uint32"/>
+                     <CmdletParameterMetadata IsMandatory="false"/>
+                  </Parameter>
+                  <Parameter ParameterName="TcpFilteringBehavior">
+                     <Type PSType="NetNat.FilteringBehaviorType"/>
+                     <CmdletParameterMetadata IsMandatory="false"/>
+                  </Parameter>
+                  <Parameter ParameterName="UdpFilteringBehavior">
+                     <Type PSType="NetNat.FilteringBehaviorType"/>
+                     <CmdletParameterMetadata IsMandatory="false"/>
+                  </Parameter>
+                  <Parameter ParameterName="UdpIdleSessionTimeout">
+                     <Type PSType="System.Uint32"/>
+                     <CmdletParameterMetadata IsMandatory="false"/>
+                  </Parameter>
+                  <Parameter ParameterName="UdpInboundRefresh">
+                     <Type PSType="NetNat.Boolean"/>
+                     <CmdletParameterMetadata IsMandatory="false"/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+            <GetCmdletParameters>
+               <QueryableProperties>
+                  <Property PropertyName="Name">
+                     <Type PSType="System.String" />
+                     <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true" />
+                     </RegularQuery>
+                  </Property>
+               </QueryableProperties>
+            </GetCmdletParameters>
+         </Cmdlet>
+
+         <Cmdlet>
+            <CmdletMetadata Verb="Remove" ConfirmImpact="High"/>
+            <Method MethodName="cim:DeleteInstance"/>
+            <GetCmdletParameters>
+               <QueryableProperties>
+                  <Property PropertyName="Name">
+                     <Type PSType="System.String" />
+                     <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" Position="0" ValueFromPipelineByPropertyName="true" />
+                     </RegularQuery>
+                  </Property>
+               </QueryableProperties>
+            </GetCmdletParameters>
+         </Cmdlet>
+         
+      </InstanceCmdlets>
+      
+      <StaticCmdlets>
+         
+         <Cmdlet>
+            <CmdletMetadata Verb="New" ConfirmImpact="Medium"/>
+            <Method MethodName="cim:CreateInstance">
+               <ReturnValue>
+                  <Type PSType="System.Uint32"/>
+                  <CmdletOutputMetadata>
+                     <ErrorCode/>
+                  </CmdletOutputMetadata>
+               </ReturnValue>
+               <Parameters>
+                  <Parameter ParameterName="Name">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata Position="0" IsMandatory="true"/>
+                  </Parameter>
+                  <Parameter ParameterName="ExternalIPInterfaceAddressPrefix">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="false"/>
+                  </Parameter>
+                  <Parameter ParameterName="InternalRoutingDomainId">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="false"/>
+                  </Parameter>
+                  <Parameter ParameterName="InternalIPInterfaceAddressPrefix">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="false"/>
+                  </Parameter>
+               </Parameters>
+            </Method>
+         </Cmdlet>
+         
+      </StaticCmdlets>
+   </Class>
+   <Enums>
+      <Enum EnumName="NetNat.PolicyStore" UnderlyingType="System.Uint32">
+         <Value Name="Local" Value="0"/>
+         <Value Name="Cluster" Value="1"/>
+      </Enum>
+      <Enum EnumName="NetNat.FilteringBehaviorType" UnderlyingType="System.Uint32">
+         <Value Name="EndpointIndepedentFiltering" Value="0" />
+         <Value Name="AddressDependentFiltering" Value="1" />
+      </Enum>
+      <Enum EnumName="NetNat.Boolean" UnderlyingType="System.Byte">
+         <Value Name="False" Value="0" />
+         <Value Name="True" Value="1" />
+      </Enum>
+   </Enums>
+</PowerShellMetadata>
+

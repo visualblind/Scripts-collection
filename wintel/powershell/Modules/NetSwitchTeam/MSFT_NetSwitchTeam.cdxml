@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root\StandardCimv2\MSFT_NetSwitchTeam" ClassVersion="1.0.0">
+    <Version>1.0</Version>
+    <DefaultNoun>NetSwitchTeam</DefaultNoun>
+    <InstanceCmdlets>
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+        <QueryableProperties>
+          <Property PropertyName="Name">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" Position="0" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName"/>
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <Association Association="MSFT_NetSwitchTeam_TeamMember" ResultRole="Team" SourceRole="Member" >
+            <AssociatedInstance>
+          <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#root\standardcimv2\MSFT_NetSwitchTeamMember" />
+              <CmdletParameterMetadata PSName="Member" ValueFromPipeline = "true"  CmdletParameterSets="ByMember"/> 
+            </AssociatedInstance>
+          </Association> 
+        </QueryableAssociations>
+      </GetCmdletParameters>
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" />
+        <Method MethodName="cim:DeleteInstance" />
+        <GetCmdletParameters>
+          <QueryableProperties>
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName"/>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+
+    </InstanceCmdlets>    
+    <StaticCmdlets>
+        <Cmdlet>
+        <CmdletMetadata Verb="New" />
+        <Method MethodName="Create">
+          <ReturnValue>
+            <Type PSType="int" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TeamMembers">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+           </Parameters>
+    </Method>
+     </Cmdlet>
+     <Cmdlet>
+        <CmdletMetadata Verb="Rename" Noun="NetSwitchTeam"/>
+        <Method MethodName="Rename">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0"> 
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NewName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+    </Method>
+     </Cmdlet>
+     <Cmdlet>
+        <CmdletMetadata Verb="Add" Noun="NetSwitchTeamMember"/>
+        <Method MethodName="AddMember">
+          <ReturnValue>
+            <Type PSType="int" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0"> 
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Team">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+    </Method>
+     </Cmdlet>
+     <Cmdlet>
+        <CmdletMetadata Verb="Remove" Noun="NetSwitchTeamMember"/>
+        <Method MethodName="RemoveMember">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0"> 
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Team">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" >
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+    </Method>
+     </Cmdlet>
+   </StaticCmdlets>
+    
+  </Class>
+</PowerShellMetadata>

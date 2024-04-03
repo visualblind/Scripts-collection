@@ -1,0 +1,6 @@
+### INSTRUCTIONS ###
+
+1. Put autoexec.bat in your User Profile directory
+2. Run HKEYLM_CommandProcessor.reg
+3. Run cmd.exe like normal and remember to type exit to save history
+4. Type 'history' to view the command history

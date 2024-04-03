@@ -1,0 +1,139 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_InitiatorId">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>InitiatorId</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-InitiatorId
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByAddress">
+        <QueryableProperties>
+          <!-- UniqueId -->
+          <Property PropertyName="UniqueId">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </RegularQuery>
+          </Property>
+          <!-- InitiatorAddress  -->
+          <Property PropertyName="InitiatorAddress">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByAddress" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </RegularQuery>
+          </Property>
+          <!-- HostType -->
+            <Property PropertyName="HostType">
+              <Type PSType="InitiatorId.HostType" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByAddress" />
+              </RegularQuery>
+            </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <!-- MaskingSet -->
+          <Association Association="MSFT_MaskingSetToInitiatorId" SourceRole="MaskingSet" ResultRole="InitiatorId">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_MaskingSet" />
+              <CmdletParameterMetadata PSName="MaskingSet" ValueFromPipeline="true" CmdletParameterSets="ByMaskingSet" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+          <!-- VirtualDisk -->
+          <Association Association="MSFT_InitiatorIdToVirtualDisk" SourceRole="VirtualDisk" ResultRole="InitiatorId">
+              <AssociatedInstance>
+                  <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_VirtualDisk" />
+                  <CmdletParameterMetadata PSName="VirtualDisk" ValueFromPipeline="true" CmdletParameterSets="ByVirtualDisk" ErrorOnNoMatch="false" />
+              </AssociatedInstance>
+          </Association>
+            <!-- StorageSubsystem -->
+            <Association Association="MSFT_StorageSubSystemToInitiatorId" SourceRole="StorageSubSystem" ResultRole="InitiatorId">
+                <AssociatedInstance>
+                    <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubSystem" />
+                    <CmdletParameterMetadata PSName="StorageSubSystem" ValueFromPipeline="true" CmdletParameterSets="ByStorageSubSystem" ErrorOnNoMatch="false" />
+                </AssociatedInstance>
+            </Association>
+        </QueryableAssociations>
+      </GetCmdletParameters>
+      <!--
+
+      //
+      // Remove-InitiatorId
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="Medium" />
+        <Method MethodName="DeleteObject" />
+        <GetCmdletParameters DefaultCmdletParameterSet="ByAddress">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <!-- InitiatorAddress  -->
+            <Property PropertyName="InitiatorAddress">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByAddress" Position="0">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="InitiatorId.Type" UnderlyingType="System.UInt16">
+      <Value Name="Other" Value="1" />
+      <Value Name="PortWWN" Value="2" />
+      <Value Name="NodeWWN" Value="3" />
+      <Value Name="Hostname" Value="4" />
+      <Value Name="iSCSIName" Value="5" />
+      <Value Name="SwitchWWN" Value="6" />
+      <Value Name="SASAddress" Value="7" />
+    </Enum>
+    <Enum EnumName="InitiatorId.HostType" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Other" Value="1" />
+      <Value Name="Standard" Value="2" />
+      <Value Name="Solaris" Value="3" />
+      <Value Name="HPUX" Value="4" />
+      <Value Name="OpenVMS" Value="5" />
+      <Value Name="Tru64" Value="6" />
+      <Value Name="Netware" Value="7" />
+      <Value Name="Sequent" Value="8" />
+      <Value Name="AIX" Value="9" />
+      <Value Name="DGUX" Value="10" />
+      <Value Name="Dynix" Value="11" />
+      <Value Name="Irix" Value="12" />
+      <Value Name="CiscoISCSIStorageRouter" Value="13" />
+      <Value Name="Linux" Value="14" />
+      <Value Name="MicrosoftWindows" Value="15" />
+      <Value Name="OS400" Value="16" />
+      <Value Name="TRESPASS" Value="17" />
+      <Value Name="HIUX" Value="18" />
+      <Value Name="VMwareESXi" Value="19" />
+      <Value Name="MicrosoftWindowsServer2008" Value="20" />
+      <Value Name="MicrosoftWindowsServer2003" Value="21" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

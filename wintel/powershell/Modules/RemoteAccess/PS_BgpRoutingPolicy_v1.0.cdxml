@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/Microsoft/Windows/RemoteAccess/PS_BgpRoutingPolicy" ClassVersion="1.0">
+    <Version>1.0</Version>
+    <DefaultNoun>BgpRoutingPolicy</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Add" />
+        <Method MethodName="Add">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="IgnorePrefix">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="PolicyId PolicyName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="75" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MatchCommunity">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="NewLocalPref">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="AddCommunity">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NewMED">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="PolicyType">
+              <Type PSType="Bgp.PolicyType" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NewNextHop">
+              <Type PSType="System.Net.IPAddress" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="RemoveCommunity">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="MatchPrefix">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="MatchNextHop">
+                <Type PSType="System.Net.IPAddress[]" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>              
+            <Parameter ParameterName="MatchASNRange">
+              <Type PSType="System.UInt32[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="ClearMED">
+                <Type PSType="System.Management.Automation.SwitchParameter" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+              <Parameter ParameterName="RemoveAllCommunities">
+                  <Type PSType="System.Management.Automation.SwitchParameter" />
+                  <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                  </CmdletParameterMetadata>
+              </Parameter>
+              <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#BgpRoutingPolicyConfig" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" />
+        <Method MethodName="Get" CmdletParameterSet="RoutingDomain">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="PolicyList PolicyId PolicyName" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="75" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PolicyType">
+              <Type PSType="Bgp.PolicyType" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#BgpRoutingPolicyConfig" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="GetForAllRoutingDomains" CmdletParameterSet="AllRoutingDomains">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="AllRoutingDomains">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#BgpRoutingPolicyConfig" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="Medium" />
+        <Method MethodName="Remove">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata Aliases="PolicyList PolicyId PolicyName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="75" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+        <Method MethodName="Set">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="PolicyId PolicyName" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateLength Min="1" Max="75" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PolicyType">
+              <Type PSType="Bgp.PolicyType" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RoutingDomain">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="RoutingDomainName" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AddCommunity">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="RemoveCommunity">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="RemovePolicyClause">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MatchASNRange">
+              <Type PSType="System.UInt32[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="IgnorePrefix">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="MatchCommunity">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="MatchPrefix">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="MatchNextHop">
+                <Type PSType="System.Net.IPAddress[]" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="NewLocalPref">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="NewMED">
+              <Type PSType="Nullable[System.UInt32]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="NewNextHop">
+              <Type PSType="System.Net.IPAddress" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="ClearMED">
+                <Type PSType="System.Management.Automation.SwitchParameter" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+              <Parameter ParameterName="RemoveAllCommunities">
+                  <Type PSType="System.Management.Automation.SwitchParameter" />
+                  <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                  </CmdletParameterMetadata>
+              </Parameter>
+              <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#BgpRoutingPolicyConfig" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="Bgp.PolicyType" UnderlyingType="System.UInt32">  
+      <Value Name="Deny" Value="0" />  
+      <Value Name="Allow" Value="1" />  
+      <Value Name="ModifyAttribute" Value="2" />  
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

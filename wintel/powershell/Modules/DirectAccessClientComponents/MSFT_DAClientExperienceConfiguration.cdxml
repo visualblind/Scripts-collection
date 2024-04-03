@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+	<Class ClassName="root/StandardCimv2/MSFT_DAClientExperienceConfiguration" ClassVersion="1.0.0">
+	   <Version>1.0</Version>
+	   <DefaultNoun>DAClientExperienceConfiguration</DefaultNoun>	
+      <InstanceCmdlets>
+    		<GetCmdletParameters DefaultCmdletParameterSet="ByName">
+    	     <QueryOptions>
+                 <Option OptionName="PolicyStore">
+                 <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName"/>     
+                 </Option> 
+                 <Option OptionName="GPOSession">
+                 <Type PSType="System.String"/>
+                     <CmdletParameterMetadata IsMandatory="false" CmdletParameterSets="ByName"/>     
+                 </Option> 
+             </QueryOptions>    		    		
+    		</GetCmdletParameters>
+            
+         <Cmdlet>
+            <CmdletMetadata Verb="Set"  ConfirmImpact="Medium"/>
+            <Method MethodName="cim:ModifyInstance">
+               <Parameters>
+                  <Parameter ParameterName="CorporateResources">
+                     <Type PSType="System.String[]" />
+                     <CmdletParameterMetadata Position="1">
+                        <ValidateNotNull />
+                     </CmdletParameterMetadata>
+                  </Parameter>
+
+			         <Parameter ParameterName="IPsecTunnelEndpoints">
+			            <Type PSType="System.String[]" />
+			            <CmdletParameterMetadata Position="2">
+    			            <ValidateNotNull />
+			            </CmdletParameterMetadata>
+			         </Parameter>
+
+			         <Parameter ParameterName="PreferLocalNamesAllowed">
+			            <Type PSType="System.Boolean" />
+			            <CmdletParameterMetadata Position="3">
+    			            <ValidateNotNull />
+			            </CmdletParameterMetadata>
+			         </Parameter>
+
+			         <Parameter ParameterName="UserInterface">
+			            <Type PSType="System.Boolean" />
+			            <CmdletParameterMetadata Position="4">
+    			            <ValidateNotNull />
+			            </CmdletParameterMetadata>
+			         </Parameter>
+
+			         <Parameter ParameterName="SupportEmail">
+			            <Type PSType="System.String" />
+			            <CmdletParameterMetadata Position="5">
+    			            <ValidateNotNull />
+			            </CmdletParameterMetadata>
+			         </Parameter>
+
+			         <Parameter ParameterName="FriendlyName">
+			            <Type PSType="System.String" />
+			            <CmdletParameterMetadata Position="6">
+    			            <ValidateNotNull />
+			            </CmdletParameterMetadata>
+			         </Parameter>
+
+                  <Parameter ParameterName="ManualEntryPointSelectionAllowed">
+                     <Type PSType="System.Boolean"/>
+                     <CmdletParameterMetadata Position="7">
+                        <ValidateNotNull/>
+                     </CmdletParameterMetadata>
+                  </Parameter>
+
+                  <Parameter ParameterName="GslbFqdn">
+                     <Type PSType="System.String"/>
+                     <CmdletParameterMetadata Position="8">
+                        <ValidateNotNull/>
+                     </CmdletParameterMetadata>
+                  </Parameter>
+
+                  <Parameter ParameterName="ForceTunneling">
+                     <Type PSType="DAClientExperienceConfiguration.ForceTunneling"/>
+                     <CmdletParameterMetadata Position="9">
+                        <ValidateNotNull/>
+                     </CmdletParameterMetadata>
+                  </Parameter>			      
+
+		         <Parameter ParameterName="CustomCommands">
+		            <Type PSType="System.String[]" />
+		            <CmdletParameterMetadata Position="10">
+			            <ValidateNotNull />
+		            </CmdletParameterMetadata>
+		         </Parameter>
+
+		         <Parameter ParameterName="PassiveMode">
+		            <Type PSType="System.Boolean" />
+		            <CmdletParameterMetadata Position="11">
+			            <ValidateNotNull />
+		            </CmdletParameterMetadata>
+		         </Parameter>		         
+                  
+               </Parameters>
+            </Method>
+         </Cmdlet>
+
+		<Cmdlet>
+	        <CmdletMetadata Verb="Reset" ConfirmImpact="Medium"/>
+	        <Method MethodName="Reset">
+		        <Parameters>
+
+		            <Parameter ParameterName="CorporateResources">
+		              <Type PSType="System.Management.Automation.SwitchParameter" />
+		              <CmdletParameterMetadata IsMandatory="false" />
+		            </Parameter>
+
+		            <Parameter ParameterName="IPsecTunnelEndpoints">
+		              <Type PSType="System.Management.Automation.SwitchParameter" />
+		              <CmdletParameterMetadata IsMandatory="false" />
+		            </Parameter>
+		            
+		            <Parameter ParameterName="PreferLocalNamesAllowed">
+		              <Type PSType="System.Management.Automation.SwitchParameter" />
+		              <CmdletParameterMetadata IsMandatory="false" />
+		            </Parameter>
+
+		            <Parameter ParameterName="UserInterface">
+		              <Type PSType="System.Management.Automation.SwitchParameter" />
+		              <CmdletParameterMetadata IsMandatory="false" />
+		            </Parameter>
+
+		            <Parameter ParameterName="SupportEmail">
+		              <Type PSType="System.Management.Automation.SwitchParameter" />
+		              <CmdletParameterMetadata IsMandatory="false" />
+		            </Parameter>
+
+		            <Parameter ParameterName="FriendlyName">
+		              <Type PSType="System.Management.Automation.SwitchParameter" />
+		              <CmdletParameterMetadata IsMandatory="false" />
+		            </Parameter>
+
+		            <Parameter ParameterName="ManualEntryPointSelectionAllowed">
+		              <Type PSType="System.Management.Automation.SwitchParameter" />
+		              <CmdletParameterMetadata IsMandatory="false" />
+		            </Parameter>
+
+
+		            <Parameter ParameterName="GslbFqdn">
+		              <Type PSType="System.Management.Automation.SwitchParameter" />
+		              <CmdletParameterMetadata IsMandatory="false" />
+		            </Parameter>
+
+		            <Parameter ParameterName="ForceTunneling">
+		              <Type PSType="System.Management.Automation.SwitchParameter" />
+		              <CmdletParameterMetadata IsMandatory="false" />
+		            </Parameter>
+
+		            <Parameter ParameterName="CustomCommands">
+		              <Type PSType="System.Management.Automation.SwitchParameter" />
+		              <CmdletParameterMetadata IsMandatory="false" />
+		            </Parameter>
+
+		            <Parameter ParameterName="PassiveMode">
+		              <Type PSType="System.Management.Automation.SwitchParameter" />
+		              <CmdletParameterMetadata IsMandatory="false" />
+		            </Parameter>
+
+	                  <Parameter ParameterName="PassThru">
+	                     <Type PSType="System.Management.Automation.SwitchParameter"/>
+	                     <CmdletParameterMetadata/>
+	                  </Parameter>
+	                  <Parameter ParameterName="OutputObject">
+	                     <Type PSType="Microsoft.Management.Infrastructure.CimInstance"/>
+	                     <CmdletOutputMetadata/>
+	                  </Parameter>		            
+		            
+	          </Parameters>
+	        </Method>
+		</Cmdlet>         
+      
+      </InstanceCmdlets>
+
+	</Class>
+
+   <Enums>
+      <Enum EnumName="DAClientExperienceConfiguration.ForceTunneling" UnderlyingType="System.Uint32">
+         <Value Name="Default" Value="0"/>
+         <Value Name="Enabled" Value="2"/>
+         <Value Name="Disabled" Value="3"/>
+      </Enum>
+   </Enums>
+</PowerShellMetadata>
+

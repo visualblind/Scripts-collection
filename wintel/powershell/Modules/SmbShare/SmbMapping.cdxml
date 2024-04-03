@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+    <Class ClassName="ROOT/Microsoft/Windows/SMB/MSFT_SmbMapping">
+        <Version>1.0</Version>
+        
+        <DefaultNoun>SmbMapping</DefaultNoun>
+        <InstanceCmdlets>
+
+
+            <!--
+
+            //
+            // Get-SmbMapping
+            // 
+
+            -->
+            <GetCmdletParameters>
+                <QueryableProperties>
+                    <Property PropertyName="LocalPath">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" Position="1" ValueFromPipelineByPropertyName="true" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="RemotePath">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" Position="2" ValueFromPipelineByPropertyName="true" />
+                        </RegularQuery>
+                    </Property>
+                </QueryableProperties>
+            </GetCmdletParameters>
+
+            <GetCmdlet>
+                <CmdletMetadata Verb="Get" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241947" Aliases="gsmbm"/>
+            </GetCmdlet>
+
+            <!--
+
+            //
+            // Remove-SmbMapping
+            //
+
+            -->
+            <Cmdlet>
+                <CmdletMetadata Verb="Remove" ConfirmImpact="High" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241958" Aliases="rsmbm"/>
+                <Method MethodName="Remove">
+                    <Parameters>
+                        <Parameter ParameterName="UpdateProfile">
+                            <Type PSType="switch" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="Force">
+                            <Type PSType="switch" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                    </Parameters>
+                </Method>
+                <GetCmdletParameters>
+                    <QueryableProperties>
+                        <Property PropertyName="LocalPath">
+                            <Type PSType="string" />
+                            <RegularQuery AllowGlobbing="true">
+                                <CmdletParameterMetadata IsMandatory="false" Position="1" ValueFromPipelineByPropertyName="true">
+                                    <ValidateNotNull />
+                                </CmdletParameterMetadata>
+                            </RegularQuery>
+                        </Property>
+                        <Property PropertyName="RemotePath">
+                            <Type PSType="string" />
+                            <RegularQuery AllowGlobbing="true">
+                                <CmdletParameterMetadata IsMandatory="false" Position="2" ValueFromPipelineByPropertyName="true">
+                                    <ValidateNotNull />
+                                    <ValidateNotNullOrEmpty />
+                                </CmdletParameterMetadata>
+                            </RegularQuery>
+                        </Property>
+                    </QueryableProperties>
+                </GetCmdletParameters>
+            </Cmdlet>
+
+        </InstanceCmdlets>
+
+        <StaticCmdlets>
+
+            <!--
+
+            //
+            // New-SmbMapping
+            //
+
+            -->
+            <Cmdlet>
+                <CmdletMetadata Verb="New" ConfirmImpact="Medium" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241956" Aliases="nsmbm"/>
+                <Method MethodName="Create">
+                    <ReturnValue>
+                        <Type PSType="uint32" />
+                        <CmdletOutputMetadata>
+                            <ErrorCode />
+                        </CmdletOutputMetadata>
+                    </ReturnValue>
+                    <Parameters>
+                        <Parameter ParameterName="LocalPath">
+                            <Type PSType="string" />
+                            <CmdletParameterMetadata IsMandatory="false" Position="1">
+                                <AllowEmptyString />
+                                <ValidateNotNull />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="RemotePath">
+                            <Type PSType="string" />
+                            <CmdletParameterMetadata IsMandatory="false" Position="2">
+                                <AllowEmptyString />
+                                <ValidateNotNull />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="UserName">
+                            <Type PSType="string" />
+                            <CmdletParameterMetadata IsMandatory="false">
+                                <AllowEmptyString />
+                                <ValidateNotNull />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="Password">
+                            <Type PSType="string" />
+                            <CmdletParameterMetadata IsMandatory="false">
+                                <AllowEmptyString />
+                                <ValidateNotNull />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                        <Parameter ParameterName="Persistent">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="SaveCredentials">
+                            <Type PSType="switch" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="HomeFolder">
+                            <Type PSType="switch" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="CreatedMapping">
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+                            <CmdletOutputMetadata />
+                        </Parameter>
+                        <Parameter ParameterName="RequireIntegrity">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="RequirePrivacy">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                        <Parameter ParameterName="UseWriteThrough">
+                            <Type PSType="bool" />
+                            <CmdletParameterMetadata IsMandatory="false" />
+                        </Parameter>
+                    </Parameters>
+                </Method>
+            </Cmdlet>
+        </StaticCmdlets>
+    </Class>
+
+    <Enums>
+        <Enum EnumName="SmbShare.MappingStatus" UnderlyingType="System.UInt32">
+            <Value Name="OK" Value="0" />
+            <Value Name="Paused" Value="1" />
+            <Value Name="Disconnected" Value="2" />
+            <Value Name="NetworkError" Value="3" />
+            <Value Name="Connecting" Value="4" />
+            <Value Name="Reconnecting" Value="5" />
+            <Value Name="Unavailable" Value="6" />
+        </Enum>
+    </Enums>
+    
+</PowerShellMetadata>

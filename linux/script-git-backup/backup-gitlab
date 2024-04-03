@@ -1,0 +1,60 @@
+#!/bin/sh
+
+GITLAB_HOST="$1"
+GITLAB_TOKEN="$2"
+PREFIX="$3"
+EXCLUDE_REPOS="$4"
+GITLAB_HTTP_PROTO="https"
+FETCH_PROTO="ssh"
+GITLAB_USER="git"
+CURL_OPTS=""
+if test "x${GITLAB_HOST}" = "x" || test "x{GITLAB_TOKEN}" = "x"
+then
+	echo "Usage: $0 GITLAB_HOST GITLAB_TOKEN LOCAL_PATH_PREFIX [EXCLUDE_REPOS] [GITLAB_HTTP_PROTO] [FETCH_PROTO] [FETCH_USER] [CURL_OPTS]"
+	exit 2
+fi
+if test "x$5" != "x"
+then
+	GITLAB_HTTP_PROTO="$5"
+fi
+if test "x$6" != "x"
+then
+	FETCH_PROTO="$6"
+fi
+if test "x$7" != "x"
+then
+	GITLAB_USER="$7"
+fi
+if test "x$8" != "x"
+then
+	CURL_OPTS="$8"
+fi
+
+GITLAB_HTTP="${GITLAB_HTTP_PROTO}://${GITLAB_HOST}/"
+GITLAB_URL="${GITLAB_USER}@${GITLAB_HOST}:"
+if test "x${FETCH_PROTO}" = "xhttp" || test "x${FETCH_PROTO}" = "xhttps"
+then
+	GITLAB_URL="${FETCH_PROTO}://${GITLAB_USER}:${GITLAB_TOKEN}@${GITLAB_HOST}/"
+fi
+
+REPOS="$(curl ${CURL_OPTS} -s -f -H "Private-token: $GITLAB_TOKEN" "${GITLAB_HTTP}api/v4/projects?per_page=100&simple=1&membership=1" | php -r 'echo join("\n",array_map(function($a){return $a["path_with_namespace"];},json_decode(file_get_contents("php://stdin"),1)))."\n";')"
+
+echo $REPOS
+#exit
+
+for r in $REPOS
+do
+	ignore=0
+	if test "x${EXCLUDE_REPOS}" != "x"; then
+		echo "${r}" | grep -E "${EXCLUDE_REPOS}" >/dev/null
+		if test "x$?" = "x0"; then
+			echo "# ignore repo: ${r}"
+			ignore=1
+		fi
+	fi
+
+	if test "x${ignore}" != "x1"; then
+		backup-git-repo "${GITLAB_URL}${r}.git" "${PREFIX}${r}"
+	fi
+done
+

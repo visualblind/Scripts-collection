@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+   <ViewDefinitions>
+      <View>
+         <Name>MSFT_NetDnsTransitionMonitoring</Name>
+         <ViewSelectedBy>
+            <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetDnsTransitionMonitoring</TypeName>
+         </ViewSelectedBy>
+         <ListControl>
+            <ListEntries>
+               <ListEntry>
+                  <ListItems>
+                     <ListItem>
+                        <PropertyName>NumAAAAQueriesSucceeded</PropertyName>
+                     </ListItem>
+                     <ListItem>
+                        <PropertyName>NumAAAAQueriesFailed</PropertyName>
+                     </ListItem>
+                     <ListItem>
+                        <PropertyName>NumAAAAQueriesSynthesized</PropertyName>
+                     </ListItem>
+                     <ListItem>
+                        <PropertyName>NumAAAAQueriesIn6ArpaPtr</PropertyName>
+                     </ListItem>
+                     <ListItem>
+                        <PropertyName>NumOtherQueriesSucceeded</PropertyName>
+                     </ListItem>
+                     <ListItem>
+                        <PropertyName>NumOtherQueriesFailed</PropertyName>
+                     </ListItem>
+                  </ListItems>
+               </ListEntry>
+            </ListEntries>
+         </ListControl>
+      </View>
+   </ViewDefinitions>
+</Configuration>
+
+
+

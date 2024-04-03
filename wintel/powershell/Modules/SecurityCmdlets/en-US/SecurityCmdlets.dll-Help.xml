@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<helpItems xmlns="http://msh" schema="maml">
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      Backup-AuditPolicy
+    </command:name>
+    <command:verb>
+      Backup
+    </command:verb>
+    <command:noun>
+      AuditPolicy
+    </command:noun>
+  </command:details>
+  <maml:description>
+    <maml:para>
+      Backs up system audit policy settings and per-user audit policy settings for all users and all auditing options into a CSV-formatted text file.
+    </maml:para>
+    <maml:para>
+      You must be a member of the Administrators group on the computer on which you want to run this cmdlet, and you must run the cmdlet in a Windows PowerShell session that has been opened with elevated user rights; that is, &quot;Run as Administrator.&quot;
+    </maml:para>
+  </maml:description>
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Backup-AuditPolicy</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
+          <maml:name>Path</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+  <command:parameters>
+    <command:parameter required="true" position="0">
+      <maml:description>
+        <maml:name>Path</maml:name>
+        <maml:para>Specifies the full path of the file to which the audit policy will be backed-up.</maml:para>
+      </maml:description>
+      <command:parameterValue>string</command:parameterValue>
+    </command:parameter>
+  </command:parameters>
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText>Restore-AuditPolicy</maml:linkText>
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Backup-SecurityPolicy</maml:linkText>
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Restore-SecurityPolicy</maml:linkText>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      Restore-AuditPolicy
+    </command:name>
+    <command:verb>
+      Restore
+    </command:verb>
+    <command:noun>
+      AuditPolicy
+    </command:noun>
+  </command:details>
+  <maml:description>
+    <maml:para>
+      Restores system audit policy settings, per-user audit policy settings for all users and all auditing options from a a CSV-formatted text file.
+    </maml:para>
+    <maml:para>
+      You must be a member of the Administrators group on the computer on which you want to run this cmdlet, and you must run the cmdlet in a Windows PowerShell session that has been opened with elevated user rights; that is, &quot;Run as Administrator.&quot;
+    </maml:para>
+  </maml:description>
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Restore-AuditPolicy</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
+          <maml:name>Path</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+  <command:parameters>
+    <command:parameter required="true" position="0">
+      <maml:description>
+        <maml:name>Path</maml:name>
+        <maml:para>Specifies the file where the audit policy should be read from. The file must have been created by the Backup-AuditPolicy cmdlet or must be syntactically consistent with that file format.</maml:para>
+      </maml:description>
+      <command:parameterValue>string</command:parameterValue>
+    </command:parameter>
+  </command:parameters>
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText>Backup-AuditPolicy</maml:linkText>
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Restore-SecurityPolicy</maml:linkText>
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Restore-SecurityPolicy</maml:linkText>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      Backup-SecurityPolicy
+    </command:name>
+    <command:verb>
+      Restore
+    </command:verb>
+    <command:noun>
+      AuditPolicy
+    </command:noun>
+  </command:details>
+  <maml:description>
+    <maml:para>
+      Allows you to export the current system security policy.
+    </maml:para>
+    <maml:para>
+      You must be a member of the Administrators group on the computer on which you want to run this cmdlet, and you must run the cmdlet in a Windows PowerShell session that has been opened with elevated user rights; that is, &quot;Run as Administrator.&quot;
+    </maml:para>
+  </maml:description>
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Backup-SecurityPolicy</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
+          <maml:name>Path</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+  <command:parameters>
+    <command:parameter required="true" position="0">
+      <maml:description>
+        <maml:name>Path</maml:name>
+        <maml:para>Specifies the full path of the file to which the security policy will be backed-up.</maml:para>
+      </maml:description>
+      <command:parameterValue>string</command:parameterValue>
+    </command:parameter>
+  </command:parameters>
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText>Backup-AuditPolicy</maml:linkText>
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Restore-AuditPolicy</maml:linkText>
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Restore-SecurityPolicy</maml:linkText>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      Restore-SecurityPolicy
+    </command:name>
+    <command:verb>
+      Restore
+    </command:verb>
+    <command:noun>
+      AuditPolicy
+    </command:noun>
+  </command:details>
+  <maml:description>
+    <maml:para>
+      Allows you to apply a security policy to the system, from a file created with the Backup-SecurityPolicy cmdlet.
+    </maml:para>
+    <maml:para>
+      You must be a member of the Administrators group on the computer on which you want to run this cmdlet, and you must run the cmdlet in a Windows PowerShell session that has been opened with elevated user rights; that is, &quot;Run as Administrator.&quot;
+    </maml:para>
+  </maml:description>
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Restore-SecurityPolicy</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
+          <maml:name>Path</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+  <command:parameters>
+    <command:parameter required="true" position="0">
+      <maml:description>
+        <maml:name>Path</maml:name>
+        <maml:para>Specifies the full path of the file from which the security policy will be restored. The file must have been created by the Backup-SecurityPolicy cmdlet or must be syntactically consistent with that file format.</maml:para>
+      </maml:description>
+      <command:parameterValue>string</command:parameterValue>
+    </command:parameter>
+  </command:parameters>
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText>Restore-AuditPolicy</maml:linkText>
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Backup-AuditPolicy</maml:linkText>
+    </maml:navigationLink>
+    <maml:navigationLink>
+      <maml:linkText>Backup-SecurityPolicy</maml:linkText>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+</helpItems>

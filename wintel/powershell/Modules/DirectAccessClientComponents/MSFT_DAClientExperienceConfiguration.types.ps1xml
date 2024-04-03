@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_DAClientExperienceConfiguration</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>ForceTunneling</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.DAClientExperienceConfiguration.ForceTunneling]($this.PSBase.CimInstanceProperties['ForceTunneling'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          $this.PSBase.CimInstanceProperties['ForceTunneling'].Value = [System.UInt32]$_
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>
+

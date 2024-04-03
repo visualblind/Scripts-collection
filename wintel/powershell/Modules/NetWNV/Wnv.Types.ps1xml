@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- *******************************************************************
+These sample files contain formatting information used by the WNV WMIv2 provider.
+
+Author - Praveen Balasubramanian 04/10/2011
+
+Copyright (c) Microsoft Corporation.  All rights reserved.
+ 
+******************************************************************** -->
+
+<Types>
+
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_NetVirtualizationLookupRecordSettingData</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Rule</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetVirtualizationLookupRecord.RuleType]($this.PSBase.CimInstanceProperties['Rule'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['Rule'].Value = [System.Byte][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetVirtualizationLookupRecord.RuleType]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Type</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetVirtualizationLookupRecord.Type]($this.PSBase.CimInstanceProperties['Type'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          param($newValue)
+          $this.PSBase.CimInstanceProperties['Type'].Value = [System.Byte][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetVirtualizationLookupRecord.Type]$newValue
+        </SetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_NetVirtualizationProviderAddressSettingData</Name>
+    <Members>
+        <ScriptProperty>
+          <Name>AddressState</Name>
+          <GetScriptBlock>
+            [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetVirtualizationProviderAddress.AddressState]($this.PSBase.CimInstanceProperties['AddressState'].Value)
+          </GetScriptBlock>
+          <SetScriptBlock>
+            param($newValue)
+            $this.PSBase.CimInstanceProperties['AddressState'].Value = [System.UInt16][Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetVirtualizationProviderAddress.AddressState]$newValue
+          </SetScriptBlock>
+        </ScriptProperty>
+    </Members>
+  </Type>
+
+</Types>

@@ -1,0 +1,37 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Setup Zookeeper Demo | Install curl and git from apt
+      apt:
+        update_cache: yes
+        name:
+          - curl
+          - git
+    - name: Setup Zookeeper Demo | Download docker.io install script
+      get_url:
+        url: https://get.docker.com
+        dest: /tmp/get-docker.sh
+        mode: +x
+    - name: Setup Zookeeper Demo | Install docker
+      shell: /tmp/get-docker.sh
+    - name: Setup Zookeeper Demo | Delete docker.io install script
+      file:
+        path: /tmp/get-docker.sh
+        state: absent
+    - name: Setup Zookeeper Demo | Download docker-compose
+      get_url:
+        url: https://github.com/docker/compose/releases/download/1.23.2/docker-compose-Linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        mode: +x
+    - name: Setup Zookeeper Demo | Copy docker-compose under /etc/bash_completion
+      get_url:
+        url: https://raw.githubusercontent.com/docker/compose/1.23.2/contrib/completion/bash/docker-compose
+        dest: /etc/bash_completion.d/docker-compose
+    - name: Setup Zookeeper Demo | Executing provision.sh (sets HOST_IP, builds the container images and starts them)
+      shell: /srv/NGINX-Demos/zookeeper-demo/provision.sh
+    - name: Setup Zookeeper Demo | Create a dummy znode under /services path inside the zk container
+      shell: docker exec -i zookeeper ./zk-tool create /services -d abc
+    - name: Setup Zookeeper Demo | Watch for changes under /services/http path inside the zk container
+      shell: docker exec -i zookeeper ./zk-tool watch-children /services/http &
+    - name: Setup Zookeeper Demo | Spin up the nginxdemos/hello container which is the backend http service
+      shell: /usr/local/bin/docker-compose -f /srv/NGINX-Demos/zookeeper-demo/create-http-service.yml up -d

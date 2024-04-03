@@ -1,0 +1,5 @@
+services:
+  web: 
+    build: app 
+    ports: 
+      - '8000:8000'

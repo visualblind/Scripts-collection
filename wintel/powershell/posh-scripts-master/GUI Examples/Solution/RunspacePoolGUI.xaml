@@ -1,0 +1,21 @@
+﻿<Window x:Class="PsGuiExamples.RunspacePoolGUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PsGuiExamples"
+        mc:Ignorable="d"
+        Title="Run Command" Height="376" Width="511" MinWidth="511" MinHeight="376">
+    <Grid>
+        <Button x:Name="RunButton" Content="Run" HorizontalAlignment="Left" Height="30" Margin="95,45,0,0" VerticalAlignment="Top" Width="385"/>
+        <TextBox x:Name="CommandText" HorizontalAlignment="Left" Height="30" Margin="95,10,0,0" VerticalAlignment="Top" Width="385" MaxLines="3" VerticalContentAlignment="Center"/>
+        <Label x:Name="CommandLable" Content="Command:" Height="30" Margin="20,10,0,0" VerticalAlignment="Top" Width="70" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+        <Label x:Name="OutputLable" Content="Command Output:" HorizontalAlignment="Left" Height="28" Margin="23,113,0,0" VerticalAlignment="Top" Width="460" VerticalContentAlignment="Bottom"/>
+        <Label x:Name="OutputQueue" Content="Commands Queued:" HorizontalAlignment="Left" Height="28" Margin="23,80,0,0" VerticalAlignment="Top" Width="115" VerticalContentAlignment="Bottom" Padding="5,5,0,5"/>
+        <Label x:Name="OutputQueueText" Content="0" HorizontalAlignment="Left" Height="28" Margin="138,80,0,0" VerticalAlignment="Top" Width="148" VerticalContentAlignment="Bottom" Padding="2,5,5,5"/>
+        <ScrollViewer x:Name="OutputScroll" Margin="20,146,20,10" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <TextBox x:Name="OutputText" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True" FontFamily="Courier New" BorderThickness="0" ScrollViewer.CanContentScroll="True"/>
+        </ScrollViewer>
+        <Button x:Name="RefreshButton" Content="Refresh" HorizontalAlignment="Left" Height="30" Margin="291,80,0,0" VerticalAlignment="Top" Width="189"/>
+    </Grid>
+</Window>

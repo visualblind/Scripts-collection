@@ -1,0 +1,29 @@
+#be carefull with this
+aaa new-model
+aaa authentication login default group tacacs+ local enable
+aaa authentication enable default group tacacs+ enable
+aaa authorization exec default group tacacs+
+aaa accounting suppress null-username
+aaa accounting update newinfo
+aaa accounting exec default start-stop group tacacs+
+aaa accounting commands 0 default stop-only group tacacs+
+aaa accounting commands 1 default stop-only group tacacs+
+aaa accounting commands 15 default stop-only group tacacs+
+!
+logging trap debugging
+no logging console
+logging facility local6
+logging source-interface Loopback0 # or the correct one. (optional)
+logging <jffnms IP>
+!
+access-list 99 permit <jffnms IP> (acl optional)
+!
+tacacs-server host <jffnms IP>
+tacacs-server key <secret in tac_plus.conf> 
+ip tacacs source-interface Loopback0 # or the correct one. (optional)
+!
+snmp-server community public RO 99 (acl optional)
+snmp-server community private RW 99 #we only want jffnms acl99 accessing this (acl optional)
+snmp-server trap-source Loopback0 #or de correct one (optional)
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart # for traps (optional)
+snmp-server host <jffnms IP> traps public # for traps (optional)

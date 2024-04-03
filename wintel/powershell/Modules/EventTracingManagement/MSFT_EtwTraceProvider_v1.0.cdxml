@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT\Microsoft\Windows\EventTracingManagement\MSFT_EtwTraceProvider" ClassVersion="1.0.0.0">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>EtwTraceProvider</DefaultNoun>
+    <InstanceCmdlets>
+      <GetCmdletParameters DefaultCmdletParameterSet="ByAutologger">
+        <QueryableProperties>
+          <Property PropertyName="Guid">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" Position="0" ValueFromPipelineByPropertyName="true"/>
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="SessionName">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="BySession"/>
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="AutologgerName">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByAutologger"/>
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+      </GetCmdletParameters>
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+        <Method MethodName="cim:ModifyInstance">
+          <Parameters>
+            <Parameter ParameterName="Level">
+              <Type PSType="System.Byte" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter> 
+            <Parameter ParameterName="MatchAnyKeyword">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MatchAllKeyword">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull /> 
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Property">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="Medium" />
+        <Method MethodName="cim:DeleteInstance"/>
+      </Cmdlet>
+    </InstanceCmdlets>
+    
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Add" ConfirmImpact="Medium" />
+        <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByAutologger">
+          <Parameters>
+            <Parameter ParameterName="Guid">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AutologgerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true"/>
+            </Parameter>
+            <Parameter ParameterName="Level" DefaultValue="0">
+              <Type PSType="System.Byte" />
+              <CmdletParameterMetadata/>
+            </Parameter>             
+            <Parameter ParameterName="MatchAnyKeyword" DefaultValue="0">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata/>
+            </Parameter>
+            <Parameter ParameterName="MatchAllKeyword" DefaultValue="0">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata/>
+            </Parameter>
+            <Parameter ParameterName="Property" DefaultValue="0">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata/>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="cim:CreateInstance" CmdletParameterSet="BySession">
+          <Parameters>
+            <Parameter ParameterName="Guid">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SessionName">
+              <Type PSType="System.String"/>
+              <CmdletParameterMetadata IsMandatory="true"/>
+            </Parameter>
+            <Parameter ParameterName="Level" DefaultValue="0">
+              <Type PSType="System.Byte" />
+              <CmdletParameterMetadata/>
+            </Parameter>             
+            <Parameter ParameterName="MatchAnyKeyword" DefaultValue="0">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata/>
+            </Parameter>
+            <Parameter ParameterName="MatchAllKeyword" DefaultValue="0">
+              <Type PSType="System.UInt64" />
+              <CmdletParameterMetadata/>
+            </Parameter>
+            <Parameter ParameterName="Property" DefaultValue="0">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata/>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

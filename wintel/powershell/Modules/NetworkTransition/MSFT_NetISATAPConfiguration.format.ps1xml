@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+	<ViewDefinitions>
+		<View>
+		  <Name>MSFT_NetISATAPConfiguration</Name>
+		  <ViewSelectedBy>
+		    <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NetISATAPConfiguration</TypeName>
+      		    <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NetISATAPConfiguration</TypeName>		    
+		  </ViewSelectedBy>
+		  <ListControl>
+		    <ListEntries>
+		      <ListEntry>
+		        <ListItems>
+      		          <ListItem>
+		            <PropertyName>Description</PropertyName>
+		          </ListItem>
+		          <ListItem>
+		            <PropertyName>State</PropertyName>
+		          </ListItem>
+		          <ListItem>
+		            <PropertyName>Router</PropertyName>
+		          </ListItem>
+		          <ListItem>
+		            <PropertyName>ResolutionState</PropertyName>
+		          </ListItem>
+		          <ListItem>
+		            <PropertyName>ResolutionInterval</PropertyName>
+		            <Label>ResolutionIntervalSeconds</Label>
+		          </ListItem>
+		        </ListItems>
+		      </ListEntry>
+		    </ListEntries>
+		  </ListControl>
+		</View>
+	</ViewDefinitions>
+</Configuration>
+

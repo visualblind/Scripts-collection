@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+<Types>  
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/SMB/MSFT_SmbShare</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>PresetPathAcl</Name>
+                <GetScriptBlock>
+                    $acl = Get-Acl ($this.PSBase.CimInstanceProperties['Path'].Value)
+                    $acl.SetSecurityDescriptorSddlForm( $this.PSBase.CimInstanceProperties['SecurityDescriptor'].Value, [System.Security.AccessControl.AccessControlSections]::Access )
+
+                    $newacl = Get-Acl ($this.PSBase.CimInstanceProperties['Path'].Value)
+                    $newacl.SetSecurityDescriptorSddlForm( $this.PSBase.CimInstanceProperties['SecurityDescriptor'].Value, [System.Security.AccessControl.AccessControlSections]::Access )
+
+
+                    $type = [System.Security.Principal.SecurityIdentifier] 
+                    $flag = [System.Security.AccessControl.InheritanceFlags]::ContainerInherit,[System.Security.AccessControl.InheritanceFlags]::ObjectInherit
+                    $rules = $acl.GetAccessRules( $true, $false, $type)
+
+                    #
+                    # First clear all rules fron $newacl
+                    #
+                    For( $i=0; $i -lt $rules.Count; $i++ )
+                    {
+                        $newacl.PurgeAccessRules( $rules[$i].IdentityReference )
+                    }
+
+                    #
+                    # Now add the rules back with Container Inheritance and Object Inheritance flags set
+                    #
+                    For( $i=0; $i -lt $rules.Count; $i++ )
+                    {
+                    $modifiedRule = new-object System.Security.AccessControl.FileSystemAccessRule $rules[$i].IdentityReference,$rules[$i].FileSystemRights,$flag,$rules[$i].PropagationFlags,$rules[$i].AccessControlType
+
+                    $newacl.AddAccessRule( $modifiedRule)
+                    }
+
+                    $newacl
+
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ShareState</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.ShareState] ($this.PSBase.CimInstanceProperties['ShareState'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>AvailabilityType</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.AvailabilityType] ($this.PSBase.CimInstanceProperties['AvailabilityType'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ShareType</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.ShareType] ($this.PSBase.CimInstanceProperties['ShareType'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>FolderEnumerationMode</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.FolderEnumerationMode] ($this.PSBase.CimInstanceProperties['FolderEnumerationMode'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param($newValue)
+                    $this.PSBase.CimInstanceProperties['FolderEnumerationMode'].Value = [System.UInt32] [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.FolderEnumerationMode] $newValue
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>CachingMode</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.CachingMode] ($this.PSBase.CimInstanceProperties['CachingMode'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param($newValue)
+                    $this.PSBase.CimInstanceProperties['CachingMode'].Value = [System.UInt32] [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.CachingMode] $newValue
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>LeasingMode</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.LeasingMode] ($this.PSBase.CimInstanceProperties['LeasingMode'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param($newValue)
+                    $this.PSBase.CimInstanceProperties['LeasingMode'].Value = [System.UInt32] [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.LeasingMode] $newValue
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>SmbInstance</Name>
+                <GetScriptBlock>
+                    if ($null -eq ($this.PSBase.CimInstanceProperties['SmbInstance'].Value))
+                    {
+                        $SmbInstance = 0;
+                    }
+                    else
+                    {
+                        $SmbInstance = ($this.PSBase.CimInstanceProperties['SmbInstance'].Value);
+                    }
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.SmbInstance] ($SmbInstance)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_SmbShare</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>ShareState</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.ShareState] ($this.PSBase.CimInstanceProperties['ShareState'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>AvailabilityType</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.AvailabilityType] ($this.PSBase.CimInstanceProperties['AvailabilityType'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>ShareType</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.ShareType] ($this.PSBase.CimInstanceProperties['ShareType'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>FolderEnumerationMode</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.FolderEnumerationMode] ($this.PSBase.CimInstanceProperties['FolderEnumerationMode'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param($newValue)
+                    $this.PSBase.CimInstanceProperties['FolderEnumerationMode'].Value = [System.UInt32] [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.FolderEnumerationMode] $newValue
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>CachingMode</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.CachingMode] ($this.PSBase.CimInstanceProperties['CachingMode'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param($newValue)
+                    $this.PSBase.CimInstanceProperties['CachingMode'].Value = [System.UInt32] [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.CachingMode] $newValue
+                </SetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>SmbInstance</Name>
+                <GetScriptBlock>
+                    if ($null -eq ($this.PSBase.CimInstanceProperties['SmbInstance'].Value))
+                    {
+                        $SmbInstance = 0;
+                    }
+                    else
+                    {
+                        $SmbInstance = ($this.PSBase.CimInstanceProperties['SmbInstance'].Value);
+                    }
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.SmbInstance] ($SmbInstance)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_SmbShareAccessControlEntry</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>AccessControlType</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.ShareAccessControlType] ($this.PSBase.CimInstanceProperties['AccessControlType'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>AccessRight</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.ShareAccessRight] ($this.PSBase.CimInstanceProperties['AccessRight'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#root/Microsoft/Windows/SMB/MSFT_SmbShareAccessControlEntry</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>AccessControlType</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.ShareAccessControlType] ($this.PSBase.CimInstanceProperties['AccessControlType'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptProperty>
+                <Name>AccessRight</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.ShareAccessRight] ($this.PSBase.CimInstanceProperties['AccessRight'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/SMB/MSFT_SmbMapping</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Status</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.MappingStatus] ($this.PSBase.CimInstanceProperties['Status'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_SmbMapping</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Status</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.MappingStatus] ($this.PSBase.CimInstanceProperties['Status'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/SMB/MSFT_SmbGlobalMapping</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Status</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.MappingStatus] ($this.PSBase.CimInstanceProperties['Status'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_SmbGlobalMapping</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Status</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.MappingStatus] ($this.PSBase.CimInstanceProperties['Status'].Value)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/SMB/MSFT_SmbBandwidthLimit</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Category</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.BandwidthLimitCategory] ($this.PSBase.CimInstanceProperties['Category'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param($newValue)
+                    $this.PSBase.CimInstanceProperties['Category'].Value = [System.UInt32] [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.BandwidthLimitCategory] $newValue
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_SmbBandwidthLimit</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Category</Name>
+                <GetScriptBlock>
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.BandwidthLimitCategory] ($this.PSBase.CimInstanceProperties['Category'].Value)
+                </GetScriptBlock>
+                <SetScriptBlock>
+                    param($newValue)
+                    $this.PSBase.CimInstanceProperties['Category'].Value = [System.UInt32] [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.BandwidthLimitCategory] $newValue
+                </SetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/SMB/MSFT_SmbSession</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SmbInstance</Name>
+                <GetScriptBlock>
+                    if ($null -eq ($this.PSBase.CimInstanceProperties['SmbInstance'].Value))
+                    {
+                        $SmbInstance = 0;
+                    }
+                    else
+                    {
+                        $SmbInstance = ($this.PSBase.CimInstanceProperties['SmbInstance'].Value);
+                    }
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.SmbInstance] ($SmbInstance)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_SmbSession</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SmbInstance</Name>
+                <GetScriptBlock>
+                    if ($null -eq ($this.PSBase.CimInstanceProperties['SmbInstance'].Value))
+                    {
+                        $SmbInstance = 0;
+                    }
+                    else
+                    {
+                        $SmbInstance = ($this.PSBase.CimInstanceProperties['SmbInstance'].Value);
+                    }
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.SmbInstance] ($SmbInstance)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/SMB/MSFT_SmbOpenFile</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SmbInstance</Name>
+                <GetScriptBlock>
+                    if ($null -eq ($this.PSBase.CimInstanceProperties['SmbInstance'].Value))
+                    {
+                        $SmbInstance = 0;
+                    }
+                    else
+                    {
+                        $SmbInstance = ($this.PSBase.CimInstanceProperties['SmbInstance'].Value);
+                    }
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.SmbInstance] ($SmbInstance)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_SmbOpenFile</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SmbInstance</Name>
+                <GetScriptBlock>
+                    if ($null -eq ($this.PSBase.CimInstanceProperties['SmbInstance'].Value))
+                    {
+                        $SmbInstance = 0;
+                    }
+                    else
+                    {
+                        $SmbInstance = ($this.PSBase.CimInstanceProperties['SmbInstance'].Value);
+                    }
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.SmbInstance] ($SmbInstance)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/SMB/MSFT_SmbConnection</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SmbInstance</Name>
+                <GetScriptBlock>
+                    if ($null -eq ($this.PSBase.CimInstanceProperties['SmbInstance'].Value))
+                    {
+                        $SmbInstance = 0;
+                    }
+                    else
+                    {
+                        $SmbInstance = ($this.PSBase.CimInstanceProperties['SmbInstance'].Value);
+                    }
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.SmbInstance] ($SmbInstance)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_SmbConnection</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SmbInstance</Name>
+                <GetScriptBlock>
+                    if ($null -eq ($this.PSBase.CimInstanceProperties['SmbInstance'].Value))
+                    {
+                        $SmbInstance = 0;
+                    }
+                    else
+                    {
+                        $SmbInstance = ($this.PSBase.CimInstanceProperties['SmbInstance'].Value);
+                    }
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.SmbInstance] ($SmbInstance)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/SMB/MSFT_SmbMultichannelConnection</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SmbInstance</Name>
+                <GetScriptBlock>
+                    if ($null -eq ($this.PSBase.CimInstanceProperties['SmbInstance'].Value))
+                    {
+                        $SmbInstance = 0;
+                    }
+                    else
+                    {
+                        $SmbInstance = ($this.PSBase.CimInstanceProperties['SmbInstance'].Value);
+                    }
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.SmbInstance] ($SmbInstance)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_SmbMultichannelConnection</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>SmbInstance</Name>
+                <GetScriptBlock>
+                    if ($null -eq ($this.PSBase.CimInstanceProperties['SmbInstance'].Value))
+                    {
+                        $SmbInstance = 0;
+                    }
+                    else
+                    {
+                        $SmbInstance = ($this.PSBase.CimInstanceProperties['SmbInstance'].Value);
+                    }
+                    [Microsoft.PowerShell.Cmdletization.GeneratedTypes.SmbShare.SmbInstance] ($SmbInstance)
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+</Types>
+

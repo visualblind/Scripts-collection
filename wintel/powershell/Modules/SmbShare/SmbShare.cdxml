@@ -1,0 +1,776 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  
+  <Class ClassName="ROOT/Microsoft/Windows/SMB/MSFT_SMBShare">   
+    <Version>1.0</Version>   
+       
+    <DefaultNoun>SmbShare</DefaultNoun>   
+    <InstanceCmdlets>
+      
+      <!--
+
+      //
+      // Get-SmbShare
+      // 
+
+      -->   
+      <GetCmdletParameters>
+        <QueryableProperties>   
+          <Property PropertyName="Name">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" Position="1" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="ScopeName">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" Position="2" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="Scoped">
+            <Type PSType="bool" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="Special">
+            <Type PSType="bool" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="ContinuouslyAvailable">
+            <Type PSType="bool" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="ShareState">
+            <Type PSType="SmbShare.ShareState" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="FolderEnumerationMode">
+            <Type PSType="SmbShare.FolderEnumerationMode" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="CachingMode">
+            <Type PSType="SmbShare.CachingMode" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="LeasingMode">
+            <Type PSType="SmbShare.LeasingMode" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="ConcurrentUserLimit">
+            <Type PSType="Uint32" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="AvailabilityType">
+            <Type PSType="SmbShare.AvailabilityType" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="CaTimeout">
+            <Type PSType="Uint32" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="EncryptData">
+            <Type PSType="bool" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryOptions>
+          <Option OptionName="IncludeHidden">
+            <Type PSType="System.Management.Automation.SwitchParameter" />
+          </Option>
+          <Option OptionName="SmbInstance">
+            <Type PSType="SmbShare.SmbInstance" />
+            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true"/>
+          </Option>
+        </QueryOptions>
+      </GetCmdletParameters>
+
+      <GetCmdlet>
+        <CmdletMetadata Verb="Get" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241953" Aliases="gsmbs" />
+      </GetCmdlet>
+
+     
+      <!--
+
+      //
+      // Remove-SmbShare
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241959" Aliases="rsmbs" />
+        <Method MethodName="cim:DeleteInstance">
+            <Parameters>
+                <Parameter ParameterName="cim:operationOption:Force">
+                    <Type PSType="System.Management.Automation.SwitchParameter" />
+                    <CmdletParameterMetadata PSName="Force">
+                    </CmdletParameterMetadata>
+                </Parameter>
+            </Parameters>
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="ScopeName">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="false" Position="2" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryOptions>
+            <Option OptionName="SmbInstance">
+                <Type PSType="SmbShare.SmbInstance" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+            </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+
+      <!--
+
+      //
+      // Set-SmbShare
+      //
+
+      -->
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="High" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241963" Aliases="ssmbs"/>
+        <Method MethodName="cim:ModifyInstance">
+          <Parameters>
+            <Parameter ParameterName="Description">
+              <Type PSType="string" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ConcurrentUserLimit">
+              <Type PSType="Uint32" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CATimeout">
+                <Type PSType="Uint32" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                    <ValidateNotNull />
+                    <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ContinuouslyAvailable">
+                <Type PSType="bool" />
+                <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                    <ValidateNotNull />
+                    <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="FolderEnumerationMode">
+                <Type PSType="SmbShare.FolderEnumerationMode" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                     <ValidateNotNull />
+                     <ValidateNotNullOrEmpty />
+                 </CmdletParameterMetadata>
+             </Parameter>
+             <Parameter ParameterName="CachingMode">
+                 <Type PSType="SmbShare.CachingMode" />
+                 <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                     <ValidateNotNull />
+                     <ValidateNotNullOrEmpty />
+                 </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SecurityDescriptor">
+                <Type PSType="string" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                    <ValidateNotNull />
+                </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EncryptData">
+                <Type PSType="bool" />
+                <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                    <ValidateNotNull />
+                    <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="LeasingMode">
+              <Type PSType="SmbShare.LeasingMode" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="cim:operationOption:Force">
+                <Type PSType="System.Management.Automation.SwitchParameter" />
+                <CmdletParameterMetadata PSName="Force">
+                </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="ScopeName">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="false" Position="2" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryOptions>
+            <Option OptionName="SmbInstance">
+                <Type PSType="SmbShare.SmbInstance" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+            </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+
+      <!--
+
+      //
+      // Block-SmbShareAccess
+      //
+
+      -->
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Block" Noun="SmbShareAccess" ConfirmImpact="High" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241941" Aliases="blsmba"/>
+        <Method MethodName="BlockAccess">
+          <ReturnValue>
+            <Type PSType="uint32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="AccountName">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="cim:operationOption:Force">
+                <Type PSType="System.Management.Automation.SwitchParameter" />
+                <CmdletParameterMetadata PSName="Force">
+                </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Output">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="ScopeName">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="false" Position="2" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryOptions>
+            <Option OptionName="SmbInstance">
+                <Type PSType="SmbShare.SmbInstance" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+            </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+
+      <!--
+
+      //
+      // Unblock-SmbShareAccess
+      //
+
+      -->
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Unblock" Noun="SmbShareAccess" ConfirmImpact="High" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241964" Aliases="ulsmba"/>
+        <Method MethodName="UnblockAccess">
+          <ReturnValue>
+            <Type PSType="uint32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="AccountName">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="cim:operationOption:Force">
+                <Type PSType="System.Management.Automation.SwitchParameter" />
+                <CmdletParameterMetadata PSName="Force">
+                </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Output">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="ScopeName">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="false" Position="2" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryOptions>
+              <Option OptionName="SmbInstance">
+                <Type PSType="SmbShare.SmbInstance" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+              </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+
+
+      <!--
+
+      //
+      // Grant-SmbShareAccess
+      //
+
+      -->
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Grant" Noun="SmbShareAccess" ConfirmImpact="High" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241955" Aliases="grsmba"/>
+        <Method MethodName="GrantAccess">
+          <ReturnValue>
+            <Type PSType="uint32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="AccountName">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AccessRight">
+              <Type PSType="SmbShare.ShareAccessRight" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="cim:operationOption:Force">
+                <Type PSType="System.Management.Automation.SwitchParameter" />
+                <CmdletParameterMetadata PSName="Force">
+                </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Output">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="ScopeName">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="false" Position="2" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryOptions>
+            <Option OptionName="SmbInstance">
+                <Type PSType="SmbShare.SmbInstance" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+            </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+
+      <!--
+
+      //
+      // Revoke-SmbShareAccess
+      //
+
+      -->
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Revoke" Noun="SmbShareAccess" ConfirmImpact="High" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241960" Aliases="rksmba"/>
+        <Method MethodName="RevokeAccess">
+          <ReturnValue>
+            <Type PSType="uint32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="AccountName">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="cim:operationOption:Force">
+                <Type PSType="System.Management.Automation.SwitchParameter" />
+                <CmdletParameterMetadata PSName="Force">
+                </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Output">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="ScopeName">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="false" Position="2" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryOptions>
+            <Option OptionName="SmbInstance">
+                <Type PSType="SmbShare.SmbInstance" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+            </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+
+      <!--
+
+      //
+      // Get-SmbShareAccess
+      //
+
+      -->
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" Noun="SmbShareAccess" ConfirmImpact="Medium" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241954" Aliases="gsmba"/>
+        <Method MethodName="GetAccessControlEntries">
+          <ReturnValue>
+            <Type PSType="uint32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Output">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="ScopeName">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="false">
+                <CmdletParameterMetadata IsMandatory="false" Position="2" ValueFromPipelineByPropertyName="true"/>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryOptions>
+            <Option OptionName="SmbInstance">
+                <Type PSType="SmbShare.SmbInstance" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true"/>
+            </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+
+    </InstanceCmdlets>
+    <StaticCmdlets>
+     
+      <!--
+
+      //
+      // New-SmbShare
+      //
+
+      -->
+
+
+      <Cmdlet>
+        <CmdletMetadata Verb="New" ConfirmImpact="Medium" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241957" Aliases="nsmbs"/>
+        <Method MethodName="CreateShare">
+          <ReturnValue>
+            <Type PSType="uint32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="Temporary">
+              <Type PSType="switch" />
+              <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="ContinuouslyAvailable">
+                <Type PSType="bool" />
+                <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="Description">
+              <Type PSType="string" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ConcurrentUserLimit">
+              <Type PSType="Uint32" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CATimeout">
+                <Type PSType="Uint32" />
+                <CmdletParameterMetadata>
+                    <ValidateNotNull />
+                    <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="FolderEnumerationMode">
+                <Type PSType="SmbShare.FolderEnumerationMode" />
+                <CmdletParameterMetadata>
+                    <ValidateNotNull />
+                    <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CachingMode">
+              <Type PSType="SmbShare.CachingMode" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="FullAccess">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ChangeAccess">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReadAccess">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="NoAccess">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SecurityDescriptor">
+                <Type PSType="string" />
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true">
+                    <ValidateNotNull />
+                    <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Path">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ScopeName">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" Position="3" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EncryptData">
+                <Type PSType="bool" />
+                <CmdletParameterMetadata IsMandatory="false" />
+            </Parameter>
+            <Parameter ParameterName="LeasingMode">
+              <Type PSType="SmbShare.LeasingMode" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CreatedShare">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+
+    <Enums>
+        <Enum EnumName="SmbShare.ShareState" UnderlyingType="System.UInt32">
+            <Value Name="Pending" Value="0" />
+            <Value Name="Online" Value="1" />
+            <Value Name="Offline" Value="2" />
+        </Enum>
+        <Enum EnumName="SmbShare.AvailabilityType" UnderlyingType="System.UInt32">
+            <Value Name="NonClustered" Value="0" />
+            <Value Name="Clustered" Value="1" />
+            <Value Name="ScaleOut" Value="2" />
+            <Value Name="CSV" Value="3" />
+            <Value Name="DFS" Value="4" />
+        </Enum>
+        <Enum EnumName="SmbShare.ShareType" UnderlyingType="System.UInt32">
+            <Value Name="FileSystemDirectory" Value="0" />
+            <Value Name="PrintQueue" Value="1" />
+            <Value Name="CommunicationDevice" Value="2" />
+            <Value Name="InterprocessCommunication" Value="3" />
+            <Value Name="Unknown" Value="4" />
+            <Value Name="SimpleReferral" Value="5" />
+        </Enum>
+        <Enum EnumName="SmbShare.FolderEnumerationMode" UnderlyingType="System.UInt32">
+            <Value Name="AccessBased" Value="0" />
+            <Value Name="Unrestricted" Value="1" />
+        </Enum>
+        <Enum EnumName="SmbShare.CachingMode" UnderlyingType="System.UInt32">
+            <Value Name="None" Value="0" />
+            <Value Name="Manual" Value="1" />
+            <Value Name="Documents" Value="2" />
+            <Value Name="Programs" Value="3" />
+            <Value Name="BranchCache" Value="4" />
+            <Value Name="Unknown" Value="5" />
+        </Enum>
+        <Enum EnumName="SmbShare.ShareAccessControlType" UnderlyingType="System.UInt32">
+            <Value Name="Allow" Value="0" />
+            <Value Name="Deny" Value="1" />
+        </Enum>
+        <Enum EnumName="SmbShare.ShareAccessRight" UnderlyingType="System.UInt32">
+            <Value Name="Full" Value="0" />
+            <Value Name="Change" Value="1" />
+            <Value Name="Read" Value="2" />
+            <Value Name="Custom" Value="3" />
+        </Enum>
+        <Enum EnumName="SmbShare.SmbInstance" UnderlyingType="System.UInt32">
+            <Value Name="Default" Value="0" />
+            <Value Name="CSV" Value="1" />
+            <Value Name="SBL" Value="2" />
+            <Value Name="SR" Value="3" />
+        </Enum>
+        <Enum EnumName="SmbShare.LeasingMode" UnderlyingType="System.UInt32">
+            <Value Name="Full" Value="0" />
+            <Value Name="Shared" Value="1" />
+            <Value Name="None" Value="2" />
+        </Enum>
+    </Enums>
+    
+</PowerShellMetadata>

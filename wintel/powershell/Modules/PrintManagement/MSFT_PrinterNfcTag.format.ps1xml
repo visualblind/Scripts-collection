@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Configuration>
+  <ViewDefinitions>  
+    <View>
+      <Name>Formatting For MSFT_PrinterNfcTag (Table View)</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_PrinterNfcTag</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>   <!-- SharePath -->
+            <Width>30</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- WsdAddress -->
+            <Width>30</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>   <!-- Locked -->
+            <Width>10</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SharePath</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WsdAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Locked</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>    
+    <View>
+      <Name>Formatting For MSFT_PrinterNfcTag (List View)</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_PrinterNfcTag</TypeName>
+      </ViewSelectedBy>
+        <ListControl>
+          <ListEntries>
+            <ListEntry>
+              <ListItems>
+                <ListItem>
+                  <PropertyName>SharePath</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>WsdAddress</PropertyName>
+                </ListItem>
+                <ListItem>
+                  <PropertyName>Locked</PropertyName>
+                </ListItem>
+              </ListItems>
+            </ListEntry>
+          </ListEntries>
+        </ListControl>
+      </View>
+   </ViewDefinitions>
+</Configuration>

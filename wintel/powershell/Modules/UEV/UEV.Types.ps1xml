@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Types>
+  <Type>
+    <Name>Microsoft.Uev.Commands.Template</Name>
+    <Members>
+      <MemberSet>
+        <Name>PsStandardMembers</Name>
+        <Members>
+          <NoteProperty>
+            <Name>DefaultDisplayProperty</Name>
+            <Value>TemplateName</Value>
+          </NoteProperty>
+          <PropertySet>
+            <Name>DefaultDisplayPropertySet</Name>
+            <ReferencedProperties>
+              <Name>TemplateId</Name>
+              <Name>TemplateName</Name>
+              <Name>TemplateDescription</Name>
+              <Name>TemplateVersion</Name>
+              <Name>TemplateType</Name>
+              <Name>Enabled</Name>
+              <Name>EnableStateLocation</Name>
+              <Name>TemplateProfile</Name>
+            </ReferencedProperties>
+          </PropertySet>
+        </Members>
+      </MemberSet>
+    </Members>
+  </Type>
+</Types>

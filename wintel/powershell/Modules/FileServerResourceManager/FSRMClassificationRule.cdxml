@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">   
+  <Class ClassName="Root/Microsoft/Windows/FSRM/MSFT_FSRMClassificationRule">   
+    <Version>1.0</Version>   
+    <DefaultNoun>FsrmClassificationRule</DefaultNoun>   
+    <InstanceCmdlets>   
+      <GetCmdletParameters>
+        <QueryableProperties>   
+          <Property PropertyName="Name">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" Position="1" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+      </GetCmdletParameters>
+      <GetCmdlet>
+        <CmdletMetadata Verb="Get" />
+      </GetCmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" />
+        <Method MethodName="cim:DeleteInstance">
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+        <Method MethodName="cim:ModifyInstance">
+          <Parameters>
+            <Parameter ParameterName="Description">
+              <Type PSType="string" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Property">
+              <Type PSType="string" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PropertyValue">
+              <Type PSType="string" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Namespace">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Disabled">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReevaluateProperty">
+              <Type PSType="RuleReevaluatePropertyEnum" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Flags">
+              <Type PSType="RuleFlagsEnum[]" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ContentRegularExpression">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ContentString">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ContentStringCaseSensitive">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ClassificationMechanism">
+              <Type PSType="string" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Parameters">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" ConfirmImpact="Medium" />
+        <Method MethodName="cim:CreateInstance">
+          <Parameters> 
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Description">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Property">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PropertyValue">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Namespace">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Disabled">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReevaluateProperty">
+              <Type PSType="RuleReevaluatePropertyEnum" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Flags">
+              <Type PSType="RuleFlagsEnum[]" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ContentRegularExpression">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ContentString">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ContentStringCaseSensitive">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ClassificationMechanism">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Parameters">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="RuleReevaluatePropertyEnum" UnderlyingType="UInt32">
+      <Value Name="Never" Value="1" />
+      <Value Name="Aggregate" Value="2" />
+      <Value Name="Overwrite" Value="3" />
+    </Enum>
+    <Enum EnumName="RuleFlagsEnum" UnderlyingType="UInt32">
+      <Value Name="Deprecated" Value="4096" />
+      <Value Name="ClearManuallyClassifiedProperty" Value="2048" />
+      <Value Name="ClearAutomaticallyClassifiedProperty" Value="1024" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>   

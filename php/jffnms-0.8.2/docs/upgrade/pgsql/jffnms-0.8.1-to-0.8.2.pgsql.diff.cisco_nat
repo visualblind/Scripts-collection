@@ -1,0 +1,105 @@
+DELETE FROM graph_types where id = 92; 
+INSERT INTO graph_types (id,  description,  type,  graph1,  graph2,  sizex1,  sizey1,  sizex2,  sizey2,  allow_aggregation) VALUES (92, 'NAT Active Binds', 44, 'cisco_nat_active', '', 500, 150, 0, 0, 0);
+
+DELETE FROM graph_types where id = 93; 
+INSERT INTO graph_types (id,  description,  type,  graph1,  graph2,  sizex1,  sizey1,  sizex2,  sizey2,  allow_aggregation) VALUES (93, 'NAT Packets', 44, 'cisco_nat_packets', '', 500, 150, 0, 0, 0);
+
+DELETE FROM interface_types where id = 44; 
+INSERT INTO interface_types (id,  description,  autodiscovery_validate,  autodiscovery_enabled,  autodiscovery_function,  autodiscovery_parameters,  autodiscovery_default_poller,  have_graph,  rrd_structure_rra,  rrd_structure_res,  rrd_structure_step,  graph_default,  break_by_card,  update_handler,  allow_manual_add,  sla_default,  have_tools) VALUES (44, 'Cisco NAT', 0, 1, 'simple', '.1.3.6.1.4.1.9.10.77.1.2.1.0,NAT', 45, 1, 'RRA:AVERAGE:0.5:1:<resolution>', '103680', 300, 93, 0, 'none', 0, 1, 0);
+
+DELETE FROM interface_types_fields where id = 326; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (326, 'Index', 'index', 10, 44, 3, 0, 0, 0, '1');
+
+DELETE FROM interface_types_fields where id = 327; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (327, 'Description', 'description', 20, 44, 7, 2, 1, 0, '');
+
+DELETE FROM interface_types_fields where id = 328; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (328, 'Cisco Max Inbound NAT Bytes', 'NatInMax', 30, 44, 8, 2, 1, 0, '1000000000');
+
+DELETE FROM interface_types_fields where id = 329; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (329, 'Cisco Max Outbound NAT Bytes', 'NatOutMax', 40, 44, 8, 2, 1, 0, '1000000000');
+
+DELETE FROM interface_types_fields where id = 330; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (330, 'Cisco NAT Other IP Outbound', 'cisco_nat_other_ip_outbound', 10, 44, 20, 0, 0, 0, 'DS:cisco_nat_other_ip_outbound:COUNTER:600:0:<NatOutMax>');
+
+DELETE FROM interface_types_fields where id = 331; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (331, 'Cisco NAT Other IP Inbound', 'cisco_nat_other_ip_inbound', 15, 44, 20, 0, 0, 0, 'DS:cisco_nat_other_ip_inbound:COUNTER:600:0:<NatInMax>');
+
+DELETE FROM interface_types_fields where id = 332; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (332, 'Cisco NAT ICMP Outbound', 'cisco_nat_icmp_outbound', 20, 44, 20, 0, 0, 0, 'DS:cisco_nat_icmp_outbound:COUNTER:600:0:<NatOutMax>');
+
+DELETE FROM interface_types_fields where id = 333; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (333, 'Cisco NAT ICMP Inbound', 'cisco_nat_icmp_inbound', 25, 44, 20, 0, 0, 0, 'DS:cisco_nat_icmp_inbound:COUNTER:600:0:<NatInMax>');
+
+DELETE FROM interface_types_fields where id = 334; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (334, 'Cisco NAT UDP Outbound', 'cisco_nat_udp_outbound', 30, 44, 20, 0, 0, 0, 'DS:cisco_nat_udp_outbound:COUNTER:600:0:<NatOutMax>');
+
+DELETE FROM interface_types_fields where id = 335; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (335, 'Cisco NAT UDP Inbound', 'cisco_nat_udp_inbound', 35, 44, 20, 0, 0, 0, 'DS:cisco_nat_udp_inbound:COUNTER:600:0:<NatInMax>');
+
+DELETE FROM interface_types_fields where id = 336; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (336, 'Cisco NAT TCP Outbound', 'cisco_nat_tcp_outbound', 40, 44, 20, 0, 0, 0, 'DS:cisco_nat_tcp_outbound:COUNTER:600:0:<NatOutMax>');
+
+DELETE FROM interface_types_fields where id = 337; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (337, 'Cisco NAT TCP Inbound', 'cisco_nat_tcp_inbound', 45, 44, 20, 0, 0, 0, 'DS:cisco_nat_tcp_inbound:COUNTER:600:0:<NatInMax>');
+
+DELETE FROM interface_types_fields where id = 338; 
+INSERT INTO interface_types_fields (id,  description,  name,  pos,  itype,  ftype,  showable,  overwritable,  tracked,  default_value) VALUES (338, 'Cisco NAT Active Binds', 'cisco_nat_active_binds', 50, 44, 20, 0, 0, 0, 'DS:cisco_nat_active_binds:GAUGE:600:0:100000');
+
+DELETE FROM pollers where id = 182; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (182, 'cisco_nat_other_ip_inbound', 'Cisco NAT Other IP Inbound', 'snmp_counter', '.1.3.6.1.4.1.9.10.77.1.3.1.1.2.1');
+
+DELETE FROM pollers where id = 183; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (183, 'cisco_nat_icmp_inbound', 'Cisco NAT ICMP Inbound', 'snmp_counter', '.1.3.6.1.4.1.9.10.77.1.3.1.1.2.2');
+
+DELETE FROM pollers where id = 184; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (184, 'cisco_nat_udp_inbound', 'Cisco NAT UDP Inbound', 'snmp_counter', '.1.3.6.1.4.1.9.10.77.1.3.1.1.2.3');
+
+DELETE FROM pollers where id = 185; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (185, 'cisco_nat_tcp_inbound', 'Cisco NAT TCP Inbound', 'snmp_counter', '.1.3.6.1.4.1.9.10.77.1.3.1.1.2.4');
+
+DELETE FROM pollers where id = 186; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (186, 'cisco_nat_other_ip_outbound', 'Cisco NAT Other IP Outbound', 'snmp_counter', '.1.3.6.1.4.1.9.10.77.1.3.1.1.3.1');
+
+DELETE FROM pollers where id = 187; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (187, 'cisco_nat_icmp_outbound', 'Cisco NAT ICMP Outbound', 'snmp_counter', '.1.3.6.1.4.1.9.10.77.1.3.1.1.3.2');
+
+DELETE FROM pollers where id = 188; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (188, 'cisco_nat_udp_outbound', 'Cisco NAT UDP Outbound', 'snmp_counter', '.1.3.6.1.4.1.9.10.77.1.3.1.1.3.3');
+
+DELETE FROM pollers where id = 189; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (189, 'cisco_nat_tcp_outbound', 'Cisco NAT TCP Outbound', 'snmp_counter', '.1.3.6.1.4.1.9.10.77.1.3.1.1.3.4');
+
+DELETE FROM pollers where id = 190; 
+INSERT INTO pollers (id,  name,  description,  command,  parameters) VALUES (190, 'cisco_nat_active_binds', 'Cisco NAT Active Binds', 'snmp_counter', '.1.3.6.1.4.1.9.10.77.1.2.1.0');
+
+DELETE FROM pollers_groups where id = 45; 
+INSERT INTO pollers_groups (id,  description,  interface_type) VALUES (45, 'Cisco NAT', 44);
+
+DELETE FROM pollers_poller_groups where id = 223; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (223, 45, 50, 190, 32);
+
+DELETE FROM pollers_poller_groups where id = 224; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (224, 45, 10, 186, 32);
+
+DELETE FROM pollers_poller_groups where id = 225; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (225, 45, 20, 187, 32);
+
+DELETE FROM pollers_poller_groups where id = 226; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (226, 45, 30, 188, 32);
+
+DELETE FROM pollers_poller_groups where id = 227; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (227, 45, 40, 189, 32);
+
+DELETE FROM pollers_poller_groups where id = 228; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (228, 45, 15, 182, 32);
+
+DELETE FROM pollers_poller_groups where id = 229; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (229, 45, 25, 183, 32);
+
+DELETE FROM pollers_poller_groups where id = 230; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (230, 45, 35, 184, 32);
+
+DELETE FROM pollers_poller_groups where id = 231; 
+INSERT INTO pollers_poller_groups (id,  poller_group,  pos,  poller,  backend) VALUES (231, 45, 45, 185, 32);
+

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT\Microsoft\Windows\Defender\MSFT_MpWDOScan" ClassVersion="1.0">
+    <Version>1.0</Version>
+    <DefaultNoun>MpWDOScan</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Start" />
+        <Method MethodName="Start">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>          
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class> 
+</PowerShellMetadata>

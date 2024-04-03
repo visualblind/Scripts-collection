@@ -1,0 +1,42 @@
+#!/bin/sh
+# backup a git repository
+# use git clone --mirror
+# 
+# works with bare and non bare repositories
+#
+# Simon Walz, 2016
+
+repo="$1"
+rpath="$2"
+if test "x${repo}" = "x" || test "x${rpath}" = "x"
+then
+	echo "Usage: $0 REPO_URL LOCAL_PATH"
+	exit 2
+fi
+
+echo "#### Repo: ${repo}"
+
+if test -d "${rpath}"
+then
+	echo "## updating"
+	cd "${rpath}"
+
+	if test -d ".git"
+	then
+		echo "## git pull"
+		git pull
+	else
+		echo "## git remote update"
+		git remote update
+	fi
+	cd - >/dev/null
+else
+	rparent="$(echo "${rpath}" | sed -e "s/\/[^\/]*$//" )"
+	if test "x${rparent}" != "x" && test "x${rparent}" != "x${rpath}"
+	then
+		mkdir -p "${rparent}"
+	fi
+	echo "## cloning"
+	echo git clone --mirror "${repo}" "${rpath}"
+	git clone --mirror "${repo}" "${rpath}"
+fi

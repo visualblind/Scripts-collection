@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">   
+  <Class ClassName="Root/Microsoft/Windows/FSRM/MSFT_FSRMClassification">   
+    <Version>1.0</Version>   
+    <DefaultNoun>FsrmClassification</DefaultNoun>   
+    <InstanceCmdlets>   
+      <GetCmdletParameters>
+      </GetCmdletParameters>
+      <GetCmdlet>
+        <CmdletMetadata Verb="Get" />
+      </GetCmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+        <Method MethodName="cim:ModifyInstance">
+          <Parameters>
+            <Parameter ParameterName="ExcludeNamespace">
+              <Type PSType="String[]" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Schedule">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Continuous">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ContinuousLog">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ContinuousLogSize">
+              <Type PSType="UInt64" />
+              <CmdletParameterMetadata>
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </InstanceCmdlets>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Start"  ConfirmImpact="High" />
+        <Method MethodName="Start">
+          <Parameters>
+            <Parameter ParameterName="Queue">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RunDuration">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Classification">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Wait"  ConfirmImpact="Medium" />
+        <Method MethodName="Wait">
+          <Parameters>
+            <Parameter ParameterName="Timeout">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Classification">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Stop"  ConfirmImpact="High" />
+        <Method MethodName="Stop">
+          <Parameters>
+            <Parameter ParameterName="Classification">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="RunningStatusEnum" UnderlyingType="UInt32">
+      <Value Name="NotRunning" Value="1" />
+      <Value Name="Queued" Value="2" />
+      <Value Name="Running" Value="3" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>   

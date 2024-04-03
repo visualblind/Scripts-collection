@@ -1,0 +1,34 @@
+body {
+  background-color: #fff0f0;
+  color: #ff6e6e;
+  font-family: "Muli", sans-serif;
+  font-weight: 100;
+  height: 100vh;
+  margin: 0;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.position-r {
+  position: relative;
+}
+
+.code {
+  border-right: 3px solid;
+  font-size: 55px;
+  padding: 0 10px 0 10px;
+  text-align: center;
+}
+
+.message {
+  font-size: 40px;
+  text-align: center;
+}

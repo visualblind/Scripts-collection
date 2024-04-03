@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <!--
+
+  //
+  // StorageBusDisk
+  //
+
+  -->
+  <Type>
+    <Name>StorageBusDisk</Name>
+    <Members>
+      <AliasProperty>
+        <Name>DiskNumber</Name>
+        <ReferencedMemberName>Number</ReferencedMemberName>
+      </AliasProperty>
+  </Members>
+  </Type>
+</Types>

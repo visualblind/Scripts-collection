@@ -1,0 +1,42 @@
+# ---------------------------------------------------------- #
+# Before this can work you have to do mkfifo /tmp/mysql.pipe #
+# ---------------------------------------------------------- #
+
+
+# ---------------------------------------------------------- #
+# This is an example source, you may want to use your own    #
+# ---------------------------------------------------------- #
+
+source src {
+    unix-stream("/dev/log");
+    internal();
+    pipe("/proc/kmsg");
+    udp(ip(0.0.0.0) port(514));
+};
+
+# ---------------------------------------------------------- #
+# These are the lines you have to add to your syslog-ng.conf #
+# ---------------------------------------------------------- #
+
+destination jffnms_processing {
+    program ("mysql -u jffnms -pjffnms jffnms < /tmp/mysql.pipe");
+};
+    
+destination d_jffnms {
+    pipe ("/tmp/mysql.pipe"
+    template("INSERT INTO syslog (date, date_logged, host, message) VALUES ('$YEAR-$MONTH-$DAY $HOUR:$MIN:$SEC', NOW\(\), '$FULLHOST', '$MSG');\n")
+    template-escape(yes));
+};
+
+
+# This is optional
+
+filter f_jffnms { 
+    facility(local6); 
+};
+			
+log { 
+    source (src); 
+    filter (f_jffnms);
+    destination (d_jffnms); 
+};

@@ -1,0 +1,2927 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Controls>
+    <Control>
+      <Name>DeviceInformation</Name>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <Text>DeviceNumber         : </Text>
+              <ExpressionBinding>
+                <PropertyName>DeviceNumber</PropertyName>
+              </ExpressionBinding>
+              <NewLine/>
+              <Text>DeviceGuid           : </Text>
+              <ExpressionBinding>
+                <PropertyName>DeviceGuid</PropertyName>
+              </ExpressionBinding>
+              <NewLine/>
+              <Text>FriendlyName         : </Text>
+              <ExpressionBinding>
+                <PropertyName>FriendlyName</PropertyName>
+              </ExpressionBinding>
+              <NewLine/>
+              <Text>SerialNumber         : </Text>
+              <ExpressionBinding>
+                <PropertyName>SerialNumber</PropertyName>
+              </ExpressionBinding>
+              <NewLine/>
+              <Text>AdapterSerialNumber  : </Text>
+              <ExpressionBinding>
+                <PropertyName>AdapterSerialNumber</PropertyName>
+              </ExpressionBinding>
+              <NewLine/>
+              <Text>FirmwareRevision     : </Text>
+              <ExpressionBinding>
+                <PropertyName>FirmwareRevision</PropertyName>
+              </ExpressionBinding>
+              <NewLine/>
+              <Text>BusType              : </Text>
+              <ExpressionBinding>
+                <PropertyName>BusType</PropertyName>
+              </ExpressionBinding>
+              <NewLine/>
+              <Text>MediaType            : </Text>
+              <ExpressionBinding>
+                <PropertyName>MediaType</PropertyName>
+              </ExpressionBinding>
+              <NewLine/>
+              <Text>IoTimeout            : </Text>
+              <ExpressionBinding>
+                <ScriptBlock>
+                  if ($_.IoTimeout -gt 0)
+                  {
+                    $_.IoTimeout.ToString() + " seconds"
+                  }
+                  else
+                  {
+                    "Not available"
+                  }
+                </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </Control>
+  </Controls>
+  <ViewDefinitions>
+    <!--
+
+    //
+    // Disk
+    //
+
+    -->
+    <View>
+      <Name>DiskTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_Disk</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Number</Label>
+            <Width>6</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Friendly Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Serial Number</Label>
+            <Width>32</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HealthStatus</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationalStatus</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Total Size</Label>
+            <Width>12</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Partition Style</Label>
+            <Width>10</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Number</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SerialNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HealthStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationalStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  $size = $_.Size;
+                  $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                  for ($i=0; $size -ge 1024 -and $i -lt $postfixes.Length; $i++) { $size = $size / 1024; }
+                  return "" + [System.Math]::Round($size,2) + " " + $postfixes[$i];
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PartitionStyle</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>DiskListView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_Disk</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>UniqueId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Number</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Path</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Manufacturer</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Model</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>SerialNumber</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Size</Label>
+                <ScriptBlock>
+                  $size = $_.Size;
+                  $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                  for ($i=0; $size -ge 1024 -and $i -lt $postfixes.Length; $i++) { $size = $size / 1024; }
+                  return "" + [System.Math]::Round($size,2) + " " + $postfixes[$i];
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>AllocatedSize</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>LogicalSectorSize</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PhysicalSectorSize</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>NumberOfPartitions</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PartitionStyle</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsReadOnly</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsSystem</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsBoot</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <!--
+
+    //
+    // Partition
+    //
+
+    -->
+    <View>
+      <Name>PartitionTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_Partition</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <PropertyName>DiskId</PropertyName>
+        <Label>DiskPath</Label>
+      </GroupBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PartitionNumber</Label>
+            <Width>16</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DriveLetter</Label>
+            <Width>11</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Offset</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Size</Label>
+            <Width>10</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PartitionNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DriveLetter</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Offset</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  $size = $_.Size;
+                  $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                  for ($i=0; $size -ge 1024 -and $i -lt $postfixes.Length; $i++) { $size = $size / 1024; }
+                  return "" + [System.Math]::Round($size,2) + " " + $postfixes[$i];
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>PartitionListView</Name>
+      <ViewSelectedBy>
+          <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_Partition</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>UniqueId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>AccessPaths</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>DiskNumber</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>DiskPath</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>DriveLetter</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Guid</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsActive</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsBoot</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsHidden</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsOffline</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsReadOnly</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsShadowCopy</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsDAX</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsSystem</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>NoDefaultDriveLetter</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Offset</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>OperationalStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PartitionNumber</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Size</Label>
+                <ScriptBlock>
+                  $size = $_.Size;
+                  $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                  for ($i=0; $size -ge 1024 -and $i -lt $postfixes.Length; $i++) { $size = $size / 1024; }
+                  return "" + [System.Math]::Round($size,2) + " " + $postfixes[$i];
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <!--
+
+    //
+    // VirtualDisk
+    //
+
+    -->
+    <View>
+      <Name>VirtualDiskTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_VirtualDisk</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResiliencySettingName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FaultDomainRedundancy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationalStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HealthStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Size</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FootprintOnPool</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageEfficiency</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResiliencySettingName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PhysicalDiskRedundancy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationalStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HealthStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  $size = $_.Size;
+                  $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                  for ($i=0; $size -ge 1024 -and $i -lt $postfixes.Length; $i++) { $size = $size / 1024; }
+                  return "" + [System.Math]::Round($size,2) + " " + $postfixes[$i];
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  $footprint = $_.FootprintOnPool;
+                  $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                  for ($i=0; $footprint -ge 1024 -and $i -lt $postfixes.Length; $i++) { $footprint = $footprint / 1024; }
+                  return "" + [System.Math]::Round($footprint,2) + " " + $postfixes[$i];
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  $efficiency = "";
+                  if ($_.FootprintOnPool -gt 0) { $efficiency = ($_.AllocatedSize / $_.FootprintOnPool).ToString("P"); }
+                  return $efficiency
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // StorageTier
+    //
+
+    -->
+    <View>
+      <Name>StorageTierTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageTier</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TierClass</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MediaType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResiliencySettingName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FaultDomainRedundancy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Size</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FootprintOnPool</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageEfficiency</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                  <PropertyName>TierClass</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MediaType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResiliencySettingName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PhysicalDiskRedundancy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  $size = $_.Size;
+                  $postfixes = @( "B ", "KB", "MB", "GB", "TB", "PB" )
+                  for ($i=0; $size -ge 1024 -and $i -lt $postfixes.Length; $i++) { $size = $size / 1024; }
+                  return "" + [System.Math]::Round($size,2) + " " + $postfixes[$i];
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  $footprint = $_.FootprintOnPool;
+                  $postfixes = @( "B ", "KB", "MB", "GB", "TB", "PB" )
+                  for ($i=0; $footprint -ge 1024 -and $i -lt $postfixes.Length; $i++) { $footprint = $footprint / 1024; }
+                  return "" + [System.Math]::Round($footprint,2) + " " + $postfixes[$i];
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  $efficiency = "";
+                  if ($_.FootprintOnPool -gt 0) { $efficiency = ($_.Size / $_.FootprintOnPool).ToString("P"); }
+                  return $efficiency
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // StorageFaultDomain
+    //
+
+    -->
+    <View>
+      <Name>StorageFaultDomainView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageFaultDomain</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+              <Label>Type</Label>
+              <Width>24</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SerialNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PhysicalLocation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HealthStatus</Label>
+            <Width>14</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationalStatus</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>
+                  return $_.ClassName.Replace('MSFT_', '');
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SerialNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PhysicalLocation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HealthStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationalStatus</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // PhysicalDisk
+    //
+
+    -->
+    <View>
+      <Name>PhysicalDiskTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Number</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SerialNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MediaType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CanPool</Label>
+            <Width>9</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationalStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HealthStatus</Label>
+            <Width>14</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Usage</Label>
+            <Width>14</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Size</Label>
+            <Width>10</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DeviceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SerialNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MediaType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CanPool</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationalStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HealthStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Usage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  $size = $_.Size;
+                  $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                  for ($i=0; $size -ge 1024 -and $i -lt $postfixes.Length; $i++) { $size = $size / 1024; }
+                  return "" + [System.Math]::Round($size,2) + " " + $postfixes[$i];
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>AdvancedPhysicalDiskTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Windows.StorageManagement.PhysicalDiskAdvancedProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SerialNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsPowerProtected</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDeviceCacheEnabled</Label>
+            <Width>24</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>$_.PhysicalDisk.FriendlyName</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.PhysicalDisk.SerialNumber</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <PropertyName>IsPowerProtected</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <PropertyName>IsDeviceCacheEnabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // StorageError
+    //
+
+    -->
+    <View>
+      <Name>StorageError_v1TableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Windows.StorageManagement.StorageError_v1</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <PropertyName>DeviceGuid</PropertyName>
+        <CustomControlName>DeviceInformation</CustomControlName>
+      </GroupBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Date</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Hour</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Command</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SrbStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScsiStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SenseKey</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SenseCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SenseCodeQualifier</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IoSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LBA</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  [DateTime]$datetime = $_.EventTime.ToString('yyyy/MM/dd HH:MM:00')
+                  return $datetime.ToShortDateString()
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  [DateTime]$datetime = $_.EventTime.ToString('yyyy/MM/dd HH:MM:00')
+                  return $datetime.ToShortTimeString()
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return "0x" + [String]::Format('{0:x2}',$_.Command)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return "0x" + [String]::Format('{0:x2}',$_.SrbStatus)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return "0x" + [String]::Format('{0:x2}',$_.ScsiStatus)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return "0x" + [String]::Format('{0:x2}',$_.SenseKey)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return "0x" + [String]::Format('{0:x2}',$_.SenseCode)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return "0x" + [String]::Format('{0:x2}',$_.SenseCodeQualifier)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N0}',$_.IoSize)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N0}',$_.LBA)
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // StorageHistory
+    //
+
+    -->
+    <View>
+      <Name>StorageHistory_v5TableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Windows.StorageManagement.StorageHistory_v5</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <PropertyName>DeviceGuid</PropertyName>
+        <CustomControlName>DeviceInformation</CustomControlName>
+      </GroupBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Date</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Hour</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TotalIoCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxOutstandingCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AvgIoLatency(us)</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxIoLatency(us)</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  [DateTime]$datetime = $_.EventTime.ToString('yyyy/MM/dd HH:00:00')
+                  return $datetime.ToShortDateString()
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  [DateTime]$datetime = $_.EventTime.ToString('yyyy/MM/dd HH:00:00')
+                  return $datetime.ToShortTimeString()
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N0}',$_.TotalIoCount)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <PropertyName>MaxOutstandingCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N1}',$_.AvgIoLatency/10)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N1}',$_.MaxIoLatency/10)
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>StorageHistory_v11TableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Windows.StorageManagement.StorageHistory_v11</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <PropertyName>DeviceGuid</PropertyName>
+        <CustomControlName>DeviceInformation</CustomControlName>
+      </GroupBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Date</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Hour</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TotalIoCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FailedIoCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxOutstandingCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AvgIoLatency(us)</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxIoLatency(us)</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TotalQueueIoCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AvgQueueIoWaitTime(us)</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxQueueIoWaitTime(us)</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>QueueIoWaitExceededTimeoutCount</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  [DateTime]$datetime = $_.EventTime.ToString('yyyy/MM/dd HH:00:00')
+                  return $datetime.ToShortDateString()
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  [DateTime]$datetime = $_.EventTime.ToString('yyyy/MM/dd HH:00:00')
+                  return $datetime.ToShortTimeString()
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N0}',$_.TotalIoCount)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N0}',$_.FailedIoCount)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <PropertyName>MaxOutstandingCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N1}',$_.AvgIoLatency/10)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N1}',$_.MaxIoLatency/10)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N0}',$_.TotalQueueIoCount)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N1}',$_.AvgQueueIoWaitTime/10)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N1}',$_.MaxQueueIoWaitTime/10)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N0}',$_.QueueIoWaitExceededTimeoutCount)
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // StorageHistoryAggregate
+    //
+
+    -->
+    <View>
+      <Name>StorageHistoryAggregate_v5TableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Windows.StorageManagement.StorageHistoryAggregate_v5</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DeviceNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SerialNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BusType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MediaType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TotalIoCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AvgIoLatency(us)</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxIoLatency(us)</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EventCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>16ms</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>64ms</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>2s</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>5s</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>5+s</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DeviceNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SerialNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BusType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MediaType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N0}',$_.TotalIoCount)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N1}',$_.AvgIoLatency/10)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N1}',$_.MaxIoLatency/10)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <PropertyName>EventCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[0] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[0]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[1] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[1]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[2] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[2]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[3] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[3]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[4] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[4]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>StorageHistoryAggregate_v11TableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Windows.StorageManagement.StorageHistoryAggregate_v11</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DeviceNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SerialNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BusType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MediaType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TotalIoCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FailedIoCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TotalQueueIoCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AvgIoLatency(us)</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxIoLatency(us)</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EventCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>256us</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>1ms</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>4ms</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>16ms</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>64ms</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>128ms</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>256ms</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>2s</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>6s</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>10s</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>20s</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>20+s</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DeviceNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SerialNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BusType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MediaType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N0}',$_.TotalIoCount)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N0}',$_.FailedIoCount)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N0}',$_.TotalQueueIoCount)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N1}',$_.AvgIoLatency/10)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  return [String]::Format('{0:N1}',$_.MaxIoLatency/10)
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <PropertyName>EventCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[0] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[0]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[1] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[1]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[2] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[2]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[3] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[3]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[4] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[4]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[5] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[5]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[6] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[6]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[7] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[7]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[8] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[8]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[9] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[9]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[10] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[10]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  if ($_.BucketHighestLatencyCount[11] -gt 0)
+                  {
+                    return $_.BucketHighestLatencyCount[11]
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // StoragePool
+    //
+
+    -->
+    <View>
+      <Name>StoragePoolTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StoragePool</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationalStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HealthStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsPrimordial</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsReadOnly</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Size</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AllocatedSize</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationalStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HealthStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsPrimordial</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsReadOnly</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  $size = $_.Size;
+                  $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                  for ($i=0; $size -ge 1024 -and $i -lt $postfixes.Length; $i++) { $size = $size / 1024; }
+                  return "" + [System.Math]::Round($size,2) + " " + $postfixes[$i];
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  $allocatedSize = $_.AllocatedSize;
+                  $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                  for ($i=0; $allocatedSize -ge 1024 -and $i -lt $postfixes.Length; $i++) { $allocatedSize = $allocatedSize / 1024; }
+                  return "" + [System.Math]::Round($allocatedSize,2) + " " + $postfixes[$i];
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // ResiliencySetting
+    //
+
+    -->
+    <View>
+      <Name>ResiliencySettingTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_ResiliencySetting</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <PropertyName>StoragePoolFriendlyName</PropertyName>
+        <Label>StoragePoolFriendlyName</Label>
+      </GroupBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NumberOfDataCopies</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FaultDomainRedundancy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NumberOfColumns</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Interleave</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NumberOfGroups</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NumberOfDataCopiesDefault</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PhysicalDiskRedundancyDefault</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NumberOfColumnsDefault</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InterleaveDefault</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NumberOfGroupsDefault</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // StorageEnclosure
+    //
+
+    -->
+    <View>
+      <Name>StorageEnclosureTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageEnclosure</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SerialNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationalStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HealthStatus</Label>
+            <Width>13</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NumberOfSlots</Label>
+            <Width>14</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ElementTypesInError</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SerialNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationalStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HealthStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NumberOfSlots</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                    $ElementTypesInError = @( );
+                    foreach ( $status in $_.SlotOperationalStatus )
+                    {
+                        if ( ( $status -ne "OK" ) -and ( $status -ne "Not Installed" ) -and ( $status -ne "Off" ) -and ( $status -ne "No Access Allowed" ) -and ( $status -ne "Not Reported" ) )
+                        {
+                            $ElementTypesInError = $ElementTypesInError + "Slot";
+                            break;
+                        }
+                    }
+                    foreach ( $status in $_.PowerSupplyOperationalStatus )
+                    {
+                        if ( ( $status -ne "OK" ) -and ( $status -ne "Not Installed" ) -and ( $status -ne "Off" ) -and ( $status -ne "No Access Allowed" ) -and ( $status -ne "Not Reported" ) )
+                        {
+                            $ElementTypesInError = $ElementTypesInError + "PowerSupply";
+                            break;
+                        }
+                    }
+                    foreach ( $status in $_.FanOperationalStatus )
+                    {
+                        if ( ( $status -ne "OK" ) -and ( $status -ne "Not Installed" ) -and ( $status -ne "Off" ) -and ( $status -ne "No Access Allowed" ) -and ( $status -ne "Not Reported" ) )
+                        {
+                            $ElementTypesInError = $ElementTypesInError + "Fan";
+                            break;
+                        }
+                    }
+                    foreach ( $status in $_.TemperatureSensorOperationalStatus )
+                    {
+                        if ( ( $status -ne "OK" ) -and ( $status -ne "Not Installed" ) -and ( $status -ne "Off" ) -and ( $status -ne "No Access Allowed" ) -and ( $status -ne "Not Reported" ) )
+                        {
+                            $ElementTypesInError = $ElementTypesInError + "TemperatureSensor";
+                            break;
+                        }
+                    }
+                    foreach ( $status in $_.VoltageSensorOperationalStatus )
+                    {
+                        if ( ( $status -ne "OK" ) -and ( $status -ne "Not Installed" ) -and ( $status -ne "Off" ) -and ( $status -ne "No Access Allowed" ) -and ( $status -ne "Not Reported" ) )
+                        {
+                            $ElementTypesInError = $ElementTypesInError + "VoltageSensor";
+                            break;
+                        }
+                    }
+                    foreach ( $status in $_.CurrentSensorOperationalStatus )
+                    {
+                        if ( ( $status -ne "OK" ) -and ( $status -ne "Not Installed" ) -and ( $status -ne "Off" ) -and ( $status -ne "No Access Allowed" ) -and ( $status -ne "Not Reported" ) )
+                        {
+                            $ElementTypesInError = $ElementTypesInError + "CurrentSensor";
+                            break;
+                        }
+                    }
+                    foreach ( $status in $_.IOControllerOperationalStatus )
+                    {
+                        if ( ( $status -ne "OK" ) -and ( $status -ne "Not Installed" ) -and ( $status -ne "Off" ) -and ( $status -ne "No Access Allowed" ) -and ( $status -ne "Not Reported" ) )
+                        {
+                            $ElementTypesInError = $ElementTypesInError + "IOController";
+                            break;
+                        }
+                    }
+                    return $ElementTypesInError;
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // StorageProvider
+    //
+
+    -->
+    <View>
+      <Name>StorageProviderTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageProvider</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Type</Label>
+            <Width>7</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Manufacturer</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Manufacturer</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>StorageProviderListView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageProvider</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>UniqueId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Manufacturer</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Version</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>StorageProviderWideView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageProvider</TypeName>
+      </ViewSelectedBy>
+      <WideControl>
+        <WideEntries>
+          <WideEntry>
+            <WideItem>
+              <PropertyName>Name</PropertyName>
+            </WideItem>
+          </WideEntry>
+        </WideEntries>
+      </WideControl>
+    </View>
+    <!--
+
+    //
+    // StorageSubSystem
+    //
+
+    -->
+    <View>
+      <Name>StorageSubSystemTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubSystem</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HealthStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationalStatus</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HealthStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationalStatus</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // StorageNode
+    //
+
+    -->
+    <View>
+      <Name>StorageNodeTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageNode</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Manufacturer</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Model</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SerialNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationalStatus</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Manufacturer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Model</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SerialNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationalStatus</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // Volume
+    //
+
+    -->
+      <View>
+          <Name>VolumeTableView</Name>
+          <ViewSelectedBy>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_Volume</TypeName>
+          </ViewSelectedBy>
+          <TableControl>
+              <TableHeaders>
+                  <TableColumnHeader>
+                      <Label>DriveLetter</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>FriendlyName</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>FileSystemType</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>DriveType</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>HealthStatus</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>OperationalStatus</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>SizeRemaining</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>Size</Label>
+                  </TableColumnHeader>
+              </TableHeaders>
+              <TableRowEntries>
+                  <TableRowEntry>
+                      <TableColumnItems>
+                          <TableColumnItem>
+                              <PropertyName>DriveLetter</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>FileSystemLabel</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>FileSystemType</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>DriveType</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>HealthStatus</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>OperationalStatus</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <Alignment>Right</Alignment>
+                              <ScriptBlock>
+                                  $size = $_.SizeRemaining;
+                                  $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                                  for ($i=0; $size -ge 1024 -and $i -lt $postfixes.Length; $i++) { $size = $size / 1024; }
+                                  return "" + [System.Math]::Round($size,2) + " " + $postfixes[$i];
+                              </ScriptBlock>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <Alignment>Right</Alignment>
+                              <ScriptBlock>
+                                  $size = $_.Size;
+                                  $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                                  for ($i=0; $size -ge 1024 -and $i -lt $postfixes.Length; $i++) { $size = $size / 1024; }
+                                  return "" + [System.Math]::Round($size,2) + " " + $postfixes[$i];
+                              </ScriptBlock>
+                          </TableColumnItem>
+                      </TableColumnItems>
+                  </TableRowEntry>
+              </TableRowEntries>
+          </TableControl>
+      </View>
+    <!--
+
+    //
+    // InitiatorPort
+    //
+
+    -->
+      <View>
+          <Name>InitiatorPortTableView</Name>
+          <ViewSelectedBy>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_InitiatorPort</TypeName>
+          </ViewSelectedBy>
+          <TableControl>
+              <TableHeaders>
+                  <TableColumnHeader>
+                      <Label>InstanceName</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>NodeAddress</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>PortAddress</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>ConnectionType</Label>
+                  </TableColumnHeader>
+              </TableHeaders>
+              <TableRowEntries>
+                  <TableRowEntry>
+                      <TableColumnItems>
+                          <TableColumnItem>
+                              <PropertyName>InstanceName</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>NodeAddress</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>PortAddress</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>ConnectionType</PropertyName>
+                          </TableColumnItem>
+                      </TableColumnItems>
+                  </TableRowEntry>
+              </TableRowEntries>
+          </TableControl>
+      </View>
+   <!--
+
+    //
+    // InitiatorId
+    //
+
+    -->
+      <View>
+          <Name>InitiatorIdTableView</Name>
+          <ViewSelectedBy>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_InitiatorId</TypeName>
+          </ViewSelectedBy>
+          <TableControl>
+              <TableHeaders>
+                  <TableColumnHeader>
+                      <Label>InitiatorAddress</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>Type</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>HostType</Label>
+                  </TableColumnHeader>
+              </TableHeaders>
+              <TableRowEntries>
+                  <TableRowEntry>
+                      <TableColumnItems>
+                          <TableColumnItem>
+                              <PropertyName>InitiatorAddress</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>Type</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>HostType</PropertyName>
+                          </TableColumnItem>
+                      </TableColumnItems>
+                  </TableRowEntry>
+              </TableRowEntries>
+          </TableControl>
+      </View>
+    <!--
+
+    //
+    // TargetPort
+    //
+
+    -->
+      <View>
+          <Name>TargetPortTableView</Name>
+          <ViewSelectedBy>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_TargetPort</TypeName>
+          </ViewSelectedBy>
+          <TableControl>
+              <TableHeaders>
+                  <TableColumnHeader>
+                      <Label>FriendlyName</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>NodeAddress</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>PortAddress</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>ConnectionType</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>HealthStatus</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>OperationalStatus</Label>
+                  </TableColumnHeader>
+              </TableHeaders>
+              <TableRowEntries>
+                  <TableRowEntry>
+                      <TableColumnItems>
+                          <TableColumnItem>
+                              <PropertyName>FriendlyName</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>NodeAddress</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>PortAddress</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>ConnectionType</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>HealthStatus</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>OperationalStatus</PropertyName>
+                          </TableColumnItem>
+                      </TableColumnItems>
+                  </TableRowEntry>
+              </TableRowEntries>
+          </TableControl>
+      </View>
+    <!--
+
+    //
+    // TargetPortal
+    //
+
+    -->
+    <View>
+      <Name>TargetPortalTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_TargetPortal</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IPv4 Address</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IPv6 Address</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Port Number</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Subnet Mask</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IPv4Address</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IPv6Address</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PortNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubnetMask</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+      <!--
+
+    //
+    // MaskingSet
+    //
+
+    -->
+      <View>
+          <Name>MaskingSetTableView</Name>
+          <ViewSelectedBy>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_MaskingSet</TypeName>
+          </ViewSelectedBy>
+          <TableControl>
+              <TableHeaders>
+                  <TableColumnHeader>
+                      <Label>FriendlyName</Label>
+                  </TableColumnHeader>
+                  <TableColumnHeader>
+                      <Label>HostType</Label>
+                  </TableColumnHeader>
+              </TableHeaders>
+              <TableRowEntries>
+                  <TableRowEntry>
+                      <TableColumnItems>
+                          <TableColumnItem>
+                              <PropertyName>FriendlyName</PropertyName>
+                          </TableColumnItem>
+                          <TableColumnItem>
+                              <PropertyName>HostType</PropertyName>
+                          </TableColumnItem>
+                      </TableColumnItems>
+                  </TableRowEntry>
+              </TableRowEntries>
+          </TableControl>
+      </View>
+    <!--
+
+    //
+    // StorageJob
+    //
+
+    -->
+    <View>
+      <Name>StorageJobTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageJob</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsBackgroundTask</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ElapsedTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>JobState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PercentComplete</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BytesProcessed</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BytesTotal</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsBackgroundTask</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ElapsedTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>JobState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PercentComplete</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  $bytesProcessed = $_.BytesProcessed;
+                  $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                  for ($i=0; $bytesProcessed -ge 1024 -and $i -lt $postfixes.Length; $i++) { $bytesProcessed = $bytesProcessed / 1024; }
+                  return "" + [System.Math]::Round($bytesProcessed,2) + " " + $postfixes[$i];
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Right</Alignment>
+                <ScriptBlock>
+                  $bytesTotal = $_.BytesTotal;
+                  $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                  for ($i=0; $bytesTotal -ge 1024 -and $i -lt $postfixes.Length; $i++) { $bytesTotal = $bytesTotal / 1024; }
+                  return "" + [System.Math]::Round($bytesTotal,2) + " " + $postfixes[$i];
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // FileIntegrity
+    //
+
+    -->
+    <View>
+      <Name>FileIntegrityTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_FileIntegrity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FileName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Enforced</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FileName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Enforced</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+      //
+      // FileStorageTier
+      //
+
+      -->
+      <View>
+        <Name>FileStorageTierTableView</Name>
+        <ViewSelectedBy>
+          <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_FileStorageTier</TypeName>
+        </ViewSelectedBy>
+        <TableControl>
+          <TableHeaders>
+              <TableColumnHeader>
+                <Label>FilePath</Label>
+              </TableColumnHeader>
+              <TableColumnHeader>
+                <Label>FileSize</Label>
+              </TableColumnHeader>
+              <TableColumnHeader>
+                <Label>DesiredStorageTierClass</Label>
+              </TableColumnHeader>
+              <TableColumnHeader>
+                <Label>FileSizeOnDesiredStorageTierClass</Label>
+              </TableColumnHeader>
+              <TableColumnHeader>
+                <Label>PlacementStatus</Label>
+              </TableColumnHeader>
+              <TableColumnHeader>
+                <Label>State</Label>
+              </TableColumnHeader>
+              <TableColumnHeader>
+                <Label>PlacementPercentage</Label>
+              </TableColumnHeader>
+          </TableHeaders>
+          <TableRowEntries>
+            <TableRowEntry>
+              <TableColumnItems>
+                <TableColumnItem>
+                  <PropertyName>FilePath</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                  <PropertyName>FileSize</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                  <PropertyName>DesiredStorageTierClass</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                  <PropertyName>FileSizeOnDesiredStorageTierClass</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                  <PropertyName>PlacementStatus</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                  <PropertyName>State</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                  <ScriptBlock>
+                    "{0:P}" -f ($_.FileSizeOnDesiredStorageTierClass / $_.FileSize);
+                  </ScriptBlock>
+                </TableColumnItem>
+              </TableColumnItems>
+            </TableRowEntry>
+          </TableRowEntries>
+        </TableControl>
+      </View>
+      <!--
+
+    //
+    // StorageNodeToDisk
+    //
+
+    -->
+    <View>
+      <Name>StorageNodeToDisk</Name>
+      <ViewSelectedBy>
+          <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageNodeToDisk</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <PropertyName>StorageNodeObjectId</PropertyName>
+        <Label>StorageNodeObjectId</Label>
+      </GroupBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>DiskNumber</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>HealthStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>OperationalStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsReadOnly</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsOffline</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>OfflineReason</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>StorageNode</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Disk</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <!--
+
+    //
+    // FileServer
+    //
+
+    -->
+    <View>
+      <Name>FileServerTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_FileServer</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+          <TableHeaders>
+            <TableColumnHeader>
+              <Label>FriendlyName</Label>
+            </TableColumnHeader>
+            <TableColumnHeader>
+              <Label>HealthStatus</Label>
+            </TableColumnHeader>
+            <TableColumnHeader>
+              <Label>OperationalStatus</Label>
+            </TableColumnHeader>
+          </TableHeaders>
+          <TableRowEntries>
+            <TableRowEntry>
+              <TableColumnItems>
+                <TableColumnItem>
+                  <PropertyName>FriendlyName</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                  <PropertyName>HealthStatus</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                  <PropertyName>OperationalStatus</PropertyName>
+                </TableColumnItem>
+              </TableColumnItems>
+            </TableRowEntry>
+          </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // FileShare
+    //
+
+    -->
+    <View>
+      <Name>FileShareTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_FileShare</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+          <TableHeaders>
+            <TableColumnHeader>
+              <Label>Name</Label>
+            </TableColumnHeader>
+            <TableColumnHeader>
+              <Label>HealthStatus</Label>
+            </TableColumnHeader>
+            <TableColumnHeader>
+              <Label>OperationalStatus</Label>
+            </TableColumnHeader>
+          </TableHeaders>
+          <TableRowEntries>
+            <TableRowEntry>
+              <TableColumnItems>
+                <TableColumnItem>
+                  <PropertyName>Name</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                  <PropertyName>HealthStatus</PropertyName>
+                </TableColumnItem>
+                <TableColumnItem>
+                  <PropertyName>OperationalStatus</PropertyName>
+                </TableColumnItem>
+              </TableColumnItems>
+            </TableRowEntry>
+          </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // StorageReliabilityCounter
+    //
+
+    -->
+    <View>
+      <Name>StorageReliabilityCounterTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageReliabilityCounter</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Number</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Temperature</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ReadErrorsUncorrected</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Wear</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PowerOnHours</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DeviceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  if( $_.Temperature )
+                  {
+                    $_str += $_.Temperature;
+                    $_str += " C"
+                  }
+                  return $_str
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ReadErrorsUncorrected</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Wear</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PowerOnHours</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+      //
+      // StorageNodeToPhysicalDisk
+      //
+
+      -->
+    <View>
+      <Name>StorageNodeToPhysicalDisk</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageNodeToPhysicalDisk</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <PropertyName>StorageNodeObjectId</PropertyName>
+        <Label>StorageNodeObjectId</Label>
+      </GroupBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>DiskNumber</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsPhysicallyConnected</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>HealthStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>OperationalStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsMpioEnabled</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>LoadBalancePolicy</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PathId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PathState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>StorageNode</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PhysicalDisk</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <!--
+
+      //
+      // StorageNodeToStorageEnclosure
+      //
+
+      -->
+    <View>
+      <Name>StorageNodeToStorageEnclosure</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageNodeToStorageEnclosure</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <PropertyName>StorageNodeObjectId</PropertyName>
+        <Label>StorageNodeObjectId</Label>
+      </GroupBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>EnclosureNumber</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsPhysicallyConnected</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>HealthStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>SlotOperationalStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PowerSupplyOperationalStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>FanOperationalStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>TemperatureSensorOperationalStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>VoltageSensorOperationalStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>CurrentSensorOperationalStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IOControllerOperationalStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>StorageNode</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>StorageEnclosure</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <!--
+
+    //
+    // HealthAction
+    //
+
+    -->
+    <View>
+      <Name>HealthActionTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_HealthAction</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PercentComplete</Label>
+            <Width>18</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>State</Label>
+            <Width>25</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+            <Width>25</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Reason</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap>true</Wrap>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PercentComplete</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>State</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Reason</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // Diagnose Result (Debug-*)
+    //
+
+    -->
+    <View>
+      <Name>StorageDiagnoseResultListView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageDiagnoseResult</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <PropertyName>PerceivedSeverity</PropertyName>
+        <Label>Severity</Label>
+      </GroupBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Reason</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Recommendation</Label>
+                <ScriptBlock>$($_.RecommendedActions -join "`r`n")</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>FaultingObjectLocation</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Description</Label>
+                <PropertyName>FaultingObjectDescription</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>StorageDiagnoseResultTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageDiagnoseResult</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <PropertyName>PerceivedSeverity</PropertyName>
+        <Label>Severity</Label>
+      </GroupBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Reason</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap>true</Wrap>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Reason</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FaultingObjectDescription</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <!--
+
+    //
+    // Reports
+    //
+
+    -->
+    <View>
+      <Name>StorageDiagnoseResultTableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimMethodStreamedResult#MSFT_StorageHealth#GetReport</TypeName>
+      </ViewSelectedBy>
+      <TableControl >
+        <HideTableHeaders>true</HideTableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap>true</Wrap>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>
+                  $postfixes = @( "B", "KB", "MB", "GB", "TB", "PB" )
+                  $bytesPerSecond = @( "B/S", "KB/S", "MB/S", "GB/S", "TB/S", "PB/S" )
+                  $Seconds = @( "min", "s", "ms", "us","ns" )
+                  $nameLength = 0
+                  $valueLength = 0
+                  $values = @()
+                  $postFx = @()
+
+                  foreach($r in $_.ItemValue.Records)
+                  {
+                    if ($r.Name.Length -gt $nameLength)
+                    {
+                      $nameLength = $r.Name.Length
+                    }
+
+                    $localValue=""
+                    switch($r.Units)
+                    {
+                        0{
+                            $size = $r.Value;
+                            for ($i=0; $size -ge 1024 -and $i -lt $postfixes.Length; $i++) { $size = $size / 1024; }
+
+                            $localValue = "{0}" -f [System.Math]::Round($size,2)
+                            $values += $localValue
+                            $postfx += $postfixes[$i];
+                        }
+                        1{
+                            $size = $r.Value;
+                            for ($i=0; $size -ge 1024 -and $i -lt $bytesPerSecond.Length; $i++) { $size = $size / 1024; }
+
+                            $localValue = "{0}" -f [System.Math]::Round($size,2)
+                            $values += $localValue
+                            $postfx += $bytesPerSecond[$i];
+                        }
+                        2{
+                            $localValue = "{0}" -f [System.Math]::Round($r.Value,2)
+                            $values += $localValue
+                            $postfx += "/S";
+                        }
+                        3{
+                            $size = $r.Value;
+                            $i = 1
+                            if ($size -lt 1)
+                            {
+                                for($i = 1; $size -le 1 -and $i -lt $Seconds.Length; $i++ ) { $size = $size * 1000; }
+                            }
+                            else
+                            {
+                                if($size -gt 60)
+                                {
+                                    $size = $size / 60
+                                    $i--
+                                }
+                            }
+
+                            $localValue = "{0}" -f [System.Math]::Round($size,2)
+                            $values += $localValue
+                            $postfx += $Seconds[$i];
+                        }
+                        4{
+                            $localValue = "{0}" -f [System.Math]::Round($r.Value,2)
+                            $values += $localValue
+                            $postfx += "%";
+                        }
+                        default
+                        {
+                            $values += $r.Value
+                            $postfx += "";
+                        }
+                    }
+
+                    if($localValue.Length -gt $valueLength)
+                    {
+                      $valueLength = $localValue.Length
+                    }
+                  }
+                  $j=0;
+                  foreach($r in $_.ItemValue.Records)
+                  {
+                    $s = "{0,-$nameLength} : {1,$valueLength} {2}" -f @($r.Name, $values[$j], $postfx[$j] )
+                    Write-host $s
+                    $j++
+                  }
+
+                  write-host ""
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
+<DefaultSettings>
+  <EnumerableExpansions>
+    <EnumerableExpansion>
+      <EntrySelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_HealthRecord</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_HealthRecordUInt64</TypeName>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_HealthRecordReal64</TypeName>
+      </EntrySelectedBy>
+      <Expand>Both</Expand>
+    </EnumerableExpansion>
+  </EnumerableExpansions>
+</DefaultSettings>
+</Configuration>
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+	<ViewDefinitions>
+		<View>
+		  <Name>MSFT_NCSIPolicyConfiguration</Name>
+		  <ViewSelectedBy>
+		    <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_NCSIPolicyConfiguration</TypeName>
+   		    <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_NCSIPolicyConfiguration</TypeName>
+		  </ViewSelectedBy>
+		  <ListControl>
+		    <ListEntries>
+		      <ListEntry>
+		        <ListItems>
+      		          <ListItem>
+		            <PropertyName>Description</PropertyName>
+		          </ListItem>
+		          <ListItem>
+		            <PropertyName>CorporateDNSProbeHostAddress</PropertyName>
+		          </ListItem>
+		          <ListItem>
+		            <PropertyName>CorporateDNSProbeHostName</PropertyName>
+		          </ListItem>
+		          <ListItem>
+		            <PropertyName>CorporateSitePrefixList</PropertyName>
+		          </ListItem>
+		          <ListItem>
+		            <PropertyName>CorporateWebsiteProbeURL</PropertyName>
+		          </ListItem>
+		          <ListItem>
+		            <PropertyName>DomainLocationDeterminationURL</PropertyName>
+		          </ListItem>
+		        </ListItems>
+		      </ListEntry>
+		    </ListEntries>
+		  </ListControl>
+		</View>
+	</ViewDefinitions>
+</Configuration>
+

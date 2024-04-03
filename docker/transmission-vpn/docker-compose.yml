@@ -1,0 +1,35 @@
+version: '3'
+services:
+  transmission-vpn:
+    image: haugene/transmission-openvpn
+    container_name: transmission-vpn
+    restart: unless-stopped
+    ports:
+      - "$TRANSMISSION_VPN_PORT:9091"
+    cap_add:
+      - NET_ADMIN
+    sysctls:
+      - "net.ipv6.conf.all.disable_ipv6=0" # ipv6 must be enabled for Mullvad to work
+    volumes:
+      - $DOCKERDIR/transmission-vpn:/config
+      - $DATADIR:/data
+    environment:
+      - TZ=$TZ
+      - OPENVPN_PROVIDER=MULLVAD
+      - OPENVPN_USERNAME=$MULLVAD_USER
+      - PENVPN_PASSWORD=m
+      - OPENVPN_CONFIG=au_all
+       # - LOCAL_NETWORK=$LAN
+      - RANSMISSION_RPC_AUTHENTICATION_REQUIRED=true
+      - TRANSMISSION_RPC_USERNAME=$TRANSMISSION_VPN_USER
+      - TRANSMISSION_RPC_PASSWORD=$TRANSMISSION_VPN_PASS
+      - TRANSMISSION_PORT_FORWARDING_ENABLED=true
+      - TRANSMISSION_RATIO_LIMIT_ENABLED=true
+      - TRANSMISSION_RATIO_LIMIT=2
+      - TRANSMISSION_HOME=/config
+      - TRANSMISSION_DOWNLOAD_DIR=$COMPLETEDDIR
+      - TRANSMISSION_INCOMPLETE_DIR_ENABLED=true
+      - TRANSMISSION_INCOMPLETE_DIR=$INCOMPLETEDIR
+      - TRANSMISSION_WATCH_DIR_ENABLED=true
+      - TRANSMISSION_WATCH_DIR=$WATCHDIR
+      - LOG_TO_STDOUT=true

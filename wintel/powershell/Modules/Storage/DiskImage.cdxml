@@ -1,0 +1,150 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_DiskImage">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>DiskImage</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-DiskImage
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByImagePath">
+        <QueryableAssociations>
+          <!-- Volume -->
+          <Association Association="MSFT_DiskImageToVolume" SourceRole="Volume" ResultRole="DiskImage">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Volume" />
+              <CmdletParameterMetadata PSName="Volume" ValueFromPipeline="true" CmdletParameterSets="ByVolume" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+        </QueryableAssociations>
+        <QueryOptions>
+          <!-- ImagePath -->
+          <Option OptionName="ImagePath">
+            <Type PSType="System.String[]" />
+            <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" IsMandatory="true" CmdletParameterSets="ByImagePath" Position="0" />
+          </Option>
+          <!-- DevicePath -->
+          <Option OptionName="DevicePath">
+            <Type PSType="System.String[]" />
+            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" IsMandatory="true" CmdletParameterSets="ByDevicePath" />
+          </Option>
+          <!-- VirtualStorageTypeDeviceId -->
+          <Option OptionName="VirtualStorageTypeDeviceId">
+            <Type PSType="DiskImage.StorageType" />
+            <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" PSName="StorageType" />
+          </Option>
+        </QueryOptions>
+      </GetCmdletParameters>
+      <!--
+
+      //
+      // Mount-DiskImage
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Mount" ConfirmImpact="Medium" />
+        <Method MethodName="Mount">
+          <Parameters>
+            <!-- Access -->
+            <Parameter ParameterName="Access">
+              <Type PSType="DiskImage.Access" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- NoDriveLetter -->
+            <Parameter ParameterName="NoDriveLetter">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <Parameter ParameterName="cim:OperationOption:PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata PSName="PassThru" />
+            </Parameter>
+            <!-- CMDLET OUTPUT -->
+            <Parameter ParameterName="DiskImage">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_DiskImage" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByImagePath">
+          <QueryOptions>
+            <!-- ImagePath -->
+            <Option OptionName="ImagePath">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" IsMandatory="true" CmdletParameterSets="ByImagePath" Position="0" />
+            </Option>
+            <!-- VirtualStorageTypeDeviceId -->
+            <Option OptionName="VirtualStorageTypeDeviceId">
+              <Type PSType="DiskImage.StorageType" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" PSName="StorageType" />
+            </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Dismount-DiskImage
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Dismount" ConfirmImpact="Medium" />
+        <Method MethodName="Dismount">
+        <Parameters>
+          <!-- CMDLET OUTPUT -->
+          <Parameter ParameterName="DiskImage">
+            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_DiskImage" />
+            <CmdletOutputMetadata />
+          </Parameter>
+          <!-- SourceCaller -->
+          <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+            <Type PSType="System.String" />
+          </Parameter>
+        </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByImagePath">
+          <QueryOptions>
+            <!-- ImagePath -->
+            <Option OptionName="ImagePath">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" IsMandatory="true" CmdletParameterSets="ByImagePath" Position="0" />
+            </Option>
+            <!-- DevicePath -->
+            <Option OptionName="DevicePath">
+              <Type PSType="System.String[]" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" IsMandatory="true" CmdletParameterSets="ByDevicePath" />
+            </Option>
+            <!-- VirtualStorageTypeDeviceId -->
+            <Option OptionName="VirtualStorageTypeDeviceId">
+              <Type PSType="DiskImage.StorageType" />
+              <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" PSName="StorageType" />
+            </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="DiskImage.StorageType" UnderlyingType="System.UInt32">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="ISO" Value="1" />
+      <Value Name="VHD" Value="2" />
+      <Value Name="VHDX" Value="3" />
+      <Value Name="VHDSet" Value="4" />
+    </Enum>
+    <Enum EnumName="DiskImage.Access" UnderlyingType="System.UInt16">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="ReadWrite" Value="2" />
+      <Value Name="ReadOnly" Value="3" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

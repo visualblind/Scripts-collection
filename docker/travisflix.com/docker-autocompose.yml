@@ -1,0 +1,258 @@
+version: "3"
+services:
+  droppy:
+    command:
+      - /droppy/docker-start.sh
+    container_name: droppy
+    entrypoint:
+      - docker-entrypoint.sh
+    environment:
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - NODE_VERSION=14.8.0
+      - YARN_VERSION=1.22.4
+    hostname: e22960bf56a4
+    image: silverwind/droppy
+    ipc: private
+    labels:
+      com.docker.compose.config-hash: 181c7b9a95c0496b5bde69811ef820a790e2083ab4a552719e01a2251f3d0937
+      com.docker.compose.container-number: 1
+      com.docker.compose.oneoff: False
+      com.docker.compose.project: droppy
+      com.docker.compose.project.config_files: /root/docker-compose/droppy/docker-compose.yml
+      com.docker.compose.project.working_dir: /root/docker-compose/droppy
+      com.docker.compose.service: droppy
+      com.docker.compose.version: 1.29.2
+    logging:
+      driver: json-file
+      options: {}
+    networks:
+      - linuxserver-nginx_default
+    ports:
+      - 8989:8989/tcp
+    restart: unless-stopped
+    volumes:
+      - /usr/local/droppy/config:/config:rw
+      - /usr/local/droppy/data:/files:rw
+      - /usr/local/jellyfin/media/video-tech:/files/media/video-tech:ro
+  jellyfin:
+    container_name: jellyfin
+    devices:
+      - /dev/dri:/dev/dri
+    entrypoint:
+      - /jellyfin/jellyfin
+    environment:
+      - JELLYFIN_PublishedServerUrl="http://deb-usca-03.travisflix.com"
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+      - LC_ALL=en_US.UTF-8
+      - LANG=en_US.UTF-8
+      - LANGUAGE=en_US:en
+      - JELLYFIN_MEDIA_DIR=/media
+      - JELLYFIN_DATA_DIR=/config
+      - JELLYFIN_CACHE_DIR=/cache
+      - JELLYFIN_CONFIG_DIR=/config/config
+      - JELLYFIN_LOG_DIR=/config/log
+      - JELLYFIN_WEB_DIR=/jellyfin/jellyfin-web
+      - JELLYFIN_FFMPEG=/usr/lib/jellyfin-ffmpeg/ffmpeg
+    expose:
+      - 8096/tcp
+    hostname: deb-usca-03.travisflix.com
+    image: jellyfin/jellyfin:10.7.6
+    ipc: private
+    labels:
+      com.docker.compose.config-hash: ad52b07b7527140e60d45c33e3d318c51d3ae8d4d53501163a81942c7e23e5c8
+      com.docker.compose.container-number: 1
+      com.docker.compose.oneoff: False
+      com.docker.compose.project: root
+      com.docker.compose.project.config_files: /root/docker-compose4.yml
+      com.docker.compose.project.working_dir: /root
+      com.docker.compose.service: jellyfin
+      com.docker.compose.version: 1.29.2
+    logging:
+      driver: json-file
+      options: {}
+    networks:
+      - host
+    restart: unless-stopped
+    volumes:
+      - /usr/local/jellyfin/media:/media:ro
+      - /usr/local/jellyfin/cache:/cache:rw
+      - /usr/local/jellyfin/config:/config:rw
+      - /usr/local/jellyfin/jellyfin-web:/jellyfin/jellyfin-web/src:rw
+  letsencryptpnw:
+    container_name: letsencryptpnw
+    entrypoint:
+      - /init
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=US/Pacific
+      - URL=pnwpanorama.com
+      - SUBDOMAINS=wildcard
+      - VALIDATION=dns
+      - DNSPLUGIN=cloudflare
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - 'PS1=$(whoami)@$(hostname):$(pwd)\$ '
+      - HOME=/root
+      - TERM=xterm
+      - DHLEVEL=2048
+      - ONLY_SUBDOMAINS=false
+      - AWS_CONFIG_FILE=/config/dns-conf/route53.ini
+      - S6_BEHAVIOUR_IF_STAGE2_FAILS=2
+    hostname: bec9c429ffaa
+    image: ghcr.io/linuxserver/letsencrypt:latest
+    ipc: private
+    labels:
+      build_version: 'Linuxserver.io version:- 1.11.0-ls157 Build-date:- 2021-01-05T19:21:19+00:00'
+      com.docker.compose.config-hash: a858a07f988ff9795b647befe09d3b886d5cb8a1c1eaaac64c568dbb679b0ce5
+      com.docker.compose.container-number: 1
+      com.docker.compose.oneoff: False
+      com.docker.compose.project: root
+      com.docker.compose.project.config_files: /root/docker-compose4.yml
+      com.docker.compose.project.working_dir: /root
+      com.docker.compose.service: letsencrypt
+      com.docker.compose.version: 1.29.2
+      maintainer: aptalca
+    logging:
+      driver: json-file
+      options: {}
+    networks:
+      - linuxserver-nginx_default
+    ports:
+      - 4433:443/tcp
+      - 8082:80/tcp
+    restart: unless-stopped
+    volumes:
+      - /docker_data/nginx/config:/config:rw
+  nginx:
+    container_name: nginx
+    entrypoint:
+      - /init
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - 'PS1=$(whoami)@$(hostname):$(pwd)\$ '
+      - HOME=/root
+      - TERM=xterm
+      - S6_BEHAVIOUR_IF_STAGE2_FAILS=2
+    hostname: 1e5f122f8228
+    image: ghcr.io/linuxserver/nginx:latest
+    ipc: private
+    labels:
+      build_version: 'Linuxserver.io version:- 1.20.1-r3-ls145 Build-date:- 2021-08-27T15:31:48+02:00'
+      com.docker.compose.config-hash: 917845c580c0142774dca9c724391930b146def3c53ba399274529dc91663ae1
+      com.docker.compose.container-number: 1
+      com.docker.compose.oneoff: False
+      com.docker.compose.project: 0_master
+      com.docker.compose.project.config_files: docker-compose.yml
+      com.docker.compose.project.working_dir: /root/docker-compose/0_MASTER
+      com.docker.compose.service: nginx_proxy
+      com.docker.compose.version: 1.29.2
+      maintainer: aptalca
+      org.opencontainers.image.authors: linuxserver.io
+      org.opencontainers.image.created: 2021-08-27T15:31:48+02:00
+      org.opencontainers.image.description: "[Nginx](https://nginx.org/) is a simple\
+        \ webserver with php support. The config files reside in  for easy user customization."
+      org.opencontainers.image.documentation: https://docs.linuxserver.io/images/docker-nginx
+      org.opencontainers.image.licenses: GPL-3.0-only
+      org.opencontainers.image.ref.name: 2c4954516e1ab6728fc4c37575ef5d2a73db19e3
+      org.opencontainers.image.revision: 2c4954516e1ab6728fc4c37575ef5d2a73db19e3
+      org.opencontainers.image.source: https://github.com/linuxserver/docker-nginx
+      org.opencontainers.image.title: Nginx
+      org.opencontainers.image.url: https://github.com/linuxserver/docker-nginx/packages
+      org.opencontainers.image.vendor: linuxserver.io
+      org.opencontainers.image.version: 1.20.1-r3-ls145
+    logging:
+      driver: json-file
+      options: {}
+    networks:
+      - linuxserver-nginx_default
+    ports:
+      - 443:443/tcp
+      - 80:80/tcp
+    restart: unless-stopped
+    volumes:
+      - /usr/local/linuxserver-nginx/config:/config:rw
+      - /run/nginx-cache:/config/nginx-cache:rw
+  openspeedtest:
+    command:
+      - nginx -g daemon off;
+    container_name: openspeedtest
+    entrypoint:
+      - /docker-entrypoint.sh
+    environment:
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - NGINX_VERSION=1.20.1
+      - NJS_VERSION=0.5.3
+      - PKG_RELEASE=1
+    hostname: 8de024c8e1f0
+    image: openspeedtest/latest
+    ipc: private
+    labels:
+      maintainer: OpenSpeedTest.com <support@OpenSpeedTest.com>
+    logging:
+      driver: json-file
+      options: {}
+    mac_address: 02:42:ac:11:00:02
+    networks:
+      - linuxserver-nginx_default
+    ports:
+      - 3000:3000/tcp
+    restart: unless-stopped
+    user: 101
+  pwndrop:
+    container_name: pwndrop
+    entrypoint:
+      - /init
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=America/Los_Angeles
+      - SECRET_PATH=/pwndrop
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - 'PS1=$(whoami)@$(hostname):$(pwd)\$ '
+      - HOME=/root
+      - TERM=xterm
+    hostname: 42e4e7851586
+    image: ghcr.io/linuxserver/pwndrop:latest
+    ipc: private
+    labels:
+      build_version: 'Linuxserver.io version:- 1.0.1-ls30 Build-date:- 2021-08-28T05:46:32+02:00'
+      com.docker.compose.config-hash: 97fcaed688154a55588750edacd4e9da003b05466a0fbb22c02fffc967bc4aad
+      com.docker.compose.container-number: 1
+      com.docker.compose.oneoff: False
+      com.docker.compose.project: pwndrop
+      com.docker.compose.project.config_files: docker-compose.yml
+      com.docker.compose.project.working_dir: /root/docker-compose/pwndrop
+      com.docker.compose.service: pwndrop
+      com.docker.compose.version: 1.29.2
+      maintainer: aptalca
+      org.opencontainers.image.authors: linuxserver.io
+      org.opencontainers.image.created: 2021-08-28T05:46:32+02:00
+      org.opencontainers.image.description: "[Pwndrop](https://github.com/kgretzky/pwndrop)\
+        \ is a self-deployable file hosting service for sending out red teaming payloads\
+        \ or securely sharing your private files over HTTP and WebDAV."
+      org.opencontainers.image.documentation: https://docs.linuxserver.io/images/docker-pwndrop
+      org.opencontainers.image.licenses: GPL-3.0-only
+      org.opencontainers.image.ref.name: 8802cfccf23f59bec834085ef9915eccb0009e81
+      org.opencontainers.image.revision: 8802cfccf23f59bec834085ef9915eccb0009e81
+      org.opencontainers.image.source: https://github.com/linuxserver/docker-pwndrop
+      org.opencontainers.image.title: Pwndrop
+      org.opencontainers.image.url: https://github.com/linuxserver/docker-pwndrop/packages
+      org.opencontainers.image.vendor: linuxserver.io
+      org.opencontainers.image.version: 1.0.1-ls30
+    logging:
+      driver: json-file
+      options: {}
+    networks:
+      - linuxserver-nginx_default
+    ports:
+      - 8080:8080/tcp
+    restart: unless-stopped
+    volumes:
+      - /usr/local/pwndrop/config:/config:rw
+networks:
+  linuxserver-nginx_default:
+    external: true

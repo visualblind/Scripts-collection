@@ -1,0 +1,151 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_StorageHealth">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>StorageHealth</DefaultNoun>
+      <InstanceCmdlets>
+        <!--
+        //
+        // Get-StorageHealth
+        //
+        -->
+        <GetCmdletParameters DefaultCmdletParameterSet="ByUniqueId">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery>
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryableAssociations>
+            <!-- Subsystem -->
+            <Association Association="MSFT_StorageSubsystemToStorageHealth" SourceRole="StorageSubsystem" ResultRole="StorageHealth">
+              <AssociatedInstance>
+                <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubsystem" />
+                <CmdletParameterMetadata PSName="Subsystem" ValueFromPipeline="true" CmdletParameterSets="BySubsystem" ErrorOnNoMatch="false" />
+              </AssociatedInstance>
+            </Association>
+          </QueryableAssociations>
+        </GetCmdletParameters>
+
+        <!--
+
+        //
+        // Get-StorageHealthSetting
+        //
+
+        -->
+        
+        <Cmdlet>
+          <CmdletMetadata Verb="Get" Noun="StorageHealthSettingInternal"/>
+          <Method MethodName="GetSetting">
+            <Parameters>
+              <!--Name-->
+              <Parameter ParameterName="Name">
+                <Type PSType="System.String" />
+                <CmdletParameterMetadata  />
+              </Parameter>
+              <!--SourceCaller-->
+              <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+                <Type PSType="System.String" />
+              </Parameter>
+               <!-- CMDLET OUTPUT --> 
+              <Parameter ParameterName="StorageHealthSetting">
+                <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageHealthSetting[]" />
+                <CmdletOutputMetadata />
+              </Parameter>
+            </Parameters>
+          </Method>
+          <GetCmdletParameters DefaultCmdletParameterSet="ByUniqueId">
+            <QueryableProperties>
+               <!-- UniqueId --> 
+              <Property PropertyName="UniqueId">
+                <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata PSName="UniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" />
+                </RegularQuery>
+              </Property>
+            </QueryableProperties>
+          </GetCmdletParameters>
+        </Cmdlet>
+        
+        <!--
+
+        //
+        // Set-StorageHealthSetting
+        //
+
+        -->
+        
+        <Cmdlet>
+          <CmdletMetadata Verb="Set" Noun="StorageHealthSettingInternal"/>
+          <Method MethodName="SetSetting">
+            <Parameters>
+              <!--Name-->
+              <Parameter ParameterName="Name">
+                <Type PSType="System.String" />
+                <CmdletParameterMetadata  />
+              </Parameter>
+              <!--Value-->
+              <Parameter ParameterName="Value">
+                <Type PSType="System.String" />
+                <CmdletParameterMetadata  />
+              </Parameter>
+              <!--SourceCaller-->
+              <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+                <Type PSType="System.String" />
+              </Parameter>
+            </Parameters>
+          </Method>
+          <GetCmdletParameters DefaultCmdletParameterSet="ByUniqueId">
+            <QueryableProperties>
+               <!-- UniqueId --> 
+              <Property PropertyName="UniqueId">
+                <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata PSName="UniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" />
+                </RegularQuery>
+              </Property>
+            </QueryableProperties>
+          </GetCmdletParameters>
+        </Cmdlet>
+
+        <!--
+
+        //
+        // Remove-StorageHealthSetting
+        //
+
+        -->
+
+        <Cmdlet>
+          <CmdletMetadata Verb="Remove" Noun="StorageHealthSettingInternal"/>
+          <Method MethodName="RemoveSetting">
+            <Parameters>
+              <!--Name-->
+              <Parameter ParameterName="Name">
+                <Type PSType="System.String" />
+                <CmdletParameterMetadata  />
+              </Parameter>
+              <!--SourceCaller-->
+              <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+                <Type PSType="System.String" />
+              </Parameter>
+            </Parameters>
+          </Method>
+          <GetCmdletParameters DefaultCmdletParameterSet="ByUniqueId">
+            <QueryableProperties>
+               <!-- UniqueId --> 
+              <Property PropertyName="UniqueId">
+                <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata PSName="UniqueId" IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" />
+                </RegularQuery>
+              </Property>
+            </QueryableProperties>
+          </GetCmdletParameters>
+        </Cmdlet>
+      </InstanceCmdlets>
+  </Class>
+</PowerShellMetadata>

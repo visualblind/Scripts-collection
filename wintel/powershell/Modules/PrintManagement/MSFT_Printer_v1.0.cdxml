@@ -1,0 +1,629 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/StandardCimv2/MSFT_Printer">
+    <Version>1.0</Version>
+    <DefaultNoun>Printer</DefaultNoun>
+    <InstanceCmdlets>
+      <!-- get-printer -->
+      <GetCmdletParameters>
+        <QueryableProperties>   
+          <Property PropertyName="Name">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata Position="0" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryOptions>
+          <Option OptionName="ComputerName">
+            <Type PSType="System.String" />
+            <CmdletParameterMetadata PSName="ComputerName" Aliases="CN">
+              <ValidateNotNull />
+              <ValidateNotNullOrEmpty />
+            </CmdletParameterMetadata>
+          </Option>
+          <Option OptionName="Full">
+            <Type PSType="System.Management.Automation.SwitchParameter" />
+            <CmdletParameterMetadata PSName="Full">
+              <ValidateNotNull />
+              <ValidateNotNullOrEmpty />
+            </CmdletParameterMetadata>
+          </Option>
+        </QueryOptions>
+      </GetCmdletParameters>
+      <Cmdlet>
+        <!-- remove-printer -->
+        <CmdletMetadata Verb="Remove" ConfirmImpact="Medium" />
+        <Method MethodName="cim:DeleteInstance">
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryOptions>
+            <Option OptionName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="ComputerName" Aliases="CN">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <Cmdlet>
+        <!-- set-printer -->
+        <CmdletMetadata ConfirmImpact="Medium" Verb="Set" />
+        <Method MethodName="cim:ModifyInstance">
+          <Parameters>
+            <Parameter ParameterName="Comment">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Datatype">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DriverName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="UntilTime">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="KeepPrintedJobs">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Location">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PermissionSDDL">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PortName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrintProcessor">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Priority">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Published">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RenderingMode">
+              <Type PSType="Printer.RenderingModeEnum" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SeparatorPageFile">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Shared">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ShareName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="StartTime">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DisableBranchOfficeLogging">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="BranchOfficeOfflineLogSizeMB">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="WorkflowPolicy">
+              <Type PSType="Printer.WorkflowPolicyEnum" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+        </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="Name">
+          <QueryableProperties>
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata CmdletParameterSets="Name" IsMandatory="true" Position="0" ValueFromPipelineByPropertyName="true">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+          <QueryOptions>
+            <Option OptionName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="ComputerName" Aliases="CN">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Option>
+          </QueryOptions>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata ConfirmImpact="Medium" Verb="Add"/>
+        <!-- add-printer (connection) -->
+        <Method MethodName="AddConnection" CmdletParameterSet="connection">
+          <Parameters>
+            <Parameter ParameterName="ConnectionName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+
+        <!-- add-printer (existing port) -->
+        <Method MethodName="AddByExistingPort" CmdletParameterSet="port">
+          <Parameters>
+            <Parameter ParameterName="Comment">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Datatype">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DriverName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="UntilTime">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="KeepPrintedJobs">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Location">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SeparatorPageFile">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="CN">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Shared">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ShareName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="StartTime">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="PermissionSDDL">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrintProcessor">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Priority">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Published">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RenderingMode">
+              <Type PSType="Printer.RenderingModeEnum" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PortName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DisableBranchOfficeLogging">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="BranchOfficeOfflineLogSizeMB">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="WorkflowPolicy">
+              <Type PSType="Printer.WorkflowPolicyEnum" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        
+        <!-- add-printer (new wsd port) -->
+        <Method MethodName="AddByWsdPort" CmdletParameterSet="wsd">
+          <Parameters>
+            <Parameter ParameterName="Comment">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Datatype">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="UntilTime">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="KeepPrintedJobs">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Location">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <AllowEmptyString />
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="SeparatorPageFile">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="CN">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Shared">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ShareName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="StartTime">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="PermissionSDDL">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PrintProcessor">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Priority">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Published">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RenderingMode">
+              <Type PSType="Printer.RenderingModeEnum" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DeviceURL">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DeviceUUID">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DisableBranchOfficeLogging">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="BranchOfficeOfflineLogSizeMB">
+              <Type PSType="System.UInt32" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="WorkflowPolicy">
+              <Type PSType="Printer.WorkflowPolicyEnum" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <!-- rename-printer -->
+        <CmdletMetadata ConfirmImpact="Medium" Verb="Rename"/>
+        <Method MethodName="RenameByName" CmdletParameterSet="name">
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="NewName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="RenameByObject" CmdletParameterSet="object">
+          <Parameters>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_Printer" />
+              <CmdletParameterMetadata IsMandatory="true" Position="0" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <Parameter ParameterName="NewName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+
+  <Enums>
+    <Enum EnumName="Printer.RenderingModeEnum" UnderlyingType="UInt32">
+      <Value Name="SSR" Value="0" />
+      <Value Name="CSR" Value="1" />
+      <Value Name="BranchOffice" Value="2" />
+    </Enum>
+
+    <Enum EnumName="Printer.PrinterStatus" UnderlyingType="UInt32" BitwiseFlags="true">
+      <Value Name="Normal" Value="0" />
+      <Value Name="Paused" Value="1" />
+      <Value Name="Error"  Value="2" />
+      <Value Name="PendingDeletion" Value="4" />
+      <Value Name="PaperJam" Value="8" />
+      <Value Name="PaperOut" Value="16" />
+      <Value Name="ManualFeed" Value="32" />
+      <Value Name="PaperProblem" Value="64" />
+      <Value Name="Offline" Value="128" />
+      <Value Name="IoActive" Value="256" />
+      <Value Name="Busy" Value="512" />
+      <Value Name="Printing" Value="1024" />
+      <Value Name="OutputBinFull" Value="2048" />
+      <Value Name="NotAvailable" Value="4096" />
+      <Value Name="Waiting" Value="8192" />
+      <Value Name="Processing" Value="16384" />
+      <Value Name="Initializing" Value ="32768" />
+      <Value Name="WarmingUp" Value="65536" />
+      <Value Name="TonerLow" Value="131072" />
+      <Value Name="NoToner" Value="262144" />
+      <Value Name="PagePunt" Value="524288" />
+      <Value Name="UserIntervention" Value="1048576" />
+      <Value Name="OutOfMemory" Value="2097152" />
+      <Value Name="DoorOpen" Value="4194304" />
+      <Value Name="ServerUnknown" Value="8388608" />
+      <Value Name="PowerSave" Value="16777216" />
+      <Value Name="ServerOffline" Value="33554432" />
+      <Value Name="DriverUpdateNeeded" Value="67108864" />
+    </Enum>
+    
+    <Enum EnumName="Printer.TypeEnum" UnderlyingType="UInt32">
+      <Value Name="Local" Value="0" />
+      <Value Name="Connection" Value="1" />
+    </Enum>
+  
+  <Enum EnumName="Printer.DeviceTypeEnum" UnderlyingType="UInt32">
+      <Value Name="Print" Value="0" />
+      <Value Name="Print3D" Value="1" />
+    </Enum>
+
+  <Enum EnumName="Printer.WorkflowPolicyEnum" UnderlyingType="UInt32">
+      <Value Name="Uninitialized" Value="0" />
+      <Value Name="Disabled" Value="1" />
+      <Value Name="Enabled" Value="2" />
+    </Enum>
+
+  </Enums>
+  
+</PowerShellMetadata>

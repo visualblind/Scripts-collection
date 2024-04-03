@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/Microsoft/Windows/RemoteAccess/Client/PS_VpnConnectionIPsecConfiguration" ClassVersion="1.0">
+    <Version>1.0</Version>
+    <DefaultNoun>VpnConnectionIPsecConfiguration</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium"  />
+        <Method MethodName="SetByCustomPolicy" CmdletParameterSet="CustomPolicy">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+           <Parameter ParameterName="ConnectionName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Name" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AuthenticationTransformConstants">
+              <Type PSType="VpnConnectionIPsecConfiguration.AuthenticationTransformConstants" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2" ValueFromPipelineByPropertyName="true">
+               <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CipherTransformConstants">
+              <Type PSType="VpnConnectionIPsecConfiguration.CipherTransformConstants" />
+              <CmdletParameterMetadata IsMandatory="true" Position="3" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="EncryptionMethod">
+              <Type PSType="VpnConnectionIPsecConfiguration.EncryptionMethod" />
+              <CmdletParameterMetadata IsMandatory="true" Position="5" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="IntegrityCheckMethod">
+              <Type PSType="VpnConnectionIPsecConfiguration.IntegrityCheckMethod" />
+              <CmdletParameterMetadata IsMandatory="true" Position="6" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PfsGroup">
+              <Type PSType="VpnConnectionIPsecConfiguration.PfsGroup" />
+              <CmdletParameterMetadata IsMandatory="true" Position="7" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DHGroup">
+              <Type PSType="VpnConnectionIPsecConfiguration.DHGroup" />
+              <CmdletParameterMetadata IsMandatory="true" Position="4" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PassThru">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AllUserConnection">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnConnectionIPsecConfiguration" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetIpSecByDefault" CmdletParameterSet="Default">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ConnectionName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Name" IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RevertToDefault">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Force">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AllUserConnection">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="CmdletOutput">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#VpnConnectionIPsecConfiguration" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+    <Enums>
+    <Enum EnumName="VpnConnectionIPsecConfiguration.AuthenticationTransformConstants" UnderlyingType="System.UInt32">  
+		<Value Name="MD596" Value="0" />  
+		<Value Name="SHA196" Value="1" />  
+		<Value Name="SHA256128" Value="2" />  
+		<Value Name="GCMAES128" Value="3" />  
+		<Value Name="GCMAES192" Value="4" />
+		<Value Name="GCMAES256" Value="5" />
+		<Value Name="None" Value="4294967295" />
+    </Enum>
+    <Enum EnumName="VpnConnectionIPsecConfiguration.CipherTransformConstants" UnderlyingType="System.UInt32">  
+		<Value Name="DES" Value="1" />  
+		<Value Name="DES3" Value="2" />  
+		<Value Name="AES128" Value="3" />  
+		<Value Name="AES192" Value="4" />
+		<Value Name="AES256" Value="5" />
+		<Value Name="GCMAES128" Value="6" />
+		<Value Name="GCMAES192" Value="7" />
+		<Value Name="GCMAES256" Value="8" />
+		<Value Name="None" Value="4294967295" />
+    </Enum>
+    <Enum EnumName="VpnConnectionIPsecConfiguration.DHGroup" UnderlyingType="System.UInt32">  
+		<Value Name="None" Value="0" />  
+		<Value Name="Group1" Value="1" />  
+		<Value Name="Group2" Value="2" />  
+		<Value Name="Group14" Value="3" />   
+		<Value Name="ECP256" Value="4" />  
+		<Value Name="ECP384" Value="5" />  
+		<Value Name="Group24" Value="6" />
+    </Enum>
+    <Enum EnumName="VpnConnectionIPsecConfiguration.EncryptionMethod" UnderlyingType="System.UInt32">    
+		<Value Name="DES" Value="0" />  
+		<Value Name="DES3" Value="1" />  
+		<Value Name="AES128" Value="2" />  
+		<Value Name="AES192" Value="3" />
+		<Value Name="AES256" Value="4" />
+		<Value Name="GCMAES128" Value="5" />
+		<Value Name="GCMAES256" Value="6" />
+    </Enum>  
+    <Enum EnumName="VpnConnectionIPsecConfiguration.IntegrityCheckMethod" UnderlyingType="System.UInt32">  
+		<Value Name="MD5" Value="0" />  
+		<Value Name="SHA1" Value="1" />  
+		<Value Name="SHA256" Value="2" />  
+		<Value Name="SHA384" Value="3" />
+    </Enum>  
+    <Enum EnumName="VpnConnectionIPsecConfiguration.PfsGroup" UnderlyingType="System.UInt32">  
+		<Value Name="None" Value="0" />  
+		<Value Name="PFS1" Value="1" />  
+		<Value Name="PFS2" Value="2" />  
+		<Value Name="PFS2048" Value="3" />  
+		<Value Name="ECP256" Value="4" />  
+		<Value Name="ECP384" Value="5" />  
+		<Value Name="PFSMM" Value="6" />
+		<Value Name="PFS24" Value="7" />
+    </Enum>  
+  </Enums> 
+</PowerShellMetadata>

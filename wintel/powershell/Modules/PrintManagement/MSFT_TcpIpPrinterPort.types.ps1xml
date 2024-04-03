@@ -1,0 +1,15 @@
+﻿<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_TcpIpPrinterPort</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Protocol</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.TcpIpPort.ProtocolEnum]($this.PSBase.CimInstanceProperties['Protocol'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>
+
+

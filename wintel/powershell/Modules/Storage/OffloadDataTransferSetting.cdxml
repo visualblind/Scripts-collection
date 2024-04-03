@@ -1,0 +1,26 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_OffloadDataTransferSetting">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>OffloadDataTransferSetting</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-OffloadDataTransferSetting
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByStorageSubSystem">
+         <QueryableAssociations>
+            <!-- StorageSubSystem -->
+            <Association Association="MSFT_StorageSubSystemToOffloadDataTransferSetting" SourceRole="StorageSubSystem" ResultRole="OffloadDataTransferSetting">
+                <AssociatedInstance>
+                    <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubSystem" />
+                    <CmdletParameterMetadata PSName="StorageSubSystem" ValueFromPipeline="true" CmdletParameterSets="ByStorageSubSystem" ErrorOnNoMatch="false" />
+                </AssociatedInstance>
+            </Association>
+        </QueryableAssociations>
+      </GetCmdletParameters>
+    </InstanceCmdlets>
+  </Class>  
+</PowerShellMetadata>

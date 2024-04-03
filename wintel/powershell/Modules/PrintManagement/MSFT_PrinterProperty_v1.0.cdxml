@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/StandardCimv2/MSFT_PrinterProperty">
+    <Version>1.0</Version>
+    <DefaultNoun>PrinterProperty</DefaultNoun>
+    <InstanceCmdlets>
+      <!-- get-printerproperty -->
+      <GetCmdletParameters>
+        <QueryableProperties>
+          <Property PropertyName="PropertyName">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata Position="1" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryOptions>
+          <Option OptionName="ComputerName">
+            <Type PSType="System.String" />
+            <CmdletParameterMetadata PSName="ComputerName" Aliases="CN">
+              <ValidateNotNull />
+              <ValidateNotNullOrEmpty />
+            </CmdletParameterMetadata>
+          </Option>
+          <Option OptionName="PrinterName">
+            <Type PSType="System.String" />
+            <CmdletParameterMetadata PSName="PrinterName" Position="0" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+              <ValidateNotNull />
+              <ValidateNotNullOrEmpty />
+            </CmdletParameterMetadata>
+          </Option>
+        </QueryOptions>
+      </GetCmdletParameters>
+    </InstanceCmdlets>
+    <StaticCmdlets>
+      <Cmdlet>
+        <!-- set-printerproperty -->
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium"/>
+        <Method MethodName="SetByPrinterName" CmdletParameterSet="PrinterName">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="PrinterName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PropertyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Value">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="2" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>            
+            <Parameter ParameterName="ComputerName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Aliases="Computer CN" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByPrinterObject" CmdletParameterSet="PrinterObject">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="PrinterObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#ROOT/StandardCimv2/MSFT_Printer" />
+              <CmdletParameterMetadata Aliases="Printer" Position="0" IsMandatory="true" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="PropertyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="1" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Value">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata Position="2" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="SetByPrinterPropertyObject" CmdletParameterSet="PrinterPropertyObject">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="InputObject">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PrinterProperty" />
+              <CmdletParameterMetadata Aliases="PropertyObject" Position="0" IsMandatory="true" ValueFromPipeline="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+
+  <!-- This maps to PrintConfig's PrinterPropertyType enumeration values -->
+  <Enums>
+    <Enum EnumName="PrinterProperty.PropertyTypeEnum" UnderlyingType="UInt32">
+      <Value Name="Boolean" Value="0" />
+      <Value Name="Integer" Value="1" />
+      <Value Name="String" Value="2" />
+    </Enum>    
+  </Enums>
+  
+</PowerShellMetadata>

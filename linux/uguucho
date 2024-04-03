@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+LICENCE="MDYFPL v1.0"
+
+
+if [[ $1 == -s ]]
+
+then
+	scrot -s /tmp/uguuscrot.png
+	zenity --title uguucho --question --text="Are you sure you wish to upload snapshot?"
+
+	if [ $? == 0 ]
+	then 
+
+	OUTPUTAS=$(torsocks curl -fsSL -F files[]=@/tmp/uguuscrot.png https://uguu.se/upload.php | jq -r ".files[].url")
+	zenity --title uguucho --info --text=$OUTPUTAS
+
+	fi
+
+elif [[ $1 == -F ]]
+then
+	scrot  /tmp/uguuscrot.png
+	zenity --title uguucho --question --text="Are you sure you wish to upload your _FULLSCREEEN_ screenshot?"
+
+	if [ $? -eq 0 ]
+	then
+
+	OUTPUTAS=$(torsocks curl -fsSL -F files[]=@/tmp/uguuscrot.png https://uguu.se/upload.php | jq -r ".files[].url")
+	zenity --title uguucho --info --text=$OUTPUTAS
+
+	fi
+
+else
+
+	OUTPUTAS=$(torsocks curl -fsSL -F files[]=@"$1" https://uguu.se/upload.php | jq -r ".files[].url")
+	zenity --title uguucho --info --text=$OUTPUTAS
+fi

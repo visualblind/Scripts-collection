@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+    <Class ClassName="ROOT/Microsoft/Windows/SMB/MSFT_SMBSession">
+        <Version>1.0</Version>
+        
+        <DefaultNoun>SmbSession</DefaultNoun>
+        <InstanceCmdlets>
+
+            <!--
+
+            //
+            // Get-SmbSession
+            // 
+
+            -->
+            <GetCmdletParameters>
+                <QueryableProperties>
+                    <Property PropertyName="SessionId">
+                        <Type PSType="uint64" />
+                        <RegularQuery AllowGlobbing="false">
+                            <CmdletParameterMetadata IsMandatory="false" Position="1" ValueFromPipelineByPropertyName="true" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="ClientComputerName">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" Position="2" ValueFromPipelineByPropertyName="true" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="ClientUserName">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" Position="3" ValueFromPipelineByPropertyName="true" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="ScopeName">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="false">
+                            <CmdletParameterMetadata IsMandatory="false" Position="4" ValueFromPipelineByPropertyName="true" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="ClusterNodeName">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" Position="5" ValueFromPipelineByPropertyName="true" />
+                        </RegularQuery>
+                    </Property>
+                </QueryableProperties>
+                <QueryOptions>
+                    <Option OptionName="IncludeHidden">
+                        <Type PSType="System.Management.Automation.SwitchParameter" />
+                    </Option>
+                    <Option OptionName="SmbInstance">
+                        <Type PSType="SmbShare.SmbInstance" />
+                        <CmdletParameterMetadata ValueFromPipelineByPropertyName="true"/>
+                    </Option>
+                </QueryOptions>
+            </GetCmdletParameters>
+
+            <GetCmdlet>
+                <CmdletMetadata Verb="Get" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241952" Aliases="gsmbse"/>
+            </GetCmdlet>
+
+            <!--
+
+            //
+            // Close-SmbSession
+            // 
+
+            -->
+            <Cmdlet>
+                <CmdletMetadata Verb="Close" ConfirmImpact="High" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241943" Aliases="cssmbse"/>
+                <Method MethodName="ForceClose">
+                    <Parameters>
+                        <Parameter ParameterName="cim:operationOption:Force">
+                            <Type PSType="System.Management.Automation.SwitchParameter" />
+                            <CmdletParameterMetadata PSName="Force">
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                    </Parameters>
+                </Method>
+                <GetCmdletParameters>
+                    <QueryableProperties>
+                        <Property PropertyName="SessionId">
+                            <Type PSType="uint64" />
+                            <RegularQuery AllowGlobbing="false">
+                                <CmdletParameterMetadata IsMandatory="false" Position="1" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+                            </RegularQuery>
+                        </Property>
+                        <Property PropertyName="ClientComputerName">
+                            <Type PSType="string" />
+                            <RegularQuery AllowGlobbing="true">
+                                <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+                            </RegularQuery>
+                        </Property>
+                        <Property PropertyName="ClientUserName">
+                            <Type PSType="string" />
+                            <RegularQuery AllowGlobbing="true">
+                                <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+                            </RegularQuery>
+                        </Property>
+                        <Property PropertyName="ScopeName">
+                            <Type PSType="string" />
+                            <RegularQuery AllowGlobbing="true">
+                                <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+                            </RegularQuery>
+                        </Property>
+                        <Property PropertyName="ClusterNodeName">
+                            <Type PSType="string" />
+                            <RegularQuery AllowGlobbing="true">
+                                <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+                            </RegularQuery>
+                        </Property>
+                    </QueryableProperties>
+                    <QueryOptions>
+                      <Option OptionName="SmbInstance">
+                        <Type PSType="SmbShare.SmbInstance" />
+                        <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="Query"/>
+                      </Option>
+                    </QueryOptions>
+                </GetCmdletParameters>
+            </Cmdlet>
+            
+        </InstanceCmdlets>
+
+    </Class>
+
+    <Enums>
+        <Enum EnumName="SmbShare.SmbInstance" UnderlyingType="System.UInt32">
+            <Value Name="Default" Value="0" />
+            <Value Name="CSV" Value="1" />
+            <Value Name="SBL" Value="2" />
+            <Value Name="SR" Value="3" />
+        </Enum>
+    </Enums>
+</PowerShellMetadata>

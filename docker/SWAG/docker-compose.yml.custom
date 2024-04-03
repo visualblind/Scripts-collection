@@ -1,0 +1,33 @@
+---
+version: "2.1"
+services:
+  swag:
+    image: lscr.io/linuxserver/swag:latest
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+      - URL=travisflix.com
+      - SUBDOMAINS=wildcard
+      - VALIDATION=dns
+      - CERTPROVIDER= #optional
+      - DNSPLUGIN=cloudflare #optional
+      - PROPAGATION=45
+      - EMAIL="travisrunyard@gmail.com" #optional
+      - STAGING=false #optional
+    volumes:
+      - /docker/swag/config:/config
+    ports:
+      - 443:443
+      - 80:80 #optional
+    restart: unless-stopped
+    networks:
+      - lsio
+
+networks: 
+  lsio:
+    external: true
+    name: lsio

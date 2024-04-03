@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <!--
+
+  //
+  // MSFT_FSRMFMJCondition
+  //
+
+  -->
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_FSRMFMJCondition</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Condition</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.FmjConditionTypeEnum]($this.PSBase.CimInstanceProperties['Condition'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>

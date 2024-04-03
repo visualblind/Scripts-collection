@@ -1,0 +1,7 @@
+# rclone filter file for p0ds0smb > usmba (Gs) sync
+- /.Trash-1000/
+- /.zfs/
++ /Gs/**
++ /p0ds0smb/Gs/**
+- **
+

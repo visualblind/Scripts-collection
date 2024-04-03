@@ -1,0 +1,38 @@
+6.24.2004
+Joel De Gan
+soulbot - License = GPL
+examples of this project can be seen at http://soulreactor.com
+
+This is a "quick release" meaning the code might a bit messy.
+
+This project was born out the desire to see if I could write a bot that 
+connects to a filesharing network with an undocumented protocol via PHP.
+This represents a lot of work at the beginning of 2004 making a protocol
+analyzer that works from a map file so I can extend it to work with any
+protocol I need (think ICQ etc..)
+
+It was written quite a while ago, but I decided to release this because it
+may come in handy for some people attempting to connect PHP and manage
+protocols which there is very very little online about.
+
+in the examples directions are four files which each have directions in their
+headers. In order to run the "soulbot" in that directory you will need to 
+create a mysql database named "soul_soul" and paste in the contents of
+db_schema.sql into phpmyadmin or via command line. If you want to change the 
+name of the database, just go through those files and replace 'soul_soul' with
+whatever the name of your db is, I didn't set it up so that the db prefix is
+defined as I sometimes run multiple instances of the bot from various machines
+to maximize the output.
+
+you will need to make changes in the config.php to reflect your mysql settings
+and if you don't like my bot naming scheme you probably want to change that
+as well.
+
+The files protocol.php and protomap.php are the two files that define how this
+particular protocol works, protomap.php it can be pretty easily modified to work 
+with other protocols.
+
+If you do anything great with this, let me know.
+
+Cheers.
+-Joel De Gan

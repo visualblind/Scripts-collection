@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# git2 - handle multiple git repositories in one directory
+# Copyright (C) 2016 Simon Walz, http://sw.nerdbox.de/
+
+
+GITTWO_DIRNAME=".git3" git2 "$@"
+
+# exchanges git files:
+# * .gitignore -> .gitgnore_git3
+# * .gitattributes -> .gitattributes_git3

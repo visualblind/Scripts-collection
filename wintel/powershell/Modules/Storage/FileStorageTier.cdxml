@@ -1,0 +1,204 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_FileStorageTier">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>FileStorageTier</DefaultNoun>
+    <StaticCmdlets>
+      <!--
+
+      //
+      // Get-FileStorageTier
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Get" ConfirmImpact="None" Noun="FileStorageTier" DefaultCmdletParameterSet="ByVolumeDriveLetter" />
+        <Method MethodName="Get" CmdletParameterSet="ByVolumeDriveLetter">
+          <Parameters>
+            <!-- VolumeDriveLetter -->
+            <Parameter ParameterName="VolumeDriveLetter">
+              <Type PSType="System.Char" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+              </Parameter>
+            <!-- CMDLET OUTPUT -->
+            <Parameter ParameterName="FileStorageTier">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="Get" CmdletParameterSet="ByVolumePath">
+          <Parameters>
+            <!-- VolumePath -->
+            <Parameter ParameterName="VolumePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- CMDLET OUTPUT -->
+            <Parameter ParameterName="FileStorageTier">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="Get" CmdletParameterSet="ByVolume">
+          <Parameters>
+            <!-- Volume -->
+            <Parameter ParameterName="Volume">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipeline="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- CMDLET OUTPUT -->
+            <Parameter ParameterName="FileStorageTier">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="Get" CmdletParameterSet="ByFilePath">
+          <Parameters>
+            <!-- FileName -->
+            <Parameter ParameterName="FilePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true"/>
+            </Parameter>
+            <!-- CMDLET OUTPUT -->
+            <Parameter ParameterName="FileStorageTier">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletOutputMetadata />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Set-FileStorageTier
+      //
+    
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" Noun="FileStorageTier" DefaultCmdletParameterSet="ByDesiredStorageTierFriendlyName" />
+        <Method MethodName="Set"  CmdletParameterSet="ByDesiredStorageTierUniqueId">
+          <Parameters>
+            <!-- FileName -->
+            <Parameter ParameterName="FilePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true"/>
+            </Parameter>
+            <!-- StorageTierUniqueId -->
+            <Parameter ParameterName="DesiredStorageTierUniqueId">
+              <Type PSType="System.String"/>
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="Set"  CmdletParameterSet="ByDesiredStorageTierFriendlyName">
+          <Parameters>
+            <!-- FileName -->
+            <Parameter ParameterName="FilePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true"/>
+            </Parameter>
+            <!-- StorageTierFriendlyName -->
+            <Parameter ParameterName="DesiredStorageTierFriendlyName">
+              <Type PSType="System.String"/>
+              <CmdletParameterMetadata  IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="Set"  CmdletParameterSet="ByDesiredStorageTier">
+          <Parameters>
+            <!-- FileName -->
+            <Parameter ParameterName="FilePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true"/>
+            </Parameter>
+            <!-- StorageTier-->
+            <Parameter ParameterName="DesiredStorageTier">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance"/>
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <Method MethodName="Set"  CmdletParameterSet="ByDesiredStorageTierClass">
+          <Parameters>
+            <!-- FileName -->
+            <Parameter ParameterName="FilePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true"/>
+            </Parameter>
+            <!-- DesiredStorageTierClass-->
+            <Parameter ParameterName="DesiredStorageTierClass">
+              <Type PSType="FileStorageTier.DesiredStorageTierClass"/>
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Clear-FileStorageTier
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Clear" ConfirmImpact="Medium" />
+        <Method MethodName="Clear">
+          <Parameters>
+            <!-- FileName -->
+            <Parameter ParameterName="FilePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true"/>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="FileStorageTier.DesiredStorageTierClass" UnderlyingType="System.UInt16">
+      <Value Name="Capacity" Value="1" />
+      <Value Name="Performance" Value="2" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

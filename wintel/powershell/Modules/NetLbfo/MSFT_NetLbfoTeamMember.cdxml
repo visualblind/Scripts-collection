@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+    <Class ClassName="root/StandardCimv2/MSFT_NetLbfoTeamMember" ClassVersion="1.0.0">
+    <Version>1.0</Version>
+    <DefaultNoun>NetLbfoTeamMember</DefaultNoun>
+    <InstanceCmdlets>
+      <GetCmdletParameters DefaultCmdletParameterSet="ByNameAndOrTeam">
+        <QueryableProperties>
+          <Property PropertyName="Name">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata Position="0"  Aliases="ifAlias InterfaceAlias" IsMandatory="false"  ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByNameAndOrTeam"/>
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="Team">
+            <Type PSType="System.String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata  Position="1" IsMandatory="false" ValueFromPipelineByPropertyName="false" CmdletParameterSets="ByNameAndOrTeam"/>
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <Association Association="MSFT_NetLbfoTeam_TeamMember" ResultRole="PartComponent" SourceRole="GroupComponent">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#root/standardcimv2/MSFT_NetLbfoTeam" />
+              <CmdletParameterMetadata PSName="TeamOfTheMember" ValueFromPipeline = "true"  CmdletParameterSets="ByTeamOfTheMember" /> 
+            </AssociatedInstance>
+          </Association> 
+        </QueryableAssociations>
+      </GetCmdletParameters>
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+        <Method MethodName="cim:ModifyInstance">
+        <Parameters>
+              <Parameter ParameterName="AdministrativeMode">
+              <Type PSType="NetLbfo.AdminModes" />
+              <CmdletParameterMetadata Aliases="am" IsMandatory="false" />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>	
+
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" />
+        <Method MethodName="cim:DeleteInstance" />
+        <GetCmdletParameters>
+          <QueryableProperties>
+            <Property PropertyName="Name">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="0" Aliases="ifAlias InterfaceAlias" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTeamAndName"/>
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="Team">
+              <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTeamAndName"/>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>    
+
+    <StaticCmdlets>
+     <Cmdlet>
+        <CmdletMetadata Verb="Add" Noun="NetLbfoTeamMember" ConfirmImpact="High"/>
+        <Method MethodName="cim:CreateInstance">
+          <Parameters>
+            <Parameter ParameterName="cim:OperationOption:Name">
+              <Type PSType="System.Management.Automation.WildcardPattern" />
+              <CmdletParameterMetadata PSName="Name" IsMandatory="true" Position="0" Aliases="ifAlias InterfaceAlias"> 
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Team">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="AdministrativeMode">
+              <Type PSType="NetLbfo.AdminModes" />
+              <CmdletParameterMetadata Aliases="am" IsMandatory="false" Position="2">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+    </Method>
+     </Cmdlet>
+   </StaticCmdlets>
+  </Class>
+
+  <Enums>
+    <Enum EnumName="NetLbfo.AdminModes" UnderlyingType="UInt32">
+      <Value Name="Active"    Value="0" />
+      <Value Name="Standby"   Value="1" />
+    </Enum>
+
+    <Enum EnumName="NetLbfo.OperationalModes" UnderlyingType="UInt32">
+      <Value Name="Active"      Value="0" />
+      <Value Name="Standby"     Value="1" />
+      <Value Name="Failed"      Value="4096" />
+    </Enum>
+
+    <Enum EnumName="NetLbfo.FailureReasons" UnderlyingType="UInt32">
+      <Value Name="NoFailure"                               Value="0" />
+      <Value Name="AdministrativeDecision"                  Value="1" />
+      <Value Name="StandbyDueToPreviousFailure"             Value="2" />
+      <Value Name="PhysicalMediaDisconnected"               Value="3" />
+      <Value Name="WaitingForStableConnectivity"            Value="4" />
+      <Value Name="LacpNegotiationIssue"                    Value="5" />
+      <Value Name="NicNotPresent"                           Value="6" />
+      <Value Name="UnknownFailure"                          Value="7" />
+      <Value Name="ActiveFailureDetected"                   Value="8" />
+      <Value Name="VirtualSwitchLacksExternalConnectivity"  Value="9" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#root/StandardCimv2/MSFT_Net6to4Configuration</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>State</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.Net6to4Configuration.State]($this.PSBase.CimInstanceProperties['State'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          $this.PSBase.CimInstanceProperties['State'].Value = [System.UInt32]$_
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>AutoSharing</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.Net6to4Configuration.State]($this.PSBase.CimInstanceProperties['AutoSharing'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          $this.PSBase.CimInstanceProperties['AutoSharing'].Value = [System.UInt32]$_
+        </SetScriptBlock>
+      </ScriptProperty>      
+      <ScriptProperty>
+        <Name>RelayState</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.Net6to4Configuration.State]($this.PSBase.CimInstanceProperties['RelayState'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          $this.PSBase.CimInstanceProperties['RelayState'].Value = [System.UInt32]$_
+        </SetScriptBlock>
+      </ScriptProperty>      
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#MSFT_Net6to4Configuration</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>State</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.Net6to4Configuration.State]($this.PSBase.CimInstanceProperties['State'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          $this.PSBase.CimInstanceProperties['State'].Value = [System.UInt32]$_
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>AutoSharing</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.Net6to4Configuration.State]($this.PSBase.CimInstanceProperties['AutoSharing'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          $this.PSBase.CimInstanceProperties['AutoSharing'].Value = [System.UInt32]$_
+        </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>RelayState</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.Net6to4Configuration.State]($this.PSBase.CimInstanceProperties['RelayState'].Value)
+        </GetScriptBlock>
+        <SetScriptBlock>
+          $this.PSBase.CimInstanceProperties['RelayState'].Value = [System.UInt32]$_
+        </SetScriptBlock>
+      </ScriptProperty>      
+    </Members>
+  </Type>
+  
+</Types>

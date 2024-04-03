@@ -1,0 +1,6 @@
+version: "3.8"
+services:
+  jf-vue:
+    image: ghcr.io/jellyfin/jellyfin-vue
+    container_name: "jellyfin-vue"
+    ports:

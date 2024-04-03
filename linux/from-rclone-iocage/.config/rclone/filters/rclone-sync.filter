@@ -1,0 +1,32 @@
+# rclone filter file for p0ds0smb > usmba sync
+- /media/**
+- /Gs/**
+- /.Trash-1000/**
+- /.zfs/**
++ /archive_pictures/**
++ /backup/**
++ /bittorrent/**
++ /certificates/**
++ /drivers/**
++ /fonts/**
++ /Games/**
++ /IPAM/**
++ /live-boot/**
++ /Music/**
++ /OS/**
++ /Scripts/**
++ /software_android/**
++ /software_freebsd/**
++ /software_linux/**
++ /software_mac/**
++ /software_platformagnostic/**
++ /software_vmware/**
++ /software_wintel/**
+- /temp/**
++ /virtual_appliance/**
++ /virtual_machines/**
++ /visualblind/**
++ /wallpaper/**
+- **
+
+

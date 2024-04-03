@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://schemas.microsoft.com/windows/DHCPServer"
+            xmlns:DhcpNs="http://schemas.microsoft.com/windows/DHCPServer">
+
+  <xs:element name="DHCPServer" type="DhcpNs:DHCPServer"/>
+
+  <xs:complexType name="IPRanges">
+    <xs:sequence>
+      <xs:element name="IPRange" type="DhcpNs:IPRange" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IPRange">
+    <xs:sequence>
+      <xs:element name="StartRange" type="xs:string"/>
+      <xs:element name="EndRange" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OptionValues">
+    <xs:sequence>
+      <xs:element name="OptionValue" type="DhcpNs:OptValue" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Classes">
+    <xs:sequence>
+      <xs:element name="Class" type="DhcpNs:Class" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OptionDefinitions">
+    <xs:sequence>
+      <xs:element name="OptionDefinition" type="DhcpNs:OptionDefinition" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>  
+    
+  <xs:complexType name="OptValue">
+    <xs:sequence>
+      <xs:element name="OptionId" type="xs:integer"/>      
+      <xs:element name="Value" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+      <xs:element name="VendorClass" type="xs:string" minOccurs="0"/>
+      <xs:element name="UserClass" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType> 
+
+  <xs:complexType name="OptionDefinition">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>      
+      <xs:element name="OptionId" type="xs:integer"/>
+      <xs:element name="Type" type="xs:string"/>
+      <xs:element name="MultiValued" type="xs:boolean"/>
+      <xs:element name="DefaultValue" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="VendorClass" type="xs:string" minOccurs="0"/>      
+    </xs:sequence>    
+    <!--This would be IPv4 or IPv6-->
+  </xs:complexType>
+
+  <xs:complexType name="Class">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" maxOccurs="1" minOccurs="1"/>      
+      <xs:element name="Type" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Data" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="VendorId" type="xs:integer" maxOccurs="1" minOccurs="0"/>      
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IPv4Reservations">
+    <xs:sequence>
+      <xs:element name="Reservation" type="DhcpNs:IPv4Reservation" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="IPv4Reservation">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>            
+      <xs:element name="IPAddress" type="xs:string"/>
+      <xs:element name="ClientId" type="xs:string"/>
+      <xs:element name="Type" type="xs:string"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="OptionValues" type="DhcpNs:OptionValues" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IPv6Reservations">
+    <xs:sequence>
+      <xs:element name="Reservation" type="DhcpNs:IPv6Reservation" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="IPv6Reservation">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>      
+      <xs:element name="IPAddress" type="xs:string"/>
+      <xs:element name="ClientDuid" type="xs:string"/>
+      <xs:element name="IAID" type="xs:integer"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="OptionValues" type="DhcpNs:OptionValues" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IPv4Leases">
+    <xs:sequence>
+      <xs:element name="Lease" type="DhcpNs:IPv4Lease" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="IPv4Lease">
+    <xs:sequence>
+      <xs:element name="IPAddress" type="xs:string"/>
+      <xs:element name="ScopeId" type="xs:string"/>
+      <xs:element name="ClientId" type="xs:string"/>
+      <xs:element name="AddressState" type="xs:string"/>      
+      <xs:element name="ClientType" type="xs:string"/>      
+      <xs:element name="NapCapable" type="xs:boolean"/>
+      <xs:element name="DnsRR" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="DnsRegistration" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="LeaseExpiryTime" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="ProbationEnds" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="NapStatus" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="HostName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PolicyName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1"/>           
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IPv6Leases">
+    <xs:sequence>
+      <xs:element name="Lease" type="DhcpNs:IPv6Lease" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="IPv6Lease">
+    <xs:sequence>
+      <xs:element name="IPAddress" type="xs:string"/>      
+      <xs:element name="ClientDuid" type="xs:string"/>
+      <xs:element name="IAID" type="xs:integer"/>
+      <xs:element name="AddressType" type="xs:string"/>
+      <xs:element name="HostName" type="xs:string" minOccurs="0" maxOccurs="1"/>      
+      <xs:element name="LeaseExpiryTime" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Policies">
+    <xs:sequence>
+      <xs:element name="Policy" type="DhcpNs:Policy" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="Policy">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>      
+      <xs:element name="ProcessingOrder" type="xs:integer"/>
+      <xs:element name="Enabled" type="xs:boolean"/>
+      <xs:element name="Condition" type="xs:string"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>      
+      <xs:element name="VendorClass" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="UserClass" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="MacAddress" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ClientId" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="RelayAgent" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="CircuitId" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="RemoteId" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="SubscriberId" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Fqdn" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="DnsSuffix" type="xs:string" minOccurs="0"/>
+      <xs:element name="IPRanges" type="DhcpNs:IPRanges" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="OptionValues" type="DhcpNs:OptionValues" maxOccurs="1" minOccurs="0"/>      
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="v4Scopes">
+    <xs:sequence>
+      <xs:element name="Scope" type="DhcpNs:ScopeIPv4" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="ScopeIPv4">
+    <xs:sequence>
+      <xs:element name="ScopeId" type="xs:string"/>
+      <xs:element name="Name" type="xs:string"/>      
+      <xs:element name="SubnetMask" type="xs:string"/>
+      <xs:element name="StartRange" type="xs:string"/>
+      <xs:element name="EndRange" type="xs:string"/>
+      <xs:element name="LeaseDuration" type="xs:string"/>
+      <xs:element name="State" type="xs:string"/>
+      <xs:element name="Type" type="xs:string"/>
+      <xs:element name="MaxBootpClients" type="xs:integer"/>            
+      <xs:element name="NapEnable" type="xs:boolean" />
+      <xs:element name="Delay" type="xs:integer" minOccurs="0"/>
+      <xs:element name="NapProfile" type="xs:string" minOccurs="0"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="ActivatePolicies" type="xs:boolean" minOccurs="0"/>      
+      <xs:element name="SuperScopeName" type="xs:string" minOccurs="0"/>
+      <xs:element name="ExclusionRanges" type="DhcpNs:IPRanges" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Policies" type="DhcpNs:Policies" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="OptionValues" type="DhcpNs:OptionValues" minOccurs="0" maxOccurs="1"/>      
+      <xs:element name="Reservations" type="DhcpNs:IPv4Reservations" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Leases" type="DhcpNs:IPv4Leases" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="StatelessStore">
+    <xs:sequence>
+      <xs:element name="Enabled" type="xs:boolean"/>
+      <xs:element name="PurgeInterval" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="v6Scopes">
+    <xs:sequence>
+      <xs:element name="Scope" type="DhcpNs:ScopeIPv6" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ScopeIPv6">
+    <xs:sequence>
+      <xs:element name="Prefix" type="xs:string"/>      
+      <xs:element name="Name" type="xs:string"/>      
+      <xs:element name="Preference" type="xs:string"/>
+      <xs:element name="State" type="xs:string"/>
+      <xs:element name="PreferredLifeTime" type="xs:string" minOccurs="0"/>
+      <xs:element name="ValidLifeTime" type="xs:string" minOccurs="0"/>
+      <xs:element name="T1" type="xs:string" minOccurs="0"/>
+      <xs:element name="T2" type="xs:string" minOccurs="0"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>      
+      <xs:element name="ExclusionRanges" type="DhcpNs:IPRanges" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="OptionValues" type="DhcpNs:OptionValues" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Reservations" type="DhcpNs:IPv6Reservations" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="StatelessStore" type="DhcpNs:StatelessStore" minOccurs="0"/>
+      <xs:element name="Leases" type="DhcpNs:IPv6Leases" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Filters">
+    <xs:sequence>
+      <xs:element name="Allow" type="xs:boolean"/>
+      <xs:element name="Deny" type="xs:boolean"/>
+      <xs:element name="Filter" type="DhcpNs:IPv4Filter" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>  
+    
+  <xs:complexType name="IPv4Filter">
+    <xs:sequence>
+      <xs:element name="List" type="xs:string"/>
+      <xs:element name="MacAddress" type="xs:string"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+    </xs:sequence>    
+  </xs:complexType>
+
+  <xs:complexType name="DHCPv4">
+    <xs:sequence>
+      <xs:element name="ConflictDetectionAttempts" type="xs:integer"/>
+      <xs:element name="NapEnabled" type="xs:boolean"/>
+      <xs:element name="NpsUnreachableAction" type="xs:string"/>
+      <xs:element name="ActivatePolicies" type="xs:boolean" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="Classes" type="DhcpNs:Classes" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="OptionDefinitions" type="DhcpNs:OptionDefinitions" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="Policies" type="DhcpNs:Policies" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="OptionValues" type="DhcpNs:OptionValues" maxOccurs="1" minOccurs="0"/>      
+      <xs:element name="Filters" type="DhcpNs:Filters" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="Scopes" type="DhcpNs:v4Scopes" maxOccurs="1" minOccurs="0"/>      
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DHCPv6">
+    <xs:sequence>
+      <xs:element name="Classes" type="DhcpNs:Classes" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="OptionDefinitions" type="DhcpNs:OptionDefinitions" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="OptionValues" type="DhcpNs:OptionValues" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="StatelessStore" type="DhcpNs:StatelessStore" minOccurs="0"/>
+      <xs:element name="Scopes" type="DhcpNs:v6Scopes" maxOccurs="1" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DHCPServer">
+      <xs:sequence>
+        <xs:element name="MajorVersion" type="xs:integer"/>
+        <xs:element name="MinorVersion" type="xs:integer"/>
+        <xs:element name="IPv4" type="DhcpNs:DHCPv4" maxOccurs="1" minOccurs="0"/>
+        <xs:element name="IPv6" type="DhcpNs:DHCPv6" maxOccurs="1" minOccurs="0"/>
+      </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+

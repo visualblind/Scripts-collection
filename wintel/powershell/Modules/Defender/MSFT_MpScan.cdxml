@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT\Microsoft\Windows\Defender\MSFT_MpScan" ClassVersion="1.0">
+    <Version>1.0</Version>
+    <DefaultNoun>MpScan</DefaultNoun>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Start" />
+        <Method MethodName="Start">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="ScanPath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ScanType">
+              <Type PSType="MpScan.ScanType" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateSet>
+                  <AllowedValue>FullScan</AllowedValue>
+                  <AllowedValue>QuickScan</AllowedValue>
+                  <AllowedValue>CustomScan</AllowedValue>
+                </ValidateSet>
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+    <Enums>
+        <Enum EnumName="MpScan.ScanType" UnderlyingType="System.Byte">
+            <Value Name="QuickScan" Value="1" />
+            <Value Name="FullScan" Value="2" />
+            <Value Name="CustomScan" Value="3" />
+        </Enum>      
+    </Enums>
+</PowerShellMetadata>

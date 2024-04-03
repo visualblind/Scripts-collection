@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">   
+  <Class ClassName="Root/Microsoft/Windows/FSRM/MSFT_FSRMFileManagementJob">   
+    <Version>1.0</Version>     
+    <DefaultNoun>FsrmFileManagementJob</DefaultNoun>   
+    <InstanceCmdlets>   
+      <GetCmdletParameters>
+        <QueryableProperties>   
+          <Property PropertyName="Name">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" Position="1" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+      </GetCmdletParameters>
+      <GetCmdlet>
+        <CmdletMetadata Verb="Get" />
+      </GetCmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" />
+        <Method MethodName="cim:DeleteInstance">
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+        <Method MethodName="cim:ModifyInstance">
+          <Parameters>
+            <Parameter ParameterName="Description">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Namespace">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata IsMandatory="false">
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Disabled">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Condition">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Action">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportFormat">
+              <Type PSType="FmjReportFormatsEnum[]" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLog">
+              <Type PSType="FmjReportLogsEnum[]" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MailTo">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Notification">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Schedule">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Continuous">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ContinuousLog">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ContinuousLogSize">
+              <Type PSType="Uint64" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Parameters">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata IsMandatory="false">
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Start" ConfirmImpact="High" />
+        <Method MethodName="Start">
+          <Parameters>
+            <Parameter ParameterName="Queue">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="RunDuration">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="FileManagementJob">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Wait" ConfirmImpact="Medium" />
+        <Method MethodName="Wait">
+          <Parameters>
+            <Parameter ParameterName="Timeout">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata IsMandatory="false">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="FileManagementJob">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Stop" ConfirmImpact="High" />
+        <Method MethodName="Stop">
+          <Parameters>
+            <Parameter ParameterName="FileManagementJob">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters>
+          <QueryableProperties>   
+            <Property PropertyName="Name">
+              <Type PSType="string" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                  <ValidateNotNull />
+                  <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" ConfirmImpact="Medium" />
+        <Method MethodName="cim:CreateInstance">
+          <Parameters>
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Description">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowEmptyString />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Namespace">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Disabled">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Condition">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Action">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportFormat">
+              <Type PSType="FmjReportFormatsEnum[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ReportLog">
+              <Type PSType="FmjReportLogsEnum[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="MailTo">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Notification">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Schedule">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Continuous">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ContinuousLog">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ContinuousLogSize">
+              <Type PSType="Uint64" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Parameters">
+              <Type PSType="string[]" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="FmjReportFormatsEnum" UnderlyingType="UInt32">
+      <Value Name="DHtml" Value="1" />
+      <Value Name="Html" Value="2" />
+      <Value Name="Text" Value="3" />
+      <Value Name="Csv" Value="4" />
+      <Value Name="XML" Value="5" />
+    </Enum>
+    <Enum EnumName="FmjReportLogsEnum" UnderlyingType="UInt32">
+      <Value Name="Error" Value="1" />
+      <Value Name="Information" Value="2" />
+      <Value Name="Audit" Value="4" />
+    </Enum>
+    <Enum EnumName="FmjRunningStatusEnum" UnderlyingType="UInt32">
+      <Value Name="NotRunning" Value="1" />
+      <Value Name="Queued" Value="2" />
+      <Value Name="Running" Value="3" />
+    </Enum>
+    <Enum EnumName="FmjFlagsEnum" UnderlyingType="UInt32">
+      <Value Name="Deprecated" Value="1" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>   

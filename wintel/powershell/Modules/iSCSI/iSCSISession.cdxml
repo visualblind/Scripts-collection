@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_iSCSISession">
+    <Version>1.0</Version>
+    <DefaultNoun>IscsiSession</DefaultNoun>
+      <!--
+
+      //
+      // Get-IscsiSession
+      //
+
+    -->
+    <InstanceCmdlets>
+            <GetCmdletParameters DefaultCmdletParameterSet="BySessionIdentifier">
+                <QueryableProperties>
+                    <Property PropertyName="SessionIdentifier">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTargetSideIdentifier" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="InitiatorSideIdentifier">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByInitiatorSideIdentifier" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="TargetSideIdentifier">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTargetSideIdentifier" />
+                        </RegularQuery>
+                    </Property>
+                    <Property PropertyName="NumberOfConnections">
+                        <Type PSType="uint32" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" />
+                        </RegularQuery>
+                    </Property>
+                 </QueryableProperties>
+                <QueryableAssociations>
+                    <!-- Connection -->
+                    <Association Association="MSFT_iSCSISessionToiSCSIConnection" SourceRole="iSCSIConnection" ResultRole="iSCSISession">
+                        <AssociatedInstance>
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSIConnection" />
+                            <CmdletParameterMetadata PSName="IscsiConnection" ValueFromPipeline="true" CmdletParameterSets="ByiSCSIConnection" />
+                        </AssociatedInstance>
+                    </Association>
+                    <!-- Disk -->
+                    <Association Association="MSFT_iSCSISessionToDisk" SourceRole="Disk" ResultRole="iSCSISession">
+                        <AssociatedInstance>
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Disk" />
+                            <CmdletParameterMetadata PSName="Disk" ValueFromPipeline="true" CmdletParameterSets="ByDisk" />
+                        </AssociatedInstance>
+                    </Association>
+                    <!-- TargetPortal -->
+                    <Association Association="MSFT_iSCSISessionToiSCSITargetPortal" SourceRole="iSCSITargetPortal" ResultRole="iSCSISession">
+                        <AssociatedInstance>
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSITargetPortal" />
+                            <CmdletParameterMetadata PSName="IscsiTargetPortal" ValueFromPipeline="true" CmdletParameterSets="ByiSCSITargetPortal" />
+                        </AssociatedInstance>
+                    </Association>
+                    <!-- InitiatorPort -->
+                    <Association Association="MSFT_InitiatorPortToiSCSISession" SourceRole="InitiatorPort" ResultRole="iSCSISession">
+                        <AssociatedInstance>
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_InitiatorPort" />
+                            <CmdletParameterMetadata PSName="InitiatorPort" ValueFromPipeline="true" CmdletParameterSets="ByInitiatorPort" />
+                        </AssociatedInstance>
+                    </Association>
+                    <!-- iSCSITarget -->
+                    <Association Association="MSFT_iSCSITargetToiSCSISession" SourceRole="iSCSITarget" ResultRole="iSCSISession">
+                        <AssociatedInstance>
+                            <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSITarget" />
+                            <CmdletParameterMetadata PSName="IscsiTarget" ValueFromPipeline="true" CmdletParameterSets="ByiSCSITarget" />
+                        </AssociatedInstance>
+                    </Association>
+                </QueryableAssociations>
+            </GetCmdletParameters>
+    <!-- 
+            //
+            // Unregister-IscsiSession
+            //
+
+    -->
+    <Cmdlet>
+        <CmdletMetadata Verb="Unregister" />
+        <Method MethodName="Unregister">
+            <ReturnValue>
+                <Type PSType="System.Int32" />
+                <CmdletOutputMetadata>
+                    <ErrorCode />
+                </CmdletOutputMetadata>
+            </ReturnValue>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="BySessionIdentifier">
+            <QueryableProperties>
+                <Property PropertyName="SessionIdentifier">
+                    <Type PSType="string" />
+                    <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="BySessionIdentifier"/>
+                    </RegularQuery>
+                </Property>
+            </QueryableProperties>
+        </GetCmdletParameters>
+    </Cmdlet>
+
+    <!--
+
+          //
+          // Register-IscsiSession
+          //
+
+    -->
+    <Cmdlet>
+        <CmdletMetadata Verb="Register" />
+        <Method MethodName="Register">
+            <ReturnValue>
+                <Type PSType="System.Int32" />
+                <CmdletOutputMetadata>
+                    <ErrorCode />
+                </CmdletOutputMetadata>
+            </ReturnValue>
+            <Parameters>
+                <Parameter ParameterName="IsMultipathEnabled">
+                    <Type PSType="boolean" />
+                    <CmdletParameterMetadata>
+                        <ValidateNotNull />
+                        <ValidateNotNullOrEmpty />
+                    </CmdletParameterMetadata>
+                </Parameter>
+            <Parameter ParameterName="ChapUsername">
+                <Type PSType="string" />
+                <CmdletParameterMetadata>
+                    <ValidateNotNull />
+                    <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="ChapSecret">
+                <Type PSType="string" />
+                <CmdletParameterMetadata>
+                    <ValidateNotNull />
+                    <ValidateNotNullOrEmpty />
+                </CmdletParameterMetadata>
+            </Parameter>
+           </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="BySessionIdentifier">
+            <QueryableProperties>
+                <Property PropertyName="SessionIdentifier">
+                    <Type PSType="string" />
+                    <RegularQuery  AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="BySessionIdentifier"/>
+                    </RegularQuery>
+                </Property>
+            </QueryableProperties>
+        </GetCmdletParameters>
+    </Cmdlet>
+    </InstanceCmdlets>
+    <!--
+      //
+      // Set-IscsiChapSecret
+      //
+
+      -->
+      <StaticCmdlets>
+          <Cmdlet>
+              <CmdletMetadata Verb="Set" Noun="IscsiChapSecret"/>
+              <Method MethodName="SetChapSecret">
+                  <ReturnValue>
+                      <Type PSType="System.Int32" />
+                      <CmdletOutputMetadata>
+                          <ErrorCode />
+                      </CmdletOutputMetadata>
+                  </ReturnValue>
+                  <Parameters>
+                      <Parameter ParameterName="ChapSecret">
+                          <Type PSType="string" />
+                          <CmdletParameterMetadata>
+                              <ValidateNotNull />
+                              <ValidateNotNullOrEmpty />
+                          </CmdletParameterMetadata>
+                      </Parameter>
+                  </Parameters>
+              </Method>
+          </Cmdlet>
+      </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>

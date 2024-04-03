@@ -1,0 +1,10 @@
+# rclone filter file for p0ds0smb > usmba sync
+- /backup/.Trash-1000/
+- /backup/.zfs/
++ /p0ds0smb/video-motogp/**
++ /p0ds0smb/video-formula1/**
++ /p0ds0smb/video-movies/**
++ /p0ds0smb/video-shows/**
+- **
+
+

@@ -1,0 +1,19 @@
+@import url(https://fonts.googleapis.com/css?family=Felipa);
+body {
+  background-color: #069c88;
+}
+
+.pixelerror {
+  width: 8px;
+  height: 8px;
+  box-shadow: 70px 30px 0 #000000,85px 30px 0 #000000,100px 30px 0 #000000,105px 30px 0 #000000,110px 30px 0 #000000,115px 30px 0 #000000,130px 30px 0 #000000,145px 30px 0 #000000,70px 35px 0 #000000,85px 35px 0 #000000,95px 35px 0 #000000,120px 35px 0 #000000,130px 35px 0 #000000,145px 35px 0 #000000,70px 40px 0 #000000,75px 40px 0 #000000,80px 40px 0 #000000,85px 40px 0 #000000,95px 40px 0 #000000,120px 40px 0 #000000,130px 40px 0 #000000,135px 40px 0 #000000,140px 40px 0 #000000,145px 40px 0 #000000,85px 45px 0 #000000,95px 45px 0 #000000,120px 45px 0 #000000,145px 45px 0 #000000,85px 50px 0 #000000,95px 50px 0 #000000,120px 50px 0 #000000,145px 50px 0 #000000,85px 55px 0 #000000,95px 55px 0 #000000,120px 55px 0 #000000,145px 55px 0 #000000,85px 60px 0 #000000,100px 60px 0 #000000,105px 60px 0 #000000,110px 60px 0 #000000,115px 60px 0 #000000,145px 60px 0 #000000,55px 70px 0 #FF002B,60px 70px 0 #FF002B,65px 70px 0 #FF002B,75px 70px 0 #FF002B,80px 70px 0 #FF002B,85px 70px 0 #FF002B,100px 70px 0 #FF002B,105px 70px 0 #FF002B,110px 70px 0 #FF002B,130px 70px 0 #FF002B,135px 70px 0 #FF002B,140px 70px 0 #FF002B,155px 70px 0 #FF002B,160px 70px 0 #FF002B,165px 70px 0 #FF002B,55px 75px 0 #FF002B,75px 75px 0 #FF002B,85px 75px 0 #FF002B,100px 75px 0 #FF002B,110px 75px 0 #FF002B,125px 75px 0 #FF002B,145px 75px 0 #FF002B,155px 75px 0 #FF002B,165px 75px 0 #FF002B,55px 80px 0 #FF002B,60px 80px 0 #FF002B,75px 80px 0 #FF002B,80px 80px 0 #FF002B,100px 80px 0 #FF002B,105px 80px 0 #FF002B,125px 80px 0 #FF002B,145px 80px 0 #FF002B,155px 80px 0 #FF002B,160px 80px 0 #FF002B,55px 85px 0 #FF002B,75px 85px 0 #FF002B,85px 85px 0 #FF002B,100px 85px 0 #FF002B,110px 85px 0 #FF002B,125px 85px 0 #FF002B,145px 85px 0 #FF002B,155px 85px 0 #FF002B,165px 85px 0 #FF002B,55px 90px 0 #FF002B,60px 90px 0 #FF002B,65px 90px 0 #FF002B,75px 90px 0 #FF002B,90px 90px 0 #FF002B,100px 90px 0 #FF002B,115px 90px 0 #FF002B,130px 90px 0 #FF002B,135px 90px 0 #FF002B,140px 90px 0 #FF002B,155px 90px 0 #FF002B,170px 90px 0 #FF002B;
+  position: relative;
+  left: 50%;
+  margin-left: -150px;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Felipa', cursive;
+  color: #eaf0d8;
+}

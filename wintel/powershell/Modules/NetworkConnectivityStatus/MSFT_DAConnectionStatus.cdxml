@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+
+	<Class ClassName="root/StandardCimv2/MSFT_DAConnectionStatus" ClassVersion="1.0.0">
+		<Version>1.0</Version>
+		<DefaultNoun>DAConnectionStatus</DefaultNoun>
+		
+	    <InstanceCmdlets>
+    
+    		<GetCmdletParameters DefaultCmdletParameterSet="ByName">
+    		</GetCmdletParameters>
+      
+	    </InstanceCmdlets>
+
+	</Class>
+
+    <Enums>
+        <Enum EnumName="DAConnectionStatus.Status" UnderlyingType="System.UInt32">
+             <Value Name="ConfigChanged" Value="0" />        
+             <Value Name="ConnectedLocally" Value="1" />
+             <Value Name="ConnectedRemotely" Value="2" />            
+      		<Value Name="ActionableError" Value="3" />
+      		<Value Name="Error" Value="4" />      
+    	</Enum>
+
+        <Enum EnumName="DAConnectionStatus.Substatus" UnderlyingType="System.UInt32">
+             <Value Name="Invalid" Value="0" />
+      		<Value Name="None" Value="1" />
+      		<Value Name="NAPUnhealthy" Value="2" />      
+      		<Value Name="StrongAuthorizationCredentialsNeeded" Value="3" />      
+      		<Value Name="LocalDNSNamesPreferred" Value="4" />      
+      		<Value Name="NoDirectAccessPolicy" Value="5" />            		
+      		<Value Name="InternetConnectivityDown" Value="6" />      
+      		<Value Name="CouldNotContactDirectAccessServer" Value="7" />            		
+      		<Value Name="NameResolutionFailure" Value="8" />            		
+      		<Value Name="RemoteNetworkAuthenticationFailure" Value="9" />            		
+      		<Value Name="RemoteNetworkConnectivityDown" Value="10" />            		
+      		<Value Name="SomeRemoteNetworkResourcesNotResponding" Value="11" />            		
+      		<Value Name="MissingDAClientExperienceConfiguration" Value="12" />            		
+      		<Value Name="MissingProxyConfiguration" Value="13" />            		
+      		<Value Name="ProxyCredentialsNeeded" Value="14" />            		      		
+      		<Value Name="IPHTTPSCertificateNeeded" Value="15" />            		      		
+      		<Value Name="IPv6Disabled" Value="16" />            		      		
+      		<Value Name="FirewallDisabled" Value="17" />            		      		      		
+        </Enum>    	
+    </Enums>  
+	
+</PowerShellMetadata>
+

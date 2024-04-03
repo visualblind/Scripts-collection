@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="Root/Microsoft/Windows/TaskScheduler/MSFT_ScheduledTask">
+    <Version>1.0</Version>
+    <DefaultNoun>ScheduledTask</DefaultNoun>
+    <InstanceCmdlets>
+      <GetCmdletParameters DefaultCmdletParameterSet="ByPath">
+        <QueryableProperties>
+          <Property PropertyName="TaskName">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" Position="0" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByPath" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="TaskPath">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" Position="1" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByPath" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+      </GetCmdletParameters>
+      <Cmdlet>
+        <CmdletMetadata Verb="Unregister" ConfirmImpact="High"/>
+        <Method MethodName="cim:DeleteInstance" />
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="ScheduledTask.StateEnum" UnderlyingType="System.Int32">
+      <Value Name="Unknown" Value="0" />
+      <Value Name="Disabled" Value="1" />
+      <Value Name="Queued" Value="2" />
+      <Value Name="Ready" Value="3" />
+      <Value Name="Running" Value="4" />
+    </Enum>
+    <Enum EnumName="ScheduledTask.CompatibilityEnum" UnderlyingType="System.Int32">
+      <Value Name="At" Value="0" />
+      <Value Name="V1" Value="1" />
+      <Value Name="Vista" Value="2" />
+      <Value Name="Win7" Value="3" />
+      <Value Name="Win8" Value="4" />
+    </Enum>
+    <Enum EnumName="ScheduledTask.RunLevelEnum" UnderlyingType="System.Int32">
+      <Value Name="Limited" Value="0" />
+      <Value Name="Highest" Value="1" />
+    </Enum>
+    <Enum EnumName="ScheduledTask.ProcessTokenSidTypeEnum" UnderlyingType="System.Int32">
+      <Value Name="None" Value="0" />
+      <Value Name="Unrestricted" Value="1" />
+      <Value Name="Default" Value="2" />
+    </Enum>
+    <Enum EnumName="ScheduledTask.LogonTypeEnum" UnderlyingType="System.Int32">
+      <Value Name="None" Value="0" />
+      <Value Name="Password" Value="1" />
+      <Value Name="S4U" Value="2" />
+      <Value Name="Interactive" Value="3" />
+      <Value Name="Group" Value="4" />
+      <Value Name="ServiceAccount" Value="5" />
+      <Value Name="InteractiveOrPassword" Value="6" />
+    </Enum>
+    <Enum EnumName="ScheduledTask.MultipleInstancesEnum" UnderlyingType="System.Int32">
+      <Value Name="Parallel" Value="0" />
+      <Value Name="Queue" Value="1" />
+      <Value Name="IgnoreNew" Value="2" />
+    </Enum>
+    <Enum EnumName="ScheduledTask.ClusterTaskTypeEnum" UnderlyingType="System.Int32">
+      <Value Name="ResourceSpecific" Value="1" />
+      <Value Name="AnyNode" Value="2" />
+      <Value Name="ClusterWide" Value="3" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

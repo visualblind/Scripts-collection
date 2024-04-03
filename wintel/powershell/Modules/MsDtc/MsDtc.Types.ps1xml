@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- *******************************************************************
+This file contains type information for the MsDtc PowerShell
+Snapin.
+
+Copyright (c) Microsoft Corporation.  All rights reserved.
+******************************************************************** -->
+<Types>
+    <Type>
+        <Name>Microsoft.Dtc.PowerShell.Diagnostics.DtcDiagnosticTransaction</Name>
+        <Members>
+        <MemberSet>
+        <Name>PsStandardMembers</Name>
+        <Members>
+          <NoteProperty>
+            <Name>DefaultDisplayProperty</Name>
+            <Value>Id</Value>
+          </NoteProperty>
+          <PropertySet>
+            <Name>DefaultDisplayPropertySet</Name>
+            <ReferencedProperties>
+              <Name>Id</Name>
+            </ReferencedProperties>
+          </PropertySet>
+          <PropertySet>
+            <Name>DefaultKeyPropertySet</Name>
+            <ReferencedProperties>
+              <Name>Id</Name>
+            </ReferencedProperties>
+          </PropertySet>
+        </Members>
+      </MemberSet>
+    </Members>
+    </Type>
+    <Type>
+        <Name>Microsoft.Dtc.PowerShell.Diagnostics.DtcDiagnosticResourceManagerJob</Name>
+        <Members>
+        <MemberSet>
+        <Name>PsStandardMembers</Name>
+        <Members>
+          <NoteProperty>
+            <Name>DefaultDisplayProperty</Name>
+            <Value>Name</Value>
+          </NoteProperty>
+          <PropertySet>
+            <Name>DefaultDisplayPropertySet</Name>
+            <ReferencedProperties>
+              <Name>Name</Name>
+              <Name>InstanceId</Name>
+            </ReferencedProperties>
+          </PropertySet>
+          <PropertySet>
+            <Name>DefaultKeyPropertySet</Name>
+            <ReferencedProperties>
+              <Name>Name</Name>
+              <Name>InstanceId</Name>
+              <Name>State</Name>
+              <Name>Location</Name>
+            </ReferencedProperties>
+          </PropertySet>
+        </Members>
+      </MemberSet>
+    </Members>
+    </Type>
+</Types>

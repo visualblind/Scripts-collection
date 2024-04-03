@@ -1,0 +1,210 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_FileServer">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>StorageFileServer</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-StorageFileServer
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+        <QueryableProperties>
+          <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery>
+                <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+          <!-- Name -->
+          <Property PropertyName="FriendlyName">
+            <Type PSType="System.String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata CmdletParameterSets="ByName" />
+              </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <QueryableAssociations>
+          <!-- Subsystem -->
+          <Association Association="MSFT_StorageSubsystemToFileServer" SourceRole="StorageSubsystem" ResultRole="FileServer">
+            <AssociatedInstance>
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_StorageSubsystem" />
+                <CmdletParameterMetadata PSName="Subsystem" ValueFromPipeline="true" CmdletParameterSets="BySubsystem" ErrorOnNoMatch="false" />
+            </AssociatedInstance>
+          </Association>
+        </QueryableAssociations>
+      </GetCmdletParameters>
+      <!--
+
+      //
+      // Remove-StorageFileServer
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" />
+        <Method MethodName="DeleteObject">
+          <Parameters>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+            <!-- Name -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+                <RegularQuery AllowGlobbing="true">
+                  <CmdletParameterMetadata CmdletParameterSets="ByName" />
+                </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Set-StorageFileServer
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Low" />
+        <Method MethodName="SetFriendlyName">
+          <Parameters>
+            <!-- FriendlyName -->
+            <Parameter ParameterName="FriendlyName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata  PSName="NewFriendlyName" IsMandatory="true">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+            <Property PropertyName="UniqueId">
+              <Type PSType="System.String" />
+              <RegularQuery>
+                <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+              </RegularQuery>
+            </Property>
+            <!-- Name -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+                <RegularQuery AllowGlobbing="true">
+                  <CmdletParameterMetadata CmdletParameterSets="ByName" />
+                </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // New-FileShare
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="New" Noun="FileShare" ConfirmImpact="Low" />
+        <Method MethodName="CreateFileShare">
+          <Parameters>
+            <!-- Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata  IsMandatory="true">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Description -->
+            <Parameter ParameterName="Description">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- SourceVolume -->
+            <Parameter ParameterName="SourceVolume">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Volume"/>
+              <CmdletParameterMetadata IsMandatory="true">
+                <ValidateNotNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- VolumeRelativePath -->
+            <Parameter ParameterName="VolumeRelativePath">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="RelativePathName" />
+            </Parameter>
+            <!-- ContinuouslyAvailable -->
+            <Parameter ParameterName="ContinuouslyAvailable">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata PSName="ContinuouslyAvailable" />
+            </Parameter>
+            <!-- EncryptData -->
+            <Parameter ParameterName="EncryptData">
+              <Type PSType="System.Boolean" />
+              <CmdletParameterMetadata />
+            </Parameter>
+            <!-- Protocol -->
+            <Parameter ParameterName="FileSharingProtocol">
+              <Type PSType="FileServer.FileSharingProtocol" />
+              <CmdletParameterMetadata PSName="Protocol" />
+            </Parameter>
+            <!-- SourceCaller -->
+            <Parameter ParameterName="cim:operationOption:SourceCaller" DefaultValue="Microsoft.PowerShell">
+              <Type PSType="System.String" />
+            </Parameter>
+            <!-- CMDLET OUTPUT -->
+            <Parameter ParameterName="CreatedFileShare">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+          <QueryableProperties>
+            <!-- UniqueId -->
+              <Property PropertyName="UniqueId">
+                <Type PSType="System.String" />
+                <RegularQuery>
+                  <CmdletParameterMetadata IsMandatory="true" PSName="FileServerUniqueId" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByUniqueId" Aliases="Id" />
+                </RegularQuery>
+              </Property>
+            <!-- Name -->
+            <Property PropertyName="FriendlyName">
+              <Type PSType="System.String" />
+                <RegularQuery AllowGlobbing="true">
+                  <CmdletParameterMetadata IsMandatory="true" PSName="FileServerFriendlyName" CmdletParameterSets="ByName" />
+                </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+    <CmdletAdapterPrivateData>
+        <Data Name="ClientSideShouldProcess" />
+    </CmdletAdapterPrivateData>
+  </Class>
+  <Enums>
+    <Enum EnumName="FileServer.FileSharingProtocol" UnderlyingType="System.UInt16">
+      <Value Name="NFS" Value="2" />
+      <Value Name="SMB" Value="3" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

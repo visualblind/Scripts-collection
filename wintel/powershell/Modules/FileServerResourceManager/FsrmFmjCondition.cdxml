@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">   
+  <Class ClassName="Root/Microsoft/Windows/FSRM/MSFT_FSRMFMJCondition">   
+    <Version>1.0</Version>     
+    <DefaultNoun>FsrmFmjCondition</DefaultNoun>   
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" ConfirmImpact="Medium" />
+        <Method MethodName="CreateFmjCondition">
+          <Parameters> 
+            <Parameter ParameterName="Property">
+              <Type PSType="String" />
+              <CmdletParameterMetadata IsMandatory="true" Position="1" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Condition">
+              <Type PSType="FmjConditionTypeEnum" />
+              <CmdletParameterMetadata IsMandatory="true" Position="2" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="Value">
+              <Type PSType="string" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="DateOffset">
+              <Type PSType="Int32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+              </CmdletParameterMetadata>
+            </Parameter> 
+            <Parameter ParameterName="FmjCondition">
+              <Type PSType="Microsoft.Management.Infrastructure.CimInstance" />
+              <CmdletOutputMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+    <Enum EnumName="FmjConditionTypeEnum" UnderlyingType="Uint32">
+      <Value Name="Equal" Value="1" />
+      <Value Name="NotEqual" Value="2" />
+      <Value Name="GreaterThan" Value="3" />
+      <Value Name="LessThan" Value="4" />
+      <Value Name="Contain" Value="5" />
+      <Value Name="Exist" Value="6" />
+      <Value Name="NotExist" Value="7" />
+      <Value Name="StartWith" Value="8" />
+      <Value Name="EndWith" Value="9" />
+      <Value Name="ContainedIn" Value="10" />
+      <Value Name="PrefixOf" Value="11" />
+      <Value Name="SuffixOf" Value="12" />
+      <Value Name="MatchesPattern" Value="13" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>   

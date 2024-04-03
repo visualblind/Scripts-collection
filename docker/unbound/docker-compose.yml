@@ -1,0 +1,36 @@
+version: '3'
+services:
+  unbound:
+    container_name: unbound
+    image: "mvance/unbound:latest"
+    expose:
+      - "53"
+    networks:
+      - dns
+    #network_mode: bridge
+    #network_mode: host
+    ports:
+      - target: 53
+        published: 53
+        protocol: tcp
+        mode: host
+      - target: 53
+        published: 53
+        protocol: udp
+        mode: host
+    volumes:
+      - type: bind
+        read_only: true
+        source: ./my_conf/forward-records.conf
+        target: /opt/unbound/etc/unbound/forward-records.conf
+      - type: bind
+        read_only: true
+        source: ./my_conf/a-records.conf
+        target: /opt/unbound/etc/unbound/a-records.conf
+    restart: unless-stopped
+
+networks:
+  dns:
+
+#volumes:
+  #mydata:

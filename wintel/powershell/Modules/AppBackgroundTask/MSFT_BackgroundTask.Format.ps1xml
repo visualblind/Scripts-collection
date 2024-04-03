@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>MSFT_BackgroundTask_TableView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_BackgroundTask</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+	    <Width>65</Width>
+	    <Label>Package Family Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+	   <Label>EntryPoint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+	    <Label>TaskID</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+	    <Wrap/>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PackageFullName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+              	<ScriptBlock>
+		    try
+		    {
+			$oldValue = $global:FormatEnumerationLimit
+			$global:FormatEnumerationLimit = 100
+			$result=""
+			$result2=""
+  			$rawUI = $Host.UI.RawUI.BufferSize.Width
+			if( $rawUI -gt 0 ) {
+				$maxLen = 0
+				$finalLen = 0
+				foreach($package in Get-AppxPackage)
+				{
+					$currPackage = $package.PackageFamilyName
+					if( $currPackage.Length -gt $maxLen ) {
+						$maxLen = $currPackage.Length
+					}
+				}
+				$finalLen = $maxLen
+				$rawUI = ($rawUI - 65)
+				$rawUI = ($rawUI / 2)
+
+				for( $i = 0; $i -lt ($_.EntryPoint.Count); $i++ )
+				{
+					if ( $rawUI -gt $_.EntryPoint[$i].Length ) {
+			    			$result2=$_.EntryPoint[$i]
+			    			$result2 = $result2.TrimStart("{")
+			    			$result2 = $result2.TrimEnd("}") 
+			    			$result2 = $result2+"`r`n"
+                    	    			$result = $result+$result2
+					} else {
+						$result2=$_.EntryPoint[$i]
+			    			$result2 = $result2.TrimStart("{")
+			    			$result2 = $result2.TrimEnd("}") 
+			    			$result2 = $result2.Substring(0, ($rawUI - 7 ) )+"..."
+			    			$result2 = $result2+"`r`n"
+                    	    			$result = $result+$result2
+					}
+				}
+				$result
+                    		
+			} else {
+				for( $i = 0; $i -lt ($_.EntryPoint.Count); $i++ )
+				{
+			    		$result2=$_.EntryPoint[$i]
+			    		$result2 = $result2.TrimStart("{")
+			    		$result2 = $result2.TrimEnd("}") 
+			    		$result2 = $result2.Substring(0, 22 )+"..."
+			    		$result2 = $result2+"`r`n"
+                    	    		$result = $result+$result2
+				}
+                    		$result
+			}
+
+		    }
+		    finally
+		    {
+		        $global:FormatEnumerationLimit = $oldvalue                            
+		    }                            
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+              	<ScriptBlock>
+		    try
+		    {
+			$oldValue = $global:FormatEnumerationLimit
+			$global:FormatEnumerationLimit = 100
+			$result=""
+			$result2=""
+  			$rawUI = $Host.UI.RawUI.BufferSize.Width
+
+			# Only dynamically resize if we're not in the default output layout
+
+			if( $rawUI -gt 120) {
+				$maxLen = 0
+				$finalLen = 0
+				foreach($package in Get-AppxPackage)
+				{
+					$currPackage = $package.PackageFamilyName
+					if( $currPackage.Length -gt $maxLen ) {
+						$maxLen = $currPackage.Length
+					}
+				}
+				$finalLen = $maxLen
+				$rawUI = ($rawUI - 65)
+				$rawUI = ($rawUI / 2)
+
+				for( $i = 0; $i -lt ($_.EntryPoint.Count); $i++ )
+				{
+					if ( $rawUI -gt $_.TaskID[$i].Length ) {
+			    			$result2=$_.TaskID[$i]
+			    			$result2 = $result2.TrimStart("{")
+			    			$result2 = $result2.TrimEnd("}") 
+			    			$result2 = $result2+"`r`n"
+                    	    			$result = $result+$result2
+					} else {
+						$result2=$_.TaskID[$i]
+			    			$result2 = $result2.TrimStart("{")
+			    			$result2 = $result2.TrimEnd("}") 
+			    			$result2 = $result2.Substring(0, ($rawUI - 5 ) )+"..."
+			    			$result2 = $result2+"`r`n"
+                    	    			$result = $result+$result2
+					}
+				}
+				$result
+                    		
+			} else {
+				for( $i = 0; $i -lt ($_.EntryPoint.Count); $i++ )
+				{
+			    		$result2=$_.TaskID[$i]
+			    		$result2 = $result2.TrimStart("{")
+			    		$result2 = $result2.TrimEnd("}") 
+			    		$result2 = $result2.Substring(0, 22 )+"..."
+			    		$result2 = $result2+"`r`n"
+                    	    		$result = $result+$result2
+				}
+                    		$result
+			}
+
+		    }
+		    finally
+		    {
+		        $global:FormatEnumerationLimit = $oldvalue                            
+		    }                            
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+      <View>
+          <Name>MSFT_BackgroundTask_ListView</Name>
+          <ViewSelectedBy>
+              <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_BackgroundTask</TypeName>
+          </ViewSelectedBy>
+          <ListControl>
+              <ListEntries>
+                  <ListEntry>
+                      <ListItems>
+                          <ListItem>
+				<Label>Package Family Name</Label>
+				<ScriptBlock>$_.PackageFullName</ScriptBlock>
+                          </ListItem>
+                          <ListItem>
+				<Label>RegisteredTasks</Label>
+              			<ScriptBlock>
+				    try
+				    {
+			                $oldValue = $global:FormatEnumerationLimit
+				        $global:FormatEnumerationLimit = 100
+					$result=""
+					$result2=""
+					$resultEntryPoint=""
+					$resultTaskID=""
+					for( $i = 0; $i -lt ($_.Taskname.Count); $i++ )
+					{
+					    $result2="TaskName:     "+$_.TaskName[$i]
+					    $result2 = $result2+"`r`n"
+					    $result2 = $result2+"EntryPoint:   "
+					    $resultEntryPoint = $_.EntryPoint[$i]
+					    $resultEntryPoint = $resultEntryPoint.TrimStart("{")
+			    	            $resultEntryPoint = $resultEntryPoint.TrimEnd("}") 
+					    $result2= $result2+$resultEntryPoint+"`r`n"
+					    $result2 = $result2+"TaskID:       "
+					    $resultTaskID = $_.TaskID[$i]
+					    $resultTaskID = $resultTaskID.TrimStart("{")
+			    	            $resultTaskID = $resultTaskID.TrimEnd("}") 
+					    $result2 = $result2+$resultTaskID	
+					    $result2 = $result2+"`r`n"+"`r`n"
+                    		            $result = $result+$result2
+					}
+                    		        $result 
+				    }
+				    finally
+				    {
+				        $global:FormatEnumerationLimit = $oldvalue                            
+				    }
+                		</ScriptBlock>
+                          </ListItem>
+                          <ListItem>
+                              <Label>Resource Usage</Label>
+                               <ItemSelectionCondition>
+				 <PropertyName>PerfInfo</PropertyName>
+			       </ItemSelectionCondition>
+				<ScriptBlock>
+				    try
+				    {
+					$oldValue = $global:FormatEnumerationLimit
+				        $global:FormatEnumerationLimit = 100
+					if($_.PerfInfo.Count -gt 0)
+					{
+					    $result=""
+					    $result2=""
+					    for( $i = 0; $i -lt ($_.PerfInfo.Count); $i++ )
+					    {
+					        $result2=$_.PerfInfo[$i]
+					        $result2 = $result2+"`r`n"
+                    		                $result = $result+$result2
+					    }
+                    		            $result 
+					}
+					else
+					{
+					    $result="Resource usage not requested."
+					    $result
+					}
+				    }
+				    finally
+				    {
+				        $global:FormatEnumerationLimit = $oldvalue                            
+				    }
+				</ScriptBlock>
+                          </ListItem>
+                      </ListItems>
+                  </ListEntry>
+              </ListEntries>
+          </ListControl>
+      </View>
+    <View>
+        <Name>MSFT_BackgroundTask_WideView</Name>
+        <ViewSelectedBy>
+            <TypeName>Microsoft.Management.Infrastructure.CimInstance#MSFT_BackgroundTask</TypeName>
+        </ViewSelectedBy>
+        <WideControl>
+	  <ColumnNumber>2</ColumnNumber>
+            <WideEntries>
+                <WideEntry>
+                    <WideItem>
+			<PropertyName>PackageFullName</PropertyName>
+                    </WideItem>
+                </WideEntry>
+            </WideEntries>
+        </WideControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

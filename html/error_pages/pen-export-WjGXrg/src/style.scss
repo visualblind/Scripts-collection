@@ -1,0 +1,196 @@
+// Colors
+$theme-primary: #3C7DC0;
+$theme-primary-bg: #E2EEF6;
+$gray-dark: #616161;
+
+// Mixins
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}
+
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@-moz-keyframes #{$animation-name} {
+		@content;
+	}  
+	@-ms-keyframes #{$animation-name} {
+		@content;
+	}
+	@-o-keyframes #{$animation-name} {
+		@content;
+	}  
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}
+
+// Animation
+// Cursor Error Animation (Hackr Logo)
+@include keyframes(cursor-error) {
+	0% {
+		transform: rotate3d(0, 0, 1, 40deg);
+		transform-origin: top left;
+		animation-timing-function: ease-in-out;
+	}
+
+	20%, 60% {
+		transform: rotate3d(0, 0, 1, 80deg);
+		transform-origin: top left;
+		animation-timing-function: ease-in-out;
+	}
+
+	40%, 80% {
+		transform: rotate3d(0, 0, 1, 40deg);;
+		transform-origin: top left;
+		animation-timing-function: ease-in-out;
+	}
+
+	90% {
+		transform: rotate3d(0, 0, 1, 70deg);
+		transform-origin: top left;
+		animation-timing-function: ease-in-out;
+	}
+
+	to {
+		transform: rotate3d(0, 0, 1, 40deg);
+		transform-origin: top left;
+		animation-timing-function: ease-in-out;
+	}
+}
+
+// Body
+body {
+	padding: 70px 0 0 0;
+	font-family: -apple-system,BlinkMacSystemFont,'Roboto',sans-serif;
+  color: darken($gray-dark, 5%);
+}
+
+// Error Page (specific body class)
+.errors {
+	background: lighten($theme-primary-bg, 3%);
+
+	// Page Section
+	.page--section {
+		padding: 0;
+	}
+}
+
+
+// Error Section
+.error--section {
+
+	// Erro Message Holder
+	.error--message-holder {
+		display: flex;
+		flex-direction: column;
+		padding: 40px 0;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		min-height: calc(100vh - 122px);
+	}
+
+	// Hackr Error Logo
+	.error-logo {
+		margin-top: -50px;
+
+		// Hackr Logo
+		.hackrLogo {
+			width: 250px;
+			padding: 20px 40px;
+			// box-shadow: 0 0 20px rgba($theme-primary, 0.4);
+		}
+
+		// Logo Text Path
+		.hackrLogo .hackrLogoText .hackr-logo-text-path {
+			transform-origin: center;
+		}
+		
+		// Cursor Path
+		.hackrLogo .hackrLogoCursor .hackrLogoCursorPath {
+			@include animation('cursor-error 3s infinite');
+		}
+
+		// Hackr Logo Text Path (for Mozilla)
+		@-moz-document url-prefix() {
+			.hackrLogo { padding: 0 40px; height: 75px; }
+			.hackrLogo .hackrLogoCursor .hackrLogoCursorPath { animation: none; }
+			.hackrLogo .hackrLogoText .hackrLogoText-H { transform-origin: 100px; }
+			.hackrLogo .hackrLogoText .hackrLogoText-A { transform-origin: 150px; }
+			.hackrLogo .hackrLogoText .hackrLogoText-C { transform-origin: 200px; }
+			.hackrLogo .hackrLogoText .hackrLogoText-K { transform-origin: 250px; }
+			.hackrLogo .hackrLogoText .hackrLogoText-R { transform-origin: 275px; }
+			.hackrLogo .hackrLogoText .hackrLogoText-Dot { transform-origin: 325px; }
+			.hackrLogo .hackrLogoText .hackrLogoText-I { transform-origin: 315px; }
+			.hackrLogo .hackrLogoText .hackrLogoText-O { transform-origin: 360px; }
+			.hackrLogo .hackrLogoCursor .hackrLogoCursorPath {  transform: rotate(40deg) translate(47px, 77px); transform-origin: center; }
+		}
+	}
+
+	// Erro Info
+	.error-info {
+		box-shadow: 0 0 20px rgba($theme-primary, 0.4);
+		padding: 0 40px 40px 40px;
+		margin-top: -28px;
+		border-radius: 4px;
+
+		// Title
+		.title {
+			font-size: 120px;
+			line-height: 1.3;
+			font-weight: 700;
+		}
+
+		// Message
+		.message {
+			font-size: 18px;
+		}
+	}
+}
+
+// Logo Styles
+
+// ######################################## //
+// ## LOGO.SCSS ## //
+// ######################################## //
+
+// SVG Logo
+.hackrLogo {
+	width: 130px;
+	margin-bottom: -3px;
+
+	// Hackr Logo Text
+	.hackrLogoText {
+
+		// Hackr Logo Text (Path)
+		.hackr-logo-text-path {
+			fill: darken($gray-dark, 5%);
+		}
+	}
+  
+  // Cursor Path
+		.hackrLogoCursorPath {
+			fill: $theme-primary;
+		}
+
+	// Hackr Logo Arrow
+	.hackrLogoArrow {
+
+		// Cursor Path
+		.hackrLogoArrowPath {
+			fill: $theme-primary;
+		}
+	}
+}
+
+// Button (Primary)
+.btn.btn-primary {
+  margin-top: 20px;
+  background: $theme-primary;
+}

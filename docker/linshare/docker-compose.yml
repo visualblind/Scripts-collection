@@ -1,0 +1,255 @@
+# vim: syntax=yaml textwidth=120 expandtab tabstop=2 softtabstop=2 shiftwidth=2 autoindent
+
+# Docker compose file for a full-featured Linshare architecture
+version: '3.7'
+
+services:
+
+    reverse-proxy:
+        image: traefik:v2.6
+        container_name: linshare_reverse-proxy
+        ports:
+          - 443:443
+
+        labels:
+          - "traefik.enable=true"
+          - "traefik.http.routers.traefik.rule=Host(`traefik.linshare.local`)"
+          - "traefik.http.services.traefik.loadbalancer.server.port=8080"
+
+        volumes:
+          - /docker/linshare/conf/traefik:/etc/traefik
+          - /docker/linshare/ssl/:/ssl/
+
+    docker-socket:
+        container_name: linshare_docker-socket
+        image: tecnativa/docker-socket-proxy
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+        environment:
+          - CONTAINERS=1
+
+    database:
+        container_name: linshare_database
+        restart: on-failure
+        image: linagora/linshare-database:6.0
+        volumes:
+            - /docker/linshare_database/data/postgres_data/lib:/var/lib/postgresql/data
+        environment:
+            - PGDATA=/var/lib/postgresql/data/pgdata
+            - POSTGRES_USER=linshare
+            - POSTGRES_PASSWORD=linshare
+
+    backend:
+        container_name: linshare_backend
+        restart: on-failure
+        image: linagora/linshare-backend:6.0
+        links:
+            - database:linshare_database
+            - mongodb:linshare_mongodb
+            - thumbnail-server:linshare_thumbnail-server
+        depends_on:
+            - database
+            - mongodb
+            - thumbnail-server
+        volumes:
+            - /docker/linshare_backend/data/linshare_data/lib:/var/lib/linshare
+#            - /docker/linshare_backend/conf/catalina.properties:/usr/local/tomcat/conf/catalina.properties
+            - /docker/linshare_backend/conf:/usr/local/tomcat/conf
+#            - /docker/linshare_backend/conf/log4j.properties:/etc/linshare/log4j.properties
+            - /docker/linshare_backend/etc:/etc/linshare
+        healthcheck:
+            test: ["CMD", "curl", "-s", "-f", "http://localhost:8080/linshare/"]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 40s
+        environment:
+            # These variables are mandatory
+            - SMTP_HOST=linshare_mail
+            - SMTP_PORT=25
+            - CLAMAV_HOST=linshare_clamav
+            - POSTGRES_HOST=linshare_database
+            - POSTGRES_PORT=5432
+            - POSTGRES_USER=linshare
+            - POSTGRES_PASSWORD=linshare
+            - CLAMAV_PORT=3310
+            - MONGODB_DATA_REPLICA_SET=linshare_mongodb:27017
+            - MONGODB_SMALLFILES_REPLICA_SET=linshare_mongodb:27017
+            - MONGODB_USER=linshare
+            - MONGODB_PASSWORD=linshare
+            - THUMBNAIL_ENABLE=true
+            # - THUMBNAIL_HOST=thumbnail-server
+            # - THUMBNAIL_PORT=8080
+            # Default variables can be overriden if needed.
+            #- SMTP_USER=<undefined>
+            #- SMTP_PASSWORD=<undefined>
+            #- CLAMAV_PORT=3310
+            #- POSTGRES_PORT=5432
+
+    thumbnail-server:
+        container_name: linshare_thumbnail-server
+        restart: on-failure
+        image: linagora/linshare-thumbnail-server:2.1.1
+        healthcheck:
+            test: ["CMD", "curl", "-s", "-f", "http://localhost:8081/healthcheck"]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 10s
+
+    home:
+        container_name: linshare_home
+        restart: on-failure
+        image: httpd:2.4
+        volumes:
+            - /docker/linshare_home/conf/home:/usr/local/apache2/htdocs/
+            - /docker/linshare_home/README.md:/usr/local/apache2/htdocs/md/README.md
+        labels:
+          - "traefik.enable=true"
+          - "traefik.http.routers.home.rule=Host(`home.linshare.local`)"
+
+    ui-user:
+        container_name: linshare_ui-user
+        restart: on-failure
+        image: linagora/linshare-ui-user:6.0
+        healthcheck:
+            test: ["CMD", "curl", "-s", "-f", "http://localhost/linshare/"]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 40s
+        depends_on:
+            - backend
+        labels:
+          - "traefik.enable=true"
+          - "traefik.http.routers.user.rule=Host(`user.linshare.local`)"
+        environment:
+            - EXTERNAL_URL=user.linshare.local
+            - TOMCAT_URL=backend
+            - TOMCAT_PORT=8080
+
+    ui-admin:
+        container_name: linshare_ui-admin
+        restart: on-failure
+        image: linagora/linshare-ui-admin:6.0
+        healthcheck:
+            test: ["CMD", "curl", "-s", "-f", "http://localhost/linshare/"]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 40s
+        depends_on:
+            - backend
+        labels:
+          - "traefik.enable=true"
+          - "traefik.http.routers.admin.rule=Host(`admin.linshare.local`)"
+        environment:
+            - EXTERNAL_URL=admin.linshare.local
+            - TOMCAT_URL=backend
+            - TOMCAT_PORT=8080
+
+    ui-upload-request:
+      container_name: linshare_ui-upload-request
+      image: linagora/linshare-ui-upload-request:6.0
+      environment:
+        - EXTERNAL_URL=upload-request.linshare.local
+        - TOMCAT_URL=backend
+        - TOMCAT_PORT=8080
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.uploadrequest.rule=Host(`upload-request.linshare.local`)"
+
+    mail:
+      container_name: linshare_mail
+      image: docker.io/mailserver/docker-mailserver:10.5
+      hostname: mail
+      domainname: linshare.org
+      volumes:
+      - /var/mail
+      - /var/mail-state
+      - /var/log/mail/
+      - /tmp/docker-mailserver/
+      - /etc/localtime:/etc/localtime:ro
+#      - /docker/linshare_mail/conf/mail_conf/main.cf:/etc/postfix/main.cf
+      - /docker/linshare_mail/conf/mail_conf:/etc/postfix
+
+      environment:
+      - ENABLE_SPAMASSASSIN=0
+      - SPAMASSASSIN_SPAM_TO_INBOX=0
+      - ENABLE_POSTGREY=0
+      - DMS_DEBUG=1
+      - ENABLE_CLAMAV=0
+      - ENABLE_FAIL2BAN=0
+      - ONE_DIR=1
+      - DMS_DEBUG=0
+      - ENABLE_LDAP=1
+      - LDAP_SERVER_HOST=ldap://ldap:1389
+      - LDAP_SEARCH_BASE=ou=People,dc=linshare,dc=org
+      - LDAP_BIND_DN=cn=linshare,dc=linshare,dc=org
+      - LDAP_BIND_PW=linshare
+      - LDAP_QUERY_FILTER_DOMAIN=(&(|(mail=*@%s)(mailalias=*@%s)(mailGroupMember=*@%s))(mailEnabled=TRUE))
+      - LDAP_QUERY_FILTER_USER=(&(mail=%s)(mailEnabled=TRUE))
+      - LDAP_QUERY_FILTER_ALIAS=(&(mailAlias=%s)(mailEnabled=TRUE))
+      - LDAP_QUERY_FILTER_GROUP=(&(mailGroupMember=%s)(mailEnabled=TRUE))
+      - DOVECOT_AUTH_BIND=yes
+      - DOVECOT_USER_FILTER=(&(objectClass=PostfixBookMailAccount)(uid=%n))
+      - DOVECOT_USER_ATTRS=mailHomeDirectory=home,mailUidNumber=uid,mailGidNumber=gid,mailStorageDirectory=mail
+      - DOVECOT_PASS_FILTER=(&(objectClass=PostfixBookMailAccount)(uid=%n))
+      - DOVECOT_PASS_ATTRS=uid=user,userPassword=password
+
+    webmail:
+      container_name: linshare_webmail
+      image: robbertkl/roundcube
+      volumes:
+#          - /docker/linshare_webmail/conf/webmail_conf/config.inc.php:/var/www/config/config.inc.php
+          - /docker/linshare_webmail/conf/webmail_conf:/var/www/config
+      environment:
+          - ROUNDCUBE_DEFAULT_HOST=linshare_mail
+          - ROUNDCUBE_SMTP_SERVER=linshare_mail
+          - ROUNDCUBE_SMTP_PORT=25
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.webmail.rule=Host(`webmail.linshare.local`)"
+
+    documentation:
+        container_name: linshare_documentation
+        image: linagora/linshare-backend-documentation-webservice:6.0
+        labels:
+          - "traefik.enable=true"
+          - "traefik.http.routers.docs.rule=Host(`docs.linshare.local`)"
+          - "traefik.http.services.docs.loadbalancer.server.port=8080"
+
+    clamav:
+        container_name: linshare_clamav
+        restart: on-failure
+        image: mkodockx/docker-clamav
+
+    mongodb:
+        container_name: linshare_mongodb
+        restart: on-failure
+        image: mongo:4.2
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=linshare
+            - MONGO_INITDB_ROOT_PASSWORD=linshare
+        volumes:
+            - /docker/linshare_mongodb/data/mongodb_data/db:/data/db
+
+    ldap:
+        image: linagora/linshare-ldap-for-tests:2.0
+        container_name: linshare_ldap
+        ports:
+          - "1389:1389"
+
+    init:
+        image: linagora/linshare-init:6.0
+        container_name: linshare_init
+        environment:
+          - LS_SERVER_HOST=backend
+          - LS_SERVER_PORT=8080
+          - LS_LDAP_NAME=ldap
+          - LS_LDAP_URL=ldap://ldap:1389
+          - LS_LDAP_BASE_DN=ou=People,dc=linshare,dc=org
+          - LS_LDAP_DN=cn=linshare,dc=linshare,dc=org
+          - LS_LDAP_PW=linshare
+          - LS_DOMAIN_PATTERN_NAME=pattern-demo
+          - LS_DOMAIN_PATTERN_MODEL=a4620dfc-dc46-11e8-a098-2355f9d6585a

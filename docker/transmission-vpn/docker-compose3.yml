@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+    transmission-openvpn:
+        container_name: transmission-vpn
+        cap_add:
+            - NET_ADMIN
+        volumes:
+            - '/docker/transmission-vpn/data:/data'
+            - '/docker/transmission-vpn/config:/config'
+        environment:
+            - OPENVPN_PROVIDER=PIA
+            - OPENVPN_CONFIG=france
+            - OPENVPN_USERNAME=user
+            - OPENVPN_PASSWORD=pass
+            - LOCAL_NETWORK=192.168.0.0/16
+        logging:
+            driver: json-file
+            options:
+                max-size: 10m
+        ports:
+            - '9091:9091'
+        image: haugene/transmission-openvpn

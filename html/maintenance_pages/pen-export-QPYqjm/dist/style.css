@@ -1,0 +1,93 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-smooth: auto;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #444;
+}
+
+body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+body:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+}
+body:before {
+  background-color: #E74C3C;
+  z-index: -1;
+}
+
+.maintenance {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 80%;
+}
+@media (min-width: 540px) {
+  .maintenance {
+    width: 450px;
+  }
+}
+.maintenance h1 {
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+}
+.maintenance h2, .maintenance p {
+  color: #fff;
+}
+.maintenance h2 {
+  margin-top: 0;
+}
+.maintenance p {
+  margin-bottom: 40px;
+}
+.maintenance hr {
+  position: relative;
+  width: 60%;
+  margin: 10px 0;
+  border: 0.5px solid rgba(255, 255, 255, 0.5);
+}
+.maintenance .logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  width: 70px;
+  color: #E74C3C;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.maintenance .logo:before, .maintenance .logo:after {
+  position: absolute;
+  content: "";
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  z-index: -1;
+}
+.maintenance .logo:before {
+  left: 0;
+}
+.maintenance .logo:after {
+  right: 0;
+}

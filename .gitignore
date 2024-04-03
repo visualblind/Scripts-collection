@@ -10,12 +10,22 @@ linux/.vscode
 
 .vscode
 
-*.bak
-
-*.mp4
-
 wintel/powershell/zip_files/windows-itpro-docs-public.zip
 
 wintel/sql/50400a-20171027t025015z-001.zip
 
 wintel/sql/50400a-20171027t025015z-001/50400a/50400a_50400a-enu_studentmanual_part1.pdf
+
+.nginxy/
+
+./temp/
+
+js/particles.js-master.zip
+
+js/Vue File Manager v2.0.7.zip
+
+*.bak
+
+*.mp4
+
+

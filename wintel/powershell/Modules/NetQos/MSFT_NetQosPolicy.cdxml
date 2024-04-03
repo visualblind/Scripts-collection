@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/StandardCimv2/MSFT_NetQosPolicySettingData" ClassVersion="1.1.0">
+    <Version>1.0</Version>
+    <DefaultNoun>NetQosPolicy</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-NetQosPolicy
+      //
+
+      -->
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+        <QueryableProperties>
+          <Property PropertyName="Name">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+            <CmdletParameterMetadata PSName="Name" Position="0" ValueFromPipelineByPropertyName="true" />
+          </RegularQuery>
+        </Property>
+        </QueryableProperties>
+        <QueryOptions>
+          <Option OptionName="PolicyStore">
+            <Type PSType="string" />
+            <CmdletParameterMetadata PSName="PolicyStore" Aliases="store" IsMandatory="false" />
+          </Option>
+        </QueryOptions>
+      </GetCmdletParameters>
+      <!--
+
+      //
+      // Set-NetQosPolicy
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" ConfirmImpact="Medium" />
+        <Method MethodName="cim:ModifyInstance">
+          <Parameters>
+            <!-- Parameter: NetworkProfile -->
+            <Parameter ParameterName="NetworkProfile">
+              <Type PSType="NetQosPolicy.NetworkProfile" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>         
+            <!-- Parameter: Precedence -->
+            <Parameter ParameterName="Precedence">
+              <Type PSType="uint32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: TemplateMatchCondition -->
+            <Parameter ParameterName="TemplateMatchCondition">
+              <Type PSType="NetQosPolicy.Template" />
+              <CmdletParameterMetadata Aliases="Template" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: UserMatchCondition -->
+            <Parameter ParameterName="UserMatchCondition">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Aliases="User sid" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: AppPathNameMatchCondition -->
+            <Parameter ParameterName="AppPathNameMatchCondition">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Aliases="AppPathName ApplicationName app" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPProtocolMatchCondition -->
+            <Parameter ParameterName="IPProtocolMatchCondition">
+              <Type PSType="NetQosPolicy.Protocol" />
+              <CmdletParameterMetadata Aliases="IPProtocol Protocol" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPPortMatchCondition -->
+            <Parameter ParameterName="IPPortMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata Aliases="IPPort port" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPSrcPrefixMatchCondition -->
+            <Parameter ParameterName="IPSrcPrefixMatchCondition">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Aliases="IPSrcPrefix SourceAddress sa src srcaddr srcip" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPSrcPortMatchCondition -->
+            <Parameter ParameterName="cim:OperationOption:IPSrcPortMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata PSName="IPSrcPortMatchCondition" Aliases="IPSrcPort SourcePort sp srcport" IsMandatory="false">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPSrcPortStartMatchCondition -->
+            <Parameter ParameterName="IPSrcPortStartMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata Aliases="IPSrcPortStart" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPSrcPortEndMatchCondition -->
+            <Parameter ParameterName="IPSrcPortEndMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata Aliases="IPSrcPortEnd" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPDstPrefixMatchCondition -->
+            <Parameter ParameterName="IPDstPrefixMatchCondition">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Aliases="IPDstPrefix DestinationAddress da dst dstaddr dstip dest destaddr destip" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPDstPortMatchCondition -->
+            <Parameter ParameterName="cim:OperationOption:IPDstPortMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata PSName="IPDstPortMatchCondition" Aliases="IPDstPort DestinationPort dp dstport destport" IsMandatory="false">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPDstPortStartMatchCondition -->
+            <Parameter ParameterName="IPDstPortStartMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata Aliases="IPDstPortStart" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPDstPortEndMatchCondition -->
+            <Parameter ParameterName="IPDstPortEndMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata Aliases="IPDstPortEnd" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: NetDirectPortMatchCondition -->
+            <Parameter ParameterName="NetDirectPortMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata Aliases="NetDirectPort ndport networkdirectport" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: URIMatchCondition -->
+            <Parameter ParameterName="URIMatchCondition">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Aliases="URI url" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <AllowNull />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: URIRecursiveMatchCondition -->
+            <Parameter ParameterName="URIRecursiveMatchCondition">
+              <Type PSType="boolean" />
+              <CmdletParameterMetadata Aliases="URIRecursive urlrecursive recursive" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: PriorityValue8021Action -->
+            <Parameter ParameterName="PriorityValue8021Action">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="PriorityValue PriorityValue8021 pri dot1p" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="-1" Max="7" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: DSCPAction -->
+            <Parameter ParameterName="DSCPAction">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="DSCPValue DSCP" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="-1" Max="63" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: MinBandwidthWeightAction -->
+            <Parameter ParameterName="MinBandwidthWeightAction">
+              <Type PSType="byte" />
+              <CmdletParameterMetadata Aliases="MinBandwidthWeight minbww weight" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="100" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: ThrottleRateAction -->
+            <Parameter ParameterName="ThrottleRateAction">
+              <Type PSType="uint64" />
+              <CmdletParameterMetadata PSName="ThrottleRateActionBitsPerSecond" Aliases="ThrottleRateAction ThrottleRate Throttle maxbw" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+      </Cmdlet>
+      <!--
+
+      //
+      // Remove-NetQosPolicy
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" />
+        <Method MethodName="cim:DeleteInstance">
+        </Method>
+      </Cmdlet>
+    </InstanceCmdlets>
+    <StaticCmdlets>
+      <!--
+
+      //
+      // New-NetQosPolicy
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="New" ConfirmImpact="Medium" DefaultCmdletParameterSet="ByIP5Tuple" />
+
+        <!-- Default -->
+        <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByDefault">
+          <Parameters>
+            <!-- Parameter: PolicyStore -->
+            <Parameter ParameterName="cim:OperationOption:PolicyStore">
+              <Type PSType="string" />
+              <CmdletParameterMetadata PSName="PolicyStore" Aliases="store" IsMandatory="false" />
+            </Parameter>
+            <!-- Parameter: Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: Default -->
+            <Parameter ParameterName="cim:OperationOption:Default">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata PSName="Default" IsMandatory="true" />
+            </Parameter>
+            <!-- Parameter: NetworkProfile -->
+            <Parameter ParameterName="NetworkProfile">
+              <Type PSType="NetQosPolicy.NetworkProfile" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>         
+            <!-- Parameter: Precedence -->
+            <Parameter ParameterName="Precedence">
+              <Type PSType="uint32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: PriorityValue8021Action -->
+            <Parameter ParameterName="PriorityValue8021Action">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="PriorityValue PriorityValue8021 pri dot1p" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="7" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: DSCPAction -->
+            <Parameter ParameterName="DSCPAction">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="DSCPValue DSCP" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="63" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: MinBandwidthWeightAction -->
+            <Parameter ParameterName="MinBandwidthWeightAction">
+              <Type PSType="byte" />
+              <CmdletParameterMetadata Aliases="MinBandwidthWeight minbww weight" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="100" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: ThrottleRateAction -->
+            <Parameter ParameterName="ThrottleRateAction">
+              <Type PSType="uint64" />
+              <CmdletParameterMetadata PSName="ThrottleRateActionBitsPerSecond" Aliases="ThrottleRateAction ThrottleRate Throttle maxbw" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+
+        <!-- FCOE -->
+        <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByFCOE">
+          <Parameters>
+            <!-- Parameter: PolicyStore -->
+            <Parameter ParameterName="cim:OperationOption:PolicyStore">
+              <Type PSType="string" />
+              <CmdletParameterMetadata PSName="PolicyStore" Aliases="store" IsMandatory="false" />
+            </Parameter>
+            <!-- Parameter: Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: FCOE -->
+            <Parameter ParameterName="cim:OperationOption:FCOE">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata PSName="FCOE" IsMandatory="true" />
+            </Parameter>
+            <!-- Parameter: NetworkProfile -->
+            <Parameter ParameterName="NetworkProfile">
+              <Type PSType="NetQosPolicy.NetworkProfile" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>         
+            <!-- Parameter: Precedence -->
+            <Parameter ParameterName="Precedence">
+              <Type PSType="uint32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: PriorityValue8021Action -->
+            <Parameter ParameterName="PriorityValue8021Action">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="PriorityValue PriorityValue8021 pri dot1p" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="7" />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+
+        <!-- iSCSI -->
+        <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByISCSI">
+          <Parameters>
+            <!-- Parameter: PolicyStore -->
+            <Parameter ParameterName="cim:OperationOption:PolicyStore">
+              <Type PSType="string" />
+              <CmdletParameterMetadata PSName="PolicyStore" Aliases="store" IsMandatory="false" />
+            </Parameter>
+            <!-- Parameter: Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: iSCSI -->
+            <Parameter ParameterName="cim:OperationOption:iSCSI">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata PSName="iSCSI" IsMandatory="true" />
+            </Parameter>
+            <!-- Parameter: NetworkProfile -->
+            <Parameter ParameterName="NetworkProfile">
+              <Type PSType="NetQosPolicy.NetworkProfile" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>         
+            <!-- Parameter: Precedence -->
+            <Parameter ParameterName="Precedence">
+              <Type PSType="uint32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: PriorityValue8021Action -->
+            <Parameter ParameterName="PriorityValue8021Action">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="PriorityValue PriorityValue8021 pri dot1p" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="7" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: DSCPAction -->
+            <Parameter ParameterName="DSCPAction">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="DSCPValue DSCP" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="63" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: MinBandwidthWeightAction -->
+            <Parameter ParameterName="MinBandwidthWeightAction">
+              <Type PSType="byte" />
+              <CmdletParameterMetadata Aliases="MinBandwidthWeight minbww weight" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="100" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: ThrottleRateAction -->
+            <Parameter ParameterName="ThrottleRateAction">
+              <Type PSType="uint64" />
+              <CmdletParameterMetadata PSName="ThrottleRateActionBitsPerSecond" Aliases="ThrottleRateAction ThrottleRate Throttle maxbw" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+
+        <!-- LiveMigration -->
+        <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByLiveMigration">
+          <Parameters>
+            <!-- Parameter: PolicyStore -->
+            <Parameter ParameterName="cim:OperationOption:PolicyStore">
+              <Type PSType="string" />
+              <CmdletParameterMetadata PSName="PolicyStore" Aliases="store" IsMandatory="false" />
+            </Parameter>
+            <!-- Parameter: Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: LiveMigration -->
+            <Parameter ParameterName="cim:OperationOption:LiveMigration">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata PSName="LiveMigration" IsMandatory="true" />
+            </Parameter>
+            <!-- Parameter: NetworkProfile -->
+            <Parameter ParameterName="NetworkProfile">
+              <Type PSType="NetQosPolicy.NetworkProfile" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>         
+            <!-- Parameter: Precedence -->
+            <Parameter ParameterName="Precedence">
+              <Type PSType="uint32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: PriorityValue8021Action -->
+            <Parameter ParameterName="PriorityValue8021Action">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="PriorityValue PriorityValue8021 pri dot1p" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="7" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: DSCPAction -->
+            <Parameter ParameterName="DSCPAction">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="DSCPValue DSCP" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="63" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: MinBandwidthWeightAction -->
+            <Parameter ParameterName="MinBandwidthWeightAction">
+              <Type PSType="byte" />
+              <CmdletParameterMetadata Aliases="MinBandwidthWeight minbww weight" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="100" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: ThrottleRateAction -->
+            <Parameter ParameterName="ThrottleRateAction">
+              <Type PSType="uint64" />
+              <CmdletParameterMetadata PSName="ThrottleRateActionBitsPerSecond" Aliases="ThrottleRateAction ThrottleRate Throttle maxbw" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+
+        <!-- NFS -->
+        <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByNFS">
+          <Parameters>
+            <!-- Parameter: PolicyStore -->
+            <Parameter ParameterName="cim:OperationOption:PolicyStore">
+              <Type PSType="string" />
+              <CmdletParameterMetadata PSName="PolicyStore" Aliases="store" IsMandatory="false" />
+            </Parameter>
+            <!-- Parameter: Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: NFS -->
+            <Parameter ParameterName="cim:OperationOption:NFS">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata PSName="NFS" IsMandatory="true" />
+            </Parameter>
+            <!-- Parameter: NetworkProfile -->
+            <Parameter ParameterName="NetworkProfile">
+              <Type PSType="NetQosPolicy.NetworkProfile" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>         
+            <!-- Parameter: Precedence -->
+            <Parameter ParameterName="Precedence">
+              <Type PSType="uint32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: PriorityValue8021Action -->
+            <Parameter ParameterName="PriorityValue8021Action">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="PriorityValue PriorityValue8021 pri dot1p" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="7" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: DSCPAction -->
+            <Parameter ParameterName="DSCPAction">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="DSCPValue DSCP" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="63" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: MinBandwidthWeightAction -->
+            <Parameter ParameterName="MinBandwidthWeightAction">
+              <Type PSType="byte" />
+              <CmdletParameterMetadata Aliases="MinBandwidthWeight minbww weight" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="100" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: ThrottleRateAction -->
+            <Parameter ParameterName="ThrottleRateAction">
+              <Type PSType="uint64" />
+              <CmdletParameterMetadata PSName="ThrottleRateActionBitsPerSecond" Aliases="ThrottleRateAction ThrottleRate Throttle maxbw" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+
+        <!-- SMB -->
+        <Method MethodName="cim:CreateInstance" CmdletParameterSet="BySMB">
+          <Parameters>
+            <!-- Parameter: PolicyStore -->
+            <Parameter ParameterName="cim:OperationOption:PolicyStore">
+              <Type PSType="string" />
+              <CmdletParameterMetadata PSName="PolicyStore" Aliases="store" IsMandatory="false" />
+            </Parameter>
+            <!-- Parameter: Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: SMB -->
+            <Parameter ParameterName="cim:OperationOption:SMB">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata PSName="SMB" IsMandatory="true" />
+            </Parameter>
+            <!-- Parameter: NetworkProfile -->
+            <Parameter ParameterName="NetworkProfile">
+              <Type PSType="NetQosPolicy.NetworkProfile" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>         
+            <!-- Parameter: Precedence -->
+            <Parameter ParameterName="Precedence">
+              <Type PSType="uint32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: PriorityValue8021Action -->
+            <Parameter ParameterName="PriorityValue8021Action">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="PriorityValue PriorityValue8021 pri dot1p" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="7" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: DSCPAction -->
+            <Parameter ParameterName="DSCPAction">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="DSCPValue DSCP" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="63" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: MinBandwidthWeightAction -->
+            <Parameter ParameterName="MinBandwidthWeightAction">
+              <Type PSType="byte" />
+              <CmdletParameterMetadata Aliases="MinBandwidthWeight minbww weight" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="100" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: ThrottleRateAction -->
+            <Parameter ParameterName="ThrottleRateAction">
+              <Type PSType="uint64" />
+              <CmdletParameterMetadata PSName="ThrottleRateActionBitsPerSecond" Aliases="ThrottleRateAction ThrottleRate Throttle maxbw" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+
+        <!-- Cluster -->
+        <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByCluster">
+          <Parameters>
+            <!-- Parameter: PolicyStore -->
+            <Parameter ParameterName="cim:OperationOption:PolicyStore">
+              <Type PSType="string" />
+              <CmdletParameterMetadata PSName="PolicyStore" Aliases="store" IsMandatory="false" />
+            </Parameter>
+            <!-- Parameter: Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: Cluster -->
+            <Parameter ParameterName="cim:OperationOption:Cluster">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata PSName="Cluster" IsMandatory="true" />
+            </Parameter>
+            <!-- Parameter: NetworkProfile -->
+            <Parameter ParameterName="NetworkProfile">
+              <Type PSType="NetQosPolicy.NetworkProfile" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>         
+            <!-- Parameter: Precedence -->
+            <Parameter ParameterName="Precedence">
+              <Type PSType="uint32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: PriorityValue8021Action -->
+            <Parameter ParameterName="PriorityValue8021Action">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="PriorityValue PriorityValue8021 pri dot1p" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="7" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: DSCPAction -->
+            <Parameter ParameterName="DSCPAction">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="DSCPValue DSCP" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="63" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: MinBandwidthWeightAction -->
+            <Parameter ParameterName="MinBandwidthWeightAction">
+              <Type PSType="byte" />
+              <CmdletParameterMetadata Aliases="MinBandwidthWeight minbww weight" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="100" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: ThrottleRateAction -->
+            <Parameter ParameterName="ThrottleRateAction">
+              <Type PSType="uint64" />
+              <CmdletParameterMetadata PSName="ThrottleRateActionBitsPerSecond" Aliases="ThrottleRateAction ThrottleRate Throttle maxbw" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+
+        <!-- URI -->
+        <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByURI">
+          <Parameters>
+            <!-- Parameter: PolicyStore -->
+            <Parameter ParameterName="cim:OperationOption:PolicyStore">
+              <Type PSType="string" />
+              <CmdletParameterMetadata PSName="PolicyStore" Aliases="store" IsMandatory="false" />
+            </Parameter>
+            <!-- Parameter: Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: NetworkProfile -->
+            <Parameter ParameterName="NetworkProfile">
+              <Type PSType="NetQosPolicy.NetworkProfile" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>         
+            <!-- Parameter: Precedence -->
+            <Parameter ParameterName="Precedence">
+              <Type PSType="uint32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: URIMatchCondition -->
+            <Parameter ParameterName="URIMatchCondition">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Aliases="URI url" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: URIRecursiveMatchCondition -->
+            <Parameter ParameterName="URIRecursiveMatchCondition">
+              <Type PSType="boolean" />
+              <CmdletParameterMetadata Aliases="URIRecursive urlrecursive recursive" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPDstPrefixMatchCondition -->
+            <Parameter ParameterName="IPDstPrefixMatchCondition">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Aliases="IPDstPrefix DestinationAddress da dst dstaddr dstip dest destaddr destip" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: DSCPAction -->
+            <Parameter ParameterName="DSCPAction">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="DSCPValue DSCP" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="63" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: ThrottleRateAction -->
+            <Parameter ParameterName="ThrottleRateAction">
+              <Type PSType="uint64" />
+              <CmdletParameterMetadata PSName="ThrottleRateActionBitsPerSecond" Aliases="ThrottleRateAction ThrottleRate Throttle maxbw" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <!-- Note that Max is equivalent to ULONG_MAX-1 -->
+                <ValidateRange Min="1" Max="4294967294" />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+
+        <!-- NetworkDirect -->
+        <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByNetworkDirectPort">
+          <Parameters>
+            <!-- Parameter: PolicyStore -->
+            <Parameter ParameterName="cim:OperationOption:PolicyStore">
+              <Type PSType="string" />
+              <CmdletParameterMetadata PSName="PolicyStore" Aliases="store" IsMandatory="false" />
+            </Parameter>
+            <!-- Parameter: Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: NetworkProfile -->
+            <Parameter ParameterName="NetworkProfile">
+              <Type PSType="NetQosPolicy.NetworkProfile" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>         
+            <!-- Parameter: Precedence -->
+            <Parameter ParameterName="Precedence">
+              <Type PSType="uint32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: NetDirectPortMatchCondition -->
+            <Parameter ParameterName="NetDirectPortMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata Aliases="NetDirectPort ndport networkdirectport" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="65535" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: PriorityValue8021Action -->
+            <Parameter ParameterName="PriorityValue8021Action">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="PriorityValue PriorityValue8021 pri dot1p" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="7" />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+
+        <!-- IPWellKnownPort -->
+        <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByIPWellKnownPort">
+          <Parameters>
+            <!-- Parameter: PolicyStore -->
+            <Parameter ParameterName="cim:OperationOption:PolicyStore">
+              <Type PSType="string" />
+              <CmdletParameterMetadata PSName="PolicyStore" Aliases="store" IsMandatory="false" />
+            </Parameter>
+            <!-- Parameter: Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: NetworkProfile -->
+            <Parameter ParameterName="NetworkProfile">
+              <Type PSType="NetQosPolicy.NetworkProfile" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>         
+            <!-- Parameter: Precedence -->
+            <Parameter ParameterName="Precedence">
+              <Type PSType="uint32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: UserMatchCondition -->
+            <Parameter ParameterName="UserMatchCondition">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Aliases="User sid" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: AppPathNameMatchCondition -->
+            <Parameter ParameterName="AppPathNameMatchCondition">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Aliases="AppPathName ApplicationName app" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPProtocolMatchCondition -->
+            <Parameter ParameterName="IPProtocolMatchCondition">
+              <Type PSType="NetQosPolicy.Protocol" />
+              <CmdletParameterMetadata Aliases="IPProtocol Protocol" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPPortMatchCondition -->
+            <Parameter ParameterName="IPPortMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata Aliases="IPPort port" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="65535" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: PriorityValue8021Action -->
+            <Parameter ParameterName="PriorityValue8021Action">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="PriorityValue PriorityValue8021 pri dot1p" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="7" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: DSCPAction -->
+            <Parameter ParameterName="DSCPAction">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="DSCPValue DSCP" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="63" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: MinBandwidthWeightAction -->
+            <Parameter ParameterName="MinBandwidthWeightAction">
+              <Type PSType="byte" />
+              <CmdletParameterMetadata Aliases="MinBandwidthWeight minbww weight" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="100" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: ThrottleRateAction -->
+            <Parameter ParameterName="ThrottleRateAction">
+              <Type PSType="uint64" />
+              <CmdletParameterMetadata PSName="ThrottleRateActionBitsPerSecond" Aliases="ThrottleRateAction ThrottleRate Throttle maxbw" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+
+        <!-- IP5Tuple -->
+        <Method MethodName="cim:CreateInstance" CmdletParameterSet="ByIP5Tuple">
+          <Parameters>
+            <!-- Parameter: PolicyStore -->
+            <Parameter ParameterName="cim:OperationOption:PolicyStore">
+              <Type PSType="string" />
+              <CmdletParameterMetadata PSName="PolicyStore" Aliases="store" IsMandatory="false" />
+            </Parameter>
+            <!-- Parameter: Name -->
+            <Parameter ParameterName="Name">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Position="0" IsMandatory="true" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: NetworkProfile -->
+            <Parameter ParameterName="NetworkProfile">
+              <Type PSType="NetQosPolicy.NetworkProfile" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>         
+            <!-- Parameter: Precedence -->
+            <Parameter ParameterName="Precedence">
+              <Type PSType="uint32" />
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="255" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: UserMatchCondition -->
+            <Parameter ParameterName="UserMatchCondition">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Aliases="User sid" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: AppPathNameMatchCondition -->
+            <Parameter ParameterName="AppPathNameMatchCondition">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Aliases="AppPathName ApplicationName app" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPProtocolMatchCondition -->
+            <Parameter ParameterName="IPProtocolMatchCondition">
+              <Type PSType="NetQosPolicy.Protocol" />
+              <CmdletParameterMetadata Aliases="IPProtocol Protocol" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPSrcPrefixMatchCondition -->
+            <Parameter ParameterName="IPSrcPrefixMatchCondition">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Aliases="IPSrcPrefix SourceAddress sa src srcaddr srcip" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPSrcPortMatchCondition -->
+            <Parameter ParameterName="cim:OperationOption:IPSrcPortMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata PSName="IPSrcPortMatchCondition" Aliases="IPSrcPort SourcePort sp srcport" IsMandatory="false">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="65535" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPSrcPortStartMatchCondition -->
+            <Parameter ParameterName="IPSrcPortStartMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata Aliases="IPSrcPortStart" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="65535" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPSrcPortEndMatchCondition -->
+            <Parameter ParameterName="IPSrcPortEndMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata Aliases="IPSrcPortEnd" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="65535" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPDstPrefixMatchCondition -->
+            <Parameter ParameterName="IPDstPrefixMatchCondition">
+              <Type PSType="string" />
+              <CmdletParameterMetadata Aliases="IPDstPrefix DestinationAddress da dst dstaddr dstip dest destaddr destip" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPDstPortMatchCondition -->
+            <Parameter ParameterName="cim:OperationOption:IPDstPortMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata PSName="IPDstPortMatchCondition" Aliases="IPDstPort DestinationPort dp dstport destport" IsMandatory="false">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="65535" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPDstPortStartMatchCondition -->
+            <Parameter ParameterName="IPDstPortStartMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata Aliases="IPDstPortStart" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="65535" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: IPDstPortEndMatchCondition -->
+            <Parameter ParameterName="IPDstPortEndMatchCondition">
+              <Type PSType="uint16" />
+              <CmdletParameterMetadata Aliases="IPDstPortEnd" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="65535" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: PriorityValue8021Action -->
+            <Parameter ParameterName="PriorityValue8021Action">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="PriorityValue PriorityValue8021 pri dot1p" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="7" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: DSCPAction -->
+            <Parameter ParameterName="DSCPAction">
+              <Type PSType="sbyte" />
+              <CmdletParameterMetadata Aliases="DSCPValue DSCP" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="0" Max="63" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: MinBandwidthWeightAction -->
+            <Parameter ParameterName="MinBandwidthWeightAction">
+              <Type PSType="byte" />
+              <CmdletParameterMetadata Aliases="MinBandwidthWeight minbww weight" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+                <ValidateRange Min="1" Max="100" />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Parameter: ThrottleRateAction -->
+            <Parameter ParameterName="ThrottleRateAction">
+              <Type PSType="uint64" />
+              <CmdletParameterMetadata PSName="ThrottleRateActionBitsPerSecond" Aliases="ThrottleRateAction ThrottleRate Throttle maxbw" IsMandatory="false" ValueFromPipelineByPropertyName="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+  <Enums>
+    <!-- NetQosPolicy.Protocol -->
+    <Enum EnumName="NetQosPolicy.Protocol" UnderlyingType="uint32">
+      <Value Name="None" Value="0" />
+      <Value Name="TCP"  Value="1" />
+      <Value Name="UDP"  Value="2" />
+      <Value Name="Both" Value="3" />
+    </Enum>
+    <!-- NetQosPolicy.Template -->
+    <Enum EnumName="NetQosPolicy.Template" UnderlyingType="uint32">
+      <Value Name="None"          Value="0" />
+      <Value Name="Default"       Value="1" />
+      <Value Name="iSCSI"         Value="2" />
+      <Value Name="FCoE"          Value="3" />
+      <Value Name="SMB"           Value="4" />
+      <Value Name="NFS"           Value="5" />
+      <Value Name="LiveMigration" Value="6" />
+      <Value Name="Cluster"       Value="7" />
+    </Enum>
+    <!-- NetQosPolicy.NetworkProfile -->
+    <Enum EnumName="NetQosPolicy.NetworkProfile" UnderlyingType="uint32" BitwiseFlags="true">
+      <Value Name="Domain"  Value="1" />
+      <Value Name="Public"  Value="2" />
+      <Value Name="Private" Value="4" />
+      <Value Name="All"     Value="7" />
+    </Enum>
+  </Enums> 
+</PowerShellMetadata>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+    <Class ClassName="ROOT/Microsoft/Windows/SMB/MSFT_SmbMultichannelConnection">
+        <Version>1.0</Version>
+        
+        <DefaultNoun>SmbMultichannelConnection</DefaultNoun>
+        <InstanceCmdlets>
+
+
+            <!--
+
+            //
+            // Get-SmbMultichannelConnection
+            // 
+
+            -->
+            <GetCmdletParameters>
+                <QueryableProperties>
+                    <Property PropertyName="ServerName">
+                        <Type PSType="string" />
+                        <RegularQuery AllowGlobbing="true">
+                            <CmdletParameterMetadata IsMandatory="false" Position="1" ValueFromPipelineByPropertyName="true" />
+                        </RegularQuery>
+                    </Property>
+                </QueryableProperties>
+                <QueryOptions>
+                    <Option OptionName="IncludeNotSelected">
+                        <Type PSType="System.Management.Automation.SwitchParameter" />
+                    </Option>
+                    <Option OptionName="SmbInstance">
+                        <Type PSType="SmbShare.SmbInstance" />
+                        <CmdletParameterMetadata ValueFromPipelineByPropertyName="true"/>
+                    </Option>
+                </QueryOptions>
+            </GetCmdletParameters>
+
+            <GetCmdlet>
+                <CmdletMetadata Verb="Get" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241948" Aliases="gsmbmc"/>
+            </GetCmdlet>
+
+        </InstanceCmdlets>
+
+        <StaticCmdlets>
+            <!--
+
+            //
+            // Update-SmbMultichannelConnection
+            //
+
+            -->
+            <Cmdlet>
+                <CmdletMetadata Verb="Update" HelpUri="http://go.microsoft.com/fwlink/?LinkID=241965" Aliases="udsmbmc"/>
+                <Method MethodName="Refresh">
+                    <ReturnValue>
+                        <Type PSType="uint32" />
+                        <CmdletOutputMetadata>
+                            <ErrorCode />
+                        </CmdletOutputMetadata>
+                    </ReturnValue>
+                    <Parameters>
+                        <Parameter ParameterName="ServerName">
+                            <Type PSType="string" />
+                            <CmdletParameterMetadata Position="1" ValueFromPipelineByPropertyName="true">
+                                <ValidateNotNull />
+                                <ValidateNotNullOrEmpty />
+                            </CmdletParameterMetadata>
+                        </Parameter>
+                    </Parameters>
+                </Method>
+            </Cmdlet>
+        </StaticCmdlets>
+    </Class>
+
+    <Enums>
+        <Enum EnumName="SmbShare.SmbInstance" UnderlyingType="System.UInt32">
+            <Value Name="Default" Value="0" />
+            <Value Name="CSV" Value="1" />
+            <Value Name="SBL" Value="2" />
+            <Value Name="SR" Value="3" />
+        </Enum>
+    </Enums>
+
+</PowerShellMetadata>

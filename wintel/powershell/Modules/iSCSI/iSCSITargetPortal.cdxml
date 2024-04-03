@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_iSCSITargetPortal">
+    <Version>1.0</Version>
+    <DefaultNoun>IscsiTargetPortal</DefaultNoun>
+    <InstanceCmdlets>
+     <!--
+
+      //
+      // Get-IscsiTargetPortal
+      //
+
+      -->
+       <GetCmdletParameters DefaultCmdletParameterSet="ByTargetPortalAddress">
+            <QueryableProperties>
+               <Property PropertyName="InitiatorPortalAddress">
+                    <Type PSType="string" />
+                    <RegularQuery AllowGlobbing="true">
+                     <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTargetPortalAddress" />
+                    </RegularQuery>
+                </Property>
+                <Property PropertyName="TargetPortalAddress">
+                    <Type PSType="string" />
+                    <RegularQuery AllowGlobbing="true">
+                      <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTargetPortalAddress" Position="0" />
+                    </RegularQuery>
+                    </Property>
+                <Property PropertyName="InitiatorInstanceName">
+                    <Type PSType="string" />
+                    <RegularQuery AllowGlobbing="true">
+                      <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTargetPortalAddress" />
+                    </RegularQuery>
+                    </Property>
+                <Property PropertyName="TargetPortalPortNumber">
+                    <Type PSType="uint16" />
+                     <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTargetPortalAddress" />
+                     </RegularQuery>
+                 </Property>
+                <Property PropertyName="IsHeaderDigest">
+                    <Type PSType="boolean" />
+                     <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTargetPortalAddress" />
+                     </RegularQuery>
+                 </Property>
+                <Property PropertyName="IsDataDigest">
+                    <Type PSType="boolean" />
+                     <RegularQuery AllowGlobbing="true">
+                        <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTargetPortalAddress" />
+                     </RegularQuery>
+                 </Property>
+           </QueryableProperties>
+           <QueryableAssociations>
+               <!-- iSCSISession -->
+               <Association Association="MSFT_iSCSISessionToiSCSITargetPortal" SourceRole="iSCSISession" ResultRole="iSCSITargetPortal">
+                   <AssociatedInstance>
+                       <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSISession" />
+                       <CmdletParameterMetadata PSName="iSCSISession" ValueFromPipeline="true" CmdletParameterSets="ByiSCSISession" />
+                   </AssociatedInstance>
+               </Association>
+               <!-- iSCSIConnection -->
+               <Association Association="MSFT_iSCSIConnectionToiSCSITargetPortal" SourceRole="iSCSIConnection" ResultRole="iSCSITargetPortal">
+                   <AssociatedInstance>
+                       <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSIConnection" />
+                       <CmdletParameterMetadata PSName="iSCSIConnection" ValueFromPipeline="true" CmdletParameterSets="ByiSCSIConnection" />
+                   </AssociatedInstance>
+               </Association>
+               <!-- iSCSITarget -->
+               <Association Association="MSFT_iSCSITargetToiSCSITargetPortal" SourceRole="iSCSITarget" ResultRole="iSCSITargetPortal">
+                   <AssociatedInstance>
+                       <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSITarget" />
+                       <CmdletParameterMetadata PSName="iSCSITarget" ValueFromPipeline="true" CmdletParameterSets="ByiSCSITarget" />
+                   </AssociatedInstance>
+               </Association>
+           </QueryableAssociations>
+         </GetCmdletParameters>
+     <!--
+
+      //
+      // Remove-IscsiTargetPortal
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High" />
+        <Method MethodName="Remove">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+            <Parameters>
+                <Parameter ParameterName="InitiatorInstanceName">
+                    <Type PSType="System.String" />
+                    <CmdletParameterMetadata>
+                        <ValidateNotNull />
+                        <ValidateNotNullOrEmpty />
+                    </CmdletParameterMetadata>
+                </Parameter>
+                <Parameter ParameterName="InitiatorPortalAddress">
+                    <Type PSType="System.String" />
+                    <CmdletParameterMetadata>
+                        <ValidateNotNull />
+                        <ValidateNotNullOrEmpty />
+                    </CmdletParameterMetadata>
+                </Parameter>
+              <Parameter ParameterName="TargetPortalPortNumber">
+                    <Type PSType="System.Int32" />
+                    <CmdletParameterMetadata>
+                        <ValidateNotNull />
+                        <ValidateNotNullOrEmpty />
+                    </CmdletParameterMetadata>
+                </Parameter>
+         </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByTargetPortalAddress">
+            <QueryableProperties>
+             <Property PropertyName="TargetPortalAddress">
+                 <Type PSType="string" />
+                 <RegularQuery AllowGlobbing="true">
+                     <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTargetPortalAddress" />
+                 </RegularQuery>
+             </Property>
+            </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--
+
+      //
+      // Update-IscsiTargetPortal
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Update" />
+        <Method MethodName="Update">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+          <Parameters>
+            <Parameter ParameterName="InitiatorInstanceName">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="InitiatorPortalAddress">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <Parameter ParameterName="TargetPortalPortNumber">
+              <Type PSType="System.UInt16" />
+              <CmdletParameterMetadata>
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByTargetPortalAddress">
+            <QueryableProperties>
+             <Property PropertyName="TargetPortalAddress">
+                     <Type PSType="string" />
+                     <RegularQuery AllowGlobbing="true">
+                         <CmdletParameterMetadata IsMandatory="true" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByTargetPortalAddress" Position="0" />
+                     </RegularQuery>
+             </Property>
+            </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+    <!--
+
+    //
+    // New-IscsiTargetPortal
+    //
+
+    -->
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="New" />
+          <Method MethodName="New" >
+              <ReturnValue>
+                  <Type PSType="System.Int32" />
+                  <CmdletOutputMetadata>
+                      <ErrorCode />
+                  </CmdletOutputMetadata>
+              </ReturnValue>
+              <Parameters>
+                  <Parameter ParameterName="TargetPortalAddress">
+                      <Type PSType="string" />
+                      <CmdletParameterMetadata Aliases="TA" IsMandatory="true">
+                          <ValidateNotNull />
+                          <ValidateNotNullOrEmpty />
+                      </CmdletParameterMetadata>
+                  </Parameter>
+                  <Parameter ParameterName="TargetPortalPortNumber">
+                      <Type PSType="uint16" />
+                      <CmdletParameterMetadata>
+                          <ValidateNotNull />
+                          <ValidateNotNullOrEmpty />
+                      </CmdletParameterMetadata>
+                  </Parameter>
+                  <Parameter ParameterName="InitiatorPortalAddress" >
+                      <Type PSType="string" />
+                      <CmdletParameterMetadata Aliases="IA" ValueFromPipelineByPropertyName="true" >
+                          <ValidateNotNull />
+                          <ValidateNotNullOrEmpty />
+                      </CmdletParameterMetadata>
+                  </Parameter>
+                  <Parameter ParameterName="IsHeaderDigest">
+                      <Type PSType="boolean" />
+                      <CmdletParameterMetadata>
+                          <ValidateNotNull />
+                          <ValidateNotNullOrEmpty />
+                      </CmdletParameterMetadata>
+                  </Parameter>
+                  <Parameter ParameterName="IsDataDigest">
+                      <Type PSType="boolean" />
+                      <CmdletParameterMetadata>
+                          <ValidateNotNull />
+                          <ValidateNotNullOrEmpty />
+                      </CmdletParameterMetadata>
+                  </Parameter>
+                  <Parameter ParameterName="AuthenticationType">
+                      <Type PSType="string" />
+                      <CmdletParameterMetadata>
+                          <ValidateNotNull />
+                          <ValidateNotNullOrEmpty />
+                      </CmdletParameterMetadata>
+                  </Parameter>                  
+                  <Parameter ParameterName="InitiatorInstanceName" >
+                      <Type PSType="string" />
+                      <CmdletParameterMetadata ValueFromPipelineByPropertyName="true" >
+                          <ValidateNotNull />
+                          <ValidateNotNullOrEmpty />
+                      </CmdletParameterMetadata>
+                  </Parameter>
+                  <Parameter ParameterName="ChapUsername">
+                      <Type PSType="string" />
+                      <CmdletParameterMetadata>
+                          <ValidateNotNull />
+                          <ValidateNotNullOrEmpty />
+                      </CmdletParameterMetadata>
+                  </Parameter>
+                  <Parameter ParameterName="ChapSecret">
+                      <Type PSType="string" />
+                      <CmdletParameterMetadata>
+                          <ValidateNotNull />
+                          <ValidateNotNullOrEmpty />
+                      </CmdletParameterMetadata>
+                  </Parameter>
+                  <Parameter ParameterName="CreatedTargetPortal">
+                      <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_iSCSITargetPortal" />
+                      <CmdletOutputMetadata />
+                  </Parameter>
+              </Parameters>
+          </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>       
+</PowerShellMetadata>

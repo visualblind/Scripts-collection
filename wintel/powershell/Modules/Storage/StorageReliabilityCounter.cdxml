@@ -1,0 +1,49 @@
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="ROOT/Microsoft/Windows/Storage/MSFT_StorageReliabilityCounter">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>StorageReliabilityCounter</DefaultNoun>
+    <InstanceCmdlets>
+      <!--
+
+      //
+      // Get-StorageReliabilityCounter
+      //
+
+      -->
+      <GetCmdletParameters />
+      <GetCmdlet>
+        <CmdletMetadata Verb="Get" Noun="StorageReliabilityCounterDeprecated" />
+        <GetCmdletParameters />
+      </GetCmdlet>
+      <!--
+
+      //
+      // Reset-StorageReliabilityCounter
+      //
+
+      -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Reset" />
+        <Method MethodName="Reset" />
+        <GetCmdletParameters>
+          <QueryableAssociations>
+            <!-- PhysicalDisk -->
+            <Association Association="MSFT_PhysicalDiskToStorageReliabilityCounter" SourceRole="PhysicalDisk" ResultRole="StorageReliabilityCounter">
+              <AssociatedInstance>
+                <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_PhysicalDisk" />
+                <CmdletParameterMetadata PSName="PhysicalDisk" IsMandatory="true" ValueFromPipeline="true" CmdletParameterSets="ByPhysicalDisk" ErrorOnNoMatch="false" />
+              </AssociatedInstance>
+            </Association>
+            <!-- Disk -->
+            <Association Association="MSFT_DiskToStorageReliabilityCounter" SourceRole="Disk" ResultRole="StorageReliabilityCounter">
+              <AssociatedInstance>
+                <Type PSType="Microsoft.Management.Infrastructure.CimInstance" ETSType="Microsoft.Management.Infrastructure.CimInstance#MSFT_Disk" />
+                <CmdletParameterMetadata PSName="Disk" IsMandatory="true" ValueFromPipeline="true" CmdletParameterSets="ByDisk" ErrorOnNoMatch="false" />
+              </AssociatedInstance>
+            </Association>
+          </QueryableAssociations>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+  </Class>
+</PowerShellMetadata>

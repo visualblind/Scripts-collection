@@ -1,0 +1,44 @@
+html, body{
+  height:100%;
+  width:100%;
+  font-family: "Open Sans", sans-serif;
+}
+body{
+  background: #1a6d62;
+  background: radial-gradient(ellipse at center,  #2d9c8e 0%,#1d4641 100%);
+}
+.error-container{
+  width:100%;
+  text-align:center;
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  height:365px;
+  margin:auto;
+}
+.error{
+  display:inline-block;
+  max-width: 360px;
+}
+.number{
+  font-size:160px;
+  color:#eef7f5;
+  text-shadow: 1px 1px 10px #2e4844;
+}
+.title{
+  color:#eef7f5;
+  font-size:28px;
+  text-shadow: 1px 1px 5px #0e2926;
+  margin-bottom: 50px;
+}
+.message{
+  font-size:20px;
+  text-shadow: 1px 1px 10px #25746a;
+}
+
+.cog-faint{
+  position:absolute;
+  font-size:400px!important;
+  color:#72ada5;
+  opacity:0.1;
+}

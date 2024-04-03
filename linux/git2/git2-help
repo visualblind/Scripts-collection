@@ -1,0 +1,6 @@
+#!/bin/bash
+
+git help
+echo
+echo "   git2 setup-exclude   set exclude file of git1 to the files of git2"
+echo "   git2 swap-git2       swap git1 and git2"

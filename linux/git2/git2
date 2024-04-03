@@ -1,0 +1,60 @@
+#!/bin/bash
+#
+# git2 - handle multiple git repositories in one directory
+# Copyright (C) 2016 Simon Walz, http://sw.nerdbox.de/
+
+# require library functions
+SCRIPTPATH="$(readlink -f 2>/dev/null || perl -MCwd -e 'print Cwd::abs_path shift' $0)"
+source "$(dirname "${SCRIPTPATH}")/lib.sh"
+
+
+if test "x$1" = "x"
+then
+	echo "git2 base dir: ${GITTWO_DIR}"
+	exit 0
+fi
+if test "x$(command -v "git2-$1")" != "x"
+then
+	subcmd="$1"
+	shift
+	"git2-${subcmd}" "$@"
+	EXIT_STATE=$?
+	exit ${EXIT_STATE}
+fi
+
+git2_search_base_dir
+if test "x$1" = "xinit"
+then
+	GITTWO_BASE="./"
+fi
+
+# check if an other git2 instance is already active:
+GITTWO_ACTIVE=0
+if test -f "${GITTWO_BASE}.git2_is_active"
+then
+	GITTWO_ACTIVE=1
+fi
+
+trap 'git2_cleanup; exit 1' 2
+trap 'git2_cleanup; exit 1' 15
+
+
+git2_setup
+
+# exec the git command:
+# http://git-scm.com/book/es/v2/Git-Internals-Environment-Variables
+test "x${GITTWO_BASE}" != "x" && export GIT_WORK_TREE="${GITTWO_BASE}"
+export GIT_DIR="${GITTWO_DIR}"
+git "$@"
+EXIT_STATE=$?
+
+if test "x$1" = "xinit"
+then
+	git config --unset core.worktree
+fi
+
+git2_cleanup
+
+# exit with exit state of the git command
+exit ${EXIT_STATE}
+

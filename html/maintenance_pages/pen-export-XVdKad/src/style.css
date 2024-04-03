@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+* {
+  font-family: 'Indie Flower', cursive;
+}
+
+a {
+  text-decoration: none !important; }
+
+
+  body{
+
+overflow: hidden;
+background-color: #F44336;
+-webkit-animation-name: color; /* Safari 4.0 - 8.0 */
+-webkit-animation-duration: 12s; /* Safari 4.0 - 8.0 */
+animation-name: color;
+animation-duration: 12s;
+animation-iteration-count: infinite;
+  }
+
+  .text{
+    color: #fff;
+    font-size:34px; 
+    position: absolute;
+    left: calc(50% - 291px/2);
+    top: calc(50% - 48px/2);
+
+
+  }
+
+
+
+
+
+
+  @keyframes color {
+    0%   {background-color: #F44336;}
+    20%  {background-color: #009688;}
+
+
+    40%  {background-color: #ffeb3b;}
+    60%  {background-color: #00bcd4;}
+    80%  {background-color: #cddc39;}
+
+    100% {background-color: #ff9800;}
+}

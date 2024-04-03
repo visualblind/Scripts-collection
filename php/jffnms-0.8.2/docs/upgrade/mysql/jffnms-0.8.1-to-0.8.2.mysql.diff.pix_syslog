@@ -1,0 +1,21 @@
+UPDATE syslog_types SET match_text = '%PIX-3-305006:.+|%PIX-2-106012:.+|%PIX-3-305005:.+|%PIX-3-307001:.+' WHERE id = 29;
+UPDATE syslog_types SET match_text = '%PIX-1-(\\d*): (.*)' WHERE id = 44;
+UPDATE syslog_types SET match_text = '%PIX-2-(\\d*): (.*)' WHERE id = 45;
+UPDATE syslog_types SET match_text = '%PIX-3-(\\d*): (.*)' WHERE id = 46;
+UPDATE syslog_types SET match_text = '%PIX-4-(\\d*): (.*)' WHERE id = 47;
+UPDATE syslog_types SET match_text = '%PIX-6-(\\d*): (.*)' WHERE id = 48;
+UPDATE syslog_types SET match_text = '%PIX-5-(\\d*): (.*)' WHERE id = 49;
+UPDATE syslog_types SET match_text = '%PIX-7-(\\d*): (.*)' WHERE id = 50;
+
+DELETE FROM filters_cond where id = 44;
+INSERT INTO filters_cond (id,  filter_id,  pos,  field_id,  op,  value) VALUES (44, 20, 14, 5, '=', '');
+
+DELETE FROM filters_cond where id = 45;
+INSERT INTO filters_cond (id,  filter_id,  pos,  field_id,  op,  value) VALUES (45, 20, 15, 2, '=', '29');
+
+DELETE FROM filters_cond where id = 46;
+INSERT INTO filters_cond (id,  filter_id,  pos,  field_id,  op,  value) VALUES (46, 20, 16, 5, '=', '');
+
+DELETE FROM filters_cond where id = 47;
+INSERT INTO filters_cond (id,  filter_id,  pos,  field_id,  op,  value) VALUES (47, 20, 17, 2, '=', '28');
+

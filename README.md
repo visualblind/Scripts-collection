@@ -1,4 +1,3 @@
-```
 Scripts-collection/
 ├── bsd
 │   ├── freenas-iocage-nextcloud
@@ -4357,27 +4356,11 @@ Scripts-collection/
 │                       └── tests
 ├── linux
 │   ├── bashrc
-│   ├── bash-wallpaper-downloader
-│   │   └── screenshots
 │   ├── benchmark
 │   ├── desktop-files
 │   ├── ffmpeg
 │   ├── from-rclone-iocage
 │   ├── git2
-│   ├── jellyfin-stuff
-│   │   ├── docker-compose
-│   │   ├── iptv-livetv
-│   │   ├── jellyfin-css
-│   │   ├── misc
-│   │   ├── nginx
-│   │   │   └── html
-│   │   ├── rclone-conf
-│   │   ├── rclone-filter
-│   │   ├── screenshots
-│   │   └── shell-scripts
-│   │       ├── ffmpeg
-│   │       ├── rclone
-│   │       └── testing
 │   ├── lamp
 │   │   ├── conf
 │   │   ├── include
@@ -4429,7 +4412,6 @@ Scripts-collection/
 │   ├── udemy-shell-scripting
 │   ├── uguucho-master
 │   │   └── uguucho
-│   ├── uguush
 │   ├── unifi-controller
 │   │   ├── unifi-5.10.17
 │   │   │   ├── debian8
@@ -5524,4 +5506,5 @@ Scripts-collection/
         └── printing
             └── checkifnetworkprinterisconnected
                 └── Documentation_files
-```
+
+5507 directories

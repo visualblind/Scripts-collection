@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=xfreerdp_win10
+Comment=XFreeRDP
+Exec=xfreerdp /network:auto /auto-reconnect /monitors:0 /bpp:32 /floatbar:sticky:on /floatbar:show:always +clipboard /cert-ignore /dynamic-resolution /u:"SYSINFO\visualblind" /p:"DrewGe*f8" /v:10.10.10.248
+Icon=gnome-remote-desktop
+Terminal=false
+Type=Application
+Categories=Application;
+Name[en_US]=xfreerdp_win10

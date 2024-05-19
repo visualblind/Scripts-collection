@@ -1,9 +1,9 @@
-```
 Scripts-collection/
 ├── bsd
 │   ├── freenas-iocage-nextcloud
 │   │   └── configs
 │   ├── freenas-truenas
+│   │   └── rclone
 │   ├── iocage-plugin-emby-master
 │   └── zip
 ├── docker
@@ -196,6 +196,7 @@ Scripts-collection/
 │   ├── jellyfin
 │   ├── jellyfin-vue
 │   ├── kim-python-argument
+│   ├── kyoo
 │   ├── lemmy
 │   ├── librenms
 │   ├── linshare
@@ -236,6 +237,7 @@ Scripts-collection/
 │   │       │       └── lib
 │   │       │           └── pgdata
 │   │       └── ssl
+│   ├── linuxserver-codeserver
 │   ├── linuxserver-doublecommander
 │   ├── linuxserver.io
 │   │   └── nginx
@@ -245,6 +247,8 @@ Scripts-collection/
 │   ├── linuxserver-nextcloud
 │   │   └── Collabora Online
 │   ├── linuxserver-ombi
+│   ├── linuxserver-radarr
+│   ├── linuxserver-sonarr
 │   ├── linuxserver-syslog
 │   ├── nextcloud-mariadb-redis
 │   ├── nextcloud-postgres-redis-collabora
@@ -380,6 +384,7 @@ Scripts-collection/
 │   │   └── letsencrypt
 │   ├── nginx-regex-tester
 │   │   └── regextester
+│   ├── nitter
 │   ├── porn-vault
 │   ├── portainer
 │   │   ├── data
@@ -392,6 +397,7 @@ Scripts-collection/
 │   ├── Seafile
 │   ├── shadowsocks-libev
 │   ├── shadowsocks-rust
+│   ├── slink
 │   ├── smokeping
 │   ├── sonarr
 │   ├── SWAG
@@ -401,6 +407,7 @@ Scripts-collection/
 │   ├── torrents-csv-server
 │   ├── transmission-vpn
 │   ├── travisflix.com
+│   ├── tubearchivist
 │   ├── unbound
 │   │   └── my_conf
 │   ├── webgrabplus
@@ -4376,7 +4383,6 @@ Scripts-collection/
 │   │   ├── init.d
 │   │   └── src
 │   ├── screen
-│   ├── screenrc
 │   ├── script-git-backup
 │   ├── simple-html-maintenance-page
 │   ├── sublime-text_crack
@@ -4390,6 +4396,7 @@ Scripts-collection/
 │   ├── tabulate
 │   │   └── images
 │   ├── temp
+│   ├── transmission
 │   ├── tutorials
 │   │   ├── case-statements
 │   │   │   ├── lessons
@@ -5453,6 +5460,8 @@ Scripts-collection/
     │   │   ├── Tutorials and How-to guides
     │   │   └── Windows Script Host
     │   ├── Template
+    │   ├── VMware Tools
+    │   │   └── serviceDiscovery
     │   ├── webserver-report
     │   ├── Win11
     │   ├── Windows10Debloater-master
@@ -5514,5 +5523,5 @@ Scripts-collection/
         └── printing
             └── checkifnetworkprinterisconnected
                 └── Documentation_files
-```
 
+5524 directories

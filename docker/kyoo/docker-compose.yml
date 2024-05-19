@@ -1,0 +1,178 @@
+version: "3"
+
+services:
+  image: zoriya/kyoo_transcoder:latest
+  networks:
+    default:
+      aliases:
+        - transcoder
+  restart: unless-stopped
+  env_file:
+    - ./.env
+  volumes:
+    - ${LIBRARY_ROOT}:/video:ro
+    - ${CACHE_ROOT}:/cache
+    - metadata:/metadata  
+  back:
+    image: zoriya/kyoo_back:latest
+    restart: unless-stopped
+    cpus: 1.5
+    env_file:
+      - ./.env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      meilisearch:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      migrations:
+        condition: service_completed_successfully
+    volumes:
+      - kyoo:/kyoo
+
+  migrations:
+    image: zoriya/kyoo_migrations:latest
+    restart: "no"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - ./.env
+
+  front:
+    image: zoriya/kyoo_front:latest
+    restart: unless-stopped
+    environment:
+      - KYOO_URL=${KYOO_URL:-http://back:5000}
+
+  scanner:
+    image: zoriya/kyoo_scanner:latest
+    restart: unless-stopped
+    depends_on:
+      back:
+        condition: service_healthy
+    env_file:
+      - ./.env
+    environment:
+      - KYOO_URL=${KYOO_URL:-http://back:5000}
+    volumes:
+      - ${LIBRARY_ROOT}:/video:ro
+
+  matcher:
+    image: zoriya/kyoo_scanner:latest
+    command: matcher
+    restart: unless-stopped
+    depends_on:
+      back:
+        condition: service_healthy
+    env_file:
+      - ./.env
+    environment:
+      - KYOO_URL=${KYOO_URL:-http://back:5000}
+
+  autosync:
+    image: zoriya/kyoo_autosync:latest
+    restart: on-failure
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    env_file:
+      - ./.env
+
+  transcoder:
+    <<: *transcoder-base
+    profiles: ['', 'cpu']
+
+  transcoder-nvidia:
+    <<: *transcoder-base
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    environment:
+      - GOCODER_HWACCEL=nvidia
+    profiles: ['nvidia']
+
+  transcoder-vaapi:
+    <<: *transcoder-base
+    devices:
+      - /dev/dri:/dev/dri
+    environment:
+      - GOCODER_HWACCEL=vaapi
+      - GOCODER_VAAPI_RENDERER=${GOCODER_VAAPI_RENDERER:-/dev/dri/renderD128}
+    profiles: ['vaapi']
+  # qsv is the same setup as vaapi but with the hwaccel env var different
+  transcoder-qsv:
+    <<: *transcoder-base
+    devices:
+      - /dev/dri:/dev/dri
+    environment:
+      - GOCODER_HWACCEL=qsv
+      - GOCODER_VAAPI_RENDERER=${GOCODER_VAAPI_RENDERER:-/dev/dri/renderD128}
+    profiles: ['qsv']
+
+  ingress:
+    image: nginx
+    restart: unless-stopped
+    environment:
+      - PORT=8901
+      - FRONT_URL=http://front:8901
+      - BACK_URL=${KYOO_URL:-http://back:5000}
+    volumes:
+      - ./nginx.conf.template:/etc/nginx/templates/kyoo.conf.template:ro
+    depends_on:
+      - back
+      - front
+    ports:
+      - "8901:8901"
+
+  postgres:
+    image: postgres:15
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    volumes:
+      - db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  meilisearch:
+    image: getmeili/meilisearch:v1.4
+    restart: unless-stopped
+    volumes:
+      - search:/meili_data
+    environment:
+      - MEILI_ENV=production
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--spider", "http://meilisearch:7700/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:3-alpine
+    restart: on-failure
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+    ports:
+      - 5672:5672
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  kyoo:
+  db:
+  metadata:
+  search:

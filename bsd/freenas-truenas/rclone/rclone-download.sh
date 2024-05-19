@@ -1,0 +1,1 @@
+rclone copy --bwlimit 6M --progress --stats=5s --stats-file-name-length 0 --transfers 6 --checkers 8 --tpslimit 5 --update --drive-stop-on-upload-limit --log-level INFO --log-file $HOME/.config/rclone/log/download-gcrypt-usmba.log gcrypt-usmba:p0ds0smb/video-shows /mnt/p0ds0smb/media/video-shows

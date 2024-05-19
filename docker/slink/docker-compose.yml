@@ -1,0 +1,28 @@
+slink:
+  image: anirdev/slink:latest
+  container_name: slink
+  environment:
+    # Your application hostname
+    - ORIGIN=https://your-domain.com
+    
+    # Require user approval before they can upload images
+    - USER_APPROVAL_REQUIRED=true
+    
+    # User password requirements
+    - USER_PASSWORD_MIN_LENGTH=8
+    - USER_PASSWORD_REQUIREMENTS=15 # bitmask of requirements 
+    
+    # Maximum image size allowed to be uploaded (no more than 50M)
+    - IMAGE_MAX_SIZE=15M
+    
+    # Storage provider to use. 
+    # Available options are local and smb
+    - STORAGE_PROVIDER=local
+  volumes:
+    # Persist the database
+    - ./slink/var/data:/app/var/data
+    # Persist the uploaded images
+    - ./slink/images:/app/slink/images
+  ports:
+    # Expose the application on port 3000
+    - "3000:3000"

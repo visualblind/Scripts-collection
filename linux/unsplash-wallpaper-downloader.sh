@@ -3,7 +3,7 @@
 # author: github.com/visualblind
 # date: 05-19-2024
 
-# This script was made by stripped out only the pieces required
+# This script was made by stripping out only the pieces required
 # in order to perform the recursive downloading of wallpaper from
 # the unsplash website. Thanks to github.com/nitestryker/bash-wallpaper-download
 

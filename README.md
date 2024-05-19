@@ -1,3 +1,4 @@
+```
 Scripts-collection/
 ├── bsd
 │   ├── freenas-iocage-nextcloud
@@ -5506,5 +5507,4 @@ Scripts-collection/
         └── printing
             └── checkifnetworkprinterisconnected
                 └── Documentation_files
-
-5507 directories
+```
